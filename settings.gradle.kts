@@ -1,6 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
 
-rootProject.name = "cdm-kotlin"
+rootProject.name = "netchdf-kotlin"
 
+/*
 dependencyResolutionManagement {
     repositories {
         google()
@@ -21,8 +30,8 @@ dependencyResolutionManagement {
             library("kotlinx-coroutines-test", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("coroutines-version")
             library("kotest-property", "io.kotest", "kotest-property").version("5.5.4")        }
     }
-}
+} */
 
-include("clibs")
+// include("clibs") TODO upgrade ffi
 include("core")
 include("testdata")

@@ -13,7 +13,7 @@ cd /home/oem/install/jextract-19/bin
     --target-package com.sunya.netchdf.mfhdfClib.ffm \
     -I /home/oem/install/hdf4/include/mfhdf.h \
     -l /home/oem/install/hdf4/lib/libmfhdf.so \
-    --output /home/oem/dev/github/cdm-kotlin/src/main/java \
+    --output /home/oem/dev/github/netchdf-kotlin/src/main/java \
     /home/oem/install/hdf4/include/mfhdf.h
  */
 

@@ -5,10 +5,11 @@ import com.sunya.cdm.iosp.OpenFile
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
-import mu.KotlinLogging
 import java.nio.ByteOrder
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
+import io.github.oshai.kotlinlogging.KotlinLogging
+
 
 const val attLengthMaxPromote = 4000
 

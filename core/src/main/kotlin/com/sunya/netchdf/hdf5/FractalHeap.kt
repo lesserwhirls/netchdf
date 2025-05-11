@@ -1,6 +1,6 @@
 package com.sunya.netchdf.hdf5
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import com.sunya.cdm.iosp.OpenFile
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.log2

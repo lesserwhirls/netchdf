@@ -1,6 +1,6 @@
 package com.sunya.cdm.api
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.*
 
 /** Test {@link dev.ucdm.core.api.Attribute} */

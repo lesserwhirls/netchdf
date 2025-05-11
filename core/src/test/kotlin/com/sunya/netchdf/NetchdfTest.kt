@@ -1,8 +1,8 @@
 package com.sunya.netchdf
 
-import com.google.common.util.concurrent.AtomicDouble
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
+import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.util.Stats
 import com.sunya.cdm.util.nearlyEquals
 import com.sunya.testdata.*
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import java.util.*
 import java.util.stream.Stream
 import kotlin.system.measureNanoTime
 import kotlin.test.assertTrue
@@ -278,7 +277,7 @@ fun compareOneVarIterate(myFile: Netchdf, myvar: Variable<*>, compare : Boolean 
         return 0
     }
 
-    val sum1 = AtomicDouble()
+    val sum1 = AtomicDouble(0.0)
     val sumArrayData = if (compare) {
         val time3 = measureNanoTime {
             val arrayData = myFile.readArrayData(myvar, null)
@@ -288,7 +287,7 @@ fun compareOneVarIterate(myFile: Netchdf, myvar: Variable<*>, compare : Boolean 
         sum1.get()
     } else 0.0
 
-    val sum2 = AtomicDouble()
+    val sum2 = AtomicDouble(0.0)
     var countChunks = 0
     val time1 = measureNanoTime {
         val chunkIter = myFile.chunkIterator(myvar)
@@ -336,7 +335,7 @@ fun compareIterateWithNC(myfile: Netchdf, ncfile: Netchdf, varname: String?, sec
 }
 
 fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, ncvar : Variable<*>, ncfile: Netchdf, section: SectionPartial?) {
-    val sum = AtomicDouble()
+    val sum = AtomicDouble(0.0)
     var countChunks = 0
     val time1 = measureNanoTime {
         val chunkIter = myfile.chunkIterator(myvar)
@@ -392,3 +391,4 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
         }
     }
 }
+

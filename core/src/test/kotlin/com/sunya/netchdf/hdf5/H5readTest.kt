@@ -1,8 +1,7 @@
 package com.sunya.netchdf.hdf5
 
-import com.google.common.util.concurrent.AtomicDouble
+import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.api.Netchdf
-import com.sunya.cdm.api.SectionPartial
 import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
@@ -147,7 +146,7 @@ class H5readTest {
 
     fun testOneVarConcurrent(myFile: Netchdf, myvar: Variable<*>) : Int {
         val filename = myFile.location().substringAfterLast('/')
-        sum = AtomicDouble()
+        sum = AtomicDouble(0.0)
         var countChunks = 0
         val time1 = measureNanoTime {
             val chunkIter = myFile.chunkIterator(myvar)
@@ -184,7 +183,7 @@ class H5readTest {
         return countChunks
     }
 
-    var sum = AtomicDouble()
+    var sum = AtomicDouble(0.0)
     fun sumValues(array : ArrayTyped<*>) {
         if (!array.datatype.isNumber or true) return
         for (value in array) {

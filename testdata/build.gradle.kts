@@ -1,20 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.0"
-}
-
-group = "sunya"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
+    alias(libs.plugins.kotlin.jvm)
 }
 
 dependencies {
-    implementation(libs.guava)
+    implementation(libs.oshai.logging)
     implementation(kotlin("test"))
-    implementation("org.junit.jupiter:junit-jupiter-params:5.1.0")
+    implementation(libs.bundles.jvmtest)
 
     // runTest() for running suspend functions in tests
     implementation(libs.kotlinx.coroutines.test)
@@ -23,6 +15,7 @@ dependencies {
     implementation(libs.kotest.property)
 }
 
+/*
 tasks {
     val ENABLE_PREVIEW = "--enable-preview"
     withType<JavaCompile>() {
@@ -33,7 +26,7 @@ tasks {
         // is needed when we wouldn't set the
         // sourceCompatiblity and targetCompatibility
         // properties of the Java plugin extension.
-        options.release.set(19)
+        options.release.set(21)
     }
     withType<Test>().all {
         useJUnitPlatform()
@@ -50,13 +43,21 @@ tasks {
     withType<JavaExec>().all {
         jvmArgs("--enable-preview")
     }
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "19"
-    }
+    //withType<KotlinCompile> {
+    //    kotlinOptions.jvmTarget = "21"
+    //}
 }
 
+ */
+
+kotlin {
+    jvmToolchain(21)
+}
+
+/*
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(19))
     }
 }
+*/

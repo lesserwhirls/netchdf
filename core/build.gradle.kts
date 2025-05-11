@@ -1,27 +1,39 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.8.0"
+    alias(libs.plugins.kotlin.jvm)
 }
 
-group = "sunya"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
+group = "org.cryptobiotic.rlauxe"
+version = libs.versions.netchdf.get()
 
 dependencies {
-    implementation(libs.microutils.logging)
-    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
+    implementation(libs.oshai.logging)
+    implementation(libs.kotlinx.coroutines.core)
 
     testImplementation(project(":testdata"))
-    testImplementation(libs.guava)
+    // testImplementation(libs.guava)
     testImplementation(kotlin("test"))
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.1.0")
+    testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)
 }
 
+tasks.test {
+    useJUnitPlatform()
+    minHeapSize = "512m"
+    maxHeapSize = "8g"
+    jvmArgs = listOf("-Xss128m")
+
+    // Make tests run in parallel
+    // More info: https://www.jvt.me/posts/2021/03/11/gradle-speed-parallel/
+    systemProperties["junit.jupiter.execution.parallel.enabled"] = "true"
+    systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
+    systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+/*
 tasks {
     val ENABLE_PREVIEW = "--enable-preview"
     withType<JavaCompile>() {
@@ -32,7 +44,7 @@ tasks {
         // is needed when we wouldn't set the
         // sourceCompatiblity and targetCompatibility
         // properties of the Java plugin extension.
-        options.release.set(19)
+        options.release.set(21)
     }
     withType<Test>().all {
         useJUnitPlatform()
@@ -49,13 +61,9 @@ tasks {
     withType<JavaExec>().all {
         jvmArgs("--enable-preview")
     }
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "19"
-    }
+    //withType<KotlinCompile> {
+    //    kotlinOptions.jvmTarget = "21"
+    //}
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
-    }
-}
+ */
