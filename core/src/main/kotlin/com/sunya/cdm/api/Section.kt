@@ -130,7 +130,7 @@ data class SectionPartial(val ranges : List<LongProgression?>) {
                         val index1 = s1.toLong()
                         val index2 = s2.toLong()
                         val stride = s3?.toLong() ?: 1L
-                        LongProgression.fromClosedRange(index1, index2, stride)
+                        LongProgression.fromClosedRange(index1, index2, stride) // TODO FIX deprecation
                     } catch (e: NumberFormatException) {
                         throw IllegalArgumentException(" illegal selector: $s part of <$sectionSpec>")
                     }

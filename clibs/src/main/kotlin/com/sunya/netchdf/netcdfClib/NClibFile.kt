@@ -29,7 +29,7 @@ netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
     --target-package sunya.cdm.netcdf4.ffm \
     -I /usr/include/netcdf.h \
     -l /usr/lib/x86_64-linux-gnu/libnetcdf.so \
-    --output /home/stormy/dev/github/cdm-kotlin/clibs/src/main/java \
+    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
     /usr/include/netcdf.h
 
 ./jextract --source \
@@ -37,7 +37,7 @@ netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
     --target-package com.sunya.netchdf.netcdfClib.ffm \
     -I /home/stormy/install/netcdf4/include/netcdf.h \
     -l /home/stormy/install/netcdf4/lib/libnetcdf.so \
-    --output /home/stormy/dev/github/cdm-kotlin/clibs/src/main/java \
+    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
     /home/stormy/install/netcdf4/include/netcdf.h
 
 
@@ -46,7 +46,7 @@ netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
     --target-package com.sunya.netchdf.hdf5Clib.ffm \
     -I /usr/include/hdf5/serial/hdf5.h \
     -l /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so \
-    --output /home/stormy/dev/github/cdm-kotlin/clibs/src/main/java \
+    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
     /usr/include/hdf5/serial/hdf5.h
 
  */

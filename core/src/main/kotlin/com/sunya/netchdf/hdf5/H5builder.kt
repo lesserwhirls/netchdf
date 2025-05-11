@@ -8,7 +8,7 @@ import com.sunya.cdm.util.unsignedIntToLong
 import com.sunya.cdm.util.unsignedShortToInt
 import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.NetchdfFileFormat
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import java.io.IOException
 import java.nio.*
 import java.nio.charset.Charset

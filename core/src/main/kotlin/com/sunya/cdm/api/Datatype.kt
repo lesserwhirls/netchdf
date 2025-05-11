@@ -5,12 +5,12 @@ import java.nio.ByteBuffer
 
 /**
  * The CDM API datatype.
- * Uunlike netcdf-java, we follow the netcdf4/hdf5 convention, making Vlen and Compound into separate types
+ * Unlike netcdf-java, we follow the netcdf4/hdf5 convention, making Vlen and Compound into separate types
  *
  * @param cdlName name in CDL
  * @param size Size in bytes of one element of this data type.
  * @param typedef used for ENUM, VLEN, OPAQUE, COMPOUND
- * @param isVlen HDF5 needs to track if this in Vlen or regular String.
+ * @param isVlen HDF5 needs to track if this is a Vlen or regular String.
  *
  */
 data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef? = null, val isVlen : Boolean? = null) {

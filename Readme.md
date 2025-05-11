@@ -1,5 +1,5 @@
 # netchdf-kotlin
-_last updated: 5/31/2023_
+_last updated: 5/11/2025_
 
 This is a rewrite in kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -58,14 +58,14 @@ open-source developers, and hopefully some of them will be willing to keep this 
 
 We are aiming to be within 2x of the C libraries for reading data. Preliminary tests indicate that's a reasonable goal. 
 For HDF5 files using deflate filters, the deflate library dominates the read time, and standard Java deflate libraries 
-are about 2X slower than native code.Unless the deflate libraries get better, theres not much gain in trying to make
+are about 2X slower than native code. Unless the deflate libraries get better, theres not much gain in trying to make
 other parts of the code faster.
 
 Its possible we can use kotlin coroutines to speed up performance bottlenecks. TBD.
 
 ### Testing
 
-We are using the Foreign Function & Memory API (Java 19 Preview) for testing against the Netcdf, HDF5, and HDF4 C libraries. 
+We will use the Foreign Function & Memory API for testing against the Netcdf, HDF5, and HDF4 C libraries. 
 With these tools we can be confident that our library gives the same results as the reference libraries.
 
 Currently we have this test coverage from core/test:
@@ -157,11 +157,12 @@ local to the variable they are referenced by.
 * The _StructMetadata_ ODL is gathered and applied to the file header metadata as well as possible. 
   Contact us with example files if you see something we are missing.
 
-##
+## Elevator blurb
+
 An independent implementation of HDF4/HDF5/HDF-EOS in kotlin.
 
 I am working on an independent library implementation of HDF4/HDF5/HDF-EOS in kotlin 
-[here](https://github.com/JohnLCaron/cdm-kotlin). 
+[here](https://github.com/JohnLCaron/netchdf-kotlin). 
 This will be complementary to the important work of maintaining the primary HDF libraries.
 The goal is to give read access to all the content in NetCDF, HDF5, HDF4 and HDF-EOS files.
 

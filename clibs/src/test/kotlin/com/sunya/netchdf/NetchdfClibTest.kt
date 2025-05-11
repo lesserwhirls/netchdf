@@ -1,6 +1,6 @@
 package com.sunya.netchdf
 
-import com.google.common.util.concurrent.AtomicDouble
+import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.util.Stats
@@ -672,7 +672,7 @@ fun compareIterateNetchdf(myfile: Netchdf, cfile: Netchdf, varname: String?, sec
 }
 
 fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>, cfile: Netchdf, section: SectionPartial?) {
-    val sum = AtomicDouble()
+    val sum = AtomicDouble(0.0)
     sum.set(0.0)
     var countChunks = 0
     val time1 = measureNanoTime {
@@ -706,7 +706,7 @@ fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>
 }
 
 ///////////////////////////////////////////////////////////
-val sum = AtomicDouble()
+val sum = AtomicDouble(0.0)
 fun sumValues(array : ArrayTyped<*>) {
     if (array is ArraySingle || array is ArrayEmpty) {
         return // test fillValue the same ??
