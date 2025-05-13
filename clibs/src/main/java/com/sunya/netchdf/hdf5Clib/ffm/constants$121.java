@@ -7,49 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$121 {
+final class constants$121 {
 
-    static final FunctionDescriptor H5Gget_info_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$121() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getc_unlocked",
+        constants$15.const$2
     );
-    static final MethodHandle H5Gget_info_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_info_by_idx",
-        constants$121.H5Gget_info_by_idx$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getchar_unlocked",
+        constants$14.const$0
     );
-    static final FunctionDescriptor H5Gclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fgetc_unlocked",
+        constants$15.const$2
     );
-    static final MethodHandle H5Gclose$MH = RuntimeHelper.downcallHandle(
-        "H5Gclose",
-        constants$121.H5Gclose$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fputc",
+        constants$22.const$0
     );
-    static final FunctionDescriptor H5Gflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "putc",
+        constants$22.const$0
     );
-    static final MethodHandle H5Gflush$MH = RuntimeHelper.downcallHandle(
-        "H5Gflush",
-        constants$121.H5Gflush$FUNC
-    );
-    static final FunctionDescriptor H5Grefresh$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Grefresh$MH = RuntimeHelper.downcallHandle(
-        "H5Grefresh",
-        constants$121.H5Grefresh$FUNC
-    );
-    static final FunctionDescriptor H5G_iterate_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5G_iterate_t$MH = RuntimeHelper.downcallHandle(
-        constants$121.H5G_iterate_t$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "putchar",
+        constants$21.const$0
     );
 }
 

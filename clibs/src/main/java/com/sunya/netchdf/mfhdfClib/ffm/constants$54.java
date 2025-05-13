@@ -3,57 +3,34 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$54 {
 
-class constants$54 {
-
-    static final FunctionDescriptor timer_delete$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$54() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "setstate_r",
+        constants$19.const$5
     );
-    static final MethodHandle timer_delete$MH = RuntimeHelper.downcallHandle(
-        "timer_delete",
-        constants$54.timer_delete$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "rand",
+        constants$28.const$3
     );
-    static final FunctionDescriptor timer_settime$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "srand",
+        constants$51.const$2
     );
-    static final MethodHandle timer_settime$MH = RuntimeHelper.downcallHandle(
-        "timer_settime",
-        constants$54.timer_settime$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "rand_r",
+        constants$17.const$4
     );
-    static final FunctionDescriptor timer_gettime$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle timer_gettime$MH = RuntimeHelper.downcallHandle(
-        "timer_gettime",
-        constants$54.timer_gettime$FUNC
-    );
-    static final FunctionDescriptor timer_getoverrun$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle timer_getoverrun$MH = RuntimeHelper.downcallHandle(
-        "timer_getoverrun",
-        constants$54.timer_getoverrun$FUNC
-    );
-    static final FunctionDescriptor timespec_get$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle timespec_get$MH = RuntimeHelper.downcallHandle(
-        "timespec_get",
-        constants$54.timespec_get$FUNC
-    );
-    static final FunctionDescriptor fcntl$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fcntl$MH = RuntimeHelper.downcallHandleVariadic(
-        "fcntl",
-        constants$54.fcntl$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_DOUBLE);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "drand48",
+        constants$54.const$4
     );
 }
 

@@ -2,30 +2,28 @@ package com.sunya.netchdf.hdf4Clib
 
 /*
 hdf4 library src:
-/home/oem/dev/github/hdf4
+/home/stormy/dev/github/hdf4
 install:
-/home/oem/install/hdf4
+/home/stormy/install/hdf4
 
-cd /home/oem/install/jextract-19/bin
+cd /home/stormy/install/jextract-19/bin
 
 ./jextract --source \
     --header-class-name mfhdf_h \
     --target-package com.sunya.netchdf.mfhdfClib.ffm \
-    -I /home/oem/install/hdf4/include/mfhdf.h \
-    -l /home/oem/install/hdf4/lib/libmfhdf.so \
-    --output /home/oem/dev/github/netchdf-kotlin/src/main/java \
-    /home/oem/install/hdf4/include/mfhdf.h
+    -I /home/stormy/install/hdf4/include/mfhdf.h \
+    -l /home/stormy/install/hdf4/lib/libmfhdf.so \
+    --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
+    /home/stormy/install/hdf4/include/mfhdf.h
  */
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.cdm.layout.IndexFn
-import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.MaxChunker
 
 import com.sunya.netchdf.mfhdfClib.ffm.mfhdf_h.*
 import java.lang.foreign.MemoryLayout
-import java.lang.foreign.MemorySession
+import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -116,7 +114,7 @@ class Hdf4ClibFile(val filename: String) : Netchdf {
 fun <T> readSDdata(sdsStartId: Int, sdindex: Int, datatype: Datatype<T>, wantSection: Section, nbytes: Long): ArrayTyped<T> {
     val rank = wantSection.rank
 
-    MemorySession.openConfined().use { session ->
+    Arena.ofConfined().use { session ->
         val intArray = MemoryLayout.sequenceLayout(rank.toLong(), C_INT)
         val origin_p = session.allocateArray(intArray, rank.toLong())
         val shape_p = session.allocateArray(intArray, rank.toLong())
@@ -148,7 +146,7 @@ fun <T> readVSdata(fileOpenId: Int, vsInfo: VSInfo, datatype : Datatype<T>, star
     val numRecords = min(vsInfo.nrecords, wantRecords) // trick because we promote single field structures
     val shape = intArrayOf(numRecords)
 
-    MemorySession.openConfined().use { session ->
+    Arena.ofConfined().use { session ->
         val read_access_mode = session.allocateUtf8String("r")
         val fldnames_p = session.allocateUtf8String(vsInfo.fldNames)
         val data_p = session.allocate(numRecords * vsInfo.recsize.toLong()) // LOOK memory clobber?
@@ -184,7 +182,7 @@ fun <T> readVSdata(fileOpenId: Int, vsInfo: VSInfo, datatype : Datatype<T>, star
 
 fun <T> readGRdata(grStartId: Int, grIdx: Int, datatype: Datatype<T>, wantSection: Section, nbytes: Long): ArrayTyped<T> {
 
-    MemorySession.openConfined().use { session ->
+    Arena.ofConfined().use { session ->
         // flip the shape
         val rank = wantSection.rank
         val flipShape = IntArray(rank) { wantSection.shape[rank - it - 1].toInt() }

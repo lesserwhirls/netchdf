@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5O_iterate_t)(long obj,char* name,struct H5O_info_t* info,void* op_data);
+ * }
+ */
 public interface H5O_iterate_t {
 
-    int apply(long obj, java.lang.foreign.MemoryAddress name, java.lang.foreign.MemoryAddress info, java.lang.foreign.MemoryAddress op_data);
-    static MemorySegment allocate(H5O_iterate_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5O_iterate_t.class, fi, constants$41.H5O_iterate_t$FUNC, session);
+    int apply(long location_id, java.lang.foreign.MemorySegment attr_name, java.lang.foreign.MemorySegment ainfo, java.lang.foreign.MemorySegment op_data);
+    static MemorySegment allocate(H5O_iterate_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$72.const$2, fi, constants$61.const$5, scope);
     }
-    static H5O_iterate_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _obj, java.lang.foreign.MemoryAddress _name, java.lang.foreign.MemoryAddress _info, java.lang.foreign.MemoryAddress _op_data) -> {
+    static H5O_iterate_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _location_id, java.lang.foreign.MemorySegment _attr_name, java.lang.foreign.MemorySegment _ainfo, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$41.H5O_iterate_t$MH.invokeExact((Addressable)symbol, _obj, (java.lang.foreign.Addressable)_name, (java.lang.foreign.Addressable)_info, (java.lang.foreign.Addressable)_op_data);
+                return (int)constants$62.const$1.invokeExact(symbol, _location_id, _attr_name, _ainfo, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -3,78 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$111 {
 
-class constants$111 {
-
-    static final FunctionDescriptor DFANIaddentry$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$111() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getopt",
+        constants$26.const$5
     );
-    static final MethodHandle DFANIaddentry$MH = RuntimeHelper.downcallHandle(
-        "DFANIaddentry",
-        constants$111.DFANIaddentry$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "gethostname",
+        constants$68.const$3
     );
-    static final FunctionDescriptor DFANIgetannlen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "sethostname",
+        constants$68.const$3
     );
-    static final MethodHandle DFANIgetannlen$MH = RuntimeHelper.downcallHandle(
-        "DFANIgetannlen",
-        constants$111.DFANIgetannlen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sethostid",
+        constants$78.const$3
     );
-    static final FunctionDescriptor DFANIgetann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getdomainname",
+        constants$68.const$3
     );
-    static final MethodHandle DFANIgetann$MH = RuntimeHelper.downcallHandle(
-        "DFANIgetann",
-        constants$111.DFANIgetann$FUNC
-    );
-    static final FunctionDescriptor DFANIputann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANIputann$MH = RuntimeHelper.downcallHandle(
-        "DFANIputann",
-        constants$111.DFANIputann$FUNC
-    );
-    static final FunctionDescriptor DFANIlablist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANIlablist$MH = RuntimeHelper.downcallHandle(
-        "DFANIlablist",
-        constants$111.DFANIlablist$FUNC
-    );
-    static final FunctionDescriptor DFANIaddfann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANIaddfann$MH = RuntimeHelper.downcallHandle(
-        "DFANIaddfann",
-        constants$111.DFANIaddfann$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "setdomainname",
+        constants$68.const$3
     );
 }
 

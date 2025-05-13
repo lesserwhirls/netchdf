@@ -7,36 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$128 {
+final class constants$128 {
 
-    static final FunctionDescriptor H5P_cls_close_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$128() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "pclose",
+        constants$15.const$2
     );
-    static final MethodHandle H5P_cls_close_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$128.H5P_cls_close_func_t$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "popen",
+        constants$113.const$3
     );
-    static final FunctionDescriptor H5P_prp_cb1_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "ctermid",
+        constants$113.const$0
     );
-    static final MethodHandle H5P_prp_cb1_t$MH = RuntimeHelper.downcallHandle(
-        constants$128.H5P_prp_cb1_t$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "flockfile",
+        constants$116.const$4
     );
-    static final FunctionDescriptor H5P_prp_cb2_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ftrylockfile",
+        constants$15.const$2
     );
-    static final MethodHandle H5P_prp_cb2_t$MH = RuntimeHelper.downcallHandle(
-        constants$128.H5P_prp_cb2_t$FUNC
-    );
-    static final FunctionDescriptor H5P_prp_create_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "funlockfile",
+        constants$116.const$4
     );
 }
 

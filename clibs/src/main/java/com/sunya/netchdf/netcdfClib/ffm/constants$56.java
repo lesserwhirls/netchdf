@@ -3,76 +3,37 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$56 {
 
-class constants$56 {
-
-    static final FunctionDescriptor ncvarinq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$56() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_put_varm_ubyte",
+        constants$12.const$0
     );
-    static final MethodHandle ncvarinq$MH = RuntimeHelper.downcallHandle(
-        "ncvarinq",
-        constants$56.ncvarinq$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_get_varm_ubyte",
+        constants$12.const$0
     );
-    static final FunctionDescriptor ncvarput1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_var_ubyte",
+        constants$7.const$5
     );
-    static final MethodHandle ncvarput1$MH = RuntimeHelper.downcallHandle(
-        "ncvarput1",
-        constants$56.ncvarput1$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_var_ubyte",
+        constants$7.const$5
     );
-    static final FunctionDescriptor ncvarget1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_set_log_level",
+        constants$20.const$3
     );
-    static final MethodHandle ncvarget1$MH = RuntimeHelper.downcallHandle(
-        "ncvarget1",
-        constants$56.ncvarget1$FUNC
-    );
-    static final FunctionDescriptor ncvarput$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ncvarput$MH = RuntimeHelper.downcallHandle(
-        "ncvarput",
-        constants$56.ncvarput$FUNC
-    );
-    static final FunctionDescriptor ncvarget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ncvarget$MH = RuntimeHelper.downcallHandle(
-        "ncvarget",
-        constants$56.ncvarget$FUNC
-    );
-    static final FunctionDescriptor ncvarputs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ncvarputs$MH = RuntimeHelper.downcallHandle(
-        "ncvarputs",
-        constants$56.ncvarputs$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_show_metadata",
+        constants$20.const$3
     );
 }
 

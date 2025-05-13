@@ -7,69 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$142 {
+final class constants$142 {
 
-    static final FunctionDescriptor H5Pset_filter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_filter$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_filter",
-        constants$142.H5Pset_filter$FUNC
-    );
-    static final FunctionDescriptor H5Pget_nfilters$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_nfilters$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_nfilters",
-        constants$142.H5Pget_nfilters$FUNC
-    );
-    static final FunctionDescriptor H5Pget_filter2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_filter2$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_filter2",
-        constants$142.H5Pget_filter2$FUNC
-    );
-    static final FunctionDescriptor H5Pget_filter_by_id2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_filter_by_id2$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_filter_by_id2",
-        constants$142.H5Pget_filter_by_id2$FUNC
-    );
-    static final FunctionDescriptor H5Pall_filters_avail$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pall_filters_avail$MH = RuntimeHelper.downcallHandle(
-        "H5Pall_filters_avail",
-        constants$142.H5Pall_filters_avail$FUNC
-    );
-    static final FunctionDescriptor H5Premove_filter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Premove_filter$MH = RuntimeHelper.downcallHandle(
-        "H5Premove_filter",
-        constants$142.H5Premove_filter$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$142() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSHRINK_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_LINKCOUNT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_VERSION_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_ALIGNMENT_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_BADMESG_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTDELETE_g", JAVA_LONG);
 }
 
 

@@ -7,26 +7,44 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$99 {
+final class constants$99 {
 
-    static final  OfLong H5E_CANTGATHER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTGATHER_g$VH = constants$99.H5E_CANTGATHER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTGATHER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTGATHER_g", constants$99.H5E_CANTGATHER_g$LAYOUT);
-    static final  OfLong H5E_NO_INDEPENDENT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NO_INDEPENDENT_g$VH = constants$99.H5E_NO_INDEPENDENT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NO_INDEPENDENT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NO_INDEPENDENT_g", constants$99.H5E_NO_INDEPENDENT_g$LAYOUT);
-    static final  OfLong H5E_CANTCLIP_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCLIP_g$VH = constants$99.H5E_CANTCLIP_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCLIP_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLIP_g", constants$99.H5E_CANTCLIP_g$LAYOUT);
-    static final  OfLong H5E_CANTCOUNT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCOUNT_g$VH = constants$99.H5E_CANTCOUNT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCOUNT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOUNT_g", constants$99.H5E_CANTCOUNT_g$LAYOUT);
-    static final  OfLong H5E_CANTSELECT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTSELECT_g$VH = constants$99.H5E_CANTSELECT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTSELECT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTSELECT_g", constants$99.H5E_CANTSELECT_g$LAYOUT);
-    static final  OfLong H5E_CANTNEXT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTNEXT_g$VH = constants$99.H5E_CANTNEXT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTNEXT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTNEXT_g", constants$99.H5E_CANTNEXT_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$99() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dwrite_chunk",
+        constants$99.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dread_chunk",
+        constants$99.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Diterate",
+        constants$99.const$4
+    );
 }
 
 

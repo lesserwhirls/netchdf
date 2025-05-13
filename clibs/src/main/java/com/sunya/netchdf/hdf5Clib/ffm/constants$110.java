@@ -7,56 +7,23 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$110 {
+final class constants$110 {
 
-    static final FunctionDescriptor H5Fcreate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$110() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$109.const$4
     );
-    static final MethodHandle H5Fcreate$MH = RuntimeHelper.downcallHandle(
-        "H5Fcreate",
-        constants$110.H5Fcreate$FUNC
-    );
-    static final FunctionDescriptor H5Fopen$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fopen$MH = RuntimeHelper.downcallHandle(
-        "H5Fopen",
-        constants$110.H5Fopen$FUNC
-    );
-    static final FunctionDescriptor H5Freopen$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Freopen$MH = RuntimeHelper.downcallHandle(
-        "H5Freopen",
-        constants$110.H5Freopen$FUNC
-    );
-    static final FunctionDescriptor H5Fflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Fflush$MH = RuntimeHelper.downcallHandle(
-        "H5Fflush",
-        constants$110.H5Fflush$FUNC
-    );
-    static final FunctionDescriptor H5Fclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fclose$MH = RuntimeHelper.downcallHandle(
-        "H5Fclose",
-        constants$110.H5Fclose$FUNC
-    );
-    static final FunctionDescriptor H5Fget_create_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fget_create_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_create_plist",
-        constants$110.H5Fget_create_plist$FUNC
-    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$15.const$2);
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("seek"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("_IO_cookie_io_functions_t");
+    static final VarHandle const$3 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final VarHandle const$4 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("write"));
+    static final VarHandle const$5 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("seek"));
 }
 
 

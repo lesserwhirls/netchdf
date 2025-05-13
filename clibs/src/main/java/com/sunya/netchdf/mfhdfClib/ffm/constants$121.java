@@ -3,64 +3,32 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$121 {
 
-class constants$121 {
-
-    static final FunctionDescriptor DFKsb8b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$121() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "utimes",
+        constants$19.const$5
     );
-    static final MethodHandle DFKsb8b$MH = RuntimeHelper.downcallHandle(
-        "DFKsb8b",
-        constants$121.DFKsb8b$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "lutimes",
+        constants$19.const$5
     );
-    static final FunctionDescriptor ANstart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "futimes",
+        constants$5.const$3
     );
-    static final MethodHandle ANstart$MH = RuntimeHelper.downcallHandle(
-        "ANstart",
-        constants$121.ANstart$FUNC
-    );
-    static final FunctionDescriptor ANfileinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ANfileinfo$MH = RuntimeHelper.downcallHandle(
-        "ANfileinfo",
-        constants$121.ANfileinfo$FUNC
-    );
-    static final FunctionDescriptor ANend$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANend$MH = RuntimeHelper.downcallHandle(
-        "ANend",
-        constants$121.ANend$FUNC
-    );
-    static final FunctionDescriptor ANcreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANcreate$MH = RuntimeHelper.downcallHandle(
-        "ANcreate",
-        constants$121.ANcreate$FUNC
-    );
-    static final FunctionDescriptor ANcreatef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANcreatef$MH = RuntimeHelper.downcallHandle(
-        "ANcreatef",
-        constants$121.ANcreatef$FUNC
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_SHORT.withName("tag"),
+        JAVA_SHORT.withName("ref")
+    ).withName("");
+    static final VarHandle const$4 = constants$121.const$3.varHandle(MemoryLayout.PathElement.groupElement("tag"));
+    static final VarHandle const$5 = constants$121.const$3.varHandle(MemoryLayout.PathElement.groupElement("ref"));
 }
 
 

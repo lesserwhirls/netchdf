@@ -7,26 +7,39 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$14 {
+final class constants$14 {
 
-    static final  OfLong H5T_UNIX_D32BE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_UNIX_D32BE_g$VH = constants$14.H5T_UNIX_D32BE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_UNIX_D32BE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D32BE_g", constants$14.H5T_UNIX_D32BE_g$LAYOUT);
-    static final  OfLong H5T_UNIX_D32LE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_UNIX_D32LE_g$VH = constants$14.H5T_UNIX_D32LE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_UNIX_D32LE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D32LE_g", constants$14.H5T_UNIX_D32LE_g$LAYOUT);
-    static final  OfLong H5T_UNIX_D64BE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_UNIX_D64BE_g$VH = constants$14.H5T_UNIX_D64BE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_UNIX_D64BE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D64BE_g", constants$14.H5T_UNIX_D64BE_g$LAYOUT);
-    static final  OfLong H5T_UNIX_D64LE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_UNIX_D64LE_g$VH = constants$14.H5T_UNIX_D64LE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_UNIX_D64LE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D64LE_g", constants$14.H5T_UNIX_D64LE_g$LAYOUT);
-    static final  OfLong H5T_C_S1_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_C_S1_g$VH = constants$14.H5T_C_S1_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_C_S1_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_C_S1_g", constants$14.H5T_C_S1_g$LAYOUT);
-    static final  OfLong H5T_FORTRAN_S1_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_FORTRAN_S1_g$VH = constants$14.H5T_FORTRAN_S1_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_FORTRAN_S1_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_FORTRAN_S1_g", constants$14.H5T_FORTRAN_S1_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$14() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5open",
+        constants$14.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5close",
+        constants$14.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5dont_atexit",
+        constants$14.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5garbage_collect",
+        constants$14.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5set_free_list_limits",
+        constants$14.const$5
+    );
 }
 
 

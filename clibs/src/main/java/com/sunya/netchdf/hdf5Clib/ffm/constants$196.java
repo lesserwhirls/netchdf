@@ -7,14 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$196 {
+final class constants$196 {
 
-    static final MemorySegment PRIXLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIXLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIXLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIXFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$196() {}
+    static final VarHandle const$0 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_free"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_copy.class, "apply", constants$113.const$0);
+    static final VarHandle const$2 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("udata_copy"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_free.class, "apply", constants$15.const$2);
+    static final VarHandle const$4 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("udata_free"));
+    static final VarHandle const$5 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("udata"));
 }
 
 

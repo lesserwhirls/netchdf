@@ -7,42 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$4 {
+final class constants$4 {
 
-    static final FunctionDescriptor H5free_memory$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5free_memory$MH = RuntimeHelper.downcallHandle(
-        "H5free_memory",
-        constants$4.H5free_memory$FUNC
-    );
-    static final FunctionDescriptor H5allocate_memory$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5allocate_memory$MH = RuntimeHelper.downcallHandle(
-        "H5allocate_memory",
-        constants$4.H5allocate_memory$FUNC
-    );
-    static final FunctionDescriptor H5resize_memory$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5resize_memory$MH = RuntimeHelper.downcallHandle(
-        "H5resize_memory",
-        constants$4.H5resize_memory$FUNC
-    );
-    static final FunctionDescriptor H5I_free_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5I_free_t$MH = RuntimeHelper.downcallHandle(
-        constants$4.H5I_free_t$FUNC
-    );
-    static final FunctionDescriptor H5I_search_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$4() {}
+    static final VarHandle const$0 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+    static final VarHandle const$1 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
+    static final VarHandle const$2 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
+    static final VarHandle const$3 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
+    static final VarHandle const$4 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
+    static final VarHandle const$5 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
 }
 
 

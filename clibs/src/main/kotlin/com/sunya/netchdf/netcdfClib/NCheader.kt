@@ -27,7 +27,7 @@ class NCheader(val filename: String) {
     internal val typeinfoMap = mutableMapOf<Typedef, MutableList<Group.Builder>>()
 
     init {
-        MemorySession.openConfined().use { session ->
+        Arena.ofConfined().use { session ->
             val filenameSeg: MemorySegment = session.allocateUtf8String(filename)
             val fileHandle: MemorySegment = session.allocate(C_INT, 0)
 
@@ -62,7 +62,7 @@ class NCheader(val filename: String) {
         }
     }
 
-    private fun readGroup(session: MemorySession, g4: Group4) {
+    private fun readGroup(session: Arena, g4: Group4) {
         if (debug) println("group ${g4.gb.name}")
         readGroupDimensions(session, g4)
 
@@ -104,7 +104,7 @@ class NCheader(val filename: String) {
     }
 
     @Throws(IOException::class)
-    private fun readGroupDimensions(session: MemorySession, g4: Group4) {
+    private fun readGroupDimensions(session: Arena, g4: Group4) {
         //// Get dimension ids
         val numDims_p = session.allocate(C_INT, 0)
         // nc_inq_ndims(int ncid, int *ndimsp);
@@ -162,7 +162,7 @@ class NCheader(val filename: String) {
     }
 
     @Throws(IOException::class)
-    private fun readVariables(session: MemorySession, g4: Group4) {
+    private fun readVariables(session: Arena, g4: Group4) {
         val nvars_p = session.allocate(C_INT, 0)
         checkErr("nc_inq_nvars", nc_inq_nvars(g4.grpid, nvars_p))
         val nvars = nvars_p[C_INT, 0]
@@ -218,7 +218,7 @@ class NCheader(val filename: String) {
     }
 
     @Throws(IOException::class)
-    private fun readAttributes(session: MemorySession, grpid: Int, varid: Int, natts: Int): List<Attribute.Builder<*>> {
+    private fun readAttributes(session: Arena, grpid: Int, varid: Int, natts: Int): List<Attribute.Builder<*>> {
         val result = mutableListOf<Attribute.Builder<*>>()
         val name_p: MemorySegment = session.allocate(NC_MAX_NAME().toLong())
         val type_p = session.allocate(C_INT, 0)
@@ -253,7 +253,7 @@ class NCheader(val filename: String) {
     }
 
     fun <T> readAttributeValues(
-        session: MemorySession,
+        session: Arena,
         grpid: Int,
         varid: Int,
         attname: String,
@@ -387,8 +387,8 @@ class NCheader(val filename: String) {
                 val result = mutableListOf<String>()
                 for (i in 0 until nelems) {
                     // val s1 = strings_p.getUtf8String(i*8) // LOOK wrong
-                    val s2: MemoryAddress = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-                    if (s2 != MemoryAddress.NULL) {
+                    val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+                    if (s2 != MemorySegment.NULL) {
                         val value = s2.getUtf8String(0)
                         val tvalue = transcodeString(value)
                         result.add(tvalue)

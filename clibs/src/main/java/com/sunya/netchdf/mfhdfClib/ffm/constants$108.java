@@ -3,62 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$108 {
 
-class constants$108 {
-
-    static final FunctionDescriptor DF24lastref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT);
-    static final MethodHandle DF24lastref$MH = RuntimeHelper.downcallHandle(
-        "DF24lastref",
-        constants$108.DF24lastref$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$108() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "symlink",
+        constants$19.const$5
     );
-    static final FunctionDescriptor DFANgetlablen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "readlink",
+        constants$16.const$3
     );
-    static final MethodHandle DFANgetlablen$MH = RuntimeHelper.downcallHandle(
-        "DFANgetlablen",
-        constants$108.DFANgetlablen$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor DFANgetlabel$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "symlinkat",
+        constants$108.const$2
     );
-    static final MethodHandle DFANgetlabel$MH = RuntimeHelper.downcallHandle(
-        "DFANgetlabel",
-        constants$108.DFANgetlabel$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor DFANgetdesclen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFANgetdesclen$MH = RuntimeHelper.downcallHandle(
-        "DFANgetdesclen",
-        constants$108.DFANgetdesclen$FUNC
-    );
-    static final FunctionDescriptor DFANgetdesc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANgetdesc$MH = RuntimeHelper.downcallHandle(
-        "DFANgetdesc",
-        constants$108.DFANgetdesc$FUNC
-    );
-    static final FunctionDescriptor DFANgetfidlen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANgetfidlen$MH = RuntimeHelper.downcallHandle(
-        "DFANgetfidlen",
-        constants$108.DFANgetfidlen$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "readlinkat",
+        constants$108.const$4
     );
 }
 

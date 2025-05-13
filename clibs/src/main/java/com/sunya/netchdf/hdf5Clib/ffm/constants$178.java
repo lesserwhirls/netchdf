@@ -7,56 +7,52 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$178 {
+final class constants$178 {
 
-    static final FunctionDescriptor H5Sget_select_hyper_nblocks$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sget_select_hyper_nblocks$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_nblocks",
-        constants$178.H5Sget_select_hyper_nblocks$FUNC
-    );
-    static final FunctionDescriptor H5Sget_select_hyper_blocklist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sget_select_hyper_blocklist$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_blocklist",
-        constants$178.H5Sget_select_hyper_blocklist$FUNC
-    );
-    static final FunctionDescriptor H5Sselect_project_intersection$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sselect_project_intersection$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_project_intersection",
-        constants$178.H5Sselect_project_intersection$FUNC
-    );
-    static final FunctionDescriptor H5FD_core_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_core_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_core_init",
-        constants$178.H5FD_core_init$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fapl_core$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_core$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_core",
-        constants$178.H5Pset_fapl_core$FUNC
-    );
-    static final FunctionDescriptor H5Pget_fapl_core$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fapl_core$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_core",
-        constants$178.H5Pget_fapl_core$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$178() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_LONG.withName("maxaddr"),
+        JAVA_INT.withName("fc_degree"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("terminate"),
+        RuntimeHelper.POINTER.withName("sb_size"),
+        RuntimeHelper.POINTER.withName("sb_encode"),
+        RuntimeHelper.POINTER.withName("sb_decode"),
+        JAVA_LONG.withName("fapl_size"),
+        RuntimeHelper.POINTER.withName("fapl_get"),
+        RuntimeHelper.POINTER.withName("fapl_copy"),
+        RuntimeHelper.POINTER.withName("fapl_free"),
+        JAVA_LONG.withName("dxpl_size"),
+        RuntimeHelper.POINTER.withName("dxpl_copy"),
+        RuntimeHelper.POINTER.withName("dxpl_free"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("close"),
+        RuntimeHelper.POINTER.withName("cmp"),
+        RuntimeHelper.POINTER.withName("query"),
+        RuntimeHelper.POINTER.withName("get_type_map"),
+        RuntimeHelper.POINTER.withName("alloc"),
+        RuntimeHelper.POINTER.withName("free"),
+        RuntimeHelper.POINTER.withName("get_eoa"),
+        RuntimeHelper.POINTER.withName("set_eoa"),
+        RuntimeHelper.POINTER.withName("get_eof"),
+        RuntimeHelper.POINTER.withName("get_handle"),
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("flush"),
+        RuntimeHelper.POINTER.withName("truncate"),
+        RuntimeHelper.POINTER.withName("lock"),
+        RuntimeHelper.POINTER.withName("unlock"),
+        MemoryLayout.sequenceLayout(7, JAVA_INT).withName("fl_map"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("H5FD_class_t");
+    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
+    static final VarHandle const$3 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fc_degree"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.terminate.class, "apply", constants$14.const$0);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$14.const$0
     );
 }
 

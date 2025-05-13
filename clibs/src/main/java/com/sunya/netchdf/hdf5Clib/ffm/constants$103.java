@@ -7,28 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$103 {
+final class constants$103 {
 
-    static final  OfLong H5E_CANTMODIFY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMODIFY_g$VH = constants$103.H5E_CANTMODIFY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMODIFY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMODIFY_g", constants$103.H5E_CANTMODIFY_g$LAYOUT);
-    static final  OfLong H5E_CANTREMOVE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTREMOVE_g$VH = constants$103.H5E_CANTREMOVE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTREMOVE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTREMOVE_g", constants$103.H5E_CANTREMOVE_g$LAYOUT);
-    static final  OfLong H5E_CANTCONVERT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCONVERT_g$VH = constants$103.H5E_CANTCONVERT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCONVERT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCONVERT_g", constants$103.H5E_CANTCONVERT_g$LAYOUT);
-    static final  OfLong H5E_BADSIZE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADSIZE_g$VH = constants$103.H5E_BADSIZE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADSIZE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADSIZE_g", constants$103.H5E_BADSIZE_g$LAYOUT);
-    static final FunctionDescriptor H5E_walk2_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5E_walk2_t$MH = RuntimeHelper.downcallHandle(
-        constants$103.H5E_walk2_t$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$103() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__count"),
+        MemoryLayout.unionLayout(
+            JAVA_INT.withName("__wch"),
+            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+        ).withName("__value")
+    ).withName("");
+    static final VarHandle const$1 = constants$103.const$0.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        JAVA_INT.withName("__wch"),
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+    ).withName("");
+    static final VarHandle const$3 = constants$103.const$2.varHandle(MemoryLayout.PathElement.groupElement("__wch"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__pos"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__count"),
+            MemoryLayout.unionLayout(
+                JAVA_INT.withName("__wch"),
+                MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+            ).withName("__value")
+        ).withName("__state")
+    ).withName("_G_fpos_t");
+    static final VarHandle const$5 = constants$103.const$4.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
 }
 
 

@@ -7,51 +7,38 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$62 {
+final class constants$62 {
 
-    static final FunctionDescriptor tmpnam$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$62() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_iterate_t.class, "apply", constants$61.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$61.const$5
     );
-    static final MethodHandle tmpnam$MH = RuntimeHelper.downcallHandle(
-        "tmpnam",
-        constants$62.tmpnam$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor tmpnam_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5L_elink_traverse_t.class, "apply", constants$62.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$62.const$2
     );
-    static final MethodHandle tmpnam_r$MH = RuntimeHelper.downcallHandle(
-        "tmpnam_r",
-        constants$62.tmpnam_r$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final FunctionDescriptor tempnam$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle tempnam$MH = RuntimeHelper.downcallHandle(
-        "tempnam",
-        constants$62.tempnam$FUNC
-    );
-    static final FunctionDescriptor fflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fflush$MH = RuntimeHelper.downcallHandle(
-        "fflush",
-        constants$62.fflush$FUNC
-    );
-    static final FunctionDescriptor fflush_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fflush_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fflush_unlocked",
-        constants$62.fflush_unlocked$FUNC
-    );
-    static final FunctionDescriptor fopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fopen$MH = RuntimeHelper.downcallHandle(
-        "fopen",
-        constants$62.fopen$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Lmove",
+        constants$62.const$5
     );
 }
 

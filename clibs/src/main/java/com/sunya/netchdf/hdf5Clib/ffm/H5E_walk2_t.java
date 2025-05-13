@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5E_walk2_t)(unsigned int n,struct H5E_error2_t* err_desc,void* client_data);
+ * }
+ */
 public interface H5E_walk2_t {
 
-    int apply(int n, java.lang.foreign.MemoryAddress err_desc, java.lang.foreign.MemoryAddress client_data);
-    static MemorySegment allocate(H5E_walk2_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5E_walk2_t.class, fi, constants$103.H5E_walk2_t$FUNC, session);
+    int apply(int n, java.lang.foreign.MemorySegment err_desc, java.lang.foreign.MemorySegment client_data);
+    static MemorySegment allocate(H5E_walk2_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$159.const$2, fi, constants$119.const$0, scope);
     }
-    static H5E_walk2_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (int _n, java.lang.foreign.MemoryAddress _err_desc, java.lang.foreign.MemoryAddress _client_data) -> {
+    static H5E_walk2_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (int _n, java.lang.foreign.MemorySegment _err_desc, java.lang.foreign.MemorySegment _client_data) -> {
             try {
-                return (int)constants$103.H5E_walk2_t$MH.invokeExact((Addressable)symbol, _n, (java.lang.foreign.Addressable)_err_desc, (java.lang.foreign.Addressable)_client_data);
+                return (int)constants$159.const$3.invokeExact(symbol, _n, _err_desc, _client_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

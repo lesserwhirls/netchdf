@@ -3,50 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$22 {
 
-class constants$22 {
-
-    static final FunctionDescriptor __overflow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$22() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle __overflow$MH = RuntimeHelper.downcallHandle(
-        "__overflow",
-        constants$22.__overflow$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "freopen",
+        constants$22.const$0
     );
-    static final FunctionDescriptor __ctype_get_mb_cur_max$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle __ctype_get_mb_cur_max$MH = RuntimeHelper.downcallHandle(
-        "__ctype_get_mb_cur_max",
-        constants$22.__ctype_get_mb_cur_max$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor atof$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fdopen",
+        constants$22.const$2
     );
-    static final MethodHandle atof$MH = RuntimeHelper.downcallHandle(
-        "atof",
-        constants$22.atof$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("read"),
+            RuntimeHelper.POINTER.withName("write"),
+            RuntimeHelper.POINTER.withName("seek"),
+            RuntimeHelper.POINTER.withName("close")
+        ).withName("_IO_cookie_io_functions_t")
     );
-    static final FunctionDescriptor atoi$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle atoi$MH = RuntimeHelper.downcallHandle(
-        "atoi",
-        constants$22.atoi$FUNC
-    );
-    static final FunctionDescriptor atol$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle atol$MH = RuntimeHelper.downcallHandle(
-        "atol",
-        constants$22.atol$FUNC
-    );
-    static final FunctionDescriptor atoll$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle atoll$MH = RuntimeHelper.downcallHandle(
-        "atoll",
-        constants$22.atoll$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fopencookie",
+        constants$22.const$4
     );
 }
 

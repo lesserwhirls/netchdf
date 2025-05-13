@@ -7,49 +7,45 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$73 {
+final class constants$73 {
 
-    static final FunctionDescriptor feof_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$73() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle feof_unlocked$MH = RuntimeHelper.downcallHandle(
-        "feof_unlocked",
-        constants$73.feof_unlocked$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Oopen_by_idx",
+        constants$73.const$0
     );
-    static final FunctionDescriptor ferror_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Oexists_by_name",
+        constants$53.const$3
     );
-    static final MethodHandle ferror_unlocked$MH = RuntimeHelper.downcallHandle(
-        "ferror_unlocked",
-        constants$73.ferror_unlocked$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor perror$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oget_info2",
+        constants$73.const$3
     );
-    static final MethodHandle perror$MH = RuntimeHelper.downcallHandle(
-        "perror",
-        constants$73.perror$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor fileno$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fileno$MH = RuntimeHelper.downcallHandle(
-        "fileno",
-        constants$73.fileno$FUNC
-    );
-    static final FunctionDescriptor fileno_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fileno_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fileno_unlocked",
-        constants$73.fileno_unlocked$FUNC
-    );
-    static final FunctionDescriptor pclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle pclose$MH = RuntimeHelper.downcallHandle(
-        "pclose",
-        constants$73.pclose$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_name2",
+        constants$73.const$5
     );
 }
 

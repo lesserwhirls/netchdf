@@ -3,65 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$122 {
 
-class constants$122 {
-
-    static final FunctionDescriptor ANselect$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$122() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(9, JAVA_BYTE).withName("type_name"),
+        MemoryLayout.sequenceLayout(13, JAVA_BYTE).withName("byte_order")
+    ).withName("hdf_ntinfo_t");
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(hdf_termfunc_t.class, "apply", constants$28.const$3);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$28.const$3
     );
-    static final MethodHandle ANselect$MH = RuntimeHelper.downcallHandle(
-        "ANselect",
-        constants$122.ANselect$FUNC
-    );
-    static final FunctionDescriptor ANnumann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle ANnumann$MH = RuntimeHelper.downcallHandle(
-        "ANnumann",
-        constants$122.ANnumann$FUNC
-    );
-    static final FunctionDescriptor ANannlist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ANannlist$MH = RuntimeHelper.downcallHandle(
-        "ANannlist",
-        constants$122.ANannlist$FUNC
-    );
-    static final FunctionDescriptor ANannlen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANannlen$MH = RuntimeHelper.downcallHandle(
-        "ANannlen",
-        constants$122.ANannlen$FUNC
-    );
-    static final FunctionDescriptor ANwriteann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANwriteann$MH = RuntimeHelper.downcallHandle(
-        "ANwriteann",
-        constants$122.ANwriteann$FUNC
-    );
-    static final FunctionDescriptor ANreadann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ANreadann$MH = RuntimeHelper.downcallHandle(
-        "ANreadann",
-        constants$122.ANreadann$FUNC
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("acc_id"),
+        JAVA_INT.withName("bit_id"),
+        JAVA_INT.withName("block_offset"),
+        JAVA_INT.withName("max_offset"),
+        JAVA_INT.withName("byte_offset"),
+        JAVA_INT.withName("count"),
+        JAVA_INT.withName("buf_read"),
+        JAVA_BYTE.withName("access"),
+        JAVA_BYTE.withName("mode"),
+        JAVA_BYTE.withName("bits"),
+        MemoryLayout.paddingLayout(1),
+        RuntimeHelper.POINTER.withName("bytep"),
+        RuntimeHelper.POINTER.withName("bytez"),
+        RuntimeHelper.POINTER.withName("bytea")
+    ).withName("bitrec_t");
+    static final VarHandle const$4 = constants$122.const$3.varHandle(MemoryLayout.PathElement.groupElement("acc_id"));
+    static final VarHandle const$5 = constants$122.const$3.varHandle(MemoryLayout.PathElement.groupElement("bit_id"));
 }
 
 

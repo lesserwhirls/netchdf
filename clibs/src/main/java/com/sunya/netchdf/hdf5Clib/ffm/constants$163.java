@@ -7,58 +7,41 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$163 {
+final class constants$163 {
 
-    static final FunctionDescriptor H5Pset_hyper_vector_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$163() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eclear2",
+        constants$19.const$0
     );
-    static final MethodHandle H5Pset_hyper_vector_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_hyper_vector_size",
-        constants$163.H5Pset_hyper_vector_size$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eauto_is_v2",
+        constants$44.const$4
     );
-    static final FunctionDescriptor H5Pget_hyper_vector_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle H5Pget_hyper_vector_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_hyper_vector_size",
-        constants$163.H5Pget_hyper_vector_size$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eget_msg",
+        constants$163.const$2
     );
-    static final FunctionDescriptor H5Pset_type_conv_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eget_num",
+        constants$10.const$2
     );
-    static final MethodHandle H5Pset_type_conv_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_type_conv_cb",
-        constants$163.H5Pset_type_conv_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pget_type_conv_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_type_conv_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_type_conv_cb",
-        constants$163.H5Pget_type_conv_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pset_create_intermediate_group$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_create_intermediate_group$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_create_intermediate_group",
-        constants$163.H5Pset_create_intermediate_group$FUNC
-    );
-    static final FunctionDescriptor H5Pget_create_intermediate_group$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_create_intermediate_group$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_create_intermediate_group",
-        constants$163.H5Pget_create_intermediate_group$FUNC
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("maj_num"),
+        JAVA_LONG.withName("min_num"),
+        RuntimeHelper.POINTER.withName("func_name"),
+        RuntimeHelper.POINTER.withName("file_name"),
+        JAVA_INT.withName("line"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("desc")
+    ).withName("H5E_error1_t");
 }
 
 

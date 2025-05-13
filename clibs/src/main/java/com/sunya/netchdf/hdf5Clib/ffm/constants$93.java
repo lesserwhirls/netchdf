@@ -7,26 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$93 {
+final class constants$93 {
 
-    static final  OfLong H5E_CANTFLUSH_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTFLUSH_g$VH = constants$93.H5E_CANTFLUSH_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTFLUSH_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTFLUSH_g", constants$93.H5E_CANTFLUSH_g$LAYOUT);
-    static final  OfLong H5E_CANTUNSERIALIZE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNSERIALIZE_g$VH = constants$93.H5E_CANTUNSERIALIZE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNSERIALIZE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNSERIALIZE_g", constants$93.H5E_CANTUNSERIALIZE_g$LAYOUT);
-    static final  OfLong H5E_CANTSERIALIZE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTSERIALIZE_g$VH = constants$93.H5E_CANTSERIALIZE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTSERIALIZE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTSERIALIZE_g", constants$93.H5E_CANTSERIALIZE_g$LAYOUT);
-    static final  OfLong H5E_CANTTAG_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTTAG_g$VH = constants$93.H5E_CANTTAG_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTTAG_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTTAG_g", constants$93.H5E_CANTTAG_g$LAYOUT);
-    static final  OfLong H5E_CANTLOAD_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTLOAD_g$VH = constants$93.H5E_CANTLOAD_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTLOAD_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTLOAD_g", constants$93.H5E_CANTLOAD_g$LAYOUT);
-    static final  OfLong H5E_PROTECT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_PROTECT_g$VH = constants$93.H5E_PROTECT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_PROTECT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_PROTECT_g", constants$93.H5E_PROTECT_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$93() {}
+    static final VarHandle const$0 = constants$92.const$4.varHandle(MemoryLayout.PathElement.groupElement("generate_image"));
+    static final VarHandle const$1 = constants$92.const$4.varHandle(MemoryLayout.PathElement.groupElement("save_resize_status"));
+    static final VarHandle const$2 = constants$92.const$4.varHandle(MemoryLayout.PathElement.groupElement("entry_ageout"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_append_cb_t.class, "apply", constants$41.const$4);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_operator_t.class, "apply", constants$93.const$4);
 }
 
 

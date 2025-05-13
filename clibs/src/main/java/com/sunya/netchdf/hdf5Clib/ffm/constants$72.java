@@ -7,51 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$72 {
+final class constants$72 {
 
-    static final FunctionDescriptor fgetpos$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$72() {}
+    static final VarHandle const$0 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("obj"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("attr")
+    ).withName("");
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5O_iterate_t.class, "apply", constants$61.const$5);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5O_mcdt_search_cb_t.class, "apply", constants$15.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oopen",
+        constants$19.const$3
     );
-    static final MethodHandle fgetpos$MH = RuntimeHelper.downcallHandle(
-        "fgetpos",
-        constants$72.fgetpos$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final FunctionDescriptor fsetpos$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fsetpos$MH = RuntimeHelper.downcallHandle(
-        "fsetpos",
-        constants$72.fsetpos$FUNC
-    );
-    static final FunctionDescriptor clearerr$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clearerr$MH = RuntimeHelper.downcallHandle(
-        "clearerr",
-        constants$72.clearerr$FUNC
-    );
-    static final FunctionDescriptor feof$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle feof$MH = RuntimeHelper.downcallHandle(
-        "feof",
-        constants$72.feof$FUNC
-    );
-    static final FunctionDescriptor ferror$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ferror$MH = RuntimeHelper.downcallHandle(
-        "ferror",
-        constants$72.ferror$FUNC
-    );
-    static final FunctionDescriptor clearerr_unlocked$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clearerr_unlocked$MH = RuntimeHelper.downcallHandle(
-        "clearerr_unlocked",
-        constants$72.clearerr_unlocked$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Oopen_by_addr",
+        constants$72.const$5
     );
 }
 

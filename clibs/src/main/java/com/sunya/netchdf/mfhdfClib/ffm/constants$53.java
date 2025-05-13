@@ -3,60 +3,34 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$53 {
 
-class constants$53 {
-
-    static final FunctionDescriptor clock_getres$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$53() {}
+    static final VarHandle const$0 = constants$52.const$1.varHandle(MemoryLayout.PathElement.groupElement("rand_deg"));
+    static final VarHandle const$1 = constants$52.const$1.varHandle(MemoryLayout.PathElement.groupElement("rand_sep"));
+    static final VarHandle const$2 = constants$52.const$1.varHandle(MemoryLayout.PathElement.groupElement("end_ptr"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "random_r",
+        constants$19.const$5
     );
-    static final MethodHandle clock_getres$MH = RuntimeHelper.downcallHandle(
-        "clock_getres",
-        constants$53.clock_getres$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "srandom_r",
+        constants$5.const$3
     );
-    static final FunctionDescriptor clock_gettime$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle clock_gettime$MH = RuntimeHelper.downcallHandle(
-        "clock_gettime",
-        constants$53.clock_gettime$FUNC
-    );
-    static final FunctionDescriptor clock_settime$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clock_settime$MH = RuntimeHelper.downcallHandle(
-        "clock_settime",
-        constants$53.clock_settime$FUNC
-    );
-    static final FunctionDescriptor clock_nanosleep$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clock_nanosleep$MH = RuntimeHelper.downcallHandle(
-        "clock_nanosleep",
-        constants$53.clock_nanosleep$FUNC
-    );
-    static final FunctionDescriptor clock_getcpuclockid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clock_getcpuclockid$MH = RuntimeHelper.downcallHandle(
-        "clock_getcpuclockid",
-        constants$53.clock_getcpuclockid$FUNC
-    );
-    static final FunctionDescriptor timer_create$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle timer_create$MH = RuntimeHelper.downcallHandle(
-        "timer_create",
-        constants$53.timer_create$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "initstate_r",
+        constants$53.const$5
     );
 }
 

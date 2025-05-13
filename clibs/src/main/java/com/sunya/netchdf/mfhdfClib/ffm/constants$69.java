@@ -4,37 +4,36 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$69 {
+final class constants$69 {
 
-    static final FunctionDescriptor setlogin$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$69() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "wctomb",
+        constants$37.const$2
     );
-    static final MethodHandle setlogin$MH = RuntimeHelper.downcallHandle(
-        "setlogin",
-        constants$69.setlogin$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "mbstowcs",
+        constants$16.const$3
     );
-    static final  OfAddress optarg$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle optarg$VH = constants$69.optarg$LAYOUT.varHandle();
-    static final MemorySegment optarg$SEGMENT = RuntimeHelper.lookupGlobalVariable("optarg", constants$69.optarg$LAYOUT);
-    static final  OfInt optind$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle optind$VH = constants$69.optind$LAYOUT.varHandle();
-    static final MemorySegment optind$SEGMENT = RuntimeHelper.lookupGlobalVariable("optind", constants$69.optind$LAYOUT);
-    static final  OfInt opterr$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle opterr$VH = constants$69.opterr$LAYOUT.varHandle();
-    static final MemorySegment opterr$SEGMENT = RuntimeHelper.lookupGlobalVariable("opterr", constants$69.opterr$LAYOUT);
-    static final  OfInt optopt$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle optopt$VH = constants$69.optopt$LAYOUT.varHandle();
-    static final MemorySegment optopt$SEGMENT = RuntimeHelper.lookupGlobalVariable("optopt", constants$69.optopt$LAYOUT);
-    static final FunctionDescriptor getopt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "wcstombs",
+        constants$16.const$3
     );
-    static final MethodHandle getopt$MH = RuntimeHelper.downcallHandle(
-        "getopt",
-        constants$69.getopt$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "rpmatch",
+        constants$17.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getsubopt",
+        constants$25.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getloadavg",
+        constants$37.const$2
     );
 }
 

@@ -3,67 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$161 {
 
-class constants$161 {
-
-    static final FunctionDescriptor SDendaccess$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$161() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFGRIreqil",
+        constants$93.const$3
     );
-    static final MethodHandle SDendaccess$MH = RuntimeHelper.downcallHandle(
-        "SDendaccess",
-        constants$161.SDendaccess$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor SDsetrange$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFGRIgetimlut",
+        constants$161.const$1
     );
-    static final MethodHandle SDsetrange$MH = RuntimeHelper.downcallHandle(
-        "SDsetrange",
-        constants$161.SDsetrange$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFGRIsetdims",
+        constants$159.const$2
     );
-    static final FunctionDescriptor SDsetattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFGRIsetil",
+        constants$93.const$3
     );
-    static final MethodHandle SDsetattr$MH = RuntimeHelper.downcallHandle(
-        "SDsetattr",
-        constants$161.SDsetattr$FUNC
-    );
-    static final FunctionDescriptor SDattrinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDattrinfo$MH = RuntimeHelper.downcallHandle(
-        "SDattrinfo",
-        constants$161.SDattrinfo$FUNC
-    );
-    static final FunctionDescriptor SDreadattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDreadattr$MH = RuntimeHelper.downcallHandle(
-        "SDreadattr",
-        constants$161.SDreadattr$FUNC
-    );
-    static final FunctionDescriptor SDwritedata$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDwritedata$MH = RuntimeHelper.downcallHandle(
-        "SDwritedata",
-        constants$161.SDwritedata$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFGRIrestart",
+        constants$28.const$3
     );
 }
 

@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$199 {
 
-class constants$199 {
-
-    static final MemorySegment _HDF_SDSVAR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("SDSVar");
-    static final MemorySegment _HDF_CRDVAR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CoordVar");
-    static final MemorySegment _HDF_DIMENSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Dim0.0");
-    static final MemorySegment _HDF_UDIMENSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("UDim0.0");
-    static final MemorySegment DIM_VALS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DimVal0.0");
-    static final MemorySegment DIM_VALS01$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("DimVal0.1");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$199() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "VSofclass",
+        constants$187.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "VSgetvdatas",
+        constants$194.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "VSsetblocksize",
+        constants$93.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "VSsetnumblocks",
+        constants$93.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "VSgetblockinfo",
+        constants$26.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Vsetzap",
+        constants$61.const$1
+    );
 }
 
 

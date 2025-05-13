@@ -48,7 +48,7 @@ class HCheader(val filename: String) {
     private val parentedGroups = mutableMapOf<Int, Group4>() // vg refno, vg
 
     init {
-        MemorySession.openConfined().use { session ->
+        Arena.ofConfined().use { session ->
             this.read_access_mode = session.allocateUtf8String("r")
             val rootBuilder = build(session)
             this.rootGroup = rootBuilder.build(null)
@@ -56,7 +56,7 @@ class HCheader(val filename: String) {
     }
 
     @Throws(IOException::class)
-    private fun build(session: MemorySession) : Group.Builder {
+    private fun build(session: Arena) : Group.Builder {
         val filenameSeg: MemorySegment = session.allocateUtf8String(filename)
 
         /* Initialize the SD interface. */
@@ -105,7 +105,7 @@ class HCheader(val filename: String) {
         Hclose(this.fileOpenId)
     }
 
-    fun addFileVersionAttribute(session: MemorySession, gb: Group.Builder) {
+    fun addFileVersionAttribute(session: Arena, gb: Group.Builder) {
         val major_p = session.allocate(C_INT, 0)
         val minor_p = session.allocate(C_INT, 0)
         val release_p = session.allocate(C_INT, 0)
@@ -123,7 +123,7 @@ class HCheader(val filename: String) {
         gb.addAttribute(Attribute.from("HDF4FileVersion", "$major.$minor.$release ($info)"))
     }
 
-    fun addAnnotations(session: MemorySession, gb: Group.Builder) {
+    fun addAnnotations(session: Arena, gb: Group.Builder) {
         val an_id = ANstart(this.fileOpenId)
 
         val n_file_labels_p = session.allocate(C_INT, 0)
@@ -195,7 +195,7 @@ class HCheader(val filename: String) {
     ///////////////////////////////////////////////////////////////////////////////////
 
     // create a Group4 hierarchy, with deferred assignment of parent, allowing groups to be in any order in the file
-    private fun constructNestedGroups(session: MemorySession, parent: Group4?, vgroup_ref: Int) {
+    private fun constructNestedGroups(session: Arena, parent: Group4?, vgroup_ref: Int) {
         val vgroup_id = Vattach(fileOpenId, vgroup_ref, read_access_mode)
         try {
             val vclass_p: MemorySegment = session.allocate(MAX_NAME)
@@ -275,7 +275,7 @@ class HCheader(val filename: String) {
     }
 
     // read a VGroup wrapped in a Group4, and recurse
-    private fun Vgroup4Read(session: MemorySession, g4: Group4, vgroup_ref : Int) {
+    private fun Vgroup4Read(session: Arena, g4: Group4, vgroup_ref : Int) {
         VgroupRead(session, g4.gb, vgroup_ref)
 
         g4.subgroups.forEach { ref, nested4 ->
@@ -285,7 +285,7 @@ class HCheader(val filename: String) {
     }
 
     // read a VGroup message (1965)
-    private fun VgroupRead(session: MemorySession, gb: Group.Builder, vgroup_ref : Int) {
+    private fun VgroupRead(session: Arena, gb: Group.Builder, vgroup_ref : Int) {
         val tagid = tagid(vgroup_ref, TagEnum.VG.code)
         if (completedObjects.contains(tagid)) {
             if (debugVGroup) println(" VgroupRead skip $vgroup_ref")
@@ -370,7 +370,7 @@ class HCheader(val filename: String) {
     }
 
     // Vgroup contains an object identified as a Variable using the NDG tag.
-    private fun VgroupVar(session: MemorySession, gb: Group.Builder, ref_array: IntArray, tag_array: IntArray) {
+    private fun VgroupVar(session: Arena, gb: Group.Builder, ref_array: IntArray, tag_array: IntArray) {
         repeat(ref_array.size) { objIdx ->
             val tag = tag_array[objIdx]
             val ref = ref_array[objIdx]
@@ -384,7 +384,7 @@ class HCheader(val filename: String) {
     }
 
     // Vgroup contains an object of CDF class, assume to be container of attributes.
-    private fun VgroupCDF(session: MemorySession, gb: Group.Builder, vgroup_id: Int) {
+    private fun VgroupCDF(session: Arena, gb: Group.Builder, vgroup_id: Int) {
         val nattrs2 = Vnattrs2(vgroup_id)
         repeat(nattrs2) { idx ->
             // val attr = VgroupReadAttribute(session, vgroup_id, idx)
@@ -398,7 +398,7 @@ class HCheader(val filename: String) {
     }
 
     // read attributes with Vgetattr() - not used
-    fun VgroupReadAttribute(session: MemorySession, vgroup_id: Int, idx: Int): Attribute<*> {
+    fun VgroupReadAttribute(session: Arena, vgroup_id: Int, idx: Int): Attribute<*> {
         val name_p: MemorySegment = session.allocate(MAX_NAME)
         val datatype_p = session.allocate(C_INT, 0)
         val count_p = session.allocate(C_INT, 0)
@@ -435,7 +435,7 @@ class HCheader(val filename: String) {
     // LOOK a bug where C API has nvalues = fld[0].nelems, instead of vh.count * fld[0].nelems
     // LOOK sometimes a bug where size returns nelems instead
     // workaround by not calling Vgetattr2, but use refno to call VSinquire(). See VStructureReadAsAttribute(), vattr.c in HClib.
-    fun VgroupReadAttribute2(session: MemorySession, vgroup_id: Int, attr_idx: Int): Attribute<*>? {
+    fun VgroupReadAttribute2(session: Arena, vgroup_id: Int, attr_idx: Int): Attribute<*>? {
         val name_p: MemorySegment = session.allocate(MAX_NAME)
         val datatype_p = session.allocate(C_INT, 0)
         val count_p = session.allocate(C_INT, 0)
@@ -464,7 +464,7 @@ class HCheader(val filename: String) {
 
     //////////////////////////////////////////////////////////////////////////////
 
-    private fun SDiterate(session: MemorySession, gb: Group.Builder): Int {
+    private fun SDiterate(session: Arena, gb: Group.Builder): Int {
         if (debugSD) println("iterateSDs '${gb.name}'")
 
         val nvars_p = session.allocate(C_INT, 0)
@@ -490,7 +490,7 @@ class HCheader(val filename: String) {
     //a coordinate variable.
 
     @Throws(IOException::class)
-    private fun SDread(session: MemorySession, gb: Group.Builder, sdidx: Int) {
+    private fun SDread(session: Arena, gb: Group.Builder, sdidx: Int) {
         val sd_id = SDselect(sdsStartId, sdidx)
         try {
             val sd_ref = SDidtoref(sd_id)
@@ -572,7 +572,7 @@ class HCheader(val filename: String) {
         }
     }
 
-    private fun SDreadAttribute(session: MemorySession, sd_id: Int, idx: Int): Attribute<*> {
+    private fun SDreadAttribute(session: Arena, sd_id: Int, idx: Int): Attribute<*> {
         val name_p: MemorySegment = session.allocate(MAX_NAME)
         val datatype_p = session.allocate(C_INT, 0)
         val count_p = session.allocate(C_INT, 0)
@@ -599,7 +599,7 @@ class HCheader(val filename: String) {
     //////////////////////////////////////////////////////////////////////
 
     // the GR API
-    private fun GRiterate(session: MemorySession, gb : Group.Builder) {
+    private fun GRiterate(session: Arena, gb : Group.Builder) {
         val n_datasets_p = session.allocate(C_INT, 0)
         val n_gattrs_p = session.allocate(C_INT, 0)
 
@@ -615,7 +615,7 @@ class HCheader(val filename: String) {
         repeat(n_datasets) { idx -> GRread(session, gb, idx) }
     }
 
-    private fun GRread(session: MemorySession, gb : Group.Builder, gridx: Int) {
+    private fun GRread(session: Arena, gb : Group.Builder, gridx: Int) {
         val grId = GRselect(grStartId, gridx) // Raster image identifier
         try {
             val name_p: MemorySegment = session.allocate(MAX_NAME)
@@ -700,7 +700,7 @@ class HCheader(val filename: String) {
         }
     }
 
-    private fun GRreadAttribute(session: MemorySession, gr_id: Int, idx: Int): Attribute<*> {
+    private fun GRreadAttribute(session: Arena, gr_id: Int, idx: Int): Attribute<*> {
         val name_p: MemorySegment = session.allocate(MAX_NAME)
         val datatype_p = session.allocate(C_INT, 0)
         val count_p = session.allocate(C_INT, 0)
@@ -729,7 +729,7 @@ class HCheader(val filename: String) {
     // A vdata is a collection of records whose values are stored in fixed-length fields.
 
     // sequentially iterates through an HDF file to obtain the vdata
-    private fun VStructureIterate(session: MemorySession, gb : Group.Builder) {
+    private fun VStructureIterate(session: Arena, gb : Group.Builder) {
         if (debugVSdata) println("VStructureIterate group='${gb.name}'")
         var last_ref = -1
         while (true) {
@@ -743,7 +743,7 @@ class HCheader(val filename: String) {
         if (debugVSdata) println("VStructureIterate DONE")
     }
 
-    private fun VStructureRead(session: MemorySession, gb : Group.Builder, vs_ref: Int, addAttributesToGroup: Boolean) {
+    private fun VStructureRead(session: Arena, gb : Group.Builder, vs_ref: Int, addAttributesToGroup: Boolean) {
         val tagid = tagid(vs_ref, TagEnum.VG.code)
         if (completedObjects.contains(tagid)) {
             if (debugVSdata) println(" VStructureRead skip $vs_ref")
@@ -852,7 +852,7 @@ class HCheader(val filename: String) {
         }
     }
 
-    fun VStructureMakeAttribute(session: MemorySession, aname : String, datatype: Datatype<*>, vdata_id : Int, vsInfo : VSInfo): Attribute<*>? {
+    fun VStructureMakeAttribute(session: Arena, aname : String, datatype: Datatype<*>, vdata_id : Int, vsInfo : VSInfo): Attribute<*>? {
         val tagid = tagid(vsInfo.vs_ref, TagEnum.VS.code)
         if (completedObjects.contains(tagid)) {
             if (debugVSdata) println(" VStructureReadAsAttribute skip ${vsInfo.vs_ref}")
@@ -877,7 +877,7 @@ class HCheader(val filename: String) {
     }
 
     // LOOK structure members can have attributes (!) with fld_idx
-    fun VStructureReadAttribute(session: MemorySession, vdata_id: Int, fld_idx: Int, idx: Int): Attribute<*> {
+    fun VStructureReadAttribute(session: Arena, vdata_id: Int, fld_idx: Int, idx: Int): Attribute<*> {
         val name_p: MemorySegment = session.allocate(MAX_NAME)
         val datatype_p = session.allocate(C_INT, 0)
         val count_p = session.allocate(C_INT, 0)
@@ -904,7 +904,7 @@ class HCheader(val filename: String) {
 
     // use VSinquire() to get info for an attribute
     // then use VSfindex() and VFfieldtype() to read rest of info
-    private fun VStructureReadAsAttribute(session: MemorySession, vs_ref: Int) : Attribute<*>? {
+    private fun VStructureReadAsAttribute(session: Arena, vs_ref: Int) : Attribute<*>? {
         val tagid = tagid(vs_ref, TagEnum.VS.code) //  Reference number of the attribute vdata
         if (completedObjects.contains(tagid)) {
             if (debugVSdata) println(" VStructureReadAsAttribute skip $vs_ref")

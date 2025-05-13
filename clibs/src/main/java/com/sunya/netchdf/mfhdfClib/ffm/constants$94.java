@@ -3,53 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$94 {
 
-class constants$94 {
-
-    static final FunctionDescriptor HEprint$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$94() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle HEprint$MH = RuntimeHelper.downcallHandle(
-        "HEprint",
-        constants$94.HEprint$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "openat",
+        constants$94.const$0
     );
-    static final FunctionDescriptor HEvalue$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "creat",
+        constants$37.const$2
     );
-    static final MethodHandle HEvalue$MH = RuntimeHelper.downcallHandle(
-        "HEvalue",
-        constants$94.HEvalue$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor HEclear$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle HEclear$MH = RuntimeHelper.downcallHandle(
-        "HEclear",
-        constants$94.HEclear$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "lockf",
+        constants$94.const$3
     );
-    static final FunctionDescriptor HEshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle HEshutdown$MH = RuntimeHelper.downcallHandle(
-        "HEshutdown",
-        constants$94.HEshutdown$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
     );
-    static final FunctionDescriptor Hstartbitread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hstartbitread$MH = RuntimeHelper.downcallHandle(
-        "Hstartbitread",
-        constants$94.Hstartbitread$FUNC
-    );
-    static final FunctionDescriptor Hstartbitwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hstartbitwrite$MH = RuntimeHelper.downcallHandle(
-        "Hstartbitwrite",
-        constants$94.Hstartbitwrite$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "posix_fadvise",
+        constants$94.const$5
     );
 }
 

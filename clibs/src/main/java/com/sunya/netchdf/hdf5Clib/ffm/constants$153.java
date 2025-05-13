@@ -7,60 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$153 {
+final class constants$153 {
 
-    static final FunctionDescriptor H5Pget_evict_on_close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_evict_on_close$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_evict_on_close",
-        constants$153.H5Pget_evict_on_close$FUNC
-    );
-    static final FunctionDescriptor H5Pset_file_locking$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_file_locking$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_file_locking",
-        constants$153.H5Pset_file_locking$FUNC
-    );
-    static final FunctionDescriptor H5Pget_file_locking$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_file_locking$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_file_locking",
-        constants$153.H5Pget_file_locking$FUNC
-    );
-    static final FunctionDescriptor H5Pset_mdc_image_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_mdc_image_config$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_mdc_image_config",
-        constants$153.H5Pset_mdc_image_config$FUNC
-    );
-    static final FunctionDescriptor H5Pget_mdc_image_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_mdc_image_config$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_mdc_image_config",
-        constants$153.H5Pget_mdc_image_config$FUNC
-    );
-    static final FunctionDescriptor H5Pset_page_buffer_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_page_buffer_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_page_buffer_size",
-        constants$153.H5Pset_page_buffer_size$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$153() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCORK_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNCORK_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_TRAVERSE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_NLINKS_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_NOTREGISTERED_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMOVE_g", JAVA_LONG);
 }
 
 

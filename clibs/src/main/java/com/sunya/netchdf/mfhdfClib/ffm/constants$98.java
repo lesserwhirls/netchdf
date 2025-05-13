@@ -3,57 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$98 {
 
-class constants$98 {
-
-    static final FunctionDescriptor DFdinobj$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$98() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "pause",
+        constants$28.const$3
     );
-    static final MethodHandle DFdinobj$MH = RuntimeHelper.downcallHandle(
-        "DFdinobj",
-        constants$98.DFdinobj$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor DFdisetup$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "chown",
+        constants$98.const$1
     );
-    static final MethodHandle DFdisetup$MH = RuntimeHelper.downcallHandle(
-        "DFdisetup",
-        constants$98.DFdisetup$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor DFdiput$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fchown",
+        constants$98.const$3
     );
-    static final MethodHandle DFdiput$MH = RuntimeHelper.downcallHandle(
-        "DFdiput",
-        constants$98.DFdiput$FUNC
-    );
-    static final FunctionDescriptor DFdiwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFdiwrite$MH = RuntimeHelper.downcallHandle(
-        "DFdiwrite",
-        constants$98.DFdiwrite$FUNC
-    );
-    static final FunctionDescriptor DFdifree$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFdifree$MH = RuntimeHelper.downcallHandle(
-        "DFdifree",
-        constants$98.DFdifree$FUNC
-    );
-    static final FunctionDescriptor DFPgetpal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFPgetpal$MH = RuntimeHelper.downcallHandle(
-        "DFPgetpal",
-        constants$98.DFPgetpal$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "lchown",
+        constants$98.const$1
     );
 }
 

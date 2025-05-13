@@ -3,60 +3,38 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$77 {
 
-class constants$77 {
-
-    static final FunctionDescriptor mkfifo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$77() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle mkfifo$MH = RuntimeHelper.downcallHandle(
-        "mkfifo",
-        constants$77.mkfifo$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strerror_r",
+        constants$77.const$0
     );
-    static final FunctionDescriptor mkfifoat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strerror_l",
+        constants$22.const$2
     );
-    static final MethodHandle mkfifoat$MH = RuntimeHelper.downcallHandle(
-        "mkfifoat",
-        constants$77.mkfifoat$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "bcmp",
+        constants$68.const$5
     );
-    static final FunctionDescriptor utimensat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "bcopy",
+        constants$24.const$0
     );
-    static final MethodHandle utimensat$MH = RuntimeHelper.downcallHandle(
-        "utimensat",
-        constants$77.utimensat$FUNC
-    );
-    static final FunctionDescriptor futimens$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle futimens$MH = RuntimeHelper.downcallHandle(
-        "futimens",
-        constants$77.futimens$FUNC
-    );
-    static final FunctionDescriptor gettimeofday$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle gettimeofday$MH = RuntimeHelper.downcallHandle(
-        "gettimeofday",
-        constants$77.gettimeofday$FUNC
-    );
-    static final FunctionDescriptor settimeofday$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle settimeofday$MH = RuntimeHelper.downcallHandle(
-        "settimeofday",
-        constants$77.settimeofday$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "bzero",
+        constants$58.const$5
     );
 }
 

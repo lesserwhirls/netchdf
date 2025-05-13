@@ -3,55 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$118 {
 
-class constants$118 {
-
-    static final FunctionDescriptor DFSDgetfillvalue$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$118() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "mkdirat",
+        constants$94.const$0
     );
-    static final MethodHandle DFSDgetfillvalue$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetfillvalue",
-        constants$118.DFSDgetfillvalue$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor DFSDstartslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "mknod",
+        constants$118.const$1
     );
-    static final MethodHandle DFSDstartslab$MH = RuntimeHelper.downcallHandle(
-        "DFSDstartslab",
-        constants$118.DFSDstartslab$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor DFSDwriteslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "mknodat",
+        constants$118.const$3
     );
-    static final MethodHandle DFSDwriteslab$MH = RuntimeHelper.downcallHandle(
-        "DFSDwriteslab",
-        constants$118.DFSDwriteslab$FUNC
-    );
-    static final FunctionDescriptor DFSDendslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFSDendslab$MH = RuntimeHelper.downcallHandle(
-        "DFSDendslab",
-        constants$118.DFSDendslab$FUNC
-    );
-    static final FunctionDescriptor DFSDreadslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDreadslab$MH = RuntimeHelper.downcallHandle(
-        "DFSDreadslab",
-        constants$118.DFSDreadslab$FUNC
-    );
-    static final FunctionDescriptor DFSDPshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFSDPshutdown$MH = RuntimeHelper.downcallHandle(
-        "DFSDPshutdown",
-        constants$118.DFSDPshutdown$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "mkfifo",
+        constants$37.const$2
     );
 }
 

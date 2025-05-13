@@ -3,53 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$89 {
 
-class constants$89 {
-
-    static final FunctionDescriptor HDspaceleft$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle HDspaceleft$MH = RuntimeHelper.downcallHandle(
-        "HDspaceleft",
-        constants$89.HDspaceleft$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$89() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor HDstrdup$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clock_nanosleep",
+        constants$89.const$0
     );
-    static final MethodHandle HDstrdup$MH = RuntimeHelper.downcallHandle(
-        "HDstrdup",
-        constants$89.HDstrdup$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "clock_getcpuclockid",
+        constants$5.const$3
     );
-    static final FunctionDescriptor HDc2fstr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "timer_create",
+        constants$26.const$5
     );
-    static final MethodHandle HDc2fstr$MH = RuntimeHelper.downcallHandle(
-        "HDc2fstr",
-        constants$89.HDc2fstr$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "timer_delete",
+        constants$17.const$4
     );
-    static final FunctionDescriptor HDf2cstring$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle HDf2cstring$MH = RuntimeHelper.downcallHandle(
-        "HDf2cstring",
-        constants$89.HDf2cstring$FUNC
-    );
-    static final FunctionDescriptor HDflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HDflush$MH = RuntimeHelper.downcallHandle(
-        "HDflush",
-        constants$89.HDflush$FUNC
-    );
-    static final FunctionDescriptor HDpackFstring$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HDpackFstring$MH = RuntimeHelper.downcallHandle(
-        "HDpackFstring",
-        constants$89.HDpackFstring$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "timer_settime",
+        constants$89.const$5
     );
 }
 

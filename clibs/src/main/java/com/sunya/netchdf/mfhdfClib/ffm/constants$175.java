@@ -2,16 +2,43 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$175 {
 
-class constants$175 {
-
-    static final MemorySegment PRIo8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIo16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIo32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIo64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$175() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFSDgetNT",
+        constants$17.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFSDpre32sdg",
+        constants$175.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_DOUBLE,
+        JAVA_DOUBLE,
+        JAVA_DOUBLE,
+        JAVA_DOUBLE,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFSDsetcal",
+        constants$175.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFSDgetcal",
+        constants$146.const$0
+    );
 }
 
 

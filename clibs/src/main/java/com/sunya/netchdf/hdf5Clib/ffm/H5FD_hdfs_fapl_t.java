@@ -7,55 +7,79 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5FD_hdfs_fapl_t {
+ *     int32_t version;
+ *     char namenode_name[129];
+ *     int32_t namenode_port;
+ *     char user_name[129];
+ *     char kerberos_ticket_cache[129];
+ *     int32_t stream_buffer_size;
+ * };
+ * }
+ */
 public class H5FD_hdfs_fapl_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        MemoryLayout.sequenceLayout(129, Constants$root.C_CHAR$LAYOUT).withName("namenode_name"),
-        MemoryLayout.paddingLayout(24),
-        Constants$root.C_INT$LAYOUT.withName("namenode_port"),
-        MemoryLayout.sequenceLayout(129, Constants$root.C_CHAR$LAYOUT).withName("user_name"),
-        MemoryLayout.sequenceLayout(129, Constants$root.C_CHAR$LAYOUT).withName("kerberos_ticket_cache"),
-        MemoryLayout.paddingLayout(16),
-        Constants$root.C_INT$LAYOUT.withName("stream_buffer_size")
-    ).withName("H5FD_hdfs_fapl_t");
     public static MemoryLayout $LAYOUT() {
-        return H5FD_hdfs_fapl_t.$struct$LAYOUT;
+        return constants$268.const$0;
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5FD_hdfs_fapl_t.version$VH;
+        return constants$268.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32_t version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5FD_hdfs_fapl_t.version$VH.get(seg);
+        return (int)constants$268.const$1.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5FD_hdfs_fapl_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32_t version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$268.const$1.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5FD_hdfs_fapl_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$268.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5FD_hdfs_fapl_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$268.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment namenode_name$slice(MemorySegment seg) {
         return seg.asSlice(4, 129);
     }
-    static final VarHandle namenode_port$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("namenode_port"));
     public static VarHandle namenode_port$VH() {
-        return H5FD_hdfs_fapl_t.namenode_port$VH;
+        return constants$268.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32_t namenode_port;
+     * }
+     */
     public static int namenode_port$get(MemorySegment seg) {
-        return (int)H5FD_hdfs_fapl_t.namenode_port$VH.get(seg);
+        return (int)constants$268.const$2.get(seg);
     }
-    public static void namenode_port$set( MemorySegment seg, int x) {
-        H5FD_hdfs_fapl_t.namenode_port$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32_t namenode_port;
+     * }
+     */
+    public static void namenode_port$set(MemorySegment seg, int x) {
+        constants$268.const$2.set(seg, x);
     }
     public static int namenode_port$get(MemorySegment seg, long index) {
-        return (int)H5FD_hdfs_fapl_t.namenode_port$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$268.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void namenode_port$set(MemorySegment seg, long index, int x) {
-        H5FD_hdfs_fapl_t.namenode_port$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$268.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment user_name$slice(MemorySegment seg) {
         return seg.asSlice(140, 129);
@@ -63,28 +87,39 @@ public class H5FD_hdfs_fapl_t {
     public static MemorySegment kerberos_ticket_cache$slice(MemorySegment seg) {
         return seg.asSlice(269, 129);
     }
-    static final VarHandle stream_buffer_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("stream_buffer_size"));
     public static VarHandle stream_buffer_size$VH() {
-        return H5FD_hdfs_fapl_t.stream_buffer_size$VH;
+        return constants$268.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32_t stream_buffer_size;
+     * }
+     */
     public static int stream_buffer_size$get(MemorySegment seg) {
-        return (int)H5FD_hdfs_fapl_t.stream_buffer_size$VH.get(seg);
+        return (int)constants$268.const$3.get(seg);
     }
-    public static void stream_buffer_size$set( MemorySegment seg, int x) {
-        H5FD_hdfs_fapl_t.stream_buffer_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32_t stream_buffer_size;
+     * }
+     */
+    public static void stream_buffer_size$set(MemorySegment seg, int x) {
+        constants$268.const$3.set(seg, x);
     }
     public static int stream_buffer_size$get(MemorySegment seg, long index) {
-        return (int)H5FD_hdfs_fapl_t.stream_buffer_size$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$268.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void stream_buffer_size$set(MemorySegment seg, long index, int x) {
-        H5FD_hdfs_fapl_t.stream_buffer_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$268.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

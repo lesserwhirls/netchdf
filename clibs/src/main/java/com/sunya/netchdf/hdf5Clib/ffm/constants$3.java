@@ -7,62 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$3 {
+final class constants$3 {
 
-    static final FunctionDescriptor H5set_free_list_limits$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5set_free_list_limits$MH = RuntimeHelper.downcallHandle(
-        "H5set_free_list_limits",
-        constants$3.H5set_free_list_limits$FUNC
-    );
-    static final FunctionDescriptor H5get_free_list_sizes$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5get_free_list_sizes$MH = RuntimeHelper.downcallHandle(
-        "H5get_free_list_sizes",
-        constants$3.H5get_free_list_sizes$FUNC
-    );
-    static final FunctionDescriptor H5get_alloc_stats$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5get_alloc_stats$MH = RuntimeHelper.downcallHandle(
-        "H5get_alloc_stats",
-        constants$3.H5get_alloc_stats$FUNC
-    );
-    static final FunctionDescriptor H5get_libversion$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5get_libversion$MH = RuntimeHelper.downcallHandle(
-        "H5get_libversion",
-        constants$3.H5get_libversion$FUNC
-    );
-    static final FunctionDescriptor H5check_version$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5check_version$MH = RuntimeHelper.downcallHandle(
-        "H5check_version",
-        constants$3.H5check_version$FUNC
-    );
-    static final FunctionDescriptor H5is_library_threadsafe$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5is_library_threadsafe$MH = RuntimeHelper.downcallHandle(
-        "H5is_library_threadsafe",
-        constants$3.H5is_library_threadsafe$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$3() {}
+    static final VarHandle const$0 = constants$2.const$5.varHandle(MemoryLayout.PathElement.groupElement("__prev"));
+    static final VarHandle const$1 = constants$2.const$5.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("__next")
+    ).withName("__pthread_internal_slist");
+    static final VarHandle const$3 = constants$3.const$2.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__lock"),
+        JAVA_INT.withName("__count"),
+        JAVA_INT.withName("__owner"),
+        JAVA_INT.withName("__nusers"),
+        JAVA_INT.withName("__kind"),
+        JAVA_SHORT.withName("__spins"),
+        JAVA_SHORT.withName("__elision"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("__prev"),
+            RuntimeHelper.POINTER.withName("__next")
+        ).withName("__list")
+    ).withName("__pthread_mutex_s");
+    static final VarHandle const$5 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
 }
 
 

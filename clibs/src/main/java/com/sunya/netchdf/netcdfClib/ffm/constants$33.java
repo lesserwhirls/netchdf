@@ -3,75 +3,37 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$33 {
 
-class constants$33 {
-
-    static final FunctionDescriptor nc_get_vara_ushort$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$33() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_put_var1_short",
+        constants$7.const$0
     );
-    static final MethodHandle nc_get_vara_ushort$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vara_ushort",
-        constants$33.nc_get_vara_ushort$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_get_var1_short",
+        constants$7.const$0
     );
-    static final FunctionDescriptor nc_put_vara_uint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_var1_int",
+        constants$7.const$0
     );
-    static final MethodHandle nc_put_vara_uint$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_uint",
-        constants$33.nc_put_vara_uint$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_var1_int",
+        constants$7.const$0
     );
-    static final FunctionDescriptor nc_get_vara_uint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_put_var1_long",
+        constants$7.const$0
     );
-    static final MethodHandle nc_get_vara_uint$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vara_uint",
-        constants$33.nc_get_vara_uint$FUNC
-    );
-    static final FunctionDescriptor nc_put_vara_longlong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_vara_longlong$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_longlong",
-        constants$33.nc_put_vara_longlong$FUNC
-    );
-    static final FunctionDescriptor nc_get_vara_longlong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_get_vara_longlong$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vara_longlong",
-        constants$33.nc_get_vara_longlong$FUNC
-    );
-    static final FunctionDescriptor nc_put_vara_ulonglong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_vara_ulonglong$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_ulonglong",
-        constants$33.nc_put_vara_ulonglong$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_get_var1_long",
+        constants$7.const$0
     );
 }
 

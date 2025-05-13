@@ -7,63 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$180 {
+final class constants$180 {
 
-    static final FunctionDescriptor H5FD_log_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_log_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_log_init",
-        constants$180.H5FD_log_init$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$180() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_decode.class, "apply", constants$15.const$4);
+    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_decode"));
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_size"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_get.class, "apply", constants$113.const$0);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$113.const$0
     );
-    static final FunctionDescriptor H5Pset_fapl_log$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_log$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_log",
-        constants$180.H5Pset_fapl_log$FUNC
-    );
-    static final FunctionDescriptor H5FD_multi_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_multi_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_multi_init",
-        constants$180.H5FD_multi_init$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fapl_multi$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_multi$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_multi",
-        constants$180.H5Pset_fapl_multi$FUNC
-    );
-    static final FunctionDescriptor H5Pget_fapl_multi$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fapl_multi$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_multi",
-        constants$180.H5Pget_fapl_multi$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fapl_split$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_split$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_split",
-        constants$180.H5Pset_fapl_split$FUNC
-    );
+    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_get"));
 }
 
 

@@ -3,58 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$81 {
 
-class constants$81 {
-
-    static final FunctionDescriptor Hstartaccess$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$81() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strlcpy",
+        constants$16.const$3
     );
-    static final MethodHandle Hstartaccess$MH = RuntimeHelper.downcallHandle(
-        "Hstartaccess",
-        constants$81.Hstartaccess$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strlcat",
+        constants$16.const$3
     );
-    static final FunctionDescriptor Hsetlength$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hsetlength$MH = RuntimeHelper.downcallHandle(
-        "Hsetlength",
-        constants$81.Hsetlength$FUNC
-    );
-    static final FunctionDescriptor Happendable$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Happendable$MH = RuntimeHelper.downcallHandle(
-        "Happendable",
-        constants$81.Happendable$FUNC
-    );
-    static final FunctionDescriptor HPisappendable$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HPisappendable$MH = RuntimeHelper.downcallHandle(
-        "HPisappendable",
-        constants$81.HPisappendable$FUNC
-    );
-    static final FunctionDescriptor HPregister_term_func$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HPregister_term_func$MH = RuntimeHelper.downcallHandle(
-        "HPregister_term_func",
-        constants$81.HPregister_term_func$FUNC
-    );
-    static final FunctionDescriptor Hseek$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hseek$MH = RuntimeHelper.downcallHandle(
-        "Hseek",
-        constants$81.Hseek$FUNC
-    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("tm_sec"),
+        JAVA_INT.withName("tm_min"),
+        JAVA_INT.withName("tm_hour"),
+        JAVA_INT.withName("tm_mday"),
+        JAVA_INT.withName("tm_mon"),
+        JAVA_INT.withName("tm_year"),
+        JAVA_INT.withName("tm_wday"),
+        JAVA_INT.withName("tm_yday"),
+        JAVA_INT.withName("tm_isdst"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("tm_gmtoff"),
+        RuntimeHelper.POINTER.withName("tm_zone")
+    ).withName("tm");
+    static final VarHandle const$3 = constants$81.const$2.varHandle(MemoryLayout.PathElement.groupElement("tm_sec"));
+    static final VarHandle const$4 = constants$81.const$2.varHandle(MemoryLayout.PathElement.groupElement("tm_min"));
+    static final VarHandle const$5 = constants$81.const$2.varHandle(MemoryLayout.PathElement.groupElement("tm_hour"));
 }
 
 

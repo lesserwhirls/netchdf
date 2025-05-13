@@ -7,56 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$114 {
+final class constants$114 {
 
-    static final FunctionDescriptor H5Fget_info2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$114() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fflush_unlocked",
+        constants$15.const$2
     );
-    static final MethodHandle H5Fget_info2$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_info2",
-        constants$114.H5Fget_info2$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fopen",
+        constants$113.const$3
     );
-    static final FunctionDescriptor H5Fget_metadata_read_retry_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Fget_metadata_read_retry_info$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_metadata_read_retry_info",
-        constants$114.H5Fget_metadata_read_retry_info$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "freopen",
+        constants$114.const$2
     );
-    static final FunctionDescriptor H5Fstart_swmr_write$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Fstart_swmr_write$MH = RuntimeHelper.downcallHandle(
-        "H5Fstart_swmr_write",
-        constants$114.H5Fstart_swmr_write$FUNC
-    );
-    static final FunctionDescriptor H5Fget_free_sections$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_free_sections$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_free_sections",
-        constants$114.H5Fget_free_sections$FUNC
-    );
-    static final FunctionDescriptor H5Fclear_elink_file_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fclear_elink_file_cache$MH = RuntimeHelper.downcallHandle(
-        "H5Fclear_elink_file_cache",
-        constants$114.H5Fclear_elink_file_cache$FUNC
-    );
-    static final FunctionDescriptor H5Fset_libver_bounds$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Fset_libver_bounds$MH = RuntimeHelper.downcallHandle(
-        "H5Fset_libver_bounds",
-        constants$114.H5Fset_libver_bounds$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fdopen",
+        constants$114.const$4
     );
 }
 

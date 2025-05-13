@@ -7,92 +7,135 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5G_info_t {
+ *     H5G_storage_type_t storage_type;
+ *     hsize_t nlinks;
+ *     int64_t max_corder;
+ *     hbool_t mounted;
+ * };
+ * }
+ */
 public class H5G_info_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("storage_type"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("nlinks"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_corder"),
-        Constants$root.C_BOOL$LAYOUT.withName("mounted"),
-        MemoryLayout.paddingLayout(56)
-    ).withName("H5G_info_t");
     public static MemoryLayout $LAYOUT() {
-        return H5G_info_t.$struct$LAYOUT;
+        return constants$200.const$1;
     }
-    public static MemoryLayout makeOne() {
-        return H5G_info_t.$struct$LAYOUT;
-    }
-    static final VarHandle storage_type$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("storage_type"));
     public static VarHandle storage_type$VH() {
-        return H5G_info_t.storage_type$VH;
+        return constants$200.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5G_storage_type_t storage_type;
+     * }
+     */
     public static int storage_type$get(MemorySegment seg) {
-        return (int)H5G_info_t.storage_type$VH.get(seg);
+        return (int)constants$200.const$2.get(seg);
     }
-    public static void storage_type$set( MemorySegment seg, int x) {
-        H5G_info_t.storage_type$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5G_storage_type_t storage_type;
+     * }
+     */
+    public static void storage_type$set(MemorySegment seg, int x) {
+        constants$200.const$2.set(seg, x);
     }
     public static int storage_type$get(MemorySegment seg, long index) {
-        return (int)H5G_info_t.storage_type$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$200.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void storage_type$set(MemorySegment seg, long index, int x) {
-        H5G_info_t.storage_type$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle nlinks$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("nlinks"));
     public static VarHandle nlinks$VH() {
-        return H5G_info_t.nlinks$VH;
+        return constants$200.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t nlinks;
+     * }
+     */
     public static long nlinks$get(MemorySegment seg) {
-        return (long)H5G_info_t.nlinks$VH.get(seg);
+        return (long)constants$200.const$3.get(seg);
     }
-    public static void nlinks$set( MemorySegment seg, long x) {
-        H5G_info_t.nlinks$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t nlinks;
+     * }
+     */
+    public static void nlinks$set(MemorySegment seg, long x) {
+        constants$200.const$3.set(seg, x);
     }
     public static long nlinks$get(MemorySegment seg, long index) {
-        return (long)H5G_info_t.nlinks$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$200.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void nlinks$set(MemorySegment seg, long index, long x) {
-        H5G_info_t.nlinks$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_corder$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_corder"));
     public static VarHandle max_corder$VH() {
-        return H5G_info_t.max_corder$VH;
+        return constants$200.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int64_t max_corder;
+     * }
+     */
     public static long max_corder$get(MemorySegment seg) {
-        return (long)H5G_info_t.max_corder$VH.get(seg);
+        return (long)constants$200.const$4.get(seg);
     }
-    public static void max_corder$set( MemorySegment seg, long x) {
-        H5G_info_t.max_corder$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int64_t max_corder;
+     * }
+     */
+    public static void max_corder$set(MemorySegment seg, long x) {
+        constants$200.const$4.set(seg, x);
     }
     public static long max_corder$get(MemorySegment seg, long index) {
-        return (long)H5G_info_t.max_corder$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$200.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void max_corder$set(MemorySegment seg, long index, long x) {
-        H5G_info_t.max_corder$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle mounted$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("mounted"));
     public static VarHandle mounted$VH() {
-        return H5G_info_t.mounted$VH;
+        return constants$200.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t mounted;
+     * }
+     */
     public static boolean mounted$get(MemorySegment seg) {
-        return (boolean)H5G_info_t.mounted$VH.get(seg);
+        return (boolean)constants$200.const$5.get(seg);
     }
-    public static void mounted$set( MemorySegment seg, boolean x) {
-        H5G_info_t.mounted$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t mounted;
+     * }
+     */
+    public static void mounted$set(MemorySegment seg, boolean x) {
+        constants$200.const$5.set(seg, x);
     }
     public static boolean mounted$get(MemorySegment seg, long index) {
-        return (boolean)H5G_info_t.mounted$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$200.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void mounted$set(MemorySegment seg, long index, boolean x) {
-        H5G_info_t.mounted$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$200.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -7,84 +7,131 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5FD_splitter_vfd_config_t {
+ *     int32_t magic;
+ *     unsigned int version;
+ *     hid_t rw_fapl_id;
+ *     hid_t wo_fapl_id;
+ *     char wo_path[4097];
+ *     char log_file_path[4097];
+ *     hbool_t ignore_wo_errs;
+ * };
+ * }
+ */
 public class H5FD_splitter_vfd_config_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("magic"),
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("rw_fapl_id"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("wo_fapl_id"),
-        MemoryLayout.sequenceLayout(4097, Constants$root.C_CHAR$LAYOUT).withName("wo_path"),
-        MemoryLayout.sequenceLayout(4097, Constants$root.C_CHAR$LAYOUT).withName("log_file_path"),
-        Constants$root.C_BOOL$LAYOUT.withName("ignore_wo_errs"),
-        MemoryLayout.paddingLayout(40)
-    ).withName("H5FD_splitter_vfd_config_t");
     public static MemoryLayout $LAYOUT() {
-        return H5FD_splitter_vfd_config_t.$struct$LAYOUT;
+        return constants$271.const$5;
     }
-    static final VarHandle magic$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("magic"));
     public static VarHandle magic$VH() {
-        return H5FD_splitter_vfd_config_t.magic$VH;
+        return constants$272.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32_t magic;
+     * }
+     */
     public static int magic$get(MemorySegment seg) {
-        return (int)H5FD_splitter_vfd_config_t.magic$VH.get(seg);
+        return (int)constants$272.const$0.get(seg);
     }
-    public static void magic$set( MemorySegment seg, int x) {
-        H5FD_splitter_vfd_config_t.magic$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32_t magic;
+     * }
+     */
+    public static void magic$set(MemorySegment seg, int x) {
+        constants$272.const$0.set(seg, x);
     }
     public static int magic$get(MemorySegment seg, long index) {
-        return (int)H5FD_splitter_vfd_config_t.magic$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$272.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void magic$set(MemorySegment seg, long index, int x) {
-        H5FD_splitter_vfd_config_t.magic$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5FD_splitter_vfd_config_t.version$VH;
+        return constants$272.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5FD_splitter_vfd_config_t.version$VH.get(seg);
+        return (int)constants$272.const$1.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5FD_splitter_vfd_config_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$272.const$1.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5FD_splitter_vfd_config_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$272.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5FD_splitter_vfd_config_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle rw_fapl_id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("rw_fapl_id"));
     public static VarHandle rw_fapl_id$VH() {
-        return H5FD_splitter_vfd_config_t.rw_fapl_id$VH;
+        return constants$272.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hid_t rw_fapl_id;
+     * }
+     */
     public static long rw_fapl_id$get(MemorySegment seg) {
-        return (long)H5FD_splitter_vfd_config_t.rw_fapl_id$VH.get(seg);
+        return (long)constants$272.const$2.get(seg);
     }
-    public static void rw_fapl_id$set( MemorySegment seg, long x) {
-        H5FD_splitter_vfd_config_t.rw_fapl_id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hid_t rw_fapl_id;
+     * }
+     */
+    public static void rw_fapl_id$set(MemorySegment seg, long x) {
+        constants$272.const$2.set(seg, x);
     }
     public static long rw_fapl_id$get(MemorySegment seg, long index) {
-        return (long)H5FD_splitter_vfd_config_t.rw_fapl_id$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$272.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void rw_fapl_id$set(MemorySegment seg, long index, long x) {
-        H5FD_splitter_vfd_config_t.rw_fapl_id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle wo_fapl_id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("wo_fapl_id"));
     public static VarHandle wo_fapl_id$VH() {
-        return H5FD_splitter_vfd_config_t.wo_fapl_id$VH;
+        return constants$272.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hid_t wo_fapl_id;
+     * }
+     */
     public static long wo_fapl_id$get(MemorySegment seg) {
-        return (long)H5FD_splitter_vfd_config_t.wo_fapl_id$VH.get(seg);
+        return (long)constants$272.const$3.get(seg);
     }
-    public static void wo_fapl_id$set( MemorySegment seg, long x) {
-        H5FD_splitter_vfd_config_t.wo_fapl_id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hid_t wo_fapl_id;
+     * }
+     */
+    public static void wo_fapl_id$set(MemorySegment seg, long x) {
+        constants$272.const$3.set(seg, x);
     }
     public static long wo_fapl_id$get(MemorySegment seg, long index) {
-        return (long)H5FD_splitter_vfd_config_t.wo_fapl_id$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$272.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void wo_fapl_id$set(MemorySegment seg, long index, long x) {
-        H5FD_splitter_vfd_config_t.wo_fapl_id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment wo_path$slice(MemorySegment seg) {
         return seg.asSlice(24, 4097);
@@ -92,28 +139,39 @@ public class H5FD_splitter_vfd_config_t {
     public static MemorySegment log_file_path$slice(MemorySegment seg) {
         return seg.asSlice(4121, 4097);
     }
-    static final VarHandle ignore_wo_errs$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("ignore_wo_errs"));
     public static VarHandle ignore_wo_errs$VH() {
-        return H5FD_splitter_vfd_config_t.ignore_wo_errs$VH;
+        return constants$272.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t ignore_wo_errs;
+     * }
+     */
     public static boolean ignore_wo_errs$get(MemorySegment seg) {
-        return (boolean)H5FD_splitter_vfd_config_t.ignore_wo_errs$VH.get(seg);
+        return (boolean)constants$272.const$4.get(seg);
     }
-    public static void ignore_wo_errs$set( MemorySegment seg, boolean x) {
-        H5FD_splitter_vfd_config_t.ignore_wo_errs$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t ignore_wo_errs;
+     * }
+     */
+    public static void ignore_wo_errs$set(MemorySegment seg, boolean x) {
+        constants$272.const$4.set(seg, x);
     }
     public static boolean ignore_wo_errs$get(MemorySegment seg, long index) {
-        return (boolean)H5FD_splitter_vfd_config_t.ignore_wo_errs$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$272.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void ignore_wo_errs$set(MemorySegment seg, long index, boolean x) {
-        H5FD_splitter_vfd_config_t.ignore_wo_errs$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$272.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

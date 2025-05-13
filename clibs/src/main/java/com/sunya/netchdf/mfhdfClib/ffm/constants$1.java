@@ -3,51 +3,36 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$1 {
 
-class constants$1 {
-
-    static final FunctionDescriptor isalnum$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$1() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__val")
+    ).withName("");
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "__ctype_b_loc",
+        constants$1.const$1
     );
-    static final MethodHandle isalnum$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "__ctype_tolower_loc",
+        constants$1.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "__ctype_toupper_loc",
+        constants$1.const$1
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
         "isalnum",
-        constants$1.isalnum$FUNC
-    );
-    static final FunctionDescriptor isalpha$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle isalpha$MH = RuntimeHelper.downcallHandle(
-        "isalpha",
-        constants$1.isalpha$FUNC
-    );
-    static final FunctionDescriptor iscntrl$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle iscntrl$MH = RuntimeHelper.downcallHandle(
-        "iscntrl",
-        constants$1.iscntrl$FUNC
-    );
-    static final FunctionDescriptor isdigit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle isdigit$MH = RuntimeHelper.downcallHandle(
-        "isdigit",
-        constants$1.isdigit$FUNC
-    );
-    static final FunctionDescriptor islower$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle islower$MH = RuntimeHelper.downcallHandle(
-        "islower",
-        constants$1.islower$FUNC
-    );
-    static final FunctionDescriptor isgraph$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle isgraph$MH = RuntimeHelper.downcallHandle(
-        "isgraph",
-        constants$1.isgraph$FUNC
+        constants$1.const$5
     );
 }
 

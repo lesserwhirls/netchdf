@@ -7,26 +7,67 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$87 {
+final class constants$87 {
 
-    static final  OfLong H5E_BADMESG_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADMESG_g$VH = constants$87.H5E_BADMESG_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADMESG_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADMESG_g", constants$87.H5E_BADMESG_g$LAYOUT);
-    static final  OfLong H5E_CANTDELETE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTDELETE_g$VH = constants$87.H5E_CANTDELETE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTDELETE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTDELETE_g", constants$87.H5E_CANTDELETE_g$LAYOUT);
-    static final  OfLong H5E_BADITER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADITER_g$VH = constants$87.H5E_BADITER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADITER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADITER_g", constants$87.H5E_BADITER_g$LAYOUT);
-    static final  OfLong H5E_CANTPACK_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTPACK_g$VH = constants$87.H5E_CANTPACK_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTPACK_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTPACK_g", constants$87.H5E_CANTPACK_g$LAYOUT);
-    static final  OfLong H5E_CANTRESET_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTRESET_g$VH = constants$87.H5E_CANTRESET_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTRESET_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTRESET_g", constants$87.H5E_CANTRESET_g$LAYOUT);
-    static final  OfLong H5E_CANTRENAME_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTRENAME_g$VH = constants$87.H5E_CANTRENAME_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTRENAME_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTRENAME_g", constants$87.H5E_CANTRENAME_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$87() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Aget_num_attrs",
+        constants$19.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Aiterate1",
+        constants$61.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Aopen_idx",
+        constants$48.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aopen_name",
+        constants$53.const$5
+    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_BOOLEAN.withName("rpt_fcn_enabled"),
+        JAVA_BOOLEAN.withName("open_trace_file"),
+        JAVA_BOOLEAN.withName("close_trace_file"),
+        MemoryLayout.sequenceLayout(1025, JAVA_BYTE).withName("trace_file_name"),
+        JAVA_BOOLEAN.withName("evictions_enabled"),
+        JAVA_BOOLEAN.withName("set_initial_size"),
+        MemoryLayout.paddingLayout(6),
+        JAVA_LONG.withName("initial_size"),
+        JAVA_DOUBLE.withName("min_clean_fraction"),
+        JAVA_LONG.withName("max_size"),
+        JAVA_LONG.withName("min_size"),
+        JAVA_LONG.withName("epoch_length"),
+        JAVA_INT.withName("incr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("lower_hr_threshold"),
+        JAVA_DOUBLE.withName("increment"),
+        JAVA_BOOLEAN.withName("apply_max_increment"),
+        MemoryLayout.paddingLayout(7),
+        JAVA_LONG.withName("max_increment"),
+        JAVA_INT.withName("flash_incr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("flash_multiple"),
+        JAVA_DOUBLE.withName("flash_threshold"),
+        JAVA_INT.withName("decr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("upper_hr_threshold"),
+        JAVA_DOUBLE.withName("decrement"),
+        JAVA_BOOLEAN.withName("apply_max_decrement"),
+        MemoryLayout.paddingLayout(7),
+        JAVA_LONG.withName("max_decrement"),
+        JAVA_INT.withName("epochs_before_eviction"),
+        JAVA_BOOLEAN.withName("apply_empty_reserve"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_DOUBLE.withName("empty_reserve"),
+        JAVA_LONG.withName("dirty_bytes_threshold"),
+        JAVA_INT.withName("metadata_write_strategy"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("H5AC_cache_config_t");
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

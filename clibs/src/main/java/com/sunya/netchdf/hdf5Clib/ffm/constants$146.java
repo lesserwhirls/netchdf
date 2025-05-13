@@ -7,58 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$146 {
+final class constants$146 {
 
-    static final FunctionDescriptor H5Pset_file_space_page_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_file_space_page_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_file_space_page_size",
-        constants$146.H5Pset_file_space_page_size$FUNC
-    );
-    static final FunctionDescriptor H5Pget_file_space_page_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_file_space_page_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space_page_size",
-        constants$146.H5Pget_file_space_page_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_alignment$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_alignment$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_alignment",
-        constants$146.H5Pset_alignment$FUNC
-    );
-    static final FunctionDescriptor H5Pget_alignment$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_alignment$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_alignment",
-        constants$146.H5Pget_alignment$FUNC
-    );
-    static final FunctionDescriptor H5Pset_driver$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_driver$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_driver",
-        constants$146.H5Pset_driver$FUNC
-    );
-    static final FunctionDescriptor H5Pget_driver$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_driver$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_driver",
-        constants$146.H5Pget_driver$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$146() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_FILEOPEN_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCREATE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTOPENFILE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLOSEFILE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_NOTHDF5_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_BADFILE_g", JAVA_LONG);
 }
 
 

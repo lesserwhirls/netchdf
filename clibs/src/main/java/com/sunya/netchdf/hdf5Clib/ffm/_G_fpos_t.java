@@ -7,46 +7,55 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct _G_fpos_t {
+ *     __off_t __pos;
+ *     __mbstate_t __state;
+ * };
+ * }
+ */
 public class _G_fpos_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("__pos"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("__count"),
-            MemoryLayout.unionLayout(
-                Constants$root.C_INT$LAYOUT.withName("__wch"),
-                MemoryLayout.sequenceLayout(4, Constants$root.C_CHAR$LAYOUT).withName("__wchb")
-            ).withName("__value")
-        ).withName("__state")
-    ).withName("_G_fpos_t");
     public static MemoryLayout $LAYOUT() {
-        return _G_fpos_t.$struct$LAYOUT;
+        return constants$103.const$4;
     }
-    static final VarHandle __pos$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
     public static VarHandle __pos$VH() {
-        return _G_fpos_t.__pos$VH;
+        return constants$103.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * __off_t __pos;
+     * }
+     */
     public static long __pos$get(MemorySegment seg) {
-        return (long)_G_fpos_t.__pos$VH.get(seg);
+        return (long)constants$103.const$5.get(seg);
     }
-    public static void __pos$set( MemorySegment seg, long x) {
-        _G_fpos_t.__pos$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * __off_t __pos;
+     * }
+     */
+    public static void __pos$set(MemorySegment seg, long x) {
+        constants$103.const$5.set(seg, x);
     }
     public static long __pos$get(MemorySegment seg, long index) {
-        return (long)_G_fpos_t.__pos$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$103.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void __pos$set(MemorySegment seg, long index, long x) {
-        _G_fpos_t.__pos$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$103.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment __state$slice(MemorySegment seg) {
         return seg.asSlice(8, 8);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

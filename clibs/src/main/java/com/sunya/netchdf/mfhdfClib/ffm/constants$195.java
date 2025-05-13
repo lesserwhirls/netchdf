@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$195 {
 
-class constants$195 {
-
-    static final MemorySegment SCNdMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNiMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNoMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNuMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNxMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment SCNdPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$195() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "VSisattr",
+        constants$1.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "vicheckcompat",
+        constants$1.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vimakecompat",
+        constants$1.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vcheckcompat",
+        constants$17.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "vmakecompat",
+        constants$17.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "VSelts",
+        constants$1.const$5
+    );
 }
 
 

@@ -7,61 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$120 {
+final class constants$120 {
 
-    static final FunctionDescriptor H5Gcreate2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$120() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "vfscanf",
+        constants$15.const$4
     );
-    static final MethodHandle H5Gcreate2$MH = RuntimeHelper.downcallHandle(
-        "H5Gcreate2",
-        constants$120.H5Gcreate2$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "vscanf",
+        constants$112.const$0
     );
-    static final FunctionDescriptor H5Gcreate_anon$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vsscanf",
+        constants$15.const$4
     );
-    static final MethodHandle H5Gcreate_anon$MH = RuntimeHelper.downcallHandle(
-        "H5Gcreate_anon",
-        constants$120.H5Gcreate_anon$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fgetc",
+        constants$15.const$2
     );
-    static final FunctionDescriptor H5Gopen2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getc",
+        constants$15.const$2
     );
-    static final MethodHandle H5Gopen2$MH = RuntimeHelper.downcallHandle(
-        "H5Gopen2",
-        constants$120.H5Gopen2$FUNC
-    );
-    static final FunctionDescriptor H5Gget_create_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Gget_create_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_create_plist",
-        constants$120.H5Gget_create_plist$FUNC
-    );
-    static final FunctionDescriptor H5Gget_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Gget_info$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_info",
-        constants$120.H5Gget_info$FUNC
-    );
-    static final FunctionDescriptor H5Gget_info_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Gget_info_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_info_by_name",
-        constants$120.H5Gget_info_by_name$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getchar",
+        constants$14.const$0
     );
 }
 

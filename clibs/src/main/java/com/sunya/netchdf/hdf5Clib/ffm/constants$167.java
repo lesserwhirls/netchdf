@@ -7,57 +7,26 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$167 {
+final class constants$167 {
 
-    static final FunctionDescriptor H5Pset_elink_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_elink_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_cb",
-        constants$167.H5Pset_elink_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pget_elink_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_elink_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_cb",
-        constants$167.H5Pget_elink_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pset_copy_object$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_copy_object$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_copy_object",
-        constants$167.H5Pset_copy_object$FUNC
-    );
-    static final FunctionDescriptor H5Pget_copy_object$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_copy_object$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_copy_object",
-        constants$167.H5Pget_copy_object$FUNC
-    );
-    static final FunctionDescriptor H5Padd_merge_committed_dtype_path$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Padd_merge_committed_dtype_path$MH = RuntimeHelper.downcallHandle(
-        "H5Padd_merge_committed_dtype_path",
-        constants$167.H5Padd_merge_committed_dtype_path$FUNC
-    );
-    static final FunctionDescriptor H5Pfree_merge_committed_dtype_paths$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pfree_merge_committed_dtype_paths$MH = RuntimeHelper.downcallHandle(
-        "H5Pfree_merge_committed_dtype_paths",
-        constants$167.H5Pfree_merge_committed_dtype_paths$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$167() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("super_size"),
+        JAVA_LONG.withName("super_ext_size")
+    ).withName("");
+    static final VarHandle const$1 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$2 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
+    static final VarHandle const$3 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("meta_size"),
+        JAVA_LONG.withName("tot_space")
+    ).withName("");
+    static final VarHandle const$5 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

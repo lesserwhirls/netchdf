@@ -7,26 +7,40 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$85 {
+final class constants$85 {
 
-    static final  OfLong H5E_ALREADYINIT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ALREADYINIT_g$VH = constants$85.H5E_ALREADYINIT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ALREADYINIT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ALREADYINIT_g", constants$85.H5E_ALREADYINIT_g$LAYOUT);
-    static final  OfLong H5E_CANTRELEASE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTRELEASE_g$VH = constants$85.H5E_CANTRELEASE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTRELEASE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTRELEASE_g", constants$85.H5E_CANTRELEASE_g$LAYOUT);
-    static final  OfLong H5E_CANTGET_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTGET_g$VH = constants$85.H5E_CANTGET_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTGET_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTGET_g", constants$85.H5E_CANTGET_g$LAYOUT);
-    static final  OfLong H5E_CANTSET_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTSET_g$VH = constants$85.H5E_CANTSET_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTSET_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTSET_g", constants$85.H5E_CANTSET_g$LAYOUT);
-    static final  OfLong H5E_DUPCLASS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_DUPCLASS_g$VH = constants$85.H5E_DUPCLASS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_DUPCLASS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_DUPCLASS_g", constants$85.H5E_DUPCLASS_g$LAYOUT);
-    static final  OfLong H5E_SETDISALLOWED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_SETDISALLOWED_g$VH = constants$85.H5E_SETDISALLOWED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_SETDISALLOWED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_SETDISALLOWED_g", constants$85.H5E_SETDISALLOWED_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$85() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Aopen",
+        constants$19.const$3
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Aopen_by_idx",
+        constants$85.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aopen_by_name",
+        constants$75.const$4
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Aread",
+        constants$85.const$4
+    );
 }
 
 

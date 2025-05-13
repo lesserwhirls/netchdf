@@ -7,56 +7,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$52 {
+final class constants$52 {
 
-    static final FunctionDescriptor H5Adelete_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$52() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tset_strpad",
+        constants$45.const$5
     );
-    static final MethodHandle H5Adelete_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Adelete_by_idx",
-        constants$52.H5Adelete_by_idx$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Aexists$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tregister",
+        constants$52.const$1
     );
-    static final MethodHandle H5Aexists$MH = RuntimeHelper.downcallHandle(
-        "H5Aexists",
-        constants$52.H5Aexists$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tunregister",
+        constants$52.const$1
     );
-    static final FunctionDescriptor H5Aexists_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Aexists_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Aexists_by_name",
-        constants$52.H5Aexists_by_name$FUNC
-    );
-    static final FunctionDescriptor H5A_operator1_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5A_operator1_t$MH = RuntimeHelper.downcallHandle(
-        constants$52.H5A_operator1_t$FUNC
-    );
-    static final FunctionDescriptor H5Acreate1$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Acreate1$MH = RuntimeHelper.downcallHandle(
-        "H5Acreate1",
-        constants$52.H5Acreate1$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tfind",
+        constants$52.const$4
     );
 }
 

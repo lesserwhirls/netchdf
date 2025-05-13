@@ -3,68 +3,50 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$13 {
 
-class constants$13 {
-
-    static final FunctionDescriptor nc_inq_var_chunking$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$13() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_insert_enum",
+        constants$7.const$0
     );
-    static final MethodHandle nc_inq_var_chunking$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_var_chunking",
-        constants$13.nc_inq_var_chunking$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor nc_def_var_fill$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_inq_enum",
+        constants$13.const$1
     );
-    static final MethodHandle nc_def_var_fill$MH = RuntimeHelper.downcallHandle(
-        "nc_def_var_fill",
-        constants$13.nc_def_var_fill$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor nc_inq_var_fill$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_inq_enum_member",
+        constants$13.const$3
     );
-    static final MethodHandle nc_inq_var_fill$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_var_fill",
-        constants$13.nc_inq_var_fill$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor nc_def_var_endian$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nc_def_var_endian$MH = RuntimeHelper.downcallHandle(
-        "nc_def_var_endian",
-        constants$13.nc_def_var_endian$FUNC
-    );
-    static final FunctionDescriptor nc_inq_var_endian$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_var_endian$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_var_endian",
-        constants$13.nc_inq_var_endian$FUNC
-    );
-    static final FunctionDescriptor nc_def_var_filter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_def_var_filter$MH = RuntimeHelper.downcallHandle(
-        "nc_def_var_filter",
-        constants$13.nc_def_var_filter$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "nc_inq_enum_ident",
+        constants$13.const$5
     );
 }
 

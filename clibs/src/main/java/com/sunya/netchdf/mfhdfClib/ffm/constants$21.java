@@ -3,52 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$21 {
 
-class constants$21 {
-
-    static final FunctionDescriptor popen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$21() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "tmpnam_r",
+        constants$20.const$4
     );
-    static final MethodHandle popen$MH = RuntimeHelper.downcallHandle(
-        "popen",
-        constants$21.popen$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor ctermid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "tempnam",
+        constants$21.const$1
     );
-    static final MethodHandle ctermid$MH = RuntimeHelper.downcallHandle(
-        "ctermid",
-        constants$21.ctermid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fflush",
+        constants$17.const$4
     );
-    static final FunctionDescriptor flockfile$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fflush_unlocked",
+        constants$17.const$4
     );
-    static final MethodHandle flockfile$MH = RuntimeHelper.downcallHandle(
-        "flockfile",
-        constants$21.flockfile$FUNC
-    );
-    static final FunctionDescriptor ftrylockfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftrylockfile$MH = RuntimeHelper.downcallHandle(
-        "ftrylockfile",
-        constants$21.ftrylockfile$FUNC
-    );
-    static final FunctionDescriptor funlockfile$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle funlockfile$MH = RuntimeHelper.downcallHandle(
-        "funlockfile",
-        constants$21.funlockfile$FUNC
-    );
-    static final FunctionDescriptor __uflow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle __uflow$MH = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$21.__uflow$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fopen",
+        constants$21.const$1
     );
 }
 

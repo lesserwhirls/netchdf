@@ -7,47 +7,59 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$8 {
+final class constants$8 {
 
-    static final FunctionDescriptor H5Itype_exists$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Itype_exists$MH = RuntimeHelper.downcallHandle(
-        "H5Itype_exists",
-        constants$8.H5Itype_exists$FUNC
-    );
-    static final FunctionDescriptor H5Iis_valid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Iis_valid$MH = RuntimeHelper.downcallHandle(
-        "H5Iis_valid",
-        constants$8.H5Iis_valid$FUNC
-    );
-    static final FunctionDescriptor H5T_conv_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5T_conv_t$MH = RuntimeHelper.downcallHandle(
-        constants$8.H5T_conv_t$FUNC
-    );
-    static final FunctionDescriptor H5T_conv_except_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5T_conv_except_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$8.H5T_conv_except_func_t$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$8() {}
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("pthread_attr_t");
+    static final VarHandle const$2 = constants$8.const$1.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__lock"),
+            JAVA_INT.withName("__count"),
+            JAVA_INT.withName("__owner"),
+            JAVA_INT.withName("__nusers"),
+            JAVA_INT.withName("__kind"),
+            JAVA_SHORT.withName("__spins"),
+            JAVA_SHORT.withName("__elision"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("__prev"),
+                RuntimeHelper.POINTER.withName("__next")
+            ).withName("__list")
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(40, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
+    static final VarHandle const$4 = constants$8.const$3.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.unionLayout(
+                JAVA_LONG.withName("__value64"),
+                MemoryLayout.structLayout(
+                    JAVA_INT.withName("__low"),
+                    JAVA_INT.withName("__high")
+                ).withName("__value32")
+            ).withName("__wseq"),
+            MemoryLayout.unionLayout(
+                JAVA_LONG.withName("__value64"),
+                MemoryLayout.structLayout(
+                    JAVA_INT.withName("__low"),
+                    JAVA_INT.withName("__high")
+                ).withName("__value32")
+            ).withName("__g1_start"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
+            JAVA_INT.withName("__g1_orig_size"),
+            JAVA_INT.withName("__wrefs"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(48, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
 }
 
 

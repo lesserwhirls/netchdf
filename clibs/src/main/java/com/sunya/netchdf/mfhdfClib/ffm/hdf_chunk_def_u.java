@@ -2,144 +2,102 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * union hdf_chunk_def_u {
+ *     int32 chunk_lengths[32];
+ *     struct  comp;
+ *     struct  nbit;
+ * };
+ * }
+ */
 public class hdf_chunk_def_u {
 
-    static final  GroupLayout $union$LAYOUT = MemoryLayout.unionLayout(
-        MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-            Constants$root.C_INT$LAYOUT.withName("comp_type"),
-            Constants$root.C_INT$LAYOUT.withName("model_type"),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("quality"),
-                    Constants$root.C_INT$LAYOUT.withName("force_baseline")
-                ).withName("jpeg"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("nt"),
-                    Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-                    Constants$root.C_INT$LAYOUT.withName("fill_one"),
-                    Constants$root.C_INT$LAYOUT.withName("start_bit"),
-                    Constants$root.C_INT$LAYOUT.withName("bit_len")
-                ).withName("nbit"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("skp_size")
-                ).withName("skphuff"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("level")
-                ).withName("deflate"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("options_mask"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels_per_block"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels_per_scanline"),
-                    Constants$root.C_INT$LAYOUT.withName("bits_per_pixel"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels")
-                ).withName("szip")
-            ).withName("cinfo"),
-            MemoryLayout.paddingLayout(32),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("nt"),
-                    Constants$root.C_INT$LAYOUT.withName("ndim"),
-                    Constants$root.C_POINTER$LAYOUT.withName("dims")
-                ).withName("dim")
-            ).withName("minfo")
-        ).withName("comp"),
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-            Constants$root.C_INT$LAYOUT.withName("start_bit"),
-            Constants$root.C_INT$LAYOUT.withName("bit_len"),
-            Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-            Constants$root.C_INT$LAYOUT.withName("fill_one")
-        ).withName("nbit")
-    ).withName("hdf_chunk_def_u");
     public static MemoryLayout $LAYOUT() {
-        return hdf_chunk_def_u.$union$LAYOUT;
+        return constants$189.const$1;
     }
     public static MemorySegment chunk_lengths$slice(MemorySegment seg) {
         return seg.asSlice(0, 128);
     }
-    public static class comp {
+    /**
+     * {@snippet :
+     * struct {
+     *     int32 chunk_lengths[32];
+     *     int32 comp_type;
+     *     int32 model_type;
+     *     comp_info cinfo;
+     *     model_info minfo;
+     * };
+     * }
+     */
+    public static final class comp {
 
-        static final  GroupLayout comp$struct$LAYOUT = MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-            Constants$root.C_INT$LAYOUT.withName("comp_type"),
-            Constants$root.C_INT$LAYOUT.withName("model_type"),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("quality"),
-                    Constants$root.C_INT$LAYOUT.withName("force_baseline")
-                ).withName("jpeg"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("nt"),
-                    Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-                    Constants$root.C_INT$LAYOUT.withName("fill_one"),
-                    Constants$root.C_INT$LAYOUT.withName("start_bit"),
-                    Constants$root.C_INT$LAYOUT.withName("bit_len")
-                ).withName("nbit"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("skp_size")
-                ).withName("skphuff"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("level")
-                ).withName("deflate"),
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("options_mask"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels_per_block"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels_per_scanline"),
-                    Constants$root.C_INT$LAYOUT.withName("bits_per_pixel"),
-                    Constants$root.C_INT$LAYOUT.withName("pixels")
-                ).withName("szip")
-            ).withName("cinfo"),
-            MemoryLayout.paddingLayout(32),
-            MemoryLayout.unionLayout(
-                MemoryLayout.structLayout(
-                    Constants$root.C_INT$LAYOUT.withName("nt"),
-                    Constants$root.C_INT$LAYOUT.withName("ndim"),
-                    Constants$root.C_POINTER$LAYOUT.withName("dims")
-                ).withName("dim")
-            ).withName("minfo")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private comp() {}
         public static MemoryLayout $LAYOUT() {
-            return comp.comp$struct$LAYOUT;
+            return constants$189.const$2;
         }
         public static MemorySegment chunk_lengths$slice(MemorySegment seg) {
             return seg.asSlice(0, 128);
         }
-        static final VarHandle comp_type$VH = comp$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("comp_type"));
         public static VarHandle comp_type$VH() {
-            return comp.comp_type$VH;
+            return constants$189.const$3;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * int32 comp_type;
+         * }
+         */
         public static int comp_type$get(MemorySegment seg) {
-            return (int)comp.comp_type$VH.get(seg);
+            return (int)constants$189.const$3.get(seg);
         }
-        public static void comp_type$set( MemorySegment seg, int x) {
-            comp.comp_type$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * int32 comp_type;
+         * }
+         */
+        public static void comp_type$set(MemorySegment seg, int x) {
+            constants$189.const$3.set(seg, x);
         }
         public static int comp_type$get(MemorySegment seg, long index) {
-            return (int)comp.comp_type$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$189.const$3.get(seg.asSlice(index*sizeof()));
         }
         public static void comp_type$set(MemorySegment seg, long index, int x) {
-            comp.comp_type$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$189.const$3.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle model_type$VH = comp$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("model_type"));
         public static VarHandle model_type$VH() {
-            return comp.model_type$VH;
+            return constants$189.const$4;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * int32 model_type;
+         * }
+         */
         public static int model_type$get(MemorySegment seg) {
-            return (int)comp.model_type$VH.get(seg);
+            return (int)constants$189.const$4.get(seg);
         }
-        public static void model_type$set( MemorySegment seg, int x) {
-            comp.model_type$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * int32 model_type;
+         * }
+         */
+        public static void model_type$set(MemorySegment seg, int x) {
+            constants$189.const$4.set(seg, x);
         }
         public static int model_type$get(MemorySegment seg, long index) {
-            return (int)comp.model_type$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$189.const$4.get(seg.asSlice(index*sizeof()));
         }
         public static void model_type$set(MemorySegment seg, long index, int x) {
-            comp.model_type$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$189.const$4.set(seg.asSlice(index*sizeof()), x);
         }
         public static MemorySegment cinfo$slice(MemorySegment seg) {
             return seg.asSlice(136, 20);
@@ -149,100 +107,150 @@ public class hdf_chunk_def_u {
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment comp$slice(MemorySegment seg) {
         return seg.asSlice(0, 176);
     }
-    public static class nbit {
+    /**
+     * {@snippet :
+     * struct {
+     *     int32 chunk_lengths[32];
+     *     intn start_bit;
+     *     intn bit_len;
+     *     intn sign_ext;
+     *     intn fill_one;
+     * };
+     * }
+     */
+    public static final class nbit {
 
-        static final  GroupLayout nbit$struct$LAYOUT = MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-            Constants$root.C_INT$LAYOUT.withName("start_bit"),
-            Constants$root.C_INT$LAYOUT.withName("bit_len"),
-            Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-            Constants$root.C_INT$LAYOUT.withName("fill_one")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private nbit() {}
         public static MemoryLayout $LAYOUT() {
-            return nbit.nbit$struct$LAYOUT;
+            return constants$189.const$5;
         }
         public static MemorySegment chunk_lengths$slice(MemorySegment seg) {
             return seg.asSlice(0, 128);
         }
-        static final VarHandle start_bit$VH = nbit$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("start_bit"));
         public static VarHandle start_bit$VH() {
-            return nbit.start_bit$VH;
+            return constants$190.const$0;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * intn start_bit;
+         * }
+         */
         public static int start_bit$get(MemorySegment seg) {
-            return (int)nbit.start_bit$VH.get(seg);
+            return (int)constants$190.const$0.get(seg);
         }
-        public static void start_bit$set( MemorySegment seg, int x) {
-            nbit.start_bit$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * intn start_bit;
+         * }
+         */
+        public static void start_bit$set(MemorySegment seg, int x) {
+            constants$190.const$0.set(seg, x);
         }
         public static int start_bit$get(MemorySegment seg, long index) {
-            return (int)nbit.start_bit$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$190.const$0.get(seg.asSlice(index*sizeof()));
         }
         public static void start_bit$set(MemorySegment seg, long index, int x) {
-            nbit.start_bit$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$190.const$0.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle bit_len$VH = nbit$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bit_len"));
         public static VarHandle bit_len$VH() {
-            return nbit.bit_len$VH;
+            return constants$190.const$1;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * intn bit_len;
+         * }
+         */
         public static int bit_len$get(MemorySegment seg) {
-            return (int)nbit.bit_len$VH.get(seg);
+            return (int)constants$190.const$1.get(seg);
         }
-        public static void bit_len$set( MemorySegment seg, int x) {
-            nbit.bit_len$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * intn bit_len;
+         * }
+         */
+        public static void bit_len$set(MemorySegment seg, int x) {
+            constants$190.const$1.set(seg, x);
         }
         public static int bit_len$get(MemorySegment seg, long index) {
-            return (int)nbit.bit_len$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$190.const$1.get(seg.asSlice(index*sizeof()));
         }
         public static void bit_len$set(MemorySegment seg, long index, int x) {
-            nbit.bit_len$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$190.const$1.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle sign_ext$VH = nbit$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("sign_ext"));
         public static VarHandle sign_ext$VH() {
-            return nbit.sign_ext$VH;
+            return constants$190.const$2;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * intn sign_ext;
+         * }
+         */
         public static int sign_ext$get(MemorySegment seg) {
-            return (int)nbit.sign_ext$VH.get(seg);
+            return (int)constants$190.const$2.get(seg);
         }
-        public static void sign_ext$set( MemorySegment seg, int x) {
-            nbit.sign_ext$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * intn sign_ext;
+         * }
+         */
+        public static void sign_ext$set(MemorySegment seg, int x) {
+            constants$190.const$2.set(seg, x);
         }
         public static int sign_ext$get(MemorySegment seg, long index) {
-            return (int)nbit.sign_ext$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$190.const$2.get(seg.asSlice(index*sizeof()));
         }
         public static void sign_ext$set(MemorySegment seg, long index, int x) {
-            nbit.sign_ext$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$190.const$2.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle fill_one$VH = nbit$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fill_one"));
         public static VarHandle fill_one$VH() {
-            return nbit.fill_one$VH;
+            return constants$190.const$3;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * intn fill_one;
+         * }
+         */
         public static int fill_one$get(MemorySegment seg) {
-            return (int)nbit.fill_one$VH.get(seg);
+            return (int)constants$190.const$3.get(seg);
         }
-        public static void fill_one$set( MemorySegment seg, int x) {
-            nbit.fill_one$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * intn fill_one;
+         * }
+         */
+        public static void fill_one$set(MemorySegment seg, int x) {
+            constants$190.const$3.set(seg, x);
         }
         public static int fill_one$get(MemorySegment seg, long index) {
-            return (int)nbit.fill_one$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$190.const$3.get(seg.asSlice(index*sizeof()));
         }
         public static void fill_one$set(MemorySegment seg, long index, int x) {
-            nbit.fill_one$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$190.const$3.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment nbit$slice(MemorySegment seg) {
@@ -250,10 +258,10 @@ public class hdf_chunk_def_u {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

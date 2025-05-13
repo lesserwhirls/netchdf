@@ -3,59 +3,32 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$119 {
 
-class constants$119 {
-
-    static final FunctionDescriptor DFKNTsize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$119() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "mkfifoat",
+        constants$94.const$0
     );
-    static final MethodHandle DFKNTsize$MH = RuntimeHelper.downcallHandle(
-        "DFKNTsize",
-        constants$119.DFKNTsize$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "utimensat",
+        constants$116.const$3
     );
-    static final FunctionDescriptor DFKisnativeNT$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "futimens",
+        constants$5.const$3
     );
-    static final MethodHandle DFKisnativeNT$MH = RuntimeHelper.downcallHandle(
-        "DFKisnativeNT",
-        constants$119.DFKisnativeNT$FUNC
-    );
-    static final FunctionDescriptor DFKislitendNT$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKislitendNT$MH = RuntimeHelper.downcallHandle(
-        "DFKislitendNT",
-        constants$119.DFKislitendNT$FUNC
-    );
-    static final FunctionDescriptor DFKgetPNSC$FUNC = FunctionDescriptor.of(Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKgetPNSC$MH = RuntimeHelper.downcallHandle(
-        "DFKgetPNSC",
-        constants$119.DFKgetPNSC$FUNC
-    );
-    static final FunctionDescriptor DFKsetNT$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKsetNT$MH = RuntimeHelper.downcallHandle(
-        "DFKsetNT",
-        constants$119.DFKsetNT$FUNC
-    );
-    static final FunctionDescriptor DFKconvert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKconvert$MH = RuntimeHelper.downcallHandle(
-        "DFKconvert",
-        constants$119.DFKconvert$FUNC
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("tz_minuteswest"),
+        JAVA_INT.withName("tz_dsttime")
+    ).withName("timezone");
+    static final VarHandle const$4 = constants$119.const$3.varHandle(MemoryLayout.PathElement.groupElement("tz_minuteswest"));
+    static final VarHandle const$5 = constants$119.const$3.varHandle(MemoryLayout.PathElement.groupElement("tz_dsttime"));
 }
 
 

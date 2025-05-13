@@ -7,88 +7,135 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5AC_cache_image_config_t {
+ *     int version;
+ *     hbool_t generate_image;
+ *     hbool_t save_resize_status;
+ *     int entry_ageout;
+ * };
+ * }
+ */
 public class H5AC_cache_image_config_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        Constants$root.C_BOOL$LAYOUT.withName("generate_image"),
-        Constants$root.C_BOOL$LAYOUT.withName("save_resize_status"),
-        MemoryLayout.paddingLayout(16),
-        Constants$root.C_INT$LAYOUT.withName("entry_ageout")
-    ).withName("H5AC_cache_image_config_t");
     public static MemoryLayout $LAYOUT() {
-        return H5AC_cache_image_config_t.$struct$LAYOUT;
+        return constants$92.const$4;
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5AC_cache_image_config_t.version$VH;
+        return constants$92.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5AC_cache_image_config_t.version$VH.get(seg);
+        return (int)constants$92.const$5.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5AC_cache_image_config_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$92.const$5.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_image_config_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_image_config_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle generate_image$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("generate_image"));
     public static VarHandle generate_image$VH() {
-        return H5AC_cache_image_config_t.generate_image$VH;
+        return constants$93.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t generate_image;
+     * }
+     */
     public static boolean generate_image$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_image_config_t.generate_image$VH.get(seg);
+        return (boolean)constants$93.const$0.get(seg);
     }
-    public static void generate_image$set( MemorySegment seg, boolean x) {
-        H5AC_cache_image_config_t.generate_image$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t generate_image;
+     * }
+     */
+    public static void generate_image$set(MemorySegment seg, boolean x) {
+        constants$93.const$0.set(seg, x);
     }
     public static boolean generate_image$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_image_config_t.generate_image$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$93.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void generate_image$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_image_config_t.generate_image$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle save_resize_status$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("save_resize_status"));
     public static VarHandle save_resize_status$VH() {
-        return H5AC_cache_image_config_t.save_resize_status$VH;
+        return constants$93.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t save_resize_status;
+     * }
+     */
     public static boolean save_resize_status$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_image_config_t.save_resize_status$VH.get(seg);
+        return (boolean)constants$93.const$1.get(seg);
     }
-    public static void save_resize_status$set( MemorySegment seg, boolean x) {
-        H5AC_cache_image_config_t.save_resize_status$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t save_resize_status;
+     * }
+     */
+    public static void save_resize_status$set(MemorySegment seg, boolean x) {
+        constants$93.const$1.set(seg, x);
     }
     public static boolean save_resize_status$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_image_config_t.save_resize_status$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$93.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void save_resize_status$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_image_config_t.save_resize_status$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle entry_ageout$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("entry_ageout"));
     public static VarHandle entry_ageout$VH() {
-        return H5AC_cache_image_config_t.entry_ageout$VH;
+        return constants$93.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int entry_ageout;
+     * }
+     */
     public static int entry_ageout$get(MemorySegment seg) {
-        return (int)H5AC_cache_image_config_t.entry_ageout$VH.get(seg);
+        return (int)constants$93.const$2.get(seg);
     }
-    public static void entry_ageout$set( MemorySegment seg, int x) {
-        H5AC_cache_image_config_t.entry_ageout$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int entry_ageout;
+     * }
+     */
+    public static void entry_ageout$set(MemorySegment seg, int x) {
+        constants$93.const$2.set(seg, x);
     }
     public static int entry_ageout$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_image_config_t.entry_ageout$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$93.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void entry_ageout$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_image_config_t.entry_ageout$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$93.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

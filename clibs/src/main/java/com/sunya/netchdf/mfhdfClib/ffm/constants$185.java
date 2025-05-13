@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$185 {
 
-class constants$185 {
-
-    static final MemorySegment SCNd8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment SCNd16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
-    static final MemorySegment SCNd32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment SCNd64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment SCNdLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$185() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "GRreadimage",
+        constants$42.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "GRendaccess",
+        constants$1.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "GRidtoref",
+        constants$139.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "GRreftoindex",
+        constants$139.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "GRreqlutil",
+        constants$93.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "GRreqimageil",
+        constants$93.const$3
+    );
 }
 
 

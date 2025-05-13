@@ -3,48 +3,30 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$62 {
 
-class constants$62 {
-
-    static final FunctionDescriptor fpathconf$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$62() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(at_quick_exit$__func.class, "apply", constants$61.const$1);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "at_quick_exit",
+        constants$17.const$4
     );
-    static final MethodHandle fpathconf$MH = RuntimeHelper.downcallHandle(
-        "fpathconf",
-        constants$62.fpathconf$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor sysconf$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(on_exit$__func.class, "apply", constants$62.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$62.const$2
     );
-    static final MethodHandle sysconf$MH = RuntimeHelper.downcallHandle(
-        "sysconf",
-        constants$62.sysconf$FUNC
-    );
-    static final FunctionDescriptor confstr$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle confstr$MH = RuntimeHelper.downcallHandle(
-        "confstr",
-        constants$62.confstr$FUNC
-    );
-    static final FunctionDescriptor getpid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getpid$MH = RuntimeHelper.downcallHandle(
-        "getpid",
-        constants$62.getpid$FUNC
-    );
-    static final FunctionDescriptor getppid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getppid$MH = RuntimeHelper.downcallHandle(
-        "getppid",
-        constants$62.getppid$FUNC
-    );
-    static final FunctionDescriptor getpgrp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getpgrp$MH = RuntimeHelper.downcallHandle(
-        "getpgrp",
-        constants$62.getpgrp$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "on_exit",
+        constants$19.const$5
     );
 }
 

@@ -3,67 +3,22 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$127 {
 
-class constants$127 {
-
-    static final FunctionDescriptor GRgetlutinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRgetlutinfo$MH = RuntimeHelper.downcallHandle(
-        "GRgetlutinfo",
-        constants$127.GRgetlutinfo$FUNC
-    );
-    static final FunctionDescriptor GRwritelut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRwritelut$MH = RuntimeHelper.downcallHandle(
-        "GRwritelut",
-        constants$127.GRwritelut$FUNC
-    );
-    static final FunctionDescriptor GRreadlut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRreadlut$MH = RuntimeHelper.downcallHandle(
-        "GRreadlut",
-        constants$127.GRreadlut$FUNC
-    );
-    static final FunctionDescriptor GRsetexternalfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle GRsetexternalfile$MH = RuntimeHelper.downcallHandle(
-        "GRsetexternalfile",
-        constants$127.GRsetexternalfile$FUNC
-    );
-    static final FunctionDescriptor GRsetaccesstype$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle GRsetaccesstype$MH = RuntimeHelper.downcallHandle(
-        "GRsetaccesstype",
-        constants$127.GRsetaccesstype$FUNC
-    );
-    static final FunctionDescriptor GRsetcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRsetcompress$MH = RuntimeHelper.downcallHandle(
-        "GRsetcompress",
-        constants$127.GRsetcompress$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$127() {}
+    static final VarHandle const$0 = constants$126.const$5.varHandle(MemoryLayout.PathElement.groupElement("nt"));
+    static final VarHandle const$1 = constants$126.const$5.varHandle(MemoryLayout.PathElement.groupElement("sign_ext"));
+    static final VarHandle const$2 = constants$126.const$5.varHandle(MemoryLayout.PathElement.groupElement("fill_one"));
+    static final VarHandle const$3 = constants$126.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_bit"));
+    static final VarHandle const$4 = constants$126.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_len"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("skp_size")
+    ).withName("");
 }
 
 

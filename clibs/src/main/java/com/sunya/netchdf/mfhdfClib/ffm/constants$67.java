@@ -3,63 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$67 {
 
-class constants$67 {
-
-    static final FunctionDescriptor linkat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$67() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ldiv",
+        constants$9.const$0
     );
-    static final MethodHandle linkat$MH = RuntimeHelper.downcallHandle(
-        "linkat",
-        constants$67.linkat$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "lldiv",
+        constants$9.const$0
     );
-    static final FunctionDescriptor symlink$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle symlink$MH = RuntimeHelper.downcallHandle(
-        "symlink",
-        constants$67.symlink$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ecvt",
+        constants$67.const$2
     );
-    static final FunctionDescriptor readlink$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fcvt",
+        constants$67.const$2
     );
-    static final MethodHandle readlink$MH = RuntimeHelper.downcallHandle(
-        "readlink",
-        constants$67.readlink$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_DOUBLE,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor symlinkat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle symlinkat$MH = RuntimeHelper.downcallHandle(
-        "symlinkat",
-        constants$67.symlinkat$FUNC
-    );
-    static final FunctionDescriptor readlinkat$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle readlinkat$MH = RuntimeHelper.downcallHandle(
-        "readlinkat",
-        constants$67.readlinkat$FUNC
-    );
-    static final FunctionDescriptor unlink$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle unlink$MH = RuntimeHelper.downcallHandle(
-        "unlink",
-        constants$67.unlink$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "gcvt",
+        constants$67.const$5
     );
 }
 

@@ -7,26 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$92 {
+final class constants$92 {
 
-    static final  OfLong H5E_BADATOM_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADATOM_g$VH = constants$92.H5E_BADATOM_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADATOM_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADATOM_g", constants$92.H5E_BADATOM_g$LAYOUT);
-    static final  OfLong H5E_BADGROUP_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADGROUP_g$VH = constants$92.H5E_BADGROUP_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADGROUP_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADGROUP_g", constants$92.H5E_BADGROUP_g$LAYOUT);
-    static final  OfLong H5E_CANTREGISTER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTREGISTER_g$VH = constants$92.H5E_CANTREGISTER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTREGISTER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTREGISTER_g", constants$92.H5E_CANTREGISTER_g$LAYOUT);
-    static final  OfLong H5E_CANTINC_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTINC_g$VH = constants$92.H5E_CANTINC_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTINC_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTINC_g", constants$92.H5E_CANTINC_g$LAYOUT);
-    static final  OfLong H5E_CANTDEC_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTDEC_g$VH = constants$92.H5E_CANTDEC_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTDEC_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTDEC_g", constants$92.H5E_CANTDEC_g$LAYOUT);
-    static final  OfLong H5E_NOIDS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOIDS_g$VH = constants$92.H5E_NOIDS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOIDS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOIDS_g", constants$92.H5E_NOIDS_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$92() {}
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_empty_reserve"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("empty_reserve"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("dirty_bytes_threshold"));
+    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata_write_strategy"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_BOOLEAN.withName("generate_image"),
+        JAVA_BOOLEAN.withName("save_resize_status"),
+        MemoryLayout.paddingLayout(2),
+        JAVA_INT.withName("entry_ageout")
+    ).withName("H5AC_cache_image_config_t");
+    static final VarHandle const$5 = constants$92.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * enum H5Z_cb_return_t (*H5Z_filter_func_t)(int filter,void* buf,unsigned long buf_size,void* op_data);
+ * }
+ */
 public interface H5Z_filter_func_t {
 
-    int apply(int filter, java.lang.foreign.MemoryAddress buf, long buf_size, java.lang.foreign.MemoryAddress op_data);
-    static MemorySegment allocate(H5Z_filter_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5Z_filter_func_t.class, fi, constants$125.H5Z_filter_func_t$FUNC, session);
+    int apply(int filter, java.lang.foreign.MemorySegment buf, long buf_size, java.lang.foreign.MemorySegment op_data);
+    static MemorySegment allocate(H5Z_filter_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$215.const$0, fi, constants$214.const$5, scope);
     }
-    static H5Z_filter_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (int _filter, java.lang.foreign.MemoryAddress _buf, long _buf_size, java.lang.foreign.MemoryAddress _op_data) -> {
+    static H5Z_filter_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (int _filter, java.lang.foreign.MemorySegment _buf, long _buf_size, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$125.H5Z_filter_func_t$MH.invokeExact((Addressable)symbol, _filter, (java.lang.foreign.Addressable)_buf, _buf_size, (java.lang.foreign.Addressable)_op_data);
+                return (int)constants$215.const$1.invokeExact(symbol, _filter, _buf, _buf_size, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

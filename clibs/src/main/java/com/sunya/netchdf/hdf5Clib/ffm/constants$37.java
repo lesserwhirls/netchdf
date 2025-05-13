@@ -7,39 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$37 {
+final class constants$37 {
 
-    static final FunctionDescriptor H5L_query_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5L_query_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$37.H5L_query_func_t$FUNC
-    );
-    static final FunctionDescriptor H5L_iterate_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5L_iterate_t$MH = RuntimeHelper.downcallHandle(
-        constants$37.H5L_iterate_t$FUNC
-    );
-    static final FunctionDescriptor H5L_elink_traverse_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5L_elink_traverse_t$MH = RuntimeHelper.downcallHandle(
-        constants$37.H5L_elink_traverse_t$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$37() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST16_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST16_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT32_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT32_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST32_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST32_g", JAVA_LONG);
 }
 
 

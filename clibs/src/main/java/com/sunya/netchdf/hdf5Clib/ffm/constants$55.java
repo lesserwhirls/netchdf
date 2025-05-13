@@ -7,62 +7,24 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$55 {
+final class constants$55 {
 
-    static final FunctionDescriptor H5Dcreate2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dcreate2$MH = RuntimeHelper.downcallHandle(
-        "H5Dcreate2",
-        constants$55.H5Dcreate2$FUNC
-    );
-    static final FunctionDescriptor H5Dcreate_anon$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dcreate_anon$MH = RuntimeHelper.downcallHandle(
-        "H5Dcreate_anon",
-        constants$55.H5Dcreate_anon$FUNC
-    );
-    static final FunctionDescriptor H5Dopen2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dopen2$MH = RuntimeHelper.downcallHandle(
-        "H5Dopen2",
-        constants$55.H5Dopen2$FUNC
-    );
-    static final FunctionDescriptor H5Dclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dclose$MH = RuntimeHelper.downcallHandle(
-        "H5Dclose",
-        constants$55.H5Dclose$FUNC
-    );
-    static final FunctionDescriptor H5Dget_space$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dget_space$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_space",
-        constants$55.H5Dget_space$FUNC
-    );
-    static final FunctionDescriptor H5Dget_space_status$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dget_space_status$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_space_status",
-        constants$55.H5Dget_space_status$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$55() {}
+    static final VarHandle const$0 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$1 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("address"),
+        JAVA_LONG.withName("val_size")
+    ).withName("");
+    static final VarHandle const$3 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("address"));
+    static final VarHandle const$4 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
 }
 

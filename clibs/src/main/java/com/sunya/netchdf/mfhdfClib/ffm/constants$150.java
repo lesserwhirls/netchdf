@@ -3,74 +3,51 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$150 {
 
-class constants$150 {
-
-    static final FunctionDescriptor VSwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$150() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_SHORT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle VSwrite$MH = RuntimeHelper.downcallHandle(
-        "VSwrite",
-        constants$150.VSwrite$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFfindnextref",
+        constants$150.const$0
     );
-    static final FunctionDescriptor ANgetdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle ANgetdatainfo$MH = RuntimeHelper.downcallHandle(
-        "ANgetdatainfo",
-        constants$150.ANgetdatainfo$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFputcomp",
+        constants$150.const$2
     );
-    static final FunctionDescriptor HDgetdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT
     );
-    static final MethodHandle HDgetdatainfo$MH = RuntimeHelper.downcallHandle(
-        "HDgetdatainfo",
-        constants$150.HDgetdatainfo$FUNC
-    );
-    static final FunctionDescriptor VSgetdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetdatainfo$MH = RuntimeHelper.downcallHandle(
-        "VSgetdatainfo",
-        constants$150.VSgetdatainfo$FUNC
-    );
-    static final FunctionDescriptor VSgetattdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetattdatainfo$MH = RuntimeHelper.downcallHandle(
-        "VSgetattdatainfo",
-        constants$150.VSgetattdatainfo$FUNC
-    );
-    static final FunctionDescriptor Vgetattdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vgetattdatainfo$MH = RuntimeHelper.downcallHandle(
-        "Vgetattdatainfo",
-        constants$150.Vgetattdatainfo$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFgetcomp",
+        constants$150.const$4
     );
 }
 

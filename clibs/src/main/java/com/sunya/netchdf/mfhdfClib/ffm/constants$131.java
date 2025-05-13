@@ -3,68 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$131 {
 
-class constants$131 {
-
-    static final FunctionDescriptor Vfindattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$131() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "Hstartwrite",
+        constants$130.const$2
     );
-    static final MethodHandle Vfindattr$MH = RuntimeHelper.downcallHandle(
-        "Vfindattr",
-        constants$131.Vfindattr$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hstartaccess",
+        constants$130.const$2
     );
-    static final FunctionDescriptor Vattrinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Hsetlength",
+        constants$93.const$3
     );
-    static final MethodHandle Vattrinfo$MH = RuntimeHelper.downcallHandle(
-        "Vattrinfo",
-        constants$131.Vattrinfo$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Happendable",
+        constants$1.const$5
     );
-    static final FunctionDescriptor Vattrinfo2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HPisappendable",
+        constants$1.const$5
     );
-    static final MethodHandle Vattrinfo2$MH = RuntimeHelper.downcallHandle(
-        "Vattrinfo2",
-        constants$131.Vattrinfo2$FUNC
-    );
-    static final FunctionDescriptor Vgetattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vgetattr$MH = RuntimeHelper.downcallHandle(
-        "Vgetattr",
-        constants$131.Vgetattr$FUNC
-    );
-    static final FunctionDescriptor Vgetattr2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vgetattr2$MH = RuntimeHelper.downcallHandle(
-        "Vgetattr2",
-        constants$131.Vgetattr2$FUNC
-    );
-    static final FunctionDescriptor Vgetversion$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vgetversion$MH = RuntimeHelper.downcallHandle(
-        "Vgetversion",
-        constants$131.Vgetversion$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HPregister_term_func",
+        constants$17.const$4
     );
 }
 

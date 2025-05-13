@@ -7,26 +7,39 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$97 {
+final class constants$97 {
 
-    static final  OfLong H5E_LOGGING_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_LOGGING_g$VH = constants$97.H5E_LOGGING_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_LOGGING_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_LOGGING_g", constants$97.H5E_LOGGING_g$LAYOUT);
-    static final  OfLong H5E_LOGFAIL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_LOGFAIL_g$VH = constants$97.H5E_LOGFAIL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_LOGFAIL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_LOGFAIL_g", constants$97.H5E_LOGFAIL_g$LAYOUT);
-    static final  OfLong H5E_CANTCORK_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCORK_g$VH = constants$97.H5E_CANTCORK_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCORK_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCORK_g", constants$97.H5E_CANTCORK_g$LAYOUT);
-    static final  OfLong H5E_CANTUNCORK_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNCORK_g$VH = constants$97.H5E_CANTUNCORK_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNCORK_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNCORK_g", constants$97.H5E_CANTUNCORK_g$LAYOUT);
-    static final  OfLong H5E_TRAVERSE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_TRAVERSE_g$VH = constants$97.H5E_TRAVERSE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_TRAVERSE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_TRAVERSE_g", constants$97.H5E_TRAVERSE_g$LAYOUT);
-    static final  OfLong H5E_NLINKS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NLINKS_g$VH = constants$97.H5E_NLINKS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NLINKS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NLINKS_g", constants$97.H5E_NLINKS_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$97() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_storage_size",
+        constants$41.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dget_num_chunks",
+        constants$85.const$4
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_info_by_coord",
+        constants$97.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dchunk_iter",
+        constants$97.const$4
+    );
 }
 
 

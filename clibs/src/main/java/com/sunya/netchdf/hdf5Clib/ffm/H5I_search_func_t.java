@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5I_search_func_t)(void* obj,long id,void* key);
+ * }
+ */
 public interface H5I_search_func_t {
 
-    int apply(java.lang.foreign.MemoryAddress obj, long id, java.lang.foreign.MemoryAddress key);
-    static MemorySegment allocate(H5I_search_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5I_search_func_t.class, fi, constants$4.H5I_search_func_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment obj, long id, java.lang.foreign.MemorySegment key);
+    static MemorySegment allocate(H5I_search_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$17.const$5, fi, constants$17.const$4, scope);
     }
-    static H5I_search_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _obj, long _id, java.lang.foreign.MemoryAddress _key) -> {
+    static H5I_search_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _obj, long _id, java.lang.foreign.MemorySegment _key) -> {
             try {
-                return (int)constants$5.H5I_search_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_obj, _id, (java.lang.foreign.Addressable)_key);
+                return (int)constants$18.const$0.invokeExact(symbol, _obj, _id, _key);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -7,47 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$126 {
+final class constants$126 {
 
-    static final FunctionDescriptor H5Z_set_local_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$126() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ftello",
+        constants$42.const$0
     );
-    static final MethodHandle H5Z_set_local_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$126.H5Z_set_local_func_t$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fgetpos",
+        constants$112.const$0
     );
-    static final FunctionDescriptor H5Z_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fsetpos",
+        constants$112.const$0
     );
-    static final MethodHandle H5Z_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$126.H5Z_func_t$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clearerr",
+        constants$116.const$4
     );
-    static final FunctionDescriptor H5Zregister$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "feof",
+        constants$15.const$2
     );
-    static final MethodHandle H5Zregister$MH = RuntimeHelper.downcallHandle(
-        "H5Zregister",
-        constants$126.H5Zregister$FUNC
-    );
-    static final FunctionDescriptor H5Zunregister$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Zunregister$MH = RuntimeHelper.downcallHandle(
-        "H5Zunregister",
-        constants$126.H5Zunregister$FUNC
-    );
-    static final FunctionDescriptor H5Zfilter_avail$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Zfilter_avail$MH = RuntimeHelper.downcallHandle(
-        "H5Zfilter_avail",
-        constants$126.H5Zfilter_avail$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ferror",
+        constants$15.const$2
     );
 }
 

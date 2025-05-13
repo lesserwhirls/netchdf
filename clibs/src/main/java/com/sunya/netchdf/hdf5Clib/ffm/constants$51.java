@@ -7,71 +7,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$51 {
+final class constants$51 {
 
-    static final FunctionDescriptor H5Arename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$51() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Arename$MH = RuntimeHelper.downcallHandle(
-        "H5Arename",
-        constants$51.H5Arename$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tset_fields",
+        constants$51.const$0
     );
-    static final FunctionDescriptor H5Arename_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tset_ebias",
+        constants$40.const$0
     );
-    static final MethodHandle H5Arename_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Arename_by_name",
-        constants$51.H5Arename_by_name$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tset_norm",
+        constants$45.const$5
     );
-    static final FunctionDescriptor H5Aiterate2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tset_inpad",
+        constants$45.const$5
     );
-    static final MethodHandle H5Aiterate2$MH = RuntimeHelper.downcallHandle(
-        "H5Aiterate2",
-        constants$51.H5Aiterate2$FUNC
-    );
-    static final FunctionDescriptor H5Aiterate_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aiterate_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Aiterate_by_name",
-        constants$51.H5Aiterate_by_name$FUNC
-    );
-    static final FunctionDescriptor H5Adelete$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Adelete$MH = RuntimeHelper.downcallHandle(
-        "H5Adelete",
-        constants$51.H5Adelete$FUNC
-    );
-    static final FunctionDescriptor H5Adelete_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Adelete_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Adelete_by_name",
-        constants$51.H5Adelete_by_name$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tset_cset",
+        constants$45.const$5
     );
 }
 

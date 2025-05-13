@@ -4,52 +4,37 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$7 {
+final class constants$7 {
 
-    static final FunctionDescriptor strtoimax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$7() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "isspace_l",
+        constants$5.const$3
     );
-    static final MethodHandle strtoimax$MH = RuntimeHelper.downcallHandle(
-        "strtoimax",
-        constants$7.strtoimax$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "isupper_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor strtoumax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "isxdigit_l",
+        constants$5.const$3
     );
-    static final MethodHandle strtoumax$MH = RuntimeHelper.downcallHandle(
-        "strtoumax",
-        constants$7.strtoumax$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "isblank_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor wcstoimax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "__tolower_l",
+        constants$5.const$3
     );
-    static final MethodHandle wcstoimax$MH = RuntimeHelper.downcallHandle(
-        "wcstoimax",
-        constants$7.wcstoimax$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "tolower_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor wcstoumax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle wcstoumax$MH = RuntimeHelper.downcallHandle(
-        "wcstoumax",
-        constants$7.wcstoumax$FUNC
-    );
-    static final  OfAddress stdin$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle stdin$VH = constants$7.stdin$LAYOUT.varHandle();
-    static final MemorySegment stdin$SEGMENT = RuntimeHelper.lookupGlobalVariable("stdin", constants$7.stdin$LAYOUT);
-    static final  OfAddress stdout$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle stdout$VH = constants$7.stdout$LAYOUT.varHandle();
-    static final MemorySegment stdout$SEGMENT = RuntimeHelper.lookupGlobalVariable("stdout", constants$7.stdout$LAYOUT);
 }
 
 

@@ -7,14 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$183 {
+final class constants$183 {
 
-    static final MemorySegment H5_FORTRAN_SIZEOF_LONG_DOUBLE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("16");
-    static final MemorySegment H5_LT_OBJDIR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String(".libs/");
-    static final MemorySegment H5_PACKAGE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf5");
-    static final MemorySegment H5_PACKAGE_BUGREPORT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("help@hdfgroup.org");
-    static final MemorySegment H5_PACKAGE_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5");
-    static final MemorySegment H5_PACKAGE_STRING$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 1.10.7");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$183() {}
+    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.close.class, "apply", constants$15.const$2);
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.cmp.class, "apply", constants$112.const$0);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$112.const$0
+    );
+    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("cmp"));
 }
 
 

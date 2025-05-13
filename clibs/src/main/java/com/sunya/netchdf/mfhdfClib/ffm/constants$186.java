@@ -2,16 +2,43 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$186 {
 
-class constants$186 {
-
-    static final MemorySegment SCNdLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment SCNdLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment SCNdFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$186() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "GRgetlutid",
+        constants$93.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "GRluttoref",
+        constants$139.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "GRgetlutinfo",
+        constants$42.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "GRwritelut",
+        constants$186.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "GRreadlut",
+        constants$5.const$3
+    );
 }
 
 

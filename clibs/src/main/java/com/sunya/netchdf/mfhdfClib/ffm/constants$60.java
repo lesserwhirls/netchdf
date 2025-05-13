@@ -4,54 +4,42 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$60 {
+final class constants$60 {
 
-    static final FunctionDescriptor dup2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$60() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "free",
+        constants$24.const$2
     );
-    static final MethodHandle dup2$MH = RuntimeHelper.downcallHandle(
-        "dup2",
-        constants$60.dup2$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final  OfAddress __environ$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle __environ$VH = constants$60.__environ$LAYOUT.varHandle();
-    static final MemorySegment __environ$SEGMENT = RuntimeHelper.lookupGlobalVariable("__environ", constants$60.__environ$LAYOUT);
-    static final FunctionDescriptor execve$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "reallocarray",
+        constants$60.const$1
     );
-    static final MethodHandle execve$MH = RuntimeHelper.downcallHandle(
-        "execve",
-        constants$60.execve$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "alloca",
+        constants$41.const$0
     );
-    static final FunctionDescriptor fexecve$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "valloc",
+        constants$41.const$0
     );
-    static final MethodHandle fexecve$MH = RuntimeHelper.downcallHandle(
-        "fexecve",
-        constants$60.fexecve$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final FunctionDescriptor execv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle execv$MH = RuntimeHelper.downcallHandle(
-        "execv",
-        constants$60.execv$FUNC
-    );
-    static final FunctionDescriptor execle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle execle$MH = RuntimeHelper.downcallHandleVariadic(
-        "execle",
-        constants$60.execle$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "posix_memalign",
+        constants$60.const$5
     );
 }
 

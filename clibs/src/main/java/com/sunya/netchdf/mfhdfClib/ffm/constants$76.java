@@ -3,62 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$76 {
 
-class constants$76 {
-
-    static final FunctionDescriptor fchmodat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$76() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "__mempcpy",
+        constants$70.const$0
     );
-    static final MethodHandle fchmodat$MH = RuntimeHelper.downcallHandle(
-        "fchmodat",
-        constants$76.fchmodat$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "mempcpy",
+        constants$70.const$0
     );
-    static final FunctionDescriptor umask$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strlen",
+        constants$33.const$3
     );
-    static final MethodHandle umask$MH = RuntimeHelper.downcallHandle(
-        "umask",
-        constants$76.umask$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor mkdir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strnlen",
+        constants$76.const$3
     );
-    static final MethodHandle mkdir$MH = RuntimeHelper.downcallHandle(
-        "mkdir",
-        constants$76.mkdir$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor mkdirat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle mkdirat$MH = RuntimeHelper.downcallHandle(
-        "mkdirat",
-        constants$76.mkdirat$FUNC
-    );
-    static final FunctionDescriptor mknod$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle mknod$MH = RuntimeHelper.downcallHandle(
-        "mknod",
-        constants$76.mknod$FUNC
-    );
-    static final FunctionDescriptor mknodat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle mknodat$MH = RuntimeHelper.downcallHandle(
-        "mknodat",
-        constants$76.mknodat$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "strerror",
+        constants$76.const$5
     );
 }
 

@@ -3,51 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$27 {
 
-class constants$27 {
-
-    static final FunctionDescriptor initstate_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$27() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "dprintf",
+        constants$5.const$3
     );
-    static final MethodHandle initstate_r$MH = RuntimeHelper.downcallHandle(
-        "initstate_r",
-        constants$27.initstate_r$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "fscanf",
+        constants$19.const$5
     );
-    static final FunctionDescriptor setstate_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandleVariadic(
+        "scanf",
+        constants$17.const$4
     );
-    static final MethodHandle setstate_r$MH = RuntimeHelper.downcallHandle(
-        "setstate_r",
-        constants$27.setstate_r$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "sscanf",
+        constants$19.const$5
     );
-    static final FunctionDescriptor rand$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle rand$MH = RuntimeHelper.downcallHandle(
-        "rand",
-        constants$27.rand$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "vfscanf",
+        constants$25.const$1
     );
-    static final FunctionDescriptor srand$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle srand$MH = RuntimeHelper.downcallHandle(
-        "srand",
-        constants$27.srand$FUNC
-    );
-    static final FunctionDescriptor rand_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle rand_r$MH = RuntimeHelper.downcallHandle(
-        "rand_r",
-        constants$27.rand_r$FUNC
-    );
-    static final FunctionDescriptor drand48$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT);
-    static final MethodHandle drand48$MH = RuntimeHelper.downcallHandle(
-        "drand48",
-        constants$27.drand48$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "vscanf",
+        constants$19.const$5
     );
 }
 

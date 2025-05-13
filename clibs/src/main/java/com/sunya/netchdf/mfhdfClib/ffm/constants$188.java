@@ -2,16 +2,42 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$188 {
 
-class constants$188 {
-
-    static final MemorySegment SCNiLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment SCNiLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNiFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhi");
-    static final MemorySegment SCNiFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNiFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNiFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$188() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "GRattrinfo",
+        constants$188.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "GRgetattr",
+        constants$132.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "GRfindattr",
+        constants$5.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "GRgetcomptype",
+        constants$5.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "GRPshutdown",
+        constants$28.const$3
+    );
 }
 
 

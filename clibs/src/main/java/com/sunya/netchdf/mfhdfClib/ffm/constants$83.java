@@ -3,63 +3,41 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$83 {
 
-class constants$83 {
-
-    static final FunctionDescriptor HDputc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_CHAR$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$83() {}
+    static final VarHandle const$0 = constants$81.const$2.varHandle(MemoryLayout.PathElement.groupElement("tm_gmtoff"));
+    static final VarHandle const$1 = constants$81.const$2.varHandle(MemoryLayout.PathElement.groupElement("tm_zone"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_interval"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("it_value")
+    ).withName("itimerspec");
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clock",
+        constants$38.const$3
     );
-    static final MethodHandle HDputc$MH = RuntimeHelper.downcallHandle(
-        "HDputc",
-        constants$83.HDputc$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "time",
+        constants$33.const$3
     );
-    static final FunctionDescriptor Hgetelement$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_DOUBLE,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle Hgetelement$MH = RuntimeHelper.downcallHandle(
-        "Hgetelement",
-        constants$83.Hgetelement$FUNC
-    );
-    static final FunctionDescriptor Hputelement$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hputelement$MH = RuntimeHelper.downcallHandle(
-        "Hputelement",
-        constants$83.Hputelement$FUNC
-    );
-    static final FunctionDescriptor Hlength$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hlength$MH = RuntimeHelper.downcallHandle(
-        "Hlength",
-        constants$83.Hlength$FUNC
-    );
-    static final FunctionDescriptor Hoffset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hoffset$MH = RuntimeHelper.downcallHandle(
-        "Hoffset",
-        constants$83.Hoffset$FUNC
-    );
-    static final FunctionDescriptor Hsync$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hsync$MH = RuntimeHelper.downcallHandle(
-        "Hsync",
-        constants$83.Hsync$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "difftime",
+        constants$83.const$5
     );
 }
 

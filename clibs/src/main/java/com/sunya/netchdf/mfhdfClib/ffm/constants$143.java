@@ -3,58 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$143 {
 
-class constants$143 {
-
-    static final FunctionDescriptor Vgetname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$143() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HLsetblockinfo",
+        constants$98.const$3
     );
-    static final MethodHandle Vgetname$MH = RuntimeHelper.downcallHandle(
-        "Vgetname",
-        constants$143.Vgetname$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HLgetblockinfo",
+        constants$26.const$5
     );
-    static final FunctionDescriptor Vgetnamelen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle Vgetnamelen$MH = RuntimeHelper.downcallHandle(
-        "Vgetnamelen",
-        constants$143.Vgetnamelen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HLgetdatainfo",
+        constants$143.const$2
     );
-    static final FunctionDescriptor Vgetclassnamelen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle Vgetclassnamelen$MH = RuntimeHelper.downcallHandle(
-        "Vgetclassnamelen",
-        constants$143.Vgetclassnamelen$FUNC
-    );
-    static final FunctionDescriptor Vgetclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vgetclass$MH = RuntimeHelper.downcallHandle(
-        "Vgetclass",
-        constants$143.Vgetclass$FUNC
-    );
-    static final FunctionDescriptor Vinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vinquire$MH = RuntimeHelper.downcallHandle(
-        "Vinquire",
-        constants$143.Vinquire$FUNC
-    );
-    static final FunctionDescriptor Vdelete$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vdelete$MH = RuntimeHelper.downcallHandle(
-        "Vdelete",
-        constants$143.Vdelete$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HXcreate",
+        constants$143.const$4
     );
 }
 

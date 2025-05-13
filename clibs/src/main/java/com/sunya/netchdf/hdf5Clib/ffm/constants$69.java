@@ -7,61 +7,21 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$69 {
+final class constants$69 {
 
-    static final FunctionDescriptor getw$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getw$MH = RuntimeHelper.downcallHandle(
-        "getw",
-        constants$69.getw$FUNC
-    );
-    static final FunctionDescriptor putw$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putw$MH = RuntimeHelper.downcallHandle(
-        "putw",
-        constants$69.putw$FUNC
-    );
-    static final FunctionDescriptor fgets$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fgets$MH = RuntimeHelper.downcallHandle(
-        "fgets",
-        constants$69.fgets$FUNC
-    );
-    static final FunctionDescriptor __getdelim$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle __getdelim$MH = RuntimeHelper.downcallHandle(
-        "__getdelim",
-        constants$69.__getdelim$FUNC
-    );
-    static final FunctionDescriptor getdelim$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getdelim$MH = RuntimeHelper.downcallHandle(
-        "getdelim",
-        constants$69.getdelim$FUNC
-    );
-    static final FunctionDescriptor getline$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getline$MH = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$69.getline$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$69() {}
+    static final VarHandle const$0 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("total"),
+        JAVA_LONG.withName("meta"),
+        JAVA_LONG.withName("mesg"),
+        JAVA_LONG.withName("free")
+    ).withName("");
+    static final VarHandle const$2 = constants$69.const$1.varHandle(MemoryLayout.PathElement.groupElement("total"));
+    static final VarHandle const$3 = constants$69.const$1.varHandle(MemoryLayout.PathElement.groupElement("meta"));
+    static final VarHandle const$4 = constants$69.const$1.varHandle(MemoryLayout.PathElement.groupElement("mesg"));
+    static final VarHandle const$5 = constants$69.const$1.varHandle(MemoryLayout.PathElement.groupElement("free"));
 }
 
 

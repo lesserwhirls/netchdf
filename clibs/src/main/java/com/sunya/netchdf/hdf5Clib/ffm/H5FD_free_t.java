@@ -7,70 +7,107 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5FD_free_t {
+ *     haddr_t addr;
+ *     hsize_t size;
+ *     struct H5FD_free_t* next;
+ * };
+ * }
+ */
 public class H5FD_free_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("addr"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("size"),
-        Constants$root.C_POINTER$LAYOUT.withName("next")
-    ).withName("H5FD_free_t");
     public static MemoryLayout $LAYOUT() {
-        return H5FD_free_t.$struct$LAYOUT;
+        return constants$190.const$5;
     }
-    static final VarHandle addr$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("addr"));
     public static VarHandle addr$VH() {
-        return H5FD_free_t.addr$VH;
+        return constants$191.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t addr;
+     * }
+     */
     public static long addr$get(MemorySegment seg) {
-        return (long)H5FD_free_t.addr$VH.get(seg);
+        return (long)constants$191.const$0.get(seg);
     }
-    public static void addr$set( MemorySegment seg, long x) {
-        H5FD_free_t.addr$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t addr;
+     * }
+     */
+    public static void addr$set(MemorySegment seg, long x) {
+        constants$191.const$0.set(seg, x);
     }
     public static long addr$get(MemorySegment seg, long index) {
-        return (long)H5FD_free_t.addr$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$191.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void addr$set(MemorySegment seg, long index, long x) {
-        H5FD_free_t.addr$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$191.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("size"));
     public static VarHandle size$VH() {
-        return H5FD_free_t.size$VH;
+        return constants$191.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t size;
+     * }
+     */
     public static long size$get(MemorySegment seg) {
-        return (long)H5FD_free_t.size$VH.get(seg);
+        return (long)constants$191.const$1.get(seg);
     }
-    public static void size$set( MemorySegment seg, long x) {
-        H5FD_free_t.size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t size;
+     * }
+     */
+    public static void size$set(MemorySegment seg, long x) {
+        constants$191.const$1.set(seg, x);
     }
     public static long size$get(MemorySegment seg, long index) {
-        return (long)H5FD_free_t.size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$191.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void size$set(MemorySegment seg, long index, long x) {
-        H5FD_free_t.size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$191.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle next$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("next"));
     public static VarHandle next$VH() {
-        return H5FD_free_t.next$VH;
+        return constants$191.const$2;
     }
-    public static MemoryAddress next$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_free_t.next$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * struct H5FD_free_t* next;
+     * }
+     */
+    public static MemorySegment next$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$191.const$2.get(seg);
     }
-    public static void next$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_free_t.next$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * struct H5FD_free_t* next;
+     * }
+     */
+    public static void next$set(MemorySegment seg, MemorySegment x) {
+        constants$191.const$2.set(seg, x);
     }
-    public static MemoryAddress next$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_free_t.next$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment next$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$191.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void next$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_free_t.next$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void next$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$191.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

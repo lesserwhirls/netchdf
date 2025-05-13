@@ -3,63 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$40 {
 
-class constants$40 {
-
-    static final FunctionDescriptor getloadavg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$40() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strtol",
+        constants$9.const$2
     );
-    static final MethodHandle getloadavg$MH = RuntimeHelper.downcallHandle(
-        "getloadavg",
-        constants$40.getloadavg$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strtoul",
+        constants$9.const$2
     );
-    static final FunctionDescriptor memcpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strtoq",
+        constants$9.const$2
     );
-    static final MethodHandle memcpy$MH = RuntimeHelper.downcallHandle(
-        "memcpy",
-        constants$40.memcpy$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strtouq",
+        constants$9.const$2
     );
-    static final FunctionDescriptor memmove$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strtoll",
+        constants$9.const$2
     );
-    static final MethodHandle memmove$MH = RuntimeHelper.downcallHandle(
-        "memmove",
-        constants$40.memmove$FUNC
-    );
-    static final FunctionDescriptor memccpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle memccpy$MH = RuntimeHelper.downcallHandle(
-        "memccpy",
-        constants$40.memccpy$FUNC
-    );
-    static final FunctionDescriptor memset$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle memset$MH = RuntimeHelper.downcallHandle(
-        "memset",
-        constants$40.memset$FUNC
-    );
-    static final FunctionDescriptor memcmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle memcmp$MH = RuntimeHelper.downcallHandle(
-        "memcmp",
-        constants$40.memcmp$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strtoull",
+        constants$9.const$2
     );
 }
 

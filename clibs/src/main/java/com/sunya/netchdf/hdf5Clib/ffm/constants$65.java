@@ -7,60 +7,48 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$65 {
+final class constants$65 {
 
-    static final FunctionDescriptor vprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$65() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle vprintf$MH = RuntimeHelper.downcallHandle(
-        "vprintf",
-        constants$65.vprintf$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lget_info_by_idx",
+        constants$65.const$0
     );
-    static final FunctionDescriptor vsprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle vsprintf$MH = RuntimeHelper.downcallHandle(
-        "vsprintf",
-        constants$65.vsprintf$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lget_name_by_idx",
+        constants$65.const$2
     );
-    static final FunctionDescriptor snprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle snprintf$MH = RuntimeHelper.downcallHandleVariadic(
-        "snprintf",
-        constants$65.snprintf$FUNC
-    );
-    static final FunctionDescriptor vsnprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vsnprintf$MH = RuntimeHelper.downcallHandle(
-        "vsnprintf",
-        constants$65.vsnprintf$FUNC
-    );
-    static final FunctionDescriptor vdprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vdprintf$MH = RuntimeHelper.downcallHandle(
-        "vdprintf",
-        constants$65.vdprintf$FUNC
-    );
-    static final FunctionDescriptor dprintf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle dprintf$MH = RuntimeHelper.downcallHandleVariadic(
-        "dprintf",
-        constants$65.dprintf$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Literate",
+        constants$65.const$4
     );
 }
 

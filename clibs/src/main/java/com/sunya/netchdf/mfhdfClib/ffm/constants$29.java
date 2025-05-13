@@ -3,57 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$29 {
 
-class constants$29 {
-
-    static final FunctionDescriptor seed48$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$29() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getchar_unlocked",
+        constants$28.const$3
     );
-    static final MethodHandle seed48$MH = RuntimeHelper.downcallHandle(
-        "seed48",
-        constants$29.seed48$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fgetc_unlocked",
+        constants$17.const$4
     );
-    static final FunctionDescriptor lcong48$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fputc",
+        constants$5.const$3
     );
-    static final MethodHandle lcong48$MH = RuntimeHelper.downcallHandle(
-        "lcong48",
-        constants$29.lcong48$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "putc",
+        constants$5.const$3
     );
-    static final FunctionDescriptor drand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "putchar",
+        constants$1.const$5
     );
-    static final MethodHandle drand48_r$MH = RuntimeHelper.downcallHandle(
-        "drand48_r",
-        constants$29.drand48_r$FUNC
-    );
-    static final FunctionDescriptor erand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle erand48_r$MH = RuntimeHelper.downcallHandle(
-        "erand48_r",
-        constants$29.erand48_r$FUNC
-    );
-    static final FunctionDescriptor lrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle lrand48_r$MH = RuntimeHelper.downcallHandle(
-        "lrand48_r",
-        constants$29.lrand48_r$FUNC
-    );
-    static final FunctionDescriptor nrand48_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nrand48_r$MH = RuntimeHelper.downcallHandle(
-        "nrand48_r",
-        constants$29.nrand48_r$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fputc_unlocked",
+        constants$5.const$3
     );
 }
 

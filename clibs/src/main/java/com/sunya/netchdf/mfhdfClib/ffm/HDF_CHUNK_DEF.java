@@ -2,8 +2,20 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
-public class HDF_CHUNK_DEF extends hdf_chunk_def_u {
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * typedef union hdf_chunk_def_u HDF_CHUNK_DEF;
+ * }
+ */
+public final class HDF_CHUNK_DEF extends hdf_chunk_def_u {
 
+    // Suppresses default constructor, ensuring non-instantiability.
+    private HDF_CHUNK_DEF() {}
 }
 
 

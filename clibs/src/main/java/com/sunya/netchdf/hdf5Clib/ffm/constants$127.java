@@ -7,34 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$127 {
+final class constants$127 {
 
-    static final FunctionDescriptor H5Zget_filter_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$127() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "clearerr_unlocked",
+        constants$116.const$4
     );
-    static final MethodHandle H5Zget_filter_info$MH = RuntimeHelper.downcallHandle(
-        "H5Zget_filter_info",
-        constants$127.H5Zget_filter_info$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "feof_unlocked",
+        constants$15.const$2
     );
-    static final FunctionDescriptor H5P_cls_create_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "ferror_unlocked",
+        constants$15.const$2
     );
-    static final MethodHandle H5P_cls_create_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$127.H5P_cls_create_func_t$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "perror",
+        constants$116.const$4
     );
-    static final FunctionDescriptor H5P_cls_copy_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fileno",
+        constants$15.const$2
     );
-    static final MethodHandle H5P_cls_copy_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$127.H5P_cls_copy_func_t$FUNC
-    );
-    static final FunctionDescriptor H5P_cls_close_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fileno_unlocked",
+        constants$15.const$2
     );
 }
 

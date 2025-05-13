@@ -7,53 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$170 {
+final class constants$170 {
 
-    static final FunctionDescriptor H5PLprepend$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$170() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5PLprepend$MH = RuntimeHelper.downcallHandle(
-        "H5PLprepend",
-        constants$170.H5PLprepend$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fcreate",
+        constants$170.const$0
     );
-    static final FunctionDescriptor H5PLreplace$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle H5PLreplace$MH = RuntimeHelper.downcallHandle(
-        "H5PLreplace",
-        constants$170.H5PLreplace$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fopen",
+        constants$170.const$2
     );
-    static final FunctionDescriptor H5PLinsert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Freopen",
+        constants$10.const$2
     );
-    static final MethodHandle H5PLinsert$MH = RuntimeHelper.downcallHandle(
-        "H5PLinsert",
-        constants$170.H5PLinsert$FUNC
-    );
-    static final FunctionDescriptor H5PLremove$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5PLremove$MH = RuntimeHelper.downcallHandle(
-        "H5PLremove",
-        constants$170.H5PLremove$FUNC
-    );
-    static final FunctionDescriptor H5PLget$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5PLget$MH = RuntimeHelper.downcallHandle(
-        "H5PLget",
-        constants$170.H5PLget$FUNC
-    );
-    static final FunctionDescriptor H5PLsize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5PLsize$MH = RuntimeHelper.downcallHandle(
-        "H5PLsize",
-        constants$170.H5PLsize$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fflush",
+        constants$45.const$5
     );
 }
 

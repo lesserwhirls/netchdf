@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$176 {
 
-class constants$176 {
-
-    static final MemorySegment PRIoLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$176() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFSDwriteref",
+        constants$154.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFSDsetfillvalue",
+        constants$17.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFSDgetfillvalue",
+        constants$17.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFSDstartslab",
+        constants$17.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFSDwriteslab",
+        constants$135.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFSDendslab",
+        constants$28.const$3
+    );
 }
 
 

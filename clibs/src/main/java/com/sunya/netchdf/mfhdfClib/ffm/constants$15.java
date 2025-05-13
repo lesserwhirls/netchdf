@@ -3,56 +3,20 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$15 {
 
-class constants$15 {
-
-    static final FunctionDescriptor fputc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fputc$MH = RuntimeHelper.downcallHandle(
-        "fputc",
-        constants$15.fputc$FUNC
-    );
-    static final FunctionDescriptor putc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putc$MH = RuntimeHelper.downcallHandle(
-        "putc",
-        constants$15.putc$FUNC
-    );
-    static final FunctionDescriptor putchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle putchar$MH = RuntimeHelper.downcallHandle(
-        "putchar",
-        constants$15.putchar$FUNC
-    );
-    static final FunctionDescriptor fputc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fputc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fputc_unlocked",
-        constants$15.fputc_unlocked$FUNC
-    );
-    static final FunctionDescriptor putc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "putc_unlocked",
-        constants$15.putc_unlocked$FUNC
-    );
-    static final FunctionDescriptor putchar_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle putchar_unlocked$MH = RuntimeHelper.downcallHandle(
-        "putchar_unlocked",
-        constants$15.putchar_unlocked$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$15() {}
+    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
+    static final VarHandle const$1 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
+    static final VarHandle const$2 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
+    static final VarHandle const$3 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
+    static final VarHandle const$4 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
+    static final VarHandle const$5 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_freeres_list"));
 }
 
 

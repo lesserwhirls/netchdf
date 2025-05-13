@@ -7,52 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$179 {
+final class constants$179 {
 
-    static final FunctionDescriptor H5FD_family_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_family_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_family_init",
-        constants$179.H5FD_family_init$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$179() {}
+    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("terminate"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_size.class, "apply", constants$42.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$42.const$0
     );
-    static final FunctionDescriptor H5Pset_fapl_family$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_family$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_family",
-        constants$179.H5Pset_fapl_family$FUNC
-    );
-    static final FunctionDescriptor H5Pget_fapl_family$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fapl_family$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_family",
-        constants$179.H5Pget_fapl_family$FUNC
-    );
-    static final FunctionDescriptor H5FD_hdfs_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_hdfs_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_hdfs_init",
-        constants$179.H5FD_hdfs_init$FUNC
-    );
-    static final FunctionDescriptor H5Pget_fapl_hdfs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fapl_hdfs$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_hdfs",
-        constants$179.H5Pget_fapl_hdfs$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fapl_hdfs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_hdfs$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_hdfs",
-        constants$179.H5Pset_fapl_hdfs$FUNC
-    );
+    static final VarHandle const$3 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_size"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_encode.class, "apply", constants$15.const$4);
+    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_encode"));
 }
 
 

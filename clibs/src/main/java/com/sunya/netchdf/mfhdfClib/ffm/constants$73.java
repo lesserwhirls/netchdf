@@ -3,49 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$73 {
 
-class constants$73 {
-
-    static final FunctionDescriptor getpagesize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getpagesize$MH = RuntimeHelper.downcallHandle(
-        "getpagesize",
-        constants$73.getpagesize$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$73() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor getdtablesize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getdtablesize$MH = RuntimeHelper.downcallHandle(
-        "getdtablesize",
-        constants$73.getdtablesize$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strxfrm_l",
+        constants$73.const$0
     );
-    static final FunctionDescriptor truncate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strdup",
+        constants$20.const$4
     );
-    static final MethodHandle truncate$MH = RuntimeHelper.downcallHandle(
-        "truncate",
-        constants$73.truncate$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strndup",
+        constants$59.const$4
     );
-    static final FunctionDescriptor ftruncate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle ftruncate$MH = RuntimeHelper.downcallHandle(
-        "ftruncate",
-        constants$73.ftruncate$FUNC
-    );
-    static final FunctionDescriptor brk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle brk$MH = RuntimeHelper.downcallHandle(
-        "brk",
-        constants$73.brk$FUNC
-    );
-    static final FunctionDescriptor sbrk$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle sbrk$MH = RuntimeHelper.downcallHandle(
-        "sbrk",
-        constants$73.sbrk$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strchr",
+        constants$73.const$4
     );
 }
 

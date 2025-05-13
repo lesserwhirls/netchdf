@@ -3,60 +3,32 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$45 {
 
-class constants$45 {
-
-    static final FunctionDescriptor strnlen$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strnlen$MH = RuntimeHelper.downcallHandle(
-        "strnlen",
-        constants$45.strnlen$FUNC
-    );
-    static final FunctionDescriptor strerror$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle strerror$MH = RuntimeHelper.downcallHandle(
-        "strerror",
-        constants$45.strerror$FUNC
-    );
-    static final FunctionDescriptor strerror_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strerror_r$MH = RuntimeHelper.downcallHandle(
-        "strerror_r",
-        constants$45.strerror_r$FUNC
-    );
-    static final FunctionDescriptor strerror_l$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strerror_l$MH = RuntimeHelper.downcallHandle(
-        "strerror_l",
-        constants$45.strerror_l$FUNC
-    );
-    static final FunctionDescriptor bcmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle bcmp$MH = RuntimeHelper.downcallHandle(
-        "bcmp",
-        constants$45.bcmp$FUNC
-    );
-    static final FunctionDescriptor bcopy$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle bcopy$MH = RuntimeHelper.downcallHandle(
-        "bcopy",
-        constants$45.bcopy$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$45() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__lock"),
+        JAVA_INT.withName("__count"),
+        JAVA_INT.withName("__owner"),
+        JAVA_INT.withName("__nusers"),
+        JAVA_INT.withName("__kind"),
+        JAVA_SHORT.withName("__spins"),
+        JAVA_SHORT.withName("__elision"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("__prev"),
+            RuntimeHelper.POINTER.withName("__next")
+        ).withName("__list")
+    ).withName("__pthread_mutex_s");
+    static final VarHandle const$1 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
+    static final VarHandle const$2 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+    static final VarHandle const$3 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
+    static final VarHandle const$4 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
+    static final VarHandle const$5 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
 }
 
 

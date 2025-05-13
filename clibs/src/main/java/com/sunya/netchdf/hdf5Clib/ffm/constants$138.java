@@ -7,56 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$138 {
+final class constants$138 {
 
-    static final FunctionDescriptor H5Pexist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pexist$MH = RuntimeHelper.downcallHandle(
-        "H5Pexist",
-        constants$138.H5Pexist$FUNC
-    );
-    static final FunctionDescriptor H5Pencode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pencode$MH = RuntimeHelper.downcallHandle(
-        "H5Pencode",
-        constants$138.H5Pencode$FUNC
-    );
-    static final FunctionDescriptor H5Pdecode$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pdecode$MH = RuntimeHelper.downcallHandle(
-        "H5Pdecode",
-        constants$138.H5Pdecode$FUNC
-    );
-    static final FunctionDescriptor H5Pget_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_size",
-        constants$138.H5Pget_size$FUNC
-    );
-    static final FunctionDescriptor H5Pget_nprops$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_nprops$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_nprops",
-        constants$138.H5Pget_nprops$FUNC
-    );
-    static final FunctionDescriptor H5Pget_class$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_class$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_class",
-        constants$138.H5Pget_class$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$138() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTALLOC_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOPY_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTFREE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_ALREADYEXISTS_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTLOCK_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNLOCK_g", JAVA_LONG);
 }
 
 

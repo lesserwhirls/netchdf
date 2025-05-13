@@ -3,57 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$107 {
 
-class constants$107 {
-
-    static final FunctionDescriptor DF24setcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$107() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ttyname_r",
+        constants$77.const$0
     );
-    static final MethodHandle DF24setcompress$MH = RuntimeHelper.downcallHandle(
-        "DF24setcompress",
-        constants$107.DF24setcompress$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "isatty",
+        constants$1.const$5
     );
-    static final FunctionDescriptor DF24restart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DF24restart$MH = RuntimeHelper.downcallHandle(
-        "DF24restart",
-        constants$107.DF24restart$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "ttyslot",
+        constants$28.const$3
     );
-    static final FunctionDescriptor DF24addimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "link",
+        constants$19.const$5
     );
-    static final MethodHandle DF24addimage$MH = RuntimeHelper.downcallHandle(
-        "DF24addimage",
-        constants$107.DF24addimage$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor DF24putimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DF24putimage$MH = RuntimeHelper.downcallHandle(
-        "DF24putimage",
-        constants$107.DF24putimage$FUNC
-    );
-    static final FunctionDescriptor DF24nimages$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DF24nimages$MH = RuntimeHelper.downcallHandle(
-        "DF24nimages",
-        constants$107.DF24nimages$FUNC
-    );
-    static final FunctionDescriptor DF24readref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DF24readref$MH = RuntimeHelper.downcallHandle(
-        "DF24readref",
-        constants$107.DF24readref$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "linkat",
+        constants$107.const$4
     );
 }
 

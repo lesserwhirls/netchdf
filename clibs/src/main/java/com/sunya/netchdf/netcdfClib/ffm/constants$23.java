@@ -3,75 +3,39 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$23 {
 
-class constants$23 {
-
-    static final FunctionDescriptor nc_get_att_ushort$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$23() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_inq_format_extended",
+        constants$1.const$0
     );
-    static final MethodHandle nc_get_att_ushort$MH = RuntimeHelper.downcallHandle(
-        "nc_get_att_ushort",
-        constants$23.nc_get_att_ushort$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor nc_put_att_uint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_def_dim",
+        constants$23.const$1
     );
-    static final MethodHandle nc_put_att_uint$MH = RuntimeHelper.downcallHandle(
-        "nc_put_att_uint",
-        constants$23.nc_put_att_uint$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_inq_dimid",
+        constants$1.const$0
     );
-    static final FunctionDescriptor nc_get_att_uint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_inq_dim",
+        constants$7.const$0
     );
-    static final MethodHandle nc_get_att_uint$MH = RuntimeHelper.downcallHandle(
-        "nc_get_att_uint",
-        constants$23.nc_get_att_uint$FUNC
-    );
-    static final FunctionDescriptor nc_put_att_longlong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_att_longlong$MH = RuntimeHelper.downcallHandle(
-        "nc_put_att_longlong",
-        constants$23.nc_put_att_longlong$FUNC
-    );
-    static final FunctionDescriptor nc_get_att_longlong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_get_att_longlong$MH = RuntimeHelper.downcallHandle(
-        "nc_get_att_longlong",
-        constants$23.nc_get_att_longlong$FUNC
-    );
-    static final FunctionDescriptor nc_put_att_ulonglong$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_att_ulonglong$MH = RuntimeHelper.downcallHandle(
-        "nc_put_att_ulonglong",
-        constants$23.nc_put_att_ulonglong$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_inq_dimname",
+        constants$7.const$5
     );
 }
 

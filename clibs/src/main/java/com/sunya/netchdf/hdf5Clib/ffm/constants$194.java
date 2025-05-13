@@ -7,14 +7,29 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$194 {
+final class constants$194 {
 
-    static final MemorySegment PRIxLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$194() {}
+    static final VarHandle const$0 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_malloc"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_memcpy.class, "apply", constants$194.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$194.const$1
+    );
+    static final VarHandle const$4 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_memcpy"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
 }
 
 

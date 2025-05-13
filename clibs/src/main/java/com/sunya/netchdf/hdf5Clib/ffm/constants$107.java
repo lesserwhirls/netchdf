@@ -7,44 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$107 {
+final class constants$107 {
 
-    static final FunctionDescriptor H5Eauto_is_v2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Eauto_is_v2$MH = RuntimeHelper.downcallHandle(
-        "H5Eauto_is_v2",
-        constants$107.H5Eauto_is_v2$FUNC
-    );
-    static final FunctionDescriptor H5Eget_msg$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eget_msg$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_msg",
-        constants$107.H5Eget_msg$FUNC
-    );
-    static final FunctionDescriptor H5Eget_num$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eget_num$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_num",
-        constants$107.H5Eget_num$FUNC
-    );
-    static final FunctionDescriptor H5E_walk1_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5E_walk1_t$MH = RuntimeHelper.downcallHandle(
-        constants$107.H5E_walk1_t$FUNC
-    );
-    static final FunctionDescriptor H5E_auto1_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$107() {}
+    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
+    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
+    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
+    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
+    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
+    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
 }
 
 

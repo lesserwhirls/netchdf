@@ -2,19 +2,27 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*hdf_termfunc_t)();
+ * }
+ */
 public interface hdf_termfunc_t {
 
     int apply();
-    static MemorySegment allocate(hdf_termfunc_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(hdf_termfunc_t.class, fi, constants$79.hdf_termfunc_t$FUNC, session);
+    static MemorySegment allocate(hdf_termfunc_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$122.const$1, fi, constants$28.const$3, scope);
     }
-    static hdf_termfunc_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
+    static hdf_termfunc_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
         return () -> {
             try {
-                return (int)constants$79.hdf_termfunc_t$MH.invokeExact((Addressable)symbol);
+                return (int)constants$122.const$2.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

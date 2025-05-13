@@ -3,68 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$105 {
 
-class constants$105 {
-
-    static final FunctionDescriptor DFGRIreqil$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$105() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getgid",
+        constants$28.const$3
     );
-    static final MethodHandle DFGRIreqil$MH = RuntimeHelper.downcallHandle(
-        "DFGRIreqil",
-        constants$105.DFGRIreqil$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getegid",
+        constants$28.const$3
     );
-    static final FunctionDescriptor DFGRIgetimlut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "getgroups",
+        constants$5.const$3
     );
-    static final MethodHandle DFGRIgetimlut$MH = RuntimeHelper.downcallHandle(
-        "DFGRIgetimlut",
-        constants$105.DFGRIgetimlut$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "setuid",
+        constants$1.const$5
     );
-    static final FunctionDescriptor DFGRIsetdims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "setreuid",
+        constants$93.const$3
     );
-    static final MethodHandle DFGRIsetdims$MH = RuntimeHelper.downcallHandle(
-        "DFGRIsetdims",
-        constants$105.DFGRIsetdims$FUNC
-    );
-    static final FunctionDescriptor DFGRIsetil$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFGRIsetil$MH = RuntimeHelper.downcallHandle(
-        "DFGRIsetil",
-        constants$105.DFGRIsetil$FUNC
-    );
-    static final FunctionDescriptor DFGRIrestart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFGRIrestart$MH = RuntimeHelper.downcallHandle(
-        "DFGRIrestart",
-        constants$105.DFGRIrestart$FUNC
-    );
-    static final FunctionDescriptor DFGRIaddimlut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFGRIaddimlut$MH = RuntimeHelper.downcallHandle(
-        "DFGRIaddimlut",
-        constants$105.DFGRIaddimlut$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "seteuid",
+        constants$1.const$5
     );
 }
 

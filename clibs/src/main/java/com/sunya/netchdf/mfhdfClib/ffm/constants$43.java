@@ -3,57 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$43 {
 
-class constants$43 {
-
-    static final FunctionDescriptor strdup$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$43() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle strdup$MH = RuntimeHelper.downcallHandle(
-        "strdup",
-        constants$43.strdup$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "pselect",
+        constants$43.const$0
     );
-    static final FunctionDescriptor strndup$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strndup$MH = RuntimeHelper.downcallHandle(
-        "strndup",
-        constants$43.strndup$FUNC
-    );
-    static final FunctionDescriptor strchr$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle strchr$MH = RuntimeHelper.downcallHandle(
-        "strchr",
-        constants$43.strchr$FUNC
-    );
-    static final FunctionDescriptor strrchr$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle strrchr$MH = RuntimeHelper.downcallHandle(
-        "strrchr",
-        constants$43.strrchr$FUNC
-    );
-    static final FunctionDescriptor strcspn$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strcspn$MH = RuntimeHelper.downcallHandle(
-        "strcspn",
-        constants$43.strcspn$FUNC
-    );
-    static final FunctionDescriptor strspn$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strspn$MH = RuntimeHelper.downcallHandle(
-        "strspn",
-        constants$43.strspn$FUNC
-    );
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("__value64"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__low"),
+            JAVA_INT.withName("__high")
+        ).withName("__value32")
+    ).withName("");
+    static final VarHandle const$3 = constants$43.const$2.varHandle(MemoryLayout.PathElement.groupElement("__value64"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__low"),
+        JAVA_INT.withName("__high")
+    ).withName("");
+    static final VarHandle const$5 = constants$43.const$4.varHandle(MemoryLayout.PathElement.groupElement("__low"));
 }
 
 

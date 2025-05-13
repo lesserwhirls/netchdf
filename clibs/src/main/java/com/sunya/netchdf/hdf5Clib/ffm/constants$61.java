@@ -7,47 +7,20 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$61 {
+final class constants$61 {
 
-    static final  OfAddress stderr$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle stderr$VH = constants$61.stderr$LAYOUT.varHandle();
-    static final MemorySegment stderr$SEGMENT = RuntimeHelper.lookupGlobalVariable("stderr", constants$61.stderr$LAYOUT);
-    static final FunctionDescriptor remove$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle remove$MH = RuntimeHelper.downcallHandle(
-        "remove",
-        constants$61.remove$FUNC
-    );
-    static final FunctionDescriptor rename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle rename$MH = RuntimeHelper.downcallHandle(
-        "rename",
-        constants$61.rename$FUNC
-    );
-    static final FunctionDescriptor renameat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle renameat$MH = RuntimeHelper.downcallHandle(
-        "renameat",
-        constants$61.renameat$FUNC
-    );
-    static final FunctionDescriptor fclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fclose$MH = RuntimeHelper.downcallHandle(
-        "fclose",
-        constants$61.fclose$FUNC
-    );
-    static final FunctionDescriptor tmpfile$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle tmpfile$MH = RuntimeHelper.downcallHandle(
-        "tmpfile",
-        constants$61.tmpfile$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$61() {}
+    static final VarHandle const$0 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
+    static final VarHandle const$1 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
+    static final VarHandle const$2 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
+    static final VarHandle const$3 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("del_func"));
+    static final VarHandle const$4 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
 }
 

@@ -7,49 +7,75 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5FD_ros3_fapl_t {
+ *     int32_t version;
+ *     hbool_t authenticate;
+ *     char aws_region[33];
+ *     char secret_id[129];
+ *     char secret_key[129];
+ * };
+ * }
+ */
 public class H5FD_ros3_fapl_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        Constants$root.C_BOOL$LAYOUT.withName("authenticate"),
-        MemoryLayout.sequenceLayout(33, Constants$root.C_CHAR$LAYOUT).withName("aws_region"),
-        MemoryLayout.sequenceLayout(129, Constants$root.C_CHAR$LAYOUT).withName("secret_id"),
-        MemoryLayout.sequenceLayout(129, Constants$root.C_CHAR$LAYOUT).withName("secret_key")
-    ).withName("H5FD_ros3_fapl_t");
     public static MemoryLayout $LAYOUT() {
-        return H5FD_ros3_fapl_t.$struct$LAYOUT;
+        return constants$270.const$3;
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5FD_ros3_fapl_t.version$VH;
+        return constants$270.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32_t version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5FD_ros3_fapl_t.version$VH.get(seg);
+        return (int)constants$270.const$4.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5FD_ros3_fapl_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32_t version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$270.const$4.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5FD_ros3_fapl_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$270.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5FD_ros3_fapl_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$270.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle authenticate$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("authenticate"));
     public static VarHandle authenticate$VH() {
-        return H5FD_ros3_fapl_t.authenticate$VH;
+        return constants$270.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t authenticate;
+     * }
+     */
     public static boolean authenticate$get(MemorySegment seg) {
-        return (boolean)H5FD_ros3_fapl_t.authenticate$VH.get(seg);
+        return (boolean)constants$270.const$5.get(seg);
     }
-    public static void authenticate$set( MemorySegment seg, boolean x) {
-        H5FD_ros3_fapl_t.authenticate$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t authenticate;
+     * }
+     */
+    public static void authenticate$set(MemorySegment seg, boolean x) {
+        constants$270.const$5.set(seg, x);
     }
     public static boolean authenticate$get(MemorySegment seg, long index) {
-        return (boolean)H5FD_ros3_fapl_t.authenticate$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$270.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void authenticate$set(MemorySegment seg, long index, boolean x) {
-        H5FD_ros3_fapl_t.authenticate$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$270.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment aws_region$slice(MemorySegment seg) {
         return seg.asSlice(5, 33);
@@ -62,10 +88,10 @@ public class H5FD_ros3_fapl_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

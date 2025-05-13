@@ -7,57 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$30 {
+final class constants$30 {
 
-    static final FunctionDescriptor H5Tget_member_name$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_name$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_name",
-        constants$30.H5Tget_member_name$FUNC
-    );
-    static final FunctionDescriptor H5Tget_member_index$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_index$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_index",
-        constants$30.H5Tget_member_index$FUNC
-    );
-    static final FunctionDescriptor H5Tget_member_offset$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_offset$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_offset",
-        constants$30.H5Tget_member_offset$FUNC
-    );
-    static final FunctionDescriptor H5Tget_member_class$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_class$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_class",
-        constants$30.H5Tget_member_class$FUNC
-    );
-    static final FunctionDescriptor H5Tget_member_type$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_type$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_type",
-        constants$30.H5Tget_member_type$FUNC
-    );
-    static final FunctionDescriptor H5Tget_member_value$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tget_member_value$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_member_value",
-        constants$30.H5Tget_member_value$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$30() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_STD_REF_DSETREG_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D32BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D32LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D64BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_UNIX_D64LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_C_S1_g", JAVA_LONG);
 }
 
 

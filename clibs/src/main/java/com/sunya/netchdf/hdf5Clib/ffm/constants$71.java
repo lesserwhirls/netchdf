@@ -7,57 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$71 {
+final class constants$71 {
 
-    static final FunctionDescriptor fwrite_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fwrite_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fwrite_unlocked",
-        constants$71.fwrite_unlocked$FUNC
-    );
-    static final FunctionDescriptor fseek$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fseek$MH = RuntimeHelper.downcallHandle(
-        "fseek",
-        constants$71.fseek$FUNC
-    );
-    static final FunctionDescriptor ftell$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftell$MH = RuntimeHelper.downcallHandle(
-        "ftell",
-        constants$71.ftell$FUNC
-    );
-    static final FunctionDescriptor rewind$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle rewind$MH = RuntimeHelper.downcallHandle(
-        "rewind",
-        constants$71.rewind$FUNC
-    );
-    static final FunctionDescriptor fseeko$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fseeko$MH = RuntimeHelper.downcallHandle(
-        "fseeko",
-        constants$71.fseeko$FUNC
-    );
-    static final FunctionDescriptor ftello$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftello$MH = RuntimeHelper.downcallHandle(
-        "ftello",
-        constants$71.ftello$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$71() {}
+    static final VarHandle const$0 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$1 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
+    static final VarHandle const$2 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
+    static final VarHandle const$3 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
+    static final VarHandle const$4 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
+    static final VarHandle const$5 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
 }
 
 

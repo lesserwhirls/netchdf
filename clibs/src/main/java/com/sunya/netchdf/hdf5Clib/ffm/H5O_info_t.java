@@ -7,209 +7,288 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5O_info_t {
+ *     unsigned long fileno;
+ *     haddr_t addr;
+ *     H5O_type_t type;
+ *     unsigned int rc;
+ *     time_t atime;
+ *     time_t mtime;
+ *     time_t ctime;
+ *     time_t btime;
+ *     hsize_t num_attrs;
+ *     H5O_hdr_info_t hdr;
+ *     struct  meta_size;
+ * };
+ * }
+ */
 public class H5O_info_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("fileno"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("addr"),
-        Constants$root.C_INT$LAYOUT.withName("type"),
-        Constants$root.C_INT$LAYOUT.withName("rc"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("atime"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("mtime"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("ctime"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("btime"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("num_attrs"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            Constants$root.C_INT$LAYOUT.withName("nmesgs"),
-            Constants$root.C_INT$LAYOUT.withName("nchunks"),
-            Constants$root.C_INT$LAYOUT.withName("flags"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("total"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("meta"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("mesg"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("free")
-            ).withName("space"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("present"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("shared")
-            ).withName("mesg")
-        ).withName("hdr"),
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("obj"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("attr")
-        ).withName("meta_size")
-    ).withName("H5O_info_t");
     public static MemoryLayout $LAYOUT() {
-        return H5O_info_t.$struct$LAYOUT;
+        return constants$70.const$3;
     }
-    static final VarHandle fileno$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
     public static VarHandle fileno$VH() {
-        return H5O_info_t.fileno$VH;
+        return constants$70.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long fileno;
+     * }
+     */
     public static long fileno$get(MemorySegment seg) {
-        return (long)H5O_info_t.fileno$VH.get(seg);
+        return (long)constants$70.const$4.get(seg);
     }
-    public static void fileno$set( MemorySegment seg, long x) {
-        H5O_info_t.fileno$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long fileno;
+     * }
+     */
+    public static void fileno$set(MemorySegment seg, long x) {
+        constants$70.const$4.set(seg, x);
     }
     public static long fileno$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.fileno$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$70.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void fileno$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.fileno$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$70.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle addr$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("addr"));
     public static VarHandle addr$VH() {
-        return H5O_info_t.addr$VH;
+        return constants$70.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t addr;
+     * }
+     */
     public static long addr$get(MemorySegment seg) {
-        return (long)H5O_info_t.addr$VH.get(seg);
+        return (long)constants$70.const$5.get(seg);
     }
-    public static void addr$set( MemorySegment seg, long x) {
-        H5O_info_t.addr$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t addr;
+     * }
+     */
+    public static void addr$set(MemorySegment seg, long x) {
+        constants$70.const$5.set(seg, x);
     }
     public static long addr$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.addr$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$70.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void addr$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.addr$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$70.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle type$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("type"));
     public static VarHandle type$VH() {
-        return H5O_info_t.type$VH;
+        return constants$71.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5O_type_t type;
+     * }
+     */
     public static int type$get(MemorySegment seg) {
-        return (int)H5O_info_t.type$VH.get(seg);
+        return (int)constants$71.const$0.get(seg);
     }
-    public static void type$set( MemorySegment seg, int x) {
-        H5O_info_t.type$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5O_type_t type;
+     * }
+     */
+    public static void type$set(MemorySegment seg, int x) {
+        constants$71.const$0.set(seg, x);
     }
     public static int type$get(MemorySegment seg, long index) {
-        return (int)H5O_info_t.type$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$71.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void type$set(MemorySegment seg, long index, int x) {
-        H5O_info_t.type$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle rc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("rc"));
     public static VarHandle rc$VH() {
-        return H5O_info_t.rc$VH;
+        return constants$71.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int rc;
+     * }
+     */
     public static int rc$get(MemorySegment seg) {
-        return (int)H5O_info_t.rc$VH.get(seg);
+        return (int)constants$71.const$1.get(seg);
     }
-    public static void rc$set( MemorySegment seg, int x) {
-        H5O_info_t.rc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int rc;
+     * }
+     */
+    public static void rc$set(MemorySegment seg, int x) {
+        constants$71.const$1.set(seg, x);
     }
     public static int rc$get(MemorySegment seg, long index) {
-        return (int)H5O_info_t.rc$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$71.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void rc$set(MemorySegment seg, long index, int x) {
-        H5O_info_t.rc$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle atime$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("atime"));
     public static VarHandle atime$VH() {
-        return H5O_info_t.atime$VH;
+        return constants$71.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * time_t atime;
+     * }
+     */
     public static long atime$get(MemorySegment seg) {
-        return (long)H5O_info_t.atime$VH.get(seg);
+        return (long)constants$71.const$2.get(seg);
     }
-    public static void atime$set( MemorySegment seg, long x) {
-        H5O_info_t.atime$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * time_t atime;
+     * }
+     */
+    public static void atime$set(MemorySegment seg, long x) {
+        constants$71.const$2.set(seg, x);
     }
     public static long atime$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.atime$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$71.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void atime$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.atime$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle mtime$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
     public static VarHandle mtime$VH() {
-        return H5O_info_t.mtime$VH;
+        return constants$71.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * time_t mtime;
+     * }
+     */
     public static long mtime$get(MemorySegment seg) {
-        return (long)H5O_info_t.mtime$VH.get(seg);
+        return (long)constants$71.const$3.get(seg);
     }
-    public static void mtime$set( MemorySegment seg, long x) {
-        H5O_info_t.mtime$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * time_t mtime;
+     * }
+     */
+    public static void mtime$set(MemorySegment seg, long x) {
+        constants$71.const$3.set(seg, x);
     }
     public static long mtime$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.mtime$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$71.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void mtime$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.mtime$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle ctime$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
     public static VarHandle ctime$VH() {
-        return H5O_info_t.ctime$VH;
+        return constants$71.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * time_t ctime;
+     * }
+     */
     public static long ctime$get(MemorySegment seg) {
-        return (long)H5O_info_t.ctime$VH.get(seg);
+        return (long)constants$71.const$4.get(seg);
     }
-    public static void ctime$set( MemorySegment seg, long x) {
-        H5O_info_t.ctime$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * time_t ctime;
+     * }
+     */
+    public static void ctime$set(MemorySegment seg, long x) {
+        constants$71.const$4.set(seg, x);
     }
     public static long ctime$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.ctime$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$71.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void ctime$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.ctime$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle btime$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("btime"));
     public static VarHandle btime$VH() {
-        return H5O_info_t.btime$VH;
+        return constants$71.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * time_t btime;
+     * }
+     */
     public static long btime$get(MemorySegment seg) {
-        return (long)H5O_info_t.btime$VH.get(seg);
+        return (long)constants$71.const$5.get(seg);
     }
-    public static void btime$set( MemorySegment seg, long x) {
-        H5O_info_t.btime$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * time_t btime;
+     * }
+     */
+    public static void btime$set(MemorySegment seg, long x) {
+        constants$71.const$5.set(seg, x);
     }
     public static long btime$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.btime$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$71.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void btime$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.btime$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$71.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle num_attrs$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
     public static VarHandle num_attrs$VH() {
-        return H5O_info_t.num_attrs$VH;
+        return constants$72.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t num_attrs;
+     * }
+     */
     public static long num_attrs$get(MemorySegment seg) {
-        return (long)H5O_info_t.num_attrs$VH.get(seg);
+        return (long)constants$72.const$0.get(seg);
     }
-    public static void num_attrs$set( MemorySegment seg, long x) {
-        H5O_info_t.num_attrs$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t num_attrs;
+     * }
+     */
+    public static void num_attrs$set(MemorySegment seg, long x) {
+        constants$72.const$0.set(seg, x);
     }
     public static long num_attrs$get(MemorySegment seg, long index) {
-        return (long)H5O_info_t.num_attrs$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$72.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void num_attrs$set(MemorySegment seg, long index, long x) {
-        H5O_info_t.num_attrs$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$72.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment hdr$slice(MemorySegment seg) {
         return seg.asSlice(64, 64);
     }
-    public static class meta_size {
+    /**
+     * {@snippet :
+     * struct {
+     *     H5_ih_info_t obj;
+     *     H5_ih_info_t attr;
+     * };
+     * }
+     */
+    public static final class meta_size {
 
-        static final  GroupLayout meta_size$struct$LAYOUT = MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("obj"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("attr")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private meta_size() {}
         public static MemoryLayout $LAYOUT() {
-            return meta_size.meta_size$struct$LAYOUT;
+            return constants$72.const$1;
         }
         public static MemorySegment obj$slice(MemorySegment seg) {
             return seg.asSlice(0, 16);
@@ -219,10 +298,10 @@ public class H5O_info_t {
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment meta_size$slice(MemorySegment seg) {
@@ -230,10 +309,10 @@ public class H5O_info_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

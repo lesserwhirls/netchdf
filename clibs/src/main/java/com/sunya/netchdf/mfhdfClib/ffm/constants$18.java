@@ -3,59 +3,27 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$18 {
 
-class constants$18 {
-
-    static final FunctionDescriptor fwrite_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$18() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$17.const$4
     );
-    static final MethodHandle fwrite_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fwrite_unlocked",
-        constants$18.fwrite_unlocked$FUNC
-    );
-    static final FunctionDescriptor fseek$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fseek$MH = RuntimeHelper.downcallHandle(
-        "fseek",
-        constants$18.fseek$FUNC
-    );
-    static final FunctionDescriptor ftell$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftell$MH = RuntimeHelper.downcallHandle(
-        "ftell",
-        constants$18.ftell$FUNC
-    );
-    static final FunctionDescriptor rewind$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle rewind$MH = RuntimeHelper.downcallHandle(
-        "rewind",
-        constants$18.rewind$FUNC
-    );
-    static final FunctionDescriptor fseeko$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fseeko$MH = RuntimeHelper.downcallHandle(
-        "fseeko",
-        constants$18.fseeko$FUNC
-    );
-    static final FunctionDescriptor ftello$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftello$MH = RuntimeHelper.downcallHandle(
-        "ftello",
-        constants$18.ftello$FUNC
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("seek"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("_IO_cookie_io_functions_t");
+    static final VarHandle const$2 = constants$18.const$1.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final VarHandle const$3 = constants$18.const$1.varHandle(MemoryLayout.PathElement.groupElement("write"));
+    static final VarHandle const$4 = constants$18.const$1.varHandle(MemoryLayout.PathElement.groupElement("seek"));
+    static final VarHandle const$5 = constants$18.const$1.varHandle(MemoryLayout.PathElement.groupElement("close"));
 }
 
 

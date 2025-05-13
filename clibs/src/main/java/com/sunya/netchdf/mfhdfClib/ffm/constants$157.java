@@ -3,61 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$157 {
 
-class constants$157 {
-
-    static final FunctionDescriptor sd_ncattdel$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$157() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFR8nimages",
+        constants$17.const$4
     );
-    static final MethodHandle sd_ncattdel$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattdel",
-        constants$157.sd_ncattdel$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFR8readref",
+        constants$154.const$4
     );
-    static final FunctionDescriptor sd_nctypelen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFR8writeref",
+        constants$154.const$4
     );
-    static final MethodHandle sd_nctypelen$MH = RuntimeHelper.downcallHandle(
-        "sd_nctypelen",
-        constants$157.sd_nctypelen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFR8restart",
+        constants$28.const$3
     );
-    static final FunctionDescriptor sd_ncsetfill$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFR8lastref",
+        constants$155.const$2
     );
-    static final MethodHandle sd_ncsetfill$MH = RuntimeHelper.downcallHandle(
-        "sd_ncsetfill",
-        constants$157.sd_ncsetfill$FUNC
-    );
-    static final FunctionDescriptor sd_ncrecinq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncrecinq$MH = RuntimeHelper.downcallHandle(
-        "sd_ncrecinq",
-        constants$157.sd_ncrecinq$FUNC
-    );
-    static final FunctionDescriptor sd_ncrecget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncrecget$MH = RuntimeHelper.downcallHandle(
-        "sd_ncrecget",
-        constants$157.sd_ncrecget$FUNC
-    );
-    static final FunctionDescriptor sd_ncrecput$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncrecput$MH = RuntimeHelper.downcallHandle(
-        "sd_ncrecput",
-        constants$157.sd_ncrecput$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFR8getpalref",
+        constants$17.const$4
     );
 }
 

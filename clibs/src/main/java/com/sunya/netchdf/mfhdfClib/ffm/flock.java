@@ -2,109 +2,168 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct flock {
+ *     short l_type;
+ *     short l_whence;
+ *     __off_t l_start;
+ *     __off_t l_len;
+ *     __pid_t l_pid;
+ * };
+ * }
+ */
 public class flock {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_SHORT$LAYOUT.withName("l_type"),
-        Constants$root.C_SHORT$LAYOUT.withName("l_whence"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("l_start"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("l_len"),
-        Constants$root.C_INT$LAYOUT.withName("l_pid"),
-        MemoryLayout.paddingLayout(32)
-    ).withName("flock");
     public static MemoryLayout $LAYOUT() {
-        return flock.$struct$LAYOUT;
+        return constants$90.const$3;
     }
-    static final VarHandle l_type$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("l_type"));
     public static VarHandle l_type$VH() {
-        return flock.l_type$VH;
+        return constants$90.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * short l_type;
+     * }
+     */
     public static short l_type$get(MemorySegment seg) {
-        return (short)flock.l_type$VH.get(seg);
+        return (short)constants$90.const$4.get(seg);
     }
-    public static void l_type$set( MemorySegment seg, short x) {
-        flock.l_type$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * short l_type;
+     * }
+     */
+    public static void l_type$set(MemorySegment seg, short x) {
+        constants$90.const$4.set(seg, x);
     }
     public static short l_type$get(MemorySegment seg, long index) {
-        return (short)flock.l_type$VH.get(seg.asSlice(index*sizeof()));
+        return (short)constants$90.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void l_type$set(MemorySegment seg, long index, short x) {
-        flock.l_type$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle l_whence$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("l_whence"));
     public static VarHandle l_whence$VH() {
-        return flock.l_whence$VH;
+        return constants$90.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * short l_whence;
+     * }
+     */
     public static short l_whence$get(MemorySegment seg) {
-        return (short)flock.l_whence$VH.get(seg);
+        return (short)constants$90.const$5.get(seg);
     }
-    public static void l_whence$set( MemorySegment seg, short x) {
-        flock.l_whence$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * short l_whence;
+     * }
+     */
+    public static void l_whence$set(MemorySegment seg, short x) {
+        constants$90.const$5.set(seg, x);
     }
     public static short l_whence$get(MemorySegment seg, long index) {
-        return (short)flock.l_whence$VH.get(seg.asSlice(index*sizeof()));
+        return (short)constants$90.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void l_whence$set(MemorySegment seg, long index, short x) {
-        flock.l_whence$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle l_start$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("l_start"));
     public static VarHandle l_start$VH() {
-        return flock.l_start$VH;
+        return constants$91.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * __off_t l_start;
+     * }
+     */
     public static long l_start$get(MemorySegment seg) {
-        return (long)flock.l_start$VH.get(seg);
+        return (long)constants$91.const$0.get(seg);
     }
-    public static void l_start$set( MemorySegment seg, long x) {
-        flock.l_start$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * __off_t l_start;
+     * }
+     */
+    public static void l_start$set(MemorySegment seg, long x) {
+        constants$91.const$0.set(seg, x);
     }
     public static long l_start$get(MemorySegment seg, long index) {
-        return (long)flock.l_start$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$91.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void l_start$set(MemorySegment seg, long index, long x) {
-        flock.l_start$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle l_len$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("l_len"));
     public static VarHandle l_len$VH() {
-        return flock.l_len$VH;
+        return constants$91.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * __off_t l_len;
+     * }
+     */
     public static long l_len$get(MemorySegment seg) {
-        return (long)flock.l_len$VH.get(seg);
+        return (long)constants$91.const$1.get(seg);
     }
-    public static void l_len$set( MemorySegment seg, long x) {
-        flock.l_len$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * __off_t l_len;
+     * }
+     */
+    public static void l_len$set(MemorySegment seg, long x) {
+        constants$91.const$1.set(seg, x);
     }
     public static long l_len$get(MemorySegment seg, long index) {
-        return (long)flock.l_len$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$91.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void l_len$set(MemorySegment seg, long index, long x) {
-        flock.l_len$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle l_pid$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("l_pid"));
     public static VarHandle l_pid$VH() {
-        return flock.l_pid$VH;
+        return constants$91.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * __pid_t l_pid;
+     * }
+     */
     public static int l_pid$get(MemorySegment seg) {
-        return (int)flock.l_pid$VH.get(seg);
+        return (int)constants$91.const$2.get(seg);
     }
-    public static void l_pid$set( MemorySegment seg, int x) {
-        flock.l_pid$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * __pid_t l_pid;
+     * }
+     */
+    public static void l_pid$set(MemorySegment seg, int x) {
+        constants$91.const$2.set(seg, x);
     }
     public static int l_pid$get(MemorySegment seg, long index) {
-        return (int)flock.l_pid$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void l_pid$set(MemorySegment seg, long index, int x) {
-        flock.l_pid$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

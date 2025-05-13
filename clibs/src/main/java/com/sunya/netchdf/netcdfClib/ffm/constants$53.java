@@ -3,57 +3,39 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$53 {
 
-class constants$53 {
-
-    static final FunctionDescriptor ncendef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$53() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_put_var_ulonglong",
+        constants$7.const$5
     );
-    static final MethodHandle ncendef$MH = RuntimeHelper.downcallHandle(
-        "ncendef",
-        constants$53.ncendef$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_get_var_ulonglong",
+        constants$7.const$5
     );
-    static final FunctionDescriptor ncsync$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_var_string",
+        constants$7.const$5
     );
-    static final MethodHandle ncsync$MH = RuntimeHelper.downcallHandle(
-        "ncsync",
-        constants$53.ncsync$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_var_string",
+        constants$7.const$5
     );
-    static final FunctionDescriptor ncabort$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle ncabort$MH = RuntimeHelper.downcallHandle(
-        "ncabort",
-        constants$53.ncabort$FUNC
-    );
-    static final FunctionDescriptor ncclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ncclose$MH = RuntimeHelper.downcallHandle(
-        "ncclose",
-        constants$53.ncclose$FUNC
-    );
-    static final FunctionDescriptor ncinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ncinquire$MH = RuntimeHelper.downcallHandle(
-        "ncinquire",
-        constants$53.ncinquire$FUNC
-    );
-    static final FunctionDescriptor ncdimdef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle ncdimdef$MH = RuntimeHelper.downcallHandle(
-        "ncdimdef",
-        constants$53.ncdimdef$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_reclaim_data",
+        constants$53.const$4
     );
 }
 

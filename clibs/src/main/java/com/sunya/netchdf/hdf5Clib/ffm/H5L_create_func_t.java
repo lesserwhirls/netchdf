@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5L_create_func_t)(char* link_name,long loc_group,void* lnkdata,unsigned long lnkdata_size,long lcpl_id);
+ * }
+ */
 public interface H5L_create_func_t {
 
-    int apply(java.lang.foreign.MemoryAddress link_name, long loc_group, java.lang.foreign.MemoryAddress lnkdata, long lnkdata_size, long lcpl_id);
-    static MemorySegment allocate(H5L_create_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5L_create_func_t.class, fi, constants$35.H5L_create_func_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment link_name, long loc_group, java.lang.foreign.MemorySegment lnkdata, long lnkdata_size, long lcpl_id);
+    static MemorySegment allocate(H5L_create_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$56.const$0, fi, constants$55.const$5, scope);
     }
-    static H5L_create_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _link_name, long _loc_group, java.lang.foreign.MemoryAddress _lnkdata, long _lnkdata_size, long _lcpl_id) -> {
+    static H5L_create_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _link_name, long _loc_group, java.lang.foreign.MemorySegment _lnkdata, long _lnkdata_size, long _lcpl_id) -> {
             try {
-                return (int)constants$35.H5L_create_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_link_name, _loc_group, (java.lang.foreign.Addressable)_lnkdata, _lnkdata_size, _lcpl_id);
+                return (int)constants$56.const$1.invokeExact(symbol, _link_name, _loc_group, _lnkdata, _lnkdata_size, _lcpl_id);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$201 {
 
-class constants$201 {
-
-    static final MemorySegment _HDF_LongName$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("long_name");
-    static final MemorySegment _HDF_Units$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("units");
-    static final MemorySegment _HDF_Format$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("format");
-    static final MemorySegment _HDF_CoordSys$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("coordsys");
-    static final MemorySegment _HDF_ValidRange$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("valid_range");
-    static final MemorySegment _HDF_ScaleFactor$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("scale_factor");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$201() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "Vopen",
+        constants$129.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Vclose",
+        constants$1.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vexistvg",
+        constants$139.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Vattach",
+        constants$132.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Vdetach",
+        constants$1.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Vinsert",
+        constants$93.const$3
+    );
 }
 
 

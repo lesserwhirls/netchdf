@@ -2,8 +2,20 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
-public class model_info extends tag_model_info {
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * typedef union tag_model_info model_info;
+ * }
+ */
+public final class model_info extends tag_model_info {
 
+    // Suppresses default constructor, ensuring non-instantiability.
+    private model_info() {}
 }
 
 

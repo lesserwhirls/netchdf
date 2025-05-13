@@ -3,62 +3,33 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$41 {
 
-class constants$41 {
-
-    static final FunctionDescriptor __memcmpeq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$41() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle __memcmpeq$MH = RuntimeHelper.downcallHandle(
-        "__memcmpeq",
-        constants$41.__memcmpeq$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "l64a",
+        constants$41.const$0
     );
-    static final FunctionDescriptor memchr$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "a64l",
+        constants$33.const$3
     );
-    static final MethodHandle memchr$MH = RuntimeHelper.downcallHandle(
-        "memchr",
-        constants$41.memchr$FUNC
-    );
-    static final FunctionDescriptor strcpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strcpy$MH = RuntimeHelper.downcallHandle(
-        "strcpy",
-        constants$41.strcpy$FUNC
-    );
-    static final FunctionDescriptor strncpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strncpy$MH = RuntimeHelper.downcallHandle(
-        "strncpy",
-        constants$41.strncpy$FUNC
-    );
-    static final FunctionDescriptor strcat$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strcat$MH = RuntimeHelper.downcallHandle(
-        "strcat",
-        constants$41.strcat$FUNC
-    );
-    static final FunctionDescriptor strncat$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strncat$MH = RuntimeHelper.downcallHandle(
-        "strncat",
-        constants$41.strncat$FUNC
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__val")
+    ).withName("");
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("tv_sec"),
+        JAVA_LONG.withName("tv_usec")
+    ).withName("timeval");
+    static final VarHandle const$5 = constants$41.const$4.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
 }
 
 

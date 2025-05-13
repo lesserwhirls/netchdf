@@ -7,229 +7,315 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5F_info2_t {
+ *     struct  super;
+ *     struct  free;
+ *     struct  sohm;
+ * };
+ * }
+ */
 public class H5F_info2_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("super_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("super_ext_size")
-        ).withName("super"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("meta_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tot_space")
-        ).withName("free"),
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("msgs_info")
-        ).withName("sohm")
-    ).withName("H5F_info2_t");
     public static MemoryLayout $LAYOUT() {
-        return H5F_info2_t.$struct$LAYOUT;
+        return constants$166.const$5;
     }
-    public static class super_ {
+    /**
+     * {@snippet :
+     * struct {
+     *     unsigned int version;
+     *     hsize_t super_size;
+     *     hsize_t super_ext_size;
+     * };
+     * }
+     */
+    public static final class super_ {
 
-        static final  GroupLayout super_$struct$LAYOUT = MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("super_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("super_ext_size")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private super_() {}
         public static MemoryLayout $LAYOUT() {
-            return super_.super_$struct$LAYOUT;
+            return constants$167.const$0;
         }
-        static final VarHandle version$VH = super_$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
         public static VarHandle version$VH() {
-            return super_.version$VH;
+            return constants$167.const$1;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
         public static int version$get(MemorySegment seg) {
-            return (int)super_.version$VH.get(seg);
+            return (int)constants$167.const$1.get(seg);
         }
-        public static void version$set( MemorySegment seg, int x) {
-            super_.version$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
+        public static void version$set(MemorySegment seg, int x) {
+            constants$167.const$1.set(seg, x);
         }
         public static int version$get(MemorySegment seg, long index) {
-            return (int)super_.version$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$167.const$1.get(seg.asSlice(index*sizeof()));
         }
         public static void version$set(MemorySegment seg, long index, int x) {
-            super_.version$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$167.const$1.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle super_size$VH = super_$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
         public static VarHandle super_size$VH() {
-            return super_.super_size$VH;
+            return constants$167.const$2;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t super_size;
+         * }
+         */
         public static long super_size$get(MemorySegment seg) {
-            return (long)super_.super_size$VH.get(seg);
+            return (long)constants$167.const$2.get(seg);
         }
-        public static void super_size$set( MemorySegment seg, long x) {
-            super_.super_size$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t super_size;
+         * }
+         */
+        public static void super_size$set(MemorySegment seg, long x) {
+            constants$167.const$2.set(seg, x);
         }
         public static long super_size$get(MemorySegment seg, long index) {
-            return (long)super_.super_size$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$167.const$2.get(seg.asSlice(index*sizeof()));
         }
         public static void super_size$set(MemorySegment seg, long index, long x) {
-            super_.super_size$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$167.const$2.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle super_ext_size$VH = super_$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
         public static VarHandle super_ext_size$VH() {
-            return super_.super_ext_size$VH;
+            return constants$167.const$3;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t super_ext_size;
+         * }
+         */
         public static long super_ext_size$get(MemorySegment seg) {
-            return (long)super_.super_ext_size$VH.get(seg);
+            return (long)constants$167.const$3.get(seg);
         }
-        public static void super_ext_size$set( MemorySegment seg, long x) {
-            super_.super_ext_size$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t super_ext_size;
+         * }
+         */
+        public static void super_ext_size$set(MemorySegment seg, long x) {
+            constants$167.const$3.set(seg, x);
         }
         public static long super_ext_size$get(MemorySegment seg, long index) {
-            return (long)super_.super_ext_size$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$167.const$3.get(seg.asSlice(index*sizeof()));
         }
         public static void super_ext_size$set(MemorySegment seg, long index, long x) {
-            super_.super_ext_size$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$167.const$3.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment super_$slice(MemorySegment seg) {
         return seg.asSlice(0, 24);
     }
-    public static class free {
+    /**
+     * {@snippet :
+     * struct {
+     *     unsigned int version;
+     *     hsize_t meta_size;
+     *     hsize_t tot_space;
+     * };
+     * }
+     */
+    public static final class free {
 
-        static final  GroupLayout free$struct$LAYOUT = MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("meta_size"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tot_space")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private free() {}
         public static MemoryLayout $LAYOUT() {
-            return free.free$struct$LAYOUT;
+            return constants$167.const$4;
         }
-        static final VarHandle version$VH = free$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
         public static VarHandle version$VH() {
-            return free.version$VH;
+            return constants$167.const$5;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
         public static int version$get(MemorySegment seg) {
-            return (int)free.version$VH.get(seg);
+            return (int)constants$167.const$5.get(seg);
         }
-        public static void version$set( MemorySegment seg, int x) {
-            free.version$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
+        public static void version$set(MemorySegment seg, int x) {
+            constants$167.const$5.set(seg, x);
         }
         public static int version$get(MemorySegment seg, long index) {
-            return (int)free.version$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$167.const$5.get(seg.asSlice(index*sizeof()));
         }
         public static void version$set(MemorySegment seg, long index, int x) {
-            free.version$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$167.const$5.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle meta_size$VH = free$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("meta_size"));
         public static VarHandle meta_size$VH() {
-            return free.meta_size$VH;
+            return constants$168.const$0;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t meta_size;
+         * }
+         */
         public static long meta_size$get(MemorySegment seg) {
-            return (long)free.meta_size$VH.get(seg);
+            return (long)constants$168.const$0.get(seg);
         }
-        public static void meta_size$set( MemorySegment seg, long x) {
-            free.meta_size$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t meta_size;
+         * }
+         */
+        public static void meta_size$set(MemorySegment seg, long x) {
+            constants$168.const$0.set(seg, x);
         }
         public static long meta_size$get(MemorySegment seg, long index) {
-            return (long)free.meta_size$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$168.const$0.get(seg.asSlice(index*sizeof()));
         }
         public static void meta_size$set(MemorySegment seg, long index, long x) {
-            free.meta_size$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$168.const$0.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle tot_space$VH = free$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("tot_space"));
         public static VarHandle tot_space$VH() {
-            return free.tot_space$VH;
+            return constants$168.const$1;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t tot_space;
+         * }
+         */
         public static long tot_space$get(MemorySegment seg) {
-            return (long)free.tot_space$VH.get(seg);
+            return (long)constants$168.const$1.get(seg);
         }
-        public static void tot_space$set( MemorySegment seg, long x) {
-            free.tot_space$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t tot_space;
+         * }
+         */
+        public static void tot_space$set(MemorySegment seg, long x) {
+            constants$168.const$1.set(seg, x);
         }
         public static long tot_space$get(MemorySegment seg, long index) {
-            return (long)free.tot_space$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$168.const$1.get(seg.asSlice(index*sizeof()));
         }
         public static void tot_space$set(MemorySegment seg, long index, long x) {
-            free.tot_space$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$168.const$1.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment free$slice(MemorySegment seg) {
         return seg.asSlice(24, 24);
     }
-    public static class sohm {
+    /**
+     * {@snippet :
+     * struct {
+     *     unsigned int version;
+     *     hsize_t hdr_size;
+     *     H5_ih_info_t msgs_info;
+     * };
+     * }
+     */
+    public static final class sohm {
 
-        static final  GroupLayout sohm$struct$LAYOUT = MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("version"),
-            MemoryLayout.paddingLayout(32),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("msgs_info")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private sohm() {}
         public static MemoryLayout $LAYOUT() {
-            return sohm.sohm$struct$LAYOUT;
+            return constants$168.const$2;
         }
-        static final VarHandle version$VH = sohm$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
         public static VarHandle version$VH() {
-            return sohm.version$VH;
+            return constants$168.const$3;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
         public static int version$get(MemorySegment seg) {
-            return (int)sohm.version$VH.get(seg);
+            return (int)constants$168.const$3.get(seg);
         }
-        public static void version$set( MemorySegment seg, int x) {
-            sohm.version$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * unsigned int version;
+         * }
+         */
+        public static void version$set(MemorySegment seg, int x) {
+            constants$168.const$3.set(seg, x);
         }
         public static int version$get(MemorySegment seg, long index) {
-            return (int)sohm.version$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$168.const$3.get(seg.asSlice(index*sizeof()));
         }
         public static void version$set(MemorySegment seg, long index, int x) {
-            sohm.version$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$168.const$3.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle hdr_size$VH = sohm$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
         public static VarHandle hdr_size$VH() {
-            return sohm.hdr_size$VH;
+            return constants$168.const$4;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t hdr_size;
+         * }
+         */
         public static long hdr_size$get(MemorySegment seg) {
-            return (long)sohm.hdr_size$VH.get(seg);
+            return (long)constants$168.const$4.get(seg);
         }
-        public static void hdr_size$set( MemorySegment seg, long x) {
-            sohm.hdr_size$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t hdr_size;
+         * }
+         */
+        public static void hdr_size$set(MemorySegment seg, long x) {
+            constants$168.const$4.set(seg, x);
         }
         public static long hdr_size$get(MemorySegment seg, long index) {
-            return (long)sohm.hdr_size$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$168.const$4.get(seg.asSlice(index*sizeof()));
         }
         public static void hdr_size$set(MemorySegment seg, long index, long x) {
-            sohm.hdr_size$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$168.const$4.set(seg.asSlice(index*sizeof()), x);
         }
         public static MemorySegment msgs_info$slice(MemorySegment seg) {
             return seg.asSlice(16, 16);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment sohm$slice(MemorySegment seg) {
@@ -237,10 +323,10 @@ public class H5F_info2_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

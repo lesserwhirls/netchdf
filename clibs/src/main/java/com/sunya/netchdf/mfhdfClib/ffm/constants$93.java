@@ -3,66 +3,28 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$93 {
 
-class constants$93 {
-
-    static final FunctionDescriptor HCPsetup_szip_parms$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$93() {}
+    static final VarHandle const$0 = constants$91.const$3.varHandle(MemoryLayout.PathElement.groupElement("st_size"));
+    static final VarHandle const$1 = constants$91.const$3.varHandle(MemoryLayout.PathElement.groupElement("st_blksize"));
+    static final VarHandle const$2 = constants$91.const$3.varHandle(MemoryLayout.PathElement.groupElement("st_blocks"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle HCPsetup_szip_parms$MH = RuntimeHelper.downcallHandle(
-        "HCPsetup_szip_parms",
-        constants$93.HCPsetup_szip_parms$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "fcntl",
+        constants$93.const$3
     );
-    static final FunctionDescriptor HBconvert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HBconvert$MH = RuntimeHelper.downcallHandle(
-        "HBconvert",
-        constants$93.HBconvert$FUNC
-    );
-    static final FunctionDescriptor HRPconvert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HRPconvert$MH = RuntimeHelper.downcallHandle(
-        "HRPconvert",
-        constants$93.HRPconvert$FUNC
-    );
-    static final FunctionDescriptor HEstring$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HEstring$MH = RuntimeHelper.downcallHandle(
-        "HEstring",
-        constants$93.HEstring$FUNC
-    );
-    static final FunctionDescriptor HEpush$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HEpush$MH = RuntimeHelper.downcallHandle(
-        "HEpush",
-        constants$93.HEpush$FUNC
-    );
-    static final FunctionDescriptor HEreport$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HEreport$MH = RuntimeHelper.downcallHandleVariadic(
-        "HEreport",
-        constants$93.HEreport$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "open",
+        constants$37.const$2
     );
 }
 

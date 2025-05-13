@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5Z_set_local_func_t)(long dcpl_id,long type_id,long space_id);
+ * }
+ */
 public interface H5Z_set_local_func_t {
 
     int apply(long dcpl_id, long type_id, long space_id);
-    static MemorySegment allocate(H5Z_set_local_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5Z_set_local_func_t.class, fi, constants$125.H5Z_set_local_func_t$FUNC, session);
+    static MemorySegment allocate(H5Z_set_local_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$216.const$2, fi, constants$215.const$5, scope);
     }
-    static H5Z_set_local_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
+    static H5Z_set_local_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _dcpl_id, long _type_id, long _space_id) -> {
             try {
-                return (int)constants$126.H5Z_set_local_func_t$MH.invokeExact((Addressable)symbol, _dcpl_id, _type_id, _space_id);
+                return (int)constants$216.const$1.invokeExact(symbol, _dcpl_id, _type_id, _space_id);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

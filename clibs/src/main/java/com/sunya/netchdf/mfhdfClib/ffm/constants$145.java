@@ -3,68 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$145 {
 
-class constants$145 {
-
-    static final FunctionDescriptor VHstoredata$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$145() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HCPgetcompinfo",
+        constants$144.const$4
     );
-    static final MethodHandle VHstoredata$MH = RuntimeHelper.downcallHandle(
-        "VHstoredata",
-        constants$145.VHstoredata$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HCPgetcomptype",
+        constants$133.const$4
     );
-    static final FunctionDescriptor VHstoredatam$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HCPgetdatasize",
+        constants$144.const$4
     );
-    static final MethodHandle VHstoredatam$MH = RuntimeHelper.downcallHandle(
-        "VHstoredatam",
-        constants$145.VHstoredatam$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HCget_config_info",
+        constants$5.const$3
     );
-    static final FunctionDescriptor VHmakegroup$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HCPquery_encode_header",
+        constants$20.const$0
     );
-    static final MethodHandle VHmakegroup$MH = RuntimeHelper.downcallHandle(
-        "VHmakegroup",
-        constants$145.VHmakegroup$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor VSPhshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle VSPhshutdown$MH = RuntimeHelper.downcallHandle(
-        "VSPhshutdown",
-        constants$145.VSPhshutdown$FUNC
-    );
-    static final FunctionDescriptor vexistvs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle vexistvs$MH = RuntimeHelper.downcallHandle(
-        "vexistvs",
-        constants$145.vexistvs$FUNC
-    );
-    static final FunctionDescriptor vsdestroynode$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vsdestroynode$MH = RuntimeHelper.downcallHandle(
-        "vsdestroynode",
-        constants$145.vsdestroynode$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "HCPencode_header",
+        constants$145.const$5
     );
 }
 

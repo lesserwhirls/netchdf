@@ -7,66 +7,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$43 {
+final class constants$43 {
 
-    static final FunctionDescriptor H5Oget_info2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$43() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tpack",
+        constants$19.const$0
     );
-    static final MethodHandle H5Oget_info2$MH = RuntimeHelper.downcallHandle(
-        "H5Oget_info2",
-        constants$43.H5Oget_info2$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tenum_create",
+        constants$10.const$2
     );
-    static final FunctionDescriptor H5Oget_info_by_name2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tenum_insert",
+        constants$41.const$4
     );
-    static final MethodHandle H5Oget_info_by_name2$MH = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name2",
-        constants$43.H5Oget_info_by_name2$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Oget_info_by_idx2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tenum_nameof",
+        constants$43.const$3
     );
-    static final MethodHandle H5Oget_info_by_idx2$MH = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx2",
-        constants$43.H5Oget_info_by_idx2$FUNC
-    );
-    static final FunctionDescriptor H5Olink$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Olink$MH = RuntimeHelper.downcallHandle(
-        "H5Olink",
-        constants$43.H5Olink$FUNC
-    );
-    static final FunctionDescriptor H5Oincr_refcount$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oincr_refcount$MH = RuntimeHelper.downcallHandle(
-        "H5Oincr_refcount",
-        constants$43.H5Oincr_refcount$FUNC
-    );
-    static final FunctionDescriptor H5Odecr_refcount$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Odecr_refcount$MH = RuntimeHelper.downcallHandle(
-        "H5Odecr_refcount",
-        constants$43.H5Odecr_refcount$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tenum_valueof",
+        constants$41.const$4
     );
 }
 

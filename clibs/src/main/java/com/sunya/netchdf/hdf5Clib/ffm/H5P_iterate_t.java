@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5P_iterate_t)(long id,char* name,void* iter_data);
+ * }
+ */
 public interface H5P_iterate_t {
 
-    int apply(long id, java.lang.foreign.MemoryAddress name, java.lang.foreign.MemoryAddress iter_data);
-    static MemorySegment allocate(H5P_iterate_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5P_iterate_t.class, fi, constants$131.H5P_iterate_t$FUNC, session);
+    int apply(long id, java.lang.foreign.MemorySegment name, java.lang.foreign.MemorySegment iter_data);
+    static MemorySegment allocate(H5P_iterate_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$222.const$5, fi, constants$41.const$4, scope);
     }
-    static H5P_iterate_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _id, java.lang.foreign.MemoryAddress _name, java.lang.foreign.MemoryAddress _iter_data) -> {
+    static H5P_iterate_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _id, java.lang.foreign.MemorySegment _name, java.lang.foreign.MemorySegment _iter_data) -> {
             try {
-                return (int)constants$131.H5P_iterate_t$MH.invokeExact((Addressable)symbol, _id, (java.lang.foreign.Addressable)_name, (java.lang.foreign.Addressable)_iter_data);
+                return (int)constants$86.const$4.invokeExact(symbol, _id, _name, _iter_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5I_free_t)(void*);
+ * }
+ */
 public interface H5I_free_t {
 
-    int apply(java.lang.foreign.MemoryAddress _x0);
-    static MemorySegment allocate(H5I_free_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5I_free_t.class, fi, constants$4.H5I_free_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment client_data);
+    static MemorySegment allocate(H5I_free_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$17.const$2, fi, constants$15.const$2, scope);
     }
-    static H5I_free_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress __x0) -> {
+    static H5I_free_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _client_data) -> {
             try {
-                return (int)constants$4.H5I_free_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                return (int)constants$17.const$3.invokeExact(symbol, _client_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

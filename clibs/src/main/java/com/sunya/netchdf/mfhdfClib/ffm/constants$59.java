@@ -3,56 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$59 {
 
-class constants$59 {
-
-    static final FunctionDescriptor fchownat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$59() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "arc4random_uniform",
+        constants$1.const$5
     );
-    static final MethodHandle fchownat$MH = RuntimeHelper.downcallHandle(
-        "fchownat",
-        constants$59.fchownat$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "malloc",
+        constants$41.const$0
     );
-    static final FunctionDescriptor chdir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle chdir$MH = RuntimeHelper.downcallHandle(
-        "chdir",
-        constants$59.chdir$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "calloc",
+        constants$59.const$2
     );
-    static final FunctionDescriptor fchdir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle fchdir$MH = RuntimeHelper.downcallHandle(
-        "fchdir",
-        constants$59.fchdir$FUNC
-    );
-    static final FunctionDescriptor getcwd$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle getcwd$MH = RuntimeHelper.downcallHandle(
-        "getcwd",
-        constants$59.getcwd$FUNC
-    );
-    static final FunctionDescriptor getwd$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getwd$MH = RuntimeHelper.downcallHandle(
-        "getwd",
-        constants$59.getwd$FUNC
-    );
-    static final FunctionDescriptor dup$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle dup$MH = RuntimeHelper.downcallHandle(
-        "dup",
-        constants$59.dup$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "realloc",
+        constants$59.const$4
     );
 }
 

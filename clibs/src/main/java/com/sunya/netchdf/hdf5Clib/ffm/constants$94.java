@@ -7,26 +7,26 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$94 {
+final class constants$94 {
 
-    static final  OfLong H5E_NOTCACHED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOTCACHED_g$VH = constants$94.H5E_NOTCACHED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOTCACHED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOTCACHED_g", constants$94.H5E_NOTCACHED_g$LAYOUT);
-    static final  OfLong H5E_SYSTEM_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_SYSTEM_g$VH = constants$94.H5E_SYSTEM_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_SYSTEM_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_SYSTEM_g", constants$94.H5E_SYSTEM_g$LAYOUT);
-    static final  OfLong H5E_CANTINS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTINS_g$VH = constants$94.H5E_CANTINS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTINS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTINS_g", constants$94.H5E_CANTINS_g$LAYOUT);
-    static final  OfLong H5E_CANTPROTECT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTPROTECT_g$VH = constants$94.H5E_CANTPROTECT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTPROTECT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTPROTECT_g", constants$94.H5E_CANTPROTECT_g$LAYOUT);
-    static final  OfLong H5E_CANTUNPROTECT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNPROTECT_g$VH = constants$94.H5E_CANTUNPROTECT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNPROTECT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNPROTECT_g", constants$94.H5E_CANTUNPROTECT_g$LAYOUT);
-    static final  OfLong H5E_CANTPIN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTPIN_g$VH = constants$94.H5E_CANTPIN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTPIN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTPIN_g", constants$94.H5E_CANTPIN_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$94() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$93.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5D_scatter_func_t.class, "apply", constants$15.const$4);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$15.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_gather_func_t.class, "apply", constants$17.const$4);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_chunk_iter_op_t.class, "apply", constants$94.const$4);
 }
 
 

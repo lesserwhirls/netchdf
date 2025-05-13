@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$174 {
 
-class constants$174 {
-
-    static final MemorySegment PRIiLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment PRIiLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment PRIiFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment PRIiFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment PRIiFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment PRIiFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$174() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFSDgetslice",
+        constants$146.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFSDstartslice",
+        constants$17.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFSDputslice",
+        constants$25.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFSDendslice",
+        constants$28.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFSDsetNT",
+        constants$1.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFSDsetorder",
+        constants$1.const$5
+    );
 }
 
 

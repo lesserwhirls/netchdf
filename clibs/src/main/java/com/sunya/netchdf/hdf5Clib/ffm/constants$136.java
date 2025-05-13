@@ -7,26 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$136 {
+final class constants$136 {
 
-    static final  OfLong H5P_LST_DATATYPE_ACCESS_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_DATATYPE_ACCESS_ID_g$VH = constants$136.H5P_LST_DATATYPE_ACCESS_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_DATATYPE_ACCESS_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATATYPE_ACCESS_ID_g", constants$136.H5P_LST_DATATYPE_ACCESS_ID_g$LAYOUT);
-    static final  OfLong H5P_LST_ATTRIBUTE_CREATE_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_ATTRIBUTE_CREATE_ID_g$VH = constants$136.H5P_LST_ATTRIBUTE_CREATE_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_ATTRIBUTE_CREATE_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_CREATE_ID_g", constants$136.H5P_LST_ATTRIBUTE_CREATE_ID_g$LAYOUT);
-    static final  OfLong H5P_LST_ATTRIBUTE_ACCESS_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_ATTRIBUTE_ACCESS_ID_g$VH = constants$136.H5P_LST_ATTRIBUTE_ACCESS_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_ATTRIBUTE_ACCESS_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_ACCESS_ID_g", constants$136.H5P_LST_ATTRIBUTE_ACCESS_ID_g$LAYOUT);
-    static final  OfLong H5P_LST_OBJECT_COPY_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_OBJECT_COPY_ID_g$VH = constants$136.H5P_LST_OBJECT_COPY_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_OBJECT_COPY_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_OBJECT_COPY_ID_g", constants$136.H5P_LST_OBJECT_COPY_ID_g$LAYOUT);
-    static final  OfLong H5P_LST_LINK_CREATE_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_LINK_CREATE_ID_g$VH = constants$136.H5P_LST_LINK_CREATE_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_LINK_CREATE_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_CREATE_ID_g", constants$136.H5P_LST_LINK_CREATE_ID_g$LAYOUT);
-    static final  OfLong H5P_LST_LINK_ACCESS_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_LST_LINK_ACCESS_ID_g$VH = constants$136.H5P_LST_LINK_ACCESS_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_LST_LINK_ACCESS_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_ACCESS_ID_g", constants$136.H5P_LST_LINK_ACCESS_ID_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$136() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CONTEXT_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_EARRAY_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_PLINE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_ERROR_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CACHE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_SEEKERROR_g", JAVA_LONG);
 }
 
 

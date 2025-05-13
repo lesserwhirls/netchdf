@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5L_copy_func_t)(char* new_name,long new_loc,void* lnkdata,unsigned long lnkdata_size);
+ * }
+ */
 public interface H5L_copy_func_t {
 
-    int apply(java.lang.foreign.MemoryAddress new_name, long new_loc, java.lang.foreign.MemoryAddress lnkdata, long lnkdata_size);
-    static MemorySegment allocate(H5L_copy_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5L_copy_func_t.class, fi, constants$35.H5L_copy_func_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment link_name, long file, java.lang.foreign.MemorySegment lnkdata, long lnkdata_size);
+    static MemorySegment allocate(H5L_copy_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$56.const$5, fi, constants$56.const$2, scope);
     }
-    static H5L_copy_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _new_name, long _new_loc, java.lang.foreign.MemoryAddress _lnkdata, long _lnkdata_size) -> {
+    static H5L_copy_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _link_name, long _file, java.lang.foreign.MemorySegment _lnkdata, long _lnkdata_size) -> {
             try {
-                return (int)constants$35.H5L_copy_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_new_name, _new_loc, (java.lang.foreign.Addressable)_lnkdata, _lnkdata_size);
+                return (int)constants$56.const$4.invokeExact(symbol, _link_name, _file, _lnkdata, _lnkdata_size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

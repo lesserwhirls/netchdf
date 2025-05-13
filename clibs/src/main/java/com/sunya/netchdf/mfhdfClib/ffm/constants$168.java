@@ -3,109 +3,46 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$168 {
 
-class constants$168 {
-
-    static final FunctionDescriptor SDgetfilename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$168() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle SDgetfilename$MH = RuntimeHelper.downcallHandle(
-        "SDgetfilename",
-        constants$168.SDgetfilename$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFANIaddentry",
+        constants$168.const$0
     );
-    static final FunctionDescriptor SDgetnamelen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT
     );
-    static final MethodHandle SDgetnamelen$MH = RuntimeHelper.downcallHandle(
-        "SDgetnamelen",
-        constants$168.SDgetnamelen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFANIgetannlen",
+        constants$168.const$2
     );
-    static final FunctionDescriptor SDsetchunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        MemoryLayout.unionLayout(
-            MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-                Constants$root.C_INT$LAYOUT.withName("comp_type"),
-                Constants$root.C_INT$LAYOUT.withName("model_type"),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("quality"),
-                        Constants$root.C_INT$LAYOUT.withName("force_baseline")
-                    ).withName("jpeg"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("nt"),
-                        Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-                        Constants$root.C_INT$LAYOUT.withName("fill_one"),
-                        Constants$root.C_INT$LAYOUT.withName("start_bit"),
-                        Constants$root.C_INT$LAYOUT.withName("bit_len")
-                    ).withName("nbit"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("skp_size")
-                    ).withName("skphuff"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("level")
-                    ).withName("deflate"),
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("options_mask"),
-                        Constants$root.C_INT$LAYOUT.withName("pixels_per_block"),
-                        Constants$root.C_INT$LAYOUT.withName("pixels_per_scanline"),
-                        Constants$root.C_INT$LAYOUT.withName("bits_per_pixel"),
-                        Constants$root.C_INT$LAYOUT.withName("pixels")
-                    ).withName("szip")
-                ).withName("cinfo"),
-                MemoryLayout.paddingLayout(32),
-                MemoryLayout.unionLayout(
-                    MemoryLayout.structLayout(
-                        Constants$root.C_INT$LAYOUT.withName("nt"),
-                        Constants$root.C_INT$LAYOUT.withName("ndim"),
-                        Constants$root.C_POINTER$LAYOUT.withName("dims")
-                    ).withName("dim")
-                ).withName("minfo")
-            ).withName("comp"),
-            MemoryLayout.structLayout(
-                MemoryLayout.sequenceLayout(32, Constants$root.C_INT$LAYOUT).withName("chunk_lengths"),
-                Constants$root.C_INT$LAYOUT.withName("start_bit"),
-                Constants$root.C_INT$LAYOUT.withName("bit_len"),
-                Constants$root.C_INT$LAYOUT.withName("sign_ext"),
-                Constants$root.C_INT$LAYOUT.withName("fill_one")
-            ).withName("nbit")
-        ).withName("hdf_chunk_def_u"),
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle SDsetchunk$MH = RuntimeHelper.downcallHandle(
-        "SDsetchunk",
-        constants$168.SDsetchunk$FUNC
-    );
-    static final FunctionDescriptor SDgetchunkinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDgetchunkinfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetchunkinfo",
-        constants$168.SDgetchunkinfo$FUNC
-    );
-    static final FunctionDescriptor SDwritechunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDwritechunk$MH = RuntimeHelper.downcallHandle(
-        "SDwritechunk",
-        constants$168.SDwritechunk$FUNC
-    );
-    static final FunctionDescriptor SDreadchunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDreadchunk$MH = RuntimeHelper.downcallHandle(
-        "SDreadchunk",
-        constants$168.SDreadchunk$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFANIgetann",
+        constants$168.const$4
     );
 }
 

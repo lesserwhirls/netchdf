@@ -1,8 +1,8 @@
 package com.sunya.netchdf.netcdf4;
 
 import java.io.IOException;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class TestNetcdfClib {
   }
 
   private void open(String filename) {
-    try (var session = MemorySession.openConfined()) {
+    try (var session = Arena.ofConfined()) {
       MemorySegment filenameSeg = session.allocateUtf8String(filename);
       MemorySegment fileHandle = session.allocate(netcdf_h.C_INT, 0);
 
@@ -25,7 +25,6 @@ public class TestNetcdfClib {
       int ret = netcdf_h.nc_open(filenameSeg, 0, fileHandle);
       int ncid = fileHandle.get(netcdf_h.C_INT, 0);
       System.out.printf("nc_open %s ret %d fileHandle %d%n", filename, ret, ncid);
-
     }
   }
 

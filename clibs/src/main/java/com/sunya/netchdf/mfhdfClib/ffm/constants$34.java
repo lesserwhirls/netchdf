@@ -3,53 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$34 {
 
-class constants$34 {
-
-    static final FunctionDescriptor exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$34() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fseeko",
+        constants$33.const$1
     );
-    static final MethodHandle exit$MH = RuntimeHelper.downcallHandle(
-        "exit",
-        constants$34.exit$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ftello",
+        constants$33.const$3
     );
-    static final FunctionDescriptor quick_exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fgetpos",
+        constants$19.const$5
     );
-    static final MethodHandle quick_exit$MH = RuntimeHelper.downcallHandle(
-        "quick_exit",
-        constants$34.quick_exit$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fsetpos",
+        constants$19.const$5
     );
-    static final FunctionDescriptor _Exit$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clearerr",
+        constants$24.const$2
     );
-    static final MethodHandle _Exit$MH = RuntimeHelper.downcallHandle(
-        "_Exit",
-        constants$34._Exit$FUNC
-    );
-    static final FunctionDescriptor getenv$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getenv$MH = RuntimeHelper.downcallHandle(
-        "getenv",
-        constants$34.getenv$FUNC
-    );
-    static final FunctionDescriptor putenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putenv$MH = RuntimeHelper.downcallHandle(
-        "putenv",
-        constants$34.putenv$FUNC
-    );
-    static final FunctionDescriptor setenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle setenv$MH = RuntimeHelper.downcallHandle(
-        "setenv",
-        constants$34.setenv$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "feof",
+        constants$17.const$4
     );
 }
 

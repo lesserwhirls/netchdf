@@ -7,114 +7,172 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5Z_class1_t {
+ *     H5Z_filter_t id;
+ *     char* name;
+ *     H5Z_can_apply_func_t can_apply;
+ *     H5Z_set_local_func_t set_local;
+ *     H5Z_func_t filter;
+ * };
+ * }
+ */
 public class H5Z_class1_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("id"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_POINTER$LAYOUT.withName("name"),
-        Constants$root.C_POINTER$LAYOUT.withName("can_apply"),
-        Constants$root.C_POINTER$LAYOUT.withName("set_local"),
-        Constants$root.C_POINTER$LAYOUT.withName("filter")
-    ).withName("H5Z_class1_t");
     public static MemoryLayout $LAYOUT() {
-        return H5Z_class1_t.$struct$LAYOUT;
+        return constants$219.const$1;
     }
-    static final VarHandle id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("id"));
     public static VarHandle id$VH() {
-        return H5Z_class1_t.id$VH;
+        return constants$219.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5Z_filter_t id;
+     * }
+     */
     public static int id$get(MemorySegment seg) {
-        return (int)H5Z_class1_t.id$VH.get(seg);
+        return (int)constants$219.const$2.get(seg);
     }
-    public static void id$set( MemorySegment seg, int x) {
-        H5Z_class1_t.id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5Z_filter_t id;
+     * }
+     */
+    public static void id$set(MemorySegment seg, int x) {
+        constants$219.const$2.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)H5Z_class1_t.id$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$219.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        H5Z_class1_t.id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$219.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("name"));
     public static VarHandle name$VH() {
-        return H5Z_class1_t.name$VH;
+        return constants$219.const$3;
     }
-    public static MemoryAddress name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.name$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* name;
+     * }
+     */
+    public static MemorySegment name$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$3.get(seg);
     }
-    public static void name$set( MemorySegment seg, MemoryAddress x) {
-        H5Z_class1_t.name$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* name;
+     * }
+     */
+    public static void name$set(MemorySegment seg, MemorySegment x) {
+        constants$219.const$3.set(seg, x);
     }
-    public static MemoryAddress name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.name$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment name$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void name$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5Z_class1_t.name$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void name$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$219.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle can_apply$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("can_apply"));
     public static VarHandle can_apply$VH() {
-        return H5Z_class1_t.can_apply$VH;
+        return constants$219.const$4;
     }
-    public static MemoryAddress can_apply$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.can_apply$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5Z_can_apply_func_t can_apply;
+     * }
+     */
+    public static MemorySegment can_apply$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$4.get(seg);
     }
-    public static void can_apply$set( MemorySegment seg, MemoryAddress x) {
-        H5Z_class1_t.can_apply$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5Z_can_apply_func_t can_apply;
+     * }
+     */
+    public static void can_apply$set(MemorySegment seg, MemorySegment x) {
+        constants$219.const$4.set(seg, x);
     }
-    public static MemoryAddress can_apply$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.can_apply$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment can_apply$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void can_apply$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5Z_class1_t.can_apply$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void can_apply$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$219.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5Z_can_apply_func_t can_apply (MemorySegment segment, MemorySession session) {
-        return H5Z_can_apply_func_t.ofAddress(can_apply$get(segment), session);
+    public static H5Z_can_apply_func_t can_apply(MemorySegment segment, Arena scope) {
+        return H5Z_can_apply_func_t.ofAddress(can_apply$get(segment), scope);
     }
-    static final VarHandle set_local$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("set_local"));
     public static VarHandle set_local$VH() {
-        return H5Z_class1_t.set_local$VH;
+        return constants$219.const$5;
     }
-    public static MemoryAddress set_local$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.set_local$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5Z_set_local_func_t set_local;
+     * }
+     */
+    public static MemorySegment set_local$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$5.get(seg);
     }
-    public static void set_local$set( MemorySegment seg, MemoryAddress x) {
-        H5Z_class1_t.set_local$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5Z_set_local_func_t set_local;
+     * }
+     */
+    public static void set_local$set(MemorySegment seg, MemorySegment x) {
+        constants$219.const$5.set(seg, x);
     }
-    public static MemoryAddress set_local$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.set_local$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment set_local$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$219.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void set_local$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5Z_class1_t.set_local$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void set_local$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$219.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5Z_set_local_func_t set_local (MemorySegment segment, MemorySession session) {
-        return H5Z_set_local_func_t.ofAddress(set_local$get(segment), session);
+    public static H5Z_set_local_func_t set_local(MemorySegment segment, Arena scope) {
+        return H5Z_set_local_func_t.ofAddress(set_local$get(segment), scope);
     }
-    static final VarHandle filter$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("filter"));
     public static VarHandle filter$VH() {
-        return H5Z_class1_t.filter$VH;
+        return constants$220.const$0;
     }
-    public static MemoryAddress filter$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.filter$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5Z_func_t filter;
+     * }
+     */
+    public static MemorySegment filter$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$220.const$0.get(seg);
     }
-    public static void filter$set( MemorySegment seg, MemoryAddress x) {
-        H5Z_class1_t.filter$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5Z_func_t filter;
+     * }
+     */
+    public static void filter$set(MemorySegment seg, MemorySegment x) {
+        constants$220.const$0.set(seg, x);
     }
-    public static MemoryAddress filter$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5Z_class1_t.filter$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment filter$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$220.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void filter$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5Z_class1_t.filter$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void filter$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$220.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5Z_func_t filter (MemorySegment segment, MemorySession session) {
-        return H5Z_func_t.ofAddress(filter$get(segment), session);
+    public static H5Z_func_t filter(MemorySegment segment, Arena scope) {
+        return H5Z_func_t.ofAddress(filter$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

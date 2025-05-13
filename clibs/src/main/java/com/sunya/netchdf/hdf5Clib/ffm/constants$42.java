@@ -7,51 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$42 {
+final class constants$42 {
 
-    static final FunctionDescriptor H5O_mcdt_search_cb_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$42() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5O_mcdt_search_cb_t$MH = RuntimeHelper.downcallHandle(
-        constants$42.H5O_mcdt_search_cb_t$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tdecode",
+        constants$42.const$0
     );
-    static final FunctionDescriptor H5Oopen$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tflush",
+        constants$19.const$0
     );
-    static final MethodHandle H5Oopen$MH = RuntimeHelper.downcallHandle(
-        "H5Oopen",
-        constants$42.H5Oopen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Trefresh",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Oopen_by_addr$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Oopen_by_addr$MH = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_addr",
-        constants$42.H5Oopen_by_addr$FUNC
-    );
-    static final FunctionDescriptor H5Oopen_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oopen_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_idx",
-        constants$42.H5Oopen_by_idx$FUNC
-    );
-    static final FunctionDescriptor H5Oexists_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oexists_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Oexists_by_name",
-        constants$42.H5Oexists_by_name$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tinsert",
+        constants$42.const$4
     );
 }
 

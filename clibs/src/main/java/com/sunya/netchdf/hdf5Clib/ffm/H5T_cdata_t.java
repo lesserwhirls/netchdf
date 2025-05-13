@@ -7,88 +7,135 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5T_cdata_t {
+ *     H5T_cmd_t command;
+ *     H5T_bkg_t need_bkg;
+ *     hbool_t recalc;
+ *     void* priv;
+ * };
+ * }
+ */
 public class H5T_cdata_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("command"),
-        Constants$root.C_INT$LAYOUT.withName("need_bkg"),
-        Constants$root.C_BOOL$LAYOUT.withName("recalc"),
-        MemoryLayout.paddingLayout(56),
-        Constants$root.C_POINTER$LAYOUT.withName("priv")
-    ).withName("H5T_cdata_t");
     public static MemoryLayout $LAYOUT() {
-        return H5T_cdata_t.$struct$LAYOUT;
+        return constants$22.const$4;
     }
-    static final VarHandle command$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("command"));
     public static VarHandle command$VH() {
-        return H5T_cdata_t.command$VH;
+        return constants$22.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5T_cmd_t command;
+     * }
+     */
     public static int command$get(MemorySegment seg) {
-        return (int)H5T_cdata_t.command$VH.get(seg);
+        return (int)constants$22.const$5.get(seg);
     }
-    public static void command$set( MemorySegment seg, int x) {
-        H5T_cdata_t.command$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5T_cmd_t command;
+     * }
+     */
+    public static void command$set(MemorySegment seg, int x) {
+        constants$22.const$5.set(seg, x);
     }
     public static int command$get(MemorySegment seg, long index) {
-        return (int)H5T_cdata_t.command$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$22.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void command$set(MemorySegment seg, long index, int x) {
-        H5T_cdata_t.command$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$22.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle need_bkg$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("need_bkg"));
     public static VarHandle need_bkg$VH() {
-        return H5T_cdata_t.need_bkg$VH;
+        return constants$23.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5T_bkg_t need_bkg;
+     * }
+     */
     public static int need_bkg$get(MemorySegment seg) {
-        return (int)H5T_cdata_t.need_bkg$VH.get(seg);
+        return (int)constants$23.const$0.get(seg);
     }
-    public static void need_bkg$set( MemorySegment seg, int x) {
-        H5T_cdata_t.need_bkg$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5T_bkg_t need_bkg;
+     * }
+     */
+    public static void need_bkg$set(MemorySegment seg, int x) {
+        constants$23.const$0.set(seg, x);
     }
     public static int need_bkg$get(MemorySegment seg, long index) {
-        return (int)H5T_cdata_t.need_bkg$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$23.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void need_bkg$set(MemorySegment seg, long index, int x) {
-        H5T_cdata_t.need_bkg$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$23.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle recalc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("recalc"));
     public static VarHandle recalc$VH() {
-        return H5T_cdata_t.recalc$VH;
+        return constants$23.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t recalc;
+     * }
+     */
     public static boolean recalc$get(MemorySegment seg) {
-        return (boolean)H5T_cdata_t.recalc$VH.get(seg);
+        return (boolean)constants$23.const$1.get(seg);
     }
-    public static void recalc$set( MemorySegment seg, boolean x) {
-        H5T_cdata_t.recalc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t recalc;
+     * }
+     */
+    public static void recalc$set(MemorySegment seg, boolean x) {
+        constants$23.const$1.set(seg, x);
     }
     public static boolean recalc$get(MemorySegment seg, long index) {
-        return (boolean)H5T_cdata_t.recalc$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$23.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void recalc$set(MemorySegment seg, long index, boolean x) {
-        H5T_cdata_t.recalc$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$23.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle priv$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("priv"));
     public static VarHandle priv$VH() {
-        return H5T_cdata_t.priv$VH;
+        return constants$23.const$2;
     }
-    public static MemoryAddress priv$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5T_cdata_t.priv$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* priv;
+     * }
+     */
+    public static MemorySegment priv$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$23.const$2.get(seg);
     }
-    public static void priv$set( MemorySegment seg, MemoryAddress x) {
-        H5T_cdata_t.priv$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* priv;
+     * }
+     */
+    public static void priv$set(MemorySegment seg, MemorySegment x) {
+        constants$23.const$2.set(seg, x);
     }
-    public static MemoryAddress priv$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5T_cdata_t.priv$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment priv$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$23.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void priv$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5T_cdata_t.priv$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void priv$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$23.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

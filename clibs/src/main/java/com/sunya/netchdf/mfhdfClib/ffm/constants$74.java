@@ -3,55 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$74 {
 
-class constants$74 {
-
-    static final FunctionDescriptor syscall$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$74() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strrchr",
+        constants$73.const$4
     );
-    static final MethodHandle syscall$MH = RuntimeHelper.downcallHandleVariadic(
-        "syscall",
-        constants$74.syscall$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strchrnul",
+        constants$73.const$4
     );
-    static final FunctionDescriptor fdatasync$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle fdatasync$MH = RuntimeHelper.downcallHandle(
-        "fdatasync",
-        constants$74.fdatasync$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strcspn",
+        constants$74.const$2
     );
-    static final FunctionDescriptor crypt$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strspn",
+        constants$74.const$2
     );
-    static final MethodHandle crypt$MH = RuntimeHelper.downcallHandle(
-        "crypt",
-        constants$74.crypt$FUNC
-    );
-    static final FunctionDescriptor getentropy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle getentropy$MH = RuntimeHelper.downcallHandle(
-        "getentropy",
-        constants$74.getentropy$FUNC
-    );
-    static final FunctionDescriptor flock$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle flock$MH = RuntimeHelper.downcallHandle(
-        "flock",
-        constants$74.flock$FUNC
-    );
-    static final FunctionDescriptor stat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle stat$MH = RuntimeHelper.downcallHandle(
-        "stat",
-        constants$74.stat$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strpbrk",
+        constants$21.const$1
     );
 }
 

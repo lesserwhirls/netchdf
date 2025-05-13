@@ -7,26 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$91 {
+final class constants$91 {
 
-    static final  OfLong H5E_NOTHDF5_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOTHDF5_g$VH = constants$91.H5E_NOTHDF5_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOTHDF5_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOTHDF5_g", constants$91.H5E_NOTHDF5_g$LAYOUT);
-    static final  OfLong H5E_BADFILE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADFILE_g$VH = constants$91.H5E_BADFILE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADFILE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADFILE_g", constants$91.H5E_BADFILE_g$LAYOUT);
-    static final  OfLong H5E_TRUNCATED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_TRUNCATED_g$VH = constants$91.H5E_TRUNCATED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_TRUNCATED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_TRUNCATED_g", constants$91.H5E_TRUNCATED_g$LAYOUT);
-    static final  OfLong H5E_MOUNT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_MOUNT_g$VH = constants$91.H5E_MOUNT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_MOUNT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_MOUNT_g", constants$91.H5E_MOUNT_g$LAYOUT);
-    static final  OfLong H5E_CANTLOCKFILE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTLOCKFILE_g$VH = constants$91.H5E_CANTLOCKFILE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTLOCKFILE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTLOCKFILE_g", constants$91.H5E_CANTLOCKFILE_g$LAYOUT);
-    static final  OfLong H5E_CANTUNLOCKFILE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNLOCKFILE_g$VH = constants$91.H5E_CANTUNLOCKFILE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNLOCKFILE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNLOCKFILE_g", constants$91.H5E_CANTUNLOCKFILE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$91() {}
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("decr_mode"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("upper_hr_threshold"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("decrement"));
+    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_decrement"));
+    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_decrement"));
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("epochs_before_eviction"));
 }
 
 

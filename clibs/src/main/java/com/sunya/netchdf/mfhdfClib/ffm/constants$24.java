@@ -3,55 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$24 {
 
-class constants$24 {
-
-    static final FunctionDescriptor strtoll$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$24() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle strtoll$MH = RuntimeHelper.downcallHandle(
-        "strtoll",
-        constants$24.strtoll$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "setbuffer",
+        constants$24.const$0
     );
-    static final FunctionDescriptor strtoull$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle strtoull$MH = RuntimeHelper.downcallHandle(
-        "strtoull",
-        constants$24.strtoull$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "setlinebuf",
+        constants$24.const$2
     );
-    static final FunctionDescriptor l64a$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "fprintf",
+        constants$19.const$5
     );
-    static final MethodHandle l64a$MH = RuntimeHelper.downcallHandle(
-        "l64a",
-        constants$24.l64a$FUNC
-    );
-    static final FunctionDescriptor a64l$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle a64l$MH = RuntimeHelper.downcallHandle(
-        "a64l",
-        constants$24.a64l$FUNC
-    );
-    static final FunctionDescriptor __bswap_16$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle __bswap_16$MH = RuntimeHelper.downcallHandle(
-        "__bswap_16",
-        constants$24.__bswap_16$FUNC
-    );
-    static final FunctionDescriptor __bswap_32$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle __bswap_32$MH = RuntimeHelper.downcallHandle(
-        "__bswap_32",
-        constants$24.__bswap_32$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "printf",
+        constants$17.const$4
     );
 }
 

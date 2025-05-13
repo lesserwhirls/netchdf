@@ -7,14 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$209 {
+final class constants$209 {
 
-    static final MemorySegment SCNxFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment SCNdMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNiMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNoMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNuMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNxMAX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$209() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Sextent_copy",
+        constants$40.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sextent_equal",
+        constants$40.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sget_simple_extent_dims",
+        constants$41.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Sget_simple_extent_ndims",
+        constants$19.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sget_simple_extent_npoints",
+        constants$10.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sget_simple_extent_type",
+        constants$19.const$0
+    );
 }
 
 

@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5P_prp_cb1_t)(char* name,unsigned long size,void* value);
+ * }
+ */
 public interface H5P_prp_cb1_t {
 
-    int apply(java.lang.foreign.MemoryAddress name, long size, java.lang.foreign.MemoryAddress value);
-    static MemorySegment allocate(H5P_prp_cb1_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5P_prp_cb1_t.class, fi, constants$128.H5P_prp_cb1_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment name, long size, java.lang.foreign.MemorySegment value);
+    static MemorySegment allocate(H5P_prp_cb1_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$220.const$5, fi, constants$17.const$4, scope);
     }
-    static H5P_prp_cb1_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _name, long _size, java.lang.foreign.MemoryAddress _value) -> {
+    static H5P_prp_cb1_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _name, long _size, java.lang.foreign.MemorySegment _value) -> {
             try {
-                return (int)constants$128.H5P_prp_cb1_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_name, _size, (java.lang.foreign.Addressable)_value);
+                return (int)constants$18.const$0.invokeExact(symbol, _name, _size, _value);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

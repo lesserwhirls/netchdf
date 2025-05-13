@@ -3,54 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$133 {
 
-class constants$133 {
-
-    static final FunctionDescriptor VSgetattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$133() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "Hendaccess",
+        constants$1.const$5
     );
-    static final MethodHandle VSgetattr$MH = RuntimeHelper.downcallHandle(
-        "VSgetattr",
-        constants$133.VSgetattr$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HDgetc",
+        constants$1.const$5
     );
-    static final FunctionDescriptor VSisattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_BYTE,
+        JAVA_INT
     );
-    static final MethodHandle VSisattr$MH = RuntimeHelper.downcallHandle(
-        "VSisattr",
-        constants$133.VSisattr$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HDputc",
+        constants$133.const$2
     );
-    static final FunctionDescriptor vicheckcompat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle vicheckcompat$MH = RuntimeHelper.downcallHandle(
-        "vicheckcompat",
-        constants$133.vicheckcompat$FUNC
-    );
-    static final FunctionDescriptor vimakecompat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle vimakecompat$MH = RuntimeHelper.downcallHandle(
-        "vimakecompat",
-        constants$133.vimakecompat$FUNC
-    );
-    static final FunctionDescriptor vcheckcompat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vcheckcompat$MH = RuntimeHelper.downcallHandle(
-        "vcheckcompat",
-        constants$133.vcheckcompat$FUNC
-    );
-    static final FunctionDescriptor vmakecompat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vmakecompat$MH = RuntimeHelper.downcallHandle(
-        "vmakecompat",
-        constants$133.vmakecompat$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Hgetelement",
+        constants$133.const$4
     );
 }
 

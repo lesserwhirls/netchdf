@@ -7,89 +7,135 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct {
+ *     hbool_t corder_valid;
+ *     H5O_msg_crt_idx_t corder;
+ *     H5T_cset_t cset;
+ *     hsize_t data_size;
+ * };
+ * }
+ */
 public class H5A_info_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_BOOL$LAYOUT.withName("corder_valid"),
-        MemoryLayout.paddingLayout(24),
-        Constants$root.C_INT$LAYOUT.withName("corder"),
-        Constants$root.C_INT$LAYOUT.withName("cset"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("data_size")
-    );
     public static MemoryLayout $LAYOUT() {
-        return H5A_info_t.$struct$LAYOUT;
+        return constants$80.const$1;
     }
-    static final VarHandle corder_valid$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
     public static VarHandle corder_valid$VH() {
-        return H5A_info_t.corder_valid$VH;
+        return constants$80.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t corder_valid;
+     * }
+     */
     public static boolean corder_valid$get(MemorySegment seg) {
-        return (boolean)H5A_info_t.corder_valid$VH.get(seg);
+        return (boolean)constants$80.const$2.get(seg);
     }
-    public static void corder_valid$set( MemorySegment seg, boolean x) {
-        H5A_info_t.corder_valid$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t corder_valid;
+     * }
+     */
+    public static void corder_valid$set(MemorySegment seg, boolean x) {
+        constants$80.const$2.set(seg, x);
     }
     public static boolean corder_valid$get(MemorySegment seg, long index) {
-        return (boolean)H5A_info_t.corder_valid$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$80.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void corder_valid$set(MemorySegment seg, long index, boolean x) {
-        H5A_info_t.corder_valid$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$80.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle corder$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("corder"));
     public static VarHandle corder$VH() {
-        return H5A_info_t.corder$VH;
+        return constants$80.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5O_msg_crt_idx_t corder;
+     * }
+     */
     public static int corder$get(MemorySegment seg) {
-        return (int)H5A_info_t.corder$VH.get(seg);
+        return (int)constants$80.const$3.get(seg);
     }
-    public static void corder$set( MemorySegment seg, int x) {
-        H5A_info_t.corder$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5O_msg_crt_idx_t corder;
+     * }
+     */
+    public static void corder$set(MemorySegment seg, int x) {
+        constants$80.const$3.set(seg, x);
     }
     public static int corder$get(MemorySegment seg, long index) {
-        return (int)H5A_info_t.corder$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$80.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void corder$set(MemorySegment seg, long index, int x) {
-        H5A_info_t.corder$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$80.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle cset$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("cset"));
     public static VarHandle cset$VH() {
-        return H5A_info_t.cset$VH;
+        return constants$80.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5T_cset_t cset;
+     * }
+     */
     public static int cset$get(MemorySegment seg) {
-        return (int)H5A_info_t.cset$VH.get(seg);
+        return (int)constants$80.const$4.get(seg);
     }
-    public static void cset$set( MemorySegment seg, int x) {
-        H5A_info_t.cset$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5T_cset_t cset;
+     * }
+     */
+    public static void cset$set(MemorySegment seg, int x) {
+        constants$80.const$4.set(seg, x);
     }
     public static int cset$get(MemorySegment seg, long index) {
-        return (int)H5A_info_t.cset$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$80.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void cset$set(MemorySegment seg, long index, int x) {
-        H5A_info_t.cset$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$80.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle data_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
     public static VarHandle data_size$VH() {
-        return H5A_info_t.data_size$VH;
+        return constants$80.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t data_size;
+     * }
+     */
     public static long data_size$get(MemorySegment seg) {
-        return (long)H5A_info_t.data_size$VH.get(seg);
+        return (long)constants$80.const$5.get(seg);
     }
-    public static void data_size$set( MemorySegment seg, long x) {
-        H5A_info_t.data_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t data_size;
+     * }
+     */
+    public static void data_size$set(MemorySegment seg, long x) {
+        constants$80.const$5.set(seg, x);
     }
     public static long data_size$get(MemorySegment seg, long index) {
-        return (long)H5A_info_t.data_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$80.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void data_size$set(MemorySegment seg, long index, long x) {
-        H5A_info_t.data_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$80.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

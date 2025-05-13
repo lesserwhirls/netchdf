@@ -7,26 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$90 {
+final class constants$90 {
 
-    static final  OfLong H5E_OPENERROR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_OPENERROR_g$VH = constants$90.H5E_OPENERROR_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_OPENERROR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_OPENERROR_g", constants$90.H5E_OPENERROR_g$LAYOUT);
-    static final  OfLong H5E_FILEEXISTS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_FILEEXISTS_g$VH = constants$90.H5E_FILEEXISTS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_FILEEXISTS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_FILEEXISTS_g", constants$90.H5E_FILEEXISTS_g$LAYOUT);
-    static final  OfLong H5E_FILEOPEN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_FILEOPEN_g$VH = constants$90.H5E_FILEOPEN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_FILEOPEN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_FILEOPEN_g", constants$90.H5E_FILEOPEN_g$LAYOUT);
-    static final  OfLong H5E_CANTCREATE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCREATE_g$VH = constants$90.H5E_CANTCREATE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCREATE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCREATE_g", constants$90.H5E_CANTCREATE_g$LAYOUT);
-    static final  OfLong H5E_CANTOPENFILE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTOPENFILE_g$VH = constants$90.H5E_CANTOPENFILE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTOPENFILE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTOPENFILE_g", constants$90.H5E_CANTOPENFILE_g$LAYOUT);
-    static final  OfLong H5E_CANTCLOSEFILE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCLOSEFILE_g$VH = constants$90.H5E_CANTCLOSEFILE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCLOSEFILE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLOSEFILE_g", constants$90.H5E_CANTCLOSEFILE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$90() {}
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("increment"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_increment"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_increment"));
+    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_incr_mode"));
+    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_multiple"));
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_threshold"));
 }
 
 

@@ -2,16 +2,41 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$170 {
 
-class constants$170 {
-
-    static final MemorySegment H4_PACKAGE_TARNAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf");
-    static final MemorySegment H4_PACKAGE_URL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment H4_PACKAGE_VERSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("4.2.17-1");
-    static final MemorySegment H4_VERSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("4.2.17-1");
-    static final MemorySegment __PRI64_PREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
-    static final MemorySegment __PRIPTR_PREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$170() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFANIgetfann",
+        constants$99.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFANPshutdown",
+        constants$28.const$3
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFSDgetdims",
+        constants$170.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFSDgetdatastrs",
+        constants$135.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFSDgetdimstrs",
+        constants$138.const$0
+    );
 }
 
 

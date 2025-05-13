@@ -3,60 +3,42 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$49 {
 
-class constants$49 {
-
-    static final FunctionDescriptor time$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle time$MH = RuntimeHelper.downcallHandle(
-        "time",
-        constants$49.time$FUNC
-    );
-    static final FunctionDescriptor difftime$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle difftime$MH = RuntimeHelper.downcallHandle(
-        "difftime",
-        constants$49.difftime$FUNC
-    );
-    static final FunctionDescriptor mktime$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle mktime$MH = RuntimeHelper.downcallHandle(
-        "mktime",
-        constants$49.mktime$FUNC
-    );
-    static final FunctionDescriptor strftime$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strftime$MH = RuntimeHelper.downcallHandle(
-        "strftime",
-        constants$49.strftime$FUNC
-    );
-    static final FunctionDescriptor strftime_l$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strftime_l$MH = RuntimeHelper.downcallHandle(
-        "strftime_l",
-        constants$49.strftime_l$FUNC
-    );
-    static final FunctionDescriptor gmtime$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle gmtime$MH = RuntimeHelper.downcallHandle(
-        "gmtime",
-        constants$49.gmtime$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$49() {}
+    static final VarHandle const$0 = constants$48.const$5.varHandle(MemoryLayout.PathElement.groupElement("__data"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
+        JAVA_INT.withName("__align")
+    ).withName("");
+    static final VarHandle const$2 = constants$49.const$1.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("pthread_attr_t");
+    static final VarHandle const$4 = constants$49.const$3.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__lock"),
+            JAVA_INT.withName("__count"),
+            JAVA_INT.withName("__owner"),
+            JAVA_INT.withName("__nusers"),
+            JAVA_INT.withName("__kind"),
+            JAVA_SHORT.withName("__spins"),
+            JAVA_SHORT.withName("__elision"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("__prev"),
+                RuntimeHelper.POINTER.withName("__next")
+            ).withName("__list")
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(40, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
 }
 
 

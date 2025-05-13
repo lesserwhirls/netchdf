@@ -3,56 +3,43 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$152 {
 
-class constants$152 {
-
-    static final FunctionDescriptor sd_ncopen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$152() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle sd_ncopen$MH = RuntimeHelper.downcallHandle(
-        "sd_ncopen",
-        constants$152.sd_ncopen$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFCIjpeg",
+        constants$152.const$0
     );
-    static final FunctionDescriptor sd_ncredef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFCIunjpeg",
+        constants$150.const$4
     );
-    static final MethodHandle sd_ncredef$MH = RuntimeHelper.downcallHandle(
-        "sd_ncredef",
-        constants$152.sd_ncredef$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFdiread",
+        constants$130.const$0
     );
-    static final FunctionDescriptor sd_ncendef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFdiget",
+        constants$26.const$5
     );
-    static final MethodHandle sd_ncendef$MH = RuntimeHelper.downcallHandle(
-        "sd_ncendef",
-        constants$152.sd_ncendef$FUNC
-    );
-    static final FunctionDescriptor sd_ncclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle sd_ncclose$MH = RuntimeHelper.downcallHandle(
-        "sd_ncclose",
-        constants$152.sd_ncclose$FUNC
-    );
-    static final FunctionDescriptor sd_ncinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncinquire$MH = RuntimeHelper.downcallHandle(
-        "sd_ncinquire",
-        constants$152.sd_ncinquire$FUNC
-    );
-    static final FunctionDescriptor sd_ncsync$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle sd_ncsync$MH = RuntimeHelper.downcallHandle(
-        "sd_ncsync",
-        constants$152.sd_ncsync$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFdinobj",
+        constants$1.const$5
     );
 }
 

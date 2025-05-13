@@ -4,49 +4,33 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$8 {
+final class constants$8 {
 
-    static final  OfAddress stderr$LAYOUT = Constants$root.C_POINTER$LAYOUT;
-    static final VarHandle stderr$VH = constants$8.stderr$LAYOUT.varHandle();
-    static final MemorySegment stderr$SEGMENT = RuntimeHelper.lookupGlobalVariable("stderr", constants$8.stderr$LAYOUT);
-    static final FunctionDescriptor remove$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$8() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "__toupper_l",
+        constants$5.const$3
     );
-    static final MethodHandle remove$MH = RuntimeHelper.downcallHandle(
-        "remove",
-        constants$8.remove$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "toupper_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor rename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("quot"),
+        JAVA_LONG.withName("rem")
+    ).withName("");
+    static final VarHandle const$3 = constants$8.const$2.varHandle(MemoryLayout.PathElement.groupElement("quot"));
+    static final VarHandle const$4 = constants$8.const$2.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle rename$MH = RuntimeHelper.downcallHandle(
-        "rename",
-        constants$8.rename$FUNC
-    );
-    static final FunctionDescriptor renameat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle renameat$MH = RuntimeHelper.downcallHandle(
-        "renameat",
-        constants$8.renameat$FUNC
-    );
-    static final FunctionDescriptor fclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fclose$MH = RuntimeHelper.downcallHandle(
-        "fclose",
-        constants$8.fclose$FUNC
-    );
-    static final FunctionDescriptor tmpfile$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle tmpfile$MH = RuntimeHelper.downcallHandle(
-        "tmpfile",
-        constants$8.tmpfile$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "imaxabs",
+        constants$8.const$5
     );
 }
 

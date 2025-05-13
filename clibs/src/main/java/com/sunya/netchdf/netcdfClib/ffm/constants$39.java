@@ -3,87 +3,37 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$39 {
 
-class constants$39 {
-
-    static final FunctionDescriptor nc_get_varm_text$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$39() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_put_vara_ushort",
+        constants$7.const$3
     );
-    static final MethodHandle nc_get_varm_text$MH = RuntimeHelper.downcallHandle(
-        "nc_get_varm_text",
-        constants$39.nc_get_varm_text$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_get_vara_ushort",
+        constants$7.const$3
     );
-    static final FunctionDescriptor nc_put_varm_uchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_vara_uint",
+        constants$7.const$3
     );
-    static final MethodHandle nc_put_varm_uchar$MH = RuntimeHelper.downcallHandle(
-        "nc_put_varm_uchar",
-        constants$39.nc_put_varm_uchar$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_vara_uint",
+        constants$7.const$3
     );
-    static final FunctionDescriptor nc_get_varm_uchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_put_vara_longlong",
+        constants$7.const$3
     );
-    static final MethodHandle nc_get_varm_uchar$MH = RuntimeHelper.downcallHandle(
-        "nc_get_varm_uchar",
-        constants$39.nc_get_varm_uchar$FUNC
-    );
-    static final FunctionDescriptor nc_put_varm_schar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_varm_schar$MH = RuntimeHelper.downcallHandle(
-        "nc_put_varm_schar",
-        constants$39.nc_put_varm_schar$FUNC
-    );
-    static final FunctionDescriptor nc_get_varm_schar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_get_varm_schar$MH = RuntimeHelper.downcallHandle(
-        "nc_get_varm_schar",
-        constants$39.nc_get_varm_schar$FUNC
-    );
-    static final FunctionDescriptor nc_put_varm_short$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_varm_short$MH = RuntimeHelper.downcallHandle(
-        "nc_put_varm_short",
-        constants$39.nc_put_varm_short$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_get_vara_longlong",
+        constants$7.const$3
     );
 }
 

@@ -3,57 +3,26 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$110 {
 
-class constants$110 {
-
-    static final FunctionDescriptor DFANaddfds$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$110() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getlogin_r",
+        constants$68.const$3
     );
-    static final MethodHandle DFANaddfds$MH = RuntimeHelper.downcallHandle(
-        "DFANaddfds",
-        constants$110.DFANaddfds$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "setlogin",
+        constants$17.const$4
     );
-    static final FunctionDescriptor DFANlastref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT);
-    static final MethodHandle DFANlastref$MH = RuntimeHelper.downcallHandle(
-        "DFANlastref",
-        constants$110.DFANlastref$FUNC
-    );
-    static final FunctionDescriptor DFANlablist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFANlablist$MH = RuntimeHelper.downcallHandle(
-        "DFANlablist",
-        constants$110.DFANlablist$FUNC
-    );
-    static final FunctionDescriptor DFANclear$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFANclear$MH = RuntimeHelper.downcallHandle(
-        "DFANclear",
-        constants$110.DFANclear$FUNC
-    );
-    static final FunctionDescriptor DFANIclear$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFANIclear$MH = RuntimeHelper.downcallHandle(
-        "DFANIclear",
-        constants$110.DFANIclear$FUNC
-    );
-    static final FunctionDescriptor DFANIlocate$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFANIlocate$MH = RuntimeHelper.downcallHandle(
-        "DFANIlocate",
-        constants$110.DFANIlocate$FUNC
-    );
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("optarg", RuntimeHelper.POINTER);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("optind", JAVA_INT);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("opterr", JAVA_INT);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("optopt", JAVA_INT);
 }
 
 

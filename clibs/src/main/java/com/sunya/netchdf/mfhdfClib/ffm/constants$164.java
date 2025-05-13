@@ -3,68 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$164 {
 
-class constants$164 {
-
-    static final FunctionDescriptor SDgetexternalfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$164() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DF24nimages",
+        constants$17.const$4
     );
-    static final MethodHandle SDgetexternalfile$MH = RuntimeHelper.downcallHandle(
-        "SDgetexternalfile",
-        constants$164.SDgetexternalfile$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DF24readref",
+        constants$154.const$4
     );
-    static final FunctionDescriptor SDgetexternalinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DF24lastref",
+        constants$155.const$2
     );
-    static final MethodHandle SDgetexternalinfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetexternalinfo",
-        constants$164.SDgetexternalinfo$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final FunctionDescriptor SDsetexternalfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFANgetlablen",
+        constants$164.const$3
     );
-    static final MethodHandle SDsetexternalfile$MH = RuntimeHelper.downcallHandle(
-        "SDsetexternalfile",
-        constants$164.SDsetexternalfile$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor SDsetnbitdataset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle SDsetnbitdataset$MH = RuntimeHelper.downcallHandle(
-        "SDsetnbitdataset",
-        constants$164.SDsetnbitdataset$FUNC
-    );
-    static final FunctionDescriptor SDsetcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDsetcompress$MH = RuntimeHelper.downcallHandle(
-        "SDsetcompress",
-        constants$164.SDsetcompress$FUNC
-    );
-    static final FunctionDescriptor SDgetcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDgetcompress$MH = RuntimeHelper.downcallHandle(
-        "SDgetcompress",
-        constants$164.SDgetcompress$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "DFANgetlabel",
+        constants$164.const$5
     );
 }
 

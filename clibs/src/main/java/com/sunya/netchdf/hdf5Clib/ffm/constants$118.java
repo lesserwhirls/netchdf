@@ -7,64 +7,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$118 {
+final class constants$118 {
 
-    static final FunctionDescriptor H5FDfree$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$118() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "snprintf",
+        constants$17.const$4
     );
-    static final MethodHandle H5FDfree$MH = RuntimeHelper.downcallHandle(
-        "H5FDfree",
-        constants$118.H5FDfree$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5FDget_eoa$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vsnprintf",
+        constants$118.const$1
     );
-    static final MethodHandle H5FDget_eoa$MH = RuntimeHelper.downcallHandle(
-        "H5FDget_eoa",
-        constants$118.H5FDget_eoa$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vasprintf",
+        constants$15.const$4
     );
-    static final FunctionDescriptor H5FDset_eoa$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "__asprintf",
+        constants$112.const$0
     );
-    static final MethodHandle H5FDset_eoa$MH = RuntimeHelper.downcallHandle(
-        "H5FDset_eoa",
-        constants$118.H5FDset_eoa$FUNC
-    );
-    static final FunctionDescriptor H5FDget_eof$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5FDget_eof$MH = RuntimeHelper.downcallHandle(
-        "H5FDget_eof",
-        constants$118.H5FDget_eof$FUNC
-    );
-    static final FunctionDescriptor H5FDget_vfd_handle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5FDget_vfd_handle$MH = RuntimeHelper.downcallHandle(
-        "H5FDget_vfd_handle",
-        constants$118.H5FDget_vfd_handle$FUNC
-    );
-    static final FunctionDescriptor H5FDread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5FDread$MH = RuntimeHelper.downcallHandle(
-        "H5FDread",
-        constants$118.H5FDread$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "asprintf",
+        constants$112.const$0
     );
 }
 

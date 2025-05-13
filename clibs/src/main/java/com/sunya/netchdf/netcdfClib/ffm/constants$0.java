@@ -3,52 +3,35 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$0 {
 
-class constants$0 {
-
-    static final FunctionDescriptor __errno_location$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle __errno_location$MH = RuntimeHelper.downcallHandle(
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$0() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__clang_max_align_nonce1"),
+        MemoryLayout.paddingLayout(8),
+        MemoryLayout.paddingLayout(16).withName("__clang_max_align_nonce2")
+    ).withName("");
+    static final VarHandle const$1 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "__errno_location",
-        constants$0.__errno_location$FUNC
+        constants$0.const$2
     );
-    static final FunctionDescriptor nc_inq_libvers$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle nc_inq_libvers$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "nc_inq_libvers",
-        constants$0.nc_inq_libvers$FUNC
+        constants$0.const$2
     );
-    static final FunctionDescriptor nc_strerror$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle nc_strerror$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
         "nc_strerror",
-        constants$0.nc_strerror$FUNC
-    );
-    static final FunctionDescriptor nc_def_user_format$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_def_user_format$MH = RuntimeHelper.downcallHandle(
-        "nc_def_user_format",
-        constants$0.nc_def_user_format$FUNC
-    );
-    static final FunctionDescriptor nc_inq_user_format$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_user_format$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_user_format",
-        constants$0.nc_inq_user_format$FUNC
-    );
-    static final FunctionDescriptor nc_set_alignment$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nc_set_alignment$MH = RuntimeHelper.downcallHandle(
-        "nc_set_alignment",
-        constants$0.nc_set_alignment$FUNC
+        constants$0.const$5
     );
 }
 

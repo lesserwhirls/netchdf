@@ -7,54 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$5 {
+final class constants$5 {
 
-    static final FunctionDescriptor H5I_search_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5I_search_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$5.H5I_search_func_t$FUNC
-    );
-    static final FunctionDescriptor H5Iregister$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Iregister$MH = RuntimeHelper.downcallHandle(
-        "H5Iregister",
-        constants$5.H5Iregister$FUNC
-    );
-    static final FunctionDescriptor H5Iobject_verify$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Iobject_verify$MH = RuntimeHelper.downcallHandle(
-        "H5Iobject_verify",
-        constants$5.H5Iobject_verify$FUNC
-    );
-    static final FunctionDescriptor H5Iremove_verify$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Iremove_verify$MH = RuntimeHelper.downcallHandle(
-        "H5Iremove_verify",
-        constants$5.H5Iremove_verify$FUNC
-    );
-    static final FunctionDescriptor H5Iget_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Iget_type$MH = RuntimeHelper.downcallHandle(
-        "H5Iget_type",
-        constants$5.H5Iget_type$FUNC
-    );
-    static final FunctionDescriptor H5Iget_file_id$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Iget_file_id$MH = RuntimeHelper.downcallHandle(
-        "H5Iget_file_id",
-        constants$5.H5Iget_file_id$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$5() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__readers"),
+        JAVA_INT.withName("__writers"),
+        JAVA_INT.withName("__wrphase_futex"),
+        JAVA_INT.withName("__writers_futex"),
+        JAVA_INT.withName("__pad3"),
+        JAVA_INT.withName("__pad4"),
+        JAVA_INT.withName("__cur_writer"),
+        JAVA_INT.withName("__shared"),
+        JAVA_BYTE.withName("__rwelision"),
+        MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+        JAVA_LONG.withName("__pad2"),
+        JAVA_INT.withName("__flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("__pthread_rwlock_arch_t");
+    static final VarHandle const$1 = constants$5.const$0.varHandle(MemoryLayout.PathElement.groupElement("__readers"));
+    static final VarHandle const$2 = constants$5.const$0.varHandle(MemoryLayout.PathElement.groupElement("__writers"));
+    static final VarHandle const$3 = constants$5.const$0.varHandle(MemoryLayout.PathElement.groupElement("__wrphase_futex"));
+    static final VarHandle const$4 = constants$5.const$0.varHandle(MemoryLayout.PathElement.groupElement("__writers_futex"));
+    static final VarHandle const$5 = constants$5.const$0.varHandle(MemoryLayout.PathElement.groupElement("__pad3"));
 }
 
 

@@ -7,59 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$150 {
+final class constants$150 {
 
-    static final FunctionDescriptor H5Pget_small_data_block_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_small_data_block_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_small_data_block_size",
-        constants$150.H5Pget_small_data_block_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_libver_bounds$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_libver_bounds$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_libver_bounds",
-        constants$150.H5Pset_libver_bounds$FUNC
-    );
-    static final FunctionDescriptor H5Pget_libver_bounds$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_libver_bounds$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_libver_bounds",
-        constants$150.H5Pget_libver_bounds$FUNC
-    );
-    static final FunctionDescriptor H5Pset_elink_file_cache_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_elink_file_cache_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_file_cache_size",
-        constants$150.H5Pset_elink_file_cache_size$FUNC
-    );
-    static final FunctionDescriptor H5Pget_elink_file_cache_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_elink_file_cache_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_file_cache_size",
-        constants$150.H5Pget_elink_file_cache_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_file_image$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_file_image$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image",
-        constants$150.H5Pset_file_image$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$150() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTINS_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTPROTECT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNPROTECT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTPIN_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNPIN_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKDIRTY_g", JAVA_LONG);
 }
 
 

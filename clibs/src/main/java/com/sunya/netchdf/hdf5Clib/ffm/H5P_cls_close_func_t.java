@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5P_cls_close_func_t)(long prop_id,void* close_data);
+ * }
+ */
 public interface H5P_cls_close_func_t {
 
-    int apply(long prop_id, java.lang.foreign.MemoryAddress close_data);
-    static MemorySegment allocate(H5P_cls_close_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5P_cls_close_func_t.class, fi, constants$127.H5P_cls_close_func_t$FUNC, session);
+    int apply(long prop_id, java.lang.foreign.MemorySegment close_data);
+    static MemorySegment allocate(H5P_cls_close_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$220.const$4, fi, constants$44.const$4, scope);
     }
-    static H5P_cls_close_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _prop_id, java.lang.foreign.MemoryAddress _close_data) -> {
+    static H5P_cls_close_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _prop_id, java.lang.foreign.MemorySegment _close_data) -> {
             try {
-                return (int)constants$128.H5P_cls_close_func_t$MH.invokeExact((Addressable)symbol, _prop_id, (java.lang.foreign.Addressable)_close_data);
+                return (int)constants$159.const$5.invokeExact(symbol, _prop_id, _close_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

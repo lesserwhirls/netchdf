@@ -3,50 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$35 {
 
-class constants$35 {
-
-    static final FunctionDescriptor unsetenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$35() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ferror",
+        constants$17.const$4
     );
-    static final MethodHandle unsetenv$MH = RuntimeHelper.downcallHandle(
-        "unsetenv",
-        constants$35.unsetenv$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clearerr_unlocked",
+        constants$24.const$2
     );
-    static final FunctionDescriptor clearenv$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle clearenv$MH = RuntimeHelper.downcallHandle(
-        "clearenv",
-        constants$35.clearenv$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "feof_unlocked",
+        constants$17.const$4
     );
-    static final FunctionDescriptor mktemp$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ferror_unlocked",
+        constants$17.const$4
     );
-    static final MethodHandle mktemp$MH = RuntimeHelper.downcallHandle(
-        "mktemp",
-        constants$35.mktemp$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "perror",
+        constants$24.const$2
     );
-    static final FunctionDescriptor mkstemp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle mkstemp$MH = RuntimeHelper.downcallHandle(
-        "mkstemp",
-        constants$35.mkstemp$FUNC
-    );
-    static final FunctionDescriptor mkstemps$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle mkstemps$MH = RuntimeHelper.downcallHandle(
-        "mkstemps",
-        constants$35.mkstemps$FUNC
-    );
-    static final FunctionDescriptor mkdtemp$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle mkdtemp$MH = RuntimeHelper.downcallHandle(
-        "mkdtemp",
-        constants$35.mkdtemp$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fileno",
+        constants$17.const$4
     );
 }
 

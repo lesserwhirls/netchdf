@@ -3,56 +3,36 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$139 {
 
-class constants$139 {
-
-    static final FunctionDescriptor Vfinish$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$139() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT
     );
-    static final MethodHandle Vfinish$MH = RuntimeHelper.downcallHandle(
-        "Vfinish",
-        constants$139.Vfinish$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hnumber",
+        constants$139.const$0
     );
-    static final FunctionDescriptor Vopen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_SHORT,
+        JAVA_INT
     );
-    static final MethodHandle Vopen$MH = RuntimeHelper.downcallHandle(
-        "Vopen",
-        constants$139.Vopen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hnewref",
+        constants$139.const$2
     );
-    static final FunctionDescriptor Vclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_SHORT,
+        JAVA_INT,
+        JAVA_SHORT
     );
-    static final MethodHandle Vclose$MH = RuntimeHelper.downcallHandle(
-        "Vclose",
-        constants$139.Vclose$FUNC
-    );
-    static final FunctionDescriptor vexistvg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle vexistvg$MH = RuntimeHelper.downcallHandle(
-        "vexistvg",
-        constants$139.vexistvg$FUNC
-    );
-    static final FunctionDescriptor Vattach$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vattach$MH = RuntimeHelper.downcallHandle(
-        "Vattach",
-        constants$139.Vattach$FUNC
-    );
-    static final FunctionDescriptor Vdetach$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vdetach$MH = RuntimeHelper.downcallHandle(
-        "Vdetach",
-        constants$139.Vdetach$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Htagnewref",
+        constants$139.const$4
     );
 }
 

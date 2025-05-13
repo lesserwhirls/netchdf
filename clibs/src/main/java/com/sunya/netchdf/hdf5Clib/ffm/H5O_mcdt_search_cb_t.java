@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * enum H5O_mcdt_search_ret_t (*H5O_mcdt_search_cb_t)(void* op_data);
+ * }
+ */
 public interface H5O_mcdt_search_cb_t {
 
-    int apply(java.lang.foreign.MemoryAddress op_data);
-    static MemorySegment allocate(H5O_mcdt_search_cb_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5O_mcdt_search_cb_t.class, fi, constants$42.H5O_mcdt_search_cb_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment op_data);
+    static MemorySegment allocate(H5O_mcdt_search_cb_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$72.const$3, fi, constants$15.const$2, scope);
     }
-    static H5O_mcdt_search_cb_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _op_data) -> {
+    static H5O_mcdt_search_cb_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$42.H5O_mcdt_search_cb_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_op_data);
+                return (int)constants$17.const$3.invokeExact(symbol, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

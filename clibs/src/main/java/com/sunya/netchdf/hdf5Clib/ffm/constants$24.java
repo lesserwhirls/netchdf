@@ -7,61 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$24 {
+final class constants$24 {
 
-    static final FunctionDescriptor H5Tcommit2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$24() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle H5Tcommit2$MH = RuntimeHelper.downcallHandle(
-        "H5Tcommit2",
-        constants$24.H5Tcommit2$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5T_conv_t.class, "apply", constants$24.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$24.const$0
     );
-    static final FunctionDescriptor H5Topen2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Topen2$MH = RuntimeHelper.downcallHandle(
-        "H5Topen2",
-        constants$24.H5Topen2$FUNC
-    );
-    static final FunctionDescriptor H5Tcommit_anon$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tcommit_anon$MH = RuntimeHelper.downcallHandle(
-        "H5Tcommit_anon",
-        constants$24.H5Tcommit_anon$FUNC
-    );
-    static final FunctionDescriptor H5Tget_create_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tget_create_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_create_plist",
-        constants$24.H5Tget_create_plist$FUNC
-    );
-    static final FunctionDescriptor H5Tcommitted$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tcommitted$MH = RuntimeHelper.downcallHandle(
-        "H5Tcommitted",
-        constants$24.H5Tcommitted$FUNC
-    );
-    static final FunctionDescriptor H5Tencode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tencode$MH = RuntimeHelper.downcallHandle(
-        "H5Tencode",
-        constants$24.H5Tencode$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5T_conv_except_func_t.class, "apply", constants$24.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$24.const$3
     );
 }
 

@@ -3,64 +3,35 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$37 {
 
-class constants$37 {
-
-    static final FunctionDescriptor abs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$37() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "funlockfile",
+        constants$24.const$2
     );
-    static final MethodHandle abs$MH = RuntimeHelper.downcallHandle(
-        "abs",
-        constants$37.abs$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "__uflow",
+        constants$17.const$4
     );
-    static final FunctionDescriptor labs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle labs$MH = RuntimeHelper.downcallHandle(
-        "labs",
-        constants$37.labs$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "__overflow",
+        constants$37.const$2
     );
-    static final FunctionDescriptor llabs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle llabs$MH = RuntimeHelper.downcallHandle(
-        "llabs",
-        constants$37.llabs$FUNC
-    );
-    static final FunctionDescriptor div$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("quot"),
-        Constants$root.C_INT$LAYOUT.withName("rem")
-    ),
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle div$MH = RuntimeHelper.downcallHandle(
-        "div",
-        constants$37.div$FUNC
-    );
-    static final FunctionDescriptor ldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
-    ),
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle ldiv$MH = RuntimeHelper.downcallHandle(
-        "ldiv",
-        constants$37.ldiv$FUNC
-    );
-    static final FunctionDescriptor lldiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
-    ),
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle lldiv$MH = RuntimeHelper.downcallHandle(
-        "lldiv",
-        constants$37.lldiv$FUNC
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("quot"),
+        JAVA_INT.withName("rem")
+    ).withName("");
+    static final VarHandle const$5 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("quot"));
 }
 
 

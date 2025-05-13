@@ -3,54 +3,54 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$146 {
 
-class constants$146 {
-
-    static final FunctionDescriptor vfdestroynode$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$146() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle vfdestroynode$MH = RuntimeHelper.downcallHandle(
-        "vfdestroynode",
-        constants$146.vfdestroynode$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HCPdecode_header",
+        constants$146.const$0
     );
-    static final FunctionDescriptor VSattach$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle VSattach$MH = RuntimeHelper.downcallHandle(
-        "VSattach",
-        constants$146.VSattach$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HCPsetup_szip_parms",
+        constants$146.const$2
     );
-    static final FunctionDescriptor VSdetach$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HBconvert",
+        constants$1.const$5
     );
-    static final MethodHandle VSdetach$MH = RuntimeHelper.downcallHandle(
-        "VSdetach",
-        constants$146.VSdetach$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor VSQuerytag$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSQuerytag$MH = RuntimeHelper.downcallHandle(
-        "VSQuerytag",
-        constants$146.VSQuerytag$FUNC
-    );
-    static final FunctionDescriptor VSQueryref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSQueryref$MH = RuntimeHelper.downcallHandle(
-        "VSQueryref",
-        constants$146.VSQueryref$FUNC
-    );
-    static final FunctionDescriptor VSgetid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSgetid$MH = RuntimeHelper.downcallHandle(
-        "VSgetid",
-        constants$146.VSgetid$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "HRPconvert",
+        constants$146.const$5
     );
 }
 

@@ -7,53 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$41 {
+final class constants$41 {
 
-    static final FunctionDescriptor H5Lunregister$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$41() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Lunregister$MH = RuntimeHelper.downcallHandle(
-        "H5Lunregister",
-        constants$41.H5Lunregister$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tcommit_anon",
+        constants$41.const$0
     );
-    static final FunctionDescriptor H5Lis_registered$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_create_plist",
+        constants$10.const$2
     );
-    static final MethodHandle H5Lis_registered$MH = RuntimeHelper.downcallHandle(
-        "H5Lis_registered",
-        constants$41.H5Lis_registered$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tcommitted",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Lunpack_elink_val$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Lunpack_elink_val$MH = RuntimeHelper.downcallHandle(
-        "H5Lunpack_elink_val",
-        constants$41.H5Lunpack_elink_val$FUNC
-    );
-    static final FunctionDescriptor H5Lcreate_external$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lcreate_external$MH = RuntimeHelper.downcallHandle(
-        "H5Lcreate_external",
-        constants$41.H5Lcreate_external$FUNC
-    );
-    static final FunctionDescriptor H5O_iterate_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5O_iterate_t$MH = RuntimeHelper.downcallHandle(
-        constants$41.H5O_iterate_t$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tencode",
+        constants$41.const$4
     );
 }
 

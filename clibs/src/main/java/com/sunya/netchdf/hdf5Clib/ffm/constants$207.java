@@ -7,14 +7,26 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$207 {
+final class constants$207 {
 
-    static final MemorySegment SCNoFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNx8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhx");
-    static final MemorySegment SCNx16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hx");
-    static final MemorySegment SCNx32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment SCNx64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment SCNxLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhx");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$207() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5MM_allocate_t.class, "apply", constants$206.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$206.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5MM_free_t.class, "apply", constants$115.const$5);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$115.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sclose",
+        constants$19.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Scopy",
+        constants$10.const$2
+    );
 }
 
 

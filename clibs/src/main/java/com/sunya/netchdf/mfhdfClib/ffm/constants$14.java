@@ -3,48 +3,20 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$14 {
 
-class constants$14 {
-
-    static final FunctionDescriptor fgetc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fgetc$MH = RuntimeHelper.downcallHandle(
-        "fgetc",
-        constants$14.fgetc$FUNC
-    );
-    static final FunctionDescriptor getc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getc$MH = RuntimeHelper.downcallHandle(
-        "getc",
-        constants$14.getc$FUNC
-    );
-    static final FunctionDescriptor getchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getchar$MH = RuntimeHelper.downcallHandle(
-        "getchar",
-        constants$14.getchar$FUNC
-    );
-    static final FunctionDescriptor getc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "getc_unlocked",
-        constants$14.getc_unlocked$FUNC
-    );
-    static final FunctionDescriptor getchar_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getchar_unlocked$MH = RuntimeHelper.downcallHandle(
-        "getchar_unlocked",
-        constants$14.getchar_unlocked$FUNC
-    );
-    static final FunctionDescriptor fgetc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fgetc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fgetc_unlocked",
-        constants$14.fgetc_unlocked$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$14() {}
+    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_markers"));
+    static final VarHandle const$1 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_chain"));
+    static final VarHandle const$2 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_fileno"));
+    static final VarHandle const$3 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
+    static final VarHandle const$4 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
+    static final VarHandle const$5 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
 }
 
 

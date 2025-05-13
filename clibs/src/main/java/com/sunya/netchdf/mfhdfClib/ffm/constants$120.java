@@ -3,75 +3,43 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$120 {
 
-class constants$120 {
-
-    static final FunctionDescriptor DFKnb1b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$120() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "gettimeofday",
+        constants$19.const$5
     );
-    static final MethodHandle DFKnb1b$MH = RuntimeHelper.downcallHandle(
-        "DFKnb1b",
-        constants$120.DFKnb1b$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "settimeofday",
+        constants$19.const$5
     );
-    static final FunctionDescriptor DFKnb2b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "adjtime",
+        constants$19.const$5
     );
-    static final MethodHandle DFKnb2b$MH = RuntimeHelper.downcallHandle(
-        "DFKnb2b",
-        constants$120.DFKnb2b$FUNC
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_usec")
+        ).withName("it_interval"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_usec")
+        ).withName("it_value")
+    ).withName("itimerval");
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getitimer",
+        constants$5.const$3
     );
-    static final FunctionDescriptor DFKnb4b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKnb4b$MH = RuntimeHelper.downcallHandle(
-        "DFKnb4b",
-        constants$120.DFKnb4b$FUNC
-    );
-    static final FunctionDescriptor DFKnb8b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKnb8b$MH = RuntimeHelper.downcallHandle(
-        "DFKnb8b",
-        constants$120.DFKnb8b$FUNC
-    );
-    static final FunctionDescriptor DFKsb2b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKsb2b$MH = RuntimeHelper.downcallHandle(
-        "DFKsb2b",
-        constants$120.DFKsb2b$FUNC
-    );
-    static final FunctionDescriptor DFKsb4b$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFKsb4b$MH = RuntimeHelper.downcallHandle(
-        "DFKsb4b",
-        constants$120.DFKsb4b$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "setitimer",
+        constants$26.const$5
     );
 }
 

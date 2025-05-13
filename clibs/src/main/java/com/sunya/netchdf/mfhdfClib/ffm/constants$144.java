@@ -3,56 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$144 {
 
-class constants$144 {
-
-    static final FunctionDescriptor Vgisinternal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$144() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HXsetcreatedir",
+        constants$17.const$4
     );
-    static final MethodHandle Vgisinternal$MH = RuntimeHelper.downcallHandle(
-        "Vgisinternal",
-        constants$144.Vgisinternal$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HXsetdir",
+        constants$17.const$4
     );
-    static final FunctionDescriptor Visinternal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle Visinternal$MH = RuntimeHelper.downcallHandle(
-        "Visinternal",
-        constants$144.Visinternal$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HCcreate",
+        constants$144.const$2
     );
-    static final FunctionDescriptor Vgetvgroups$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle Vgetvgroups$MH = RuntimeHelper.downcallHandle(
-        "Vgetvgroups",
-        constants$144.Vgetvgroups$FUNC
-    );
-    static final FunctionDescriptor Vdeletetagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vdeletetagref$MH = RuntimeHelper.downcallHandle(
-        "Vdeletetagref",
-        constants$144.Vdeletetagref$FUNC
-    );
-    static final FunctionDescriptor VPshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle VPshutdown$MH = RuntimeHelper.downcallHandle(
-        "VPshutdown",
-        constants$144.VPshutdown$FUNC
-    );
-    static final FunctionDescriptor scanattrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle scanattrs$MH = RuntimeHelper.downcallHandle(
-        "scanattrs",
-        constants$144.scanattrs$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HCPgetcompress",
+        constants$144.const$4
     );
 }
 

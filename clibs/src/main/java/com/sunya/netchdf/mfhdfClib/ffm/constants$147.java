@@ -3,57 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$147 {
 
-class constants$147 {
-
-    static final FunctionDescriptor VSgetversion$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$147() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HEstring",
+        constants$76.const$5
     );
-    static final MethodHandle VSgetversion$MH = RuntimeHelper.downcallHandle(
-        "VSgetversion",
-        constants$147.VSgetversion$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor VSdelete$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HEpush",
+        constants$147.const$1
     );
-    static final MethodHandle VSdelete$MH = RuntimeHelper.downcallHandle(
-        "VSdelete",
-        constants$147.VSdelete$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "HEreport",
+        constants$24.const$2
     );
-    static final FunctionDescriptor VSappendable$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle VSappendable$MH = RuntimeHelper.downcallHandle(
-        "VSappendable",
-        constants$147.VSappendable$FUNC
-    );
-    static final FunctionDescriptor VSsetfields$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSsetfields$MH = RuntimeHelper.downcallHandle(
-        "VSsetfields",
-        constants$147.VSsetfields$FUNC
-    );
-    static final FunctionDescriptor VSfdefine$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSfdefine$MH = RuntimeHelper.downcallHandle(
-        "VSfdefine",
-        constants$147.VSfdefine$FUNC
-    );
-    static final FunctionDescriptor VFnfields$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VFnfields$MH = RuntimeHelper.downcallHandle(
-        "VFnfields",
-        constants$147.VFnfields$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HEprint",
+        constants$147.const$4
     );
 }
 

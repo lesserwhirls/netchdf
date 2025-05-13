@@ -7,26 +7,42 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$101 {
+final class constants$101 {
 
-    static final  OfLong H5E_BADTYPE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADTYPE_g$VH = constants$101.H5E_BADTYPE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADTYPE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADTYPE_g", constants$101.H5E_BADTYPE_g$LAYOUT);
-    static final  OfLong H5E_BADRANGE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADRANGE_g$VH = constants$101.H5E_BADRANGE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADRANGE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADRANGE_g", constants$101.H5E_BADRANGE_g$LAYOUT);
-    static final  OfLong H5E_BADVALUE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADVALUE_g$VH = constants$101.H5E_BADVALUE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADVALUE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADVALUE_g", constants$101.H5E_BADVALUE_g$LAYOUT);
-    static final  OfLong H5E_NOTFOUND_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOTFOUND_g$VH = constants$101.H5E_NOTFOUND_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOTFOUND_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOTFOUND_g", constants$101.H5E_NOTFOUND_g$LAYOUT);
-    static final  OfLong H5E_EXISTS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_EXISTS_g$VH = constants$101.H5E_EXISTS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_EXISTS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_EXISTS_g", constants$101.H5E_EXISTS_g$LAYOUT);
-    static final  OfLong H5E_CANTENCODE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTENCODE_g$VH = constants$101.H5E_CANTENCODE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTENCODE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTENCODE_g", constants$101.H5E_CANTENCODE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$101() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Drefresh",
+        constants$19.const$0
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dscatter",
+        constants$101.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dgather",
+        constants$101.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dclose",
+        constants$19.const$0
+    );
 }
 
 

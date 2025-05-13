@@ -7,59 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$148 {
+final class constants$148 {
 
-    static final FunctionDescriptor H5Pget_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_cache$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_cache",
-        constants$148.H5Pget_cache$FUNC
-    );
-    static final FunctionDescriptor H5Pset_mdc_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_mdc_config$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_mdc_config",
-        constants$148.H5Pset_mdc_config$FUNC
-    );
-    static final FunctionDescriptor H5Pget_mdc_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_mdc_config$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_mdc_config",
-        constants$148.H5Pget_mdc_config$FUNC
-    );
-    static final FunctionDescriptor H5Pset_gc_references$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_gc_references$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_gc_references",
-        constants$148.H5Pset_gc_references$FUNC
-    );
-    static final FunctionDescriptor H5Pget_gc_references$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_gc_references$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_gc_references",
-        constants$148.H5Pget_gc_references$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fclose_degree$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_fclose_degree$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fclose_degree",
-        constants$148.H5Pset_fclose_degree$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$148() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTREGISTER_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTINC_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTDEC_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_NOIDS_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTFLUSH_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNSERIALIZE_g", JAVA_LONG);
 }
 
 

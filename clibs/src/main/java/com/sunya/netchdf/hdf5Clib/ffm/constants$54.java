@@ -7,34 +7,38 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$54 {
+final class constants$54 {
 
-    static final FunctionDescriptor H5D_operator_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$54() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5D_operator_t$MH = RuntimeHelper.downcallHandle(
-        constants$54.H5D_operator_t$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tarray_create1",
+        constants$54.const$0
     );
-    static final FunctionDescriptor H5D_scatter_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_array_dims1",
+        constants$41.const$4
     );
-    static final MethodHandle H5D_scatter_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$54.H5D_scatter_func_t$FUNC
-    );
-    static final FunctionDescriptor H5D_gather_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5D_gather_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$54.H5D_gather_func_t$FUNC
-    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_LONG.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("address"),
+            JAVA_LONG.withName("val_size")
+        ).withName("u")
+    ).withName("");
+    static final VarHandle const$4 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$5 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
 }
 
 

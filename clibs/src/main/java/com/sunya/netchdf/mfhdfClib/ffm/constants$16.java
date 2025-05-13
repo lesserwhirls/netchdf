@@ -3,62 +3,25 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$16 {
 
-class constants$16 {
-
-    static final FunctionDescriptor getw$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$16() {}
+    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_freeres_buf"));
+    static final VarHandle const$1 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("__pad5"));
+    static final VarHandle const$2 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("_mode"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle getw$MH = RuntimeHelper.downcallHandle(
-        "getw",
-        constants$16.getw$FUNC
-    );
-    static final FunctionDescriptor putw$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putw$MH = RuntimeHelper.downcallHandle(
-        "putw",
-        constants$16.putw$FUNC
-    );
-    static final FunctionDescriptor fgets$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fgets$MH = RuntimeHelper.downcallHandle(
-        "fgets",
-        constants$16.fgets$FUNC
-    );
-    static final FunctionDescriptor __getdelim$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle __getdelim$MH = RuntimeHelper.downcallHandle(
-        "__getdelim",
-        constants$16.__getdelim$FUNC
-    );
-    static final FunctionDescriptor getdelim$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getdelim$MH = RuntimeHelper.downcallHandle(
-        "getdelim",
-        constants$16.getdelim$FUNC
-    );
-    static final FunctionDescriptor getline$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getline$MH = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$16.getline$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(cookie_read_function_t.class, "apply", constants$16.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$16.const$3
     );
 }
 

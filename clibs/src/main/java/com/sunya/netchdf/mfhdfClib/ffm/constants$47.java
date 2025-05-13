@@ -3,62 +3,20 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$47 {
 
-class constants$47 {
-
-    static final FunctionDescriptor strcasecmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strcasecmp$MH = RuntimeHelper.downcallHandle(
-        "strcasecmp",
-        constants$47.strcasecmp$FUNC
-    );
-    static final FunctionDescriptor strncasecmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle strncasecmp$MH = RuntimeHelper.downcallHandle(
-        "strncasecmp",
-        constants$47.strncasecmp$FUNC
-    );
-    static final FunctionDescriptor strcasecmp_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strcasecmp_l$MH = RuntimeHelper.downcallHandle(
-        "strcasecmp_l",
-        constants$47.strcasecmp_l$FUNC
-    );
-    static final FunctionDescriptor strncasecmp_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strncasecmp_l$MH = RuntimeHelper.downcallHandle(
-        "strncasecmp_l",
-        constants$47.strncasecmp_l$FUNC
-    );
-    static final FunctionDescriptor explicit_bzero$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle explicit_bzero$MH = RuntimeHelper.downcallHandle(
-        "explicit_bzero",
-        constants$47.explicit_bzero$FUNC
-    );
-    static final FunctionDescriptor strsep$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strsep$MH = RuntimeHelper.downcallHandle(
-        "strsep",
-        constants$47.strsep$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$47() {}
+    static final VarHandle const$0 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__writers_futex"));
+    static final VarHandle const$1 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__pad3"));
+    static final VarHandle const$2 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__pad4"));
+    static final VarHandle const$3 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__cur_writer"));
+    static final VarHandle const$4 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__shared"));
+    static final VarHandle const$5 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__rwelision"));
 }
 
 

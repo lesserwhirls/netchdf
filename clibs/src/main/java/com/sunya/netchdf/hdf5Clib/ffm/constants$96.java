@@ -7,26 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$96 {
+final class constants$96 {
 
-    static final  OfLong H5E_CANTCLEAN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCLEAN_g$VH = constants$96.H5E_CANTCLEAN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCLEAN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLEAN_g", constants$96.H5E_CANTCLEAN_g$LAYOUT);
-    static final  OfLong H5E_CANTEXPUNGE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTEXPUNGE_g$VH = constants$96.H5E_CANTEXPUNGE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTEXPUNGE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTEXPUNGE_g", constants$96.H5E_CANTEXPUNGE_g$LAYOUT);
-    static final  OfLong H5E_CANTRESIZE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTRESIZE_g$VH = constants$96.H5E_CANTRESIZE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTRESIZE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTRESIZE_g", constants$96.H5E_CANTRESIZE_g$LAYOUT);
-    static final  OfLong H5E_CANTDEPEND_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTDEPEND_g$VH = constants$96.H5E_CANTDEPEND_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTDEPEND_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTDEPEND_g", constants$96.H5E_CANTDEPEND_g$LAYOUT);
-    static final  OfLong H5E_CANTUNDEPEND_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNDEPEND_g$VH = constants$96.H5E_CANTUNDEPEND_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNDEPEND_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNDEPEND_g", constants$96.H5E_CANTUNDEPEND_g$LAYOUT);
-    static final  OfLong H5E_CANTNOTIFY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTNOTIFY_g$VH = constants$96.H5E_CANTNOTIFY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTNOTIFY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTNOTIFY_g", constants$96.H5E_CANTNOTIFY_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$96() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dget_space",
+        constants$10.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dget_space_status",
+        constants$44.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dget_type",
+        constants$10.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dget_create_plist",
+        constants$10.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dget_access_plist",
+        constants$10.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dget_storage_size",
+        constants$10.const$2
+    );
 }
 
 

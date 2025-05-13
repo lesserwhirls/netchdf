@@ -7,110 +7,146 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5FD_class_t {
+ *     char* name;
+ *     haddr_t maxaddr;
+ *     H5F_close_degree_t fc_degree;
+ *     herr_t (*terminate)();
+ *     hsize_t (*sb_size)(H5FD_t*);
+ *     herr_t (*sb_encode)(H5FD_t*,char*,unsigned char*);
+ *     herr_t (*sb_decode)(H5FD_t*,char*,unsigned char*);
+ *     size_t fapl_size;
+ *     void* (*fapl_get)(H5FD_t*);
+ *     void* (*fapl_copy)(void*);
+ *     herr_t (*fapl_free)(void*);
+ *     size_t dxpl_size;
+ *     void* (*dxpl_copy)(void*);
+ *     herr_t (*dxpl_free)(void*);
+ *     H5FD_t* (*open)(char*,unsigned int,hid_t,haddr_t);
+ *     herr_t (*close)(H5FD_t*);
+ *     int (*cmp)(const H5FD_t*,const H5FD_t*);
+ *     herr_t (*query)(const H5FD_t*,unsigned long*);
+ *     herr_t (*get_type_map)(const H5FD_t*,H5FD_mem_t*);
+ *     haddr_t (*alloc)(H5FD_t*,H5FD_mem_t,hid_t,hsize_t);
+ *     herr_t (*free)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,hsize_t);
+ *     haddr_t (*get_eoa)(const H5FD_t*,H5FD_mem_t);
+ *     herr_t (*set_eoa)(H5FD_t*,H5FD_mem_t,haddr_t);
+ *     haddr_t (*get_eof)(const H5FD_t*,H5FD_mem_t);
+ *     herr_t (*get_handle)(H5FD_t*,hid_t,void**);
+ *     herr_t (*read)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+ *     herr_t (*write)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+ *     herr_t (*flush)(H5FD_t*,hid_t,hbool_t);
+ *     herr_t (*truncate)(H5FD_t*,hid_t,hbool_t);
+ *     herr_t (*lock)(H5FD_t*,hbool_t);
+ *     herr_t (*unlock)(H5FD_t*);
+ *     H5FD_mem_t fl_map[7];
+ * };
+ * }
+ */
 public class H5FD_class_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("name"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("maxaddr"),
-        Constants$root.C_INT$LAYOUT.withName("fc_degree"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_POINTER$LAYOUT.withName("terminate"),
-        Constants$root.C_POINTER$LAYOUT.withName("sb_size"),
-        Constants$root.C_POINTER$LAYOUT.withName("sb_encode"),
-        Constants$root.C_POINTER$LAYOUT.withName("sb_decode"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("fapl_size"),
-        Constants$root.C_POINTER$LAYOUT.withName("fapl_get"),
-        Constants$root.C_POINTER$LAYOUT.withName("fapl_copy"),
-        Constants$root.C_POINTER$LAYOUT.withName("fapl_free"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("dxpl_size"),
-        Constants$root.C_POINTER$LAYOUT.withName("dxpl_copy"),
-        Constants$root.C_POINTER$LAYOUT.withName("dxpl_free"),
-        Constants$root.C_POINTER$LAYOUT.withName("open"),
-        Constants$root.C_POINTER$LAYOUT.withName("close"),
-        Constants$root.C_POINTER$LAYOUT.withName("cmp"),
-        Constants$root.C_POINTER$LAYOUT.withName("query"),
-        Constants$root.C_POINTER$LAYOUT.withName("get_type_map"),
-        Constants$root.C_POINTER$LAYOUT.withName("alloc"),
-        Constants$root.C_POINTER$LAYOUT.withName("free"),
-        Constants$root.C_POINTER$LAYOUT.withName("get_eoa"),
-        Constants$root.C_POINTER$LAYOUT.withName("set_eoa"),
-        Constants$root.C_POINTER$LAYOUT.withName("get_eof"),
-        Constants$root.C_POINTER$LAYOUT.withName("get_handle"),
-        Constants$root.C_POINTER$LAYOUT.withName("read"),
-        Constants$root.C_POINTER$LAYOUT.withName("write"),
-        Constants$root.C_POINTER$LAYOUT.withName("flush"),
-        Constants$root.C_POINTER$LAYOUT.withName("truncate"),
-        Constants$root.C_POINTER$LAYOUT.withName("lock"),
-        Constants$root.C_POINTER$LAYOUT.withName("unlock"),
-        MemoryLayout.sequenceLayout(7, Constants$root.C_INT$LAYOUT).withName("fl_map"),
-        MemoryLayout.paddingLayout(32)
-    ).withName("H5FD_class_t");
     public static MemoryLayout $LAYOUT() {
-        return H5FD_class_t.$struct$LAYOUT;
+        return constants$178.const$0;
     }
-    static final VarHandle name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("name"));
     public static VarHandle name$VH() {
-        return H5FD_class_t.name$VH;
+        return constants$178.const$1;
     }
-    public static MemoryAddress name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.name$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* name;
+     * }
+     */
+    public static MemorySegment name$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$178.const$1.get(seg);
     }
-    public static void name$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.name$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* name;
+     * }
+     */
+    public static void name$set(MemorySegment seg, MemorySegment x) {
+        constants$178.const$1.set(seg, x);
     }
-    public static MemoryAddress name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.name$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment name$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$178.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void name$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.name$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void name$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$178.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle maxaddr$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
     public static VarHandle maxaddr$VH() {
-        return H5FD_class_t.maxaddr$VH;
+        return constants$178.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t maxaddr;
+     * }
+     */
     public static long maxaddr$get(MemorySegment seg) {
-        return (long)H5FD_class_t.maxaddr$VH.get(seg);
+        return (long)constants$178.const$2.get(seg);
     }
-    public static void maxaddr$set( MemorySegment seg, long x) {
-        H5FD_class_t.maxaddr$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t maxaddr;
+     * }
+     */
+    public static void maxaddr$set(MemorySegment seg, long x) {
+        constants$178.const$2.set(seg, x);
     }
     public static long maxaddr$get(MemorySegment seg, long index) {
-        return (long)H5FD_class_t.maxaddr$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$178.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void maxaddr$set(MemorySegment seg, long index, long x) {
-        H5FD_class_t.maxaddr$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$178.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle fc_degree$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fc_degree"));
     public static VarHandle fc_degree$VH() {
-        return H5FD_class_t.fc_degree$VH;
+        return constants$178.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5F_close_degree_t fc_degree;
+     * }
+     */
     public static int fc_degree$get(MemorySegment seg) {
-        return (int)H5FD_class_t.fc_degree$VH.get(seg);
+        return (int)constants$178.const$3.get(seg);
     }
-    public static void fc_degree$set( MemorySegment seg, int x) {
-        H5FD_class_t.fc_degree$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5F_close_degree_t fc_degree;
+     * }
+     */
+    public static void fc_degree$set(MemorySegment seg, int x) {
+        constants$178.const$3.set(seg, x);
     }
     public static int fc_degree$get(MemorySegment seg, long index) {
-        return (int)H5FD_class_t.fc_degree$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$178.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void fc_degree$set(MemorySegment seg, long index, int x) {
-        H5FD_class_t.fc_degree$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$178.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final FunctionDescriptor terminate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle terminate$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.terminate$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*terminate)();
+     * }
+     */
     public interface terminate {
 
         int apply();
-        static MemorySegment allocate(terminate fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(terminate.class, fi, H5FD_class_t.terminate$FUNC, session);
+        static MemorySegment allocate(terminate fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$178.const$4, fi, constants$14.const$0, scope);
         }
-        static terminate ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
+        static terminate ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
             return () -> {
                 try {
-                    return (int)H5FD_class_t.terminate$MH.invokeExact((Addressable)symbol);
+                    return (int)constants$178.const$5.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -118,42 +154,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle terminate$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("terminate"));
     public static VarHandle terminate$VH() {
-        return H5FD_class_t.terminate$VH;
+        return constants$179.const$0;
     }
-    public static MemoryAddress terminate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.terminate$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*terminate)();
+     * }
+     */
+    public static MemorySegment terminate$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$0.get(seg);
     }
-    public static void terminate$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.terminate$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*terminate)();
+     * }
+     */
+    public static void terminate$set(MemorySegment seg, MemorySegment x) {
+        constants$179.const$0.set(seg, x);
     }
-    public static MemoryAddress terminate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.terminate$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment terminate$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void terminate$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.terminate$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void terminate$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$179.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static terminate terminate (MemorySegment segment, MemorySession session) {
-        return terminate.ofAddress(terminate$get(segment), session);
+    public static terminate terminate(MemorySegment segment, Arena scope) {
+        return terminate.ofAddress(terminate$get(segment), scope);
     }
-    static final FunctionDescriptor sb_size$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sb_size$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.sb_size$FUNC
-    );
+    /**
+     * {@snippet :
+ * hsize_t (*sb_size)(H5FD_t*);
+     * }
+     */
     public interface sb_size {
 
-        long apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(sb_size fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(sb_size.class, fi, H5FD_class_t.sb_size$FUNC, session);
+        long apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(sb_size fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$179.const$1, fi, constants$42.const$0, scope);
         }
-        static sb_size ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static sb_size ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (long)H5FD_class_t.sb_size$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (long)constants$179.const$2.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -161,44 +207,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle sb_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("sb_size"));
     public static VarHandle sb_size$VH() {
-        return H5FD_class_t.sb_size$VH;
+        return constants$179.const$3;
     }
-    public static MemoryAddress sb_size$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_size$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t (*sb_size)(H5FD_t*);
+     * }
+     */
+    public static MemorySegment sb_size$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$3.get(seg);
     }
-    public static void sb_size$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.sb_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t (*sb_size)(H5FD_t*);
+     * }
+     */
+    public static void sb_size$set(MemorySegment seg, MemorySegment x) {
+        constants$179.const$3.set(seg, x);
     }
-    public static MemoryAddress sb_size$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_size$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment sb_size$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void sb_size$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.sb_size$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void sb_size$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$179.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    public static sb_size sb_size (MemorySegment segment, MemorySession session) {
-        return sb_size.ofAddress(sb_size$get(segment), session);
+    public static sb_size sb_size(MemorySegment segment, Arena scope) {
+        return sb_size.ofAddress(sb_size$get(segment), scope);
     }
-    static final FunctionDescriptor sb_encode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sb_encode$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.sb_encode$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*sb_encode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
     public interface sb_encode {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(sb_encode fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(sb_encode.class, fi, H5FD_class_t.sb_encode$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2);
+        static MemorySegment allocate(sb_encode fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$179.const$4, fi, constants$15.const$4, scope);
         }
-        static sb_encode ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1, java.lang.foreign.MemoryAddress __x2) -> {
+        static sb_encode ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)H5FD_class_t.sb_encode$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1, (java.lang.foreign.Addressable)__x2);
+                    return (int)constants$94.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -206,44 +260,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle sb_encode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("sb_encode"));
     public static VarHandle sb_encode$VH() {
-        return H5FD_class_t.sb_encode$VH;
+        return constants$179.const$5;
     }
-    public static MemoryAddress sb_encode$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_encode$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*sb_encode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
+    public static MemorySegment sb_encode$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$5.get(seg);
     }
-    public static void sb_encode$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.sb_encode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*sb_encode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
+    public static void sb_encode$set(MemorySegment seg, MemorySegment x) {
+        constants$179.const$5.set(seg, x);
     }
-    public static MemoryAddress sb_encode$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_encode$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment sb_encode$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$179.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void sb_encode$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.sb_encode$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void sb_encode$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$179.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static sb_encode sb_encode (MemorySegment segment, MemorySession session) {
-        return sb_encode.ofAddress(sb_encode$get(segment), session);
+    public static sb_encode sb_encode(MemorySegment segment, Arena scope) {
+        return sb_encode.ofAddress(sb_encode$get(segment), scope);
     }
-    static final FunctionDescriptor sb_decode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sb_decode$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.sb_decode$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*sb_decode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
     public interface sb_decode {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(sb_decode fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(sb_decode.class, fi, H5FD_class_t.sb_decode$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2);
+        static MemorySegment allocate(sb_decode fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$180.const$0, fi, constants$15.const$4, scope);
         }
-        static sb_decode ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1, java.lang.foreign.MemoryAddress __x2) -> {
+        static sb_decode ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)H5FD_class_t.sb_decode$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1, (java.lang.foreign.Addressable)__x2);
+                    return (int)constants$94.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -251,58 +313,79 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle sb_decode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("sb_decode"));
     public static VarHandle sb_decode$VH() {
-        return H5FD_class_t.sb_decode$VH;
+        return constants$180.const$1;
     }
-    public static MemoryAddress sb_decode$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_decode$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*sb_decode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
+    public static MemorySegment sb_decode$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$180.const$1.get(seg);
     }
-    public static void sb_decode$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.sb_decode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*sb_decode)(H5FD_t*,char*,unsigned char*);
+     * }
+     */
+    public static void sb_decode$set(MemorySegment seg, MemorySegment x) {
+        constants$180.const$1.set(seg, x);
     }
-    public static MemoryAddress sb_decode$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.sb_decode$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment sb_decode$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$180.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void sb_decode$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.sb_decode$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void sb_decode$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$180.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    public static sb_decode sb_decode (MemorySegment segment, MemorySession session) {
-        return sb_decode.ofAddress(sb_decode$get(segment), session);
+    public static sb_decode sb_decode(MemorySegment segment, Arena scope) {
+        return sb_decode.ofAddress(sb_decode$get(segment), scope);
     }
-    static final VarHandle fapl_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fapl_size"));
     public static VarHandle fapl_size$VH() {
-        return H5FD_class_t.fapl_size$VH;
+        return constants$180.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t fapl_size;
+     * }
+     */
     public static long fapl_size$get(MemorySegment seg) {
-        return (long)H5FD_class_t.fapl_size$VH.get(seg);
+        return (long)constants$180.const$2.get(seg);
     }
-    public static void fapl_size$set( MemorySegment seg, long x) {
-        H5FD_class_t.fapl_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t fapl_size;
+     * }
+     */
+    public static void fapl_size$set(MemorySegment seg, long x) {
+        constants$180.const$2.set(seg, x);
     }
     public static long fapl_size$get(MemorySegment seg, long index) {
-        return (long)H5FD_class_t.fapl_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$180.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void fapl_size$set(MemorySegment seg, long index, long x) {
-        H5FD_class_t.fapl_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$180.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final FunctionDescriptor fapl_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fapl_get$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.fapl_get$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*fapl_get)(H5FD_t*);
+     * }
+     */
     public interface fapl_get {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(fapl_get fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(fapl_get.class, fi, H5FD_class_t.fapl_get$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(fapl_get fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$180.const$3, fi, constants$113.const$0, scope);
         }
-        static fapl_get ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static fapl_get ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_get$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -310,42 +393,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle fapl_get$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fapl_get"));
     public static VarHandle fapl_get$VH() {
-        return H5FD_class_t.fapl_get$VH;
+        return constants$180.const$5;
     }
-    public static MemoryAddress fapl_get$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_get$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*fapl_get)(H5FD_t*);
+     * }
+     */
+    public static MemorySegment fapl_get$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$180.const$5.get(seg);
     }
-    public static void fapl_get$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.fapl_get$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*fapl_get)(H5FD_t*);
+     * }
+     */
+    public static void fapl_get$set(MemorySegment seg, MemorySegment x) {
+        constants$180.const$5.set(seg, x);
     }
-    public static MemoryAddress fapl_get$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_get$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment fapl_get$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$180.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void fapl_get$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.fapl_get$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void fapl_get$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$180.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static fapl_get fapl_get (MemorySegment segment, MemorySession session) {
-        return fapl_get.ofAddress(fapl_get$get(segment), session);
+    public static fapl_get fapl_get(MemorySegment segment, Arena scope) {
+        return fapl_get.ofAddress(fapl_get$get(segment), scope);
     }
-    static final FunctionDescriptor fapl_copy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fapl_copy$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.fapl_copy$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*fapl_copy)(void*);
+     * }
+     */
     public interface fapl_copy {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(fapl_copy fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(fapl_copy.class, fi, H5FD_class_t.fapl_copy$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(fapl_copy fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$181.const$0, fi, constants$113.const$0, scope);
         }
-        static fapl_copy ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static fapl_copy ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_copy$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -353,42 +446,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle fapl_copy$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fapl_copy"));
     public static VarHandle fapl_copy$VH() {
-        return H5FD_class_t.fapl_copy$VH;
+        return constants$181.const$1;
     }
-    public static MemoryAddress fapl_copy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_copy$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*fapl_copy)(void*);
+     * }
+     */
+    public static MemorySegment fapl_copy$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$181.const$1.get(seg);
     }
-    public static void fapl_copy$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.fapl_copy$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*fapl_copy)(void*);
+     * }
+     */
+    public static void fapl_copy$set(MemorySegment seg, MemorySegment x) {
+        constants$181.const$1.set(seg, x);
     }
-    public static MemoryAddress fapl_copy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_copy$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment fapl_copy$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$181.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void fapl_copy$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.fapl_copy$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void fapl_copy$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$181.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    public static fapl_copy fapl_copy (MemorySegment segment, MemorySession session) {
-        return fapl_copy.ofAddress(fapl_copy$get(segment), session);
+    public static fapl_copy fapl_copy(MemorySegment segment, Arena scope) {
+        return fapl_copy.ofAddress(fapl_copy$get(segment), scope);
     }
-    static final FunctionDescriptor fapl_free$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fapl_free$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.fapl_free$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*fapl_free)(void*);
+     * }
+     */
     public interface fapl_free {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(fapl_free fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(fapl_free.class, fi, H5FD_class_t.fapl_free$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(fapl_free fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$181.const$2, fi, constants$15.const$2, scope);
         }
-        static fapl_free ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static fapl_free ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)H5FD_class_t.fapl_free$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -396,58 +499,79 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle fapl_free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("fapl_free"));
     public static VarHandle fapl_free$VH() {
-        return H5FD_class_t.fapl_free$VH;
+        return constants$181.const$3;
     }
-    public static MemoryAddress fapl_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_free$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*fapl_free)(void*);
+     * }
+     */
+    public static MemorySegment fapl_free$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$181.const$3.get(seg);
     }
-    public static void fapl_free$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.fapl_free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*fapl_free)(void*);
+     * }
+     */
+    public static void fapl_free$set(MemorySegment seg, MemorySegment x) {
+        constants$181.const$3.set(seg, x);
     }
-    public static MemoryAddress fapl_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.fapl_free$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment fapl_free$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$181.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void fapl_free$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.fapl_free$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void fapl_free$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$181.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    public static fapl_free fapl_free (MemorySegment segment, MemorySession session) {
-        return fapl_free.ofAddress(fapl_free$get(segment), session);
+    public static fapl_free fapl_free(MemorySegment segment, Arena scope) {
+        return fapl_free.ofAddress(fapl_free$get(segment), scope);
     }
-    static final VarHandle dxpl_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("dxpl_size"));
     public static VarHandle dxpl_size$VH() {
-        return H5FD_class_t.dxpl_size$VH;
+        return constants$181.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t dxpl_size;
+     * }
+     */
     public static long dxpl_size$get(MemorySegment seg) {
-        return (long)H5FD_class_t.dxpl_size$VH.get(seg);
+        return (long)constants$181.const$4.get(seg);
     }
-    public static void dxpl_size$set( MemorySegment seg, long x) {
-        H5FD_class_t.dxpl_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t dxpl_size;
+     * }
+     */
+    public static void dxpl_size$set(MemorySegment seg, long x) {
+        constants$181.const$4.set(seg, x);
     }
     public static long dxpl_size$get(MemorySegment seg, long index) {
-        return (long)H5FD_class_t.dxpl_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$181.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void dxpl_size$set(MemorySegment seg, long index, long x) {
-        H5FD_class_t.dxpl_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$181.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final FunctionDescriptor dxpl_copy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle dxpl_copy$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.dxpl_copy$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*dxpl_copy)(void*);
+     * }
+     */
     public interface dxpl_copy {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(dxpl_copy fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(dxpl_copy.class, fi, H5FD_class_t.dxpl_copy$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(dxpl_copy fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$181.const$5, fi, constants$113.const$0, scope);
         }
-        static dxpl_copy ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static dxpl_copy ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_class_t.dxpl_copy$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -455,42 +579,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle dxpl_copy$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("dxpl_copy"));
     public static VarHandle dxpl_copy$VH() {
-        return H5FD_class_t.dxpl_copy$VH;
+        return constants$182.const$0;
     }
-    public static MemoryAddress dxpl_copy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.dxpl_copy$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*dxpl_copy)(void*);
+     * }
+     */
+    public static MemorySegment dxpl_copy$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$182.const$0.get(seg);
     }
-    public static void dxpl_copy$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.dxpl_copy$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*dxpl_copy)(void*);
+     * }
+     */
+    public static void dxpl_copy$set(MemorySegment seg, MemorySegment x) {
+        constants$182.const$0.set(seg, x);
     }
-    public static MemoryAddress dxpl_copy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.dxpl_copy$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment dxpl_copy$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$182.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void dxpl_copy$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.dxpl_copy$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void dxpl_copy$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$182.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dxpl_copy dxpl_copy (MemorySegment segment, MemorySession session) {
-        return dxpl_copy.ofAddress(dxpl_copy$get(segment), session);
+    public static dxpl_copy dxpl_copy(MemorySegment segment, Arena scope) {
+        return dxpl_copy.ofAddress(dxpl_copy$get(segment), scope);
     }
-    static final FunctionDescriptor dxpl_free$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle dxpl_free$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.dxpl_free$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*dxpl_free)(void*);
+     * }
+     */
     public interface dxpl_free {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(dxpl_free fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(dxpl_free.class, fi, H5FD_class_t.dxpl_free$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(dxpl_free fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$182.const$1, fi, constants$15.const$2, scope);
         }
-        static dxpl_free ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static dxpl_free ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)H5FD_class_t.dxpl_free$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -498,45 +632,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle dxpl_free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("dxpl_free"));
     public static VarHandle dxpl_free$VH() {
-        return H5FD_class_t.dxpl_free$VH;
+        return constants$182.const$2;
     }
-    public static MemoryAddress dxpl_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.dxpl_free$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*dxpl_free)(void*);
+     * }
+     */
+    public static MemorySegment dxpl_free$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$182.const$2.get(seg);
     }
-    public static void dxpl_free$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.dxpl_free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*dxpl_free)(void*);
+     * }
+     */
+    public static void dxpl_free$set(MemorySegment seg, MemorySegment x) {
+        constants$182.const$2.set(seg, x);
     }
-    public static MemoryAddress dxpl_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.dxpl_free$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment dxpl_free$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$182.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void dxpl_free$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.dxpl_free$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void dxpl_free$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$182.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static dxpl_free dxpl_free (MemorySegment segment, MemorySession session) {
-        return dxpl_free.ofAddress(dxpl_free$get(segment), session);
+    public static dxpl_free dxpl_free(MemorySegment segment, Arena scope) {
+        return dxpl_free.ofAddress(dxpl_free$get(segment), scope);
     }
-    static final FunctionDescriptor open$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle open$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.open$FUNC
-    );
+    /**
+     * {@snippet :
+ * H5FD_t* (*open)(char*,unsigned int,hid_t,haddr_t);
+     * }
+     */
     public interface open {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2, long _x3);
-        static MemorySegment allocate(open fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(open.class, fi, H5FD_class_t.open$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3);
+        static MemorySegment allocate(open fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$182.const$4, fi, constants$182.const$3, scope);
         }
-        static open ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2, long __x3) -> {
+        static open ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_class_t.open$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, __x3);
+                    return (java.lang.foreign.MemorySegment)constants$182.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -544,42 +685,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle open$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("open"));
     public static VarHandle open$VH() {
-        return H5FD_class_t.open$VH;
+        return constants$183.const$0;
     }
-    public static MemoryAddress open$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.open$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5FD_t* (*open)(char*,unsigned int,hid_t,haddr_t);
+     * }
+     */
+    public static MemorySegment open$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$0.get(seg);
     }
-    public static void open$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.open$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5FD_t* (*open)(char*,unsigned int,hid_t,haddr_t);
+     * }
+     */
+    public static void open$set(MemorySegment seg, MemorySegment x) {
+        constants$183.const$0.set(seg, x);
     }
-    public static MemoryAddress open$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.open$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment open$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void open$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.open$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void open$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$183.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static open open (MemorySegment segment, MemorySession session) {
-        return open.ofAddress(open$get(segment), session);
+    public static open open(MemorySegment segment, Arena scope) {
+        return open.ofAddress(open$get(segment), scope);
     }
-    static final FunctionDescriptor close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle close$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.close$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*close)(H5FD_t*);
+     * }
+     */
     public interface close {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(close fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(close.class, fi, H5FD_class_t.close$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(close fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$183.const$1, fi, constants$15.const$2, scope);
         }
-        static close ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static close ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)H5FD_class_t.close$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -587,43 +738,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle close$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("close"));
     public static VarHandle close$VH() {
-        return H5FD_class_t.close$VH;
+        return constants$183.const$2;
     }
-    public static MemoryAddress close$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.close$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*close)(H5FD_t*);
+     * }
+     */
+    public static MemorySegment close$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$2.get(seg);
     }
-    public static void close$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.close$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*close)(H5FD_t*);
+     * }
+     */
+    public static void close$set(MemorySegment seg, MemorySegment x) {
+        constants$183.const$2.set(seg, x);
     }
-    public static MemoryAddress close$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.close$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment close$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void close$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.close$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void close$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$183.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static close close (MemorySegment segment, MemorySession session) {
-        return close.ofAddress(close$get(segment), session);
+    public static close close(MemorySegment segment, Arena scope) {
+        return close.ofAddress(close$get(segment), scope);
     }
-    static final FunctionDescriptor cmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle cmp$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.cmp$FUNC
-    );
+    /**
+     * {@snippet :
+ * int (*cmp)(const H5FD_t*,const H5FD_t*);
+     * }
+     */
     public interface cmp {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1);
-        static MemorySegment allocate(cmp fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(cmp.class, fi, H5FD_class_t.cmp$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+        static MemorySegment allocate(cmp fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$183.const$3, fi, constants$112.const$0, scope);
         }
-        static cmp ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1) -> {
+        static cmp ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)H5FD_class_t.cmp$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1);
+                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -631,43 +791,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle cmp$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("cmp"));
     public static VarHandle cmp$VH() {
-        return H5FD_class_t.cmp$VH;
+        return constants$183.const$5;
     }
-    public static MemoryAddress cmp$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.cmp$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int (*cmp)(const H5FD_t*,const H5FD_t*);
+     * }
+     */
+    public static MemorySegment cmp$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$5.get(seg);
     }
-    public static void cmp$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.cmp$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int (*cmp)(const H5FD_t*,const H5FD_t*);
+     * }
+     */
+    public static void cmp$set(MemorySegment seg, MemorySegment x) {
+        constants$183.const$5.set(seg, x);
     }
-    public static MemoryAddress cmp$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.cmp$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment cmp$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$183.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void cmp$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.cmp$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void cmp$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$183.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static cmp cmp (MemorySegment segment, MemorySession session) {
-        return cmp.ofAddress(cmp$get(segment), session);
+    public static cmp cmp(MemorySegment segment, Arena scope) {
+        return cmp.ofAddress(cmp$get(segment), scope);
     }
-    static final FunctionDescriptor query$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle query$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.query$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*query)(const H5FD_t*,unsigned long*);
+     * }
+     */
     public interface query {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1);
-        static MemorySegment allocate(query fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(query.class, fi, H5FD_class_t.query$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+        static MemorySegment allocate(query fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$184.const$0, fi, constants$112.const$0, scope);
         }
-        static query ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1) -> {
+        static query ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)H5FD_class_t.query$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1);
+                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -675,43 +844,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle query$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("query"));
     public static VarHandle query$VH() {
-        return H5FD_class_t.query$VH;
+        return constants$184.const$1;
     }
-    public static MemoryAddress query$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.query$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*query)(const H5FD_t*,unsigned long*);
+     * }
+     */
+    public static MemorySegment query$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$184.const$1.get(seg);
     }
-    public static void query$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.query$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*query)(const H5FD_t*,unsigned long*);
+     * }
+     */
+    public static void query$set(MemorySegment seg, MemorySegment x) {
+        constants$184.const$1.set(seg, x);
     }
-    public static MemoryAddress query$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.query$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment query$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$184.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void query$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.query$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void query$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$184.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    public static query query (MemorySegment segment, MemorySession session) {
-        return query.ofAddress(query$get(segment), session);
+    public static query query(MemorySegment segment, Arena scope) {
+        return query.ofAddress(query$get(segment), scope);
     }
-    static final FunctionDescriptor get_type_map$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle get_type_map$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.get_type_map$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*get_type_map)(const H5FD_t*,H5FD_mem_t*);
+     * }
+     */
     public interface get_type_map {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1);
-        static MemorySegment allocate(get_type_map fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(get_type_map.class, fi, H5FD_class_t.get_type_map$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+        static MemorySegment allocate(get_type_map fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$184.const$2, fi, constants$112.const$0, scope);
         }
-        static get_type_map ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1) -> {
+        static get_type_map ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)H5FD_class_t.get_type_map$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1);
+                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -719,45 +897,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle get_type_map$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("get_type_map"));
     public static VarHandle get_type_map$VH() {
-        return H5FD_class_t.get_type_map$VH;
+        return constants$184.const$3;
     }
-    public static MemoryAddress get_type_map$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_type_map$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*get_type_map)(const H5FD_t*,H5FD_mem_t*);
+     * }
+     */
+    public static MemorySegment get_type_map$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$184.const$3.get(seg);
     }
-    public static void get_type_map$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.get_type_map$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*get_type_map)(const H5FD_t*,H5FD_mem_t*);
+     * }
+     */
+    public static void get_type_map$set(MemorySegment seg, MemorySegment x) {
+        constants$184.const$3.set(seg, x);
     }
-    public static MemoryAddress get_type_map$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_type_map$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment get_type_map$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$184.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void get_type_map$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.get_type_map$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void get_type_map$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$184.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_type_map get_type_map (MemorySegment segment, MemorySession session) {
-        return get_type_map.ofAddress(get_type_map$get(segment), session);
+    public static get_type_map get_type_map(MemorySegment segment, Arena scope) {
+        return get_type_map.ofAddress(get_type_map$get(segment), scope);
     }
-    static final FunctionDescriptor alloc$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle alloc$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.alloc$FUNC
-    );
+    /**
+     * {@snippet :
+ * haddr_t (*alloc)(H5FD_t*,H5FD_mem_t,hid_t,hsize_t);
+     * }
+     */
     public interface alloc {
 
-        long apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2, long _x3);
-        static MemorySegment allocate(alloc fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(alloc.class, fi, H5FD_class_t.alloc$FUNC, session);
+        long apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3);
+        static MemorySegment allocate(alloc fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$184.const$4, fi, constants$170.const$0, scope);
         }
-        static alloc ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2, long __x3) -> {
+        static alloc ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3) -> {
                 try {
-                    return (long)H5FD_class_t.alloc$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, __x3);
+                    return (long)constants$184.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -765,46 +950,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle alloc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("alloc"));
     public static VarHandle alloc$VH() {
-        return H5FD_class_t.alloc$VH;
+        return constants$185.const$0;
     }
-    public static MemoryAddress alloc$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.alloc$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t (*alloc)(H5FD_t*,H5FD_mem_t,hid_t,hsize_t);
+     * }
+     */
+    public static MemorySegment alloc$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$185.const$0.get(seg);
     }
-    public static void alloc$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.alloc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t (*alloc)(H5FD_t*,H5FD_mem_t,hid_t,hsize_t);
+     * }
+     */
+    public static void alloc$set(MemorySegment seg, MemorySegment x) {
+        constants$185.const$0.set(seg, x);
     }
-    public static MemoryAddress alloc$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.alloc$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment alloc$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$185.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void alloc$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.alloc$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void alloc$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$185.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static alloc alloc (MemorySegment segment, MemorySession session) {
-        return alloc.ofAddress(alloc$get(segment), session);
+    public static alloc alloc(MemorySegment segment, Arena scope) {
+        return alloc.ofAddress(alloc$get(segment), scope);
     }
-    static final FunctionDescriptor free$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle free$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.free$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*free)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,hsize_t);
+     * }
+     */
     public interface free {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2, long _x3, long _x4);
-        static MemorySegment allocate(free fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(free.class, fi, H5FD_class_t.free$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4);
+        static MemorySegment allocate(free fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$185.const$2, fi, constants$185.const$1, scope);
         }
-        static free ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2, long __x3, long __x4) -> {
+        static free ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4) -> {
                 try {
-                    return (int)H5FD_class_t.free$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, __x3, __x4);
+                    return (int)constants$185.const$3.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -812,43 +1003,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("free"));
     public static VarHandle free$VH() {
-        return H5FD_class_t.free$VH;
+        return constants$185.const$4;
     }
-    public static MemoryAddress free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.free$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*free)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,hsize_t);
+     * }
+     */
+    public static MemorySegment free$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg);
     }
-    public static void free$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*free)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,hsize_t);
+     * }
+     */
+    public static void free$set(MemorySegment seg, MemorySegment x) {
+        constants$185.const$4.set(seg, x);
     }
-    public static MemoryAddress free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.free$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment free$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void free$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.free$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void free$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$185.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static free free (MemorySegment segment, MemorySession session) {
-        return free.ofAddress(free$get(segment), session);
+    public static free free(MemorySegment segment, Arena scope) {
+        return free.ofAddress(free$get(segment), scope);
     }
-    static final FunctionDescriptor get_eoa$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle get_eoa$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.get_eoa$FUNC
-    );
+    /**
+     * {@snippet :
+ * haddr_t (*get_eoa)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
     public interface get_eoa {
 
-        long apply(java.lang.foreign.MemoryAddress _x0, int _x1);
-        static MemorySegment allocate(get_eoa fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(get_eoa.class, fi, H5FD_class_t.get_eoa$FUNC, session);
+        long apply(java.lang.foreign.MemorySegment _x0, int _x1);
+        static MemorySegment allocate(get_eoa fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$186.const$0, fi, constants$185.const$5, scope);
         }
-        static get_eoa ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1) -> {
+        static get_eoa ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1) -> {
                 try {
-                    return (long)H5FD_class_t.get_eoa$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1);
+                    return (long)constants$186.const$1.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -856,44 +1056,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle get_eoa$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("get_eoa"));
     public static VarHandle get_eoa$VH() {
-        return H5FD_class_t.get_eoa$VH;
+        return constants$186.const$2;
     }
-    public static MemoryAddress get_eoa$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_eoa$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t (*get_eoa)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
+    public static MemorySegment get_eoa$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg);
     }
-    public static void get_eoa$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.get_eoa$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t (*get_eoa)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
+    public static void get_eoa$set(MemorySegment seg, MemorySegment x) {
+        constants$186.const$2.set(seg, x);
     }
-    public static MemoryAddress get_eoa$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_eoa$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment get_eoa$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void get_eoa$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.get_eoa$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void get_eoa$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$186.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_eoa get_eoa (MemorySegment segment, MemorySession session) {
-        return get_eoa.ofAddress(get_eoa$get(segment), session);
+    public static get_eoa get_eoa(MemorySegment segment, Arena scope) {
+        return get_eoa.ofAddress(get_eoa$get(segment), scope);
     }
-    static final FunctionDescriptor set_eoa$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle set_eoa$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.set_eoa$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*set_eoa)(H5FD_t*,H5FD_mem_t,haddr_t);
+     * }
+     */
     public interface set_eoa {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2);
-        static MemorySegment allocate(set_eoa fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(set_eoa.class, fi, H5FD_class_t.set_eoa$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2);
+        static MemorySegment allocate(set_eoa fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$186.const$4, fi, constants$186.const$3, scope);
         }
-        static set_eoa ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2) -> {
+        static set_eoa ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2) -> {
                 try {
-                    return (int)H5FD_class_t.set_eoa$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2);
+                    return (int)constants$186.const$5.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -901,43 +1109,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle set_eoa$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("set_eoa"));
     public static VarHandle set_eoa$VH() {
-        return H5FD_class_t.set_eoa$VH;
+        return constants$187.const$0;
     }
-    public static MemoryAddress set_eoa$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.set_eoa$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*set_eoa)(H5FD_t*,H5FD_mem_t,haddr_t);
+     * }
+     */
+    public static MemorySegment set_eoa$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg);
     }
-    public static void set_eoa$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.set_eoa$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*set_eoa)(H5FD_t*,H5FD_mem_t,haddr_t);
+     * }
+     */
+    public static void set_eoa$set(MemorySegment seg, MemorySegment x) {
+        constants$187.const$0.set(seg, x);
     }
-    public static MemoryAddress set_eoa$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.set_eoa$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment set_eoa$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void set_eoa$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.set_eoa$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void set_eoa$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$187.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static set_eoa set_eoa (MemorySegment segment, MemorySession session) {
-        return set_eoa.ofAddress(set_eoa$get(segment), session);
+    public static set_eoa set_eoa(MemorySegment segment, Arena scope) {
+        return set_eoa.ofAddress(set_eoa$get(segment), scope);
     }
-    static final FunctionDescriptor get_eof$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle get_eof$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.get_eof$FUNC
-    );
+    /**
+     * {@snippet :
+ * haddr_t (*get_eof)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
     public interface get_eof {
 
-        long apply(java.lang.foreign.MemoryAddress _x0, int _x1);
-        static MemorySegment allocate(get_eof fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(get_eof.class, fi, H5FD_class_t.get_eof$FUNC, session);
+        long apply(java.lang.foreign.MemorySegment _x0, int _x1);
+        static MemorySegment allocate(get_eof fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$187.const$1, fi, constants$185.const$5, scope);
         }
-        static get_eof ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1) -> {
+        static get_eof ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1) -> {
                 try {
-                    return (long)H5FD_class_t.get_eof$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1);
+                    return (long)constants$186.const$1.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -945,44 +1162,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle get_eof$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("get_eof"));
     public static VarHandle get_eof$VH() {
-        return H5FD_class_t.get_eof$VH;
+        return constants$187.const$2;
     }
-    public static MemoryAddress get_eof$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_eof$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * haddr_t (*get_eof)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
+    public static MemorySegment get_eof$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg);
     }
-    public static void get_eof$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.get_eof$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * haddr_t (*get_eof)(const H5FD_t*,H5FD_mem_t);
+     * }
+     */
+    public static void get_eof$set(MemorySegment seg, MemorySegment x) {
+        constants$187.const$2.set(seg, x);
     }
-    public static MemoryAddress get_eof$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_eof$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment get_eof$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void get_eof$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.get_eof$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void get_eof$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$187.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_eof get_eof (MemorySegment segment, MemorySession session) {
-        return get_eof.ofAddress(get_eof$get(segment), session);
+    public static get_eof get_eof(MemorySegment segment, Arena scope) {
+        return get_eof.ofAddress(get_eof$get(segment), scope);
     }
-    static final FunctionDescriptor get_handle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle get_handle$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.get_handle$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*get_handle)(H5FD_t*,hid_t,void**);
+     * }
+     */
     public interface get_handle {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, long _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(get_handle fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(get_handle.class, fi, H5FD_class_t.get_handle$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, long _x1, java.lang.foreign.MemorySegment _x2);
+        static MemorySegment allocate(get_handle fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$187.const$3, fi, constants$17.const$4, scope);
         }
-        static get_handle ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, long __x1, java.lang.foreign.MemoryAddress __x2) -> {
+        static get_handle ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, long __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)H5FD_class_t.get_handle$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, (java.lang.foreign.Addressable)__x2);
+                    return (int)constants$18.const$0.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -990,47 +1215,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle get_handle$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("get_handle"));
     public static VarHandle get_handle$VH() {
-        return H5FD_class_t.get_handle$VH;
+        return constants$187.const$4;
     }
-    public static MemoryAddress get_handle$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_handle$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*get_handle)(H5FD_t*,hid_t,void**);
+     * }
+     */
+    public static MemorySegment get_handle$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg);
     }
-    public static void get_handle$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.get_handle$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*get_handle)(H5FD_t*,hid_t,void**);
+     * }
+     */
+    public static void get_handle$set(MemorySegment seg, MemorySegment x) {
+        constants$187.const$4.set(seg, x);
     }
-    public static MemoryAddress get_handle$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.get_handle$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment get_handle$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void get_handle$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.get_handle$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void get_handle$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$187.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static get_handle get_handle (MemorySegment segment, MemorySession session) {
-        return get_handle.ofAddress(get_handle$get(segment), session);
+    public static get_handle get_handle(MemorySegment segment, Arena scope) {
+        return get_handle.ofAddress(get_handle$get(segment), scope);
     }
-    static final FunctionDescriptor read$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle read$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.read$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*read)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
     public interface read {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemoryAddress _x5);
-        static MemorySegment allocate(read fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(read.class, fi, H5FD_class_t.read$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemorySegment _x5);
+        static MemorySegment allocate(read fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$188.const$0, fi, constants$187.const$5, scope);
         }
-        static read ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemoryAddress __x5) -> {
+        static read ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemorySegment __x5) -> {
                 try {
-                    return (int)H5FD_class_t.read$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, __x3, __x4, (java.lang.foreign.Addressable)__x5);
+                    return (int)constants$188.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1038,47 +1268,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle read$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("read"));
     public static VarHandle read$VH() {
-        return H5FD_class_t.read$VH;
+        return constants$188.const$2;
     }
-    public static MemoryAddress read$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.read$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*read)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
+    public static MemorySegment read$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$188.const$2.get(seg);
     }
-    public static void read$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.read$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*read)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
+    public static void read$set(MemorySegment seg, MemorySegment x) {
+        constants$188.const$2.set(seg, x);
     }
-    public static MemoryAddress read$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.read$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment read$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$188.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void read$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.read$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void read$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$188.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static read read (MemorySegment segment, MemorySession session) {
-        return read.ofAddress(read$get(segment), session);
+    public static read read(MemorySegment segment, Arena scope) {
+        return read.ofAddress(read$get(segment), scope);
     }
-    static final FunctionDescriptor write$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle write$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.write$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*write)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
     public interface write {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemoryAddress _x5);
-        static MemorySegment allocate(write fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(write.class, fi, H5FD_class_t.write$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemorySegment _x5);
+        static MemorySegment allocate(write fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$188.const$3, fi, constants$187.const$5, scope);
         }
-        static write ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemoryAddress __x5) -> {
+        static write ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemorySegment __x5) -> {
                 try {
-                    return (int)H5FD_class_t.write$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, __x3, __x4, (java.lang.foreign.Addressable)__x5);
+                    return (int)constants$188.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1086,44 +1321,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle write$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("write"));
     public static VarHandle write$VH() {
-        return H5FD_class_t.write$VH;
+        return constants$188.const$4;
     }
-    public static MemoryAddress write$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.write$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*write)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
+    public static MemorySegment write$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$188.const$4.get(seg);
     }
-    public static void write$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.write$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*write)(H5FD_t*,H5FD_mem_t,hid_t,haddr_t,size_t,void*);
+     * }
+     */
+    public static void write$set(MemorySegment seg, MemorySegment x) {
+        constants$188.const$4.set(seg, x);
     }
-    public static MemoryAddress write$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.write$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment write$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$188.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void write$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.write$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void write$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$188.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static write write (MemorySegment segment, MemorySession session) {
-        return write.ofAddress(write$get(segment), session);
+    public static write write(MemorySegment segment, Arena scope) {
+        return write.ofAddress(write$get(segment), scope);
     }
-    static final FunctionDescriptor flush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle flush$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.flush$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*flush)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
     public interface flush {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, long _x1, boolean _x2);
-        static MemorySegment allocate(flush fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(flush.class, fi, H5FD_class_t.flush$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, long _x1, boolean _x2);
+        static MemorySegment allocate(flush fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$189.const$0, fi, constants$188.const$5, scope);
         }
-        static flush ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, long __x1, boolean __x2) -> {
+        static flush ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, long __x1, boolean __x2) -> {
                 try {
-                    return (int)H5FD_class_t.flush$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2);
+                    return (int)constants$189.const$1.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1131,44 +1374,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle flush$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("flush"));
     public static VarHandle flush$VH() {
-        return H5FD_class_t.flush$VH;
+        return constants$189.const$2;
     }
-    public static MemoryAddress flush$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.flush$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*flush)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
+    public static MemorySegment flush$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$189.const$2.get(seg);
     }
-    public static void flush$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.flush$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*flush)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
+    public static void flush$set(MemorySegment seg, MemorySegment x) {
+        constants$189.const$2.set(seg, x);
     }
-    public static MemoryAddress flush$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.flush$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment flush$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$189.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void flush$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.flush$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void flush$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$189.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static flush flush (MemorySegment segment, MemorySession session) {
-        return flush.ofAddress(flush$get(segment), session);
+    public static flush flush(MemorySegment segment, Arena scope) {
+        return flush.ofAddress(flush$get(segment), scope);
     }
-    static final FunctionDescriptor truncate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle truncate$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.truncate$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*truncate)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
     public interface truncate {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, long _x1, boolean _x2);
-        static MemorySegment allocate(truncate fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(truncate.class, fi, H5FD_class_t.truncate$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, long _x1, boolean _x2);
+        static MemorySegment allocate(truncate fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$189.const$3, fi, constants$188.const$5, scope);
         }
-        static truncate ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, long __x1, boolean __x2) -> {
+        static truncate ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, long __x1, boolean __x2) -> {
                 try {
-                    return (int)H5FD_class_t.truncate$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2);
+                    return (int)constants$189.const$1.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1176,43 +1427,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle truncate$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("truncate"));
     public static VarHandle truncate$VH() {
-        return H5FD_class_t.truncate$VH;
+        return constants$189.const$4;
     }
-    public static MemoryAddress truncate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.truncate$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*truncate)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
+    public static MemorySegment truncate$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$189.const$4.get(seg);
     }
-    public static void truncate$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.truncate$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*truncate)(H5FD_t*,hid_t,hbool_t);
+     * }
+     */
+    public static void truncate$set(MemorySegment seg, MemorySegment x) {
+        constants$189.const$4.set(seg, x);
     }
-    public static MemoryAddress truncate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.truncate$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment truncate$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$189.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void truncate$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.truncate$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void truncate$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$189.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static truncate truncate (MemorySegment segment, MemorySession session) {
-        return truncate.ofAddress(truncate$get(segment), session);
+    public static truncate truncate(MemorySegment segment, Arena scope) {
+        return truncate.ofAddress(truncate$get(segment), scope);
     }
-    static final FunctionDescriptor lock$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle lock$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.lock$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*lock)(H5FD_t*,hbool_t);
+     * }
+     */
     public interface lock {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, boolean _x1);
-        static MemorySegment allocate(lock fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(lock.class, fi, H5FD_class_t.lock$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, boolean _x1);
+        static MemorySegment allocate(lock fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$190.const$0, fi, constants$189.const$5, scope);
         }
-        static lock ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, boolean __x1) -> {
+        static lock ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, boolean __x1) -> {
                 try {
-                    return (int)H5FD_class_t.lock$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1);
+                    return (int)constants$190.const$1.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1220,42 +1480,52 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle lock$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("lock"));
     public static VarHandle lock$VH() {
-        return H5FD_class_t.lock$VH;
+        return constants$190.const$2;
     }
-    public static MemoryAddress lock$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.lock$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*lock)(H5FD_t*,hbool_t);
+     * }
+     */
+    public static MemorySegment lock$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg);
     }
-    public static void lock$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.lock$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*lock)(H5FD_t*,hbool_t);
+     * }
+     */
+    public static void lock$set(MemorySegment seg, MemorySegment x) {
+        constants$190.const$2.set(seg, x);
     }
-    public static MemoryAddress lock$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.lock$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment lock$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void lock$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.lock$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void lock$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$190.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static lock lock (MemorySegment segment, MemorySession session) {
-        return lock.ofAddress(lock$get(segment), session);
+    public static lock lock(MemorySegment segment, Arena scope) {
+        return lock.ofAddress(lock$get(segment), scope);
     }
-    static final FunctionDescriptor unlock$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle unlock$MH = RuntimeHelper.downcallHandle(
-        H5FD_class_t.unlock$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*unlock)(H5FD_t*);
+     * }
+     */
     public interface unlock {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(unlock fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(unlock.class, fi, H5FD_class_t.unlock$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(unlock fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$190.const$3, fi, constants$15.const$2, scope);
         }
-        static unlock ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static unlock ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)H5FD_class_t.unlock$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1263,34 +1533,45 @@ public class H5FD_class_t {
         }
     }
 
-    static final VarHandle unlock$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("unlock"));
     public static VarHandle unlock$VH() {
-        return H5FD_class_t.unlock$VH;
+        return constants$190.const$4;
     }
-    public static MemoryAddress unlock$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.unlock$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*unlock)(H5FD_t*);
+     * }
+     */
+    public static MemorySegment unlock$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg);
     }
-    public static void unlock$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_class_t.unlock$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*unlock)(H5FD_t*);
+     * }
+     */
+    public static void unlock$set(MemorySegment seg, MemorySegment x) {
+        constants$190.const$4.set(seg, x);
     }
-    public static MemoryAddress unlock$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_class_t.unlock$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment unlock$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void unlock$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_class_t.unlock$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void unlock$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$190.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static unlock unlock (MemorySegment segment, MemorySession session) {
-        return unlock.ofAddress(unlock$get(segment), session);
+    public static unlock unlock(MemorySegment segment, Arena scope) {
+        return unlock.ofAddress(unlock$get(segment), scope);
     }
     public static MemorySegment fl_map$slice(MemorySegment seg) {
         return seg.asSlice(248, 28);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

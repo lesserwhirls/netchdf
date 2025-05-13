@@ -7,56 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$172 {
+final class constants$172 {
 
-    static final FunctionDescriptor H5Rdereference1$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$172() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fget_vfd_handle",
+        constants$85.const$4
     );
-    static final MethodHandle H5Rdereference1$MH = RuntimeHelper.downcallHandle(
-        "H5Rdereference1",
-        constants$172.H5Rdereference1$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fmount",
+        constants$42.const$4
     );
-    static final FunctionDescriptor H5Screate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Funmount",
+        constants$44.const$4
     );
-    static final MethodHandle H5Screate$MH = RuntimeHelper.downcallHandle(
-        "H5Screate",
-        constants$172.H5Screate$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_freespace",
+        constants$10.const$2
     );
-    static final FunctionDescriptor H5Screate_simple$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_filesize",
+        constants$44.const$4
     );
-    static final MethodHandle H5Screate_simple$MH = RuntimeHelper.downcallHandle(
-        "H5Screate_simple",
-        constants$172.H5Screate_simple$FUNC
-    );
-    static final FunctionDescriptor H5Sset_extent_simple$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sset_extent_simple$MH = RuntimeHelper.downcallHandle(
-        "H5Sset_extent_simple",
-        constants$172.H5Sset_extent_simple$FUNC
-    );
-    static final FunctionDescriptor H5Scopy$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Scopy$MH = RuntimeHelper.downcallHandle(
-        "H5Scopy",
-        constants$172.H5Scopy$FUNC
-    );
-    static final FunctionDescriptor H5Sclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sclose$MH = RuntimeHelper.downcallHandle(
-        "H5Sclose",
-        constants$172.H5Sclose$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fget_eoa",
+        constants$44.const$4
     );
 }
 

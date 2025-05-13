@@ -7,56 +7,47 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$66 {
+final class constants$66 {
 
-    static final FunctionDescriptor fscanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$66() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle fscanf$MH = RuntimeHelper.downcallHandleVariadic(
-        "fscanf",
-        constants$66.fscanf$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Literate_by_name",
+        constants$66.const$0
     );
-    static final FunctionDescriptor scanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle scanf$MH = RuntimeHelper.downcallHandleVariadic(
-        "scanf",
-        constants$66.scanf$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lvisit",
+        constants$66.const$2
     );
-    static final FunctionDescriptor sscanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle sscanf$MH = RuntimeHelper.downcallHandleVariadic(
-        "sscanf",
-        constants$66.sscanf$FUNC
-    );
-    static final FunctionDescriptor vfscanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vfscanf$MH = RuntimeHelper.downcallHandle(
-        "vfscanf",
-        constants$66.vfscanf$FUNC
-    );
-    static final FunctionDescriptor vscanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vscanf$MH = RuntimeHelper.downcallHandle(
-        "vscanf",
-        constants$66.vscanf$FUNC
-    );
-    static final FunctionDescriptor vsscanf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vsscanf$MH = RuntimeHelper.downcallHandle(
-        "vsscanf",
-        constants$66.vsscanf$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Lvisit_by_name",
+        constants$66.const$4
     );
 }
 

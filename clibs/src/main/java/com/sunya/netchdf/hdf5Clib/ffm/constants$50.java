@@ -7,69 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$50 {
+final class constants$50 {
 
-    static final FunctionDescriptor H5Aget_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$50() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tset_order",
+        constants$45.const$5
     );
-    static final MethodHandle H5Aget_name$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_name",
-        constants$50.H5Aget_name$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tset_precision",
+        constants$40.const$0
     );
-    static final FunctionDescriptor H5Aget_name_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tset_offset",
+        constants$40.const$0
     );
-    static final MethodHandle H5Aget_name_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_name_by_idx",
-        constants$50.H5Aget_name_by_idx$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor H5Aget_storage_size$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tset_pad",
+        constants$50.const$3
     );
-    static final MethodHandle H5Aget_storage_size$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_storage_size",
-        constants$50.H5Aget_storage_size$FUNC
-    );
-    static final FunctionDescriptor H5Aget_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Aget_info$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_info",
-        constants$50.H5Aget_info$FUNC
-    );
-    static final FunctionDescriptor H5Aget_info_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aget_info_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_name",
-        constants$50.H5Aget_info_by_name$FUNC
-    );
-    static final FunctionDescriptor H5Aget_info_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aget_info_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_idx",
-        constants$50.H5Aget_info_by_idx$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tset_sign",
+        constants$45.const$5
     );
 }
 

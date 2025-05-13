@@ -3,60 +3,38 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$135 {
 
-class constants$135 {
-
-    static final FunctionDescriptor VSdump$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$135() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle VSdump$MH = RuntimeHelper.downcallHandle(
-        "VSdump",
-        constants$135.VSdump$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hgetlibversion",
+        constants$135.const$0
     );
-    static final FunctionDescriptor VSsetname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Hgetfileversion",
+        constants$42.const$5
     );
-    static final MethodHandle VSsetname$MH = RuntimeHelper.downcallHandle(
-        "VSsetname",
-        constants$135.VSsetname$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hsetaccesstype",
+        constants$93.const$3
     );
-    static final FunctionDescriptor VSsetclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle VSsetclass$MH = RuntimeHelper.downcallHandle(
-        "VSsetclass",
-        constants$135.VSsetclass$FUNC
-    );
-    static final FunctionDescriptor VSgetname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetname$MH = RuntimeHelper.downcallHandle(
-        "VSgetname",
-        constants$135.VSgetname$FUNC
-    );
-    static final FunctionDescriptor VSgetclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetclass$MH = RuntimeHelper.downcallHandle(
-        "VSgetclass",
-        constants$135.VSgetclass$FUNC
-    );
-    static final FunctionDescriptor VSinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSinquire$MH = RuntimeHelper.downcallHandle(
-        "VSinquire",
-        constants$135.VSinquire$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HDmake_special_tag",
+        constants$135.const$4
     );
 }
 

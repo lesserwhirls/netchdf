@@ -7,14 +7,23 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$187 {
+final class constants$187 {
 
-    static final MemorySegment PRIdFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment PRIi8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment PRIi16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment PRIi32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
-    static final MemorySegment PRIi64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment PRIiLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("i");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$187() {}
+    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("set_eoa"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eof.class, "apply", constants$185.const$5);
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_eof"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.get_handle.class, "apply", constants$17.const$4);
+    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_handle"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
 }
 
 

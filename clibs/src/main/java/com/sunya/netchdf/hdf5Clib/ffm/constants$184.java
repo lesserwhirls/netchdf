@@ -7,14 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$184 {
+final class constants$184 {
 
-    static final MemorySegment H5_PACKAGE_TARNAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf5");
-    static final MemorySegment H5_PACKAGE_URL$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment H5_PACKAGE_VERSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.10.7");
-    static final MemorySegment H5_PRINTF_LL_WIDTH$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
-    static final MemorySegment H5_VERSION$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.10.7");
-    static final MemorySegment __PRI64_PREFIX$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$184() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.query.class, "apply", constants$112.const$0);
+    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("query"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.get_type_map.class, "apply", constants$112.const$0);
+    static final VarHandle const$3 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_type_map"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.alloc.class, "apply", constants$170.const$0);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$170.const$0
+    );
 }
 
 

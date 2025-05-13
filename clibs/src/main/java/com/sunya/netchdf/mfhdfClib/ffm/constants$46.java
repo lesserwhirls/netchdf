@@ -3,55 +3,34 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$46 {
 
-class constants$46 {
-
-    static final FunctionDescriptor bzero$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle bzero$MH = RuntimeHelper.downcallHandle(
-        "bzero",
-        constants$46.bzero$FUNC
-    );
-    static final FunctionDescriptor index$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle index$MH = RuntimeHelper.downcallHandle(
-        "index",
-        constants$46.index$FUNC
-    );
-    static final FunctionDescriptor rindex$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle rindex$MH = RuntimeHelper.downcallHandle(
-        "rindex",
-        constants$46.rindex$FUNC
-    );
-    static final FunctionDescriptor ffs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle ffs$MH = RuntimeHelper.downcallHandle(
-        "ffs",
-        constants$46.ffs$FUNC
-    );
-    static final FunctionDescriptor ffsl$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle ffsl$MH = RuntimeHelper.downcallHandle(
-        "ffsl",
-        constants$46.ffsl$FUNC
-    );
-    static final FunctionDescriptor ffsll$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle ffsll$MH = RuntimeHelper.downcallHandle(
-        "ffsll",
-        constants$46.ffsll$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$46() {}
+    static final VarHandle const$0 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
+    static final VarHandle const$1 = constants$45.const$0.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__readers"),
+        JAVA_INT.withName("__writers"),
+        JAVA_INT.withName("__wrphase_futex"),
+        JAVA_INT.withName("__writers_futex"),
+        JAVA_INT.withName("__pad3"),
+        JAVA_INT.withName("__pad4"),
+        JAVA_INT.withName("__cur_writer"),
+        JAVA_INT.withName("__shared"),
+        JAVA_BYTE.withName("__rwelision"),
+        MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+        JAVA_LONG.withName("__pad2"),
+        JAVA_INT.withName("__flags"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("__pthread_rwlock_arch_t");
+    static final VarHandle const$3 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__readers"));
+    static final VarHandle const$4 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__writers"));
+    static final VarHandle const$5 = constants$46.const$2.varHandle(MemoryLayout.PathElement.groupElement("__wrphase_futex"));
 }
 
 

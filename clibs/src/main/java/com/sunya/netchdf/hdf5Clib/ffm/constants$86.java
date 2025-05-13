@@ -7,26 +7,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$86 {
+final class constants$86 {
 
-    static final  OfLong H5E_CANTMERGE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMERGE_g$VH = constants$86.H5E_CANTMERGE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMERGE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMERGE_g", constants$86.H5E_CANTMERGE_g$LAYOUT);
-    static final  OfLong H5E_CANTREVIVE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTREVIVE_g$VH = constants$86.H5E_CANTREVIVE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTREVIVE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTREVIVE_g", constants$86.H5E_CANTREVIVE_g$LAYOUT);
-    static final  OfLong H5E_CANTSHRINK_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTSHRINK_g$VH = constants$86.H5E_CANTSHRINK_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTSHRINK_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTSHRINK_g", constants$86.H5E_CANTSHRINK_g$LAYOUT);
-    static final  OfLong H5E_LINKCOUNT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_LINKCOUNT_g$VH = constants$86.H5E_LINKCOUNT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_LINKCOUNT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_LINKCOUNT_g", constants$86.H5E_LINKCOUNT_g$LAYOUT);
-    static final  OfLong H5E_VERSION_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_VERSION_g$VH = constants$86.H5E_VERSION_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_VERSION_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_VERSION_g", constants$86.H5E_VERSION_g$LAYOUT);
-    static final  OfLong H5E_ALIGNMENT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ALIGNMENT_g$VH = constants$86.H5E_ALIGNMENT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ALIGNMENT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ALIGNMENT_g", constants$86.H5E_ALIGNMENT_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$86() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Arename",
+        constants$41.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Awrite",
+        constants$85.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Arename_by_name",
+        constants$83.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5A_operator1_t.class, "apply", constants$41.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$41.const$4
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Acreate1",
+        constants$86.const$5
+    );
 }
 
 

@@ -2,8 +2,20 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
-public class hdf_varlist_t extends hdf_varlist {
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * typedef struct hdf_varlist hdf_varlist_t;
+ * }
+ */
+public final class hdf_varlist_t extends hdf_varlist {
 
+    // Suppresses default constructor, ensuring non-instantiability.
+    private hdf_varlist_t() {}
 }
 
 

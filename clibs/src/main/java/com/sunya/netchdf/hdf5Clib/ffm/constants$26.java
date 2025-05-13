@@ -7,59 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$26 {
+final class constants$26 {
 
-    static final FunctionDescriptor H5Tenum_insert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tenum_insert$MH = RuntimeHelper.downcallHandle(
-        "H5Tenum_insert",
-        constants$26.H5Tenum_insert$FUNC
-    );
-    static final FunctionDescriptor H5Tenum_nameof$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tenum_nameof$MH = RuntimeHelper.downcallHandle(
-        "H5Tenum_nameof",
-        constants$26.H5Tenum_nameof$FUNC
-    );
-    static final FunctionDescriptor H5Tenum_valueof$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tenum_valueof$MH = RuntimeHelper.downcallHandle(
-        "H5Tenum_valueof",
-        constants$26.H5Tenum_valueof$FUNC
-    );
-    static final FunctionDescriptor H5Tvlen_create$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tvlen_create$MH = RuntimeHelper.downcallHandle(
-        "H5Tvlen_create",
-        constants$26.H5Tvlen_create$FUNC
-    );
-    static final FunctionDescriptor H5Tarray_create2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tarray_create2$MH = RuntimeHelper.downcallHandle(
-        "H5Tarray_create2",
-        constants$26.H5Tarray_create2$FUNC
-    );
-    static final FunctionDescriptor H5Tget_array_ndims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tget_array_ndims$MH = RuntimeHelper.downcallHandle(
-        "H5Tget_array_ndims",
-        constants$26.H5Tget_array_ndims$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$26() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8LE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I16BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I16LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I32BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I32LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I64BE_g", JAVA_LONG);
 }
 
 

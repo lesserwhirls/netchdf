@@ -7,56 +7,53 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$166 {
+final class constants$166 {
 
-    static final FunctionDescriptor H5Pset_elink_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$166() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eprint1",
+        constants$15.const$2
     );
-    static final MethodHandle H5Pset_elink_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_prefix",
-        constants$166.H5Pset_elink_prefix$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eset_auto1",
+        constants$112.const$0
     );
-    static final FunctionDescriptor H5Pget_elink_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ewalk1",
+        constants$119.const$0
     );
-    static final MethodHandle H5Pget_elink_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_prefix",
-        constants$166.H5Pget_elink_prefix$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eget_major",
+        constants$45.const$1
     );
-    static final FunctionDescriptor H5Pget_elink_fapl$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eget_minor",
+        constants$45.const$1
     );
-    static final MethodHandle H5Pget_elink_fapl$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_fapl",
-        constants$166.H5Pget_elink_fapl$FUNC
-    );
-    static final FunctionDescriptor H5Pset_elink_fapl$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_elink_fapl$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_fapl",
-        constants$166.H5Pset_elink_fapl$FUNC
-    );
-    static final FunctionDescriptor H5Pset_elink_acc_flags$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_elink_acc_flags$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_acc_flags",
-        constants$166.H5Pset_elink_acc_flags$FUNC
-    );
-    static final FunctionDescriptor H5Pget_elink_acc_flags$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_elink_acc_flags$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_acc_flags",
-        constants$166.H5Pget_elink_acc_flags$FUNC
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("super_size"),
+            JAVA_LONG.withName("super_ext_size")
+        ).withName("super"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("meta_size"),
+            JAVA_LONG.withName("tot_space")
+        ).withName("free"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("hdr_size"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("msgs_info")
+        ).withName("sohm")
+    ).withName("H5F_info2_t");
 }
 
 

@@ -7,65 +7,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$162 {
+final class constants$162 {
 
-    static final FunctionDescriptor H5Pget_edc_check$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$162() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Epop",
+        constants$40.const$0
     );
-    static final MethodHandle H5Pget_edc_check$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_edc_check",
-        constants$162.H5Pget_edc_check$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eprint2",
+        constants$44.const$4
     );
-    static final FunctionDescriptor H5Pset_filter_callback$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Pset_filter_callback$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_filter_callback",
-        constants$162.H5Pset_filter_callback$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ewalk2",
+        constants$162.const$2
     );
-    static final FunctionDescriptor H5Pset_btree_ratios$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eget_auto2",
+        constants$41.const$4
     );
-    static final MethodHandle H5Pset_btree_ratios$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_btree_ratios",
-        constants$162.H5Pset_btree_ratios$FUNC
-    );
-    static final FunctionDescriptor H5Pget_btree_ratios$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_btree_ratios$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_btree_ratios",
-        constants$162.H5Pget_btree_ratios$FUNC
-    );
-    static final FunctionDescriptor H5Pset_vlen_mem_manager$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_vlen_mem_manager$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_vlen_mem_manager",
-        constants$162.H5Pset_vlen_mem_manager$FUNC
-    );
-    static final FunctionDescriptor H5Pget_vlen_mem_manager$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_vlen_mem_manager$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_vlen_mem_manager",
-        constants$162.H5Pget_vlen_mem_manager$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Eset_auto2",
+        constants$41.const$4
     );
 }
 

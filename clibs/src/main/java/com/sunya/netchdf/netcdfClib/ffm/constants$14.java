@@ -3,66 +3,37 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$14 {
 
-class constants$14 {
-
-    static final FunctionDescriptor nc_inq_var_filter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$14() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_def_opaque",
+        constants$6.const$1
     );
-    static final MethodHandle nc_inq_var_filter$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_var_filter",
-        constants$14.nc_inq_var_filter$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_inq_opaque",
+        constants$7.const$0
     );
-    static final FunctionDescriptor nc_set_fill$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_var",
+        constants$7.const$5
     );
-    static final MethodHandle nc_set_fill$MH = RuntimeHelper.downcallHandle(
-        "nc_set_fill",
-        constants$14.nc_set_fill$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_var",
+        constants$7.const$5
     );
-    static final FunctionDescriptor nc_set_default_format$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_put_var1",
+        constants$7.const$0
     );
-    static final MethodHandle nc_set_default_format$MH = RuntimeHelper.downcallHandle(
-        "nc_set_default_format",
-        constants$14.nc_set_default_format$FUNC
-    );
-    static final FunctionDescriptor nc_set_chunk_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle nc_set_chunk_cache$MH = RuntimeHelper.downcallHandle(
-        "nc_set_chunk_cache",
-        constants$14.nc_set_chunk_cache$FUNC
-    );
-    static final FunctionDescriptor nc_get_chunk_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_get_chunk_cache$MH = RuntimeHelper.downcallHandle(
-        "nc_get_chunk_cache",
-        constants$14.nc_get_chunk_cache$FUNC
-    );
-    static final FunctionDescriptor nc_set_var_chunk_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_FLOAT$LAYOUT
-    );
-    static final MethodHandle nc_set_var_chunk_cache$MH = RuntimeHelper.downcallHandle(
-        "nc_set_var_chunk_cache",
-        constants$14.nc_set_var_chunk_cache$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_get_var1",
+        constants$7.const$0
     );
 }
 

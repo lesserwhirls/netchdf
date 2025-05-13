@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$200 {
 
-class constants$200 {
-
-    static final MemorySegment _HDF_CDF$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("CDF0.0");
-    static final MemorySegment DATA0$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Data0.0");
-    static final MemorySegment ATTR_FIELD_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("VALUES");
-    static final MemorySegment _HDF_CHK_TBL_CLASS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("_HDF_CHK_TBL_");
-    static final MemorySegment FILL_ATTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("FillValue");
-    static final MemorySegment _FillValue$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("_FillValue");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$200() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "vcompare",
+        constants$17.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "vcompareref",
+        constants$17.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vdestroynode",
+        constants$24.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vtfreekey",
+        constants$24.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Vinitialize",
+        constants$1.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Vfinish",
+        constants$1.const$5
+    );
 }
 
 

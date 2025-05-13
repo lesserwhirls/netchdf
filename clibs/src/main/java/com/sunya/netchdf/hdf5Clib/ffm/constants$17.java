@@ -7,26 +7,28 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$17 {
+final class constants$17 {
 
-    static final  OfLong H5T_NATIVE_FLOAT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_FLOAT_g$VH = constants$17.H5T_NATIVE_FLOAT_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_FLOAT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_FLOAT_g", constants$17.H5T_NATIVE_FLOAT_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_DOUBLE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_DOUBLE_g$VH = constants$17.H5T_NATIVE_DOUBLE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_DOUBLE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_DOUBLE_g", constants$17.H5T_NATIVE_DOUBLE_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_LDOUBLE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_LDOUBLE_g$VH = constants$17.H5T_NATIVE_LDOUBLE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_LDOUBLE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_LDOUBLE_g", constants$17.H5T_NATIVE_LDOUBLE_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_B8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_B8_g$VH = constants$17.H5T_NATIVE_B8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_B8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B8_g", constants$17.H5T_NATIVE_B8_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_B16_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_B16_g$VH = constants$17.H5T_NATIVE_B16_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_B16_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B16_g", constants$17.H5T_NATIVE_B16_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_B32_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_B32_g$VH = constants$17.H5T_NATIVE_B32_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_B32_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B32_g", constants$17.H5T_NATIVE_B32_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$17() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5resize_memory",
+        constants$17.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5I_free_t.class, "apply", constants$15.const$2);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$15.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5I_search_func_t.class, "apply", constants$17.const$4);
 }
 
 

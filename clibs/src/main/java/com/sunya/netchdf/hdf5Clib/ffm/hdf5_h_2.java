@@ -7,752 +7,2757 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
- public class hdf5_h_2 extends hdf5_h_1 {
+public class hdf5_h_2 extends hdf5_h_1 {
 
+    /**
+     * {@snippet :
+     * #define USHRT_MAX 65535
+     * }
+     */
+    public static int USHRT_MAX() {
+        return (int)65535L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_MAX 4294967295
+     * }
+     */
+    public static int UINT_MAX() {
+        return (int)4294967295L;
+    }
+    /**
+     * {@snippet :
+     * #define ULONG_MAX -1
+     * }
+     */
+    public static long ULONG_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define CHAR_BIT 8
+     * }
+     */
+    public static int CHAR_BIT() {
+        return (int)8L;
+    }
+    /**
+     * {@snippet :
+     * #define CHAR_MIN -128
+     * }
+     */
+    public static int CHAR_MIN() {
+        return (int)-128L;
+    }
+    /**
+     * {@snippet :
+     * #define CHAR_MAX 127
+     * }
+     */
+    public static int CHAR_MAX() {
+        return (int)127L;
+    }
+    /**
+     * {@snippet :
+     * #define __WCHAR_MAX 2147483647
+     * }
+     */
+    public static int __WCHAR_MAX() {
+        return (int)2147483647L;
+    }
+    /**
+     * {@snippet :
+     * #define __WCHAR_MIN -2147483648
+     * }
+     */
+    public static int __WCHAR_MIN() {
+        return (int)-2147483648L;
+    }
+    /**
+     * {@snippet :
+     * #define INT8_MIN -128
+     * }
+     */
+    public static int INT8_MIN() {
+        return (int)-128L;
+    }
+    /**
+     * {@snippet :
+     * #define INT16_MIN -32768
+     * }
+     */
+    public static int INT16_MIN() {
+        return (int)-32768L;
+    }
+    /**
+     * {@snippet :
+     * #define INT32_MIN -2147483648
+     * }
+     */
+    public static int INT32_MIN() {
+        return (int)-2147483648L;
+    }
+    /**
+     * {@snippet :
+     * #define INT64_MIN -9223372036854775808
+     * }
+     */
+    public static long INT64_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INT8_MAX 127
+     * }
+     */
+    public static int INT8_MAX() {
+        return (int)127L;
+    }
+    /**
+     * {@snippet :
+     * #define INT16_MAX 32767
+     * }
+     */
+    public static int INT16_MAX() {
+        return (int)32767L;
+    }
+    /**
+     * {@snippet :
+     * #define INT32_MAX 2147483647
+     * }
+     */
+    public static int INT32_MAX() {
+        return (int)2147483647L;
+    }
+    /**
+     * {@snippet :
+     * #define INT64_MAX 9223372036854775807
+     * }
+     */
+    public static long INT64_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT8_MAX 255
+     * }
+     */
+    public static int UINT8_MAX() {
+        return (int)255L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT16_MAX 65535
+     * }
+     */
+    public static int UINT16_MAX() {
+        return (int)65535L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT32_MAX 4294967295
+     * }
+     */
+    public static int UINT32_MAX() {
+        return (int)4294967295L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT64_MAX -1
+     * }
+     */
+    public static long UINT64_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST8_MIN -128
+     * }
+     */
+    public static int INT_LEAST8_MIN() {
+        return (int)-128L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST16_MIN -32768
+     * }
+     */
+    public static int INT_LEAST16_MIN() {
+        return (int)-32768L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST32_MIN -2147483648
+     * }
+     */
+    public static int INT_LEAST32_MIN() {
+        return (int)-2147483648L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST64_MIN -9223372036854775808
+     * }
+     */
+    public static long INT_LEAST64_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST8_MAX 127
+     * }
+     */
+    public static int INT_LEAST8_MAX() {
+        return (int)127L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST16_MAX 32767
+     * }
+     */
+    public static int INT_LEAST16_MAX() {
+        return (int)32767L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST32_MAX 2147483647
+     * }
+     */
+    public static int INT_LEAST32_MAX() {
+        return (int)2147483647L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_LEAST64_MAX 9223372036854775807
+     * }
+     */
+    public static long INT_LEAST64_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_LEAST8_MAX 255
+     * }
+     */
+    public static int UINT_LEAST8_MAX() {
+        return (int)255L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_LEAST16_MAX 65535
+     * }
+     */
+    public static int UINT_LEAST16_MAX() {
+        return (int)65535L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_LEAST32_MAX 4294967295
+     * }
+     */
+    public static int UINT_LEAST32_MAX() {
+        return (int)4294967295L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_LEAST64_MAX -1
+     * }
+     */
+    public static long UINT_LEAST64_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST8_MIN -128
+     * }
+     */
+    public static int INT_FAST8_MIN() {
+        return (int)-128L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST16_MIN -9223372036854775808
+     * }
+     */
+    public static long INT_FAST16_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST32_MIN -9223372036854775808
+     * }
+     */
+    public static long INT_FAST32_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST64_MIN -9223372036854775808
+     * }
+     */
+    public static long INT_FAST64_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST8_MAX 127
+     * }
+     */
+    public static int INT_FAST8_MAX() {
+        return (int)127L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST16_MAX 9223372036854775807
+     * }
+     */
+    public static long INT_FAST16_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST32_MAX 9223372036854775807
+     * }
+     */
+    public static long INT_FAST32_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define INT_FAST64_MAX 9223372036854775807
+     * }
+     */
+    public static long INT_FAST64_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_FAST8_MAX 255
+     * }
+     */
+    public static int UINT_FAST8_MAX() {
+        return (int)255L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_FAST16_MAX -1
+     * }
+     */
+    public static long UINT_FAST16_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_FAST32_MAX -1
+     * }
+     */
+    public static long UINT_FAST32_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define UINT_FAST64_MAX -1
+     * }
+     */
+    public static long UINT_FAST64_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define INTPTR_MIN -9223372036854775808
+     * }
+     */
+    public static long INTPTR_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INTPTR_MAX 9223372036854775807
+     * }
+     */
+    public static long INTPTR_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define UINTPTR_MAX -1
+     * }
+     */
+    public static long UINTPTR_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define INTMAX_MIN -9223372036854775808
+     * }
+     */
+    public static long INTMAX_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define INTMAX_MAX 9223372036854775807
+     * }
+     */
+    public static long INTMAX_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define UINTMAX_MAX -1
+     * }
+     */
+    public static long UINTMAX_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define PTRDIFF_MIN -9223372036854775808
+     * }
+     */
+    public static long PTRDIFF_MIN() {
+        return -9223372036854775808L;
+    }
+    /**
+     * {@snippet :
+     * #define PTRDIFF_MAX 9223372036854775807
+     * }
+     */
+    public static long PTRDIFF_MAX() {
+        return 9223372036854775807L;
+    }
+    /**
+     * {@snippet :
+     * #define SIG_ATOMIC_MIN -2147483648
+     * }
+     */
+    public static int SIG_ATOMIC_MIN() {
+        return (int)-2147483648L;
+    }
+    /**
+     * {@snippet :
+     * #define SIG_ATOMIC_MAX 2147483647
+     * }
+     */
+    public static int SIG_ATOMIC_MAX() {
+        return (int)2147483647L;
+    }
+    /**
+     * {@snippet :
+     * #define SIZE_MAX -1
+     * }
+     */
+    public static long SIZE_MAX() {
+        return -1L;
+    }
+    /**
+     * {@snippet :
+     * #define WCHAR_MIN -2147483648
+     * }
+     */
+    public static int WCHAR_MIN() {
+        return (int)-2147483648L;
+    }
+    /**
+     * {@snippet :
+     * #define WCHAR_MAX 2147483647
+     * }
+     */
+    public static int WCHAR_MAX() {
+        return (int)2147483647L;
+    }
+    /**
+     * {@snippet :
+     * #define WINT_MIN 0
+     * }
+     */
+    public static int WINT_MIN() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define WINT_MAX 4294967295
+     * }
+     */
+    public static int WINT_MAX() {
+        return (int)4294967295L;
+    }
+    /**
+     * {@snippet :
+     * #define __PRI64_PREFIX "l"
+     * }
+     */
+    public static MemorySegment __PRI64_PREFIX() {
+        return constants$275.const$3;
+    }
+    /**
+     * {@snippet :
+     * #define __PRIPTR_PREFIX "l"
+     * }
+     */
+    public static MemorySegment __PRIPTR_PREFIX() {
+        return constants$275.const$3;
+    }
+    /**
+     * {@snippet :
+     * #define PRId8 "d"
+     * }
+     */
+    public static MemorySegment PRId8() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRId16 "d"
+     * }
+     */
+    public static MemorySegment PRId16() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRId32 "d"
+     * }
+     */
+    public static MemorySegment PRId32() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRId64 "ld"
+     * }
+     */
+    public static MemorySegment PRId64() {
+        return constants$275.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdLEAST8 "d"
+     * }
+     */
+    public static MemorySegment PRIdLEAST8() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdLEAST16 "d"
+     * }
+     */
+    public static MemorySegment PRIdLEAST16() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdLEAST32 "d"
+     * }
+     */
+    public static MemorySegment PRIdLEAST32() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdLEAST64 "ld"
+     * }
+     */
+    public static MemorySegment PRIdLEAST64() {
+        return constants$275.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdFAST8 "d"
+     * }
+     */
+    public static MemorySegment PRIdFAST8() {
+        return constants$275.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdFAST16 "ld"
+     * }
+     */
+    public static MemorySegment PRIdFAST16() {
+        return constants$275.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdFAST32 "ld"
+     * }
+     */
+    public static MemorySegment PRIdFAST32() {
+        return constants$275.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIdFAST64 "ld"
+     * }
+     */
+    public static MemorySegment PRIdFAST64() {
+        return constants$275.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIi8 "i"
+     * }
+     */
+    public static MemorySegment PRIi8() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIi16 "i"
+     * }
+     */
+    public static MemorySegment PRIi16() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIi32 "i"
+     * }
+     */
+    public static MemorySegment PRIi32() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIi64 "li"
+     * }
+     */
+    public static MemorySegment PRIi64() {
+        return constants$276.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiLEAST8 "i"
+     * }
+     */
+    public static MemorySegment PRIiLEAST8() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiLEAST16 "i"
+     * }
+     */
+    public static MemorySegment PRIiLEAST16() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiLEAST32 "i"
+     * }
+     */
+    public static MemorySegment PRIiLEAST32() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiLEAST64 "li"
+     * }
+     */
+    public static MemorySegment PRIiLEAST64() {
+        return constants$276.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiFAST8 "i"
+     * }
+     */
+    public static MemorySegment PRIiFAST8() {
+        return constants$276.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiFAST16 "li"
+     * }
+     */
+    public static MemorySegment PRIiFAST16() {
+        return constants$276.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiFAST32 "li"
+     * }
+     */
+    public static MemorySegment PRIiFAST32() {
+        return constants$276.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiFAST64 "li"
+     * }
+     */
+    public static MemorySegment PRIiFAST64() {
+        return constants$276.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIo8 "o"
+     * }
+     */
+    public static MemorySegment PRIo8() {
+        return constants$276.const$2;
+    }
+    /**
+     * {@snippet :
+     * #define PRIo16 "o"
+     * }
+     */
+    public static MemorySegment PRIo16() {
+        return constants$276.const$2;
+    }
+    /**
+     * {@snippet :
+     * #define PRIo32 "o"
+     * }
+     */
+    public static MemorySegment PRIo32() {
+        return constants$276.const$2;
+    }
+    /**
+     * {@snippet :
+     * #define PRIo64 "lo"
+     * }
+     */
     public static MemorySegment PRIo64() {
-        return constants$189.PRIo64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIoLEAST8 "o"
+     * }
+     */
     public static MemorySegment PRIoLEAST8() {
-        return constants$189.PRIoLEAST8$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIoLEAST16 "o"
+     * }
+     */
     public static MemorySegment PRIoLEAST16() {
-        return constants$190.PRIoLEAST16$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIoLEAST32 "o"
+     * }
+     */
     public static MemorySegment PRIoLEAST32() {
-        return constants$190.PRIoLEAST32$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIoLEAST64 "lo"
+     * }
+     */
     public static MemorySegment PRIoLEAST64() {
-        return constants$190.PRIoLEAST64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIoFAST8 "o"
+     * }
+     */
     public static MemorySegment PRIoFAST8() {
-        return constants$190.PRIoFAST8$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIoFAST16 "lo"
+     * }
+     */
     public static MemorySegment PRIoFAST16() {
-        return constants$190.PRIoFAST16$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIoFAST32 "lo"
+     * }
+     */
     public static MemorySegment PRIoFAST32() {
-        return constants$190.PRIoFAST32$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIoFAST64 "lo"
+     * }
+     */
     public static MemorySegment PRIoFAST64() {
-        return constants$191.PRIoFAST64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIu8 "u"
+     * }
+     */
     public static MemorySegment PRIu8() {
-        return constants$191.PRIu8$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIu16 "u"
+     * }
+     */
     public static MemorySegment PRIu16() {
-        return constants$191.PRIu16$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIu32 "u"
+     * }
+     */
     public static MemorySegment PRIu32() {
-        return constants$191.PRIu32$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIu64 "lu"
+     * }
+     */
     public static MemorySegment PRIu64() {
-        return constants$191.PRIu64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIuLEAST8 "u"
+     * }
+     */
     public static MemorySegment PRIuLEAST8() {
-        return constants$191.PRIuLEAST8$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIuLEAST16 "u"
+     * }
+     */
     public static MemorySegment PRIuLEAST16() {
-        return constants$192.PRIuLEAST16$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIuLEAST32 "u"
+     * }
+     */
     public static MemorySegment PRIuLEAST32() {
-        return constants$192.PRIuLEAST32$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIuLEAST64 "lu"
+     * }
+     */
     public static MemorySegment PRIuLEAST64() {
-        return constants$192.PRIuLEAST64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIuFAST8 "u"
+     * }
+     */
     public static MemorySegment PRIuFAST8() {
-        return constants$192.PRIuFAST8$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define PRIuFAST16 "lu"
+     * }
+     */
     public static MemorySegment PRIuFAST16() {
-        return constants$192.PRIuFAST16$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIuFAST32 "lu"
+     * }
+     */
     public static MemorySegment PRIuFAST32() {
-        return constants$192.PRIuFAST32$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIuFAST64 "lu"
+     * }
+     */
     public static MemorySegment PRIuFAST64() {
-        return constants$193.PRIuFAST64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIx8 "x"
+     * }
+     */
     public static MemorySegment PRIx8() {
-        return constants$193.PRIx8$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIx16 "x"
+     * }
+     */
     public static MemorySegment PRIx16() {
-        return constants$193.PRIx16$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIx32 "x"
+     * }
+     */
     public static MemorySegment PRIx32() {
-        return constants$193.PRIx32$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIx64 "lx"
+     * }
+     */
     public static MemorySegment PRIx64() {
-        return constants$193.PRIx64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIxLEAST8 "x"
+     * }
+     */
     public static MemorySegment PRIxLEAST8() {
-        return constants$193.PRIxLEAST8$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIxLEAST16 "x"
+     * }
+     */
     public static MemorySegment PRIxLEAST16() {
-        return constants$194.PRIxLEAST16$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIxLEAST32 "x"
+     * }
+     */
     public static MemorySegment PRIxLEAST32() {
-        return constants$194.PRIxLEAST32$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIxLEAST64 "lx"
+     * }
+     */
     public static MemorySegment PRIxLEAST64() {
-        return constants$194.PRIxLEAST64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIxFAST8 "x"
+     * }
+     */
     public static MemorySegment PRIxFAST8() {
-        return constants$194.PRIxFAST8$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define PRIxFAST16 "lx"
+     * }
+     */
     public static MemorySegment PRIxFAST16() {
-        return constants$194.PRIxFAST16$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIxFAST32 "lx"
+     * }
+     */
     public static MemorySegment PRIxFAST32() {
-        return constants$194.PRIxFAST32$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIxFAST64 "lx"
+     * }
+     */
     public static MemorySegment PRIxFAST64() {
-        return constants$195.PRIxFAST64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIX8 "X"
+     * }
+     */
     public static MemorySegment PRIX8() {
-        return constants$195.PRIX8$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIX16 "X"
+     * }
+     */
     public static MemorySegment PRIX16() {
-        return constants$195.PRIX16$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIX32 "X"
+     * }
+     */
     public static MemorySegment PRIX32() {
-        return constants$195.PRIX32$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIX64 "lX"
+     * }
+     */
     public static MemorySegment PRIX64() {
-        return constants$195.PRIX64$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIXLEAST8 "X"
+     * }
+     */
     public static MemorySegment PRIXLEAST8() {
-        return constants$195.PRIXLEAST8$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIXLEAST16 "X"
+     * }
+     */
     public static MemorySegment PRIXLEAST16() {
-        return constants$196.PRIXLEAST16$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIXLEAST32 "X"
+     * }
+     */
     public static MemorySegment PRIXLEAST32() {
-        return constants$196.PRIXLEAST32$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIXLEAST64 "lX"
+     * }
+     */
     public static MemorySegment PRIXLEAST64() {
-        return constants$196.PRIXLEAST64$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIXFAST8 "X"
+     * }
+     */
     public static MemorySegment PRIXFAST8() {
-        return constants$196.PRIXFAST8$SEGMENT;
+        return constants$277.const$2;
     }
+    /**
+     * {@snippet :
+     * #define PRIXFAST16 "lX"
+     * }
+     */
     public static MemorySegment PRIXFAST16() {
-        return constants$196.PRIXFAST16$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIXFAST32 "lX"
+     * }
+     */
     public static MemorySegment PRIXFAST32() {
-        return constants$196.PRIXFAST32$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIXFAST64 "lX"
+     * }
+     */
     public static MemorySegment PRIXFAST64() {
-        return constants$197.PRIXFAST64$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIdMAX "ld"
+     * }
+     */
     public static MemorySegment PRIdMAX() {
-        return constants$197.PRIdMAX$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIiMAX "li"
+     * }
+     */
     public static MemorySegment PRIiMAX() {
-        return constants$197.PRIiMAX$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIoMAX "lo"
+     * }
+     */
     public static MemorySegment PRIoMAX() {
-        return constants$197.PRIoMAX$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIuMAX "lu"
+     * }
+     */
     public static MemorySegment PRIuMAX() {
-        return constants$197.PRIuMAX$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIxMAX "lx"
+     * }
+     */
     public static MemorySegment PRIxMAX() {
-        return constants$197.PRIxMAX$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIXMAX "lX"
+     * }
+     */
     public static MemorySegment PRIXMAX() {
-        return constants$198.PRIXMAX$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIdPTR "ld"
+     * }
+     */
     public static MemorySegment PRIdPTR() {
-        return constants$198.PRIdPTR$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIiPTR "li"
+     * }
+     */
     public static MemorySegment PRIiPTR() {
-        return constants$198.PRIiPTR$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIoPTR "lo"
+     * }
+     */
     public static MemorySegment PRIoPTR() {
-        return constants$198.PRIoPTR$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIuPTR "lu"
+     * }
+     */
     public static MemorySegment PRIuPTR() {
-        return constants$198.PRIuPTR$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIxPTR "lx"
+     * }
+     */
     public static MemorySegment PRIxPTR() {
-        return constants$198.PRIxPTR$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define PRIXPTR "lX"
+     * }
+     */
     public static MemorySegment PRIXPTR() {
-        return constants$199.PRIXPTR$SEGMENT;
+        return constants$277.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNd8 "hhd"
+     * }
+     */
     public static MemorySegment SCNd8() {
-        return constants$199.SCNd8$SEGMENT;
+        return constants$277.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNd16 "hd"
+     * }
+     */
     public static MemorySegment SCNd16() {
-        return constants$199.SCNd16$SEGMENT;
+        return constants$277.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNd32 "d"
+     * }
+     */
     public static MemorySegment SCNd32() {
-        return constants$199.SCNd32$SEGMENT;
+        return constants$275.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNd64 "ld"
+     * }
+     */
     public static MemorySegment SCNd64() {
-        return constants$199.SCNd64$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNdLEAST8 "hhd"
+     * }
+     */
     public static MemorySegment SCNdLEAST8() {
-        return constants$199.SCNdLEAST8$SEGMENT;
+        return constants$277.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNdLEAST16 "hd"
+     * }
+     */
     public static MemorySegment SCNdLEAST16() {
-        return constants$200.SCNdLEAST16$SEGMENT;
+        return constants$277.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNdLEAST32 "d"
+     * }
+     */
     public static MemorySegment SCNdLEAST32() {
-        return constants$200.SCNdLEAST32$SEGMENT;
+        return constants$275.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNdLEAST64 "ld"
+     * }
+     */
     public static MemorySegment SCNdLEAST64() {
-        return constants$200.SCNdLEAST64$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNdFAST8 "hhd"
+     * }
+     */
     public static MemorySegment SCNdFAST8() {
-        return constants$200.SCNdFAST8$SEGMENT;
+        return constants$277.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNdFAST16 "ld"
+     * }
+     */
     public static MemorySegment SCNdFAST16() {
-        return constants$200.SCNdFAST16$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNdFAST32 "ld"
+     * }
+     */
     public static MemorySegment SCNdFAST32() {
-        return constants$200.SCNdFAST32$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNdFAST64 "ld"
+     * }
+     */
     public static MemorySegment SCNdFAST64() {
-        return constants$201.SCNdFAST64$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNi8 "hhi"
+     * }
+     */
     public static MemorySegment SCNi8() {
-        return constants$201.SCNi8$SEGMENT;
+        return constants$278.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNi16 "hi"
+     * }
+     */
     public static MemorySegment SCNi16() {
-        return constants$201.SCNi16$SEGMENT;
+        return constants$278.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNi32 "i"
+     * }
+     */
     public static MemorySegment SCNi32() {
-        return constants$201.SCNi32$SEGMENT;
+        return constants$276.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNi64 "li"
+     * }
+     */
     public static MemorySegment SCNi64() {
-        return constants$201.SCNi64$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNiLEAST8 "hhi"
+     * }
+     */
     public static MemorySegment SCNiLEAST8() {
-        return constants$201.SCNiLEAST8$SEGMENT;
+        return constants$278.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNiLEAST16 "hi"
+     * }
+     */
     public static MemorySegment SCNiLEAST16() {
-        return constants$202.SCNiLEAST16$SEGMENT;
+        return constants$278.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNiLEAST32 "i"
+     * }
+     */
     public static MemorySegment SCNiLEAST32() {
-        return constants$202.SCNiLEAST32$SEGMENT;
+        return constants$276.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNiLEAST64 "li"
+     * }
+     */
     public static MemorySegment SCNiLEAST64() {
-        return constants$202.SCNiLEAST64$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNiFAST8 "hhi"
+     * }
+     */
     public static MemorySegment SCNiFAST8() {
-        return constants$202.SCNiFAST8$SEGMENT;
+        return constants$278.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNiFAST16 "li"
+     * }
+     */
     public static MemorySegment SCNiFAST16() {
-        return constants$202.SCNiFAST16$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNiFAST32 "li"
+     * }
+     */
     public static MemorySegment SCNiFAST32() {
-        return constants$202.SCNiFAST32$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNiFAST64 "li"
+     * }
+     */
     public static MemorySegment SCNiFAST64() {
-        return constants$203.SCNiFAST64$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNu8 "hhu"
+     * }
+     */
     public static MemorySegment SCNu8() {
-        return constants$203.SCNu8$SEGMENT;
+        return constants$278.const$2;
     }
+    /**
+     * {@snippet :
+     * #define SCNu16 "hu"
+     * }
+     */
     public static MemorySegment SCNu16() {
-        return constants$203.SCNu16$SEGMENT;
+        return constants$278.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNu32 "u"
+     * }
+     */
     public static MemorySegment SCNu32() {
-        return constants$203.SCNu32$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNu64 "lu"
+     * }
+     */
     public static MemorySegment SCNu64() {
-        return constants$203.SCNu64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNuLEAST8 "hhu"
+     * }
+     */
     public static MemorySegment SCNuLEAST8() {
-        return constants$203.SCNuLEAST8$SEGMENT;
+        return constants$278.const$2;
     }
+    /**
+     * {@snippet :
+     * #define SCNuLEAST16 "hu"
+     * }
+     */
     public static MemorySegment SCNuLEAST16() {
-        return constants$204.SCNuLEAST16$SEGMENT;
+        return constants$278.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNuLEAST32 "u"
+     * }
+     */
     public static MemorySegment SCNuLEAST32() {
-        return constants$204.SCNuLEAST32$SEGMENT;
+        return constants$276.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNuLEAST64 "lu"
+     * }
+     */
     public static MemorySegment SCNuLEAST64() {
-        return constants$204.SCNuLEAST64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNuFAST8 "hhu"
+     * }
+     */
     public static MemorySegment SCNuFAST8() {
-        return constants$204.SCNuFAST8$SEGMENT;
+        return constants$278.const$2;
     }
+    /**
+     * {@snippet :
+     * #define SCNuFAST16 "lu"
+     * }
+     */
     public static MemorySegment SCNuFAST16() {
-        return constants$204.SCNuFAST16$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNuFAST32 "lu"
+     * }
+     */
     public static MemorySegment SCNuFAST32() {
-        return constants$204.SCNuFAST32$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNuFAST64 "lu"
+     * }
+     */
     public static MemorySegment SCNuFAST64() {
-        return constants$205.SCNuFAST64$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNo8 "hho"
+     * }
+     */
     public static MemorySegment SCNo8() {
-        return constants$205.SCNo8$SEGMENT;
+        return constants$278.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNo16 "ho"
+     * }
+     */
     public static MemorySegment SCNo16() {
-        return constants$205.SCNo16$SEGMENT;
+        return constants$278.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNo32 "o"
+     * }
+     */
     public static MemorySegment SCNo32() {
-        return constants$205.SCNo32$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define SCNo64 "lo"
+     * }
+     */
     public static MemorySegment SCNo64() {
-        return constants$205.SCNo64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNoLEAST8 "hho"
+     * }
+     */
     public static MemorySegment SCNoLEAST8() {
-        return constants$205.SCNoLEAST8$SEGMENT;
+        return constants$278.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNoLEAST16 "ho"
+     * }
+     */
     public static MemorySegment SCNoLEAST16() {
-        return constants$206.SCNoLEAST16$SEGMENT;
+        return constants$278.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNoLEAST32 "o"
+     * }
+     */
     public static MemorySegment SCNoLEAST32() {
-        return constants$206.SCNoLEAST32$SEGMENT;
+        return constants$276.const$2;
     }
+    /**
+     * {@snippet :
+     * #define SCNoLEAST64 "lo"
+     * }
+     */
     public static MemorySegment SCNoLEAST64() {
-        return constants$206.SCNoLEAST64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNoFAST8 "hho"
+     * }
+     */
     public static MemorySegment SCNoFAST8() {
-        return constants$206.SCNoFAST8$SEGMENT;
+        return constants$278.const$4;
     }
+    /**
+     * {@snippet :
+     * #define SCNoFAST16 "lo"
+     * }
+     */
     public static MemorySegment SCNoFAST16() {
-        return constants$206.SCNoFAST16$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNoFAST32 "lo"
+     * }
+     */
     public static MemorySegment SCNoFAST32() {
-        return constants$206.SCNoFAST32$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNoFAST64 "lo"
+     * }
+     */
     public static MemorySegment SCNoFAST64() {
-        return constants$207.SCNoFAST64$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNx8 "hhx"
+     * }
+     */
     public static MemorySegment SCNx8() {
-        return constants$207.SCNx8$SEGMENT;
+        return constants$279.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNx16 "hx"
+     * }
+     */
     public static MemorySegment SCNx16() {
-        return constants$207.SCNx16$SEGMENT;
+        return constants$279.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNx32 "x"
+     * }
+     */
     public static MemorySegment SCNx32() {
-        return constants$207.SCNx32$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNx64 "lx"
+     * }
+     */
     public static MemorySegment SCNx64() {
-        return constants$207.SCNx64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNxLEAST8 "hhx"
+     * }
+     */
     public static MemorySegment SCNxLEAST8() {
-        return constants$207.SCNxLEAST8$SEGMENT;
+        return constants$279.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNxLEAST16 "hx"
+     * }
+     */
     public static MemorySegment SCNxLEAST16() {
-        return constants$208.SCNxLEAST16$SEGMENT;
+        return constants$279.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNxLEAST32 "x"
+     * }
+     */
     public static MemorySegment SCNxLEAST32() {
-        return constants$208.SCNxLEAST32$SEGMENT;
+        return constants$277.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNxLEAST64 "lx"
+     * }
+     */
     public static MemorySegment SCNxLEAST64() {
-        return constants$208.SCNxLEAST64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNxFAST8 "hhx"
+     * }
+     */
     public static MemorySegment SCNxFAST8() {
-        return constants$208.SCNxFAST8$SEGMENT;
+        return constants$279.const$0;
     }
+    /**
+     * {@snippet :
+     * #define SCNxFAST16 "lx"
+     * }
+     */
     public static MemorySegment SCNxFAST16() {
-        return constants$208.SCNxFAST16$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNxFAST32 "lx"
+     * }
+     */
     public static MemorySegment SCNxFAST32() {
-        return constants$208.SCNxFAST32$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNxFAST64 "lx"
+     * }
+     */
     public static MemorySegment SCNxFAST64() {
-        return constants$209.SCNxFAST64$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNdMAX "ld"
+     * }
+     */
     public static MemorySegment SCNdMAX() {
-        return constants$209.SCNdMAX$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNiMAX "li"
+     * }
+     */
     public static MemorySegment SCNiMAX() {
-        return constants$209.SCNiMAX$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNoMAX "lo"
+     * }
+     */
     public static MemorySegment SCNoMAX() {
-        return constants$209.SCNoMAX$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNuMAX "lu"
+     * }
+     */
     public static MemorySegment SCNuMAX() {
-        return constants$209.SCNuMAX$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNxMAX "lx"
+     * }
+     */
     public static MemorySegment SCNxMAX() {
-        return constants$209.SCNxMAX$SEGMENT;
+        return constants$277.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNdPTR "ld"
+     * }
+     */
     public static MemorySegment SCNdPTR() {
-        return constants$210.SCNdPTR$SEGMENT;
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNiPTR "li"
+     * }
+     */
     public static MemorySegment SCNiPTR() {
-        return constants$210.SCNiPTR$SEGMENT;
+        return constants$276.const$1;
     }
+    /**
+     * {@snippet :
+     * #define SCNoPTR "lo"
+     * }
+     */
     public static MemorySegment SCNoPTR() {
-        return constants$210.SCNoPTR$SEGMENT;
+        return constants$276.const$3;
     }
+    /**
+     * {@snippet :
+     * #define SCNuPTR "lu"
+     * }
+     */
     public static MemorySegment SCNuPTR() {
-        return constants$210.SCNuPTR$SEGMENT;
+        return constants$276.const$5;
     }
+    /**
+     * {@snippet :
+     * #define SCNxPTR "lx"
+     * }
+     */
     public static MemorySegment SCNxPTR() {
-        return constants$210.SCNxPTR$SEGMENT;
+        return constants$277.const$1;
     }
-    public static MemoryAddress NULL() {
-        return constants$210.NULL$ADDR;
+    /**
+     * {@snippet :
+     * #define NULL 0
+     * }
+     */
+    public static MemorySegment NULL() {
+        return constants$279.const$2;
     }
+    /**
+     * {@snippet :
+     * #define H5_VERS_SUBRELEASE ""
+     * }
+     */
     public static MemorySegment H5_VERS_SUBRELEASE() {
-        return constants$211.H5_VERS_SUBRELEASE$SEGMENT;
+        return constants$275.const$0;
     }
+    /**
+     * {@snippet :
+     * #define H5_VERS_INFO "HDF5 library version: 1.10.10"
+     * }
+     */
     public static MemorySegment H5_VERS_INFO() {
-        return constants$211.H5_VERS_INFO$SEGMENT;
+        return constants$279.const$3;
     }
+    /**
+     * {@snippet :
+     * #define PRIdHSIZE "lld"
+     * }
+     */
+    public static MemorySegment PRIdHSIZE() {
+        return constants$279.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define PRIiHSIZE "lli"
+     * }
+     */
+    public static MemorySegment PRIiHSIZE() {
+        return constants$279.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIoHSIZE "llo"
+     * }
+     */
+    public static MemorySegment PRIoHSIZE() {
+        return constants$280.const$0;
+    }
+    /**
+     * {@snippet :
+     * #define PRIuHSIZE "llu"
+     * }
+     */
+    public static MemorySegment PRIuHSIZE() {
+        return constants$280.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIxHSIZE "llx"
+     * }
+     */
+    public static MemorySegment PRIxHSIZE() {
+        return constants$280.const$2;
+    }
+    /**
+     * {@snippet :
+     * #define PRIXHSIZE "llX"
+     * }
+     */
+    public static MemorySegment PRIXHSIZE() {
+        return constants$280.const$3;
+    }
+    /**
+     * {@snippet :
+     * #define H5_SIZEOF_HSIZE_T 8
+     * }
+     */
     public static int H5_SIZEOF_HSIZE_T() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5_SIZEOF_HSSIZE_T 8
+     * }
+     */
     public static int H5_SIZEOF_HSSIZE_T() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define HSIZE_UNDEF -1
+     * }
+     */
     public static long HSIZE_UNDEF() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define HADDR_UNDEF -1
+     * }
+     */
     public static long HADDR_UNDEF() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define H5_SIZEOF_HADDR_T 8
+     * }
+     */
     public static int H5_SIZEOF_HADDR_T() {
         return (int)8L;
     }
-    public static MemorySegment H5_PRINTF_HADDR_FMT() {
-        return constants$211.H5_PRINTF_HADDR_FMT$SEGMENT;
+    /**
+     * {@snippet :
+     * #define PRIdHADDR "ld"
+     * }
+     */
+    public static MemorySegment PRIdHADDR() {
+        return constants$275.const$5;
     }
+    /**
+     * {@snippet :
+     * #define PRIoHADDR "lo"
+     * }
+     */
+    public static MemorySegment PRIoHADDR() {
+        return constants$276.const$3;
+    }
+    /**
+     * {@snippet :
+     * #define PRIuHADDR "lu"
+     * }
+     */
+    public static MemorySegment PRIuHADDR() {
+        return constants$276.const$5;
+    }
+    /**
+     * {@snippet :
+     * #define PRIxHADDR "lx"
+     * }
+     */
+    public static MemorySegment PRIxHADDR() {
+        return constants$277.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define PRIXHADDR "lX"
+     * }
+     */
+    public static MemorySegment PRIXHADDR() {
+        return constants$277.const$3;
+    }
+    /**
+     * {@snippet :
+     * #define H5_PRINTF_HADDR_FMT "%lu"
+     * }
+     */
+    public static MemorySegment H5_PRINTF_HADDR_FMT() {
+        return constants$280.const$4;
+    }
+    /**
+     * {@snippet :
+     * #define HADDR_MAX -2
+     * }
+     */
     public static long HADDR_MAX() {
         return -2L;
     }
+    /**
+     * {@snippet :
+     * #define H5_ITER_ERROR -1
+     * }
+     */
     public static int H5_ITER_ERROR() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5_ITER_CONT 0
+     * }
+     */
     public static int H5_ITER_CONT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5_ITER_STOP 1
+     * }
+     */
     public static int H5_ITER_STOP() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5_SIZEOF_HID_T 8
+     * }
+     */
     public static int H5_SIZEOF_HID_T() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5I_INVALID_HID -1
+     * }
+     */
     public static int H5I_INVALID_HID() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5T_NCSET 2
+     * }
+     */
     public static int H5T_NCSET() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5T_NSTR 3
+     * }
+     */
     public static int H5T_NSTR() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define H5T_VARIABLE -1
+     * }
+     */
     public static long H5T_VARIABLE() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define H5L_MAX_LINK_NAME_LEN 4294967295
+     * }
+     */
     public static int H5L_MAX_LINK_NAME_LEN() {
         return (int)4294967295L;
     }
-    public static long H5L_SAME_LOC() {
-        return 0L;
-    }
+    /**
+     * {@snippet :
+     * #define H5L_TYPE_BUILTIN_MAX 1
+     * }
+     */
     public static int H5L_TYPE_BUILTIN_MAX() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5L_TYPE_UD_MIN 64
+     * }
+     */
     public static int H5L_TYPE_UD_MIN() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_SHALLOW_HIERARCHY_FLAG 1
+     * }
+     */
     public static int H5O_COPY_SHALLOW_HIERARCHY_FLAG() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_EXPAND_SOFT_LINK_FLAG 2
+     * }
+     */
     public static int H5O_COPY_EXPAND_SOFT_LINK_FLAG() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_EXPAND_EXT_LINK_FLAG 4
+     * }
+     */
     public static int H5O_COPY_EXPAND_EXT_LINK_FLAG() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_EXPAND_REFERENCE_FLAG 8
+     * }
+     */
     public static int H5O_COPY_EXPAND_REFERENCE_FLAG() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_WITHOUT_ATTR_FLAG 16
+     * }
+     */
     public static int H5O_COPY_WITHOUT_ATTR_FLAG() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_PRESERVE_NULL_FLAG 32
+     * }
+     */
     public static int H5O_COPY_PRESERVE_NULL_FLAG() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG 64
+     * }
+     */
     public static int H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_COPY_ALL 127
+     * }
+     */
     public static int H5O_COPY_ALL() {
         return (int)127L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_SDSPACE_FLAG 2
+     * }
+     */
     public static int H5O_SHMESG_SDSPACE_FLAG() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_DTYPE_FLAG 8
+     * }
+     */
     public static int H5O_SHMESG_DTYPE_FLAG() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_FILL_FLAG 32
+     * }
+     */
     public static int H5O_SHMESG_FILL_FLAG() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_PLINE_FLAG 2048
+     * }
+     */
     public static int H5O_SHMESG_PLINE_FLAG() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_ATTR_FLAG 4096
+     * }
+     */
     public static int H5O_SHMESG_ATTR_FLAG() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_SHMESG_ALL_FLAG 6186
+     * }
+     */
     public static int H5O_SHMESG_ALL_FLAG() {
         return (int)6186L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_HDR_ALL_FLAGS 63
+     * }
+     */
     public static int H5O_HDR_ALL_FLAGS() {
         return (int)63L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_BASIC 1
+     * }
+     */
     public static int H5O_INFO_BASIC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_TIME 2
+     * }
+     */
     public static int H5O_INFO_TIME() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_NUM_ATTRS 4
+     * }
+     */
     public static int H5O_INFO_NUM_ATTRS() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_HDR 8
+     * }
+     */
     public static int H5O_INFO_HDR() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_META_SIZE 16
+     * }
+     */
     public static int H5O_INFO_META_SIZE() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define H5O_INFO_ALL 31
+     * }
+     */
     public static int H5O_INFO_ALL() {
         return (int)31L;
     }
+    /**
+     * {@snippet :
+     * #define H5AC__CACHE_IMAGE__ENTRY_AGEOUT__NONE -1
+     * }
+     */
     public static int H5AC__CACHE_IMAGE__ENTRY_AGEOUT__NONE() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5D_CHUNK_CACHE_NSLOTS_DEFAULT -1
+     * }
+     */
     public static long H5D_CHUNK_CACHE_NSLOTS_DEFAULT() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define H5D_CHUNK_CACHE_NBYTES_DEFAULT -1
+     * }
+     */
     public static long H5D_CHUNK_CACHE_NBYTES_DEFAULT() {
         return -1L;
     }
-    public static float H5D_CHUNK_CACHE_W0_DEFAULT() {
-        return -1.0f;
+    /**
+     * {@snippet :
+     * #define H5D_CHUNK_CACHE_W0_DEFAULT -1.0
+     * }
+     */
+    public static double H5D_CHUNK_CACHE_W0_DEFAULT() {
+        return -1.0d;
     }
+    /**
+     * {@snippet :
+     * #define H5D_CHUNK_DONT_FILTER_PARTIAL_CHUNKS 2
+     * }
+     */
     public static int H5D_CHUNK_DONT_FILTER_PARTIAL_CHUNKS() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5D_CHUNK_BTREE 0
+     * }
+     */
     public static int H5D_CHUNK_BTREE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_WRITE_FLAG_NAME "direct_chunk_flag"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_FLAG_NAME() {
-        return constants$211.H5D_XFER_DIRECT_CHUNK_WRITE_FLAG_NAME$SEGMENT;
+        return constants$280.const$5;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_WRITE_FILTERS_NAME "direct_chunk_filters"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_FILTERS_NAME() {
-        return constants$211.H5D_XFER_DIRECT_CHUNK_WRITE_FILTERS_NAME$SEGMENT;
+        return constants$281.const$0;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_WRITE_OFFSET_NAME "direct_chunk_offset"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_OFFSET_NAME() {
-        return constants$211.H5D_XFER_DIRECT_CHUNK_WRITE_OFFSET_NAME$SEGMENT;
+        return constants$281.const$1;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_WRITE_DATASIZE_NAME "direct_chunk_datasize"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_DATASIZE_NAME() {
-        return constants$212.H5D_XFER_DIRECT_CHUNK_WRITE_DATASIZE_NAME$SEGMENT;
+        return constants$281.const$2;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_READ_FLAG_NAME "direct_chunk_read_flag"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_READ_FLAG_NAME() {
-        return constants$212.H5D_XFER_DIRECT_CHUNK_READ_FLAG_NAME$SEGMENT;
+        return constants$281.const$3;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_READ_OFFSET_NAME "direct_chunk_read_offset"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_READ_OFFSET_NAME() {
-        return constants$212.H5D_XFER_DIRECT_CHUNK_READ_OFFSET_NAME$SEGMENT;
+        return constants$281.const$4;
     }
+    /**
+     * {@snippet :
+     * #define H5D_XFER_DIRECT_CHUNK_READ_FILTERS_NAME "direct_chunk_read_filters"
+     * }
+     */
     public static MemorySegment H5D_XFER_DIRECT_CHUNK_READ_FILTERS_NAME() {
-        return constants$212.H5D_XFER_DIRECT_CHUNK_READ_FILTERS_NAME$SEGMENT;
+        return constants$281.const$5;
     }
+    /**
+     * {@snippet :
+     * #define EOF -1
+     * }
+     */
     public static int EOF() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define P_tmpdir "/tmp"
+     * }
+     */
     public static MemorySegment P_tmpdir() {
-        return constants$212.P_tmpdir$SEGMENT;
+        return constants$282.const$0;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT16 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT16() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT128X 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT128X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT128_UNLIKE_LDBL 0
+     * }
+     */
     public static int __HAVE_FLOAT128_UNLIKE_LDBL() {
         return (int)0L;
     }
-    public static long H5E_DEFAULT() {
-        return 0L;
-    }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_RDONLY 0
+     * }
+     */
     public static int H5F_ACC_RDONLY() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_RDWR 1
+     * }
+     */
     public static int H5F_ACC_RDWR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_TRUNC 2
+     * }
+     */
     public static int H5F_ACC_TRUNC() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_EXCL 4
+     * }
+     */
     public static int H5F_ACC_EXCL() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_CREAT 16
+     * }
+     */
     public static int H5F_ACC_CREAT() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_SWMR_WRITE 32
+     * }
+     */
     public static int H5F_ACC_SWMR_WRITE() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_SWMR_READ 64
+     * }
+     */
     public static int H5F_ACC_SWMR_READ() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_DEFAULT 65535
+     * }
+     */
     public static int H5F_ACC_DEFAULT() {
         return (int)65535L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_FILE 1
+     * }
+     */
     public static int H5F_OBJ_FILE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_DATASET 2
+     * }
+     */
     public static int H5F_OBJ_DATASET() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_GROUP 4
+     * }
+     */
     public static int H5F_OBJ_GROUP() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_DATATYPE 8
+     * }
+     */
     public static int H5F_OBJ_DATATYPE() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_ATTR 16
+     * }
+     */
     public static int H5F_OBJ_ATTR() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_ALL 31
+     * }
+     */
     public static int H5F_OBJ_ALL() {
         return (int)31L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_OBJ_LOCAL 32
+     * }
+     */
     public static int H5F_OBJ_LOCAL() {
         return (int)32L;
     }
-    public static long H5F_FAMILY_DEFAULT() {
-        return 0L;
-    }
+    /**
+     * {@snippet :
+     * #define H5F_UNLIMITED -1
+     * }
+     */
     public static long H5F_UNLIMITED() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_LIBVER_LATEST 2
+     * }
+     */
     public static int H5F_LIBVER_LATEST() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5F_ACC_DEBUG 0
+     * }
+     */
     public static int H5F_ACC_DEBUG() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FHEAP_HDR 6
+     * }
+     */
     public static int H5FD_MEM_FHEAP_HDR() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FHEAP_IBLOCK 6
+     * }
+     */
     public static int H5FD_MEM_FHEAP_IBLOCK() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FHEAP_DBLOCK 5
+     * }
+     */
     public static int H5FD_MEM_FHEAP_DBLOCK() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FHEAP_HUGE_OBJ 3
+     * }
+     */
     public static int H5FD_MEM_FHEAP_HUGE_OBJ() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FSPACE_HDR 6
+     * }
+     */
     public static int H5FD_MEM_FSPACE_HDR() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FSPACE_SINFO 5
+     * }
+     */
     public static int H5FD_MEM_FSPACE_SINFO() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_SOHM_TABLE 6
+     * }
+     */
     public static int H5FD_MEM_SOHM_TABLE() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_SOHM_INDEX 2
+     * }
+     */
     public static int H5FD_MEM_SOHM_INDEX() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_EARRAY_HDR 6
+     * }
+     */
     public static int H5FD_MEM_EARRAY_HDR() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_EARRAY_IBLOCK 6
+     * }
+     */
     public static int H5FD_MEM_EARRAY_IBLOCK() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_EARRAY_SBLOCK 2
+     * }
+     */
     public static int H5FD_MEM_EARRAY_SBLOCK() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_EARRAY_DBLOCK 5
+     * }
+     */
     public static int H5FD_MEM_EARRAY_DBLOCK() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_EARRAY_DBLK_PAGE 5
+     * }
+     */
     public static int H5FD_MEM_EARRAY_DBLK_PAGE() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FARRAY_HDR 6
+     * }
+     */
     public static int H5FD_MEM_FARRAY_HDR() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FARRAY_DBLOCK 5
+     * }
+     */
     public static int H5FD_MEM_FARRAY_DBLOCK() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MEM_FARRAY_DBLK_PAGE 5
+     * }
+     */
     public static int H5FD_MEM_FARRAY_DBLK_PAGE() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_FEAT_ACCUMULATE_METADATA 6
+     * }
+     */
     public static int H5FD_FEAT_ACCUMULATE_METADATA() {
         return (int)6L;
     }
-    public static long H5G_SAME_LOC() {
-        return 0L;
+    /**
+     * {@snippet :
+     * #define H5G_SAME_LOC 0
+     * }
+     */
+    public static int H5G_SAME_LOC() {
+        return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5G_LINK_ERROR -1
+     * }
+     */
     public static int H5G_LINK_ERROR() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5G_LINK_HARD 0
+     * }
+     */
     public static int H5G_LINK_HARD() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define H5G_LINK_SOFT 1
+     * }
+     */
     public static int H5G_LINK_SOFT() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5G_NUSERTYPES 248
+     * }
+     */
     public static int H5G_NUSERTYPES() {
         return (int)248L;
     }
-    public static int H5Z_FILTER_ERROR() {
-        return (int)-1L;
-    }
-    public static int H5Z_CLASS_T_VERS() {
-        return (int)1L;
-    }
-    public static int H5Z_FILTER_CONFIG_ENCODE_ENABLED() {
-        return (int)1L;
-    }
-    public static int H5Z_FILTER_CONFIG_DECODE_ENABLED() {
-        return (int)2L;
-    }
-    public static long H5P_DEFAULT() {
-        return 0L;
-    }
-    public static MemorySegment H5PL_NO_PLUGIN() {
-        return constants$212.H5PL_NO_PLUGIN$SEGMENT;
-    }
-    public static long H5R_OBJ_REF_BUF_SIZE() {
-        return 8L;
-    }
-    public static long H5R_DSET_REG_REF_BUF_SIZE() {
-        return 12L;
-    }
+    /**
+     * {@snippet :
+     * #define H5S_ALL 0
+     * }
+     */
     public static long H5S_ALL() {
         return 0L;
     }
+    /**
+     * {@snippet :
+     * #define H5S_UNLIMITED -1
+     * }
+     */
     public static long H5S_UNLIMITED() {
         return -1L;
     }
+    /**
+     * {@snippet :
+     * #define H5Z_FILTER_ERROR -1
+     * }
+     */
+    public static int H5Z_FILTER_ERROR() {
+        return (int)-1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Z_CLASS_T_VERS 1
+     * }
+     */
+    public static int H5Z_CLASS_T_VERS() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Z_FILTER_CONFIG_ENCODE_ENABLED 1
+     * }
+     */
+    public static int H5Z_FILTER_CONFIG_ENCODE_ENABLED() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Z_FILTER_CONFIG_DECODE_ENABLED 2
+     * }
+     */
+    public static int H5Z_FILTER_CONFIG_DECODE_ENABLED() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5PL_NO_PLUGIN "::"
+     * }
+     */
+    public static MemorySegment H5PL_NO_PLUGIN() {
+        return constants$282.const$1;
+    }
+    /**
+     * {@snippet :
+     * #define H5R_OBJ_REF_BUF_SIZE 8
+     * }
+     */
+    public static long H5R_OBJ_REF_BUF_SIZE() {
+        return 8L;
+    }
+    /**
+     * {@snippet :
+     * #define H5R_DSET_REG_REF_BUF_SIZE 12
+     * }
+     */
+    public static long H5R_DSET_REG_REF_BUF_SIZE() {
+        return 12L;
+    }
+    /**
+     * {@snippet :
+     * #define H5FD_DIRECT -1
+     * }
+     */
     public static int H5FD_DIRECT() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_HDFS -1
+     * }
+     */
     public static int H5FD_HDFS() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_META_IO 1
+     * }
+     */
     public static int H5FD_LOG_META_IO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_LOC_IO 14
+     * }
+     */
     public static int H5FD_LOG_LOC_IO() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_FILE_IO 48
+     * }
+     */
     public static int H5FD_LOG_FILE_IO() {
         return (int)48L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_NUM_IO 1920
+     * }
+     */
     public static int H5FD_LOG_NUM_IO() {
         return (int)1920L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_TIME_IO 260096
+     * }
+     */
     public static int H5FD_LOG_TIME_IO() {
         return (int)260096L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_LOG_ALL 1048575
+     * }
+     */
     public static int H5FD_LOG_ALL() {
         return (int)1048575L;
     }
+    /**
+     * {@snippet :
+     * #define H5FD_MPIO -1
+     * }
+     */
     public static int H5FD_MPIO() {
         return (int)-1L;
     }

@@ -7,60 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$141 {
+final class constants$141 {
 
-    static final FunctionDescriptor H5Pget_attr_phase_change$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_attr_phase_change$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_attr_phase_change",
-        constants$141.H5Pget_attr_phase_change$FUNC
-    );
-    static final FunctionDescriptor H5Pset_attr_creation_order$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_attr_creation_order$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_attr_creation_order",
-        constants$141.H5Pset_attr_creation_order$FUNC
-    );
-    static final FunctionDescriptor H5Pget_attr_creation_order$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_attr_creation_order$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_attr_creation_order",
-        constants$141.H5Pget_attr_creation_order$FUNC
-    );
-    static final FunctionDescriptor H5Pset_obj_track_times$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_obj_track_times$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_obj_track_times",
-        constants$141.H5Pset_obj_track_times$FUNC
-    );
-    static final FunctionDescriptor H5Pget_obj_track_times$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_obj_track_times$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_obj_track_times",
-        constants$141.H5Pget_obj_track_times$FUNC
-    );
-    static final FunctionDescriptor H5Pmodify_filter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pmodify_filter$MH = RuntimeHelper.downcallHandle(
-        "H5Pmodify_filter",
-        constants$141.H5Pmodify_filter$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$141() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGET_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSET_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_DUPCLASS_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_SETDISALLOWED_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMERGE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTREVIVE_g", JAVA_LONG);
 }
 
 

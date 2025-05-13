@@ -2,16 +2,43 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$177 {
 
-class constants$177 {
-
-    static final MemorySegment PRIu8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment PRIuLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIuLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$177() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFSDreadslab",
+        constants$177.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFSDPshutdown",
+        constants$28.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFKNTsize",
+        constants$1.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFKisnativeNT",
+        constants$1.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFKislitendNT",
+        constants$1.const$5
+    );
 }
 
 

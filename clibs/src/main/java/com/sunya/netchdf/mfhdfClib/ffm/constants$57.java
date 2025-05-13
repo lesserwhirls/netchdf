@@ -3,59 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$57 {
 
-class constants$57 {
-
-    static final FunctionDescriptor write$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$57() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "drand48_r",
+        constants$19.const$5
     );
-    static final MethodHandle write$MH = RuntimeHelper.downcallHandle(
-        "write",
-        constants$57.write$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "erand48_r",
+        constants$25.const$1
     );
-    static final FunctionDescriptor pread$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "lrand48_r",
+        constants$19.const$5
     );
-    static final MethodHandle pread$MH = RuntimeHelper.downcallHandle(
-        "pread",
-        constants$57.pread$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nrand48_r",
+        constants$25.const$1
     );
-    static final FunctionDescriptor pwrite$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "mrand48_r",
+        constants$19.const$5
     );
-    static final MethodHandle pwrite$MH = RuntimeHelper.downcallHandle(
-        "pwrite",
-        constants$57.pwrite$FUNC
-    );
-    static final FunctionDescriptor pipe$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle pipe$MH = RuntimeHelper.downcallHandle(
-        "pipe",
-        constants$57.pipe$FUNC
-    );
-    static final FunctionDescriptor alarm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle alarm$MH = RuntimeHelper.downcallHandle(
-        "alarm",
-        constants$57.alarm$FUNC
-    );
-    static final FunctionDescriptor sleep$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle sleep$MH = RuntimeHelper.downcallHandle(
-        "sleep",
-        constants$57.sleep$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "jrand48_r",
+        constants$25.const$1
     );
 }
 

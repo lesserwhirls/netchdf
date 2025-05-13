@@ -3,53 +3,46 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$138 {
 
-class constants$138 {
-
-    static final FunctionDescriptor Vsetzap$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle Vsetzap$MH = RuntimeHelper.downcallHandle(
-        "Vsetzap",
-        constants$138.Vsetzap$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$138() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor vcompare$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hfidinquire",
+        constants$138.const$0
     );
-    static final MethodHandle vcompare$MH = RuntimeHelper.downcallHandle(
-        "vcompare",
-        constants$138.vcompare$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Hshutdown",
+        constants$28.const$3
     );
-    static final FunctionDescriptor vcompareref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HPend",
+        constants$61.const$1
     );
-    static final MethodHandle vcompareref$MH = RuntimeHelper.downcallHandle(
-        "vcompareref",
-        constants$138.vcompareref$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HDdont_atexit",
+        constants$28.const$3
     );
-    static final FunctionDescriptor vdestroynode$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle vdestroynode$MH = RuntimeHelper.downcallHandle(
-        "vdestroynode",
-        constants$138.vdestroynode$FUNC
-    );
-    static final FunctionDescriptor vtfreekey$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle vtfreekey$MH = RuntimeHelper.downcallHandle(
-        "vtfreekey",
-        constants$138.vtfreekey$FUNC
-    );
-    static final FunctionDescriptor Vinitialize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vinitialize$MH = RuntimeHelper.downcallHandle(
-        "Vinitialize",
-        constants$138.Vinitialize$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "Hdupdd",
+        constants$138.const$5
     );
 }
 

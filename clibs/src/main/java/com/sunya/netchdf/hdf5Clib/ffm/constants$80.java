@@ -7,26 +7,23 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$80 {
+final class constants$80 {
 
-    static final  OfLong H5E_SLIST_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_SLIST_g$VH = constants$80.H5E_SLIST_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_SLIST_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_SLIST_g", constants$80.H5E_SLIST_g$LAYOUT);
-    static final  OfLong H5E_ARGS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ARGS_g$VH = constants$80.H5E_ARGS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ARGS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ARGS_g", constants$80.H5E_ARGS_g$LAYOUT);
-    static final  OfLong H5E_CONTEXT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CONTEXT_g$VH = constants$80.H5E_CONTEXT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CONTEXT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CONTEXT_g", constants$80.H5E_CONTEXT_g$LAYOUT);
-    static final  OfLong H5E_EARRAY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_EARRAY_g$VH = constants$80.H5E_EARRAY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_EARRAY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_EARRAY_g", constants$80.H5E_EARRAY_g$LAYOUT);
-    static final  OfLong H5E_PLINE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_PLINE_g$VH = constants$80.H5E_PLINE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_PLINE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_PLINE_g", constants$80.H5E_PLINE_g$LAYOUT);
-    static final  OfLong H5E_ERROR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ERROR_g$VH = constants$80.H5E_ERROR_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ERROR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ERROR_g", constants$80.H5E_ERROR_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$80() {}
+    static final VarHandle const$0 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_INT.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("data_size")
+    ).withName("");
+    static final VarHandle const$2 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
+    static final VarHandle const$3 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$4 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final VarHandle const$5 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
 }
 
 

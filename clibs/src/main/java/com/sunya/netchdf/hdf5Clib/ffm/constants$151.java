@@ -7,59 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$151 {
+final class constants$151 {
 
-    static final FunctionDescriptor H5Pget_file_image$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_file_image$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_file_image",
-        constants$151.H5Pget_file_image$FUNC
-    );
-    static final FunctionDescriptor H5Pset_file_image_callbacks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_file_image_callbacks$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image_callbacks",
-        constants$151.H5Pset_file_image_callbacks$FUNC
-    );
-    static final FunctionDescriptor H5Pget_file_image_callbacks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_file_image_callbacks$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_file_image_callbacks",
-        constants$151.H5Pget_file_image_callbacks$FUNC
-    );
-    static final FunctionDescriptor H5Pset_core_write_tracking$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_core_write_tracking$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_core_write_tracking",
-        constants$151.H5Pset_core_write_tracking$FUNC
-    );
-    static final FunctionDescriptor H5Pget_core_write_tracking$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_core_write_tracking$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_core_write_tracking",
-        constants$151.H5Pget_core_write_tracking$FUNC
-    );
-    static final FunctionDescriptor H5Pset_metadata_read_attempts$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_metadata_read_attempts$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_metadata_read_attempts",
-        constants$151.H5Pset_metadata_read_attempts$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$151() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKCLEAN_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKUNSERIALIZED_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKSERIALIZED_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTDIRTY_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLEAN_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTEXPUNGE_g", JAVA_LONG);
 }
 
 
