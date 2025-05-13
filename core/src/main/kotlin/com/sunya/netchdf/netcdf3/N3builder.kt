@@ -10,6 +10,7 @@ import java.nio.ByteOrder
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.util.*
+import kotlin.math.min
 
 /**
  * @see "https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html"
@@ -72,12 +73,12 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
       val vinfo = vb.spObject as VinfoN3
       if (vinfo.isRecordVariable) {
         sumRecord += vinfo.vsize
-        firstRecordData = Math.min(firstRecordData, vinfo.begin)
+        firstRecordData = min(firstRecordData, vinfo.begin)
         unlimitedVariables.add(vb)
       } else {
-        nonRecordDataSum = Math.max(nonRecordDataSum, vinfo.begin + vinfo.vsize)
+        nonRecordDataSum = nonRecordDataSum.coerceAtLeast(vinfo.begin + vinfo.vsize)
       }
-      firstData = Math.min(firstData, vinfo.begin)
+      firstData = firstData.coerceAtMost(vinfo.begin)
     }
     this.dataStart = firstData
     this.recordDataStart = firstRecordData
@@ -161,7 +162,7 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
     // loop over variables
     for (i in 0 until nvars) {
       val name = readString()!!
-      if (debug) println("  reading variable ${name} pos=${filePos.pos}")
+      if (debug) println("  reading variable $name pos=${filePos.pos}")
 
       // get element count in non-record dimensions
       var nelems: Long = 1
@@ -182,7 +183,7 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
         dimIdx.add(dimIndex)
         dimLengths.add(dim.length)
       }
-      if (debug) println("  reading variable ${name} pos=${filePos.pos} dimIdx = ${dimIdx}")
+      if (debug) println("  reading variable $name pos=${filePos.pos} dimIdx = $dimIdx")
 
       // variable attributes
       val varAtts = mutableListOf<Attribute<*>>()
@@ -329,8 +330,8 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
   }
 
   companion object {
-    val debug = false
-    val debugVariableSize = false
+    const val debug = false
+    const val debugVariableSize = false
     var debugHeaderSize = false
 
     const val MAGIC_DIM = 10

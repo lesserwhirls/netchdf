@@ -21,6 +21,26 @@ data class Section(val ranges : List<LongProgression>, val varShape : LongArray)
     constructor(start : IntArray, len : IntArray, varShape : LongArray) : this(
         start.mapIndexed { idx, first -> LongProgression.fromClosedRange(first.toLong(), (first + len[idx] - 1).toLong(), 1L) },
         varShape)
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Section
+
+        if (ranges != other.ranges) return false
+        if (!varShape.contentEquals(other.varShape)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = ranges.hashCode()
+        result = 31 * result + varShape.contentHashCode()
+        return result
+    }
+
+
 }
 
 /** A partially filled section of multidimensional array indices. */
@@ -180,5 +200,5 @@ fun LongArray.equivalent(other: LongArray): Boolean {
 }
 
 fun LongArray.isScalar(): Boolean {
-    return this.size == 0 || this.size == 1 && this[0] < 2
+    return this.isEmpty() || this.size == 1 && this[0] < 2
 }

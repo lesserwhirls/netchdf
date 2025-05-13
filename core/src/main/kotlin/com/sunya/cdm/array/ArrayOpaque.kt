@@ -51,11 +51,13 @@ class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int)
         val sectionBB = ByteBuffer.allocate(size * sectionNelems)
 
         val odo = IndexND(IndexSpace(section), this.shape.toLongArray())
-        var dstIdx = 0
-        for (index in odo) {
+        // was         var dstIdx = 0
+        //        for (index in odo) {
+        //            copyElem(odo.element().toInt(), sectionBB, dstIdx)
+        //            dstIdx++
+        //        }
+        for ((dstIdx, index) in odo.withIndex())
             copyElem(odo.element().toInt(), sectionBB, dstIdx)
-            dstIdx++
-        }
         return ArrayOpaque(section.shape.toIntArray(), sectionBB, size)
     }
 

@@ -5,9 +5,10 @@ import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.api.toIntArray
 import java.nio.ByteBuffer
+import java.nio.IntBuffer
 
 class ArrayUInt(shape : IntArray, datatype : Datatype<UInt>, bb : ByteBuffer) : ArrayTyped<UInt>(bb, datatype, shape) {
-    val values = bb.asIntBuffer()
+    val values: IntBuffer = bb.asIntBuffer()
 
     constructor(shape : IntArray, bb : ByteBuffer) : this(shape, Datatype.UINT, bb)
 

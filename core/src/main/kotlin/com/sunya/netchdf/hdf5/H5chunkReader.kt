@@ -35,7 +35,7 @@ internal class H5chunkReader(val h5 : H5builder) {
 
         var transferChunks = 0
         val state = OpenFileState(0L, vinfo.h5type.endian)
-        for ((count, dataChunk : BTree1.DataChunkEntry) in tiledData.dataChunks(wantSpace).withIndex()) { // : Iterable<BTree1New.DataChunkEntry>
+        for (dataChunk : BTree1.DataChunkEntry in tiledData.dataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
             val dataSection = IndexSpace(v2.rank, dataChunk.key.offsets, vinfo.storageDims)
             val chunker = Chunker(dataSection, wantSpace) // each DataChunkEntry has its own Chunker iteration
             if (dataChunk.isMissing()) {

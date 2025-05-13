@@ -4,9 +4,10 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.toIntArray
 import java.nio.ByteBuffer
+import java.nio.IntBuffer
 
 class ArrayInt(shape : IntArray, bb : ByteBuffer) : ArrayTyped<Int>(bb, Datatype.INT, shape) {
-    val values = bb.asIntBuffer()
+    val values: IntBuffer = bb.asIntBuffer()
 
     override fun iterator(): Iterator<Int> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<Int>() {

@@ -12,11 +12,7 @@ import java.io.IOException
  */
 class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     private val raf : OpenFile = OpenFile(filename)
-    private val header : H5builder
-
-    init {
-        header = H5builder(raf, strict)
-    }
+    private val header : H5builder = H5builder(raf, strict)
 
     override fun close() {
         raf.close()

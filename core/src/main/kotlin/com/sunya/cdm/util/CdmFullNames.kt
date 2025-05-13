@@ -16,13 +16,13 @@ class CdmFullNames(val root: Group) {
 
     /** Find a Group, with the specified (escaped full) name. */
     fun findGroup(fullName: String): Group? {
-        val names : List<String> = fullName.split("/").filter { !it.isEmpty() }
-        return if (names.size == 0) root else root.findNestedGroupByRelativeName(names)
+        val names : List<String> = fullName.split("/").filter { it.isNotEmpty() }
+        return if (names.isEmpty()) root else root.findNestedGroupByRelativeName(names)
     }
 
     /** Find a Variable, with the specified (escaped full) name. */
     fun findVariable(fullName: String): Variable<*>? {
-        val names : List<String> = fullName.split("/").filter { !it.isEmpty() }
+        val names : List<String> = fullName.split("/").filter { it.isNotEmpty() }
         if (names.isEmpty()) {
             return null
         }
@@ -36,7 +36,7 @@ class CdmFullNames(val root: Group) {
 
     /** Find a Dimension, with the specified (escaped full) name. */
     fun findDimension(fullName: String): Dimension? {
-        val names : List<String> = fullName.split("/").filter { !it.isEmpty() }
+        val names : List<String> = fullName.split("/").filter { it.isNotEmpty() }
         if (names.isEmpty()) {
             return null
         }
@@ -54,7 +54,7 @@ class CdmFullNames(val root: Group) {
      * '@attribute' is an attribute in the root group
      */
     fun findAttribute(fullName: String): Attribute<*>? {
-        val names : List<String> = fullName.split("/","@").filter { !it.isEmpty() }
+        val names : List<String> = fullName.split("/","@").filter { it.isNotEmpty() }
         if (names.isEmpty()) {
             return null
         }

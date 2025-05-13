@@ -62,10 +62,9 @@ internal class H4CompressedDataChunk(
         if (compress != null) {
             // read compressed data in
             val cdata = compress.getDataTag(h4)
-            val input: InputStream
 
             // compressed data stored in one place
-            input = if (cdata.linked == null) {
+            val input: InputStream = if (cdata.linked == null) {
                 val state = OpenFileState(cdata.offset, ByteOrder.BIG_ENDIAN)
                 val cbuffer = h4.raf.readBytes(state, cdata.length)
                 ByteArrayInputStream(cbuffer)
@@ -75,23 +74,27 @@ internal class H4CompressedDataChunk(
 
             // uncompress it
             val outSize : Int
-            bb = if (compress.compress_type == TagEnum.COMP_CODE_DEFLATE) {
-                // read the stream in and uncompress
-                val zin: InputStream = InflaterInputStream(input)
-                val out = ByteArrayOutputStream(compress.uncomp_length)
-                IOcopyB(zin, out, defaultBufferSize)
-                val buffer = out.toByteArray()
-                outSize = buffer.size
-                ByteBuffer.wrap(buffer)
-            } else if (compress.compress_type == TagEnum.COMP_CODE_NONE) {
-                // just read the stream in
-                val out = ByteArrayOutputStream(compress.uncomp_length)
-                IOcopyB(input, out, defaultBufferSize)
-                val buffer = out.toByteArray()
-                outSize = buffer.size
-                ByteBuffer.wrap(buffer)
-            } else {
-                throw IllegalStateException("unknown compression type =" + compress.compress_type)
+            bb = when (compress.compress_type) {
+                TagEnum.COMP_CODE_DEFLATE -> {
+                    // read the stream in and uncompress
+                    val zin: InputStream = InflaterInputStream(input)
+                    val out = ByteArrayOutputStream(compress.uncomp_length)
+                    IOcopyB(zin, out, defaultBufferSize)
+                    val buffer = out.toByteArray()
+                    outSize = buffer.size
+                    ByteBuffer.wrap(buffer)
+                }
+                TagEnum.COMP_CODE_NONE -> {
+                    // just read the stream in
+                    val out = ByteArrayOutputStream(compress.uncomp_length)
+                    IOcopyB(input, out, defaultBufferSize)
+                    val buffer = out.toByteArray()
+                    outSize = buffer.size
+                    ByteBuffer.wrap(buffer)
+                }
+                else -> {
+                    throw IllegalStateException("unknown compression type =" + compress.compress_type)
+                }
             }
             // println("uncompress offset ${cdata.offset} length ${cdata.length} uncomp_length=${compress.uncomp_length} outSize=${outSize}")
         }

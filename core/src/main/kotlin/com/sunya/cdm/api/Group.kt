@@ -7,18 +7,12 @@ class Group(orgName : String,
             val dimensions : List<Dimension>,
             val attributes : List<Attribute<*>>,
             variableBuilders : List<Variable.Builder<*>>,
-            groupBuilders : List<Group.Builder>,
+            groupBuilders : List<Builder>,
             val parent: Group?
     ) {
-    val name : String
-    val variables : List<Variable<*>>
-    val groups : List<Group>
-
-    init {
-        name = makeValidCdmObjectName(orgName)
-        variables = variableBuilders.map { it.build(this) }
-        groups = groupBuilders.map { it.build(this) }
-    }
+    val name : String = makeValidCdmObjectName(orgName)
+    val variables : List<Variable<*>> = variableBuilders.map { it.build(this) }
+    val groups : List<Group> = groupBuilders.map { it.build(this) }
 
     fun fullname() : String {
         return if (parent == null) "" else "${parent.fullname()}/$name"
@@ -111,8 +105,8 @@ class Group(orgName : String,
         val attributes = mutableListOf<Attribute<*>>()
         val typedefs = mutableListOf<Typedef>()
         val variables = mutableListOf<Variable.Builder<*>>()
-        val groups = mutableListOf<Group.Builder>()
-        var parent : Group.Builder? = null
+        val groups = mutableListOf<Builder>()
+        var parent : Builder? = null
 
         // add if dim name not already added, else RuntimeException.
         fun addDimension(dim: Dimension) : Builder {
@@ -170,7 +164,7 @@ class Group(orgName : String,
             return this
         }
 
-        fun addGroup(nested: Group.Builder) : Builder {
+        fun addGroup(nested: Builder) : Builder {
             this.groups.add(nested)
             nested.parent = this
             return this
@@ -199,11 +193,11 @@ class Group(orgName : String,
         }
 
         // find the common parent
-        fun commonParent(other : Group.Builder) : Group.Builder {
+        fun commonParent(other : Builder) : Builder {
             if (this == other) return this
             if (this.isParent(other)) return this
             if (other.isParent(this)) return other
-            var found : Group.Builder? = other
+            var found : Builder? = other
             while (found != null && !found.isParent(this)) {
                 found = found.parent
             }
@@ -211,8 +205,8 @@ class Group(orgName : String,
         }
 
         // am I the parent of other?
-        fun isParent(other: Group.Builder): Boolean {
-            var found: Group.Builder = other
+        fun isParent(other: Builder): Boolean {
+            var found: Builder = other
             while (found != this && found.parent != null) {
                 found = found.parent!!
             }

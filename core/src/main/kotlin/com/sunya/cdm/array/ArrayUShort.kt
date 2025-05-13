@@ -5,9 +5,10 @@ import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.api.toIntArray
 import java.nio.ByteBuffer
+import java.nio.ShortBuffer
 
 class ArrayUShort(shape : IntArray, datatype : Datatype<UShort>, bb : ByteBuffer) : ArrayTyped<UShort>(bb, datatype, shape) {
-    val values = bb.asShortBuffer()
+    val values: ShortBuffer = bb.asShortBuffer()
 
     constructor(shape : IntArray, bb : ByteBuffer) : this(shape, Datatype.USHORT, bb)
 

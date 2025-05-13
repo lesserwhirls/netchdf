@@ -162,13 +162,13 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         }
 
         if (showUnused) {
-            alltags.filter { it is TagData }.forEach {
+            alltags.filterIsInstance<TagData>().forEach {
                 val data = (it as TagData)
                 data.markDataTags(this)
             }
         }
 
-        val unused = alltags.filter { !it.isUsed }.count()
+        val unused = alltags.count { !it.isUsed }
         if (showUnused) {
             println("unused tags $unused")
             alltags.filter { !it.isUsed }.forEach {
@@ -283,14 +283,14 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
     }
 
     fun checkRasterInfo() {
-        grVGaliasMap.forEach { ri, vg ->
+        grVGaliasMap.forEach { (ri, vg) ->
             println("RI=$ri VG=${vg.refno} elems=${vg.elem_code.contentToString()} ${vg.elem_ref.contentToString()} ")
             val rig = grRIGaliasMap[ri]
             if (rig != null) {
                 println("   RIG=${rig.refno} elems=${rig.elem_code.contentToString()} ${rig.elem_ref.contentToString()} ")
             }
         }
-        grRIGaliasMap.forEach { ri, rig ->
+        grRIGaliasMap.forEach { (ri, rig) ->
             val vg = grVGaliasMap[ri]
             if (vg == null) {
                 println("RI=$ri  RIG=${rig.refno} elems=${rig.elem_code.contentToString()} ${rig.elem_ref.contentToString()} ")
@@ -310,11 +310,11 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
             if (tag.tagEnum() == TagEnum.NDG) {
                 sdAliasMap[tag.refno] = vgroup
                 tag.usedBy = vgroup
-                if (debugVGroup) println("$indent   sdAliasMap add ${tag} to ${vgroup.name}")
+                if (debugVGroup) println("$indent   sdAliasMap add $tag to ${vgroup.name}")
             } else if (tag.tagEnum() == TagEnum.VH) {
                 vhAliasMap[tag.refno] = vgroup
                 tag.usedBy = vgroup
-                if (debugVGroup) println("$indent   vhAliasMap add ${tag}  to ${vgroup.name}")
+                if (debugVGroup) println("$indent   vhAliasMap add $tag  to ${vgroup.name}")
             }
         }
     }
@@ -413,15 +413,12 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         }
 
         if (tagNDG == null) {
-            log.warn("Var0.0 ${vgroup.refCode()} is missing the NDG message")
+            log.warn { "Var0.0 ${vgroup.refCode()} is missing the NDG message" }
             return
         }
 
         // compute the vb and add to the group
-        val vb = SDread(tagNDG!!, vgroup.name, group, dims)
-        if (vb == null) {
-            return
-        }
+        val vb = SDread(tagNDG!!, vgroup.name, group, dims) ?: return
 
         // tagVH's on the group tag (TagVGroup) might be attributes
         tagVHs.forEach {
@@ -649,7 +646,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         // LOOK so we just guess that theres a VS with the same refno ? what else can we guess??
         val data: TagData? = tagidMap[tagid(vh.refno, TagEnum.VS.code)] as TagData?
         if (data == null) {
-            log.error(("Cant find tag " + vh.refno + "/" + TagEnum.VS.code) + " for TagVH=" + vh.detail())
+            log.error { ("Cant find tag " + vh.refno + "/" + TagEnum.VS.code) + " for TagVH=" + vh.detail() }
             return null
         }
         if (data.isUsed) {
@@ -685,7 +682,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
             return null
         }
 
-        val vsname = if (vh.name.equals("Ancillary_Data")) vh.className else vh.name // Lame
+        val vsname = if (vh.name == "Ancillary_Data") vh.className else vh.name // Lame
         val members = vh.readStructureMembers()
         val nrecords = vh.nelems
 
@@ -742,7 +739,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         }
 
         // find the corresponding VS message
-        val data: Tag = tagidMap.get(tagid(vh.refno, TagEnum.VS.code)) ?: throw IllegalStateException()
+        val data: Tag = tagidMap[tagid(vh.refno, TagEnum.VS.code)] ?: throw IllegalStateException()
         val state = OpenFileState(data.offset, ByteOrder.BIG_ENDIAN)
         val att = when (type) {
             3, 4 -> {
@@ -841,7 +838,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
     //// sometimes only diff is that the VGroup has attributes
 
     private fun GRVariableFromDataGroup(dataGroup: TagDataGroup, group: Group.Builder): Variable.Builder<*>? {
-        val name = "Raster_Image_#" + imageCount
+        val name = "Raster_Image_#$imageCount"
         imageCount++
         return GRVariable(dataGroup, name, dataGroup.nestedTags(), group)
     }
@@ -896,11 +893,11 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         }
 
         if (dimTag == null) {
-            log.warn("Image Group ${owner.refCode()} missing TagRIDimension")
+            log.warn { "Image Group ${owner.refCode()} missing TagRIDimension" }
             return null
         }
         if (rasterImageTag == null) {
-            log.warn("Image Group ${owner.refCode()} missing TagRasterImage")
+            log.warn { "Image Group ${owner.refCode()} missing TagRasterImage" }
             return null
         }
         vinfo.tagDataRI = rasterImageTag!!
@@ -908,7 +905,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         // get the NT tag, referred to from the dimension tag
         val tag: Tag? = tagidMap[tagid(dimTag!!.nt_ref, TagEnum.NT.code)]
         if (tag == null) {
-            log.warn("Image Group " + owner.refCode() + " missing NT tag")
+            log.warn { "Image Group " + owner.refCode() + " missing NT tag" }
             return null
         }
         val ntag = tag as TagNT
@@ -992,7 +989,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
                     val att: Attribute<*>? = VStructureReadAttribute(vh)
                     if (null != att) {
                         vb.addAttribute(att)
-                        if (att.name.equals(NUG.FILL_VALUE)) vinfo.setFillValue(att)
+                        if (att.name == NUG.FILL_VALUE) vinfo.setFillValue(att)
                     }
                 }
             }
@@ -1005,7 +1002,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         val log = KotlinLogging.logger("H4builder")
         private val H4HEAD = byteArrayOf(0x0e.toByte(), 0x03.toByte(), 0x13.toByte(), 0x01.toByte())
         private val H4HEAD_STRING = String(H4HEAD, StandardCharsets.UTF_8)
-        private val maxHeaderPos: Long = 500000 // header's gotta be within this
+        private const val maxHeaderPos: Long = 500000 // header's gotta be within this
 
         fun isValidFile(raf: OpenFile, state: OpenFileState): Boolean {
             val size: Long = raf.size

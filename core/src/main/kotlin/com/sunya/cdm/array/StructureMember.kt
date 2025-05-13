@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets
  * @param offset byte offset into the ByteBuffer
  * @param endian only needed if different from the ByteBuffer
  */
-open class StructureMember<T>(val orgName: String, val datatype : Datatype<T>, val offset: Int, val dims : IntArray, val endian : ByteOrder? = null) {
+open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset: Int, val dims : IntArray, val endian : ByteOrder? = null) {
     val name = makeValidCdmObjectName(orgName)
     val nelems = dims.computeSize()
 
@@ -44,8 +44,7 @@ open class StructureMember<T>(val orgName: String, val datatype : Datatype<T>, v
                 Datatype.CHAR -> makeStringZ(bb, offset, nelems)
                 Datatype.STRING -> {
                     if (datatype.isVlenString) {
-                        val ret = sdata.getFromHeap(offset)
-                        if (ret == null) "unknown" else ret
+                        sdata.getFromHeap(offset) ?: "unknown"
                     } else {
                         makeStringZ(bb, offset, nelems)
                     }
@@ -74,7 +73,7 @@ open class StructureMember<T>(val orgName: String, val datatype : Datatype<T>, v
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
                     val ret = sdata.getFromHeap(offset)
-                    if (ret == null) "unknown" else ret
+                    ret ?: "unknown"
                 } else {
                     makeStringZ(bb, offset, nelems)
                 }

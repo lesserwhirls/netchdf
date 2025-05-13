@@ -20,8 +20,8 @@ import java.nio.*
 
 const val attLengthMax = 4000
 
-internal val includeOriginalAttributes = false
-internal val debugDimensionScales = false
+internal const val includeOriginalAttributes = false
+internal const val debugDimensionScales = false
 
 internal fun H5builder.buildCdm(h5root : H5Group) : Group.Builder {
     return buildGroup(h5root)
@@ -80,7 +80,7 @@ internal fun H5builder.buildAttribute(att5 : AttributeMessage) : Attribute<*> {
     val h5type = makeH5TypeInfo(att5.mdt)
     val dc = DataContainerAttribute(att5.name, h5type, att5.dataPos, att5.mdt, att5.mds)
     val values = this.readRegularData(dc, h5type.datatype(), null)
-    var useType = h5type.datatype()
+    val useType = h5type.datatype()
     return if (useType == Datatype.CHAR) {
         val svalues = if (values is ArrayString) values else (values as ArrayUByte).makeStringsFromBytes()
         Attribute.Builder(att5.name, Datatype.STRING).setValues(svalues.toList()).build()
@@ -95,7 +95,7 @@ internal fun H5builder.buildVariable(v5 : H5Variable) : Variable.Builder<*> {
     }
 
     val h5type = makeH5TypeInfo(v5.mdt)
-    var datatype = h5type.datatype() // typedefs added here
+    val datatype = h5type.datatype() // typedefs added here
     val builder = Variable.Builder(v5.name.substringAfter(NETCDF4_NON_COORD), datatype)
 
     if (v5.dimList != null) {
@@ -127,7 +127,7 @@ internal fun H5builder.buildVariable(v5 : H5Variable) : Variable.Builder<*> {
     if (v5.name.startsWith("StructMetadata")) {
         val data = readRegularData(vdata, Datatype.STRING, null)
         require (data is ArrayString)
-        structMetadata.add(data.values.get(0))
+        structMetadata.add(data.values[0])
     }
     builder.spObject = vdata
     return builder
@@ -147,7 +147,7 @@ internal open class DataContainerAttribute(
     override val h5type: H5TypeInfo,
     override val dataPos : Long,
     override val mdt: DatatypeMessage,
-    override val mds: DataspaceMessage,
+    override final val mds: DataspaceMessage,
     ) : DataContainer {
         override val storageDims = mds.dims
 }
@@ -362,9 +362,9 @@ internal fun H5builder.makeDimensions(parentGroup: Group.Builder, h5group: H5Gro
 internal fun H5builder.findDimensionScales(g: Group.Builder, h5group: H5Group, h5variable: H5Variable) {
 
     val removeAtts = mutableListOf<AttributeMessage>()
-    h5variable.attributes().filter { it.name.equals(HDF5_CLASS) }.forEach {
+    h5variable.attributes().filter { it.name == HDF5_CLASS }.forEach {
         val att = buildAttribute(it)
-        if (!(att.values[0] is String)) {
+        if (att.values[0] !is String) {
             buildAttribute(it)
         }
         check(att.isString)
@@ -464,11 +464,11 @@ internal fun findDimensionScales2D(h5group: H5Group, h5variable: H5Variable) {
         sbuff.append(match.name) // 2. if length matches and unique, use it
     } else {
         if (match == null) { // 3. if no length matches or multiple matches, then use anonymous
-            if (debugDimensionScales) println("DIMENSION_LIST: dimension scale ${h5variable.name} has second dimension ${want_len} but no match")
+            if (debugDimensionScales) println("DIMENSION_LIST: dimension scale ${h5variable.name} has second dimension $want_len but no match")
             // based on /media/twobee/netch/gilmore/data.nc, just ignore this second dimension
             // sbuff.append(want_len)
         } else {
-            if (debugDimensionScales) println("DIMENSION_LIST: dimension scale ${h5variable.name} has second dimension ${want_len} but multiple matches")
+            if (debugDimensionScales) println("DIMENSION_LIST: dimension scale ${h5variable.name} has second dimension $want_len but multiple matches")
             sbuff.append(want_len)
         }
     }

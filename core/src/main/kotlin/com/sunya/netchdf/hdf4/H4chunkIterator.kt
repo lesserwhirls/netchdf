@@ -15,11 +15,10 @@ class H4chunkIterator<T>(h4 : H4builder, val v2: Variable<*>, val wantSection : 
     private val datatype = v2.datatype
     private val wantSpace = IndexSpace(wantSection)
 
-    private val tiledData : H4tiledData
+    private val tiledData : H4tiledData = H4tiledData(h4, v2.shape, vinfo.chunkLengths, vinfo.chunks!!)
     private val chunkIterator : Iterator<H4CompressedDataChunk>
 
     init {
-        tiledData = H4tiledData(h4, v2.shape, vinfo.chunkLengths, vinfo.chunks!!)
         if (debugChunking) println(" ${tiledData.tiling}")
         chunkIterator = tiledData.findDataChunks(wantSpace).iterator()
     }
