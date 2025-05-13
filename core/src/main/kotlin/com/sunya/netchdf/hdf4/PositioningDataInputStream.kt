@@ -13,12 +13,8 @@ import java.io.InputStream
  * Note cant handle byte order yet - assume big endian(?).
  */
 class PositioningDataInputStream(input: InputStream) : ReaderIntoByteArray {
-    private val delegate: DataInputStream
+    private val delegate: DataInputStream = if (input is DataInputStream) input else DataInputStream(input)
     private var cpos: Long = 0
-
-    init {
-        delegate = if (input is DataInputStream) input else DataInputStream(input)
-    }
 
     @Throws(IOException::class)
     private fun seek(pos: Long) {

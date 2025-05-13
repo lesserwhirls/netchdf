@@ -8,9 +8,8 @@ import com.sunya.cdm.layout.LayoutRegular
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import kotlin.reflect.KClass
 
-private val debugLayout = false
+private const val debugLayout = false
 
 // Handles reading attributes and non-chunked Variables
 internal fun <T> H5builder.readRegularData(dc: DataContainer, datatype: Datatype<T>, section : Section?): ArrayTyped<T> {
@@ -28,9 +27,7 @@ internal fun <T> H5builder.readRegularData(dc: DataContainer, datatype: Datatype
     }
 
     val state = OpenFileState(0, h5type.endian)
-    val dataArray = readDataWithLayout(state, layout, datatype, wantSection.shape, h5type)
-
-    return dataArray as ArrayTyped<T>
+    return readDataWithLayout(state, layout, datatype, wantSection.shape, h5type)
 }
 
 // LOOK: not subsetting

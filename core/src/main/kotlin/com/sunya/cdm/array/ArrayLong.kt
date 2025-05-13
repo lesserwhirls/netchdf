@@ -4,9 +4,10 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.toIntArray
 import java.nio.ByteBuffer
+import java.nio.LongBuffer
 
 class ArrayLong(shape : IntArray, bb : ByteBuffer) : ArrayTyped<Long>(bb, Datatype.LONG, shape) {
-    val values = bb.asLongBuffer()
+    val values: LongBuffer = bb.asLongBuffer()
 
     override fun iterator(): Iterator<Long> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<Long>() {

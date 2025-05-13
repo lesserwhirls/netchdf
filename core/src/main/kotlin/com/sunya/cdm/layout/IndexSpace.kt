@@ -69,8 +69,8 @@ data class IndexSpace(val start : LongArray, val shape : LongArray) {
     fun intersects(other: IndexSpace): Boolean {
         ranges.mapIndexed  { idx, range ->
             val orange = other.ranges[idx]
-            val first = Math.max(range.first, orange.first)
-            val last = Math.min(range.last, orange.last)
+            val first = max(range.first, orange.first)
+            val last = min(range.last, orange.last)
             if (first > last) {
                 return false
             }

@@ -45,8 +45,8 @@ const val reservedFullName = ".\\"
  */
 fun backslashEscape(x: String, reservedChars: String = reservedFullName): String {
     var ok = true
-    for (pos in 0 until x.length) {
-        val c = x[pos]
+    for (element in x) {
+        val c = element
         if (reservedChars.indexOf(c) >= 0) {
             ok = false
             break

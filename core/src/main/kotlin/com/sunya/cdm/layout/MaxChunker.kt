@@ -2,6 +2,7 @@ package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
+import kotlin.math.min
 
 /**
  * The case where you have a regular (non-chunked) layout, and you want to chunk it efficiently into
@@ -48,7 +49,7 @@ class MaxChunker(val maxElems: Int, val wantSection: Section) : AbstractIterator
             if (idx == rank - 1) shape[idx] else {
                 var size : Long = (maxElems / strider[idx])
                 size = if (size == 0L) 1L else size
-                Math.min(size, shape[idx] - current[idx])
+                min(size, shape[idx] - current[idx])
             }
         }
         return chunkShape

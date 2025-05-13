@@ -25,7 +25,7 @@ class LayoutRegularSegmented(val startPos: Long, override val elemSize: Int, val
         require(startPos > 0)
         require(elemSize > 0)
         require(recSize > 0)
-        require(wantSection.varShape.size > 0) // no scalars
+        require(wantSection.varShape.isNotEmpty()) // no scalars
         chunker = Chunker(wantSection, Merge.notFirst) // each record becomes a chunk
         totalNelems = chunker.totalNelems
         innerNelems = if (wantSection.varShape[0] == 0L) 0 else wantSection.varShape.computeSize() / wantSection.varShape[0]

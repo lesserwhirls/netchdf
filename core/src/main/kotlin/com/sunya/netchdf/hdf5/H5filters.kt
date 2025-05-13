@@ -8,6 +8,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.zip.Inflater
 import java.util.zip.InflaterInputStream
+import kotlin.math.min
 
 /** Apply filters, if any. */
 internal class H5filters(
@@ -88,7 +89,7 @@ internal class H5filters(
         val input = ByteArrayInputStream(compressed)
         val inflater = Inflater()
         val inflatestream = InflaterInputStream(input, inflater, inflateBufferSize)
-        val len = Math.min(8 * compressed.size, Companion.MAX_ARRAY_LEN)
+        val len = min(8 * compressed.size, MAX_ARRAY_LEN)
         val out = ByteArrayOutputStream(len) // Fixes KXL-349288
         IOcopyB(inflatestream, out, inflateBufferSize)
         val uncomp = out.toByteArray()
@@ -126,7 +127,7 @@ internal class H5filters(
 
     companion object {
         var debugFilter = false
-        private val MAX_ARRAY_LEN = Int.MAX_VALUE - 8
-        private val debug = false
+        private const val MAX_ARRAY_LEN = Int.MAX_VALUE - 8
+        private const val debug = false
     }
 }

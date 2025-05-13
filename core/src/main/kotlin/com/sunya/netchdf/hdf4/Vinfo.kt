@@ -47,7 +47,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var svalue : String? = null
 
     // LOOK "always big-endian on disk"
-    var endian = ByteOrder.BIG_ENDIAN // LOOK TABLE 2H Little-Endian Format Data Type Definitions
+    var endian: ByteOrder = ByteOrder.BIG_ENDIAN // LOOK TABLE 2H Little-Endian Format Data Type Definitions
 
     fun setVariable(v: Variable.Builder<*>) {
         vb = v
@@ -109,11 +109,9 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
         val nsegs = linkedBlocks.size
         segPos = LongArray(nsegs)
         segSize = IntArray(nsegs)
-        var count = 0
-        for (tag: TagLinkedBlock in linkedBlocks) {
+        for ((count, tag: TagLinkedBlock) in linkedBlocks.withIndex()) {
             segPos[count] = tag.offset
             segSize[count] = tag.length
-            count++
         }
     }
 

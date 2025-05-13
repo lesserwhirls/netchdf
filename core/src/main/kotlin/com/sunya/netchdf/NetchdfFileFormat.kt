@@ -282,7 +282,7 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
             while ((startPos < (size - H4HEAD.size)) && (startPos < MAXHEADERPOS)) {
                 state.pos = startPos
                 val magic: String = raf.readString(state, H4HEAD.size)
-                if ((magic == H4HEAD_STRING)) return NetchdfFileFormat.HDF4
+                if ((magic == H4HEAD_STRING)) return HDF4
                 startPos = if ((startPos == 0L)) 512 else 2 * startPos
             }
             return null

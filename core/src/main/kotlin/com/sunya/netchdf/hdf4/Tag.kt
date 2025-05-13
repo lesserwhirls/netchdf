@@ -586,7 +586,7 @@ class TagVGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode
             append(" nelems=$nelems")
             append(" elems=")
             for (i in 0 until nelems) {
-                append(Tag.refCode(elem_ref[i], elem_code[i], ))
+                append(refCode(elem_ref[i], elem_code[i] ))
                 append(",")
             }
         }
@@ -668,7 +668,7 @@ class TagVH(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
         for (fld in 0 until this.nfields) {
             val type = this.fld_type[fld].toInt()
             val fdatatype = H4type.getDataType(type)
-            val nelems = this.fld_nelems[fld].toInt()
+            val nelems = this.fld_nelems[fld]
             // val name: String, val datatype : Datatype, val offset: Int, val dims : IntArray
             val m = StructureMember(this.fld_name[fld], fdatatype, this.fld_offset[fld], intArrayOf(nelems))
             members.add(m)

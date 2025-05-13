@@ -1,6 +1,7 @@
 package com.sunya.cdm.util
 
 import java.math.BigInteger
+import kotlin.math.max
 
 // Note that this method is closely related to the logarithm base 2. For all positive int values x:
 //  floor(log2(x)) = 31 - numberOfLeadingZeros(x)
@@ -21,16 +22,26 @@ fun log2(n: Long): Int {
 }
 
 fun widenNumber(number: Number): Number {
-    if (number is Byte) {
-        return unsignedByteToShort(number.toByte())
-    } else if (number is Short) {
-        return unsignedShortToInt(number.toShort())
-    } else if (number is Int) {
-        return unsignedIntToLong(number.toInt())
-    } else if (number is Long) {
-        return unsignedLongToBigInt(number.toLong())
-    } else {
-        return number
+    when (number) {
+        is Byte -> {
+            return unsignedByteToShort(number.toByte())
+        }
+
+        is Short -> {
+            return unsignedShortToInt(number.toShort())
+        }
+
+        is Int -> {
+            return unsignedIntToLong(number.toInt())
+        }
+
+        is Long -> {
+            return unsignedLongToBigInt(number.toLong())
+        }
+
+        else -> {
+            return number
+        }
     }
 }
 
@@ -132,7 +143,7 @@ const val defaultMaxRelativeDiffDouble = 1.0e-8
 
 /** The absolute difference between two floats, i.e. `|a - b|`.  */
 fun absoluteDifference(a: Float, b: Float): Float {
-    return if (java.lang.Float.compare(a, b) == 0) {
+    return if (a.compareTo(b) == 0) {
         0f
     } else {
         Math.abs(a - b)
@@ -141,7 +152,7 @@ fun absoluteDifference(a: Float, b: Float): Float {
 
 /** The absolute difference between two doubles, i.e. `|a - b|`.  */
 fun absoluteDifference(a: Double, b: Double): Double {
-    return if (java.lang.Double.compare(a, b) == 0) { // Shortcut: handles infinities and NaNs.
+    return if (a.compareTo(b) == 0) { // Shortcut: handles infinities and NaNs.
         0.0
     } else {
         Math.abs(a - b)
@@ -151,10 +162,9 @@ fun absoluteDifference(a: Double, b: Double): Double {
 /**
  * Returns the relative difference between two numbers, i.e. `|a - b| / max(|a|, |b|)`.
  *
- *
  * For cases where `a == 0`, `b == 0`, or `a` and `b` are extremely close, traditional
  * relative difference calculation breaks down. So, in those instances, we compute the difference relative to
- * [Float.MIN_NORMAL], i.e. `|a - b| / Float.MIN_NORMAL`.
+ * Float.MIN_NORMAL, i.e. `|a - b| / Float.MIN_NORMAL`.
  *
  * @param a first number.
  * @param b second number.
@@ -169,7 +179,7 @@ fun relativeDifference(a: Float, b: Float): Float {
     return if (java.lang.Float.compare(a, b) == 0) {
         0f
     } else {
-        val maxAbsValue = Math.max(Math.abs(a), Math.abs(b))
+        val maxAbsValue = max(Math.abs(a), Math.abs(b))
         if (maxAbsValue < defaultMaxRelativeDiffFloat) absDiff else absDiff / maxAbsValue
     }
 }
@@ -179,7 +189,7 @@ fun relativeDifference(a: Double, b: Double): Double {
     return if (java.lang.Double.compare(a, b) == 0) { // Shortcut: handles infinities and NaNs.
         0.0
     } else {
-        val maxAbsValue = Math.max(Math.abs(a), Math.abs(b))
+        val maxAbsValue = max(Math.abs(a), Math.abs(b))
         if (maxAbsValue < defaultMaxRelativeDiffDouble) absDiff else absDiff / maxAbsValue
     }
 }

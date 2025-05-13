@@ -50,7 +50,7 @@ open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize
     var isShared : Boolean = false
 
     open fun unsigned() = false
-    open fun endian() = endian?: ByteOrder.LITTLE_ENDIAN
+    open fun endian(): ByteOrder = endian?: ByteOrder.LITTLE_ENDIAN
 
     override fun show() : String {
         return "$type"

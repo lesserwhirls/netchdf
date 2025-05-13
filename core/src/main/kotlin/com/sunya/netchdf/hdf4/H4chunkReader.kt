@@ -30,7 +30,7 @@ class H4chunkReader(val h4 : H4builder) {
 
         var count = 0
         var transferChunks = 0
-        for (dataChunk in tiledData.findDataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
+        for (dataChunk: H4CompressedDataChunk in tiledData.findDataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
             val dataSection = IndexSpace(v2.rank, dataChunk.offsets.toLongArray(), vinfo.chunkLengths.toLongArray())
             val chunker = Chunker(dataSection, wantSpace) // each dataChunk has its own Chunker iteration
             if (dataChunk.isMissing()) {

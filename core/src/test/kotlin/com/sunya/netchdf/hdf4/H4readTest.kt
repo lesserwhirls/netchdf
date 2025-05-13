@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.*
 import java.util.stream.Stream
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class H4readTest {
@@ -93,7 +94,7 @@ class H4readTest {
     fun readH4CheckUnused(filename: String) {
         Hdf4File(filename).use { h4file ->
             println("--- ${h4file.type()} $filename ")
-            assertTrue( 0 == h4file.header.showTags(true, true, true))
+            assertEquals( 0, h4file.header.showTags(true, true, true))
         }
     }
 

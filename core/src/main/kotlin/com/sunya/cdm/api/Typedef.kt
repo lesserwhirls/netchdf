@@ -194,9 +194,11 @@ class VlenTypedef(name : String, baseType : Datatype<*>) : Typedef(TypedefKind.V
         return "${indent}${baseType.cdlName}(*) $name ;"
     }
 
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is VlenTypedef) return false
         return super.equals(other)
     }
+
 }

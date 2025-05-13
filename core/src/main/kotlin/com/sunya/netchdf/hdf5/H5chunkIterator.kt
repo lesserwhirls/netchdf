@@ -11,7 +11,7 @@ import java.nio.ByteBuffer
 internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val wantSection : Section) : AbstractIterator<ArraySection<T>>() {
     private val debugChunking = false
 
-    val vinfo : DataContainerVariable
+    val vinfo : DataContainerVariable = v2.spObject as DataContainerVariable
     val h5type : H5TypeInfo
     val elemSize : Int
     val datatype : Datatype<*>
@@ -23,7 +23,6 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
     private val chunkIterator : Iterator<BTree1.DataChunkEntry>
 
     init {
-        vinfo = v2.spObject as DataContainerVariable
 
         h5type = vinfo.h5type
         elemSize = vinfo.storageDims[vinfo.storageDims.size - 1].toInt() // last one is always the elements size

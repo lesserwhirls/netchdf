@@ -45,6 +45,7 @@ class H5enumTest {
             assertContentEquals(listOf(0.toUByte(), 3.toUByte(), 8.toUByte()), att.values)
             assertEquals(listOf("Mike", "Marsha", "Alice"), att.convertEnums())
 
+            // TODO actual   :brady_attribute = Mike, Marsha, Alice ;
             assertContains(myfile.cdl(), "brady_attribute = \"Mike\", \"Marsha\", \"Alice\"")
         }
     }

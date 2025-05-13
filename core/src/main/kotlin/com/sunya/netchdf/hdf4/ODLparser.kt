@@ -163,7 +163,7 @@ private fun transformVariables(fldGroup: ODLgroup): ODLobject {
             if (att.component1().contains("FieldName")) {
                 name = att.component2()
             }
-            if (att.component1().equals("DimList")) {
+            if (att.component1() == "DimList") {
                 dims = att.component2()
             }
         }
@@ -225,9 +225,9 @@ fun ODLparseFromString(text: String): ODLgroup {
         } else if (line.startsWith("END")) {
             // noop
         } else if (currentObject != null) {
-            addFieldToObject(currentObject!!, line)
+            addFieldToObject(currentObject, line)
         } else {
-            addFieldToGroup(currentStruct!!, line)
+            addFieldToGroup(currentStruct, line)
         }
     }
     return root
@@ -324,9 +324,9 @@ private fun stripQuotes(name: String): String {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-private val showDetail = false
-private val showProblems = false
-private val showValidationFailures = false
+private const val showDetail = false
+private const val showProblems = false
+private const val showValidationFailures = false
 
 class ODLparser(val rootGroup: Group.Builder, val show : Boolean = false) {
 

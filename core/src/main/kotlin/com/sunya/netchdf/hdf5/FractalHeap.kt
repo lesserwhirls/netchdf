@@ -9,7 +9,7 @@ import java.nio.ByteOrder
 import java.util.*
 
 /** Level 1G - Fractal Heap  */
-internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
+internal class FractalHeap(private val h5: H5builder, forWho: String, address: Long) {
     // level 1E "Fractal Heap" used for both Global and Local heaps in 1.8.0+
     /*
    * 1) the root indirect block knows how many rows it has from the header, which i can divide into
@@ -56,7 +56,6 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
    * 
    */
     private val debugOut = System.out
-    private val h5: H5builder
     private val raf: OpenFile
     val version: Int
     val heapIdLen: Short
@@ -91,7 +90,6 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
     val btreeHugeObjects: BTree2? = null
 
     init {
-        this.h5 = h5
         raf = h5.raf
         val state = OpenFileState(h5.getFileOffset(address), ByteOrder.LITTLE_ENDIAN)
 
@@ -162,7 +160,7 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
     }
 
     inner class DHeapId internal constructor(heapId: ByteArray) {
-        val type: Int
+        val type: Int = (heapId[0].toInt() and 0x30) shr 4
         var subtype = 0 // 1 = indirect no filter, 2 = indirect, filter 3 = direct, no filter, 4 = direct, filter
         var n = 0 // the offset field size
         var m = 0
@@ -170,7 +168,6 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
         var size = 0 // This field is the length of the object in the heap
 
         init {
-            type = (heapId[0].toInt() and 0x30) shr 4
             when (type) {
                 0 -> {
                     n = maxHeapSize / 8
@@ -186,7 +183,7 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
                     // how fun to guess the subtype
                     val hasBtree = (btreeAddressHugeObjects > 0)
                     val hasFilters = (ioFilterLen > 0)
-                    if (hasBtree) subtype = if (hasFilters) 2 else 1 else subtype = if (hasFilters) 4 else 3
+                    subtype = if (hasBtree) if (hasFilters) 2 else 1 else if (hasFilters) 4 else 3
                     when (subtype) {
                         1, 2 -> offset = h5.makeIntFromBytes(heapId, 1, (heapId.size - 1))
                     }
@@ -219,7 +216,7 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
                                     val record1: BTree2.Record1? = btree.getEntry1(offset)
                                     if (record1 == null) {
                                         btree.getEntry1(offset) // debug
-                                        throw RuntimeException("Cant find DHeapId=" + offset)
+                                        throw RuntimeException("Cant find DHeapId=$offset")
                                     }
                                     return record1.hugeObjectAddress
                                 }
@@ -283,7 +280,7 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
                 }
                 block++
             }
-            logger.error("DoublingTable: illegal offset=$offset")
+            logger.error { "DoublingTable: illegal offset=$offset" }
             throw IllegalStateException("offset=$offset")
         }
 
@@ -329,7 +326,7 @@ internal class FractalHeap(h5: H5builder, forWho: String, address: Long) {
         }
     }
 
-    class DataBlock() {
+    class DataBlock {
         var address: Long = 0
         var sizeFilteredDirectBlock: Long = 0
         var filterMask = 0

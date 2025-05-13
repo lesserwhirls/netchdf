@@ -4,9 +4,10 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.toIntArray
 import java.nio.ByteBuffer
+import java.nio.FloatBuffer
 
 class ArrayFloat(shape : IntArray, bb : ByteBuffer) : ArrayTyped<Float>(bb, Datatype.FLOAT, shape) {
-    val values = bb.asFloatBuffer()
+    val values: FloatBuffer = bb.asFloatBuffer()
 
     override fun iterator(): Iterator<Float> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<Float>() {

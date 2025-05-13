@@ -15,10 +15,10 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-val debugFlow = false
-private val debugStart = false
-private val debugSuperblock = false
-internal val debugTypedefs = false
+const val debugFlow = false
+private const val debugStart = false
+private const val debugSuperblock = false
+internal const val debugTypedefs = false
 
 /**
  * Build the rootGroup for an HDF5 file.
@@ -153,7 +153,7 @@ class H5builder(
             eofAddress += superblockStart
         }
         if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= ${baseAddress} superblockStart= $superblockStart")
+            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")
@@ -202,7 +202,7 @@ class H5builder(
             eofAddress += superblockStart
         }
         if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= ${baseAddress} superblockStart= $superblockStart")
+            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")
@@ -240,7 +240,7 @@ class H5builder(
      * @throws IOException on read error
      */
     @Throws(IOException::class)
-    fun getDataObjectName(objId: Long): String? {
+    fun getDataObjectName(objId: Long): String {
         return getDataObject(objId, null)?.name ?: "unknown"
     }
 
@@ -330,17 +330,15 @@ class H5builder(
     @Throws(IOException::class)
     fun readVariableSizeUnsigned(state : OpenFileState, size: Int): Long {
         val vv: Long
-        if (size == 1) {
-            vv = unsignedByteToShort(raf.readByte(state)).toLong()
-        } else if (size == 2) {
-            val s = raf.readShort(state)
-            vv = unsignedShortToInt(s).toLong()
-        } else if (size == 4) {
-            vv = unsignedIntToLong(raf.readInt(state))
-        } else if (size == 8) {
-            vv = raf.readLong(state)
-        } else {
-            vv = readVariableSizeN(state, size)
+        when (size) {
+            1 -> vv = unsignedByteToShort(raf.readByte(state)).toLong()
+            2 -> {
+                val s = raf.readShort(state)
+                vv = unsignedShortToInt(s).toLong()
+            }
+            4 -> vv = unsignedIntToLong(raf.readInt(state))
+            8 -> vv = raf.readLong(state)
+            else -> vv = readVariableSizeN(state, size)
         }
         return vv
     }
@@ -398,12 +396,12 @@ class H5builder(
         private val logger = KotlinLogging.logger("H5builder")
 
         // special attribute names in HDF5
-        val HDF5_CLASS = "CLASS"
-        val HDF5_DIMENSION_LIST = "DIMENSION_LIST"
-        val HDF5_DIMENSION_SCALE = "DIMENSION_SCALE"
-        val HDF5_DIMENSION_LABELS = "DIMENSION_LABELS"
-        val HDF5_DIMENSION_NAME = "NAME"
-        val HDF5_REFERENCE_LIST = "REFERENCE_LIST"
+        const val HDF5_CLASS = "CLASS"
+        const val HDF5_DIMENSION_LIST = "DIMENSION_LIST"
+        const val HDF5_DIMENSION_SCALE = "DIMENSION_SCALE"
+        const val HDF5_DIMENSION_LABELS = "DIMENSION_LABELS"
+        const val HDF5_DIMENSION_NAME = "NAME"
+        const val HDF5_REFERENCE_LIST = "REFERENCE_LIST"
 
         val HDF5_SPECIAL_ATTS = listOf<String>()
         val HDF5_SKIP_ATTS = listOf(HDF5_DIMENSION_LABELS, HDF5_REFERENCE_LIST)
@@ -420,7 +418,7 @@ class H5builder(
             '\n'.code.toByte()
         )
         private val magicString = String(magicHeader, StandardCharsets.UTF_8)
-        private val transformReference = true
+        private const val transformReference = true
 
         ////////////////////////////////////////////////////////////////////////////////
         /*
@@ -435,7 +433,7 @@ class H5builder(
    * 2) they all have the same length as the dimension
    * 3) all variables' dimensions have a dimension scale
    */
-        private val KNOWN_FILTERS = 3
+        private const val KNOWN_FILTERS = 3
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -468,7 +466,7 @@ class H5builder(
         return typeInfo
     }
     internal fun addTypesToGroups() {
-        typeinfoMap.forEach { typedef, groupList ->
+        typeinfoMap.forEach { (typedef, groupList) ->
             var topgroup = groupList[0]
             for (idx in 1 until groupList.size) {
                 topgroup = topgroup.commonParent(groupList[idx])

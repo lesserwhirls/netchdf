@@ -8,8 +8,8 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.*
 
-private val debugContinuation = false
-internal val debugMessage = false
+private const val debugContinuation = false
+internal const val debugMessage = false
 
 // type safe enum
 enum class MessageType(val uname: String, val num: Int) {
@@ -167,7 +167,7 @@ fun H5builder.readHeaderMessage(state: OpenFileState, version: Int, hasCreationO
         // LOOK do we need to defer ??
         val mdt = getSharedDataObject(state, mtype!!).mdt // a shared datatype, eg enums
         if (debugFlow) {
-            println(" shared Message ${mtype}  ${mdt?.show()}")
+            println(" shared Message $mtype  ${mdt?.show()}")
         }
         state.pos = startPos + messageSize + headerSize
         return mdt
@@ -201,10 +201,10 @@ fun H5builder.readHeaderMessage(state: OpenFileState, version: Int, hasCreationO
     // ignoring version 2 gap and the checksum, so we need to set position explicitly, nor rely on the raf.pos to be correct
 
     if (debugFlow) {
-        println(" read Message ${mtype}  ${result?.show()}")
+        println(" read Message $mtype  ${result?.show()}")
     }
     if (debugMessage) {
-        println(" done Message ${mtype} pos = ${state.pos} expect ${startPos + messageSize + headerSize}")
+        println(" done Message $mtype pos = ${state.pos} expect ${startPos + messageSize + headerSize}")
     }
     // heres where we get the position right, no matter what
     state.pos = startPos + messageSize + headerSize
@@ -258,7 +258,7 @@ fun H5builder.readDataspaceMessage(state: OpenFileState): DataspaceMessage {
 
     val isUnlimited = if (flags and 1 != 0) {
         val maxsize = rawdata.getIntArray("maxsize")
-        maxsize.size > 0 && maxsize[0] < 0 // set maxsize to -1 when unlimited
+        maxsize.isNotEmpty() && maxsize[0] < 0 // set maxsize to -1 when unlimited
     } else false
 
     return DataspaceMessage(
@@ -289,7 +289,7 @@ data class DataspaceMessage(val type: DataspaceType, val dims: LongArray, val is
     fun rank(): Int = dims.size
 
     override fun show() : String {
-        return "${type} dims=${dims.contentToString()} isUnlimited=$isUnlimited"
+        return "$type dims=${dims.contentToString()} isUnlimited=$isUnlimited"
     }
 }
 
@@ -556,7 +556,7 @@ fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPipelineMes
         }
 
         val clientValues = IntArray(nValues) { raf.readInt(state) }
-        if (version == 1 && nValues.toInt() and 1 != 0) { // check if odd
+        if (version == 1 && nValues and 1 != 0) { // check if odd
             state.pos += 4
         }
         filters.add(Filter(filterType, name, clientValues))
@@ -572,7 +572,7 @@ enum class FilterType(val id: Int) {
 
     companion object {
         fun fromId(id: Int): FilterType {
-            for (type in FilterType.values()) {
+            for (type in FilterType.entries) {
                 if (type.id == id) {
                     return type
                 }
@@ -581,7 +581,7 @@ enum class FilterType(val id: Int) {
         }
 
         fun nameFromId(id: Int): String {
-            for (type in FilterType.values()) {
+            for (type in entries) {
                 if (type.id == id) {
                     return type.name
                 }
@@ -595,7 +595,7 @@ data class Filter(val filterType: FilterType, val name: String, val clientValues
 
 data class FilterPipelineMessage(val filters: List<Filter>) : MessageHeader(MessageType.FilterPipeline) {
     override fun show() : String {
-        return filters.map { "${it.filterType} ${it.name}, "}.joinToString()
+        return filters.joinToString { "${it.filterType} ${it.name}, " }
     }
 }
 
@@ -718,13 +718,9 @@ fun H5builder.readCommentMessage(state: OpenFileState): CommonMessage {
     return CommonMessage(comment)
 }
 
-/**
- * @param address of the master table for shared object header message indexes.
- * @param nindices number of indices in the master table.
- */
 data class CommonMessage(val comment: String) : MessageHeader(MessageType.Comment) {
     override fun show() : String {
-        return "${comment}"
+        return comment
     }
 }
 
@@ -892,8 +888,7 @@ private fun H5builder.readAttributesFromInfoMessage(
 
     val list = mutableListOf<AttributeMessage>()
     for (e in btree.entryList) {
-        var heapId: ByteArray
-        heapId = when (btree.btreeType) {
+        var heapId: ByteArray = when (btree.btreeType) {
             8 -> (e.record as BTree2.Record8).heapId
             9 -> (e.record as BTree2.Record9).heapId
             else -> continue

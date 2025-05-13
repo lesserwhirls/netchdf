@@ -11,12 +11,12 @@ import java.nio.charset.StandardCharsets
 
 /** An abstraction over a Java FileChannel. */
 data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
-    var allowTruncation = true
-    val raf : com.sunya.io.RandomAccessFile
-    val fileChannel : FileChannel
+    private var allowTruncation = true
+    val raf : com.sunya.io.RandomAccessFile = com.sunya.io.RandomAccessFile(location, "r")
+    private val fileChannel : FileChannel
     val size : Long
+
     init {
-        raf = com.sunya.io.RandomAccessFile(location, "r")
         fileChannel = raf.fileChannel
         raf.order(ByteOrder.LITTLE_ENDIAN)
         size = raf.length()
@@ -83,12 +83,12 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
     fun readIntoByteBuffer(state : OpenFileState, dst : ByteBuffer, dstPos : Int, nbytes : Int) : Int {
         if (state.pos >= size) {
             if (allowTruncation) return 0
-            throw EOFException("Tried to read past EOF ${size} at pos ${state.pos} location $location")
+            throw EOFException("Tried to read past EOF $size at pos ${state.pos} location $location")
         }
         val bb = readBytes(state, nbytes)
         var pos = dstPos
-        for (idx in 0 until bb.size) {
-            dst.put(pos++, bb[idx])
+        for (element in bb) {
+            dst.put(pos++, element)
         }
         return bb.size
     }
@@ -109,7 +109,7 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
         return nread
     }
 
-    fun readBytes(state : OpenFileState, dst : ByteArray) : Int {
+    private fun readBytes(state : OpenFileState, dst : ByteArray) : Int {
         raf.seek(state.pos)
         raf.order(state.byteOrder)
         val nread = raf.read(dst)

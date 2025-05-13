@@ -78,8 +78,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
                     append("${m.name} = ")
-                    val value = m.value(this@StructureData)
-                    when (value) {
+                    when (val value = m.value(this@StructureData)) {
                         is String -> append("\"$value\"")
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
                         else -> append("$value")
@@ -93,8 +92,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
             return buildString {
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
-                    val value = m.value(this@StructureData)
-                    when (value) {
+                    when (val value = m.value(this@StructureData)) {
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
                         is String -> append("\"${"%12s".format(value.toString())}\"")
                         else -> append("%12s".format(value.toString()))

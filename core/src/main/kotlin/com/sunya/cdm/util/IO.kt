@@ -7,7 +7,7 @@ import java.io.OutputStream
 /**
  * copy all bytes from in to out, specify buffer size
  *
- * @param in InputStream
+ * @param input InputStream
  * @param out OutputStream
  * @param bufferSize : internal buffer size.
  * @return number of bytes copied

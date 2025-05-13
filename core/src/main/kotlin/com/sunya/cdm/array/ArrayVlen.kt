@@ -47,7 +47,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
         return vlenEqual(this, other)
     }
 
-    fun vlenEqual(array1 : ArrayVlen<*>, array2 : ArrayVlen<*>) : Boolean {
+    private fun vlenEqual(array1 : ArrayVlen<*>, array2 : ArrayVlen<*>) : Boolean {
         val iter1 = array1.iterator()
         val iter2 = array2.iterator()
         while (iter1.hasNext() && iter2.hasNext()) {
@@ -86,7 +86,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
                 Datatype.STRING -> ArrayVlen(shape, arrays.map { it as Array<String> }, baseType as Datatype<String>)
                 Datatype.OPAQUE -> ArrayVlen(shape, arrays.map { it as Array<ByteBuffer> }, baseType as Datatype<ByteBuffer>)
                 Datatype.COMPOUND -> ArrayVlen(shape, arrays.map { it as Array<ArrayStructureData.StructureData> }, baseType as Datatype<ArrayStructureData.StructureData>)
-                else -> throw IllegalArgumentException("unsupported datatype ${baseType}")
+                else -> throw IllegalArgumentException("unsupported datatype $baseType")
             }
         }
     }

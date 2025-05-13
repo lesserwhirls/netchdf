@@ -5,10 +5,10 @@ import com.sunya.cdm.iosp.OpenFileState
 import java.io.IOException
 import java.nio.ByteOrder
 
-internal val debugGroup = false
-internal val debugHardLink = false
-internal val debugSoftLink = false
-internal val debugBtree2 = false
+internal const val debugGroup = false
+internal const val debugHardLink = false
+internal const val debugSoftLink = false
+internal const val debugBtree2 = false
 
 @Throws(IOException::class)
 internal fun H5builder.readH5Group(facade: DataObjectFacade): H5GroupBuilder? {
@@ -24,7 +24,7 @@ internal fun H5builder.readH5Group(facade: DataObjectFacade): H5GroupBuilder? {
             println("HO look for group address = ${groupMessage.btreeAddress}")
         }
         // deja vu
-        facade.group = hashGroups.get(groupMessage.btreeAddress)
+        facade.group = hashGroups[groupMessage.btreeAddress]
         if (facade.group != null && facade.parent != null) {
             if (facade.parent.isChildOf(facade.group!!)) {
                 println("Remove hard link to group that creates a loop = ${facade.group!!.name}")
@@ -62,8 +62,7 @@ internal fun H5builder.readGroupNew(
         // read in btree and all entries
         val btree = BTree2(this, parent.name, btreeAddress)
         for (e in btree.entryList) {
-            var heapId: ByteArray
-            heapId = when (btree.btreeType) {
+            var heapId: ByteArray = when (btree.btreeType) {
                 5 -> (e.record as BTree2.Record5).heapId
                 6 -> (e.record as BTree2.Record6).heapId
                 else -> throw RuntimeException("btree2 type ${btree.btreeType} mot supported")
@@ -77,7 +76,7 @@ internal fun H5builder.readGroupNew(
             val linkMessage = this.readLinkMessage(state)
 
             if (debugBtree2) {
-                println("linkMessage ${linkMessage}")
+                println("linkMessage $linkMessage")
             }
             nestedObjects.add(DataObjectFacade(parent, linkMessage.linkName).setAddress((linkMessage as LinkHard).linkAddress))
         }
@@ -98,7 +97,7 @@ internal fun H5builder.readGroupNew(
 @Throws(IOException::class)
 internal fun H5builder.readGroupOld(groupb: H5GroupBuilder, btreeAddress: Long, nameHeapAddress: Long) {
     // track by address for hard links
-    hashGroups.put(btreeAddress, groupb)
+    hashGroups[btreeAddress] = groupb
 
     val nameHeap = LocalHeap(this, nameHeapAddress)
 
@@ -115,12 +114,12 @@ internal fun H5builder.readGroupOld(groupb: H5GroupBuilder, btreeAddress: Long, 
     for (s in symbolTable.symbolTableEntries(this)) {
         val sname: String = nameHeap.getStringAt(s.nameOffset.toInt())
         if (debugSoftLink) {
-            println(" Symbol name= ${sname}")
+            println(" Symbol name= $sname")
         }
         if (s.cacheType == 2) {
             val linkName: String = nameHeap.getStringAt(s.linkOffset!!)
             if (debugSoftLink) {
-                println(" Symbol link name= ${linkName}")
+                println(" Symbol link name= $linkName")
             }
             groupb.nestedObjects.add(DataObjectFacade(groupb, sname).setLinkName(this, linkName))
         } else {
@@ -139,7 +138,7 @@ internal fun H5builder.replaceSymbolicLinks(groupb: H5GroupBuilder) {
             replaceSymbolicLinks(dof.group!!)
 
         } else if (dof.linkName != null) { // symbolic links
-            val link: DataObjectFacade? = this.symlinkMap.get(dof.linkName)
+            val link: DataObjectFacade? = this.symlinkMap[dof.linkName]
             if (link == null) {
                 println(" WARNING Didnt find symbolic link=${dof.linkName} from ${dof.name}")
                 objList.removeAt(count)
@@ -218,7 +217,7 @@ internal class DataObjectFacade(val parent : H5GroupBuilder?, val name: String) 
             isTypedef = true
         } else {
             // see devcdm/core/src/test/data/netcdf4/tst_opaque_data.nc4 = opaque typedef
-            println("WARNING Unknown DataObjectFacade = ${this}")
+            println("WARNING Unknown DataObjectFacade = $this")
         }
     }
 

@@ -7,7 +7,7 @@ import com.sunya.cdm.iosp.OpenFileState
 
 // p 152: chunked element description record
 class SpecialChunked(raf : OpenFile, state : OpenFileState, val owner : TagData) {
-    val sp_tag_head_len : Int
+    // val sp_tag_head_len : Int
     val version: Byte
     val specialnessFlag: Byte
     val elem_tot_length : Int // Valid logical length of the entire element (4 bytes). The logical physical
@@ -30,7 +30,7 @@ class SpecialChunked(raf : OpenFile, state : OpenFileState, val owner : TagData)
     internal var dataChunks: List<SpecialDataChunk>? = null
 
     init {
-        sp_tag_head_len = raf.readInt(state)
+        val sp_tag_head_len = raf.readInt(state)
         version = raf.readByte(state)
         state.pos += 3
         specialnessFlag = raf.readByte(state) // Only the bottom 8 bits are currently used.
@@ -74,8 +74,7 @@ class SpecialChunked(raf : OpenFile, state : OpenFileState, val owner : TagData)
             val refM = members.find{ it.name == "chk_ref" }!!
             val chunkList = mutableListOf<SpecialDataChunk>()
             for (sdata in sdataArray) {
-                val wtf = originM.value(sdata)
-                val origin : IntArray = when (wtf) {
+                val origin : IntArray = when (val wtf = originM.value(sdata)) {
                     is Int -> intArrayOf(wtf)
                     is ArrayInt -> {
                         val iter = wtf.iterator()
@@ -170,31 +169,35 @@ internal class SpecialComp(raf : OpenFile, state : OpenFileState, val owner : Ta
         data_ref = raf.readShort(state).toUShort().toInt()
         model_type = raf.readShort(state)
         compress_type = raf.readShort(state).toInt()
-        if (compress_type == TagEnum.COMP_CODE_NBIT) {
-            nt = raf.readInt(state)
-            signFlag = raf.readShort(state)
-            fillValue = raf.readShort(state)
-            startBit = raf.readInt(state)
-            bitLength = raf.readInt(state)
+        when (compress_type) {
+            TagEnum.COMP_CODE_NBIT -> {
+                nt = raf.readInt(state)
+                signFlag = raf.readShort(state)
+                fillValue = raf.readShort(state)
+                startBit = raf.readInt(state)
+                bitLength = raf.readInt(state)
 
-            deflateLevel = -1
-        } else if (compress_type == TagEnum.COMP_CODE_DEFLATE) {
-            deflateLevel = raf.readShort(state)
+                deflateLevel = -1
+            }
+            TagEnum.COMP_CODE_DEFLATE -> {
+                deflateLevel = raf.readShort(state)
 
-            nt = -1
-            signFlag = -1
-            fillValue = -1
-            startBit = -1
-            bitLength = -1
-        } else {
-            // compress_type = 0 happens
-            if (warn) println("unimplemented compress_type=$compress_type")
-            deflateLevel = -1
-            nt = -1
-            signFlag = -1
-            fillValue = -1
-            startBit = -1
-            bitLength = -1
+                nt = -1
+                signFlag = -1
+                fillValue = -1
+                startBit = -1
+                bitLength = -1
+            }
+            else -> {
+                // compress_type = 0 happens
+                if (warn) println("unimplemented compress_type=$compress_type")
+                deflateLevel = -1
+                nt = -1
+                signFlag = -1
+                fillValue = -1
+                startBit = -1
+                bitLength = -1
+            }
         }
     }
 
@@ -252,7 +255,7 @@ internal class SpecialLinked(raf : OpenFile, state : OpenFileState, val owner : 
             var next = link_ref // (short) (link_ref & 0x3FFF);
             while (next != 0) {
                 val tag: TagLinkedBlock =
-                    h4.tagidMap.get(H4builder.tagid(next, TagEnum.LINKED.code)) as TagLinkedBlock?
+                    h4.tagidMap[H4builder.tagid(next, TagEnum.LINKED.code)] as TagLinkedBlock?
                         ?: throw IllegalStateException("TagLinkedBlock not found for " + detail())
                 tag.isUsed = true
                 tag.usedBy = owner
