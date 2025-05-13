@@ -7,14 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$205 {
+final class constants$205 {
 
-    static final MemorySegment SCNuFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNo8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
-    static final MemorySegment SCNo16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
-    static final MemorySegment SCNo32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment SCNo64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNoLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$205() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Gunlink",
+        constants$44.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Gget_linkval",
+        constants$204.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Gset_comment",
+        constants$41.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Gget_comment",
+        constants$204.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Giterate",
+        constants$97.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Gget_num_objs",
+        constants$44.const$4
+    );
 }
 
 

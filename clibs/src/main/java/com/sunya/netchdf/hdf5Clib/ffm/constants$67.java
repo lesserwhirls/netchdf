@@ -7,45 +7,45 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$67 {
+final class constants$67 {
 
-    static final FunctionDescriptor fgetc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$67() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle fgetc$MH = RuntimeHelper.downcallHandle(
-        "fgetc",
-        constants$67.fgetc$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_ud",
+        constants$67.const$0
     );
-    static final FunctionDescriptor getc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lregister",
+        constants$15.const$2
     );
-    static final MethodHandle getc$MH = RuntimeHelper.downcallHandle(
-        "getc",
-        constants$67.getc$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lunregister",
+        constants$21.const$0
     );
-    static final FunctionDescriptor getchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getchar$MH = RuntimeHelper.downcallHandle(
-        "getchar",
-        constants$67.getchar$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Lis_registered",
+        constants$21.const$0
     );
-    static final FunctionDescriptor getc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle getc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "getc_unlocked",
-        constants$67.getc_unlocked$FUNC
-    );
-    static final FunctionDescriptor getchar_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getchar_unlocked$MH = RuntimeHelper.downcallHandle(
-        "getchar_unlocked",
-        constants$67.getchar_unlocked$FUNC
-    );
-    static final FunctionDescriptor fgetc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fgetc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fgetc_unlocked",
-        constants$67.fgetc_unlocked$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Lunpack_elink_val",
+        constants$67.const$5
     );
 }
 

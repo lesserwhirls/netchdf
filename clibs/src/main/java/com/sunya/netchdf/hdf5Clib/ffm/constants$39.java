@@ -7,78 +7,27 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$39 {
+final class constants$39 {
 
-    static final FunctionDescriptor H5Lget_val$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$39() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST64_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST64_g", JAVA_LONG);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle H5Lget_val$MH = RuntimeHelper.downcallHandle(
-        "H5Lget_val",
-        constants$39.H5Lget_val$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tcreate",
+        constants$39.const$2
     );
-    static final FunctionDescriptor H5Lget_val_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tcopy",
+        constants$10.const$2
     );
-    static final MethodHandle H5Lget_val_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Lget_val_by_idx",
-        constants$39.H5Lget_val_by_idx$FUNC
-    );
-    static final FunctionDescriptor H5Lexists$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lexists$MH = RuntimeHelper.downcallHandle(
-        "H5Lexists",
-        constants$39.H5Lexists$FUNC
-    );
-    static final FunctionDescriptor H5Lget_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lget_info$MH = RuntimeHelper.downcallHandle(
-        "H5Lget_info",
-        constants$39.H5Lget_info$FUNC
-    );
-    static final FunctionDescriptor H5Lget_info_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lget_info_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Lget_info_by_idx",
-        constants$39.H5Lget_info_by_idx$FUNC
-    );
-    static final FunctionDescriptor H5Lget_name_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lget_name_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Lget_name_by_idx",
-        constants$39.H5Lget_name_by_idx$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tclose",
+        constants$19.const$0
     );
 }
 

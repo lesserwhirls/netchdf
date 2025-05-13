@@ -7,67 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$177 {
+final class constants$177 {
 
-    static final FunctionDescriptor H5Sselect_hyperslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$177() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("super_ext_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("hdr_size"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("msgs_info")
+        ).withName("sohm")
+    ).withName("H5F_info1_t");
+    static final VarHandle const$1 = constants$177.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("hdr_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("msgs_info")
+    ).withName("");
+    static final VarHandle const$3 = constants$177.const$2.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_info1",
+        constants$44.const$4
     );
-    static final MethodHandle H5Sselect_hyperslab$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_hyperslab",
-        constants$177.H5Sselect_hyperslab$FUNC
-    );
-    static final FunctionDescriptor H5Scombine_hyperslab$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Scombine_hyperslab$MH = RuntimeHelper.downcallHandle(
-        "H5Scombine_hyperslab",
-        constants$177.H5Scombine_hyperslab$FUNC
-    );
-    static final FunctionDescriptor H5Smodify_select$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Smodify_select$MH = RuntimeHelper.downcallHandle(
-        "H5Smodify_select",
-        constants$177.H5Smodify_select$FUNC
-    );
-    static final FunctionDescriptor H5Scombine_select$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Scombine_select$MH = RuntimeHelper.downcallHandle(
-        "H5Scombine_select",
-        constants$177.H5Scombine_select$FUNC
-    );
-    static final FunctionDescriptor H5Sis_regular_hyperslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sis_regular_hyperslab$MH = RuntimeHelper.downcallHandle(
-        "H5Sis_regular_hyperslab",
-        constants$177.H5Sis_regular_hyperslab$FUNC
-    );
-    static final FunctionDescriptor H5Sget_regular_hyperslab$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sget_regular_hyperslab$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_regular_hyperslab",
-        constants$177.H5Sget_regular_hyperslab$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fset_latest_format",
+        constants$176.const$4
     );
 }
 

@@ -7,74 +7,32 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$57 {
+final class constants$57 {
 
-    static final FunctionDescriptor H5Dget_chunk_info_by_coord$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$57() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Dget_chunk_info_by_coord$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_info_by_coord",
-        constants$57.H5Dget_chunk_info_by_coord$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_traverse_0_func_t.class, "apply", constants$57.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$57.const$0
     );
-    static final FunctionDescriptor H5Dget_chunk_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Dget_chunk_info$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_info",
-        constants$57.H5Dget_chunk_info$FUNC
-    );
-    static final FunctionDescriptor H5Dget_offset$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dget_offset$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_offset",
-        constants$57.H5Dget_offset$FUNC
-    );
-    static final FunctionDescriptor H5Dread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dread$MH = RuntimeHelper.downcallHandle(
-        "H5Dread",
-        constants$57.H5Dread$FUNC
-    );
-    static final FunctionDescriptor H5Dwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dwrite$MH = RuntimeHelper.downcallHandle(
-        "H5Dwrite",
-        constants$57.H5Dwrite$FUNC
-    );
-    static final FunctionDescriptor H5Dwrite_chunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dwrite_chunk$MH = RuntimeHelper.downcallHandle(
-        "H5Dwrite_chunk",
-        constants$57.H5Dwrite_chunk$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_traverse_func_t.class, "apply", constants$57.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$57.const$3
     );
 }
 

@@ -3,53 +3,29 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$19 {
 
-class constants$19 {
-
-    static final FunctionDescriptor fgetpos$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$19() {}
+    static final VarHandle const$0 = RuntimeHelper.POINTER.varHandle();
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "remove",
+        constants$17.const$4
     );
-    static final MethodHandle fgetpos$MH = RuntimeHelper.downcallHandle(
-        "fgetpos",
-        constants$19.fgetpos$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor fsetpos$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fsetpos$MH = RuntimeHelper.downcallHandle(
-        "fsetpos",
-        constants$19.fsetpos$FUNC
-    );
-    static final FunctionDescriptor clearerr$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clearerr$MH = RuntimeHelper.downcallHandle(
-        "clearerr",
-        constants$19.clearerr$FUNC
-    );
-    static final FunctionDescriptor feof$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle feof$MH = RuntimeHelper.downcallHandle(
-        "feof",
-        constants$19.feof$FUNC
-    );
-    static final FunctionDescriptor ferror$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ferror$MH = RuntimeHelper.downcallHandle(
-        "ferror",
-        constants$19.ferror$FUNC
-    );
-    static final FunctionDescriptor clearerr_unlocked$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle clearerr_unlocked$MH = RuntimeHelper.downcallHandle(
-        "clearerr_unlocked",
-        constants$19.clearerr_unlocked$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "rename",
+        constants$19.const$5
     );
 }
 

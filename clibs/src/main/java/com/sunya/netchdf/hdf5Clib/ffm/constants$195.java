@@ -7,14 +7,24 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$195 {
+final class constants$195 {
 
-    static final MemorySegment PRIxFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIX8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIX16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIX32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIX64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$195() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_realloc.class, "apply", constants$194.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$194.const$5
+    );
+    static final VarHandle const$2 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_realloc"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_free.class, "apply", constants$195.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$195.const$3
+    );
 }
 
 

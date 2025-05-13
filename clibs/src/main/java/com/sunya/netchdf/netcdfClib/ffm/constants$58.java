@@ -3,45 +3,29 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$58 {
 
-class constants$58 {
-
-    static final FunctionDescriptor ncrecput$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$58() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_set_base_pe",
+        constants$1.const$3
     );
-    static final MethodHandle ncrecput$MH = RuntimeHelper.downcallHandle(
-        "ncrecput",
-        constants$58.ncrecput$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_inq_base_pe",
+        constants$3.const$4
     );
-    static final FunctionDescriptor nc_initialize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle nc_initialize$MH = RuntimeHelper.downcallHandle(
-        "nc_initialize",
-        constants$58.nc_initialize$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nctypelen",
+        constants$20.const$3
     );
-    static final FunctionDescriptor nc_finalize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle nc_finalize$MH = RuntimeHelper.downcallHandle(
-        "nc_finalize",
-        constants$58.nc_finalize$FUNC
-    );
-    static final FunctionDescriptor nc_rc_get$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_rc_get$MH = RuntimeHelper.downcallHandle(
-        "nc_rc_get",
-        constants$58.nc_rc_get$FUNC
-    );
-    static final FunctionDescriptor nc_rc_set$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_rc_set$MH = RuntimeHelper.downcallHandle(
-        "nc_rc_set",
-        constants$58.nc_rc_set$FUNC
-    );
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
+    static final VarHandle const$3 = JAVA_INT.varHandle();
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("ncerr", JAVA_INT);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("ncopts", JAVA_INT);
 }
 
 

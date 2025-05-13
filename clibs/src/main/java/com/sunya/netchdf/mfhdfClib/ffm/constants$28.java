@@ -3,47 +3,34 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$28 {
 
-class constants$28 {
-
-    static final FunctionDescriptor erand48$FUNC = FunctionDescriptor.of(Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$28() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "vsscanf",
+        constants$25.const$1
     );
-    static final MethodHandle erand48$MH = RuntimeHelper.downcallHandle(
-        "erand48",
-        constants$28.erand48$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fgetc",
+        constants$17.const$4
     );
-    static final FunctionDescriptor lrand48$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle lrand48$MH = RuntimeHelper.downcallHandle(
-        "lrand48",
-        constants$28.lrand48$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "getc",
+        constants$17.const$4
     );
-    static final FunctionDescriptor nrand48$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getchar",
+        constants$28.const$3
     );
-    static final MethodHandle nrand48$MH = RuntimeHelper.downcallHandle(
-        "nrand48",
-        constants$28.nrand48$FUNC
-    );
-    static final FunctionDescriptor mrand48$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle mrand48$MH = RuntimeHelper.downcallHandle(
-        "mrand48",
-        constants$28.mrand48$FUNC
-    );
-    static final FunctionDescriptor jrand48$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle jrand48$MH = RuntimeHelper.downcallHandle(
-        "jrand48",
-        constants$28.jrand48$FUNC
-    );
-    static final FunctionDescriptor srand48$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle srand48$MH = RuntimeHelper.downcallHandle(
-        "srand48",
-        constants$28.srand48$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getc_unlocked",
+        constants$17.const$4
     );
 }
 

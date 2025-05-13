@@ -3,58 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$95 {
 
-class constants$95 {
-
-    static final FunctionDescriptor Hbitappendable$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$95() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle Hbitappendable$MH = RuntimeHelper.downcallHandle(
-        "Hbitappendable",
-        constants$95.Hbitappendable$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "posix_fallocate",
+        constants$95.const$0
     );
-    static final FunctionDescriptor Hbitwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "access",
+        constants$37.const$2
     );
-    static final MethodHandle Hbitwrite$MH = RuntimeHelper.downcallHandle(
-        "Hbitwrite",
-        constants$95.Hbitwrite$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor Hbitread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "faccessat",
+        constants$95.const$3
     );
-    static final MethodHandle Hbitread$MH = RuntimeHelper.downcallHandle(
-        "Hbitread",
-        constants$95.Hbitread$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT
     );
-    static final FunctionDescriptor Hbitseek$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hbitseek$MH = RuntimeHelper.downcallHandle(
-        "Hbitseek",
-        constants$95.Hbitseek$FUNC
-    );
-    static final FunctionDescriptor Hgetbit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hgetbit$MH = RuntimeHelper.downcallHandle(
-        "Hgetbit",
-        constants$95.Hgetbit$FUNC
-    );
-    static final FunctionDescriptor Hendbitaccess$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hendbitaccess$MH = RuntimeHelper.downcallHandle(
-        "Hendbitaccess",
-        constants$95.Hendbitaccess$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "lseek",
+        constants$95.const$5
     );
 }
 

@@ -3,57 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$142 {
 
-class constants$142 {
-
-    static final FunctionDescriptor Vsetname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$142() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HDflush",
+        constants$1.const$5
     );
-    static final MethodHandle Vsetname$MH = RuntimeHelper.downcallHandle(
-        "Vsetname",
-        constants$142.Vsetname$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HDpackFstring",
+        constants$17.const$1
     );
-    static final FunctionDescriptor Vsetclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle Vsetclass$MH = RuntimeHelper.downcallHandle(
-        "Vsetclass",
-        constants$142.Vsetclass$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HLcreate",
+        constants$142.const$2
     );
-    static final FunctionDescriptor Visvg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HLconvert",
+        constants$98.const$3
     );
-    static final MethodHandle Visvg$MH = RuntimeHelper.downcallHandle(
-        "Visvg",
-        constants$142.Visvg$FUNC
-    );
-    static final FunctionDescriptor Visvs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Visvs$MH = RuntimeHelper.downcallHandle(
-        "Visvs",
-        constants$142.Visvs$FUNC
-    );
-    static final FunctionDescriptor Vgetid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vgetid$MH = RuntimeHelper.downcallHandle(
-        "Vgetid",
-        constants$142.Vgetid$FUNC
-    );
-    static final FunctionDescriptor Vgetnext$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vgetnext$MH = RuntimeHelper.downcallHandle(
-        "Vgetnext",
-        constants$142.Vgetnext$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HDinqblockinfo",
+        constants$42.const$5
     );
 }
 

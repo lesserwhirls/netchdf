@@ -7,54 +7,41 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$68 {
+final class constants$68 {
 
-    static final FunctionDescriptor fputc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$68() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle fputc$MH = RuntimeHelper.downcallHandle(
-        "fputc",
-        constants$68.fputc$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_external",
+        constants$68.const$0
     );
-    static final FunctionDescriptor putc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putc$MH = RuntimeHelper.downcallHandle(
-        "putc",
-        constants$68.putc$FUNC
-    );
-    static final FunctionDescriptor putchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle putchar$MH = RuntimeHelper.downcallHandle(
-        "putchar",
-        constants$68.putchar$FUNC
-    );
-    static final FunctionDescriptor fputc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fputc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fputc_unlocked",
-        constants$68.fputc_unlocked$FUNC
-    );
-    static final FunctionDescriptor putc_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle putc_unlocked$MH = RuntimeHelper.downcallHandle(
-        "putc_unlocked",
-        constants$68.putc_unlocked$FUNC
-    );
-    static final FunctionDescriptor putchar_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle putchar_unlocked$MH = RuntimeHelper.downcallHandle(
-        "putchar_unlocked",
-        constants$68.putchar_unlocked$FUNC
-    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_INT.withName("nmesgs"),
+        JAVA_INT.withName("nchunks"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("total"),
+            JAVA_LONG.withName("meta"),
+            JAVA_LONG.withName("mesg"),
+            JAVA_LONG.withName("free")
+        ).withName("space"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("present"),
+            JAVA_LONG.withName("shared")
+        ).withName("mesg")
+    ).withName("H5O_hdr_info_t");
+    static final VarHandle const$3 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$4 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
+    static final VarHandle const$5 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
 }
 
 

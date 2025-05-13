@@ -3,52 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$36 {
 
-class constants$36 {
-
-    static final FunctionDescriptor system$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$36() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fileno_unlocked",
+        constants$17.const$4
     );
-    static final MethodHandle system$MH = RuntimeHelper.downcallHandle(
-        "system",
-        constants$36.system$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "pclose",
+        constants$17.const$4
     );
-    static final FunctionDescriptor realpath$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "popen",
+        constants$21.const$1
     );
-    static final MethodHandle realpath$MH = RuntimeHelper.downcallHandle(
-        "realpath",
-        constants$36.realpath$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ctermid",
+        constants$20.const$4
     );
-    static final FunctionDescriptor __compar_fn_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "flockfile",
+        constants$24.const$2
     );
-    static final MethodHandle __compar_fn_t$MH = RuntimeHelper.downcallHandle(
-        constants$36.__compar_fn_t$FUNC
-    );
-    static final FunctionDescriptor bsearch$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle bsearch$MH = RuntimeHelper.downcallHandle(
-        "bsearch",
-        constants$36.bsearch$FUNC
-    );
-    static final FunctionDescriptor qsort$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle qsort$MH = RuntimeHelper.downcallHandle(
-        "qsort",
-        constants$36.qsort$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ftrylockfile",
+        constants$17.const$4
     );
 }
 

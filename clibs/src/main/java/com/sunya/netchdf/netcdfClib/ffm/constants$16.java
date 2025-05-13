@@ -3,59 +3,42 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$16 {
 
-class constants$16 {
-
-    static final FunctionDescriptor nc_close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$16() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle nc_close$MH = RuntimeHelper.downcallHandle(
-        "nc_close",
-        constants$16.nc_close$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_def_var_quantize",
+        constants$16.const$0
     );
-    static final FunctionDescriptor nc_inq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_inq_var_quantize",
+        constants$7.const$0
     );
-    static final MethodHandle nc_inq$MH = RuntimeHelper.downcallHandle(
-        "nc_inq",
-        constants$16.nc_inq$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor nc_inq_ndims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_def_var_deflate",
+        constants$16.const$3
     );
-    static final MethodHandle nc_inq_ndims$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_ndims",
-        constants$16.nc_inq_ndims$FUNC
-    );
-    static final FunctionDescriptor nc_inq_nvars$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_nvars$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_nvars",
-        constants$16.nc_inq_nvars$FUNC
-    );
-    static final FunctionDescriptor nc_inq_natts$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_natts$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_natts",
-        constants$16.nc_inq_natts$FUNC
-    );
-    static final FunctionDescriptor nc_inq_unlimdim$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_unlimdim$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_unlimdim",
-        constants$16.nc_inq_unlimdim$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_inq_var_deflate",
+        constants$7.const$3
     );
 }
 

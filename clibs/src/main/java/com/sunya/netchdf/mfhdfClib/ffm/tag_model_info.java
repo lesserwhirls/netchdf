@@ -2,85 +2,126 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * union tag_model_info {
+ *     struct  dim;
+ * };
+ * }
+ */
 public class tag_model_info {
 
-    static final  GroupLayout $union$LAYOUT = MemoryLayout.unionLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("nt"),
-            Constants$root.C_INT$LAYOUT.withName("ndim"),
-            Constants$root.C_POINTER$LAYOUT.withName("dims")
-        ).withName("dim")
-    ).withName("tag_model_info");
     public static MemoryLayout $LAYOUT() {
-        return tag_model_info.$union$LAYOUT;
+        return constants$125.const$2;
     }
-    public static class dim {
+    /**
+     * {@snippet :
+     * struct {
+     *     int32 nt;
+     *     intn ndim;
+     *     int32* dims;
+     * };
+     * }
+     */
+    public static final class dim {
 
-        static final  GroupLayout dim$struct$LAYOUT = MemoryLayout.structLayout(
-            Constants$root.C_INT$LAYOUT.withName("nt"),
-            Constants$root.C_INT$LAYOUT.withName("ndim"),
-            Constants$root.C_POINTER$LAYOUT.withName("dims")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private dim() {}
         public static MemoryLayout $LAYOUT() {
-            return dim.dim$struct$LAYOUT;
+            return constants$125.const$3;
         }
-        static final VarHandle nt$VH = dim$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("nt"));
         public static VarHandle nt$VH() {
-            return dim.nt$VH;
+            return constants$125.const$4;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * int32 nt;
+         * }
+         */
         public static int nt$get(MemorySegment seg) {
-            return (int)dim.nt$VH.get(seg);
+            return (int)constants$125.const$4.get(seg);
         }
-        public static void nt$set( MemorySegment seg, int x) {
-            dim.nt$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * int32 nt;
+         * }
+         */
+        public static void nt$set(MemorySegment seg, int x) {
+            constants$125.const$4.set(seg, x);
         }
         public static int nt$get(MemorySegment seg, long index) {
-            return (int)dim.nt$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$125.const$4.get(seg.asSlice(index*sizeof()));
         }
         public static void nt$set(MemorySegment seg, long index, int x) {
-            dim.nt$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$125.const$4.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle ndim$VH = dim$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("ndim"));
         public static VarHandle ndim$VH() {
-            return dim.ndim$VH;
+            return constants$125.const$5;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * intn ndim;
+         * }
+         */
         public static int ndim$get(MemorySegment seg) {
-            return (int)dim.ndim$VH.get(seg);
+            return (int)constants$125.const$5.get(seg);
         }
-        public static void ndim$set( MemorySegment seg, int x) {
-            dim.ndim$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * intn ndim;
+         * }
+         */
+        public static void ndim$set(MemorySegment seg, int x) {
+            constants$125.const$5.set(seg, x);
         }
         public static int ndim$get(MemorySegment seg, long index) {
-            return (int)dim.ndim$VH.get(seg.asSlice(index*sizeof()));
+            return (int)constants$125.const$5.get(seg.asSlice(index*sizeof()));
         }
         public static void ndim$set(MemorySegment seg, long index, int x) {
-            dim.ndim$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$125.const$5.set(seg.asSlice(index*sizeof()), x);
         }
-        static final VarHandle dims$VH = dim$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("dims"));
         public static VarHandle dims$VH() {
-            return dim.dims$VH;
+            return constants$126.const$0;
         }
-        public static MemoryAddress dims$get(MemorySegment seg) {
-            return (java.lang.foreign.MemoryAddress)dim.dims$VH.get(seg);
+        /**
+         * Getter for field:
+         * {@snippet :
+         * int32* dims;
+         * }
+         */
+        public static MemorySegment dims$get(MemorySegment seg) {
+            return (java.lang.foreign.MemorySegment)constants$126.const$0.get(seg);
         }
-        public static void dims$set( MemorySegment seg, MemoryAddress x) {
-            dim.dims$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * int32* dims;
+         * }
+         */
+        public static void dims$set(MemorySegment seg, MemorySegment x) {
+            constants$126.const$0.set(seg, x);
         }
-        public static MemoryAddress dims$get(MemorySegment seg, long index) {
-            return (java.lang.foreign.MemoryAddress)dim.dims$VH.get(seg.asSlice(index*sizeof()));
+        public static MemorySegment dims$get(MemorySegment seg, long index) {
+            return (java.lang.foreign.MemorySegment)constants$126.const$0.get(seg.asSlice(index*sizeof()));
         }
-        public static void dims$set(MemorySegment seg, long index, MemoryAddress x) {
-            dim.dims$VH.set(seg.asSlice(index*sizeof()), x);
+        public static void dims$set(MemorySegment seg, long index, MemorySegment x) {
+            constants$126.const$0.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment dim$slice(MemorySegment seg) {
@@ -88,10 +129,10 @@ public class tag_model_info {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

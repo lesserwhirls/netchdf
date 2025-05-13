@@ -3,66 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$113 {
 
-class constants$113 {
-
-    static final FunctionDescriptor DFSDgetdatalen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$113() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "endusershell",
+        constants$61.const$1
     );
-    static final MethodHandle DFSDgetdatalen$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdatalen",
-        constants$113.DFSDgetdatalen$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "setusershell",
+        constants$61.const$1
     );
-    static final FunctionDescriptor DFSDgetdimlen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "daemon",
+        constants$93.const$3
     );
-    static final MethodHandle DFSDgetdimlen$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdimlen",
-        constants$113.DFSDgetdimlen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "chroot",
+        constants$17.const$4
     );
-    static final FunctionDescriptor DFSDgetdimscale$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getpass",
+        constants$20.const$4
     );
-    static final MethodHandle DFSDgetdimscale$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdimscale",
-        constants$113.DFSDgetdimscale$FUNC
-    );
-    static final FunctionDescriptor DFSDgetrange$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDgetrange$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetrange",
-        constants$113.DFSDgetrange$FUNC
-    );
-    static final FunctionDescriptor DFSDgetdata$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDgetdata$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdata",
-        constants$113.DFSDgetdata$FUNC
-    );
-    static final FunctionDescriptor DFSDsetlengths$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFSDsetlengths$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetlengths",
-        constants$113.DFSDsetlengths$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fsync",
+        constants$1.const$5
     );
 }
 

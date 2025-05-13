@@ -3,53 +3,46 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$68 {
 
-class constants$68 {
-
-    static final FunctionDescriptor unlinkat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$68() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_DOUBLE,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle unlinkat$MH = RuntimeHelper.downcallHandle(
-        "unlinkat",
-        constants$68.unlinkat$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ecvt_r",
+        constants$68.const$0
     );
-    static final FunctionDescriptor rmdir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fcvt_r",
+        constants$68.const$0
     );
-    static final MethodHandle rmdir$MH = RuntimeHelper.downcallHandle(
-        "rmdir",
-        constants$68.rmdir$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor tcgetpgrp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "mblen",
+        constants$68.const$3
     );
-    static final MethodHandle tcgetpgrp$MH = RuntimeHelper.downcallHandle(
-        "tcgetpgrp",
-        constants$68.tcgetpgrp$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor tcsetpgrp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle tcsetpgrp$MH = RuntimeHelper.downcallHandle(
-        "tcsetpgrp",
-        constants$68.tcsetpgrp$FUNC
-    );
-    static final FunctionDescriptor getlogin$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle getlogin$MH = RuntimeHelper.downcallHandle(
-        "getlogin",
-        constants$68.getlogin$FUNC
-    );
-    static final FunctionDescriptor getlogin_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle getlogin_r$MH = RuntimeHelper.downcallHandle(
-        "getlogin_r",
-        constants$68.getlogin_r$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "mbtowc",
+        constants$68.const$5
     );
 }
 

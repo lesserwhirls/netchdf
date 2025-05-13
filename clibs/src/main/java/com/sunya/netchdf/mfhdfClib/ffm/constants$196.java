@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$196 {
 
-class constants$196 {
-
-    static final MemorySegment SCNiPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNoPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNuPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNxPTR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemoryAddress NULL$ADDR = MemoryAddress.ofLong(0L);
-    static final MemorySegment P_tmpdir$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$196() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "VSgetinterlace",
+        constants$1.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "VSsetinterlace",
+        constants$93.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "VSgetfields",
+        constants$5.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "VSfexist",
+        constants$5.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "VSsizeof",
+        constants$5.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "VSdump",
+        constants$51.const$2
+    );
 }
 
 

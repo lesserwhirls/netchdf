@@ -7,14 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$211 {
+final class constants$211 {
 
-    static final MemorySegment H5_VERS_SUBRELEASE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment H5_VERS_INFO$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 library version: 1.10.7");
-    static final MemorySegment H5_PRINTF_HADDR_FMT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("%lu");
-    static final MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_FLAG_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_flag");
-    static final MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_FILTERS_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_filters");
-    static final MemorySegment H5D_XFER_DIRECT_CHUNK_WRITE_OFFSET_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_offset");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$211() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Sget_regular_hyperslab",
+        constants$97.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_bounds",
+        constants$41.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_elem_npoints",
+        constants$10.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_elem_pointlist",
+        constants$100.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_hyper_blocklist",
+        constants$100.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_hyper_nblocks",
+        constants$10.const$2
+    );
 }
 
 

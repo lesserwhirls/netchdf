@@ -7,56 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$149 {
+final class constants$149 {
 
-    static final FunctionDescriptor H5Pget_fclose_degree$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fclose_degree$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fclose_degree",
-        constants$149.H5Pget_fclose_degree$FUNC
-    );
-    static final FunctionDescriptor H5Pset_meta_block_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_meta_block_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_meta_block_size",
-        constants$149.H5Pset_meta_block_size$FUNC
-    );
-    static final FunctionDescriptor H5Pget_meta_block_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_meta_block_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_meta_block_size",
-        constants$149.H5Pget_meta_block_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_sieve_buf_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_sieve_buf_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_sieve_buf_size",
-        constants$149.H5Pset_sieve_buf_size$FUNC
-    );
-    static final FunctionDescriptor H5Pget_sieve_buf_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_sieve_buf_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_sieve_buf_size",
-        constants$149.H5Pget_sieve_buf_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_small_data_block_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_small_data_block_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_small_data_block_size",
-        constants$149.H5Pset_small_data_block_size$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$149() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSERIALIZE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTTAG_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTLOAD_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_PROTECT_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_NOTCACHED_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_SYSTEM_g", JAVA_LONG);
 }
 
 

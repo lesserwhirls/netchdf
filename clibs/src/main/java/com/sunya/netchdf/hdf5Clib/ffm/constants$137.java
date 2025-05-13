@@ -7,78 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$137 {
+final class constants$137 {
 
-    static final FunctionDescriptor H5Pcreate_class$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pcreate_class$MH = RuntimeHelper.downcallHandle(
-        "H5Pcreate_class",
-        constants$137.H5Pcreate_class$FUNC
-    );
-    static final FunctionDescriptor H5Pget_class_name$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_class_name$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_class_name",
-        constants$137.H5Pget_class_name$FUNC
-    );
-    static final FunctionDescriptor H5Pcreate$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pcreate$MH = RuntimeHelper.downcallHandle(
-        "H5Pcreate",
-        constants$137.H5Pcreate$FUNC
-    );
-    static final FunctionDescriptor H5Pregister2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pregister2$MH = RuntimeHelper.downcallHandle(
-        "H5Pregister2",
-        constants$137.H5Pregister2$FUNC
-    );
-    static final FunctionDescriptor H5Pinsert2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pinsert2$MH = RuntimeHelper.downcallHandle(
-        "H5Pinsert2",
-        constants$137.H5Pinsert2$FUNC
-    );
-    static final FunctionDescriptor H5Pset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset$MH = RuntimeHelper.downcallHandle(
-        "H5Pset",
-        constants$137.H5Pset$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$137() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_READERROR_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_WRITEERROR_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CLOSEERROR_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_OVERFLOW_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_FCNTL_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_NOSPACE_g", JAVA_LONG);
 }
 
 

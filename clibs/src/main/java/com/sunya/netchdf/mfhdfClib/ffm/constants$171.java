@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$171 {
 
-class constants$171 {
-
-    static final MemorySegment PRId8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment PRId16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment PRId32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment PRId64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment PRIdLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment PRIdLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$171() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFSDgetdatalen",
+        constants$135.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFSDgetdimlen",
+        constants$138.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFSDgetdimscale",
+        constants$132.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFSDgetrange",
+        constants$19.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFSDgetdata",
+        constants$89.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFSDsetlengths",
+        constants$159.const$2
+    );
 }
 
 

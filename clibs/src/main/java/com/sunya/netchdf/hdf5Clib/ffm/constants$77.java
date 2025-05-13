@@ -7,26 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$77 {
+final class constants$77 {
 
-    static final  OfLong H5E_RESOURCE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_RESOURCE_g$VH = constants$77.H5E_RESOURCE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_RESOURCE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_RESOURCE_g", constants$77.H5E_RESOURCE_g$LAYOUT);
-    static final  OfLong H5E_RS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_RS_g$VH = constants$77.H5E_RS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_RS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_RS_g", constants$77.H5E_RS_g$LAYOUT);
-    static final  OfLong H5E_FARRAY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_FARRAY_g$VH = constants$77.H5E_FARRAY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_FARRAY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_FARRAY_g", constants$77.H5E_FARRAY_g$LAYOUT);
-    static final  OfLong H5E_HEAP_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_HEAP_g$VH = constants$77.H5E_HEAP_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_HEAP_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_HEAP_g", constants$77.H5E_HEAP_g$LAYOUT);
-    static final  OfLong H5E_ATTR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ATTR_g$VH = constants$77.H5E_ATTR_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ATTR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ATTR_g", constants$77.H5E_ATTR_g$LAYOUT);
-    static final  OfLong H5E_IO_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_IO_g$VH = constants$77.H5E_IO_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_IO_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_IO_g", constants$77.H5E_IO_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$77() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Orefresh",
+        constants$19.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Odisable_mdc_flushes",
+        constants$19.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Oenable_mdc_flushes",
+        constants$19.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Oare_mdc_flushes_disabled",
+        constants$44.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oget_info",
+        constants$44.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_name",
+        constants$43.const$3
+    );
 }
 
 

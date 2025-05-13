@@ -3,60 +3,41 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$39 {
 
-class constants$39 {
-
-    static final FunctionDescriptor mbtowc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$39() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "atoi",
+        constants$17.const$4
     );
-    static final MethodHandle mbtowc$MH = RuntimeHelper.downcallHandle(
-        "mbtowc",
-        constants$39.mbtowc$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "atol",
+        constants$33.const$3
     );
-    static final FunctionDescriptor wctomb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "atoll",
+        constants$33.const$3
     );
-    static final MethodHandle wctomb$MH = RuntimeHelper.downcallHandle(
-        "wctomb",
-        constants$39.wctomb$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_DOUBLE,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor mbstowcs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strtod",
+        constants$39.const$3
     );
-    static final MethodHandle mbstowcs$MH = RuntimeHelper.downcallHandle(
-        "mbstowcs",
-        constants$39.mbstowcs$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_FLOAT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor wcstombs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle wcstombs$MH = RuntimeHelper.downcallHandle(
-        "wcstombs",
-        constants$39.wcstombs$FUNC
-    );
-    static final FunctionDescriptor rpmatch$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle rpmatch$MH = RuntimeHelper.downcallHandle(
-        "rpmatch",
-        constants$39.rpmatch$FUNC
-    );
-    static final FunctionDescriptor getsubopt$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle getsubopt$MH = RuntimeHelper.downcallHandle(
-        "getsubopt",
-        constants$39.getsubopt$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "strtof",
+        constants$39.const$5
     );
 }
 

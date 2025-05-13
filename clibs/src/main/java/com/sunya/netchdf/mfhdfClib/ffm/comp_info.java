@@ -2,8 +2,20 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
-public class comp_info extends tag_comp_info {
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
+import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * typedef union tag_comp_info comp_info;
+ * }
+ */
+public final class comp_info extends tag_comp_info {
 
+    // Suppresses default constructor, ensuring non-instantiability.
+    private comp_info() {}
 }
 
 

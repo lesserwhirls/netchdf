@@ -3,79 +3,34 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$155 {
 
-class constants$155 {
-
-    static final FunctionDescriptor sd_ncvarget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$155() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFPwriteref",
+        constants$154.const$4
     );
-    static final MethodHandle sd_ncvarget$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvarget",
-        constants$155.sd_ncvarget$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFPrestart",
+        constants$28.const$3
     );
-    static final FunctionDescriptor sd_ncvarputs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_SHORT);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFPlastref",
+        constants$155.const$2
     );
-    static final MethodHandle sd_ncvarputs$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvarputs",
-        constants$155.sd_ncvarputs$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFR8setcompress",
+        constants$5.const$3
     );
-    static final FunctionDescriptor sd_ncvargets$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncvargets$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvargets",
-        constants$155.sd_ncvargets$FUNC
-    );
-    static final FunctionDescriptor sd_ncvarputg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncvarputg$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvarputg",
-        constants$155.sd_ncvarputg$FUNC
-    );
-    static final FunctionDescriptor sd_ncvargetg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncvargetg$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvargetg",
-        constants$155.sd_ncvargetg$FUNC
-    );
-    static final FunctionDescriptor sd_ncvarrename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncvarrename$MH = RuntimeHelper.downcallHandle(
-        "sd_ncvarrename",
-        constants$155.sd_ncvarrename$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFR8getdims",
+        constants$135.const$0
     );
 }
 

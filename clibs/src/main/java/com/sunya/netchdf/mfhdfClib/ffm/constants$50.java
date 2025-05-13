@@ -3,55 +3,65 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$50 {
 
-class constants$50 {
-
-    static final FunctionDescriptor localtime$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle localtime$MH = RuntimeHelper.downcallHandle(
-        "localtime",
-        constants$50.localtime$FUNC
-    );
-    static final FunctionDescriptor gmtime_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle gmtime_r$MH = RuntimeHelper.downcallHandle(
-        "gmtime_r",
-        constants$50.gmtime_r$FUNC
-    );
-    static final FunctionDescriptor localtime_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle localtime_r$MH = RuntimeHelper.downcallHandle(
-        "localtime_r",
-        constants$50.localtime_r$FUNC
-    );
-    static final FunctionDescriptor asctime$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle asctime$MH = RuntimeHelper.downcallHandle(
-        "asctime",
-        constants$50.asctime$FUNC
-    );
-    static final FunctionDescriptor ctime$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ctime$MH = RuntimeHelper.downcallHandle(
-        "ctime",
-        constants$50.ctime$FUNC
-    );
-    static final FunctionDescriptor asctime_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle asctime_r$MH = RuntimeHelper.downcallHandle(
-        "asctime_r",
-        constants$50.asctime_r$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$50() {}
+    static final VarHandle const$0 = constants$49.const$5.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.unionLayout(
+                JAVA_LONG.withName("__value64"),
+                MemoryLayout.structLayout(
+                    JAVA_INT.withName("__low"),
+                    JAVA_INT.withName("__high")
+                ).withName("__value32")
+            ).withName("__wseq"),
+            MemoryLayout.unionLayout(
+                JAVA_LONG.withName("__value64"),
+                MemoryLayout.structLayout(
+                    JAVA_INT.withName("__low"),
+                    JAVA_INT.withName("__high")
+                ).withName("__value32")
+            ).withName("__g1_start"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
+            JAVA_INT.withName("__g1_orig_size"),
+            JAVA_INT.withName("__wrefs"),
+            MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(48, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
+    static final VarHandle const$2 = constants$50.const$1.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__readers"),
+            JAVA_INT.withName("__writers"),
+            JAVA_INT.withName("__wrphase_futex"),
+            JAVA_INT.withName("__writers_futex"),
+            JAVA_INT.withName("__pad3"),
+            JAVA_INT.withName("__pad4"),
+            JAVA_INT.withName("__cur_writer"),
+            JAVA_INT.withName("__shared"),
+            JAVA_BYTE.withName("__rwelision"),
+            MemoryLayout.sequenceLayout(7, JAVA_BYTE).withName("__pad1"),
+            JAVA_LONG.withName("__pad2"),
+            JAVA_INT.withName("__flags"),
+            MemoryLayout.paddingLayout(4)
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
+    static final VarHandle const$4 = constants$50.const$3.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(8, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
 }
 
 

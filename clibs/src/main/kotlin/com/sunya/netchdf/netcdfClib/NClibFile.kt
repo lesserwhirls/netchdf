@@ -21,32 +21,24 @@ dpkg -L libhdf5-dev
  /usr/include/hdf5/serial/hdf5.h
  /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so
 
-cd /home/stormy/install/jextract-19/bin
-
 netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
-./jextract --source \
-    --header-class-name netcdf_h \
-    --target-package sunya.cdm.netcdf4.ffm \
-    -I /usr/include/netcdf.h \
-    -l /usr/lib/x86_64-linux-gnu/libnetcdf.so \
-    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
-    /usr/include/netcdf.h
 
+
+cd /home/stormy/install/jextract-21/bin
 ./jextract --source \
     --header-class-name netcdf_h \
     --target-package com.sunya.netchdf.netcdfClib.ffm \
     -I /home/stormy/install/netcdf4/include/netcdf.h \
     -l /home/stormy/install/netcdf4/lib/libnetcdf.so \
-    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
+    --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
     /home/stormy/install/netcdf4/include/netcdf.h
-
 
 ./jextract --source \
     --header-class-name hdf5_h \
     --target-package com.sunya.netchdf.hdf5Clib.ffm \
     -I /usr/include/hdf5/serial/hdf5.h \
     -l /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so \
-    --output /home/stormy/dev/github/netchdf-kotlin/clibs/src/main/java \
+    --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
     /usr/include/hdf5/serial/hdf5.h
 
  */
@@ -76,7 +68,7 @@ class NClibFile(val filename: String) : Netchdf {
         val datatype = header.convertType(vinfo.typeid)
         val userType = header.userTypes[vinfo.typeid]
 
-        MemorySession.openConfined().use { session ->
+        Arena.ofConfined().use { session ->
             val longArray = MemoryLayout.sequenceLayout(v2.rank.toLong(), C_LONG)
             val origin_p = session.allocateArray(longArray, v2.rank.toLong())
             val shape_p = session.allocateArray(longArray, v2.rank.toLong())
@@ -93,7 +85,7 @@ class NClibFile(val filename: String) : Netchdf {
                 Datatype.VLEN -> {
                     val basetype = header.convertType(userType!!.baseTypeid)
                     // an array of vlen structs. each vlen has an address and a size
-                    val vlen_p = nc_vlen_t.allocateArray(nelems.toInt(), session)
+                    val vlen_p = nc_vlen_t.allocateArray(nelems, session)
                     checkErr("vlen nc_get_vars", nc_get_vars(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, vlen_p))
 
                     // each vlen pointer is the address of the vlen array of length arraySize
@@ -334,7 +326,7 @@ class NClibFile(val filename: String) : Netchdf {
 }
 
 // TODO ENUMS seem to be wrong
-private fun <T> readVlenArray(arraySize : Int, address : MemoryAddress, datatype : Datatype<T>) : Array<T> {
+private fun <T> readVlenArray(arraySize : Int, address : MemorySegment, datatype : Datatype<T>) : Array<T> {
     val result = when (datatype) {
         Datatype.FLOAT -> Array(arraySize) { idx -> address.getAtIndex(JAVA_FLOAT, idx.toLong()) }
         Datatype.DOUBLE -> Array(arraySize) { idx -> address.getAtIndex(JAVA_DOUBLE, idx.toLong()) }

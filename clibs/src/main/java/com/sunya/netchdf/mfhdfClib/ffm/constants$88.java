@@ -3,69 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$88 {
 
-class constants$88 {
-
-    static final FunctionDescriptor Hfind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$88() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "timelocal",
+        constants$33.const$3
     );
-    static final MethodHandle Hfind$MH = RuntimeHelper.downcallHandle(
-        "Hfind",
-        constants$88.Hfind$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "dysize",
+        constants$1.const$5
     );
-    static final FunctionDescriptor HDcheck_tagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nanosleep",
+        constants$19.const$5
     );
-    static final MethodHandle HDcheck_tagref$MH = RuntimeHelper.downcallHandle(
-        "HDcheck_tagref",
-        constants$88.HDcheck_tagref$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clock_getres",
+        constants$5.const$3
     );
-    static final FunctionDescriptor HDreuse_tagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "clock_gettime",
+        constants$5.const$3
     );
-    static final MethodHandle HDreuse_tagref$MH = RuntimeHelper.downcallHandle(
-        "HDreuse_tagref",
-        constants$88.HDreuse_tagref$FUNC
-    );
-    static final FunctionDescriptor Hdeldd$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hdeldd$MH = RuntimeHelper.downcallHandle(
-        "Hdeldd",
-        constants$88.Hdeldd$FUNC
-    );
-    static final FunctionDescriptor HDmemfill$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HDmemfill$MH = RuntimeHelper.downcallHandle(
-        "HDmemfill",
-        constants$88.HDmemfill$FUNC
-    );
-    static final FunctionDescriptor HIstrncpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HIstrncpy$MH = RuntimeHelper.downcallHandle(
-        "HIstrncpy",
-        constants$88.HIstrncpy$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "clock_settime",
+        constants$5.const$3
     );
 }
 

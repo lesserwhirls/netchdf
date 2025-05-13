@@ -2,19 +2,27 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * void (*at_quick_exit$__func)();
+ * }
+ */
 public interface at_quick_exit$__func {
 
     void apply();
-    static MemorySegment allocate(at_quick_exit$__func fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(at_quick_exit$__func.class, fi, constants$33.at_quick_exit$__func$FUNC, session);
+    static MemorySegment allocate(at_quick_exit$__func fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$62.const$0, fi, constants$61.const$1, scope);
     }
-    static at_quick_exit$__func ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
+    static at_quick_exit$__func ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
         return () -> {
             try {
-                constants$33.at_quick_exit$__func$MH.invokeExact((Addressable)symbol);
+                constants$61.const$4.invokeExact(symbol);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

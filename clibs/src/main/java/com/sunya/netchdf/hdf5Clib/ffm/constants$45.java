@@ -7,56 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$45 {
+final class constants$45 {
 
-    static final FunctionDescriptor H5Ovisit_by_name2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$45() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tset_tag",
+        constants$44.const$4
     );
-    static final MethodHandle H5Ovisit_by_name2$MH = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name2",
-        constants$45.H5Ovisit_by_name2$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Oclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_tag",
+        constants$45.const$1
     );
-    static final MethodHandle H5Oclose$MH = RuntimeHelper.downcallHandle(
-        "H5Oclose",
-        constants$45.H5Oclose$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tget_super",
+        constants$10.const$2
     );
-    static final FunctionDescriptor H5Oflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tget_class",
+        constants$19.const$0
     );
-    static final MethodHandle H5Oflush$MH = RuntimeHelper.downcallHandle(
-        "H5Oflush",
-        constants$45.H5Oflush$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT
     );
-    static final FunctionDescriptor H5Orefresh$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Orefresh$MH = RuntimeHelper.downcallHandle(
-        "H5Orefresh",
-        constants$45.H5Orefresh$FUNC
-    );
-    static final FunctionDescriptor H5Odisable_mdc_flushes$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Odisable_mdc_flushes$MH = RuntimeHelper.downcallHandle(
-        "H5Odisable_mdc_flushes",
-        constants$45.H5Odisable_mdc_flushes$FUNC
-    );
-    static final FunctionDescriptor H5Oenable_mdc_flushes$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oenable_mdc_flushes$MH = RuntimeHelper.downcallHandle(
-        "H5Oenable_mdc_flushes",
-        constants$45.H5Oenable_mdc_flushes$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Tdetect_class",
+        constants$45.const$5
     );
 }
 

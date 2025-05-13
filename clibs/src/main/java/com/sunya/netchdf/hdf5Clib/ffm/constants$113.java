@@ -7,58 +7,32 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$113 {
+final class constants$113 {
 
-    static final FunctionDescriptor H5Fget_mdc_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$113() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Fget_mdc_config$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_config",
-        constants$113.H5Fget_mdc_config$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "tmpnam",
+        constants$113.const$0
     );
-    static final FunctionDescriptor H5Fset_mdc_config$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "tmpnam_r",
+        constants$113.const$0
     );
-    static final MethodHandle H5Fset_mdc_config$MH = RuntimeHelper.downcallHandle(
-        "H5Fset_mdc_config",
-        constants$113.H5Fset_mdc_config$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Fget_mdc_hit_rate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "tempnam",
+        constants$113.const$3
     );
-    static final MethodHandle H5Fget_mdc_hit_rate$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_hit_rate",
-        constants$113.H5Fget_mdc_hit_rate$FUNC
-    );
-    static final FunctionDescriptor H5Fget_mdc_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_mdc_size$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_size",
-        constants$113.H5Fget_mdc_size$FUNC
-    );
-    static final FunctionDescriptor H5Freset_mdc_hit_rate_stats$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Freset_mdc_hit_rate_stats$MH = RuntimeHelper.downcallHandle(
-        "H5Freset_mdc_hit_rate_stats",
-        constants$113.H5Freset_mdc_hit_rate_stats$FUNC
-    );
-    static final FunctionDescriptor H5Fget_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fget_name$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_name",
-        constants$113.H5Fget_name$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fflush",
+        constants$15.const$2
     );
 }
 

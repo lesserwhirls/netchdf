@@ -3,48 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$71 {
 
-class constants$71 {
-
-    static final FunctionDescriptor revoke$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$71() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "memcmp",
+        constants$68.const$5
     );
-    static final MethodHandle revoke$MH = RuntimeHelper.downcallHandle(
-        "revoke",
-        constants$71.revoke$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "__memcmpeq",
+        constants$68.const$5
     );
-    static final FunctionDescriptor profil$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "memchr",
+        constants$70.const$5
     );
-    static final MethodHandle profil$MH = RuntimeHelper.downcallHandle(
-        "profil",
-        constants$71.profil$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strcpy",
+        constants$21.const$1
     );
-    static final FunctionDescriptor acct$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strncpy",
+        constants$70.const$0
     );
-    static final MethodHandle acct$MH = RuntimeHelper.downcallHandle(
-        "acct",
-        constants$71.acct$FUNC
-    );
-    static final FunctionDescriptor getusershell$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle getusershell$MH = RuntimeHelper.downcallHandle(
-        "getusershell",
-        constants$71.getusershell$FUNC
-    );
-    static final FunctionDescriptor endusershell$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle endusershell$MH = RuntimeHelper.downcallHandle(
-        "endusershell",
-        constants$71.endusershell$FUNC
-    );
-    static final FunctionDescriptor setusershell$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle setusershell$MH = RuntimeHelper.downcallHandle(
-        "setusershell",
-        constants$71.setusershell$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strcat",
+        constants$21.const$1
     );
 }
 

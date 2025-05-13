@@ -3,68 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$158 {
 
-class constants$158 {
-
-    static final FunctionDescriptor SDgetdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$158() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFR8Pshutdown",
+        constants$28.const$3
     );
-    static final MethodHandle SDgetdatainfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetdatainfo",
-        constants$158.SDgetdatainfo$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFGRgetlutdims",
+        constants$146.const$0
     );
-    static final FunctionDescriptor SDgetattdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFGRreqlutil",
+        constants$1.const$5
     );
-    static final MethodHandle SDgetattdatainfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetattdatainfo",
-        constants$158.SDgetattdatainfo$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFGRgetlut",
+        constants$151.const$1
     );
-    static final FunctionDescriptor SDgetoldattdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFGRgetimdims",
+        constants$146.const$0
     );
-    static final MethodHandle SDgetoldattdatainfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetoldattdatainfo",
-        constants$158.SDgetoldattdatainfo$FUNC
-    );
-    static final FunctionDescriptor SDgetanndatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDgetanndatainfo$MH = RuntimeHelper.downcallHandle(
-        "SDgetanndatainfo",
-        constants$158.SDgetanndatainfo$FUNC
-    );
-    static final FunctionDescriptor SDstart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle SDstart$MH = RuntimeHelper.downcallHandle(
-        "SDstart",
-        constants$158.SDstart$FUNC
-    );
-    static final FunctionDescriptor SDend$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle SDend$MH = RuntimeHelper.downcallHandle(
-        "SDend",
-        constants$158.SDend$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFGRreqimil",
+        constants$1.const$5
     );
 }
 

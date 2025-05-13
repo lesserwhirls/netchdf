@@ -7,55 +7,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$116 {
+final class constants$116 {
 
-    static final FunctionDescriptor H5Fget_mdc_image_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$116() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle H5Fget_mdc_image_info$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_image_info",
-        constants$116.H5Fget_mdc_image_info$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "setvbuf",
+        constants$116.const$0
     );
-    static final FunctionDescriptor H5Fget_dset_no_attrs_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle H5Fget_dset_no_attrs_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_dset_no_attrs_hint",
-        constants$116.H5Fget_dset_no_attrs_hint$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "setbuffer",
+        constants$116.const$2
     );
-    static final FunctionDescriptor H5Fset_dset_no_attrs_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Fset_dset_no_attrs_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Fset_dset_no_attrs_hint",
-        constants$116.H5Fset_dset_no_attrs_hint$FUNC
-    );
-    static final FunctionDescriptor H5Fget_info1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_info1$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_info1",
-        constants$116.H5Fget_info1$FUNC
-    );
-    static final FunctionDescriptor H5Fset_latest_format$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Fset_latest_format$MH = RuntimeHelper.downcallHandle(
-        "H5Fset_latest_format",
-        constants$116.H5Fset_latest_format$FUNC
-    );
-    static final FunctionDescriptor H5FDregister$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5FDregister$MH = RuntimeHelper.downcallHandle(
-        "H5FDregister",
-        constants$116.H5FDregister$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "setlinebuf",
+        constants$116.const$4
     );
 }
 

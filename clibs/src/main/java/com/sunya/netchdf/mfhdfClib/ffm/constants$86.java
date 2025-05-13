@@ -3,54 +3,23 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$86 {
 
-class constants$86 {
-
-    static final FunctionDescriptor HDgetNTdesc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$86() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ctime_r",
+        constants$21.const$1
     );
-    static final MethodHandle HDgetNTdesc$MH = RuntimeHelper.downcallHandle(
-        "HDgetNTdesc",
-        constants$86.HDgetNTdesc$FUNC
-    );
-    static final FunctionDescriptor HDfidtoname$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HDfidtoname$MH = RuntimeHelper.downcallHandle(
-        "HDfidtoname",
-        constants$86.HDfidtoname$FUNC
-    );
-    static final FunctionDescriptor Hgetntinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Hgetntinfo$MH = RuntimeHelper.downcallHandle(
-        "Hgetntinfo",
-        constants$86.Hgetntinfo$FUNC
-    );
-    static final FunctionDescriptor Hishdf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Hishdf$MH = RuntimeHelper.downcallHandle(
-        "Hishdf",
-        constants$86.Hishdf$FUNC
-    );
-    static final FunctionDescriptor Hfidinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Hfidinquire$MH = RuntimeHelper.downcallHandle(
-        "Hfidinquire",
-        constants$86.Hfidinquire$FUNC
-    );
-    static final FunctionDescriptor Hshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle Hshutdown$MH = RuntimeHelper.downcallHandle(
-        "Hshutdown",
-        constants$86.Hshutdown$FUNC
-    );
+    static final SequenceLayout const$1 = MemoryLayout.sequenceLayout(2, RuntimeHelper.POINTER);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("__tzname", constants$86.const$1);
+    static final VarHandle const$3 = JAVA_INT.varHandle();
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("__daylight", JAVA_INT);
+    static final VarHandle const$5 = JAVA_LONG.varHandle();
 }
 
 

@@ -4,53 +4,49 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$151 {
+final class constants$151 {
 
-    static final FunctionDescriptor GRgetdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$151() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFCIrle",
+        constants$17.const$1
     );
-    static final MethodHandle GRgetdatainfo$MH = RuntimeHelper.downcallHandle(
-        "GRgetdatainfo",
-        constants$151.GRgetdatainfo$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor GRgetattdatainfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFCIunrle",
+        constants$151.const$1
     );
-    static final MethodHandle GRgetattdatainfo$MH = RuntimeHelper.downcallHandle(
-        "GRgetattdatainfo",
-        constants$151.GRgetattdatainfo$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor GRgetpalinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFCIimcomp",
+        constants$151.const$3
     );
-    static final MethodHandle GRgetpalinfo$MH = RuntimeHelper.downcallHandle(
-        "GRgetpalinfo",
-        constants$151.GRgetpalinfo$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final  OfInt sd_ncerr$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle sd_ncerr$VH = constants$151.sd_ncerr$LAYOUT.varHandle();
-    static final MemorySegment sd_ncerr$SEGMENT = RuntimeHelper.lookupGlobalVariable("sd_ncerr", constants$151.sd_ncerr$LAYOUT);
-    static final  OfInt sd_ncopts$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle sd_ncopts$VH = constants$151.sd_ncopts$LAYOUT.varHandle();
-    static final MemorySegment sd_ncopts$SEGMENT = RuntimeHelper.lookupGlobalVariable("sd_ncopts", constants$151.sd_ncopts$LAYOUT);
-    static final FunctionDescriptor sd_nccreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle sd_nccreate$MH = RuntimeHelper.downcallHandle(
-        "sd_nccreate",
-        constants$151.sd_nccreate$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "DFCIunimcomp",
+        constants$151.const$5
     );
 }
 

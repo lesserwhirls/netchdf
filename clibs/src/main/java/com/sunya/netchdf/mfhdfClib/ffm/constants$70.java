@@ -3,53 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$70 {
 
-class constants$70 {
-
-    static final FunctionDescriptor gethostname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$70() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle gethostname$MH = RuntimeHelper.downcallHandle(
-        "gethostname",
-        constants$70.gethostname$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "memcpy",
+        constants$70.const$0
     );
-    static final FunctionDescriptor sethostname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "memmove",
+        constants$70.const$0
     );
-    static final MethodHandle sethostname$MH = RuntimeHelper.downcallHandle(
-        "sethostname",
-        constants$70.sethostname$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor sethostid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "memccpy",
+        constants$70.const$3
     );
-    static final MethodHandle sethostid$MH = RuntimeHelper.downcallHandle(
-        "sethostid",
-        constants$70.sethostid$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor getdomainname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle getdomainname$MH = RuntimeHelper.downcallHandle(
-        "getdomainname",
-        constants$70.getdomainname$FUNC
-    );
-    static final FunctionDescriptor setdomainname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle setdomainname$MH = RuntimeHelper.downcallHandle(
-        "setdomainname",
-        constants$70.setdomainname$FUNC
-    );
-    static final FunctionDescriptor vhangup$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle vhangup$MH = RuntimeHelper.downcallHandle(
-        "vhangup",
-        constants$70.vhangup$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "memset",
+        constants$70.const$5
     );
 }
 

@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$197 {
 
-class constants$197 {
-
-    static final MemorySegment __ILP32_OFF32_CFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m32");
-    static final MemorySegment __ILP32_OFF32_LDFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m32");
-    static final MemorySegment __ILP32_OFFBIG_CFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m32 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64");
-    static final MemorySegment __ILP32_OFFBIG_LDFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m32");
-    static final MemorySegment __LP64_OFF64_CFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m64");
-    static final MemorySegment __LP64_OFF64_LDFLAGS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("-m64");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$197() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "VSsetname",
+        constants$5.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "VSsetclass",
+        constants$5.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "VSgetname",
+        constants$5.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "VSgetclass",
+        constants$5.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "VSinquire",
+        constants$43.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "VSisinternal",
+        constants$17.const$4
+    );
 }
 
 

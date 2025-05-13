@@ -3,56 +3,41 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$58 {
 
-class constants$58 {
-
-    static final FunctionDescriptor ualarm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$58() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle ualarm$MH = RuntimeHelper.downcallHandle(
-        "ualarm",
-        constants$58.ualarm$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "srand48_r",
+        constants$58.const$0
     );
-    static final FunctionDescriptor usleep$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "seed48_r",
+        constants$19.const$5
     );
-    static final MethodHandle usleep$MH = RuntimeHelper.downcallHandle(
-        "usleep",
-        constants$58.usleep$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "lcong48_r",
+        constants$19.const$5
     );
-    static final FunctionDescriptor pause$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle pause$MH = RuntimeHelper.downcallHandle(
-        "pause",
-        constants$58.pause$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "arc4random",
+        constants$28.const$3
     );
-    static final FunctionDescriptor chown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle chown$MH = RuntimeHelper.downcallHandle(
-        "chown",
-        constants$58.chown$FUNC
-    );
-    static final FunctionDescriptor fchown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fchown$MH = RuntimeHelper.downcallHandle(
-        "fchown",
-        constants$58.fchown$FUNC
-    );
-    static final FunctionDescriptor lchown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle lchown$MH = RuntimeHelper.downcallHandle(
-        "lchown",
-        constants$58.lchown$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "arc4random_buf",
+        constants$58.const$5
     );
 }
 

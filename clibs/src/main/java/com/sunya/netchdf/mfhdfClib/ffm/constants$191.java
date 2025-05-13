@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$191 {
 
-class constants$191 {
-
-    static final MemorySegment SCNo8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
-    static final MemorySegment SCNo16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
-    static final MemorySegment SCNo32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment SCNo64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment SCNoLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hho");
-    static final MemorySegment SCNoLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ho");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$191() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "GRgetchunkinfo",
+        constants$26.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "GRwritechunk",
+        constants$26.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "GRreadchunk",
+        constants$26.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "GRsetchunkcache",
+        constants$98.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Vsetattr",
+        constants$187.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Vnattrs",
+        constants$1.const$5
+    );
 }
 
 

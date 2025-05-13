@@ -2,22 +2,23 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct itimerval {
+ *     struct timeval it_interval;
+ *     struct timeval it_value;
+ * };
+ * }
+ */
 public class itimerval {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tv_sec"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tv_usec")
-        ).withName("it_interval"),
-        MemoryLayout.structLayout(
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tv_sec"),
-            Constants$root.C_LONG_LONG$LAYOUT.withName("tv_usec")
-        ).withName("it_value")
-    ).withName("itimerval");
     public static MemoryLayout $LAYOUT() {
-        return itimerval.$struct$LAYOUT;
+        return constants$120.const$3;
     }
     public static MemorySegment it_interval$slice(MemorySegment seg) {
         return seg.asSlice(0, 16);
@@ -27,10 +28,10 @@ public class itimerval {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

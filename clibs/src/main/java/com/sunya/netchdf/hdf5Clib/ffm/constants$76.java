@@ -7,26 +7,44 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$76 {
+final class constants$76 {
 
-    static final  OfLong H5E_PLUGIN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_PLUGIN_g$VH = constants$76.H5E_PLUGIN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_PLUGIN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_PLUGIN_g", constants$76.H5E_PLUGIN_g$LAYOUT);
-    static final  OfLong H5E_VFL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_VFL_g$VH = constants$76.H5E_VFL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_VFL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_VFL_g", constants$76.H5E_VFL_g$LAYOUT);
-    static final  OfLong H5E_INTERNAL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_INTERNAL_g$VH = constants$76.H5E_INTERNAL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_INTERNAL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_INTERNAL_g", constants$76.H5E_INTERNAL_g$LAYOUT);
-    static final  OfLong H5E_BTREE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BTREE_g$VH = constants$76.H5E_BTREE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BTREE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BTREE_g", constants$76.H5E_BTREE_g$LAYOUT);
-    static final  OfLong H5E_REFERENCE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_REFERENCE_g$VH = constants$76.H5E_REFERENCE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_REFERENCE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_REFERENCE_g", constants$76.H5E_REFERENCE_g$LAYOUT);
-    static final  OfLong H5E_DATASPACE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_DATASPACE_g$VH = constants$76.H5E_DATASPACE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_DATASPACE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_DATASPACE_g", constants$76.H5E_DATASPACE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$76() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Ovisit2",
+        constants$76.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ovisit_by_name2",
+        constants$76.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oclose",
+        constants$19.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oflush",
+        constants$19.const$0
+    );
 }
 
 

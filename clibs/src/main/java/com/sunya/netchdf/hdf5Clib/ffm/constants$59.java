@@ -7,60 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$59 {
+final class constants$59 {
 
-    static final FunctionDescriptor H5Dflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dflush$MH = RuntimeHelper.downcallHandle(
-        "H5Dflush",
-        constants$59.H5Dflush$FUNC
-    );
-    static final FunctionDescriptor H5Drefresh$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Drefresh$MH = RuntimeHelper.downcallHandle(
-        "H5Drefresh",
-        constants$59.H5Drefresh$FUNC
-    );
-    static final FunctionDescriptor H5Dscatter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dscatter$MH = RuntimeHelper.downcallHandle(
-        "H5Dscatter",
-        constants$59.H5Dscatter$FUNC
-    );
-    static final FunctionDescriptor H5Dgather$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dgather$MH = RuntimeHelper.downcallHandle(
-        "H5Dgather",
-        constants$59.H5Dgather$FUNC
-    );
-    static final FunctionDescriptor H5Ddebug$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Ddebug$MH = RuntimeHelper.downcallHandle(
-        "H5Ddebug",
-        constants$59.H5Ddebug$FUNC
-    );
-    static final FunctionDescriptor H5Dformat_convert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dformat_convert$MH = RuntimeHelper.downcallHandle(
-        "H5Dformat_convert",
-        constants$59.H5Dformat_convert$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$59() {}
+    static final VarHandle const$0 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$1 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("comment"));
+    static final VarHandle const$2 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
+    static final VarHandle const$3 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
+    static final VarHandle const$4 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
+    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
 }
 
 

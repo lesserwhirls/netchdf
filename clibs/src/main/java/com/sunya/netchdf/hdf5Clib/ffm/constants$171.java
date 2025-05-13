@@ -7,67 +7,39 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$171 {
+final class constants$171 {
 
-    static final FunctionDescriptor H5Rcreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$171() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fclose",
+        constants$19.const$0
     );
-    static final MethodHandle H5Rcreate$MH = RuntimeHelper.downcallHandle(
-        "H5Rcreate",
-        constants$171.H5Rcreate$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_create_plist",
+        constants$10.const$2
     );
-    static final FunctionDescriptor H5Rdereference2$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_access_plist",
+        constants$10.const$2
     );
-    static final MethodHandle H5Rdereference2$MH = RuntimeHelper.downcallHandle(
-        "H5Rdereference2",
-        constants$171.H5Rdereference2$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_intent",
+        constants$44.const$4
     );
-    static final FunctionDescriptor H5Rget_region$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_obj_count",
+        constants$48.const$3
     );
-    static final MethodHandle H5Rget_region$MH = RuntimeHelper.downcallHandle(
-        "H5Rget_region",
-        constants$171.H5Rget_region$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Rget_obj_type2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Rget_obj_type2$MH = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_type2",
-        constants$171.H5Rget_obj_type2$FUNC
-    );
-    static final FunctionDescriptor H5Rget_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Rget_name$MH = RuntimeHelper.downcallHandle(
-        "H5Rget_name",
-        constants$171.H5Rget_name$FUNC
-    );
-    static final FunctionDescriptor H5Rget_obj_type1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Rget_obj_type1$MH = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_type1",
-        constants$171.H5Rget_obj_type1$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Fget_obj_ids",
+        constants$171.const$5
     );
 }
 

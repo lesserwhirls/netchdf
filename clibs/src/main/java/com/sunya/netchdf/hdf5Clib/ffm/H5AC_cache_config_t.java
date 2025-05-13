@@ -7,524 +7,839 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5AC_cache_config_t {
+ *     int version;
+ *     hbool_t rpt_fcn_enabled;
+ *     hbool_t open_trace_file;
+ *     hbool_t close_trace_file;
+ *     char trace_file_name[1025];
+ *     hbool_t evictions_enabled;
+ *     hbool_t set_initial_size;
+ *     size_t initial_size;
+ *     double min_clean_fraction;
+ *     size_t max_size;
+ *     size_t min_size;
+ *     long epoch_length;
+ *     enum H5C_cache_incr_mode incr_mode;
+ *     double lower_hr_threshold;
+ *     double increment;
+ *     hbool_t apply_max_increment;
+ *     size_t max_increment;
+ *     enum H5C_cache_flash_incr_mode flash_incr_mode;
+ *     double flash_multiple;
+ *     double flash_threshold;
+ *     enum H5C_cache_decr_mode decr_mode;
+ *     double upper_hr_threshold;
+ *     double decrement;
+ *     hbool_t apply_max_decrement;
+ *     size_t max_decrement;
+ *     int epochs_before_eviction;
+ *     hbool_t apply_empty_reserve;
+ *     double empty_reserve;
+ *     size_t dirty_bytes_threshold;
+ *     int metadata_write_strategy;
+ * };
+ * }
+ */
 public class H5AC_cache_config_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        Constants$root.C_BOOL$LAYOUT.withName("rpt_fcn_enabled"),
-        Constants$root.C_BOOL$LAYOUT.withName("open_trace_file"),
-        Constants$root.C_BOOL$LAYOUT.withName("close_trace_file"),
-        MemoryLayout.sequenceLayout(1025, Constants$root.C_CHAR$LAYOUT).withName("trace_file_name"),
-        Constants$root.C_BOOL$LAYOUT.withName("evictions_enabled"),
-        Constants$root.C_BOOL$LAYOUT.withName("set_initial_size"),
-        MemoryLayout.paddingLayout(48),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("initial_size"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("min_clean_fraction"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("min_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("epoch_length"),
-        Constants$root.C_INT$LAYOUT.withName("incr_mode"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_DOUBLE$LAYOUT.withName("lower_hr_threshold"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("increment"),
-        Constants$root.C_BOOL$LAYOUT.withName("apply_max_increment"),
-        MemoryLayout.paddingLayout(56),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_increment"),
-        Constants$root.C_INT$LAYOUT.withName("flash_incr_mode"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_DOUBLE$LAYOUT.withName("flash_multiple"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("flash_threshold"),
-        Constants$root.C_INT$LAYOUT.withName("decr_mode"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_DOUBLE$LAYOUT.withName("upper_hr_threshold"),
-        Constants$root.C_DOUBLE$LAYOUT.withName("decrement"),
-        Constants$root.C_BOOL$LAYOUT.withName("apply_max_decrement"),
-        MemoryLayout.paddingLayout(56),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_decrement"),
-        Constants$root.C_INT$LAYOUT.withName("epochs_before_eviction"),
-        Constants$root.C_BOOL$LAYOUT.withName("apply_empty_reserve"),
-        MemoryLayout.paddingLayout(24),
-        Constants$root.C_DOUBLE$LAYOUT.withName("empty_reserve"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("dirty_bytes_threshold"),
-        Constants$root.C_INT$LAYOUT.withName("metadata_write_strategy"),
-        MemoryLayout.paddingLayout(32)
-    ).withName("H5AC_cache_config_t");
     public static MemoryLayout $LAYOUT() {
-        return H5AC_cache_config_t.$struct$LAYOUT;
+        return constants$87.const$4;
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5AC_cache_config_t.version$VH;
+        return constants$87.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.version$VH.get(seg);
+        return (int)constants$87.const$5.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$87.const$5.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$87.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle rpt_fcn_enabled$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("rpt_fcn_enabled"));
     public static VarHandle rpt_fcn_enabled$VH() {
-        return H5AC_cache_config_t.rpt_fcn_enabled$VH;
+        return constants$88.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t rpt_fcn_enabled;
+     * }
+     */
     public static boolean rpt_fcn_enabled$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.rpt_fcn_enabled$VH.get(seg);
+        return (boolean)constants$88.const$0.get(seg);
     }
-    public static void rpt_fcn_enabled$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.rpt_fcn_enabled$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t rpt_fcn_enabled;
+     * }
+     */
+    public static void rpt_fcn_enabled$set(MemorySegment seg, boolean x) {
+        constants$88.const$0.set(seg, x);
     }
     public static boolean rpt_fcn_enabled$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.rpt_fcn_enabled$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void rpt_fcn_enabled$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.rpt_fcn_enabled$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle open_trace_file$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("open_trace_file"));
     public static VarHandle open_trace_file$VH() {
-        return H5AC_cache_config_t.open_trace_file$VH;
+        return constants$88.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t open_trace_file;
+     * }
+     */
     public static boolean open_trace_file$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.open_trace_file$VH.get(seg);
+        return (boolean)constants$88.const$1.get(seg);
     }
-    public static void open_trace_file$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.open_trace_file$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t open_trace_file;
+     * }
+     */
+    public static void open_trace_file$set(MemorySegment seg, boolean x) {
+        constants$88.const$1.set(seg, x);
     }
     public static boolean open_trace_file$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.open_trace_file$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void open_trace_file$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.open_trace_file$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle close_trace_file$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("close_trace_file"));
     public static VarHandle close_trace_file$VH() {
-        return H5AC_cache_config_t.close_trace_file$VH;
+        return constants$88.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t close_trace_file;
+     * }
+     */
     public static boolean close_trace_file$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.close_trace_file$VH.get(seg);
+        return (boolean)constants$88.const$2.get(seg);
     }
-    public static void close_trace_file$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.close_trace_file$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t close_trace_file;
+     * }
+     */
+    public static void close_trace_file$set(MemorySegment seg, boolean x) {
+        constants$88.const$2.set(seg, x);
     }
     public static boolean close_trace_file$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.close_trace_file$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void close_trace_file$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.close_trace_file$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment trace_file_name$slice(MemorySegment seg) {
         return seg.asSlice(7, 1025);
     }
-    static final VarHandle evictions_enabled$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("evictions_enabled"));
     public static VarHandle evictions_enabled$VH() {
-        return H5AC_cache_config_t.evictions_enabled$VH;
+        return constants$88.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t evictions_enabled;
+     * }
+     */
     public static boolean evictions_enabled$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.evictions_enabled$VH.get(seg);
+        return (boolean)constants$88.const$3.get(seg);
     }
-    public static void evictions_enabled$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.evictions_enabled$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t evictions_enabled;
+     * }
+     */
+    public static void evictions_enabled$set(MemorySegment seg, boolean x) {
+        constants$88.const$3.set(seg, x);
     }
     public static boolean evictions_enabled$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.evictions_enabled$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void evictions_enabled$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.evictions_enabled$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle set_initial_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("set_initial_size"));
     public static VarHandle set_initial_size$VH() {
-        return H5AC_cache_config_t.set_initial_size$VH;
+        return constants$88.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t set_initial_size;
+     * }
+     */
     public static boolean set_initial_size$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.set_initial_size$VH.get(seg);
+        return (boolean)constants$88.const$4.get(seg);
     }
-    public static void set_initial_size$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.set_initial_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t set_initial_size;
+     * }
+     */
+    public static void set_initial_size$set(MemorySegment seg, boolean x) {
+        constants$88.const$4.set(seg, x);
     }
     public static boolean set_initial_size$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.set_initial_size$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void set_initial_size$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.set_initial_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle initial_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("initial_size"));
     public static VarHandle initial_size$VH() {
-        return H5AC_cache_config_t.initial_size$VH;
+        return constants$88.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t initial_size;
+     * }
+     */
     public static long initial_size$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.initial_size$VH.get(seg);
+        return (long)constants$88.const$5.get(seg);
     }
-    public static void initial_size$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.initial_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t initial_size;
+     * }
+     */
+    public static void initial_size$set(MemorySegment seg, long x) {
+        constants$88.const$5.set(seg, x);
     }
     public static long initial_size$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.initial_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$88.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void initial_size$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.initial_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle min_clean_fraction$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
     public static VarHandle min_clean_fraction$VH() {
-        return H5AC_cache_config_t.min_clean_fraction$VH;
+        return constants$89.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double min_clean_fraction;
+     * }
+     */
     public static double min_clean_fraction$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.min_clean_fraction$VH.get(seg);
+        return (double)constants$89.const$0.get(seg);
     }
-    public static void min_clean_fraction$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.min_clean_fraction$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double min_clean_fraction;
+     * }
+     */
+    public static void min_clean_fraction$set(MemorySegment seg, double x) {
+        constants$89.const$0.set(seg, x);
     }
     public static double min_clean_fraction$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.min_clean_fraction$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$89.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void min_clean_fraction$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.min_clean_fraction$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
     public static VarHandle max_size$VH() {
-        return H5AC_cache_config_t.max_size$VH;
+        return constants$89.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t max_size;
+     * }
+     */
     public static long max_size$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.max_size$VH.get(seg);
+        return (long)constants$89.const$1.get(seg);
     }
-    public static void max_size$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.max_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t max_size;
+     * }
+     */
+    public static void max_size$set(MemorySegment seg, long x) {
+        constants$89.const$1.set(seg, x);
     }
     public static long max_size$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.max_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$89.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void max_size$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.max_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle min_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
     public static VarHandle min_size$VH() {
-        return H5AC_cache_config_t.min_size$VH;
+        return constants$89.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t min_size;
+     * }
+     */
     public static long min_size$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.min_size$VH.get(seg);
+        return (long)constants$89.const$2.get(seg);
     }
-    public static void min_size$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.min_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t min_size;
+     * }
+     */
+    public static void min_size$set(MemorySegment seg, long x) {
+        constants$89.const$2.set(seg, x);
     }
     public static long min_size$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.min_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$89.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void min_size$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.min_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle epoch_length$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
     public static VarHandle epoch_length$VH() {
-        return H5AC_cache_config_t.epoch_length$VH;
+        return constants$89.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * long epoch_length;
+     * }
+     */
     public static long epoch_length$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.epoch_length$VH.get(seg);
+        return (long)constants$89.const$3.get(seg);
     }
-    public static void epoch_length$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.epoch_length$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * long epoch_length;
+     * }
+     */
+    public static void epoch_length$set(MemorySegment seg, long x) {
+        constants$89.const$3.set(seg, x);
     }
     public static long epoch_length$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.epoch_length$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$89.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void epoch_length$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.epoch_length$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle incr_mode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
     public static VarHandle incr_mode$VH() {
-        return H5AC_cache_config_t.incr_mode$VH;
+        return constants$89.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum H5C_cache_incr_mode incr_mode;
+     * }
+     */
     public static int incr_mode$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.incr_mode$VH.get(seg);
+        return (int)constants$89.const$4.get(seg);
     }
-    public static void incr_mode$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.incr_mode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum H5C_cache_incr_mode incr_mode;
+     * }
+     */
+    public static void incr_mode$set(MemorySegment seg, int x) {
+        constants$89.const$4.set(seg, x);
     }
     public static int incr_mode$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.incr_mode$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$89.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void incr_mode$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.incr_mode$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle lower_hr_threshold$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
     public static VarHandle lower_hr_threshold$VH() {
-        return H5AC_cache_config_t.lower_hr_threshold$VH;
+        return constants$89.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double lower_hr_threshold;
+     * }
+     */
     public static double lower_hr_threshold$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.lower_hr_threshold$VH.get(seg);
+        return (double)constants$89.const$5.get(seg);
     }
-    public static void lower_hr_threshold$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.lower_hr_threshold$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double lower_hr_threshold;
+     * }
+     */
+    public static void lower_hr_threshold$set(MemorySegment seg, double x) {
+        constants$89.const$5.set(seg, x);
     }
     public static double lower_hr_threshold$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.lower_hr_threshold$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$89.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void lower_hr_threshold$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.lower_hr_threshold$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$89.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle increment$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("increment"));
     public static VarHandle increment$VH() {
-        return H5AC_cache_config_t.increment$VH;
+        return constants$90.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double increment;
+     * }
+     */
     public static double increment$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.increment$VH.get(seg);
+        return (double)constants$90.const$0.get(seg);
     }
-    public static void increment$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.increment$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double increment;
+     * }
+     */
+    public static void increment$set(MemorySegment seg, double x) {
+        constants$90.const$0.set(seg, x);
     }
     public static double increment$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.increment$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$90.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void increment$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.increment$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle apply_max_increment$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("apply_max_increment"));
     public static VarHandle apply_max_increment$VH() {
-        return H5AC_cache_config_t.apply_max_increment$VH;
+        return constants$90.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t apply_max_increment;
+     * }
+     */
     public static boolean apply_max_increment$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.apply_max_increment$VH.get(seg);
+        return (boolean)constants$90.const$1.get(seg);
     }
-    public static void apply_max_increment$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.apply_max_increment$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t apply_max_increment;
+     * }
+     */
+    public static void apply_max_increment$set(MemorySegment seg, boolean x) {
+        constants$90.const$1.set(seg, x);
     }
     public static boolean apply_max_increment$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.apply_max_increment$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$90.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_max_increment$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.apply_max_increment$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_increment$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_increment"));
     public static VarHandle max_increment$VH() {
-        return H5AC_cache_config_t.max_increment$VH;
+        return constants$90.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t max_increment;
+     * }
+     */
     public static long max_increment$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.max_increment$VH.get(seg);
+        return (long)constants$90.const$2.get(seg);
     }
-    public static void max_increment$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.max_increment$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t max_increment;
+     * }
+     */
+    public static void max_increment$set(MemorySegment seg, long x) {
+        constants$90.const$2.set(seg, x);
     }
     public static long max_increment$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.max_increment$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$90.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void max_increment$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.max_increment$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle flash_incr_mode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("flash_incr_mode"));
     public static VarHandle flash_incr_mode$VH() {
-        return H5AC_cache_config_t.flash_incr_mode$VH;
+        return constants$90.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum H5C_cache_flash_incr_mode flash_incr_mode;
+     * }
+     */
     public static int flash_incr_mode$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.flash_incr_mode$VH.get(seg);
+        return (int)constants$90.const$3.get(seg);
     }
-    public static void flash_incr_mode$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.flash_incr_mode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum H5C_cache_flash_incr_mode flash_incr_mode;
+     * }
+     */
+    public static void flash_incr_mode$set(MemorySegment seg, int x) {
+        constants$90.const$3.set(seg, x);
     }
     public static int flash_incr_mode$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.flash_incr_mode$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$90.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_incr_mode$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.flash_incr_mode$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle flash_multiple$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("flash_multiple"));
     public static VarHandle flash_multiple$VH() {
-        return H5AC_cache_config_t.flash_multiple$VH;
+        return constants$90.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double flash_multiple;
+     * }
+     */
     public static double flash_multiple$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.flash_multiple$VH.get(seg);
+        return (double)constants$90.const$4.get(seg);
     }
-    public static void flash_multiple$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.flash_multiple$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double flash_multiple;
+     * }
+     */
+    public static void flash_multiple$set(MemorySegment seg, double x) {
+        constants$90.const$4.set(seg, x);
     }
     public static double flash_multiple$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.flash_multiple$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$90.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_multiple$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.flash_multiple$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle flash_threshold$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("flash_threshold"));
     public static VarHandle flash_threshold$VH() {
-        return H5AC_cache_config_t.flash_threshold$VH;
+        return constants$90.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double flash_threshold;
+     * }
+     */
     public static double flash_threshold$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.flash_threshold$VH.get(seg);
+        return (double)constants$90.const$5.get(seg);
     }
-    public static void flash_threshold$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.flash_threshold$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double flash_threshold;
+     * }
+     */
+    public static void flash_threshold$set(MemorySegment seg, double x) {
+        constants$90.const$5.set(seg, x);
     }
     public static double flash_threshold$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.flash_threshold$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$90.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_threshold$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.flash_threshold$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$90.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle decr_mode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("decr_mode"));
     public static VarHandle decr_mode$VH() {
-        return H5AC_cache_config_t.decr_mode$VH;
+        return constants$91.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * enum H5C_cache_decr_mode decr_mode;
+     * }
+     */
     public static int decr_mode$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.decr_mode$VH.get(seg);
+        return (int)constants$91.const$0.get(seg);
     }
-    public static void decr_mode$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.decr_mode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * enum H5C_cache_decr_mode decr_mode;
+     * }
+     */
+    public static void decr_mode$set(MemorySegment seg, int x) {
+        constants$91.const$0.set(seg, x);
     }
     public static int decr_mode$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.decr_mode$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void decr_mode$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.decr_mode$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle upper_hr_threshold$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("upper_hr_threshold"));
     public static VarHandle upper_hr_threshold$VH() {
-        return H5AC_cache_config_t.upper_hr_threshold$VH;
+        return constants$91.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double upper_hr_threshold;
+     * }
+     */
     public static double upper_hr_threshold$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.upper_hr_threshold$VH.get(seg);
+        return (double)constants$91.const$1.get(seg);
     }
-    public static void upper_hr_threshold$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.upper_hr_threshold$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double upper_hr_threshold;
+     * }
+     */
+    public static void upper_hr_threshold$set(MemorySegment seg, double x) {
+        constants$91.const$1.set(seg, x);
     }
     public static double upper_hr_threshold$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.upper_hr_threshold$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$91.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void upper_hr_threshold$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.upper_hr_threshold$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle decrement$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("decrement"));
     public static VarHandle decrement$VH() {
-        return H5AC_cache_config_t.decrement$VH;
+        return constants$91.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double decrement;
+     * }
+     */
     public static double decrement$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.decrement$VH.get(seg);
+        return (double)constants$91.const$2.get(seg);
     }
-    public static void decrement$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.decrement$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double decrement;
+     * }
+     */
+    public static void decrement$set(MemorySegment seg, double x) {
+        constants$91.const$2.set(seg, x);
     }
     public static double decrement$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.decrement$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$91.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void decrement$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.decrement$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle apply_max_decrement$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("apply_max_decrement"));
     public static VarHandle apply_max_decrement$VH() {
-        return H5AC_cache_config_t.apply_max_decrement$VH;
+        return constants$91.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t apply_max_decrement;
+     * }
+     */
     public static boolean apply_max_decrement$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.apply_max_decrement$VH.get(seg);
+        return (boolean)constants$91.const$3.get(seg);
     }
-    public static void apply_max_decrement$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.apply_max_decrement$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t apply_max_decrement;
+     * }
+     */
+    public static void apply_max_decrement$set(MemorySegment seg, boolean x) {
+        constants$91.const$3.set(seg, x);
     }
     public static boolean apply_max_decrement$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.apply_max_decrement$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$91.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_max_decrement$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.apply_max_decrement$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_decrement$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_decrement"));
     public static VarHandle max_decrement$VH() {
-        return H5AC_cache_config_t.max_decrement$VH;
+        return constants$91.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t max_decrement;
+     * }
+     */
     public static long max_decrement$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.max_decrement$VH.get(seg);
+        return (long)constants$91.const$4.get(seg);
     }
-    public static void max_decrement$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.max_decrement$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t max_decrement;
+     * }
+     */
+    public static void max_decrement$set(MemorySegment seg, long x) {
+        constants$91.const$4.set(seg, x);
     }
     public static long max_decrement$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.max_decrement$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$91.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void max_decrement$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.max_decrement$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle epochs_before_eviction$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("epochs_before_eviction"));
     public static VarHandle epochs_before_eviction$VH() {
-        return H5AC_cache_config_t.epochs_before_eviction$VH;
+        return constants$91.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int epochs_before_eviction;
+     * }
+     */
     public static int epochs_before_eviction$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.epochs_before_eviction$VH.get(seg);
+        return (int)constants$91.const$5.get(seg);
     }
-    public static void epochs_before_eviction$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.epochs_before_eviction$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int epochs_before_eviction;
+     * }
+     */
+    public static void epochs_before_eviction$set(MemorySegment seg, int x) {
+        constants$91.const$5.set(seg, x);
     }
     public static int epochs_before_eviction$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.epochs_before_eviction$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$91.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void epochs_before_eviction$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.epochs_before_eviction$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$91.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle apply_empty_reserve$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("apply_empty_reserve"));
     public static VarHandle apply_empty_reserve$VH() {
-        return H5AC_cache_config_t.apply_empty_reserve$VH;
+        return constants$92.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hbool_t apply_empty_reserve;
+     * }
+     */
     public static boolean apply_empty_reserve$get(MemorySegment seg) {
-        return (boolean)H5AC_cache_config_t.apply_empty_reserve$VH.get(seg);
+        return (boolean)constants$92.const$0.get(seg);
     }
-    public static void apply_empty_reserve$set( MemorySegment seg, boolean x) {
-        H5AC_cache_config_t.apply_empty_reserve$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hbool_t apply_empty_reserve;
+     * }
+     */
+    public static void apply_empty_reserve$set(MemorySegment seg, boolean x) {
+        constants$92.const$0.set(seg, x);
     }
     public static boolean apply_empty_reserve$get(MemorySegment seg, long index) {
-        return (boolean)H5AC_cache_config_t.apply_empty_reserve$VH.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$92.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_empty_reserve$set(MemorySegment seg, long index, boolean x) {
-        H5AC_cache_config_t.apply_empty_reserve$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle empty_reserve$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("empty_reserve"));
     public static VarHandle empty_reserve$VH() {
-        return H5AC_cache_config_t.empty_reserve$VH;
+        return constants$92.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * double empty_reserve;
+     * }
+     */
     public static double empty_reserve$get(MemorySegment seg) {
-        return (double)H5AC_cache_config_t.empty_reserve$VH.get(seg);
+        return (double)constants$92.const$1.get(seg);
     }
-    public static void empty_reserve$set( MemorySegment seg, double x) {
-        H5AC_cache_config_t.empty_reserve$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * double empty_reserve;
+     * }
+     */
+    public static void empty_reserve$set(MemorySegment seg, double x) {
+        constants$92.const$1.set(seg, x);
     }
     public static double empty_reserve$get(MemorySegment seg, long index) {
-        return (double)H5AC_cache_config_t.empty_reserve$VH.get(seg.asSlice(index*sizeof()));
+        return (double)constants$92.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void empty_reserve$set(MemorySegment seg, long index, double x) {
-        H5AC_cache_config_t.empty_reserve$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle dirty_bytes_threshold$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("dirty_bytes_threshold"));
     public static VarHandle dirty_bytes_threshold$VH() {
-        return H5AC_cache_config_t.dirty_bytes_threshold$VH;
+        return constants$92.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t dirty_bytes_threshold;
+     * }
+     */
     public static long dirty_bytes_threshold$get(MemorySegment seg) {
-        return (long)H5AC_cache_config_t.dirty_bytes_threshold$VH.get(seg);
+        return (long)constants$92.const$2.get(seg);
     }
-    public static void dirty_bytes_threshold$set( MemorySegment seg, long x) {
-        H5AC_cache_config_t.dirty_bytes_threshold$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t dirty_bytes_threshold;
+     * }
+     */
+    public static void dirty_bytes_threshold$set(MemorySegment seg, long x) {
+        constants$92.const$2.set(seg, x);
     }
     public static long dirty_bytes_threshold$get(MemorySegment seg, long index) {
-        return (long)H5AC_cache_config_t.dirty_bytes_threshold$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$92.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void dirty_bytes_threshold$set(MemorySegment seg, long index, long x) {
-        H5AC_cache_config_t.dirty_bytes_threshold$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle metadata_write_strategy$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("metadata_write_strategy"));
     public static VarHandle metadata_write_strategy$VH() {
-        return H5AC_cache_config_t.metadata_write_strategy$VH;
+        return constants$92.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int metadata_write_strategy;
+     * }
+     */
     public static int metadata_write_strategy$get(MemorySegment seg) {
-        return (int)H5AC_cache_config_t.metadata_write_strategy$VH.get(seg);
+        return (int)constants$92.const$3.get(seg);
     }
-    public static void metadata_write_strategy$set( MemorySegment seg, int x) {
-        H5AC_cache_config_t.metadata_write_strategy$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int metadata_write_strategy;
+     * }
+     */
+    public static void metadata_write_strategy$set(MemorySegment seg, int x) {
+        constants$92.const$3.set(seg, x);
     }
     public static int metadata_write_strategy$get(MemorySegment seg, long index) {
-        return (int)H5AC_cache_config_t.metadata_write_strategy$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$92.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void metadata_write_strategy$set(MemorySegment seg, long index, int x) {
-        H5AC_cache_config_t.metadata_write_strategy$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$92.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

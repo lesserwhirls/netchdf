@@ -3,63 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$160 {
 
-class constants$160 {
-
-    static final FunctionDescriptor SDnametoindices$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$160() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFGRsetimdims",
+        constants$159.const$2
     );
-    static final MethodHandle SDnametoindices$MH = RuntimeHelper.downcallHandle(
-        "SDnametoindices",
-        constants$160.SDnametoindices$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFGRaddimage",
+        constants$151.const$1
     );
-    static final FunctionDescriptor SDgetnumvars_byname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFGRputimage",
+        constants$151.const$1
     );
-    static final MethodHandle SDgetnumvars_byname$MH = RuntimeHelper.downcallHandle(
-        "SDgetnumvars_byname",
-        constants$160.SDgetnumvars_byname$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFGRreadref",
+        constants$154.const$4
     );
-    static final FunctionDescriptor SDgetrange$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFGRIlastref",
+        constants$155.const$2
     );
-    static final MethodHandle SDgetrange$MH = RuntimeHelper.downcallHandle(
-        "SDgetrange",
-        constants$160.SDgetrange$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor SDcreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDcreate$MH = RuntimeHelper.downcallHandle(
-        "SDcreate",
-        constants$160.SDcreate$FUNC
-    );
-    static final FunctionDescriptor SDgetdimid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle SDgetdimid$MH = RuntimeHelper.downcallHandle(
-        "SDgetdimid",
-        constants$160.SDgetdimid$FUNC
-    );
-    static final FunctionDescriptor SDsetdimname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDsetdimname$MH = RuntimeHelper.downcallHandle(
-        "SDsetdimname",
-        constants$160.SDsetdimname$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "DFGRIgetdims",
+        constants$160.const$5
     );
 }
 

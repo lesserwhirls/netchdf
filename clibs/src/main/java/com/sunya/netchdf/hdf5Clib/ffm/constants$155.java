@@ -7,62 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$155 {
+final class constants$155 {
 
-    static final FunctionDescriptor H5Pget_virtual_count$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_count$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_count",
-        constants$155.H5Pget_virtual_count$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_vspace$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_vspace$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_vspace",
-        constants$155.H5Pget_virtual_vspace$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_srcspace$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_srcspace$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_srcspace",
-        constants$155.H5Pget_virtual_srcspace$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_filename$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_filename$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_filename",
-        constants$155.H5Pget_virtual_filename$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_dsetname$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_dsetname$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_dsetname",
-        constants$155.H5Pget_virtual_dsetname$FUNC
-    );
-    static final FunctionDescriptor H5Pset_external$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_external$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_external",
-        constants$155.H5Pset_external$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$155() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLIP_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOUNT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSELECT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTNEXT_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_BADSELECT_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOMPARE_g", JAVA_LONG);
 }
 
 

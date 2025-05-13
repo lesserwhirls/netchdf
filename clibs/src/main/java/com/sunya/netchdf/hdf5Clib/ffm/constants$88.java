@@ -7,26 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$88 {
+final class constants$88 {
 
-    static final  OfLong H5E_SYSERRSTR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_SYSERRSTR_g$VH = constants$88.H5E_SYSERRSTR_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_SYSERRSTR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_SYSERRSTR_g", constants$88.H5E_SYSERRSTR_g$LAYOUT);
-    static final  OfLong H5E_NOFILTER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOFILTER_g$VH = constants$88.H5E_NOFILTER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOFILTER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOFILTER_g", constants$88.H5E_NOFILTER_g$LAYOUT);
-    static final  OfLong H5E_CALLBACK_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CALLBACK_g$VH = constants$88.H5E_CALLBACK_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CALLBACK_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CALLBACK_g", constants$88.H5E_CALLBACK_g$LAYOUT);
-    static final  OfLong H5E_CANAPPLY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANAPPLY_g$VH = constants$88.H5E_CANAPPLY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANAPPLY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANAPPLY_g", constants$88.H5E_CANAPPLY_g$LAYOUT);
-    static final  OfLong H5E_SETLOCAL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_SETLOCAL_g$VH = constants$88.H5E_SETLOCAL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_SETLOCAL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_SETLOCAL_g", constants$88.H5E_SETLOCAL_g$LAYOUT);
-    static final  OfLong H5E_NOENCODER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOENCODER_g$VH = constants$88.H5E_NOENCODER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOENCODER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOENCODER_g", constants$88.H5E_NOENCODER_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$88() {}
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("rpt_fcn_enabled"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("open_trace_file"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("close_trace_file"));
+    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("evictions_enabled"));
+    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("set_initial_size"));
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_size"));
 }
 
 

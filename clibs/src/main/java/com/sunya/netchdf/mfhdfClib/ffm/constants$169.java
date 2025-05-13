@@ -3,24 +3,48 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$169 {
 
-class constants$169 {
-
-    static final FunctionDescriptor SDsetchunkcache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$169() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle SDsetchunkcache$MH = RuntimeHelper.downcallHandle(
-        "SDsetchunkcache",
-        constants$169.SDsetchunkcache$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFANIputann",
+        constants$169.const$0
     );
-    static final MemorySegment H4_LT_OBJDIR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String(".libs/");
-    static final MemorySegment H4_PACKAGE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf");
-    static final MemorySegment H4_PACKAGE_BUGREPORT$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("help@hdfgroup.org");
-    static final MemorySegment H4_PACKAGE_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF");
-    static final MemorySegment H4_PACKAGE_STRING$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF 4.2.17-1");
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFANIlablist",
+        constants$169.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFANIaddfann",
+        constants$95.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFANIgetfannlen",
+        constants$98.const$3
+    );
 }
 
 

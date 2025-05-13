@@ -7,55 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$105 {
+final class constants$105 {
 
-    static final FunctionDescriptor H5Ecreate_stack$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5Ecreate_stack$MH = RuntimeHelper.downcallHandle(
-        "H5Ecreate_stack",
-        constants$105.H5Ecreate_stack$FUNC
-    );
-    static final FunctionDescriptor H5Eget_current_stack$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5Eget_current_stack$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_current_stack",
-        constants$105.H5Eget_current_stack$FUNC
-    );
-    static final FunctionDescriptor H5Eclose_stack$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eclose_stack$MH = RuntimeHelper.downcallHandle(
-        "H5Eclose_stack",
-        constants$105.H5Eclose_stack$FUNC
-    );
-    static final FunctionDescriptor H5Eget_class_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eget_class_name$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_class_name",
-        constants$105.H5Eget_class_name$FUNC
-    );
-    static final FunctionDescriptor H5Eset_current_stack$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eset_current_stack$MH = RuntimeHelper.downcallHandle(
-        "H5Eset_current_stack",
-        constants$105.H5Eset_current_stack$FUNC
-    );
-    static final FunctionDescriptor H5Epush2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Epush2$MH = RuntimeHelper.downcallHandleVariadic(
-        "H5Epush2",
-        constants$105.H5Epush2$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$105() {}
+    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_base"));
+    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_base"));
+    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_ptr"));
+    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
+    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
+    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
 }
 
 

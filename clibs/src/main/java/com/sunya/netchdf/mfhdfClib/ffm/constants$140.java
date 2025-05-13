@@ -3,59 +3,49 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$140 {
 
-class constants$140 {
-
-    static final FunctionDescriptor Vinsert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$140() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle Vinsert$MH = RuntimeHelper.downcallHandle(
-        "Vinsert",
-        constants$140.Vinsert$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hfind",
+        constants$140.const$0
     );
-    static final FunctionDescriptor Vflocate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HDcheck_tagref",
+        constants$130.const$0
     );
-    static final MethodHandle Vflocate$MH = RuntimeHelper.downcallHandle(
-        "Vflocate",
-        constants$140.Vflocate$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HDreuse_tagref",
+        constants$130.const$0
     );
-    static final FunctionDescriptor Vinqtagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hdeldd",
+        constants$130.const$0
     );
-    static final MethodHandle Vinqtagref$MH = RuntimeHelper.downcallHandle(
-        "Vinqtagref",
-        constants$140.Vinqtagref$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final FunctionDescriptor Vntagrefs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vntagrefs$MH = RuntimeHelper.downcallHandle(
-        "Vntagrefs",
-        constants$140.Vntagrefs$FUNC
-    );
-    static final FunctionDescriptor Vnrefs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vnrefs$MH = RuntimeHelper.downcallHandle(
-        "Vnrefs",
-        constants$140.Vnrefs$FUNC
-    );
-    static final FunctionDescriptor Vgettagrefs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vgettagrefs$MH = RuntimeHelper.downcallHandle(
-        "Vgettagrefs",
-        constants$140.Vgettagrefs$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "HDmemfill",
+        constants$140.const$5
     );
 }
 

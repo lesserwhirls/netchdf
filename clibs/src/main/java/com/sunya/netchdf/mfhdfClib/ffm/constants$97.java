@@ -3,77 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$97 {
 
-class constants$97 {
-
-    static final FunctionDescriptor DFCIimcomp$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$97() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "pwrite",
+        constants$96.const$5
     );
-    static final MethodHandle DFCIimcomp$MH = RuntimeHelper.downcallHandle(
-        "DFCIimcomp",
-        constants$97.DFCIimcomp$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "pipe",
+        constants$17.const$4
     );
-    static final FunctionDescriptor DFCIunimcomp$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "alarm",
+        constants$1.const$5
     );
-    static final MethodHandle DFCIunimcomp$MH = RuntimeHelper.downcallHandle(
-        "DFCIunimcomp",
-        constants$97.DFCIunimcomp$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "sleep",
+        constants$1.const$5
     );
-    static final FunctionDescriptor DFCIjpeg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ualarm",
+        constants$93.const$3
     );
-    static final MethodHandle DFCIjpeg$MH = RuntimeHelper.downcallHandle(
-        "DFCIjpeg",
-        constants$97.DFCIjpeg$FUNC
-    );
-    static final FunctionDescriptor DFCIunjpeg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFCIunjpeg$MH = RuntimeHelper.downcallHandle(
-        "DFCIunjpeg",
-        constants$97.DFCIunjpeg$FUNC
-    );
-    static final FunctionDescriptor DFdiread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFdiread$MH = RuntimeHelper.downcallHandle(
-        "DFdiread",
-        constants$97.DFdiread$FUNC
-    );
-    static final FunctionDescriptor DFdiget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFdiget$MH = RuntimeHelper.downcallHandle(
-        "DFdiget",
-        constants$97.DFdiget$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "usleep",
+        constants$1.const$5
     );
 }
 

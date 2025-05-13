@@ -3,74 +3,41 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$30 {
 
-class constants$30 {
-
-    static final FunctionDescriptor nc_get_var1_string$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$30() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_get_att_ulonglong",
+        constants$7.const$0
     );
-    static final MethodHandle nc_get_var1_string$MH = RuntimeHelper.downcallHandle(
-        "nc_get_var1_string",
-        constants$30.nc_get_var1_string$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor nc_put_vara_text$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_def_var",
+        constants$30.const$1
     );
-    static final MethodHandle nc_put_vara_text$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_text",
-        constants$30.nc_put_vara_text$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_inq_var",
+        constants$12.const$0
     );
-    static final FunctionDescriptor nc_get_vara_text$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_inq_varid",
+        constants$1.const$0
     );
-    static final MethodHandle nc_get_vara_text$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vara_text",
-        constants$30.nc_get_vara_text$FUNC
-    );
-    static final FunctionDescriptor nc_put_vara_uchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_vara_uchar$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_uchar",
-        constants$30.nc_put_vara_uchar$FUNC
-    );
-    static final FunctionDescriptor nc_get_vara_uchar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_get_vara_uchar$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vara_uchar",
-        constants$30.nc_get_vara_uchar$FUNC
-    );
-    static final FunctionDescriptor nc_put_vara_schar$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_put_vara_schar$MH = RuntimeHelper.downcallHandle(
-        "nc_put_vara_schar",
-        constants$30.nc_put_vara_schar$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_inq_varname",
+        constants$7.const$5
     );
 }
 

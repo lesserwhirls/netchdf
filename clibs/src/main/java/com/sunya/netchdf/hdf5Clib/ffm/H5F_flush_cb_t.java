@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5F_flush_cb_t)(long object_id,void* udata);
+ * }
+ */
 public interface H5F_flush_cb_t {
 
-    int apply(long object_id, java.lang.foreign.MemoryAddress udata);
-    static MemorySegment allocate(H5F_flush_cb_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5F_flush_cb_t.class, fi, constants$109.H5F_flush_cb_t$FUNC, session);
+    int apply(long prop_id, java.lang.foreign.MemorySegment close_data);
+    static MemorySegment allocate(H5F_flush_cb_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$169.const$4, fi, constants$44.const$4, scope);
     }
-    static H5F_flush_cb_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _object_id, java.lang.foreign.MemoryAddress _udata) -> {
+    static H5F_flush_cb_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _prop_id, java.lang.foreign.MemorySegment _close_data) -> {
             try {
-                return (int)constants$109.H5F_flush_cb_t$MH.invokeExact((Addressable)symbol, _object_id, (java.lang.foreign.Addressable)_udata);
+                return (int)constants$159.const$5.invokeExact(symbol, _prop_id, _close_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

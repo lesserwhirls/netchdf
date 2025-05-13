@@ -7,87 +7,135 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5O_stat_t {
+ *     hsize_t size;
+ *     hsize_t free;
+ *     unsigned int nmesgs;
+ *     unsigned int nchunks;
+ * };
+ * }
+ */
 public class H5O_stat_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("free"),
-        Constants$root.C_INT$LAYOUT.withName("nmesgs"),
-        Constants$root.C_INT$LAYOUT.withName("nchunks")
-    ).withName("H5O_stat_t");
     public static MemoryLayout $LAYOUT() {
-        return H5O_stat_t.$struct$LAYOUT;
+        return constants$79.const$2;
     }
-    static final VarHandle size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("size"));
     public static VarHandle size$VH() {
-        return H5O_stat_t.size$VH;
+        return constants$79.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t size;
+     * }
+     */
     public static long size$get(MemorySegment seg) {
-        return (long)H5O_stat_t.size$VH.get(seg);
+        return (long)constants$79.const$3.get(seg);
     }
-    public static void size$set( MemorySegment seg, long x) {
-        H5O_stat_t.size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t size;
+     * }
+     */
+    public static void size$set(MemorySegment seg, long x) {
+        constants$79.const$3.set(seg, x);
     }
     public static long size$get(MemorySegment seg, long index) {
-        return (long)H5O_stat_t.size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$79.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void size$set(MemorySegment seg, long index, long x) {
-        H5O_stat_t.size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$79.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("free"));
     public static VarHandle free$VH() {
-        return H5O_stat_t.free$VH;
+        return constants$79.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t free;
+     * }
+     */
     public static long free$get(MemorySegment seg) {
-        return (long)H5O_stat_t.free$VH.get(seg);
+        return (long)constants$79.const$4.get(seg);
     }
-    public static void free$set( MemorySegment seg, long x) {
-        H5O_stat_t.free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t free;
+     * }
+     */
+    public static void free$set(MemorySegment seg, long x) {
+        constants$79.const$4.set(seg, x);
     }
     public static long free$get(MemorySegment seg, long index) {
-        return (long)H5O_stat_t.free$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$79.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void free$set(MemorySegment seg, long index, long x) {
-        H5O_stat_t.free$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$79.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle nmesgs$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
     public static VarHandle nmesgs$VH() {
-        return H5O_stat_t.nmesgs$VH;
+        return constants$79.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int nmesgs;
+     * }
+     */
     public static int nmesgs$get(MemorySegment seg) {
-        return (int)H5O_stat_t.nmesgs$VH.get(seg);
+        return (int)constants$79.const$5.get(seg);
     }
-    public static void nmesgs$set( MemorySegment seg, int x) {
-        H5O_stat_t.nmesgs$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int nmesgs;
+     * }
+     */
+    public static void nmesgs$set(MemorySegment seg, int x) {
+        constants$79.const$5.set(seg, x);
     }
     public static int nmesgs$get(MemorySegment seg, long index) {
-        return (int)H5O_stat_t.nmesgs$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$79.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void nmesgs$set(MemorySegment seg, long index, int x) {
-        H5O_stat_t.nmesgs$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$79.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle nchunks$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
     public static VarHandle nchunks$VH() {
-        return H5O_stat_t.nchunks$VH;
+        return constants$80.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int nchunks;
+     * }
+     */
     public static int nchunks$get(MemorySegment seg) {
-        return (int)H5O_stat_t.nchunks$VH.get(seg);
+        return (int)constants$80.const$0.get(seg);
     }
-    public static void nchunks$set( MemorySegment seg, int x) {
-        H5O_stat_t.nchunks$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int nchunks;
+     * }
+     */
+    public static void nchunks$set(MemorySegment seg, int x) {
+        constants$80.const$0.set(seg, x);
     }
     public static int nchunks$get(MemorySegment seg, long index) {
-        return (int)H5O_stat_t.nchunks$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$80.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void nchunks$set(MemorySegment seg, long index, int x) {
-        H5O_stat_t.nchunks$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$80.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

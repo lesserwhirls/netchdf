@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5T_conv_t)(long src_id,long dst_id,struct H5T_cdata_t* cdata,unsigned long nelmts,unsigned long buf_stride,unsigned long bkg_stride,void* buf,void* bkg,long dset_xfer_plist);
+ * }
+ */
 public interface H5T_conv_t {
 
-    int apply(long src_id, long dst_id, java.lang.foreign.MemoryAddress cdata, long nelmts, long buf_stride, long bkg_stride, java.lang.foreign.MemoryAddress buf, java.lang.foreign.MemoryAddress bkg, long dset_xfer_plist);
-    static MemorySegment allocate(H5T_conv_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5T_conv_t.class, fi, constants$8.H5T_conv_t$FUNC, session);
+    int apply(long src_id, long dst_id, java.lang.foreign.MemorySegment cdata, long nelmts, long buf_stride, long bkg_stride, java.lang.foreign.MemorySegment buf, java.lang.foreign.MemorySegment bkg, long dset_xfer_plist);
+    static MemorySegment allocate(H5T_conv_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$24.const$1, fi, constants$24.const$0, scope);
     }
-    static H5T_conv_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _src_id, long _dst_id, java.lang.foreign.MemoryAddress _cdata, long _nelmts, long _buf_stride, long _bkg_stride, java.lang.foreign.MemoryAddress _buf, java.lang.foreign.MemoryAddress _bkg, long _dset_xfer_plist) -> {
+    static H5T_conv_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _src_id, long _dst_id, java.lang.foreign.MemorySegment _cdata, long _nelmts, long _buf_stride, long _bkg_stride, java.lang.foreign.MemorySegment _buf, java.lang.foreign.MemorySegment _bkg, long _dset_xfer_plist) -> {
             try {
-                return (int)constants$8.H5T_conv_t$MH.invokeExact((Addressable)symbol, _src_id, _dst_id, (java.lang.foreign.Addressable)_cdata, _nelmts, _buf_stride, _bkg_stride, (java.lang.foreign.Addressable)_buf, (java.lang.foreign.Addressable)_bkg, _dset_xfer_plist);
+                return (int)constants$24.const$2.invokeExact(symbol, _src_id, _dst_id, _cdata, _nelmts, _buf_stride, _bkg_stride, _buf, _bkg, _dset_xfer_plist);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -7,138 +7,219 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5_alloc_stats_t {
+ *     unsigned long long total_alloc_bytes;
+ *     size_t curr_alloc_bytes;
+ *     size_t peak_alloc_bytes;
+ *     size_t max_block_size;
+ *     size_t total_alloc_blocks_count;
+ *     size_t curr_alloc_blocks_count;
+ *     size_t peak_alloc_blocks_count;
+ * };
+ * }
+ */
 public class H5_alloc_stats_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("total_alloc_bytes"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("curr_alloc_bytes"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("peak_alloc_bytes"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("max_block_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("total_alloc_blocks_count"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("curr_alloc_blocks_count"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("peak_alloc_blocks_count")
-    ).withName("H5_alloc_stats_t");
     public static MemoryLayout $LAYOUT() {
-        return H5_alloc_stats_t.$struct$LAYOUT;
+        return constants$12.const$4;
     }
-    static final VarHandle total_alloc_bytes$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_bytes"));
     public static VarHandle total_alloc_bytes$VH() {
-        return H5_alloc_stats_t.total_alloc_bytes$VH;
+        return constants$12.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned long long total_alloc_bytes;
+     * }
+     */
     public static long total_alloc_bytes$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.total_alloc_bytes$VH.get(seg);
+        return (long)constants$12.const$5.get(seg);
     }
-    public static void total_alloc_bytes$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.total_alloc_bytes$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned long long total_alloc_bytes;
+     * }
+     */
+    public static void total_alloc_bytes$set(MemorySegment seg, long x) {
+        constants$12.const$5.set(seg, x);
     }
     public static long total_alloc_bytes$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.total_alloc_bytes$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$12.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void total_alloc_bytes$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.total_alloc_bytes$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$12.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle curr_alloc_bytes$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_bytes"));
     public static VarHandle curr_alloc_bytes$VH() {
-        return H5_alloc_stats_t.curr_alloc_bytes$VH;
+        return constants$13.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t curr_alloc_bytes;
+     * }
+     */
     public static long curr_alloc_bytes$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.curr_alloc_bytes$VH.get(seg);
+        return (long)constants$13.const$0.get(seg);
     }
-    public static void curr_alloc_bytes$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.curr_alloc_bytes$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t curr_alloc_bytes;
+     * }
+     */
+    public static void curr_alloc_bytes$set(MemorySegment seg, long x) {
+        constants$13.const$0.set(seg, x);
     }
     public static long curr_alloc_bytes$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.curr_alloc_bytes$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void curr_alloc_bytes$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.curr_alloc_bytes$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle peak_alloc_bytes$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_bytes"));
     public static VarHandle peak_alloc_bytes$VH() {
-        return H5_alloc_stats_t.peak_alloc_bytes$VH;
+        return constants$13.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t peak_alloc_bytes;
+     * }
+     */
     public static long peak_alloc_bytes$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.peak_alloc_bytes$VH.get(seg);
+        return (long)constants$13.const$1.get(seg);
     }
-    public static void peak_alloc_bytes$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.peak_alloc_bytes$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t peak_alloc_bytes;
+     * }
+     */
+    public static void peak_alloc_bytes$set(MemorySegment seg, long x) {
+        constants$13.const$1.set(seg, x);
     }
     public static long peak_alloc_bytes$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.peak_alloc_bytes$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void peak_alloc_bytes$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.peak_alloc_bytes$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_block_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_block_size"));
     public static VarHandle max_block_size$VH() {
-        return H5_alloc_stats_t.max_block_size$VH;
+        return constants$13.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t max_block_size;
+     * }
+     */
     public static long max_block_size$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.max_block_size$VH.get(seg);
+        return (long)constants$13.const$2.get(seg);
     }
-    public static void max_block_size$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.max_block_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t max_block_size;
+     * }
+     */
+    public static void max_block_size$set(MemorySegment seg, long x) {
+        constants$13.const$2.set(seg, x);
     }
     public static long max_block_size$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.max_block_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void max_block_size$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.max_block_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle total_alloc_blocks_count$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_blocks_count"));
     public static VarHandle total_alloc_blocks_count$VH() {
-        return H5_alloc_stats_t.total_alloc_blocks_count$VH;
+        return constants$13.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t total_alloc_blocks_count;
+     * }
+     */
     public static long total_alloc_blocks_count$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.total_alloc_blocks_count$VH.get(seg);
+        return (long)constants$13.const$3.get(seg);
     }
-    public static void total_alloc_blocks_count$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.total_alloc_blocks_count$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t total_alloc_blocks_count;
+     * }
+     */
+    public static void total_alloc_blocks_count$set(MemorySegment seg, long x) {
+        constants$13.const$3.set(seg, x);
     }
     public static long total_alloc_blocks_count$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.total_alloc_blocks_count$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void total_alloc_blocks_count$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.total_alloc_blocks_count$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle curr_alloc_blocks_count$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_blocks_count"));
     public static VarHandle curr_alloc_blocks_count$VH() {
-        return H5_alloc_stats_t.curr_alloc_blocks_count$VH;
+        return constants$13.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t curr_alloc_blocks_count;
+     * }
+     */
     public static long curr_alloc_blocks_count$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.curr_alloc_blocks_count$VH.get(seg);
+        return (long)constants$13.const$4.get(seg);
     }
-    public static void curr_alloc_blocks_count$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.curr_alloc_blocks_count$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t curr_alloc_blocks_count;
+     * }
+     */
+    public static void curr_alloc_blocks_count$set(MemorySegment seg, long x) {
+        constants$13.const$4.set(seg, x);
     }
     public static long curr_alloc_blocks_count$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.curr_alloc_blocks_count$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void curr_alloc_blocks_count$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.curr_alloc_blocks_count$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle peak_alloc_blocks_count$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_blocks_count"));
     public static VarHandle peak_alloc_blocks_count$VH() {
-        return H5_alloc_stats_t.peak_alloc_blocks_count$VH;
+        return constants$13.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t peak_alloc_blocks_count;
+     * }
+     */
     public static long peak_alloc_blocks_count$get(MemorySegment seg) {
-        return (long)H5_alloc_stats_t.peak_alloc_blocks_count$VH.get(seg);
+        return (long)constants$13.const$5.get(seg);
     }
-    public static void peak_alloc_blocks_count$set( MemorySegment seg, long x) {
-        H5_alloc_stats_t.peak_alloc_blocks_count$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t peak_alloc_blocks_count;
+     * }
+     */
+    public static void peak_alloc_blocks_count$set(MemorySegment seg, long x) {
+        constants$13.const$5.set(seg, x);
     }
     public static long peak_alloc_blocks_count$get(MemorySegment seg, long index) {
-        return (long)H5_alloc_stats_t.peak_alloc_blocks_count$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$13.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void peak_alloc_blocks_count$set(MemorySegment seg, long index, long x) {
-        H5_alloc_stats_t.peak_alloc_blocks_count$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$13.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

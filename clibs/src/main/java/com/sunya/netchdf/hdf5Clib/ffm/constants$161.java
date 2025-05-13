@@ -7,58 +7,39 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$161 {
+final class constants$161 {
 
-    static final FunctionDescriptor H5Pget_data_transform$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$161() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eget_current_stack",
+        constants$160.const$4
     );
-    static final MethodHandle H5Pget_data_transform$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_data_transform",
-        constants$161.H5Pget_data_transform$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eclose_stack",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Pset_buffer$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eget_class_name",
+        constants$19.const$3
     );
-    static final MethodHandle H5Pset_buffer$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_buffer",
-        constants$161.H5Pset_buffer$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eset_current_stack",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Pget_buffer$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Pget_buffer$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_buffer",
-        constants$161.H5Pget_buffer$FUNC
-    );
-    static final FunctionDescriptor H5Pset_preserve$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_preserve$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_preserve",
-        constants$161.H5Pset_preserve$FUNC
-    );
-    static final FunctionDescriptor H5Pget_preserve$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_preserve$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_preserve",
-        constants$161.H5Pget_preserve$FUNC
-    );
-    static final FunctionDescriptor H5Pset_edc_check$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_edc_check$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_edc_check",
-        constants$161.H5Pset_edc_check$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "H5Epush2",
+        constants$161.const$4
     );
 }
 

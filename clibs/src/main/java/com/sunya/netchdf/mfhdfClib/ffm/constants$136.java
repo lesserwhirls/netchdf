@@ -3,58 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$136 {
 
-class constants$136 {
-
-    static final FunctionDescriptor VSisinternal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$136() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_SHORT
     );
-    static final MethodHandle VSisinternal$MH = RuntimeHelper.downcallHandle(
-        "VSisinternal",
-        constants$136.VSisinternal$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HDis_special_tag",
+        constants$136.const$0
     );
-    static final FunctionDescriptor VSlone$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HDbase_tag",
+        constants$135.const$4
     );
-    static final MethodHandle VSlone$MH = RuntimeHelper.downcallHandle(
-        "VSlone",
-        constants$136.VSlone$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HDerr",
+        constants$1.const$5
     );
-    static final FunctionDescriptor Vlone$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HDvalidfid",
+        constants$1.const$5
     );
-    static final MethodHandle Vlone$MH = RuntimeHelper.downcallHandle(
-        "Vlone",
-        constants$136.Vlone$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_SHORT
     );
-    static final FunctionDescriptor Vfind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vfind$MH = RuntimeHelper.downcallHandle(
-        "Vfind",
-        constants$136.Vfind$FUNC
-    );
-    static final FunctionDescriptor VSfind$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSfind$MH = RuntimeHelper.downcallHandle(
-        "VSfind",
-        constants$136.VSfind$FUNC
-    );
-    static final FunctionDescriptor Vfindclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Vfindclass$MH = RuntimeHelper.downcallHandle(
-        "Vfindclass",
-        constants$136.Vfindclass$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "HDgettagdesc",
+        constants$136.const$5
     );
 }
 

@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$179 {
 
-class constants$179 {
-
-    static final MemorySegment PRIx8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIx16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIx32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIx64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$179() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFKnb2b",
+        constants$178.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFKnb4b",
+        constants$178.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFKnb8b",
+        constants$178.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFKsb2b",
+        constants$178.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFKsb4b",
+        constants$178.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFKsb8b",
+        constants$178.const$5
+    );
 }
 
 

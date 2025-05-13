@@ -7,39 +7,40 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct {
+ *     void* (*image_malloc)(size_t,H5FD_file_image_op_t,void*);
+ *     void* (*image_memcpy)(void*,void*,size_t,H5FD_file_image_op_t,void*);
+ *     void* (*image_realloc)(void*,size_t,H5FD_file_image_op_t,void*);
+ *     herr_t (*image_free)(void*,H5FD_file_image_op_t,void*);
+ *     void* (*udata_copy)(void*);
+ *     herr_t (*udata_free)(void*);
+ *     void* udata;
+ * };
+ * }
+ */
 public class H5FD_file_image_callbacks_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_POINTER$LAYOUT.withName("image_malloc"),
-        Constants$root.C_POINTER$LAYOUT.withName("image_memcpy"),
-        Constants$root.C_POINTER$LAYOUT.withName("image_realloc"),
-        Constants$root.C_POINTER$LAYOUT.withName("image_free"),
-        Constants$root.C_POINTER$LAYOUT.withName("udata_copy"),
-        Constants$root.C_POINTER$LAYOUT.withName("udata_free"),
-        Constants$root.C_POINTER$LAYOUT.withName("udata")
-    );
     public static MemoryLayout $LAYOUT() {
-        return H5FD_file_image_callbacks_t.$struct$LAYOUT;
+        return constants$193.const$2;
     }
-    static final FunctionDescriptor image_malloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle image_malloc$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.image_malloc$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*image_malloc)(size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
     public interface image_malloc {
 
-        java.lang.foreign.Addressable apply(long _x0, int _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(image_malloc fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(image_malloc.class, fi, H5FD_file_image_callbacks_t.image_malloc$FUNC, session);
+        java.lang.foreign.MemorySegment apply(long _x0, int _x1, java.lang.foreign.MemorySegment _x2);
+        static MemorySegment allocate(image_malloc fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$193.const$4, fi, constants$193.const$3, scope);
         }
-        static image_malloc ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (long __x0, int __x1, java.lang.foreign.MemoryAddress __x2) -> {
+        static image_malloc ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (long __x0, int __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_malloc$MH.invokeExact((Addressable)symbol, __x0, __x1, (java.lang.foreign.Addressable)__x2);
+                    return (java.lang.foreign.MemorySegment)constants$193.const$5.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -47,46 +48,52 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle image_malloc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("image_malloc"));
     public static VarHandle image_malloc$VH() {
-        return H5FD_file_image_callbacks_t.image_malloc$VH;
+        return constants$194.const$0;
     }
-    public static MemoryAddress image_malloc$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_malloc$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*image_malloc)(size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static MemorySegment image_malloc$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$194.const$0.get(seg);
     }
-    public static void image_malloc$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_malloc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*image_malloc)(size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static void image_malloc$set(MemorySegment seg, MemorySegment x) {
+        constants$194.const$0.set(seg, x);
     }
-    public static MemoryAddress image_malloc$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_malloc$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment image_malloc$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$194.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void image_malloc$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_malloc$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void image_malloc$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$194.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static image_malloc image_malloc (MemorySegment segment, MemorySession session) {
-        return image_malloc.ofAddress(image_malloc$get(segment), session);
+    public static image_malloc image_malloc(MemorySegment segment, Arena scope) {
+        return image_malloc.ofAddress(image_malloc$get(segment), scope);
     }
-    static final FunctionDescriptor image_memcpy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle image_memcpy$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.image_memcpy$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*image_memcpy)(void*,void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
     public interface image_memcpy {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1, long _x2, int _x3, java.lang.foreign.MemoryAddress _x4);
-        static MemorySegment allocate(image_memcpy fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(image_memcpy.class, fi, H5FD_file_image_callbacks_t.image_memcpy$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, long _x2, int _x3, java.lang.foreign.MemorySegment _x4);
+        static MemorySegment allocate(image_memcpy fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$194.const$2, fi, constants$194.const$1, scope);
         }
-        static image_memcpy ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1, long __x2, int __x3, java.lang.foreign.MemoryAddress __x4) -> {
+        static image_memcpy ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, long __x2, int __x3, java.lang.foreign.MemorySegment __x4) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_memcpy$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1, __x2, __x3, (java.lang.foreign.Addressable)__x4);
+                    return (java.lang.foreign.MemorySegment)constants$194.const$3.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -94,45 +101,52 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle image_memcpy$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("image_memcpy"));
     public static VarHandle image_memcpy$VH() {
-        return H5FD_file_image_callbacks_t.image_memcpy$VH;
+        return constants$194.const$4;
     }
-    public static MemoryAddress image_memcpy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_memcpy$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*image_memcpy)(void*,void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static MemorySegment image_memcpy$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$194.const$4.get(seg);
     }
-    public static void image_memcpy$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_memcpy$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*image_memcpy)(void*,void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static void image_memcpy$set(MemorySegment seg, MemorySegment x) {
+        constants$194.const$4.set(seg, x);
     }
-    public static MemoryAddress image_memcpy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_memcpy$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment image_memcpy$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$194.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void image_memcpy$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_memcpy$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void image_memcpy$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$194.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static image_memcpy image_memcpy (MemorySegment segment, MemorySession session) {
-        return image_memcpy.ofAddress(image_memcpy$get(segment), session);
+    public static image_memcpy image_memcpy(MemorySegment segment, Arena scope) {
+        return image_memcpy.ofAddress(image_memcpy$get(segment), scope);
     }
-    static final FunctionDescriptor image_realloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle image_realloc$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.image_realloc$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*image_realloc)(void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
     public interface image_realloc {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0, long _x1, int _x2, java.lang.foreign.MemoryAddress _x3);
-        static MemorySegment allocate(image_realloc fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(image_realloc.class, fi, H5FD_file_image_callbacks_t.image_realloc$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, long _x1, int _x2, java.lang.foreign.MemorySegment _x3);
+        static MemorySegment allocate(image_realloc fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$195.const$0, fi, constants$194.const$5, scope);
         }
-        static image_realloc ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, long __x1, int __x2, java.lang.foreign.MemoryAddress __x3) -> {
+        static image_realloc ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, long __x1, int __x2, java.lang.foreign.MemorySegment __x3) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_realloc$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, __x2, (java.lang.foreign.Addressable)__x3);
+                    return (java.lang.foreign.MemorySegment)constants$195.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -140,44 +154,52 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle image_realloc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("image_realloc"));
     public static VarHandle image_realloc$VH() {
-        return H5FD_file_image_callbacks_t.image_realloc$VH;
+        return constants$195.const$2;
     }
-    public static MemoryAddress image_realloc$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_realloc$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*image_realloc)(void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static MemorySegment image_realloc$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$195.const$2.get(seg);
     }
-    public static void image_realloc$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_realloc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*image_realloc)(void*,size_t,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static void image_realloc$set(MemorySegment seg, MemorySegment x) {
+        constants$195.const$2.set(seg, x);
     }
-    public static MemoryAddress image_realloc$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_realloc$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment image_realloc$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$195.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void image_realloc$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_realloc$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void image_realloc$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$195.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static image_realloc image_realloc (MemorySegment segment, MemorySession session) {
-        return image_realloc.ofAddress(image_realloc$get(segment), session);
+    public static image_realloc image_realloc(MemorySegment segment, Arena scope) {
+        return image_realloc.ofAddress(image_realloc$get(segment), scope);
     }
-    static final FunctionDescriptor image_free$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle image_free$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.image_free$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*image_free)(void*,H5FD_file_image_op_t,void*);
+     * }
+     */
     public interface image_free {
 
-        int apply(java.lang.foreign.MemoryAddress _x0, int _x1, java.lang.foreign.MemoryAddress _x2);
-        static MemorySegment allocate(image_free fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(image_free.class, fi, H5FD_file_image_callbacks_t.image_free$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2);
+        static MemorySegment allocate(image_free fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$195.const$4, fi, constants$195.const$3, scope);
         }
-        static image_free ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0, int __x1, java.lang.foreign.MemoryAddress __x2) -> {
+        static image_free ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)H5FD_file_image_callbacks_t.image_free$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, __x1, (java.lang.foreign.Addressable)__x2);
+                    return (int)constants$195.const$5.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -185,42 +207,52 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle image_free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("image_free"));
     public static VarHandle image_free$VH() {
-        return H5FD_file_image_callbacks_t.image_free$VH;
+        return constants$196.const$0;
     }
-    public static MemoryAddress image_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_free$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*image_free)(void*,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static MemorySegment image_free$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$0.get(seg);
     }
-    public static void image_free$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*image_free)(void*,H5FD_file_image_op_t,void*);
+     * }
+     */
+    public static void image_free$set(MemorySegment seg, MemorySegment x) {
+        constants$196.const$0.set(seg, x);
     }
-    public static MemoryAddress image_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.image_free$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment image_free$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void image_free$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.image_free$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void image_free$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$196.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static image_free image_free (MemorySegment segment, MemorySession session) {
-        return image_free.ofAddress(image_free$get(segment), session);
+    public static image_free image_free(MemorySegment segment, Arena scope) {
+        return image_free.ofAddress(image_free$get(segment), scope);
     }
-    static final FunctionDescriptor udata_copy$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle udata_copy$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.udata_copy$FUNC
-    );
+    /**
+     * {@snippet :
+ * void* (*udata_copy)(void*);
+     * }
+     */
     public interface udata_copy {
 
-        java.lang.foreign.Addressable apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(udata_copy fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(udata_copy.class, fi, H5FD_file_image_callbacks_t.udata_copy$FUNC, session);
+        java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(udata_copy fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$196.const$1, fi, constants$113.const$0, scope);
         }
-        static udata_copy ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static udata_copy ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.Addressable)(java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata_copy$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -228,42 +260,52 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle udata_copy$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("udata_copy"));
     public static VarHandle udata_copy$VH() {
-        return H5FD_file_image_callbacks_t.udata_copy$VH;
+        return constants$196.const$2;
     }
-    public static MemoryAddress udata_copy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata_copy$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* (*udata_copy)(void*);
+     * }
+     */
+    public static MemorySegment udata_copy$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$2.get(seg);
     }
-    public static void udata_copy$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata_copy$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* (*udata_copy)(void*);
+     * }
+     */
+    public static void udata_copy$set(MemorySegment seg, MemorySegment x) {
+        constants$196.const$2.set(seg, x);
     }
-    public static MemoryAddress udata_copy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata_copy$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment udata_copy$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void udata_copy$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata_copy$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void udata_copy$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$196.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static udata_copy udata_copy (MemorySegment segment, MemorySession session) {
-        return udata_copy.ofAddress(udata_copy$get(segment), session);
+    public static udata_copy udata_copy(MemorySegment segment, Arena scope) {
+        return udata_copy.ofAddress(udata_copy$get(segment), scope);
     }
-    static final FunctionDescriptor udata_free$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle udata_free$MH = RuntimeHelper.downcallHandle(
-        H5FD_file_image_callbacks_t.udata_free$FUNC
-    );
+    /**
+     * {@snippet :
+ * herr_t (*udata_free)(void*);
+     * }
+     */
     public interface udata_free {
 
-        int apply(java.lang.foreign.MemoryAddress _x0);
-        static MemorySegment allocate(udata_free fi, MemorySession session) {
-            return RuntimeHelper.upcallStub(udata_free.class, fi, H5FD_file_image_callbacks_t.udata_free$FUNC, session);
+        int apply(java.lang.foreign.MemorySegment _x0);
+        static MemorySegment allocate(udata_free fi, Arena scope) {
+            return RuntimeHelper.upcallStub(constants$196.const$3, fi, constants$15.const$2, scope);
         }
-        static udata_free ofAddress(MemoryAddress addr, MemorySession session) {
-            MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-            return (java.lang.foreign.MemoryAddress __x0) -> {
+        static udata_free ofAddress(MemorySegment addr, Arena arena) {
+            MemorySegment symbol = addr.reinterpret(arena, null);
+            return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)H5FD_file_image_callbacks_t.udata_free$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0);
+                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -271,47 +313,69 @@ public class H5FD_file_image_callbacks_t {
         }
     }
 
-    static final VarHandle udata_free$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("udata_free"));
     public static VarHandle udata_free$VH() {
-        return H5FD_file_image_callbacks_t.udata_free$VH;
+        return constants$196.const$4;
     }
-    public static MemoryAddress udata_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata_free$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * herr_t (*udata_free)(void*);
+     * }
+     */
+    public static MemorySegment udata_free$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$4.get(seg);
     }
-    public static void udata_free$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata_free$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * herr_t (*udata_free)(void*);
+     * }
+     */
+    public static void udata_free$set(MemorySegment seg, MemorySegment x) {
+        constants$196.const$4.set(seg, x);
     }
-    public static MemoryAddress udata_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata_free$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment udata_free$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void udata_free$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata_free$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void udata_free$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$196.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static udata_free udata_free (MemorySegment segment, MemorySession session) {
-        return udata_free.ofAddress(udata_free$get(segment), session);
+    public static udata_free udata_free(MemorySegment segment, Arena scope) {
+        return udata_free.ofAddress(udata_free$get(segment), scope);
     }
-    static final VarHandle udata$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("udata"));
     public static VarHandle udata$VH() {
-        return H5FD_file_image_callbacks_t.udata$VH;
+        return constants$196.const$5;
     }
-    public static MemoryAddress udata$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* udata;
+     * }
+     */
+    public static MemorySegment udata$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$5.get(seg);
     }
-    public static void udata$set( MemorySegment seg, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* udata;
+     * }
+     */
+    public static void udata$set(MemorySegment seg, MemorySegment x) {
+        constants$196.const$5.set(seg, x);
     }
-    public static MemoryAddress udata$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5FD_file_image_callbacks_t.udata$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment udata$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$196.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void udata$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5FD_file_image_callbacks_t.udata$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void udata$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$196.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

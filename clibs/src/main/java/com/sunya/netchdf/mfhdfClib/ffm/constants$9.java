@@ -3,53 +3,41 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$9 {
 
-class constants$9 {
-
-    static final FunctionDescriptor tmpnam$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$9() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_LONG.withName("quot"),
+        JAVA_LONG.withName("rem")
+    ).withName(""),
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle tmpnam$MH = RuntimeHelper.downcallHandle(
-        "tmpnam",
-        constants$9.tmpnam$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "imaxdiv",
+        constants$9.const$0
     );
-    static final FunctionDescriptor tmpnam_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle tmpnam_r$MH = RuntimeHelper.downcallHandle(
-        "tmpnam_r",
-        constants$9.tmpnam_r$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strtoimax",
+        constants$9.const$2
     );
-    static final FunctionDescriptor tempnam$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strtoumax",
+        constants$9.const$2
     );
-    static final MethodHandle tempnam$MH = RuntimeHelper.downcallHandle(
-        "tempnam",
-        constants$9.tempnam$FUNC
-    );
-    static final FunctionDescriptor fflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fflush$MH = RuntimeHelper.downcallHandle(
-        "fflush",
-        constants$9.fflush$FUNC
-    );
-    static final FunctionDescriptor fflush_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fflush_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fflush_unlocked",
-        constants$9.fflush_unlocked$FUNC
-    );
-    static final FunctionDescriptor fopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fopen$MH = RuntimeHelper.downcallHandle(
-        "fopen",
-        constants$9.fopen$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "wcstoimax",
+        constants$9.const$2
     );
 }
 

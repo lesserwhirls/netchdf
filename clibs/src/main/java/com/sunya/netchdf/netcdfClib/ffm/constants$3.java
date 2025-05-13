@@ -3,66 +3,37 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$3 {
 
-class constants$3 {
-
-    static final FunctionDescriptor nc_inq_grp_ncid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$3() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_open",
+        constants$2.const$2
     );
-    static final MethodHandle nc_inq_grp_ncid$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_grp_ncid",
-        constants$3.nc_inq_grp_ncid$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_inq_path",
+        constants$1.const$0
     );
-    static final FunctionDescriptor nc_inq_grp_full_ncid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_inq_ncid",
+        constants$1.const$0
     );
-    static final MethodHandle nc_inq_grp_full_ncid$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_grp_full_ncid",
-        constants$3.nc_inq_grp_full_ncid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_inq_grps",
+        constants$1.const$0
     );
-    static final FunctionDescriptor nc_inq_varids$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle nc_inq_varids$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_varids",
-        constants$3.nc_inq_varids$FUNC
-    );
-    static final FunctionDescriptor nc_inq_dimids$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nc_inq_dimids$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_dimids",
-        constants$3.nc_inq_dimids$FUNC
-    );
-    static final FunctionDescriptor nc_inq_typeids$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_typeids$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_typeids",
-        constants$3.nc_inq_typeids$FUNC
-    );
-    static final FunctionDescriptor nc_inq_type_equal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_type_equal$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_type_equal",
-        constants$3.nc_inq_type_equal$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_inq_grpname",
+        constants$3.const$4
     );
 }
 

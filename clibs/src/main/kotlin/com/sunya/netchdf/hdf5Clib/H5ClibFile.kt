@@ -9,11 +9,21 @@ import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.C_DOUBLE
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.C_FLOAT
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h_1.H5Fclose
 import com.sunya.netchdf.hdf5Clib.ffm.hvl_t
-import java.lang.foreign.MemoryAddress
 import java.lang.foreign.MemorySegment
-import java.lang.foreign.MemorySession
+import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 
+/*
+cd /home/stormy/install/jextract-21/bin
+
+./jextract --source \
+    --header-class-name hdf5_h \
+    --target-package com.sunya.netchdf.hdf5Clib.ffm \
+    -I /usr/include/hdf5/serial/hdf5.h \
+    -l /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so \
+    --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
+    /usr/include/hdf5/serial/hdf5.h
+ */
 class Hdf5ClibFile(val filename: String) : Netchdf {
     private val header = H5Cbuilder(filename)
     private val rootGroup: Group = header.rootBuilder.build(null)
@@ -38,8 +48,8 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
             return ArrayString(v2.shape.toIntArray(), att.values as List<String>) as ArrayTyped<T>
         }
         val vinfo = v2.spObject as Vinfo5C
-        //    internal fun readRegularData(session : MemorySession, datasetId : Long, h5ctype : H5CTypeInfo, dims : IntArray) : ArrayTyped<*>
-        MemorySession.openConfined().use { session ->
+        //    internal fun readRegularData(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, dims : IntArray) : ArrayTyped<*>
+        Arena.ofConfined().use { session ->
             return if (vinfo.h5ctype.isVlenString) {
                 readVlenStrings(session, vinfo.datasetId, vinfo.h5ctype, fillSection) as ArrayTyped<T>
             } else if (vinfo.h5ctype.datatype5 == Datatype5.Vlen) {
@@ -50,18 +60,18 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
         }
     }
 
-    internal fun readVlenStrings(session : MemorySession, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : ArrayString {
+    internal fun readVlenStrings(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : ArrayString {
         val (memSpaceId, fileSpaceId) = makeSection(session, datasetId, h5ctype, want)
         val nelems = want.totalElements
         val strings_p: MemorySegment = session.allocateArray(ValueLayout.ADDRESS, nelems)
         checkErr("H5Dread VlenString",
-            hdf5_h.H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, hdf5_h.H5P_DEFAULT(), strings_p)
+            hdf5_h.H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT_LONG, strings_p)
         )
 
         val slist = mutableListOf<String>()
         for (i in 0 until nelems) {
-            val s2: MemoryAddress = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-            if (s2 != MemoryAddress.NULL) {
+            val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+            if (s2 != MemorySegment.NULL) {
                 val value = s2.getUtf8String(0)
                 // val tvalue = transcodeString(value)
                 slist.add(value)
@@ -74,13 +84,13 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
         return ArrayString(want.shape.toIntArray(), slist)
     }
 
-    internal fun readVlens(session : MemorySession, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : ArrayVlen<*> {
+    internal fun readVlens(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : ArrayVlen<*> {
         val (memSpaceId, fileSpaceId) = makeSection(session, datasetId, h5ctype, want)
         val nelems = want.totalElements
-        val vlen_p: MemorySegment = hvl_t.allocateArray(nelems.toInt(), session)
+        val vlen_p: MemorySegment = hvl_t.allocateArray(nelems, session)
         checkErr(
             "H5Dread VlenData",
-            hdf5_h.H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, hdf5_h.H5P_DEFAULT(), vlen_p)
+            hdf5_h.H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT_LONG, vlen_p)
         )
         val base = h5ctype.base!!
         val basetype = base.datatype()
@@ -96,7 +106,7 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
 
     // TODO ENUMS seem to be wrong
     // also duplicate in H5Cbuilder ?
-    private fun readVlenArray(arraySize : Int, address : MemoryAddress, datatype : Datatype<*>) : Array<*> {
+    private fun readVlenArray(arraySize : Int, address : MemorySegment, datatype : Datatype<*>) : Array<*> {
         return when (datatype) {
             Datatype.FLOAT -> Array(arraySize) { idx -> address.getAtIndex(C_FLOAT, idx.toLong()) }
             Datatype.DOUBLE -> Array(arraySize) { idx -> address.getAtIndex(C_DOUBLE, idx.toLong()) }

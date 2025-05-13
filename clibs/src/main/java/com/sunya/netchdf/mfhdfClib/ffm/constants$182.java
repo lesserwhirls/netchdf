@@ -2,16 +2,42 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$182 {
 
-class constants$182 {
-
-    static final MemorySegment PRIXLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIXLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment PRIXFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment PRIXFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$182() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ANendaccess",
+        constants$1.const$5
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "ANget_tagref",
+        constants$182.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ANid2tagref",
+        constants$26.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ANtagref2id",
+        constants$130.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ANatype2tag",
+        constants$139.const$2
+    );
 }
 
 

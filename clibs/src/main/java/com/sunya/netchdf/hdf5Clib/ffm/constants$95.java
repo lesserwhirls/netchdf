@@ -7,26 +7,41 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$95 {
+final class constants$95 {
 
-    static final  OfLong H5E_CANTUNPIN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTUNPIN_g$VH = constants$95.H5E_CANTUNPIN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTUNPIN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNPIN_g", constants$95.H5E_CANTUNPIN_g$LAYOUT);
-    static final  OfLong H5E_CANTMARKDIRTY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMARKDIRTY_g$VH = constants$95.H5E_CANTMARKDIRTY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMARKDIRTY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKDIRTY_g", constants$95.H5E_CANTMARKDIRTY_g$LAYOUT);
-    static final  OfLong H5E_CANTMARKCLEAN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMARKCLEAN_g$VH = constants$95.H5E_CANTMARKCLEAN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMARKCLEAN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKCLEAN_g", constants$95.H5E_CANTMARKCLEAN_g$LAYOUT);
-    static final  OfLong H5E_CANTMARKUNSERIALIZED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMARKUNSERIALIZED_g$VH = constants$95.H5E_CANTMARKUNSERIALIZED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMARKUNSERIALIZED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKUNSERIALIZED_g", constants$95.H5E_CANTMARKUNSERIALIZED_g$LAYOUT);
-    static final  OfLong H5E_CANTMARKSERIALIZED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTMARKSERIALIZED_g$VH = constants$95.H5E_CANTMARKSERIALIZED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTMARKSERIALIZED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTMARKSERIALIZED_g", constants$95.H5E_CANTMARKSERIALIZED_g$LAYOUT);
-    static final  OfLong H5E_CANTDIRTY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTDIRTY_g$VH = constants$95.H5E_CANTDIRTY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTDIRTY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTDIRTY_g", constants$95.H5E_CANTDIRTY_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$95() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$94.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dcreate2",
+        constants$95.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dcreate_anon",
+        constants$95.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dopen2",
+        constants$19.const$3
+    );
 }
 
 

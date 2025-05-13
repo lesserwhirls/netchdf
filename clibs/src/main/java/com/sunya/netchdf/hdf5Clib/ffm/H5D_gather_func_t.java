@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5D_gather_func_t)(void* dst_buf,unsigned long dst_buf_bytes_used,void* op_data);
+ * }
+ */
 public interface H5D_gather_func_t {
 
-    int apply(java.lang.foreign.MemoryAddress dst_buf, long dst_buf_bytes_used, java.lang.foreign.MemoryAddress op_data);
-    static MemorySegment allocate(H5D_gather_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5D_gather_func_t.class, fi, constants$54.H5D_gather_func_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment name, long size, java.lang.foreign.MemorySegment value);
+    static MemorySegment allocate(H5D_gather_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$94.const$3, fi, constants$17.const$4, scope);
     }
-    static H5D_gather_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _dst_buf, long _dst_buf_bytes_used, java.lang.foreign.MemoryAddress _op_data) -> {
+    static H5D_gather_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _name, long _size, java.lang.foreign.MemorySegment _value) -> {
             try {
-                return (int)constants$54.H5D_gather_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_dst_buf, _dst_buf_bytes_used, (java.lang.foreign.Addressable)_op_data);
+                return (int)constants$18.const$0.invokeExact(symbol, _name, _size, _value);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

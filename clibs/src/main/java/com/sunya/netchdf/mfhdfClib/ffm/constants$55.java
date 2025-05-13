@@ -3,62 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$55 {
 
-class constants$55 {
-
-    static final FunctionDescriptor open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$55() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "erand48",
+        constants$38.const$5
     );
-    static final MethodHandle open$MH = RuntimeHelper.downcallHandleVariadic(
-        "open",
-        constants$55.open$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "lrand48",
+        constants$38.const$3
     );
-    static final FunctionDescriptor openat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nrand48",
+        constants$33.const$3
     );
-    static final MethodHandle openat$MH = RuntimeHelper.downcallHandleVariadic(
-        "openat",
-        constants$55.openat$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "mrand48",
+        constants$38.const$3
     );
-    static final FunctionDescriptor creat$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "jrand48",
+        constants$33.const$3
     );
-    static final MethodHandle creat$MH = RuntimeHelper.downcallHandle(
-        "creat",
-        constants$55.creat$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        JAVA_LONG
     );
-    static final FunctionDescriptor lockf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle lockf$MH = RuntimeHelper.downcallHandle(
-        "lockf",
-        constants$55.lockf$FUNC
-    );
-    static final FunctionDescriptor posix_fadvise$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle posix_fadvise$MH = RuntimeHelper.downcallHandle(
-        "posix_fadvise",
-        constants$55.posix_fadvise$FUNC
-    );
-    static final FunctionDescriptor posix_fallocate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle posix_fallocate$MH = RuntimeHelper.downcallHandle(
-        "posix_fallocate",
-        constants$55.posix_fallocate$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "srand48",
+        constants$55.const$5
     );
 }
 

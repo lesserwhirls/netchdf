@@ -3,53 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$26 {
 
-class constants$26 {
-
-    static final FunctionDescriptor random$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle random$MH = RuntimeHelper.downcallHandle(
-        "random",
-        constants$26.random$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$26() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor srandom$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "vsnprintf",
+        constants$26.const$0
     );
-    static final MethodHandle srandom$MH = RuntimeHelper.downcallHandle(
-        "srandom",
-        constants$26.srandom$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "vasprintf",
+        constants$25.const$1
     );
-    static final FunctionDescriptor initstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "__asprintf",
+        constants$19.const$5
     );
-    static final MethodHandle initstate$MH = RuntimeHelper.downcallHandle(
-        "initstate",
-        constants$26.initstate$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "asprintf",
+        constants$19.const$5
     );
-    static final FunctionDescriptor setstate$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle setstate$MH = RuntimeHelper.downcallHandle(
-        "setstate",
-        constants$26.setstate$FUNC
-    );
-    static final FunctionDescriptor random_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle random_r$MH = RuntimeHelper.downcallHandle(
-        "random_r",
-        constants$26.random_r$FUNC
-    );
-    static final FunctionDescriptor srandom_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle srandom_r$MH = RuntimeHelper.downcallHandle(
-        "srandom_r",
-        constants$26.srandom_r$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "vdprintf",
+        constants$26.const$5
     );
 }
 

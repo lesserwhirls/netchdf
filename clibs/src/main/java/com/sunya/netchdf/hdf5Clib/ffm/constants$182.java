@@ -7,38 +7,23 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$182 {
+final class constants$182 {
 
-    static final FunctionDescriptor H5Pset_fapl_splitter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$182() {}
+    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_copy"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.dxpl_free.class, "apply", constants$15.const$2);
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_free"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Pset_fapl_splitter$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_splitter",
-        constants$182.H5Pset_fapl_splitter$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.open.class, "apply", constants$182.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$182.const$3
     );
-    static final FunctionDescriptor H5Pget_fapl_splitter$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fapl_splitter$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_splitter",
-        constants$182.H5Pget_fapl_splitter$FUNC
-    );
-    static final FunctionDescriptor H5FD_stdio_init$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle H5FD_stdio_init$MH = RuntimeHelper.downcallHandle(
-        "H5FD_stdio_init",
-        constants$182.H5FD_stdio_init$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fapl_stdio$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_fapl_stdio$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_stdio",
-        constants$182.H5Pset_fapl_stdio$FUNC
-    );
-    static final MemorySegment H5_DEFAULT_PLUGINDIR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/usr/lib/x86_64-linux-gnu/hdf5/serial/plugins");
-    static final MemorySegment H5_EXAMPLESDIR$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("${prefix}/share/hdf5_examples");
 }
 
 

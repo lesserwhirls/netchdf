@@ -3,67 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$149 {
 
-class constants$149 {
-
-    static final FunctionDescriptor VSgetexternalfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$149() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "Hbitwrite",
+        constants$98.const$3
     );
-    static final MethodHandle VSgetexternalfile$MH = RuntimeHelper.downcallHandle(
-        "VSgetexternalfile",
-        constants$149.VSgetexternalfile$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hbitread",
+        constants$132.const$2
     );
-    static final FunctionDescriptor VSgetexternalinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Hbitseek",
+        constants$98.const$3
     );
-    static final MethodHandle VSgetexternalinfo$MH = RuntimeHelper.downcallHandle(
-        "VSgetexternalinfo",
-        constants$149.VSgetexternalinfo$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hgetbit",
+        constants$1.const$5
     );
-    static final FunctionDescriptor VSfpack$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hendbitaccess",
+        constants$93.const$3
     );
-    static final MethodHandle VSfpack$MH = RuntimeHelper.downcallHandle(
-        "VSfpack",
-        constants$149.VSfpack$FUNC
-    );
-    static final FunctionDescriptor VSPshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle VSPshutdown$MH = RuntimeHelper.downcallHandle(
-        "VSPshutdown",
-        constants$149.VSPshutdown$FUNC
-    );
-    static final FunctionDescriptor VSseek$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSseek$MH = RuntimeHelper.downcallHandle(
-        "VSseek",
-        constants$149.VSseek$FUNC
-    );
-    static final FunctionDescriptor VSread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSread$MH = RuntimeHelper.downcallHandle(
-        "VSread",
-        constants$149.VSread$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HPbitshutdown",
+        constants$28.const$3
     );
 }
 

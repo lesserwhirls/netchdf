@@ -3,67 +3,30 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$125 {
 
-class constants$125 {
-
-    static final FunctionDescriptor GRnametoindex$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRnametoindex$MH = RuntimeHelper.downcallHandle(
-        "GRnametoindex",
-        constants$125.GRnametoindex$FUNC
-    );
-    static final FunctionDescriptor GRgetiminfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRgetiminfo$MH = RuntimeHelper.downcallHandle(
-        "GRgetiminfo",
-        constants$125.GRgetiminfo$FUNC
-    );
-    static final FunctionDescriptor GRgetnluts$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle GRgetnluts$MH = RuntimeHelper.downcallHandle(
-        "GRgetnluts",
-        constants$125.GRgetnluts$FUNC
-    );
-    static final FunctionDescriptor GRwriteimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRwriteimage$MH = RuntimeHelper.downcallHandle(
-        "GRwriteimage",
-        constants$125.GRwriteimage$FUNC
-    );
-    static final FunctionDescriptor GRreadimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle GRreadimage$MH = RuntimeHelper.downcallHandle(
-        "GRreadimage",
-        constants$125.GRreadimage$FUNC
-    );
-    static final FunctionDescriptor GRendaccess$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle GRendaccess$MH = RuntimeHelper.downcallHandle(
-        "GRendaccess",
-        constants$125.GRendaccess$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$125() {}
+    static final SequenceLayout const$0 = MemoryLayout.sequenceLayout(33, JAVA_INT);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("maskl", constants$125.const$0);
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("nt"),
+            JAVA_INT.withName("ndim"),
+            RuntimeHelper.POINTER.withName("dims")
+        ).withName("dim")
+    ).withName("tag_model_info");
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("nt"),
+        JAVA_INT.withName("ndim"),
+        RuntimeHelper.POINTER.withName("dims")
+    ).withName("");
+    static final VarHandle const$4 = constants$125.const$3.varHandle(MemoryLayout.PathElement.groupElement("nt"));
+    static final VarHandle const$5 = constants$125.const$3.varHandle(MemoryLayout.PathElement.groupElement("ndim"));
 }
 
 

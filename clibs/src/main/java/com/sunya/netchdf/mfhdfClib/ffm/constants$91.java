@@ -3,71 +3,45 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$91 {
 
-class constants$91 {
-
-    static final FunctionDescriptor HXcreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle HXcreate$MH = RuntimeHelper.downcallHandle(
-        "HXcreate",
-        constants$91.HXcreate$FUNC
-    );
-    static final FunctionDescriptor HXsetcreatedir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HXsetcreatedir$MH = RuntimeHelper.downcallHandle(
-        "HXsetcreatedir",
-        constants$91.HXsetcreatedir$FUNC
-    );
-    static final FunctionDescriptor HXsetdir$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HXsetdir$MH = RuntimeHelper.downcallHandle(
-        "HXsetdir",
-        constants$91.HXsetdir$FUNC
-    );
-    static final FunctionDescriptor HCcreate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HCcreate$MH = RuntimeHelper.downcallHandle(
-        "HCcreate",
-        constants$91.HCcreate$FUNC
-    );
-    static final FunctionDescriptor HCPgetcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HCPgetcompress$MH = RuntimeHelper.downcallHandle(
-        "HCPgetcompress",
-        constants$91.HCPgetcompress$FUNC
-    );
-    static final FunctionDescriptor HCPgetcompinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle HCPgetcompinfo$MH = RuntimeHelper.downcallHandle(
-        "HCPgetcompinfo",
-        constants$91.HCPgetcompinfo$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$91() {}
+    static final VarHandle const$0 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("l_start"));
+    static final VarHandle const$1 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("l_len"));
+    static final VarHandle const$2 = constants$90.const$3.varHandle(MemoryLayout.PathElement.groupElement("l_pid"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("st_dev"),
+        JAVA_LONG.withName("st_ino"),
+        JAVA_LONG.withName("st_nlink"),
+        JAVA_INT.withName("st_mode"),
+        JAVA_INT.withName("st_uid"),
+        JAVA_INT.withName("st_gid"),
+        JAVA_INT.withName("__pad0"),
+        JAVA_LONG.withName("st_rdev"),
+        JAVA_LONG.withName("st_size"),
+        JAVA_LONG.withName("st_blksize"),
+        JAVA_LONG.withName("st_blocks"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("st_atim"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("st_mtim"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tv_sec"),
+            JAVA_LONG.withName("tv_nsec")
+        ).withName("st_ctim"),
+        MemoryLayout.sequenceLayout(3, JAVA_LONG).withName("__glibc_reserved")
+    ).withName("stat");
+    static final VarHandle const$4 = constants$91.const$3.varHandle(MemoryLayout.PathElement.groupElement("st_dev"));
+    static final VarHandle const$5 = constants$91.const$3.varHandle(MemoryLayout.PathElement.groupElement("st_ino"));
 }
 
 

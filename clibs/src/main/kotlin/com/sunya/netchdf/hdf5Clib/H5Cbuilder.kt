@@ -21,6 +21,8 @@ import java.nio.ByteBuffer
 const val MAX_NAME = 2048L
 const val MAX_DIMS = 255L
 
+const val H5P_DEFAULT_LONG = 0L
+
 // Really a builder of the root Group.
 class H5Cbuilder(val filename: String) {
     val rootBuilder = Group.Builder("")
@@ -34,11 +36,11 @@ class H5Cbuilder(val filename: String) {
     private val datasetMap = mutableMapOf<Long, Pair<Group.Builder, Variable.Builder<*>>>()
 
     init {
-        MemorySession.openConfined().use { session ->
+        Arena.ofConfined().use { session ->
             val filenameSeg: MemorySegment = session.allocateUtf8String(filename)
 
             //     public static long H5Fopen ( Addressable filename,  int flags,  long access_plist) {
-            file_id = H5Fopen(filenameSeg, H5F_ACC_RDONLY(), H5P_DEFAULT())
+            file_id = H5Fopen(filenameSeg, H5F_ACC_RDONLY(), H5P_DEFAULT_LONG)
             if (debug) println("H5Fopen $filename fileHandle ${this.file_id}")
 
             // read root group
@@ -152,7 +154,7 @@ class H5Cbuilder(val filename: String) {
         if (debug) println("${context.indent}readGroup for '$g5name'")
         // group = H5Gopen(file, "Data", H5P_DEFAULT);
         val groupName: MemorySegment = context.session.allocateUtf8String(g5name)
-        val group_id : Long = H5Gopen2(context.group5id, groupName, H5P_DEFAULT())
+        val group_id : Long = H5Gopen2(context.group5id, groupName, H5P_DEFAULT_LONG)
         if (debug) println("${context.indent}H5Gopen2 '$g5name' group_id=${group_id}")
         if (group_id < 0)
             return
@@ -220,20 +222,20 @@ class H5Cbuilder(val filename: String) {
         //[in,out]	op_data	User-defined callback function context
         // For non-recursive iteration across the members of a group, see H5Literate1().
         //val groupName2: MemorySegment = session.allocateUtf8String(g5name)
-        //val status2 = H5Lvisit(group_id, groupName, H5P_DEFAULT());
+        //val status2 = H5Lvisit(group_id, groupName, H5P_DEFAULT_LONG);
         //if (debug) println("H5Lvisit $groupName group_id ${group_id}")
     }
 
     // links are the subgroups and the data objects == variables.
     private inner class H5Lreceiver(val context : GroupContext) : H5L_iterate_t {
 
-        override fun apply(group: Long, name_p: MemoryAddress, infoAddress: MemoryAddress, op_data: MemoryAddress): Int {
+        override fun apply(group: Long, name_p: MemorySegment, infoAddress: MemorySegment, op_data: MemorySegment): Int {
             val linkname = name_p.getUtf8String(0)
             if (debug) println("${context.indent}H5Lreceiver link='$linkname'")
             val indent = context.indent.incr()
 
             // long H5Oopen ( long loc_id,  Addressable name,  long lapl_id) {
-            val loc_id = H5Oopen(group, name_p, H5P_DEFAULT())
+            val loc_id = H5Oopen(group, name_p, H5P_DEFAULT_LONG)
 
             // int H5Oget_info ( long loc_id,  Addressable oinfo) {
             val oinfo_p = H5O_info_t.allocate(context.session)
@@ -262,7 +264,7 @@ class H5Cbuilder(val filename: String) {
                 // the soft links are symbolic links that point to existing datasets
                 readDataset(linkname, num_attr.toInt(), context)
             } else if (otype == H5O_TYPE_NAMED_DATATYPE()) {
-                val type_id = H5Topen2(context.group5id,  name_p, H5P_DEFAULT())
+                val type_id = H5Topen2(context.group5id,  name_p, H5P_DEFAULT_LONG)
                 readH5CTypeInfo(context, type_id, linkname)
             }
             return 0
@@ -304,7 +306,7 @@ class H5Cbuilder(val filename: String) {
 
         // hid_t H5Dopen2(hid_t loc_id, const char * name, hid_t dapl_id)
         val obj_name_p: MemorySegment = context.session.allocateUtf8String(obj_name)
-        val datasetId = H5Dopen2(context.group5id,  obj_name_p, H5P_DEFAULT())
+        val datasetId = H5Dopen2(context.group5id,  obj_name_p, H5P_DEFAULT_LONG)
 
         // hid_t H5Dget_space	(	hid_t 	attr_id	)
         val dataspace_id = H5Dget_space(datasetId)
@@ -376,8 +378,8 @@ class H5Cbuilder(val filename: String) {
                 H5_INDEX_NAME(),
                 H5_ITER_INC(),
                 idx.toLong(),
-                H5P_DEFAULT(),
-                H5P_DEFAULT()
+                H5P_DEFAULT_LONG,
+                H5P_DEFAULT_LONG
             )
 
             // herr_t H5Aget_info	(	hid_t 	attr_id, H5A_info_t * 	ainfo)
@@ -414,7 +416,7 @@ class H5Cbuilder(val filename: String) {
                 results.add(att)
 
             } else if (h5ctype.datatype5 == Datatype5.Vlen) {
-                val vlen_p: MemorySegment = hvl_t.allocateArray(nelems.toInt(), context.session)
+                val vlen_p: MemorySegment = hvl_t.allocateArray(nelems, context.session)
                 checkErr("H5Aread Vlen", H5Aread(attr_id, h5ctype.type_id, vlen_p))
                 val base = h5ctype.base!!
                 val att = if (base.datatype5 == Datatype5.Reference) {
@@ -434,7 +436,7 @@ class H5Cbuilder(val filename: String) {
 
                 // long H5Rdereference2 ( long obj_id,  long oapl_id,  int ref_type,  Addressable ref)
                 // Returns identifier of referenced object
-                val refobjId = H5Rdereference2(attr_id, H5P_DEFAULT(), H5R_OBJECT(), refdata_p)
+                val refobjId = H5Rdereference2(attr_id, H5P_DEFAULT_LONG, H5R_OBJECT(), refdata_p)
                 val address = H5Dget_offset(refobjId)
                 val att = Attribute(aname, Datatype.REFERENCE, listOf(address))
                 results.add(att)
@@ -468,14 +470,14 @@ class H5Cbuilder(val filename: String) {
         return results
     }
 
-    internal fun readVlenStrings(session : MemorySession, attrId : Long, typeId : Long, nelems : Long) : List<String> {
+    internal fun readVlenStrings(session : Arena, attrId : Long, typeId : Long, nelems : Long) : List<String> {
         val strings_p: MemorySegment = session.allocateArray(ValueLayout.ADDRESS, nelems)
         checkErr("H5Aread VlenString", H5Aread(attrId, typeId, strings_p))
 
         val slist = mutableListOf<String>()
         for (i in 0 until nelems) {
-            val s2: MemoryAddress = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-            if (s2 != MemoryAddress.NULL) {
+            val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+            if (s2 != MemorySegment.NULL) {
                 val value = s2.getUtf8String(0)
                 // val tvalue = transcodeString(value)
                 slist.add(value)
@@ -493,7 +495,7 @@ class H5Cbuilder(val filename: String) {
         val attValues = mutableListOf<List<*>>()
         for (elem in 0 until nelems) {
             val count = hvl_t.`len$get`(vlen_p, elem)
-            val address: MemoryAddress = hvl_t.`p$get`(vlen_p, elem)
+            val address: MemorySegment = hvl_t.`p$get`(vlen_p, elem)
             val vlenValues = mutableListOf<Any>()
             for (idx in 0 until count) {
                 val value = when (basetype) {
@@ -517,7 +519,7 @@ class H5Cbuilder(val filename: String) {
         val parray = mutableListOf<Long>()
         for (elem in 0 until nelems) {
             val count = hvl_t.`len$get`(vlen_p, elem)
-            val address: MemoryAddress = hvl_t.`p$get`(vlen_p, elem)
+            val address: MemorySegment = hvl_t.`p$get`(vlen_p, elem)
             // hid_t H5Rdereference1(hid_t obj_id, H5R_type_t ref_type, const void *ref)
             // H5Rdereference1 ( long obj_id,  int ref_type,  Addressable ref)
             val refobjId = H5Rdereference1(obj_id, H5R_OBJECT(), address)
@@ -541,7 +543,7 @@ fun checkErr (where : String, ret: Int) {
     }
 }
 
-internal fun <T> readRegularData(session : MemorySession, datasetId : Long, h5ctype : H5CTypeInfo, datatype : Datatype<T>, want : Section) : ArrayTyped<T> {
+internal fun <T> readRegularData(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, datatype : Datatype<T>, want : Section) : ArrayTyped<T> {
     // int H5Dread ( long dset_id,  long mem_type_id,  long mem_space_id,  long file_space_id,  long plist_id,  Addressable buf) {
     // herr_t H5Dread(hid_t dset_id, hid_t 	mem_type_id, hid_t 	mem_space_id, hid_t file_space_id, hid_t dxpl_id, void *buf)
     //[in]	dset_id	Dataset identifier Identifier of the dataset to read from
@@ -559,14 +561,14 @@ internal fun <T> readRegularData(session : MemorySession, datasetId : Long, h5ct
     // mem_space_id is used to specify both the memory dataspace and the selection within that dataspace.
     // mem_space_id can be the constant H5S_ALL, in which case the file dataspace is used for the memory dataspace
     // and the selection defined with file_space_id is used for the selection within that dataspace.
-    // checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, H5S_ALL(), spaceId, H5P_DEFAULT(), data_p))
+    // checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, H5S_ALL(), spaceId, H5P_DEFAULT_LONG, data_p))
 
     val datatype = h5ctype.datatype()
     val size = want.totalElements * h5ctype.elemSize.toLong()
     val data_p = session.allocate(size)
 
     val (memSpaceId, fileSpaceId) = makeSection(session, datasetId, h5ctype, want)
-    checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT(), data_p))
+    checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT_LONG, data_p))
 
     val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
     val bb = ByteBuffer.wrap(raw)
@@ -582,7 +584,7 @@ internal fun <T> readRegularData(session : MemorySession, datasetId : Long, h5ct
     return processDataIntoArray(bb, h5ctype.datatype5, datatype, dims, h5ctype.elemSize) as ArrayTyped<T>
 }
 
-internal fun makeSection(session : MemorySession, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : Pair<Long, Long> {
+internal fun makeSection(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : Pair<Long, Long> {
     val datatype = h5ctype.datatype()
     val size = want.totalElements * h5ctype.elemSize.toLong()
     println("readRegularData want=$want nelems=${want.totalElements} $datatype size=$size")
@@ -655,13 +657,13 @@ internal fun <T> processDataIntoArray(bb: ByteBuffer, datatype5 : Datatype5, dat
 }
 
 // Put the variable length members (vlen, string) on the heap
-internal fun processCompoundData(session : MemorySession, sdataArray : ArrayStructureData, bb : ByteBuffer) : ArrayStructureData {
+internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureData, bb : ByteBuffer) : ArrayStructureData {
     sdataArray.putStringsOnHeap {  member, moffset ->
         val values = mutableListOf<String>()
         repeat(member.nelems) { idx ->
-            // MemoryAddress get(ValueLayout.OfAddress layout, long offset) {
+            // MemorySegment get(ValueLayout.OfAddress layout, long offset) {
             val longAddress = bb.getLong(moffset + idx * 8)
-            val address = MemoryAddress.ofLong(longAddress)
+            val address = MemorySegment.ofAddress(longAddress)
             val sval = address.getUtf8String(0)
             values.add(sval)
         }
@@ -673,7 +675,7 @@ internal fun processCompoundData(session : MemorySession, sdataArray : ArrayStru
         repeat(member.nelems) { idx ->
             val arraySize = bb.getLong(moffset + idx * 8).toInt()
             val longAddress = bb.getLong(moffset + idx * 8 + 8)
-            val address = MemoryAddress.ofLong(longAddress)
+            val address = MemorySegment.ofAddress(longAddress)
             listOfVlen.add( readVlenArray(arraySize, address, member.datatype.typedef!!.baseType))
         }
         ArrayVlen.fromArray(member.dims, listOfVlen, member.datatype.typedef!!.baseType)
@@ -683,7 +685,7 @@ internal fun processCompoundData(session : MemorySession, sdataArray : ArrayStru
 }
 
 // TODO ENUMS seem to be wrong
-private fun readVlenArray(arraySize : Int, address : MemoryAddress, datatype : Datatype<*>) : Array<*> {
+private fun readVlenArray(arraySize : Int, address : MemorySegment, datatype : Datatype<*>) : Array<*> {
     return when (datatype) {
         Datatype.FLOAT -> Array(arraySize) { idx -> address.getAtIndex(ValueLayout.JAVA_FLOAT, idx.toLong()) }
         Datatype.DOUBLE -> Array(arraySize) { idx -> address.getAtIndex(ValueLayout.JAVA_DOUBLE, idx.toLong()) }
@@ -695,4 +697,4 @@ private fun readVlenArray(arraySize : Int, address : MemoryAddress, datatype : D
     }
 }
 
-data class GroupContext(val session : MemorySession, val group: Group.Builder, val group5id: Long, val indent : Indent)
+data class GroupContext(val session : Arena, val group: Group.Builder, val group5id: Long, val indent : Indent)

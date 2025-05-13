@@ -7,14 +7,32 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$203 {
+final class constants$203 {
 
-    static final MemorySegment SCNiFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("li");
-    static final MemorySegment SCNu8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
-    static final MemorySegment SCNu16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hu");
-    static final MemorySegment SCNu32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment SCNu64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNuLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$203() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("fileno"),
+        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("objno"),
+        JAVA_INT.withName("nlink"),
+        JAVA_INT.withName("type"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("linklen"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("size"),
+            JAVA_LONG.withName("free"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks")
+        ).withName("ohdr")
+    ).withName("H5G_stat_t");
+    static final VarHandle const$1 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("nlink"));
+    static final VarHandle const$2 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$3 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
+    static final VarHandle const$4 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("linklen"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Gcreate1",
+        constants$19.const$3
+    );
 }
 
 

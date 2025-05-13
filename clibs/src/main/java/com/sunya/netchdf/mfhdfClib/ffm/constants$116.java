@@ -3,55 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$116 {
 
-class constants$116 {
-
-    static final FunctionDescriptor DFSDgetslice$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$116() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "flock",
+        constants$93.const$3
     );
-    static final MethodHandle DFSDgetslice$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetslice",
-        constants$116.DFSDgetslice$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "stat",
+        constants$19.const$5
     );
-    static final FunctionDescriptor DFSDstartslice$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fstat",
+        constants$5.const$3
     );
-    static final MethodHandle DFSDstartslice$MH = RuntimeHelper.downcallHandle(
-        "DFSDstartslice",
-        constants$116.DFSDstartslice$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final FunctionDescriptor DFSDputslice$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fstatat",
+        constants$116.const$3
     );
-    static final MethodHandle DFSDputslice$MH = RuntimeHelper.downcallHandle(
-        "DFSDputslice",
-        constants$116.DFSDputslice$FUNC
-    );
-    static final FunctionDescriptor DFSDendslice$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFSDendslice$MH = RuntimeHelper.downcallHandle(
-        "DFSDendslice",
-        constants$116.DFSDendslice$FUNC
-    );
-    static final FunctionDescriptor DFSDsetNT$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFSDsetNT$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetNT",
-        constants$116.DFSDsetNT$FUNC
-    );
-    static final FunctionDescriptor DFSDsetorder$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFSDsetorder$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetorder",
-        constants$116.DFSDsetorder$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "lstat",
+        constants$19.const$5
     );
 }
 

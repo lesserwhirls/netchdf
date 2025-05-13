@@ -7,59 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$139 {
+final class constants$139 {
 
-    static final FunctionDescriptor H5Pget_class_parent$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_class_parent$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_class_parent",
-        constants$139.H5Pget_class_parent$FUNC
-    );
-    static final FunctionDescriptor H5Pget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget$MH = RuntimeHelper.downcallHandle(
-        "H5Pget",
-        constants$139.H5Pget$FUNC
-    );
-    static final FunctionDescriptor H5Pequal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pequal$MH = RuntimeHelper.downcallHandle(
-        "H5Pequal",
-        constants$139.H5Pequal$FUNC
-    );
-    static final FunctionDescriptor H5Pisa_class$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pisa_class$MH = RuntimeHelper.downcallHandle(
-        "H5Pisa_class",
-        constants$139.H5Pisa_class$FUNC
-    );
-    static final FunctionDescriptor H5Piterate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Piterate$MH = RuntimeHelper.downcallHandle(
-        "H5Piterate",
-        constants$139.H5Piterate$FUNC
-    );
-    static final FunctionDescriptor H5Pcopy_prop$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pcopy_prop$MH = RuntimeHelper.downcallHandle(
-        "H5Pcopy_prop",
-        constants$139.H5Pcopy_prop$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$139() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGC_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGETSIZE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_OBJOPEN_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTRESTORE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOMPUTE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTEXTEND_g", JAVA_LONG);
 }
 
 

@@ -3,53 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$167 {
 
-class constants$167 {
-
-    static final FunctionDescriptor SDcheckempty$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$167() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle SDcheckempty$MH = RuntimeHelper.downcallHandle(
-        "SDcheckempty",
-        constants$167.SDcheckempty$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFANlablist",
+        constants$167.const$0
     );
-    static final FunctionDescriptor SDidtype$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFANclear",
+        constants$28.const$3
     );
-    static final MethodHandle SDidtype$MH = RuntimeHelper.downcallHandle(
-        "SDidtype",
-        constants$167.SDidtype$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFANIclear",
+        constants$28.const$3
     );
-    static final FunctionDescriptor SDreset_maxopenfiles$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_SHORT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle SDreset_maxopenfiles$MH = RuntimeHelper.downcallHandle(
-        "SDreset_maxopenfiles",
-        constants$167.SDreset_maxopenfiles$FUNC
-    );
-    static final FunctionDescriptor SDget_maxopenfiles$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDget_maxopenfiles$MH = RuntimeHelper.downcallHandle(
-        "SDget_maxopenfiles",
-        constants$167.SDget_maxopenfiles$FUNC
-    );
-    static final FunctionDescriptor SDget_numopenfiles$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle SDget_numopenfiles$MH = RuntimeHelper.downcallHandle(
-        "SDget_numopenfiles",
-        constants$167.SDget_numopenfiles$FUNC
-    );
-    static final FunctionDescriptor SDgetdatasize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle SDgetdatasize$MH = RuntimeHelper.downcallHandle(
-        "SDgetdatasize",
-        constants$167.SDgetdatasize$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFANIlocate",
+        constants$167.const$4
     );
 }
 

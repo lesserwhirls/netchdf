@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5D_append_cb_t)(long dataset_id,unsigned long long* cur_dims,void* op_data);
+ * }
+ */
 public interface H5D_append_cb_t {
 
-    int apply(long dataset_id, java.lang.foreign.MemoryAddress cur_dims, java.lang.foreign.MemoryAddress op_data);
-    static MemorySegment allocate(H5D_append_cb_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5D_append_cb_t.class, fi, constants$53.H5D_append_cb_t$FUNC, session);
+    int apply(long id, java.lang.foreign.MemorySegment name, java.lang.foreign.MemorySegment iter_data);
+    static MemorySegment allocate(H5D_append_cb_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$93.const$3, fi, constants$41.const$4, scope);
     }
-    static H5D_append_cb_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _dataset_id, java.lang.foreign.MemoryAddress _cur_dims, java.lang.foreign.MemoryAddress _op_data) -> {
+    static H5D_append_cb_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _id, java.lang.foreign.MemorySegment _name, java.lang.foreign.MemorySegment _iter_data) -> {
             try {
-                return (int)constants$53.H5D_append_cb_t$MH.invokeExact((Addressable)symbol, _dataset_id, (java.lang.foreign.Addressable)_cur_dims, (java.lang.foreign.Addressable)_op_data);
+                return (int)constants$86.const$4.invokeExact(symbol, _id, _name, _iter_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

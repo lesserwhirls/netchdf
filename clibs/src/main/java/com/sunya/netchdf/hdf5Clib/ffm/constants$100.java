@@ -7,26 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$100 {
+final class constants$100 {
 
-    static final  OfLong H5E_BADSELECT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_BADSELECT_g$VH = constants$100.H5E_BADSELECT_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_BADSELECT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_BADSELECT_g", constants$100.H5E_BADSELECT_g$LAYOUT);
-    static final  OfLong H5E_CANTCOMPARE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCOMPARE_g$VH = constants$100.H5E_CANTCOMPARE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCOMPARE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOMPARE_g", constants$100.H5E_CANTCOMPARE_g$LAYOUT);
-    static final  OfLong H5E_INCONSISTENTSTATE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_INCONSISTENTSTATE_g$VH = constants$100.H5E_INCONSISTENTSTATE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_INCONSISTENTSTATE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_INCONSISTENTSTATE_g", constants$100.H5E_INCONSISTENTSTATE_g$LAYOUT);
-    static final  OfLong H5E_CANTAPPEND_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTAPPEND_g$VH = constants$100.H5E_CANTAPPEND_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTAPPEND_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTAPPEND_g", constants$100.H5E_CANTAPPEND_g$LAYOUT);
-    static final  OfLong H5E_UNINITIALIZED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_UNINITIALIZED_g$VH = constants$100.H5E_UNINITIALIZED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_UNINITIALIZED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_UNINITIALIZED_g", constants$100.H5E_UNINITIALIZED_g$LAYOUT);
-    static final  OfLong H5E_UNSUPPORTED_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_UNSUPPORTED_g$VH = constants$100.H5E_UNSUPPORTED_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_UNSUPPORTED_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_UNSUPPORTED_g", constants$100.H5E_UNSUPPORTED_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$100() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dvlen_reclaim",
+        constants$100.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dvlen_get_buf_size",
+        constants$100.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dfill",
+        constants$55.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dset_extent",
+        constants$44.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dflush",
+        constants$19.const$0
+    );
 }
 
 

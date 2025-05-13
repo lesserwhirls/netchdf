@@ -7,61 +7,55 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$70 {
+final class constants$70 {
 
-    static final FunctionDescriptor fputs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fputs$MH = RuntimeHelper.downcallHandle(
-        "fputs",
-        constants$70.fputs$FUNC
-    );
-    static final FunctionDescriptor puts$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle puts$MH = RuntimeHelper.downcallHandle(
-        "puts",
-        constants$70.puts$FUNC
-    );
-    static final FunctionDescriptor ungetc$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ungetc$MH = RuntimeHelper.downcallHandle(
-        "ungetc",
-        constants$70.ungetc$FUNC
-    );
-    static final FunctionDescriptor fread$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fread$MH = RuntimeHelper.downcallHandle(
-        "fread",
-        constants$70.fread$FUNC
-    );
-    static final FunctionDescriptor fwrite$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fwrite$MH = RuntimeHelper.downcallHandle(
-        "fwrite",
-        constants$70.fwrite$FUNC
-    );
-    static final FunctionDescriptor fread_unlocked$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fread_unlocked$MH = RuntimeHelper.downcallHandle(
-        "fread_unlocked",
-        constants$70.fread_unlocked$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$70() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("present"),
+        JAVA_LONG.withName("shared")
+    ).withName("");
+    static final VarHandle const$1 = constants$70.const$0.varHandle(MemoryLayout.PathElement.groupElement("present"));
+    static final VarHandle const$2 = constants$70.const$0.varHandle(MemoryLayout.PathElement.groupElement("shared"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fileno"),
+        JAVA_LONG.withName("addr"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("rc"),
+        JAVA_LONG.withName("atime"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("ctime"),
+        JAVA_LONG.withName("btime"),
+        JAVA_LONG.withName("num_attrs"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks"),
+            JAVA_INT.withName("flags"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("total"),
+                JAVA_LONG.withName("meta"),
+                JAVA_LONG.withName("mesg"),
+                JAVA_LONG.withName("free")
+            ).withName("space"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("present"),
+                JAVA_LONG.withName("shared")
+            ).withName("mesg")
+        ).withName("hdr"),
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("obj"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("attr")
+        ).withName("meta_size")
+    ).withName("H5O_info_t");
+    static final VarHandle const$4 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final VarHandle const$5 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("addr"));
 }
 
 

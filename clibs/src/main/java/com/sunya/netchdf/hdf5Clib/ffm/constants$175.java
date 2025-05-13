@@ -7,56 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$175 {
+final class constants$175 {
 
-    static final FunctionDescriptor H5Sselect_copy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$175() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fclear_elink_file_cache",
+        constants$19.const$0
     );
-    static final MethodHandle H5Sselect_copy$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_copy",
-        constants$175.H5Sselect_copy$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fset_libver_bounds",
+        constants$50.const$3
     );
-    static final FunctionDescriptor H5Sselect_valid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fstart_mdc_logging",
+        constants$19.const$0
     );
-    static final MethodHandle H5Sselect_valid$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_valid",
-        constants$175.H5Sselect_valid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fstop_mdc_logging",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Sselect_adjust$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_logging_status",
+        constants$41.const$4
     );
-    static final MethodHandle H5Sselect_adjust$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_adjust",
-        constants$175.H5Sselect_adjust$FUNC
-    );
-    static final FunctionDescriptor H5Sget_select_bounds$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sget_select_bounds$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_select_bounds",
-        constants$175.H5Sget_select_bounds$FUNC
-    );
-    static final FunctionDescriptor H5Sselect_shape_same$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sselect_shape_same$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_shape_same",
-        constants$175.H5Sselect_shape_same$FUNC
-    );
-    static final FunctionDescriptor H5Sselect_intersect_block$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sselect_intersect_block$MH = RuntimeHelper.downcallHandle(
-        "H5Sselect_intersect_block",
-        constants$175.H5Sselect_intersect_block$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fformat_convert",
+        constants$19.const$0
     );
 }
 

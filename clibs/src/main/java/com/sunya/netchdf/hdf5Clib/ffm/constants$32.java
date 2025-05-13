@@ -7,61 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$32 {
+final class constants$32 {
 
-    static final FunctionDescriptor H5Tset_offset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tset_offset$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_offset",
-        constants$32.H5Tset_offset$FUNC
-    );
-    static final FunctionDescriptor H5Tset_pad$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tset_pad$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_pad",
-        constants$32.H5Tset_pad$FUNC
-    );
-    static final FunctionDescriptor H5Tset_sign$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tset_sign$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_sign",
-        constants$32.H5Tset_sign$FUNC
-    );
-    static final FunctionDescriptor H5Tset_fields$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tset_fields$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_fields",
-        constants$32.H5Tset_fields$FUNC
-    );
-    static final FunctionDescriptor H5Tset_ebias$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tset_ebias$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_ebias",
-        constants$32.H5Tset_ebias$FUNC
-    );
-    static final FunctionDescriptor H5Tset_norm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Tset_norm$MH = RuntimeHelper.downcallHandle(
-        "H5Tset_norm",
-        constants$32.H5Tset_norm$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$32() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_USHORT_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_LONG_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_ULONG_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_LLONG_g", JAVA_LONG);
 }
 
 

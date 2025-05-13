@@ -7,33 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$131 {
+final class constants$131 {
 
-    static final FunctionDescriptor H5P_prp_close_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5P_prp_close_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$131.H5P_prp_close_func_t$FUNC
-    );
-    static final FunctionDescriptor H5P_iterate_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5P_iterate_t$MH = RuntimeHelper.downcallHandle(
-        constants$131.H5P_iterate_t$FUNC
-    );
-    static final  OfLong H5P_CLS_ROOT_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_CLS_ROOT_ID_g$VH = constants$131.H5P_CLS_ROOT_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_CLS_ROOT_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ROOT_ID_g", constants$131.H5P_CLS_ROOT_ID_g$LAYOUT);
-    static final  OfLong H5P_CLS_OBJECT_CREATE_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_CLS_OBJECT_CREATE_ID_g$VH = constants$131.H5P_CLS_OBJECT_CREATE_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_CLS_OBJECT_CREATE_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_CLS_OBJECT_CREATE_ID_g", constants$131.H5P_CLS_OBJECT_CREATE_ID_g$LAYOUT);
-    static final  OfLong H5P_CLS_FILE_CREATE_ID_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5P_CLS_FILE_CREATE_ID_g$VH = constants$131.H5P_CLS_FILE_CREATE_ID_g$LAYOUT.varHandle();
-    static final MemorySegment H5P_CLS_FILE_CREATE_ID_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5P_CLS_FILE_CREATE_ID_g", constants$131.H5P_CLS_FILE_CREATE_ID_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$131() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_FUNC_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_FILE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_SOHM_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_SYM_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_PLUGIN_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_VFL_g", JAVA_LONG);
 }
 
 

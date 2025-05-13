@@ -7,57 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$117 {
+final class constants$117 {
 
-    static final FunctionDescriptor H5FDunregister$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$117() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "fprintf",
+        constants$112.const$0
     );
-    static final MethodHandle H5FDunregister$MH = RuntimeHelper.downcallHandle(
-        "H5FDunregister",
-        constants$117.H5FDunregister$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "printf",
+        constants$15.const$2
     );
-    static final FunctionDescriptor H5FDopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandleVariadic(
+        "sprintf",
+        constants$112.const$0
     );
-    static final MethodHandle H5FDopen$MH = RuntimeHelper.downcallHandle(
-        "H5FDopen",
-        constants$117.H5FDopen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vfprintf",
+        constants$15.const$4
     );
-    static final FunctionDescriptor H5FDclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "vprintf",
+        constants$112.const$0
     );
-    static final MethodHandle H5FDclose$MH = RuntimeHelper.downcallHandle(
-        "H5FDclose",
-        constants$117.H5FDclose$FUNC
-    );
-    static final FunctionDescriptor H5FDcmp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5FDcmp$MH = RuntimeHelper.downcallHandle(
-        "H5FDcmp",
-        constants$117.H5FDcmp$FUNC
-    );
-    static final FunctionDescriptor H5FDquery$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5FDquery$MH = RuntimeHelper.downcallHandle(
-        "H5FDquery",
-        constants$117.H5FDquery$FUNC
-    );
-    static final FunctionDescriptor H5FDalloc$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5FDalloc$MH = RuntimeHelper.downcallHandle(
-        "H5FDalloc",
-        constants$117.H5FDalloc$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "vsprintf",
+        constants$15.const$4
     );
 }
 

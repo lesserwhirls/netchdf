@@ -3,53 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$101 {
 
-class constants$101 {
-
-    static final FunctionDescriptor DFR8addimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$101() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "execle",
+        constants$19.const$5
     );
-    static final MethodHandle DFR8addimage$MH = RuntimeHelper.downcallHandle(
-        "DFR8addimage",
-        constants$101.DFR8addimage$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "execl",
+        constants$19.const$5
     );
-    static final FunctionDescriptor DFR8nimages$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "execvp",
+        constants$19.const$5
     );
-    static final MethodHandle DFR8nimages$MH = RuntimeHelper.downcallHandle(
-        "DFR8nimages",
-        constants$101.DFR8nimages$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "execlp",
+        constants$19.const$5
     );
-    static final FunctionDescriptor DFR8readref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nice",
+        constants$1.const$5
     );
-    static final MethodHandle DFR8readref$MH = RuntimeHelper.downcallHandle(
-        "DFR8readref",
-        constants$101.DFR8readref$FUNC
-    );
-    static final FunctionDescriptor DFR8writeref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFR8writeref$MH = RuntimeHelper.downcallHandle(
-        "DFR8writeref",
-        constants$101.DFR8writeref$FUNC
-    );
-    static final FunctionDescriptor DFR8restart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFR8restart$MH = RuntimeHelper.downcallHandle(
-        "DFR8restart",
-        constants$101.DFR8restart$FUNC
-    );
-    static final FunctionDescriptor DFR8lastref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT);
-    static final MethodHandle DFR8lastref$MH = RuntimeHelper.downcallHandle(
-        "DFR8lastref",
-        constants$101.DFR8lastref$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "_exit",
+        constants$51.const$2
     );
 }
 

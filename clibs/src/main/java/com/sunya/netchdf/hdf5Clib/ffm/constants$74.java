@@ -7,50 +7,42 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$74 {
+final class constants$74 {
 
-    static final FunctionDescriptor popen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$74() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle popen$MH = RuntimeHelper.downcallHandle(
-        "popen",
-        constants$74.popen$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_idx2",
+        constants$74.const$0
     );
-    static final FunctionDescriptor ctermid$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle ctermid$MH = RuntimeHelper.downcallHandle(
-        "ctermid",
-        constants$74.ctermid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Olink",
+        constants$74.const$2
     );
-    static final FunctionDescriptor flockfile$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oincr_refcount",
+        constants$19.const$0
     );
-    static final MethodHandle flockfile$MH = RuntimeHelper.downcallHandle(
-        "flockfile",
-        constants$74.flockfile$FUNC
-    );
-    static final FunctionDescriptor ftrylockfile$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle ftrylockfile$MH = RuntimeHelper.downcallHandle(
-        "ftrylockfile",
-        constants$74.ftrylockfile$FUNC
-    );
-    static final FunctionDescriptor funlockfile$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle funlockfile$MH = RuntimeHelper.downcallHandle(
-        "funlockfile",
-        constants$74.funlockfile$FUNC
-    );
-    static final FunctionDescriptor __uflow$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle __uflow$MH = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$74.__uflow$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Odecr_refcount",
+        constants$19.const$0
     );
 }
 

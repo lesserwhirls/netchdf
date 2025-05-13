@@ -3,65 +3,42 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$1 {
 
-class constants$1 {
-
-    static final FunctionDescriptor nc_get_alignment$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$1() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle nc_get_alignment$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_def_user_format",
+        constants$1.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_inq_user_format",
+        constants$1.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_set_alignment",
+        constants$1.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
         "nc_get_alignment",
-        constants$1.nc_get_alignment$FUNC
-    );
-    static final FunctionDescriptor nc__create$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc__create$MH = RuntimeHelper.downcallHandle(
-        "nc__create",
-        constants$1.nc__create$FUNC
-    );
-    static final FunctionDescriptor nc_create$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_create$MH = RuntimeHelper.downcallHandle(
-        "nc_create",
-        constants$1.nc_create$FUNC
-    );
-    static final FunctionDescriptor nc__open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc__open$MH = RuntimeHelper.downcallHandle(
-        "nc__open",
-        constants$1.nc__open$FUNC
-    );
-    static final FunctionDescriptor nc_open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_open$MH = RuntimeHelper.downcallHandle(
-        "nc_open",
-        constants$1.nc_open$FUNC
-    );
-    static final FunctionDescriptor nc_inq_path$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_path$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_path",
-        constants$1.nc_inq_path$FUNC
+        constants$1.const$5
     );
 }
 

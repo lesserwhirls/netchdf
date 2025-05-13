@@ -3,62 +3,36 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$10 {
 
-class constants$10 {
-
-    static final FunctionDescriptor freopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$10() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "wcstoumax",
+        constants$9.const$2
     );
-    static final MethodHandle freopen$MH = RuntimeHelper.downcallHandle(
-        "freopen",
-        constants$10.freopen$FUNC
-    );
-    static final FunctionDescriptor fdopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fdopen$MH = RuntimeHelper.downcallHandle(
-        "fdopen",
-        constants$10.fdopen$FUNC
-    );
-    static final FunctionDescriptor fmemopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle fmemopen$MH = RuntimeHelper.downcallHandle(
-        "fmemopen",
-        constants$10.fmemopen$FUNC
-    );
-    static final FunctionDescriptor open_memstream$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle open_memstream$MH = RuntimeHelper.downcallHandle(
-        "open_memstream",
-        constants$10.open_memstream$FUNC
-    );
-    static final FunctionDescriptor setbuf$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle setbuf$MH = RuntimeHelper.downcallHandle(
-        "setbuf",
-        constants$10.setbuf$FUNC
-    );
-    static final FunctionDescriptor setvbuf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle setvbuf$MH = RuntimeHelper.downcallHandle(
-        "setvbuf",
-        constants$10.setvbuf$FUNC
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__clang_max_align_nonce1"),
+        MemoryLayout.paddingLayout(8),
+        MemoryLayout.paddingLayout(16).withName("__clang_max_align_nonce2")
+    ).withName("");
+    static final VarHandle const$2 = constants$10.const$1.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__count"),
+        MemoryLayout.unionLayout(
+            JAVA_INT.withName("__wch"),
+            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+        ).withName("__value")
+    ).withName("");
+    static final VarHandle const$4 = constants$10.const$3.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        JAVA_INT.withName("__wch"),
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+    ).withName("");
 }
 
 

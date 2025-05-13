@@ -3,55 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$99 {
 
-class constants$99 {
-
-    static final FunctionDescriptor DFPputpal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$99() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle DFPputpal$MH = RuntimeHelper.downcallHandle(
-        "DFPputpal",
-        constants$99.DFPputpal$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fchownat",
+        constants$99.const$0
     );
-    static final FunctionDescriptor DFPaddpal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "chdir",
+        constants$17.const$4
     );
-    static final MethodHandle DFPaddpal$MH = RuntimeHelper.downcallHandle(
-        "DFPaddpal",
-        constants$99.DFPaddpal$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fchdir",
+        constants$1.const$5
     );
-    static final FunctionDescriptor DFPnpals$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "getcwd",
+        constants$59.const$4
     );
-    static final MethodHandle DFPnpals$MH = RuntimeHelper.downcallHandle(
-        "DFPnpals",
-        constants$99.DFPnpals$FUNC
-    );
-    static final FunctionDescriptor DFPreadref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFPreadref$MH = RuntimeHelper.downcallHandle(
-        "DFPreadref",
-        constants$99.DFPreadref$FUNC
-    );
-    static final FunctionDescriptor DFPwriteref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFPwriteref$MH = RuntimeHelper.downcallHandle(
-        "DFPwriteref",
-        constants$99.DFPwriteref$FUNC
-    );
-    static final FunctionDescriptor DFPrestart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFPrestart$MH = RuntimeHelper.downcallHandle(
-        "DFPrestart",
-        constants$99.DFPrestart$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getwd",
+        constants$20.const$4
     );
 }
 

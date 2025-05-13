@@ -7,45 +7,26 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$109 {
+final class constants$109 {
 
-    static final FunctionDescriptor H5Ewalk1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$109() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle H5Ewalk1$MH = RuntimeHelper.downcallHandle(
-        "H5Ewalk1",
-        constants$109.H5Ewalk1$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_read_function_t.class, "apply", constants$109.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$109.const$0
     );
-    static final FunctionDescriptor H5Eget_major$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$109.const$0);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle H5Eget_major$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_major",
-        constants$109.H5Eget_major$FUNC
-    );
-    static final FunctionDescriptor H5Eget_minor$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Eget_minor$MH = RuntimeHelper.downcallHandle(
-        "H5Eget_minor",
-        constants$109.H5Eget_minor$FUNC
-    );
-    static final FunctionDescriptor H5F_flush_cb_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5F_flush_cb_t$MH = RuntimeHelper.downcallHandle(
-        constants$109.H5F_flush_cb_t$FUNC
-    );
-    static final FunctionDescriptor H5Fis_hdf5$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fis_hdf5$MH = RuntimeHelper.downcallHandle(
-        "H5Fis_hdf5",
-        constants$109.H5Fis_hdf5$FUNC
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$109.const$4);
 }
 
 

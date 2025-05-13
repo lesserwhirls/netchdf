@@ -3,53 +3,42 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$0 {
 
-class constants$0 {
-
-    static final FunctionDescriptor __assert_fail$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$0() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle __assert_fail$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "__assert_fail",
-        constants$0.__assert_fail$FUNC
+        constants$0.const$0
     );
-    static final FunctionDescriptor __assert_perror_fail$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle __assert_perror_fail$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "__assert_perror_fail",
-        constants$0.__assert_perror_fail$FUNC
+        constants$0.const$2
     );
-    static final FunctionDescriptor __assert$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle __assert$MH = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         "__assert",
-        constants$0.__assert$FUNC
-    );
-    static final FunctionDescriptor __ctype_b_loc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle __ctype_b_loc$MH = RuntimeHelper.downcallHandle(
-        "__ctype_b_loc",
-        constants$0.__ctype_b_loc$FUNC
-    );
-    static final FunctionDescriptor __ctype_tolower_loc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle __ctype_tolower_loc$MH = RuntimeHelper.downcallHandle(
-        "__ctype_tolower_loc",
-        constants$0.__ctype_tolower_loc$FUNC
-    );
-    static final FunctionDescriptor __ctype_toupper_loc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT);
-    static final MethodHandle __ctype_toupper_loc$MH = RuntimeHelper.downcallHandle(
-        "__ctype_toupper_loc",
-        constants$0.__ctype_toupper_loc$FUNC
+        constants$0.const$4
     );
 }
 

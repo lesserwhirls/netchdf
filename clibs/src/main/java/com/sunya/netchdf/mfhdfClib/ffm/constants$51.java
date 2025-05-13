@@ -4,32 +4,33 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$51 {
+final class constants$51 {
 
-    static final FunctionDescriptor ctime_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$51() {}
+    static final VarHandle const$0 = constants$50.const$5.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "random",
+        constants$38.const$3
     );
-    static final MethodHandle ctime_r$MH = RuntimeHelper.downcallHandle(
-        "ctime_r",
-        constants$51.ctime_r$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        JAVA_INT
     );
-    static final  SequenceLayout __tzname$LAYOUT = MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT);
-    static final MemorySegment __tzname$SEGMENT = RuntimeHelper.lookupGlobalVariable("__tzname", constants$51.__tzname$LAYOUT);
-    static final  OfInt __daylight$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle __daylight$VH = constants$51.__daylight$LAYOUT.varHandle();
-    static final MemorySegment __daylight$SEGMENT = RuntimeHelper.lookupGlobalVariable("__daylight", constants$51.__daylight$LAYOUT);
-    static final  OfLong __timezone$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle __timezone$VH = constants$51.__timezone$LAYOUT.varHandle();
-    static final MemorySegment __timezone$SEGMENT = RuntimeHelper.lookupGlobalVariable("__timezone", constants$51.__timezone$LAYOUT);
-    static final  SequenceLayout tzname$LAYOUT = MemoryLayout.sequenceLayout(2, Constants$root.C_POINTER$LAYOUT);
-    static final MemorySegment tzname$SEGMENT = RuntimeHelper.lookupGlobalVariable("tzname", constants$51.tzname$LAYOUT);
-    static final FunctionDescriptor tzset$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle tzset$MH = RuntimeHelper.downcallHandle(
-        "tzset",
-        constants$51.tzset$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "srandom",
+        constants$51.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "initstate",
+        constants$51.const$4
     );
 }
 

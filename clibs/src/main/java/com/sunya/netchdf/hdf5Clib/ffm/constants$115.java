@@ -7,56 +7,44 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$115 {
+final class constants$115 {
 
-    static final FunctionDescriptor H5Fstart_mdc_logging$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$115() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("read"),
+            RuntimeHelper.POINTER.withName("write"),
+            RuntimeHelper.POINTER.withName("seek"),
+            RuntimeHelper.POINTER.withName("close")
+        ).withName("_IO_cookie_io_functions_t")
     );
-    static final MethodHandle H5Fstart_mdc_logging$MH = RuntimeHelper.downcallHandle(
-        "H5Fstart_mdc_logging",
-        constants$115.H5Fstart_mdc_logging$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fopencookie",
+        constants$115.const$0
     );
-    static final FunctionDescriptor H5Fstop_mdc_logging$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Fstop_mdc_logging$MH = RuntimeHelper.downcallHandle(
-        "H5Fstop_mdc_logging",
-        constants$115.H5Fstop_mdc_logging$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fmemopen",
+        constants$115.const$2
     );
-    static final FunctionDescriptor H5Fget_mdc_logging_status$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "open_memstream",
+        constants$113.const$3
     );
-    static final MethodHandle H5Fget_mdc_logging_status$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_logging_status",
-        constants$115.H5Fget_mdc_logging_status$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Fformat_convert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fformat_convert$MH = RuntimeHelper.downcallHandle(
-        "H5Fformat_convert",
-        constants$115.H5Fformat_convert$FUNC
-    );
-    static final FunctionDescriptor H5Freset_page_buffering_stats$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Freset_page_buffering_stats$MH = RuntimeHelper.downcallHandle(
-        "H5Freset_page_buffering_stats",
-        constants$115.H5Freset_page_buffering_stats$FUNC
-    );
-    static final FunctionDescriptor H5Fget_page_buffering_stats$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_page_buffering_stats$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_page_buffering_stats",
-        constants$115.H5Fget_page_buffering_stats$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "setbuf",
+        constants$115.const$5
     );
 }
 

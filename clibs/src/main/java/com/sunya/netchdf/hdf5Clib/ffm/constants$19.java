@@ -7,26 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$19 {
+final class constants$19 {
 
-    static final  OfLong H5T_NATIVE_HBOOL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_HBOOL_g$VH = constants$19.H5T_NATIVE_HBOOL_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_HBOOL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HBOOL_g", constants$19.H5T_NATIVE_HBOOL_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_INT8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_INT8_g$VH = constants$19.H5T_NATIVE_INT8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_INT8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT8_g", constants$19.H5T_NATIVE_INT8_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_UINT8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_UINT8_g$VH = constants$19.H5T_NATIVE_UINT8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_UINT8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT8_g", constants$19.H5T_NATIVE_UINT8_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_INT_LEAST8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_INT_LEAST8_g$VH = constants$19.H5T_NATIVE_INT_LEAST8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_INT_LEAST8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST8_g", constants$19.H5T_NATIVE_INT_LEAST8_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_UINT_LEAST8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_UINT_LEAST8_g$VH = constants$19.H5T_NATIVE_UINT_LEAST8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_UINT_LEAST8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST8_g", constants$19.H5T_NATIVE_UINT_LEAST8_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_INT_FAST8_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_INT_FAST8_g$VH = constants$19.H5T_NATIVE_INT_FAST8_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_INT_FAST8_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST8_g", constants$19.H5T_NATIVE_INT_FAST8_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$19() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Iget_type",
+        constants$19.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Iget_file_id",
+        constants$10.const$2
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Iget_name",
+        constants$19.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Iinc_ref",
+        constants$19.const$0
+    );
 }
 
 

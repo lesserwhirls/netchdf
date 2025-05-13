@@ -3,59 +3,25 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$44 {
 
-class constants$44 {
-
-    static final FunctionDescriptor strpbrk$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strpbrk$MH = RuntimeHelper.downcallHandle(
-        "strpbrk",
-        constants$44.strpbrk$FUNC
-    );
-    static final FunctionDescriptor strstr$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strstr$MH = RuntimeHelper.downcallHandle(
-        "strstr",
-        constants$44.strstr$FUNC
-    );
-    static final FunctionDescriptor strtok$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strtok$MH = RuntimeHelper.downcallHandle(
-        "strtok",
-        constants$44.strtok$FUNC
-    );
-    static final FunctionDescriptor __strtok_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle __strtok_r$MH = RuntimeHelper.downcallHandle(
-        "__strtok_r",
-        constants$44.__strtok_r$FUNC
-    );
-    static final FunctionDescriptor strtok_r$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strtok_r$MH = RuntimeHelper.downcallHandle(
-        "strtok_r",
-        constants$44.strtok_r$FUNC
-    );
-    static final FunctionDescriptor strlen$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle strlen$MH = RuntimeHelper.downcallHandle(
-        "strlen",
-        constants$44.strlen$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$44() {}
+    static final VarHandle const$0 = constants$43.const$4.varHandle(MemoryLayout.PathElement.groupElement("__high"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("__prev"),
+        RuntimeHelper.POINTER.withName("__next")
+    ).withName("__pthread_internal_list");
+    static final VarHandle const$2 = constants$44.const$1.varHandle(MemoryLayout.PathElement.groupElement("__prev"));
+    static final VarHandle const$3 = constants$44.const$1.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("__next")
+    ).withName("__pthread_internal_slist");
+    static final VarHandle const$5 = constants$44.const$4.varHandle(MemoryLayout.PathElement.groupElement("__next"));
 }
 
 

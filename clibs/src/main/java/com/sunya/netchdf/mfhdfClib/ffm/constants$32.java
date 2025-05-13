@@ -3,42 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$32 {
 
-class constants$32 {
-
-    static final FunctionDescriptor posix_memalign$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$32() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "puts",
+        constants$17.const$4
     );
-    static final MethodHandle posix_memalign$MH = RuntimeHelper.downcallHandle(
-        "posix_memalign",
-        constants$32.posix_memalign$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ungetc",
+        constants$5.const$3
     );
-    static final FunctionDescriptor aligned_alloc$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle aligned_alloc$MH = RuntimeHelper.downcallHandle(
-        "aligned_alloc",
-        constants$32.aligned_alloc$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fread",
+        constants$32.const$2
     );
-    static final FunctionDescriptor abort$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle abort$MH = RuntimeHelper.downcallHandle(
-        "abort",
-        constants$32.abort$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fwrite",
+        constants$32.const$2
     );
-    static final FunctionDescriptor atexit$__func$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle atexit$__func$MH = RuntimeHelper.downcallHandle(
-        constants$32.atexit$__func$FUNC
-    );
-    static final FunctionDescriptor atexit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle atexit$MH = RuntimeHelper.downcallHandle(
-        "atexit",
-        constants$32.atexit$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fread_unlocked",
+        constants$32.const$2
     );
 }
 

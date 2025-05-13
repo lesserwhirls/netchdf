@@ -7,26 +7,36 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$15 {
+final class constants$15 {
 
-    static final  OfLong H5T_VAX_F32_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_VAX_F32_g$VH = constants$15.H5T_VAX_F32_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_VAX_F32_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_VAX_F32_g", constants$15.H5T_VAX_F32_g$LAYOUT);
-    static final  OfLong H5T_VAX_F64_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_VAX_F64_g$VH = constants$15.H5T_VAX_F64_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_VAX_F64_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_VAX_F64_g", constants$15.H5T_VAX_F64_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_SCHAR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_SCHAR_g$VH = constants$15.H5T_NATIVE_SCHAR_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_SCHAR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_SCHAR_g", constants$15.H5T_NATIVE_SCHAR_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_UCHAR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_UCHAR_g$VH = constants$15.H5T_NATIVE_UCHAR_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_UCHAR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UCHAR_g", constants$15.H5T_NATIVE_UCHAR_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_SHORT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_SHORT_g$VH = constants$15.H5T_NATIVE_SHORT_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_SHORT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_SHORT_g", constants$15.H5T_NATIVE_SHORT_g$LAYOUT);
-    static final  OfLong H5T_NATIVE_USHORT_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_NATIVE_USHORT_g$VH = constants$15.H5T_NATIVE_USHORT_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_NATIVE_USHORT_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_USHORT_g", constants$15.H5T_NATIVE_USHORT_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$15() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5get_free_list_sizes",
+        constants$15.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5get_alloc_stats",
+        constants$15.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5get_libversion",
+        constants$15.const$4
+    );
 }
 
 

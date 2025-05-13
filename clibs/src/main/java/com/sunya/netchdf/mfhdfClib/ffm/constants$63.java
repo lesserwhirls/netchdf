@@ -3,48 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$63 {
 
-class constants$63 {
-
-    static final FunctionDescriptor __getpgid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$63() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "exit",
+        constants$51.const$2
     );
-    static final MethodHandle __getpgid$MH = RuntimeHelper.downcallHandle(
-        "__getpgid",
-        constants$63.__getpgid$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "quick_exit",
+        constants$51.const$2
     );
-    static final FunctionDescriptor getpgid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "_Exit",
+        constants$51.const$2
     );
-    static final MethodHandle getpgid$MH = RuntimeHelper.downcallHandle(
-        "getpgid",
-        constants$63.getpgid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "getenv",
+        constants$20.const$4
     );
-    static final FunctionDescriptor setpgid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "putenv",
+        constants$17.const$4
     );
-    static final MethodHandle setpgid$MH = RuntimeHelper.downcallHandle(
-        "setpgid",
-        constants$63.setpgid$FUNC
-    );
-    static final FunctionDescriptor setpgrp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle setpgrp$MH = RuntimeHelper.downcallHandle(
-        "setpgrp",
-        constants$63.setpgrp$FUNC
-    );
-    static final FunctionDescriptor setsid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle setsid$MH = RuntimeHelper.downcallHandle(
-        "setsid",
-        constants$63.setsid$FUNC
-    );
-    static final FunctionDescriptor getsid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle getsid$MH = RuntimeHelper.downcallHandle(
-        "getsid",
-        constants$63.getsid$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "setenv",
+        constants$17.const$1
     );
 }
 

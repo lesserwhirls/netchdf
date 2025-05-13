@@ -7,14 +7,29 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$191 {
+final class constants$191 {
 
-    static final MemorySegment PRIoFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIu8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIu64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment PRIuLEAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$191() {}
+    static final VarHandle const$0 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
+    static final VarHandle const$1 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$2 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("next"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("driver_id"),
+        RuntimeHelper.POINTER.withName("cls"),
+        JAVA_LONG.withName("fileno"),
+        JAVA_INT.withName("access_flags"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("feature_flags"),
+        JAVA_LONG.withName("maxaddr"),
+        JAVA_LONG.withName("base_addr"),
+        JAVA_LONG.withName("threshold"),
+        JAVA_LONG.withName("alignment"),
+        JAVA_BOOLEAN.withName("paged_aggr"),
+        MemoryLayout.paddingLayout(7)
+    ).withName("H5FD_t");
+    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("driver_id"));
+    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("cls"));
 }
 
 

@@ -7,190 +7,293 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct {
+ *     int version;
+ *     H5L_type_t id;
+ *     char* comment;
+ *     H5L_create_func_t create_func;
+ *     H5L_move_func_t move_func;
+ *     H5L_copy_func_t copy_func;
+ *     H5L_traverse_0_func_t trav_func;
+ *     H5L_delete_func_t del_func;
+ *     H5L_query_func_t query_func;
+ * };
+ * }
+ */
 public class H5L_class_0_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("version"),
-        Constants$root.C_INT$LAYOUT.withName("id"),
-        Constants$root.C_POINTER$LAYOUT.withName("comment"),
-        Constants$root.C_POINTER$LAYOUT.withName("create_func"),
-        Constants$root.C_POINTER$LAYOUT.withName("move_func"),
-        Constants$root.C_POINTER$LAYOUT.withName("copy_func"),
-        Constants$root.C_POINTER$LAYOUT.withName("trav_func"),
-        Constants$root.C_POINTER$LAYOUT.withName("del_func"),
-        Constants$root.C_POINTER$LAYOUT.withName("query_func")
-    );
     public static MemoryLayout $LAYOUT() {
-        return H5L_class_0_t.$struct$LAYOUT;
+        return constants$58.const$4;
     }
-    static final VarHandle version$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("version"));
     public static VarHandle version$VH() {
-        return H5L_class_0_t.version$VH;
+        return constants$58.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
     public static int version$get(MemorySegment seg) {
-        return (int)H5L_class_0_t.version$VH.get(seg);
+        return (int)constants$58.const$5.get(seg);
     }
-    public static void version$set( MemorySegment seg, int x) {
-        H5L_class_0_t.version$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int version;
+     * }
+     */
+    public static void version$set(MemorySegment seg, int x) {
+        constants$58.const$5.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)H5L_class_0_t.version$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$58.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        H5L_class_0_t.version$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$58.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("id"));
     public static VarHandle id$VH() {
-        return H5L_class_0_t.id$VH;
+        return constants$59.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_type_t id;
+     * }
+     */
     public static int id$get(MemorySegment seg) {
-        return (int)H5L_class_0_t.id$VH.get(seg);
+        return (int)constants$59.const$0.get(seg);
     }
-    public static void id$set( MemorySegment seg, int x) {
-        H5L_class_0_t.id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_type_t id;
+     * }
+     */
+    public static void id$set(MemorySegment seg, int x) {
+        constants$59.const$0.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)H5L_class_0_t.id$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$59.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        H5L_class_0_t.id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$59.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle comment$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("comment"));
     public static VarHandle comment$VH() {
-        return H5L_class_0_t.comment$VH;
+        return constants$59.const$1;
     }
-    public static MemoryAddress comment$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.comment$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* comment;
+     * }
+     */
+    public static MemorySegment comment$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$1.get(seg);
     }
-    public static void comment$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.comment$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* comment;
+     * }
+     */
+    public static void comment$set(MemorySegment seg, MemorySegment x) {
+        constants$59.const$1.set(seg, x);
     }
-    public static MemoryAddress comment$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.comment$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment comment$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void comment$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.comment$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void comment$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$59.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle create_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
     public static VarHandle create_func$VH() {
-        return H5L_class_0_t.create_func$VH;
+        return constants$59.const$2;
     }
-    public static MemoryAddress create_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.create_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_create_func_t create_func;
+     * }
+     */
+    public static MemorySegment create_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$2.get(seg);
     }
-    public static void create_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.create_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_create_func_t create_func;
+     * }
+     */
+    public static void create_func$set(MemorySegment seg, MemorySegment x) {
+        constants$59.const$2.set(seg, x);
     }
-    public static MemoryAddress create_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.create_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment create_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void create_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.create_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void create_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$59.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_create_func_t create_func (MemorySegment segment, MemorySession session) {
-        return H5L_create_func_t.ofAddress(create_func$get(segment), session);
+    public static H5L_create_func_t create_func(MemorySegment segment, Arena scope) {
+        return H5L_create_func_t.ofAddress(create_func$get(segment), scope);
     }
-    static final VarHandle move_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
     public static VarHandle move_func$VH() {
-        return H5L_class_0_t.move_func$VH;
+        return constants$59.const$3;
     }
-    public static MemoryAddress move_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.move_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_move_func_t move_func;
+     * }
+     */
+    public static MemorySegment move_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$3.get(seg);
     }
-    public static void move_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.move_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_move_func_t move_func;
+     * }
+     */
+    public static void move_func$set(MemorySegment seg, MemorySegment x) {
+        constants$59.const$3.set(seg, x);
     }
-    public static MemoryAddress move_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.move_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment move_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void move_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.move_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void move_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$59.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_move_func_t move_func (MemorySegment segment, MemorySession session) {
-        return H5L_move_func_t.ofAddress(move_func$get(segment), session);
+    public static H5L_move_func_t move_func(MemorySegment segment, Arena scope) {
+        return H5L_move_func_t.ofAddress(move_func$get(segment), scope);
     }
-    static final VarHandle copy_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
     public static VarHandle copy_func$VH() {
-        return H5L_class_0_t.copy_func$VH;
+        return constants$59.const$4;
     }
-    public static MemoryAddress copy_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.copy_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_copy_func_t copy_func;
+     * }
+     */
+    public static MemorySegment copy_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$4.get(seg);
     }
-    public static void copy_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.copy_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_copy_func_t copy_func;
+     * }
+     */
+    public static void copy_func$set(MemorySegment seg, MemorySegment x) {
+        constants$59.const$4.set(seg, x);
     }
-    public static MemoryAddress copy_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.copy_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment copy_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void copy_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.copy_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void copy_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$59.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_copy_func_t copy_func (MemorySegment segment, MemorySession session) {
-        return H5L_copy_func_t.ofAddress(copy_func$get(segment), session);
+    public static H5L_copy_func_t copy_func(MemorySegment segment, Arena scope) {
+        return H5L_copy_func_t.ofAddress(copy_func$get(segment), scope);
     }
-    static final VarHandle trav_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
     public static VarHandle trav_func$VH() {
-        return H5L_class_0_t.trav_func$VH;
+        return constants$59.const$5;
     }
-    public static MemoryAddress trav_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.trav_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_traverse_0_func_t trav_func;
+     * }
+     */
+    public static MemorySegment trav_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$5.get(seg);
     }
-    public static void trav_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.trav_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_traverse_0_func_t trav_func;
+     * }
+     */
+    public static void trav_func$set(MemorySegment seg, MemorySegment x) {
+        constants$59.const$5.set(seg, x);
     }
-    public static MemoryAddress trav_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.trav_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment trav_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$59.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void trav_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.trav_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void trav_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$59.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_traverse_0_func_t trav_func (MemorySegment segment, MemorySession session) {
-        return H5L_traverse_0_func_t.ofAddress(trav_func$get(segment), session);
+    public static H5L_traverse_0_func_t trav_func(MemorySegment segment, Arena scope) {
+        return H5L_traverse_0_func_t.ofAddress(trav_func$get(segment), scope);
     }
-    static final VarHandle del_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("del_func"));
     public static VarHandle del_func$VH() {
-        return H5L_class_0_t.del_func$VH;
+        return constants$60.const$0;
     }
-    public static MemoryAddress del_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.del_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_delete_func_t del_func;
+     * }
+     */
+    public static MemorySegment del_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$60.const$0.get(seg);
     }
-    public static void del_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.del_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_delete_func_t del_func;
+     * }
+     */
+    public static void del_func$set(MemorySegment seg, MemorySegment x) {
+        constants$60.const$0.set(seg, x);
     }
-    public static MemoryAddress del_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.del_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment del_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$60.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void del_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.del_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void del_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$60.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_delete_func_t del_func (MemorySegment segment, MemorySession session) {
-        return H5L_delete_func_t.ofAddress(del_func$get(segment), session);
+    public static H5L_delete_func_t del_func(MemorySegment segment, Arena scope) {
+        return H5L_delete_func_t.ofAddress(del_func$get(segment), scope);
     }
-    static final VarHandle query_func$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
     public static VarHandle query_func$VH() {
-        return H5L_class_0_t.query_func$VH;
+        return constants$60.const$1;
     }
-    public static MemoryAddress query_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.query_func$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * H5L_query_func_t query_func;
+     * }
+     */
+    public static MemorySegment query_func$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$60.const$1.get(seg);
     }
-    public static void query_func$set( MemorySegment seg, MemoryAddress x) {
-        H5L_class_0_t.query_func$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * H5L_query_func_t query_func;
+     * }
+     */
+    public static void query_func$set(MemorySegment seg, MemorySegment x) {
+        constants$60.const$1.set(seg, x);
     }
-    public static MemoryAddress query_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5L_class_0_t.query_func$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment query_func$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$60.const$1.get(seg.asSlice(index*sizeof()));
     }
-    public static void query_func$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5L_class_0_t.query_func$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void query_func$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$60.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    public static H5L_query_func_t query_func (MemorySegment segment, MemorySession session) {
-        return H5L_query_func_t.ofAddress(query_func$get(segment), session);
+    public static H5L_query_func_t query_func(MemorySegment segment, Arena scope) {
+        return H5L_query_func_t.ofAddress(query_func$get(segment), scope);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

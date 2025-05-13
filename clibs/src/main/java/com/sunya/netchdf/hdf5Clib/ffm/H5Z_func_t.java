@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * unsigned long (*H5Z_func_t)(unsigned int flags,unsigned long cd_nelmts,unsigned int* cd_values,unsigned long nbytes,unsigned long* buf_size,void** buf);
+ * }
+ */
 public interface H5Z_func_t {
 
-    long apply(int flags, long cd_nelmts, java.lang.foreign.MemoryAddress cd_values, long nbytes, java.lang.foreign.MemoryAddress buf_size, java.lang.foreign.MemoryAddress buf);
-    static MemorySegment allocate(H5Z_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5Z_func_t.class, fi, constants$126.H5Z_func_t$FUNC, session);
+    long apply(int flags, long cd_nelmts, java.lang.foreign.MemorySegment cd_values, long nbytes, java.lang.foreign.MemorySegment buf_size, java.lang.foreign.MemorySegment buf);
+    static MemorySegment allocate(H5Z_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$216.const$4, fi, constants$216.const$3, scope);
     }
-    static H5Z_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (int _flags, long _cd_nelmts, java.lang.foreign.MemoryAddress _cd_values, long _nbytes, java.lang.foreign.MemoryAddress _buf_size, java.lang.foreign.MemoryAddress _buf) -> {
+    static H5Z_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (int _flags, long _cd_nelmts, java.lang.foreign.MemorySegment _cd_values, long _nbytes, java.lang.foreign.MemorySegment _buf_size, java.lang.foreign.MemorySegment _buf) -> {
             try {
-                return (long)constants$126.H5Z_func_t$MH.invokeExact((Addressable)symbol, _flags, _cd_nelmts, (java.lang.foreign.Addressable)_cd_values, _nbytes, (java.lang.foreign.Addressable)_buf_size, (java.lang.foreign.Addressable)_buf);
+                return (long)constants$216.const$5.invokeExact(symbol, _flags, _cd_nelmts, _cd_values, _nbytes, _buf_size, _buf);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

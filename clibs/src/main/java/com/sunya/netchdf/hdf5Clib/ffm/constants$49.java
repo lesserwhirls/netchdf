@@ -7,53 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$49 {
+final class constants$49 {
 
-    static final FunctionDescriptor H5Awrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$49() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tget_member_type",
+        constants$48.const$3
     );
-    static final MethodHandle H5Awrite$MH = RuntimeHelper.downcallHandle(
-        "H5Awrite",
-        constants$49.H5Awrite$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tget_member_value",
+        constants$20.const$2
     );
-    static final FunctionDescriptor H5Aread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_cset",
+        constants$19.const$0
     );
-    static final MethodHandle H5Aread$MH = RuntimeHelper.downcallHandle(
-        "H5Aread",
-        constants$49.H5Aread$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tis_variable_str",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Aclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tget_native_type",
+        constants$48.const$3
     );
-    static final MethodHandle H5Aclose$MH = RuntimeHelper.downcallHandle(
-        "H5Aclose",
-        constants$49.H5Aclose$FUNC
-    );
-    static final FunctionDescriptor H5Aget_space$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aget_space$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_space",
-        constants$49.H5Aget_space$FUNC
-    );
-    static final FunctionDescriptor H5Aget_type$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aget_type$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_type",
-        constants$49.H5Aget_type$FUNC
-    );
-    static final FunctionDescriptor H5Aget_create_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Aget_create_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_create_plist",
-        constants$49.H5Aget_create_plist$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tset_size",
+        constants$40.const$0
     );
 }
 

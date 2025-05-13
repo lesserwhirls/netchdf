@@ -3,73 +3,43 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$156 {
 
-class constants$156 {
-
-    static final FunctionDescriptor sd_ncattput$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$156() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle sd_ncattput$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattput",
-        constants$156.sd_ncattput$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFR8getimage",
+        constants$156.const$0
     );
-    static final FunctionDescriptor sd_ncattinq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "DFR8setpalette",
+        constants$17.const$4
     );
-    static final MethodHandle sd_ncattinq$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattinq",
-        constants$156.sd_ncattinq$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT
     );
-    static final FunctionDescriptor sd_ncattget$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFR8putimage",
+        constants$156.const$3
     );
-    static final MethodHandle sd_ncattget$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattget",
-        constants$156.sd_ncattget$FUNC
-    );
-    static final FunctionDescriptor sd_ncattcopy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle sd_ncattcopy$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattcopy",
-        constants$156.sd_ncattcopy$FUNC
-    );
-    static final FunctionDescriptor sd_ncattname$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncattname$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattname",
-        constants$156.sd_ncattname$FUNC
-    );
-    static final FunctionDescriptor sd_ncattrename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncattrename$MH = RuntimeHelper.downcallHandle(
-        "sd_ncattrename",
-        constants$156.sd_ncattrename$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFR8addimage",
+        constants$156.const$3
     );
 }
 

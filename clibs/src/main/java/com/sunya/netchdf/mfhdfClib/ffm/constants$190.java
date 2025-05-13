@@ -2,16 +2,76 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$190 {
 
-class constants$190 {
-
-    static final MemorySegment SCNuLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment SCNuLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNuFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhu");
-    static final MemorySegment SCNuFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNuFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment SCNuFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$190() {}
+    static final VarHandle const$0 = constants$189.const$5.varHandle(MemoryLayout.PathElement.groupElement("start_bit"));
+    static final VarHandle const$1 = constants$189.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_len"));
+    static final VarHandle const$2 = constants$189.const$5.varHandle(MemoryLayout.PathElement.groupElement("sign_ext"));
+    static final VarHandle const$3 = constants$189.const$5.varHandle(MemoryLayout.PathElement.groupElement("fill_one"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        MemoryLayout.unionLayout(
+            MemoryLayout.sequenceLayout(32, JAVA_INT).withName("chunk_lengths"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(32, JAVA_INT).withName("chunk_lengths"),
+                JAVA_INT.withName("comp_type"),
+                JAVA_INT.withName("model_type"),
+                MemoryLayout.unionLayout(
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("quality"),
+                        JAVA_INT.withName("force_baseline")
+                    ).withName("jpeg"),
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("nt"),
+                        JAVA_INT.withName("sign_ext"),
+                        JAVA_INT.withName("fill_one"),
+                        JAVA_INT.withName("start_bit"),
+                        JAVA_INT.withName("bit_len")
+                    ).withName("nbit"),
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("skp_size")
+                    ).withName("skphuff"),
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("level")
+                    ).withName("deflate"),
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("options_mask"),
+                        JAVA_INT.withName("pixels_per_block"),
+                        JAVA_INT.withName("pixels_per_scanline"),
+                        JAVA_INT.withName("bits_per_pixel"),
+                        JAVA_INT.withName("pixels")
+                    ).withName("szip")
+                ).withName("cinfo"),
+                MemoryLayout.paddingLayout(4),
+                MemoryLayout.unionLayout(
+                    MemoryLayout.structLayout(
+                        JAVA_INT.withName("nt"),
+                        JAVA_INT.withName("ndim"),
+                        RuntimeHelper.POINTER.withName("dims")
+                    ).withName("dim")
+                ).withName("minfo")
+            ).withName("comp"),
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(32, JAVA_INT).withName("chunk_lengths"),
+                JAVA_INT.withName("start_bit"),
+                JAVA_INT.withName("bit_len"),
+                JAVA_INT.withName("sign_ext"),
+                JAVA_INT.withName("fill_one")
+            ).withName("nbit")
+        ).withName("hdf_chunk_def_u"),
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "GRsetchunk",
+        constants$190.const$4
+    );
 }
 
 

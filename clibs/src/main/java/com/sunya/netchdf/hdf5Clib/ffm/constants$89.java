@@ -7,26 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$89 {
+final class constants$89 {
 
-    static final  OfLong H5E_CANTFILTER_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTFILTER_g$VH = constants$89.H5E_CANTFILTER_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTFILTER_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTFILTER_g", constants$89.H5E_CANTFILTER_g$LAYOUT);
-    static final  OfLong H5E_CANTOPENOBJ_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTOPENOBJ_g$VH = constants$89.H5E_CANTOPENOBJ_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTOPENOBJ_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTOPENOBJ_g", constants$89.H5E_CANTOPENOBJ_g$LAYOUT);
-    static final  OfLong H5E_CANTCLOSEOBJ_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCLOSEOBJ_g$VH = constants$89.H5E_CANTCLOSEOBJ_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCLOSEOBJ_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLOSEOBJ_g", constants$89.H5E_CANTCLOSEOBJ_g$LAYOUT);
-    static final  OfLong H5E_COMPLEN_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_COMPLEN_g$VH = constants$89.H5E_COMPLEN_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_COMPLEN_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_COMPLEN_g", constants$89.H5E_COMPLEN_g$LAYOUT);
-    static final  OfLong H5E_PATH_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_PATH_g$VH = constants$89.H5E_PATH_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_PATH_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_PATH_g", constants$89.H5E_PATH_g$LAYOUT);
-    static final  OfLong H5E_NONE_MINOR_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NONE_MINOR_g$VH = constants$89.H5E_NONE_MINOR_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NONE_MINOR_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NONE_MINOR_g", constants$89.H5E_NONE_MINOR_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$89() {}
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
+    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
+    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
 }
 
 

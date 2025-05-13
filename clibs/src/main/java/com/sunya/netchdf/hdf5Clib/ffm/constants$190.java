@@ -7,14 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$190 {
+final class constants$190 {
 
-    static final MemorySegment PRIoLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment PRIoFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment PRIoFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$190() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.lock.class, "apply", constants$189.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$189.const$5
+    );
+    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("lock"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.unlock.class, "apply", constants$15.const$2);
+    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("unlock"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("addr"),
+        JAVA_LONG.withName("size"),
+        RuntimeHelper.POINTER.withName("next")
+    ).withName("H5FD_free_t");
 }
 
 

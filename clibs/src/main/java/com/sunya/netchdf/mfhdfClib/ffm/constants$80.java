@@ -3,69 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$80 {
 
-class constants$80 {
-
-    static final FunctionDescriptor Hclose$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$80() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strsep",
+        constants$21.const$1
     );
-    static final MethodHandle Hclose$MH = RuntimeHelper.downcallHandle(
-        "Hclose",
-        constants$80.Hclose$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strsignal",
+        constants$76.const$5
     );
-    static final FunctionDescriptor Hstartread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "__stpcpy",
+        constants$21.const$1
     );
-    static final MethodHandle Hstartread$MH = RuntimeHelper.downcallHandle(
-        "Hstartread",
-        constants$80.Hstartread$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "stpcpy",
+        constants$21.const$1
     );
-    static final FunctionDescriptor Hnextread$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "__stpncpy",
+        constants$70.const$0
     );
-    static final MethodHandle Hnextread$MH = RuntimeHelper.downcallHandle(
-        "Hnextread",
-        constants$80.Hnextread$FUNC
-    );
-    static final FunctionDescriptor Hexist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hexist$MH = RuntimeHelper.downcallHandle(
-        "Hexist",
-        constants$80.Hexist$FUNC
-    );
-    static final FunctionDescriptor Hinquire$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle Hinquire$MH = RuntimeHelper.downcallHandle(
-        "Hinquire",
-        constants$80.Hinquire$FUNC
-    );
-    static final FunctionDescriptor Hstartwrite$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hstartwrite$MH = RuntimeHelper.downcallHandle(
-        "Hstartwrite",
-        constants$80.Hstartwrite$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "stpncpy",
+        constants$70.const$0
     );
 }
 

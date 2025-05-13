@@ -7,53 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$25 {
+final class constants$25 {
 
-    static final FunctionDescriptor H5Tdecode$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Tdecode$MH = RuntimeHelper.downcallHandle(
-        "H5Tdecode",
-        constants$25.H5Tdecode$FUNC
-    );
-    static final FunctionDescriptor H5Tflush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tflush$MH = RuntimeHelper.downcallHandle(
-        "H5Tflush",
-        constants$25.H5Tflush$FUNC
-    );
-    static final FunctionDescriptor H5Trefresh$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Trefresh$MH = RuntimeHelper.downcallHandle(
-        "H5Trefresh",
-        constants$25.H5Trefresh$FUNC
-    );
-    static final FunctionDescriptor H5Tinsert$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tinsert$MH = RuntimeHelper.downcallHandle(
-        "H5Tinsert",
-        constants$25.H5Tinsert$FUNC
-    );
-    static final FunctionDescriptor H5Tpack$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tpack$MH = RuntimeHelper.downcallHandle(
-        "H5Tpack",
-        constants$25.H5Tpack$FUNC
-    );
-    static final FunctionDescriptor H5Tenum_create$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Tenum_create$MH = RuntimeHelper.downcallHandle(
-        "H5Tenum_create",
-        constants$25.H5Tenum_create$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$25() {}
+    static final VarHandle const$0 = JAVA_LONG.varHandle();
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8BE_g", JAVA_LONG);
 }
 
 

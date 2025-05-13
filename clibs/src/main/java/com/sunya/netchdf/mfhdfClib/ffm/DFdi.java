@@ -2,56 +2,84 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct {
+ *     uint16 tag;
+ *     uint16 ref;
+ * };
+ * }
+ */
 public class DFdi {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_SHORT$LAYOUT.withName("tag"),
-        Constants$root.C_SHORT$LAYOUT.withName("ref")
-    );
     public static MemoryLayout $LAYOUT() {
-        return DFdi.$struct$LAYOUT;
+        return constants$121.const$3;
     }
-    static final VarHandle tag$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("tag"));
     public static VarHandle tag$VH() {
-        return DFdi.tag$VH;
+        return constants$121.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint16 tag;
+     * }
+     */
     public static short tag$get(MemorySegment seg) {
-        return (short)DFdi.tag$VH.get(seg);
+        return (short)constants$121.const$4.get(seg);
     }
-    public static void tag$set( MemorySegment seg, short x) {
-        DFdi.tag$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint16 tag;
+     * }
+     */
+    public static void tag$set(MemorySegment seg, short x) {
+        constants$121.const$4.set(seg, x);
     }
     public static short tag$get(MemorySegment seg, long index) {
-        return (short)DFdi.tag$VH.get(seg.asSlice(index*sizeof()));
+        return (short)constants$121.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void tag$set(MemorySegment seg, long index, short x) {
-        DFdi.tag$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$121.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle ref$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("ref"));
     public static VarHandle ref$VH() {
-        return DFdi.ref$VH;
+        return constants$121.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint16 ref;
+     * }
+     */
     public static short ref$get(MemorySegment seg) {
-        return (short)DFdi.ref$VH.get(seg);
+        return (short)constants$121.const$5.get(seg);
     }
-    public static void ref$set( MemorySegment seg, short x) {
-        DFdi.ref$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint16 ref;
+     * }
+     */
+    public static void ref$set(MemorySegment seg, short x) {
+        constants$121.const$5.set(seg, x);
     }
     public static short ref$get(MemorySegment seg, long index) {
-        return (short)DFdi.ref$VH.get(seg.asSlice(index*sizeof()));
+        return (short)constants$121.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void ref$set(MemorySegment seg, long index, short x) {
-        DFdi.ref$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$121.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

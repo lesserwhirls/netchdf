@@ -2,19 +2,27 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*__compar_fn_t)(void*,void*);
+ * }
+ */
 public interface __compar_fn_t {
 
-    int apply(java.lang.foreign.MemoryAddress _x0, java.lang.foreign.MemoryAddress _x1);
-    static MemorySegment allocate(__compar_fn_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(__compar_fn_t.class, fi, constants$36.__compar_fn_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+    static MemorySegment allocate(__compar_fn_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$65.const$2, fi, constants$19.const$5, scope);
     }
-    static __compar_fn_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress __x0, java.lang.foreign.MemoryAddress __x1) -> {
+    static __compar_fn_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
             try {
-                return (int)constants$36.__compar_fn_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)__x0, (java.lang.foreign.Addressable)__x1);
+                return (int)constants$65.const$3.invokeExact(symbol, __x0, __x1);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -3,67 +3,38 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$132 {
 
-class constants$132 {
-
-    static final FunctionDescriptor VSfindex$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$132() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "Hseek",
+        constants$98.const$3
     );
-    static final MethodHandle VSfindex$MH = RuntimeHelper.downcallHandle(
-        "VSfindex",
-        constants$132.VSfindex$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Htell",
+        constants$1.const$5
     );
-    static final FunctionDescriptor VSsetattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle VSsetattr$MH = RuntimeHelper.downcallHandle(
-        "VSsetattr",
-        constants$132.VSsetattr$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hread",
+        constants$132.const$2
     );
-    static final FunctionDescriptor VSnattrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hwrite",
+        constants$132.const$2
     );
-    static final MethodHandle VSnattrs$MH = RuntimeHelper.downcallHandle(
-        "VSnattrs",
-        constants$132.VSnattrs$FUNC
-    );
-    static final FunctionDescriptor VSfnattrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSfnattrs$MH = RuntimeHelper.downcallHandle(
-        "VSfnattrs",
-        constants$132.VSfnattrs$FUNC
-    );
-    static final FunctionDescriptor VSfindattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSfindattr$MH = RuntimeHelper.downcallHandle(
-        "VSfindattr",
-        constants$132.VSfindattr$FUNC
-    );
-    static final FunctionDescriptor VSattrinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSattrinfo$MH = RuntimeHelper.downcallHandle(
-        "VSattrinfo",
-        constants$132.VSattrinfo$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Htrunc",
+        constants$93.const$3
     );
 }
 

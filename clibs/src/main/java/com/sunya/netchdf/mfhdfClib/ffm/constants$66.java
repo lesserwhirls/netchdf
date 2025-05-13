@@ -3,50 +3,46 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$66 {
 
-class constants$66 {
-
-    static final FunctionDescriptor vfork$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle vfork$MH = RuntimeHelper.downcallHandle(
-        "vfork",
-        constants$66.vfork$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$66() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor ttyname$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "qsort",
+        constants$66.const$0
     );
-    static final MethodHandle ttyname$MH = RuntimeHelper.downcallHandle(
-        "ttyname",
-        constants$66.ttyname$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "abs",
+        constants$1.const$5
     );
-    static final FunctionDescriptor ttyname_r$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "labs",
+        constants$8.const$5
     );
-    static final MethodHandle ttyname_r$MH = RuntimeHelper.downcallHandle(
-        "ttyname_r",
-        constants$66.ttyname_r$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "llabs",
+        constants$8.const$5
     );
-    static final FunctionDescriptor isatty$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_INT.withName("quot"),
+        JAVA_INT.withName("rem")
+    ).withName(""),
+        JAVA_INT,
+        JAVA_INT
     );
-    static final MethodHandle isatty$MH = RuntimeHelper.downcallHandle(
-        "isatty",
-        constants$66.isatty$FUNC
-    );
-    static final FunctionDescriptor ttyslot$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle ttyslot$MH = RuntimeHelper.downcallHandle(
-        "ttyslot",
-        constants$66.ttyslot$FUNC
-    );
-    static final FunctionDescriptor link$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle link$MH = RuntimeHelper.downcallHandle(
-        "link",
-        constants$66.link$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "div",
+        constants$66.const$5
     );
 }
 

@@ -7,77 +7,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$40 {
+final class constants$40 {
 
-    static final FunctionDescriptor H5Literate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$40() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle H5Literate$MH = RuntimeHelper.downcallHandle(
-        "H5Literate",
-        constants$40.H5Literate$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tequal",
+        constants$40.const$0
     );
-    static final FunctionDescriptor H5Literate_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tlock",
+        constants$19.const$0
     );
-    static final MethodHandle H5Literate_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Literate_by_name",
-        constants$40.H5Literate_by_name$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Lvisit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tcommit2",
+        constants$40.const$3
     );
-    static final MethodHandle H5Lvisit$MH = RuntimeHelper.downcallHandle(
-        "H5Lvisit",
-        constants$40.H5Lvisit$FUNC
-    );
-    static final FunctionDescriptor H5Lvisit_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lvisit_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Lvisit_by_name",
-        constants$40.H5Lvisit_by_name$FUNC
-    );
-    static final FunctionDescriptor H5Lcreate_ud$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Lcreate_ud$MH = RuntimeHelper.downcallHandle(
-        "H5Lcreate_ud",
-        constants$40.H5Lcreate_ud$FUNC
-    );
-    static final FunctionDescriptor H5Lregister$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Lregister$MH = RuntimeHelper.downcallHandle(
-        "H5Lregister",
-        constants$40.H5Lregister$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Topen2",
+        constants$19.const$3
     );
 }
 

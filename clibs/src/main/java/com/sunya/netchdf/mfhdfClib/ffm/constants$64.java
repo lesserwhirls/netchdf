@@ -3,44 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$64 {
 
-class constants$64 {
-
-    static final FunctionDescriptor getuid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getuid$MH = RuntimeHelper.downcallHandle(
-        "getuid",
-        constants$64.getuid$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$64() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "unsetenv",
+        constants$17.const$4
     );
-    static final FunctionDescriptor geteuid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle geteuid$MH = RuntimeHelper.downcallHandle(
-        "geteuid",
-        constants$64.geteuid$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "clearenv",
+        constants$28.const$3
     );
-    static final FunctionDescriptor getgid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getgid$MH = RuntimeHelper.downcallHandle(
-        "getgid",
-        constants$64.getgid$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "mktemp",
+        constants$20.const$4
     );
-    static final FunctionDescriptor getegid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle getegid$MH = RuntimeHelper.downcallHandle(
-        "getegid",
-        constants$64.getegid$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "mkstemp",
+        constants$17.const$4
     );
-    static final FunctionDescriptor getgroups$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "mkstemps",
+        constants$37.const$2
     );
-    static final MethodHandle getgroups$MH = RuntimeHelper.downcallHandle(
-        "getgroups",
-        constants$64.getgroups$FUNC
-    );
-    static final FunctionDescriptor setuid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle setuid$MH = RuntimeHelper.downcallHandle(
-        "setuid",
-        constants$64.setuid$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "mkdtemp",
+        constants$20.const$4
     );
 }
 

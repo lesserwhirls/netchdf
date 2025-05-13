@@ -7,58 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$147 {
+final class constants$147 {
 
-    static final FunctionDescriptor H5Pget_driver_info$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_driver_info$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_driver_info",
-        constants$147.H5Pget_driver_info$FUNC
-    );
-    static final FunctionDescriptor H5Pset_family_offset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_family_offset$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_family_offset",
-        constants$147.H5Pset_family_offset$FUNC
-    );
-    static final FunctionDescriptor H5Pget_family_offset$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_family_offset$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_family_offset",
-        constants$147.H5Pget_family_offset$FUNC
-    );
-    static final FunctionDescriptor H5Pset_multi_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_multi_type$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_multi_type",
-        constants$147.H5Pset_multi_type$FUNC
-    );
-    static final FunctionDescriptor H5Pget_multi_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_multi_type$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_multi_type",
-        constants$147.H5Pget_multi_type$FUNC
-    );
-    static final FunctionDescriptor H5Pset_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle H5Pset_cache$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_cache",
-        constants$147.H5Pset_cache$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$147() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_TRUNCATED_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_MOUNT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTLOCKFILE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNLOCKFILE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_BADATOM_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_BADGROUP_g", JAVA_LONG);
 }
 
 

@@ -7,57 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$169 {
+final class constants$169 {
 
-    static final FunctionDescriptor H5Pget_version$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_version$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_version",
-        constants$169.H5Pget_version$FUNC
-    );
-    static final FunctionDescriptor H5Pset_file_space$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_file_space$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_file_space",
-        constants$169.H5Pset_file_space$FUNC
-    );
-    static final FunctionDescriptor H5Pget_file_space$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_file_space$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space",
-        constants$169.H5Pget_file_space$FUNC
-    );
-    static final FunctionDescriptor H5PLset_loading_state$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5PLset_loading_state$MH = RuntimeHelper.downcallHandle(
-        "H5PLset_loading_state",
-        constants$169.H5PLset_loading_state$FUNC
-    );
-    static final FunctionDescriptor H5PLget_loading_state$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5PLget_loading_state$MH = RuntimeHelper.downcallHandle(
-        "H5PLget_loading_state",
-        constants$169.H5PLget_loading_state$FUNC
-    );
-    static final FunctionDescriptor H5PLappend$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5PLappend$MH = RuntimeHelper.downcallHandle(
-        "H5PLappend",
-        constants$169.H5PLappend$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$169() {}
+    static final VarHandle const$0 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
+    static final VarHandle const$1 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("nbins"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(21, RuntimeHelper.POINTER).withName("retries")
+    ).withName("H5F_retry_info_t");
+    static final VarHandle const$3 = constants$169.const$2.varHandle(MemoryLayout.PathElement.groupElement("nbins"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5F_flush_cb_t.class, "apply", constants$44.const$4);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fis_hdf5",
+        constants$15.const$2
     );
 }
 

@@ -7,69 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$58 {
+final class constants$58 {
 
-    static final FunctionDescriptor H5Dread_chunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$58() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_delete_func_t.class, "apply", constants$56.const$2);
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle H5Dread_chunk$MH = RuntimeHelper.downcallHandle(
-        "H5Dread_chunk",
-        constants$58.H5Dread_chunk$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_query_func_t.class, "apply", constants$58.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$58.const$1
     );
-    static final FunctionDescriptor H5Diterate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Diterate$MH = RuntimeHelper.downcallHandle(
-        "H5Diterate",
-        constants$58.H5Diterate$FUNC
-    );
-    static final FunctionDescriptor H5Dvlen_reclaim$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dvlen_reclaim$MH = RuntimeHelper.downcallHandle(
-        "H5Dvlen_reclaim",
-        constants$58.H5Dvlen_reclaim$FUNC
-    );
-    static final FunctionDescriptor H5Dvlen_get_buf_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dvlen_get_buf_size$MH = RuntimeHelper.downcallHandle(
-        "H5Dvlen_get_buf_size",
-        constants$58.H5Dvlen_get_buf_size$FUNC
-    );
-    static final FunctionDescriptor H5Dfill$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dfill$MH = RuntimeHelper.downcallHandle(
-        "H5Dfill",
-        constants$58.H5Dfill$FUNC
-    );
-    static final FunctionDescriptor H5Dset_extent$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dset_extent$MH = RuntimeHelper.downcallHandle(
-        "H5Dset_extent",
-        constants$58.H5Dset_extent$FUNC
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_INT.withName("id"),
+        RuntimeHelper.POINTER.withName("comment"),
+        RuntimeHelper.POINTER.withName("create_func"),
+        RuntimeHelper.POINTER.withName("move_func"),
+        RuntimeHelper.POINTER.withName("copy_func"),
+        RuntimeHelper.POINTER.withName("trav_func"),
+        RuntimeHelper.POINTER.withName("del_func"),
+        RuntimeHelper.POINTER.withName("query_func")
+    ).withName("");
+    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

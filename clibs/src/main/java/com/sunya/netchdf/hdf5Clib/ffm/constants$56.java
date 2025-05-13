@@ -7,54 +7,25 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$56 {
+final class constants$56 {
 
-    static final FunctionDescriptor H5Dget_type$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$56() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_create_func_t.class, "apply", constants$55.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$55.const$5
     );
-    static final MethodHandle H5Dget_type$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_type",
-        constants$56.H5Dget_type$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Dget_create_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5L_move_func_t.class, "apply", constants$56.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$56.const$2
     );
-    static final MethodHandle H5Dget_create_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_create_plist",
-        constants$56.H5Dget_create_plist$FUNC
-    );
-    static final FunctionDescriptor H5Dget_access_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dget_access_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_access_plist",
-        constants$56.H5Dget_access_plist$FUNC
-    );
-    static final FunctionDescriptor H5Dget_storage_size$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Dget_storage_size$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_storage_size",
-        constants$56.H5Dget_storage_size$FUNC
-    );
-    static final FunctionDescriptor H5Dget_chunk_storage_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dget_chunk_storage_size$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_storage_size",
-        constants$56.H5Dget_chunk_storage_size$FUNC
-    );
-    static final FunctionDescriptor H5Dget_num_chunks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Dget_num_chunks$MH = RuntimeHelper.downcallHandle(
-        "H5Dget_num_chunks",
-        constants$56.H5Dget_num_chunks$FUNC
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5L_copy_func_t.class, "apply", constants$56.const$2);
 }
 
 

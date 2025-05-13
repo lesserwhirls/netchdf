@@ -4,2012 +4,5332 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 public class mfhdf_h extends mfhdf_h_2 {
 
-    /* package-private */ mfhdf_h() {}
-    public static OfByte C_CHAR = Constants$root.C_CHAR$LAYOUT;
-    public static OfShort C_SHORT = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt C_INT = Constants$root.C_INT$LAYOUT;
-    public static OfLong C_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong C_LONG_LONG = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfFloat C_FLOAT = Constants$root.C_FLOAT$LAYOUT;
-    public static OfDouble C_DOUBLE = Constants$root.C_DOUBLE$LAYOUT;
-    public static OfAddress C_POINTER = Constants$root.C_POINTER$LAYOUT;
+    public static final OfByte C_CHAR = JAVA_BYTE;
+    public static final OfShort C_SHORT = JAVA_SHORT;
+    public static final OfInt C_INT = JAVA_INT;
+    public static final OfLong C_LONG = JAVA_LONG;
+    public static final OfLong C_LONG_LONG = JAVA_LONG;
+    public static final OfFloat C_FLOAT = JAVA_FLOAT;
+    public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
+    public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * #define HDF 1
+     * }
+     */
     public static int HDF() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_ARPA_INET_H 1
+     * }
+     */
     public static int H4_HAVE_ARPA_INET_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_DLFCN_H 1
+     * }
+     */
     public static int H4_HAVE_DLFCN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_FCNTL_H 1
+     * }
+     */
     public static int H4_HAVE_FCNTL_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_FORK 1
+     * }
+     */
     public static int H4_HAVE_FORK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_HTONL 1
+     * }
+     */
     public static int H4_HAVE_HTONL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_HTONS 1
+     * }
+     */
     public static int H4_HAVE_HTONS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_INTTYPES_H 1
+     * }
+     */
     public static int H4_HAVE_INTTYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_JPEGLIB_H 1
+     * }
+     */
     public static int H4_HAVE_JPEGLIB_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_LIBJPEG 1
+     * }
+     */
     public static int H4_HAVE_LIBJPEG() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_LIBZ 1
+     * }
+     */
     public static int H4_HAVE_LIBZ() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_NETINET_IN_H 1
+     * }
+     */
     public static int H4_HAVE_NETINET_IN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_NTOHL 1
+     * }
+     */
     public static int H4_HAVE_NTOHL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_NTOHS 1
+     * }
+     */
     public static int H4_HAVE_NTOHS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_STDINT_H 1
+     * }
+     */
     public static int H4_HAVE_STDINT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_STDIO_H 1
+     * }
+     */
     public static int H4_HAVE_STDIO_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_STDLIB_H 1
+     * }
+     */
     public static int H4_HAVE_STDLIB_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_STRINGS_H 1
+     * }
+     */
     public static int H4_HAVE_STRINGS_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_STRING_H 1
+     * }
+     */
     public static int H4_HAVE_STRING_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYSTEM 1
+     * }
+     */
     public static int H4_HAVE_SYSTEM() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_FILE_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_FILE_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_RESOURCE_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_RESOURCE_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_STAT_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_STAT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_TIME_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_TIME_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_TYPES_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_TYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_SYS_WAIT_H 1
+     * }
+     */
     public static int H4_HAVE_SYS_WAIT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_UNISTD_H 1
+     * }
+     */
     public static int H4_HAVE_UNISTD_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_WAIT 1
+     * }
+     */
     public static int H4_HAVE_WAIT() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_HAVE_ZLIB_H 1
+     * }
+     */
     public static int H4_HAVE_ZLIB_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define H4_STDC_HEADERS 1
+     * }
+     */
     public static int H4_STDC_HEADERS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFMT_LE 17473
+     * }
+     */
     public static int DFMT_LE() {
         return (int)17473L;
     }
+    /**
+     * {@snippet :
+     * #define DFMT_BE 4369
+     * }
+     */
     public static int DFMT_BE() {
         return (int)4369L;
     }
+    /**
+     * {@snippet :
+     * #define UNIXUNBUFIO 1
+     * }
+     */
     public static int UNIXUNBUFIO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define UNIXBUFIO 2
+     * }
+     */
     public static int UNIXBUFIO() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define MACIO 3
+     * }
+     */
     public static int MACIO() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define _ASSERT_H 1
+     * }
+     */
     public static int _ASSERT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _FEATURES_H 1
+     * }
+     */
     public static int _FEATURES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _DEFAULT_SOURCE 1
+     * }
+     */
     public static int _DEFAULT_SOURCE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_ISOC2X 0
+     * }
+     */
     public static int __GLIBC_USE_ISOC2X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_ISOC11 1
+     * }
+     */
     public static int __USE_ISOC11() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_ISOC99 1
+     * }
+     */
     public static int __USE_ISOC99() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_ISOC95 1
+     * }
+     */
     public static int __USE_ISOC95() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_POSIX_IMPLICITLY 1
+     * }
+     */
     public static int __USE_POSIX_IMPLICITLY() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SOURCE 1
+     * }
+     */
     public static int _POSIX_SOURCE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_POSIX 1
+     * }
+     */
     public static int __USE_POSIX() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_POSIX2 1
+     * }
+     */
     public static int __USE_POSIX2() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_POSIX199309 1
+     * }
+     */
     public static int __USE_POSIX199309() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_POSIX199506 1
+     * }
+     */
     public static int __USE_POSIX199506() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_XOPEN2K 1
+     * }
+     */
     public static int __USE_XOPEN2K() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_XOPEN2K8 1
+     * }
+     */
     public static int __USE_XOPEN2K8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _ATFILE_SOURCE 1
+     * }
+     */
     public static int _ATFILE_SOURCE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __WORDSIZE 64
+     * }
+     */
     public static int __WORDSIZE() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define __WORDSIZE_TIME64_COMPAT32 1
+     * }
+     */
     public static int __WORDSIZE_TIME64_COMPAT32() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __SYSCALL_WORDSIZE 64
+     * }
+     */
     public static int __SYSCALL_WORDSIZE() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_MISC 1
+     * }
+     */
     public static int __USE_MISC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_ATFILE 1
+     * }
+     */
     public static int __USE_ATFILE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __USE_FORTIFY_LEVEL 0
+     * }
+     */
     public static int __USE_FORTIFY_LEVEL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_DEPRECATED_GETS 0
+     * }
+     */
     public static int __GLIBC_USE_DEPRECATED_GETS() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_DEPRECATED_SCANF 0
+     * }
+     */
     public static int __GLIBC_USE_DEPRECATED_SCANF() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_C2X_STRTOL 0
+     * }
+     */
+    public static int __GLIBC_USE_C2X_STRTOL() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define _STDC_PREDEF_H 1
+     * }
+     */
     public static int _STDC_PREDEF_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __STDC_IEC_559__ 1
+     * }
+     */
     public static int __STDC_IEC_559__() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __STDC_IEC_559_COMPLEX__ 1
+     * }
+     */
     public static int __STDC_IEC_559_COMPLEX__() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __GNU_LIBRARY__ 6
+     * }
+     */
     public static int __GNU_LIBRARY__() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC__ 2
+     * }
+     */
     public static int __GLIBC__() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_MINOR__ 39
+     * }
+     */
     public static int __GLIBC_MINOR__() {
-        return (int)35L;
+        return (int)39L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_CDEFS_H 1
+     * }
+     */
     public static int _SYS_CDEFS_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __glibc_c99_flexarr_available 1
+     * }
+     */
     public static int __glibc_c99_flexarr_available() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI 0
+     * }
+     */
     public static int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_GENERIC_SELECTION 1
+     * }
+     */
     public static int __HAVE_GENERIC_SELECTION() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _CTYPE_H 1
+     * }
+     */
     public static int _CTYPE_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TYPES_H 1
+     * }
+     */
     public static int _BITS_TYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TYPESIZES_H 1
+     * }
+     */
     public static int _BITS_TYPESIZES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __OFF_T_MATCHES_OFF64_T 1
+     * }
+     */
     public static int __OFF_T_MATCHES_OFF64_T() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __INO_T_MATCHES_INO64_T 1
+     * }
+     */
     public static int __INO_T_MATCHES_INO64_T() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __RLIM_T_MATCHES_RLIM64_T 1
+     * }
+     */
     public static int __RLIM_T_MATCHES_RLIM64_T() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __STATFS_MATCHES_STATFS64 1
+     * }
+     */
     public static int __STATFS_MATCHES_STATFS64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 1
+     * }
+     */
     public static int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __FD_SETSIZE 1024
+     * }
+     */
     public static int __FD_SETSIZE() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TIME64_H 1
+     * }
+     */
     public static int _BITS_TIME64_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_ENDIAN_H 1
+     * }
+     */
     public static int _BITS_ENDIAN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __LITTLE_ENDIAN 1234
+     * }
+     */
     public static int __LITTLE_ENDIAN() {
         return (int)1234L;
     }
+    /**
+     * {@snippet :
+     * #define __BIG_ENDIAN 4321
+     * }
+     */
     public static int __BIG_ENDIAN() {
         return (int)4321L;
     }
+    /**
+     * {@snippet :
+     * #define __PDP_ENDIAN 3412
+     * }
+     */
     public static int __PDP_ENDIAN() {
         return (int)3412L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_ENDIANNESS_H 1
+     * }
+     */
     public static int _BITS_ENDIANNESS_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TYPES_LOCALE_T_H 1
+     * }
+     */
     public static int _BITS_TYPES_LOCALE_T_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TYPES___LOCALE_T_H 1
+     * }
+     */
     public static int _BITS_TYPES___LOCALE_T_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _INTTYPES_H 1
+     * }
+     */
     public static int _INTTYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _STDINT_H 1
+     * }
+     */
     public static int _STDINT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_LIB_EXT2 0
+     * }
+     */
     public static int __GLIBC_USE_LIB_EXT2() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_BFP_EXT 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_BFP_EXT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_BFP_EXT_C2X 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_BFP_EXT_C2X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_EXT 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_EXT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_FUNCS_EXT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __GLIBC_USE_IEC_60559_TYPES_EXT 0
+     * }
+     */
     public static int __GLIBC_USE_IEC_60559_TYPES_EXT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_WCHAR_H 1
+     * }
+     */
     public static int _BITS_WCHAR_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_STDINT_INTN_H 1
+     * }
+     */
     public static int _BITS_STDINT_INTN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_STDINT_UINTN_H 1
+     * }
+     */
     public static int _BITS_STDINT_UINTN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_STDINT_LEAST_H 1
+     * }
+     */
+    public static int _BITS_STDINT_LEAST_H() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define ____gwchar_t_defined 1
+     * }
+     */
     public static int ____gwchar_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LIBC_LIMITS_H_ 1
+     * }
+     */
     public static int _LIBC_LIMITS_H_() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define MB_LEN_MAX 16
+     * }
+     */
     public static int MB_LEN_MAX() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_POSIX1_LIM_H 1
+     * }
+     */
     public static int _BITS_POSIX1_LIM_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_AIO_LISTIO_MAX 2
+     * }
+     */
     public static int _POSIX_AIO_LISTIO_MAX() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_AIO_MAX 1
+     * }
+     */
     public static int _POSIX_AIO_MAX() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_ARG_MAX 4096
+     * }
+     */
     public static int _POSIX_ARG_MAX() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_CHILD_MAX 25
+     * }
+     */
     public static int _POSIX_CHILD_MAX() {
         return (int)25L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_DELAYTIMER_MAX 32
+     * }
+     */
     public static int _POSIX_DELAYTIMER_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_HOST_NAME_MAX 255
+     * }
+     */
     public static int _POSIX_HOST_NAME_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_LINK_MAX 8
+     * }
+     */
     public static int _POSIX_LINK_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_LOGIN_NAME_MAX 9
+     * }
+     */
     public static int _POSIX_LOGIN_NAME_MAX() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_MAX_CANON 255
+     * }
+     */
     public static int _POSIX_MAX_CANON() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_MAX_INPUT 255
+     * }
+     */
     public static int _POSIX_MAX_INPUT() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_MQ_OPEN_MAX 8
+     * }
+     */
     public static int _POSIX_MQ_OPEN_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_MQ_PRIO_MAX 32
+     * }
+     */
     public static int _POSIX_MQ_PRIO_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_NAME_MAX 14
+     * }
+     */
     public static int _POSIX_NAME_MAX() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_NGROUPS_MAX 8
+     * }
+     */
     public static int _POSIX_NGROUPS_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_OPEN_MAX 20
+     * }
+     */
     public static int _POSIX_OPEN_MAX() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_PATH_MAX 256
+     * }
+     */
     public static int _POSIX_PATH_MAX() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_PIPE_BUF 512
+     * }
+     */
     public static int _POSIX_PIPE_BUF() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_RE_DUP_MAX 255
+     * }
+     */
     public static int _POSIX_RE_DUP_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_RTSIG_MAX 8
+     * }
+     */
     public static int _POSIX_RTSIG_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SEM_NSEMS_MAX 256
+     * }
+     */
     public static int _POSIX_SEM_NSEMS_MAX() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SEM_VALUE_MAX 32767
+     * }
+     */
     public static int _POSIX_SEM_VALUE_MAX() {
         return (int)32767L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SIGQUEUE_MAX 32
+     * }
+     */
     public static int _POSIX_SIGQUEUE_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SSIZE_MAX 32767
+     * }
+     */
     public static int _POSIX_SSIZE_MAX() {
         return (int)32767L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_STREAM_MAX 8
+     * }
+     */
     public static int _POSIX_STREAM_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SYMLINK_MAX 255
+     * }
+     */
     public static int _POSIX_SYMLINK_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SYMLOOP_MAX 8
+     * }
+     */
     public static int _POSIX_SYMLOOP_MAX() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_TIMER_MAX 32
+     * }
+     */
     public static int _POSIX_TIMER_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_TTY_NAME_MAX 9
+     * }
+     */
     public static int _POSIX_TTY_NAME_MAX() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_TZNAME_MAX 6
+     * }
+     */
     public static int _POSIX_TZNAME_MAX() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_CLOCKRES_MIN 20000000
+     * }
+     */
     public static int _POSIX_CLOCKRES_MIN() {
         return (int)20000000L;
     }
+    /**
+     * {@snippet :
+     * #define NR_OPEN 1024
+     * }
+     */
     public static int NR_OPEN() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define NGROUPS_MAX 65536
+     * }
+     */
     public static int NGROUPS_MAX() {
         return (int)65536L;
     }
+    /**
+     * {@snippet :
+     * #define ARG_MAX 131072
+     * }
+     */
     public static int ARG_MAX() {
         return (int)131072L;
     }
+    /**
+     * {@snippet :
+     * #define LINK_MAX 127
+     * }
+     */
     public static int LINK_MAX() {
         return (int)127L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_CANON 255
+     * }
+     */
     public static int MAX_CANON() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_INPUT 255
+     * }
+     */
     public static int MAX_INPUT() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define NAME_MAX 255
+     * }
+     */
     public static int NAME_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define PATH_MAX 4096
+     * }
+     */
     public static int PATH_MAX() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define PIPE_BUF 4096
+     * }
+     */
     public static int PIPE_BUF() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define XATTR_NAME_MAX 255
+     * }
+     */
     public static int XATTR_NAME_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define XATTR_SIZE_MAX 65536
+     * }
+     */
     public static int XATTR_SIZE_MAX() {
         return (int)65536L;
     }
+    /**
+     * {@snippet :
+     * #define XATTR_LIST_MAX 65536
+     * }
+     */
     public static int XATTR_LIST_MAX() {
         return (int)65536L;
     }
+    /**
+     * {@snippet :
+     * #define RTSIG_MAX 32
+     * }
+     */
     public static int RTSIG_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_THREAD_KEYS_MAX 128
+     * }
+     */
     public static int _POSIX_THREAD_KEYS_MAX() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define PTHREAD_KEYS_MAX 1024
+     * }
+     */
     public static int PTHREAD_KEYS_MAX() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_THREAD_DESTRUCTOR_ITERATIONS 4
+     * }
+     */
     public static int _POSIX_THREAD_DESTRUCTOR_ITERATIONS() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_THREAD_THREADS_MAX 64
+     * }
+     */
     public static int _POSIX_THREAD_THREADS_MAX() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define AIO_PRIO_DELTA_MAX 20
+     * }
+     */
     public static int AIO_PRIO_DELTA_MAX() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define PTHREAD_STACK_MIN 16384
+     * }
+     */
     public static int PTHREAD_STACK_MIN() {
         return (int)16384L;
     }
+    /**
+     * {@snippet :
+     * #define DELAYTIMER_MAX 2147483647
+     * }
+     */
     public static int DELAYTIMER_MAX() {
         return (int)2147483647L;
     }
+    /**
+     * {@snippet :
+     * #define TTY_NAME_MAX 32
+     * }
+     */
     public static int TTY_NAME_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define LOGIN_NAME_MAX 256
+     * }
+     */
     public static int LOGIN_NAME_MAX() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define HOST_NAME_MAX 64
+     * }
+     */
     public static int HOST_NAME_MAX() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define MQ_PRIO_MAX 32768
+     * }
+     */
     public static int MQ_PRIO_MAX() {
         return (int)32768L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_POSIX2_LIM_H 1
+     * }
+     */
     public static int _BITS_POSIX2_LIM_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_BC_BASE_MAX 99
+     * }
+     */
     public static int _POSIX2_BC_BASE_MAX() {
         return (int)99L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_BC_DIM_MAX 2048
+     * }
+     */
     public static int _POSIX2_BC_DIM_MAX() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_BC_SCALE_MAX 99
+     * }
+     */
     public static int _POSIX2_BC_SCALE_MAX() {
         return (int)99L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_BC_STRING_MAX 1000
+     * }
+     */
     public static int _POSIX2_BC_STRING_MAX() {
         return (int)1000L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_COLL_WEIGHTS_MAX 2
+     * }
+     */
     public static int _POSIX2_COLL_WEIGHTS_MAX() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_EXPR_NEST_MAX 32
+     * }
+     */
     public static int _POSIX2_EXPR_NEST_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_LINE_MAX 2048
+     * }
+     */
     public static int _POSIX2_LINE_MAX() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_RE_DUP_MAX 255
+     * }
+     */
     public static int _POSIX2_RE_DUP_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX2_CHARCLASS_NAME_MAX 14
+     * }
+     */
     public static int _POSIX2_CHARCLASS_NAME_MAX() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * #define COLL_WEIGHTS_MAX 255
+     * }
+     */
     public static int COLL_WEIGHTS_MAX() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define CHARCLASS_NAME_MAX 2048
+     * }
+     */
     public static int CHARCLASS_NAME_MAX() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define _STDIO_H 1
+     * }
+     */
     public static int _STDIO_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __GNUC_VA_LIST 1
+     * }
+     */
     public static int __GNUC_VA_LIST() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _____fpos_t_defined 1
+     * }
+     */
     public static int _____fpos_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define ____mbstate_t_defined 1
+     * }
+     */
     public static int ____mbstate_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _____fpos64_t_defined 1
+     * }
+     */
     public static int _____fpos64_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define ____FILE_defined 1
+     * }
+     */
     public static int ____FILE_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __FILE_defined 1
+     * }
+     */
     public static int __FILE_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __struct_FILE_defined 1
+     * }
+     */
     public static int __struct_FILE_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _IO_EOF_SEEN 16
+     * }
+     */
     public static int _IO_EOF_SEEN() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define _IO_ERR_SEEN 32
+     * }
+     */
     public static int _IO_ERR_SEEN() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define _IO_USER_LOCK 32768
+     * }
+     */
     public static int _IO_USER_LOCK() {
         return (int)32768L;
     }
+    /**
+     * {@snippet :
+     * #define __cookie_io_functions_t_defined 1
+     * }
+     */
+    public static int __cookie_io_functions_t_defined() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define _IOFBF 0
+     * }
+     */
     public static int _IOFBF() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _IOLBF 1
+     * }
+     */
     public static int _IOLBF() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _IONBF 2
+     * }
+     */
     public static int _IONBF() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define BUFSIZ 8192
+     * }
+     */
     public static int BUFSIZ() {
         return (int)8192L;
     }
+    /**
+     * {@snippet :
+     * #define SEEK_SET 0
+     * }
+     */
     public static int SEEK_SET() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define SEEK_CUR 1
+     * }
+     */
     public static int SEEK_CUR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SEEK_END 2
+     * }
+     */
     public static int SEEK_END() {
         return (int)2L;
     }
-    public static int _BITS_STDIO_LIM_H() {
-        return (int)1L;
-    }
+    /**
+     * {@snippet :
+     * #define L_tmpnam 20
+     * }
+     */
     public static int L_tmpnam() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define TMP_MAX 238328
+     * }
+     */
     public static int TMP_MAX() {
         return (int)238328L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_STDIO_LIM_H 1
+     * }
+     */
+    public static int _BITS_STDIO_LIM_H() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define FILENAME_MAX 4096
+     * }
+     */
     public static int FILENAME_MAX() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define L_ctermid 9
+     * }
+     */
     public static int L_ctermid() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define FOPEN_MAX 16
+     * }
+     */
     public static int FOPEN_MAX() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT128 0
+     * }
+     */
     public static int __HAVE_FLOAT128() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT128 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT128() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT64X 1
+     * }
+     */
     public static int __HAVE_FLOAT64X() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT64X_LONG_DOUBLE 1
+     * }
+     */
     public static int __HAVE_FLOAT64X_LONG_DOUBLE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT16 0
+     * }
+     */
     public static int __HAVE_FLOAT16() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT32 1
+     * }
+     */
     public static int __HAVE_FLOAT32() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT64 1
+     * }
+     */
     public static int __HAVE_FLOAT64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT32X 1
+     * }
+     */
     public static int __HAVE_FLOAT32X() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOAT128X 0
+     * }
+     */
     public static int __HAVE_FLOAT128X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT32 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT32() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT64 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT64() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT32X 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT32X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_DISTINCT_FLOAT64X 0
+     * }
+     */
     public static int __HAVE_DISTINCT_FLOAT64X() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define __HAVE_FLOATN_NOT_TYPEDEF 0
+     * }
+     */
     public static int __HAVE_FLOATN_NOT_TYPEDEF() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _STDLIB_H 1
+     * }
+     */
     public static int _STDLIB_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define WNOHANG 1
+     * }
+     */
     public static int WNOHANG() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define WUNTRACED 2
+     * }
+     */
     public static int WUNTRACED() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define WSTOPPED 2
+     * }
+     */
     public static int WSTOPPED() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define WEXITED 4
+     * }
+     */
     public static int WEXITED() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define WCONTINUED 8
+     * }
+     */
     public static int WCONTINUED() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define WNOWAIT 16777216
+     * }
+     */
     public static int WNOWAIT() {
         return (int)16777216L;
     }
+    /**
+     * {@snippet :
+     * #define __WNOTHREAD 536870912
+     * }
+     */
     public static int __WNOTHREAD() {
         return (int)536870912L;
     }
+    /**
+     * {@snippet :
+     * #define __WALL 1073741824
+     * }
+     */
     public static int __WALL() {
         return (int)1073741824L;
     }
+    /**
+     * {@snippet :
+     * #define __W_CONTINUED 65535
+     * }
+     */
     public static int __W_CONTINUED() {
         return (int)65535L;
     }
+    /**
+     * {@snippet :
+     * #define __WCOREFLAG 128
+     * }
+     */
     public static int __WCOREFLAG() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define __ldiv_t_defined 1
+     * }
+     */
     public static int __ldiv_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __lldiv_t_defined 1
+     * }
+     */
     public static int __lldiv_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define RAND_MAX 2147483647
+     * }
+     */
     public static int RAND_MAX() {
         return (int)2147483647L;
     }
+    /**
+     * {@snippet :
+     * #define EXIT_FAILURE 1
+     * }
+     */
     public static int EXIT_FAILURE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define EXIT_SUCCESS 0
+     * }
+     */
     public static int EXIT_SUCCESS() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_TYPES_H 1
+     * }
+     */
     public static int _SYS_TYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __clock_t_defined 1
+     * }
+     */
     public static int __clock_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __clockid_t_defined 1
+     * }
+     */
     public static int __clockid_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __time_t_defined 1
+     * }
+     */
     public static int __time_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __timer_t_defined 1
+     * }
+     */
     public static int __timer_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __BIT_TYPES_DEFINED__ 1
+     * }
+     */
     public static int __BIT_TYPES_DEFINED__() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _ENDIAN_H 1
+     * }
+     */
     public static int _ENDIAN_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_BYTESWAP_H 1
+     * }
+     */
     public static int _BITS_BYTESWAP_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_UINTN_IDENTITY_H 1
+     * }
+     */
     public static int _BITS_UINTN_IDENTITY_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_SELECT_H 1
+     * }
+     */
     public static int _SYS_SELECT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __sigset_t_defined 1
+     * }
+     */
     public static int __sigset_t_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __timeval_defined 1
+     * }
+     */
     public static int __timeval_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _STRUCT_TIMESPEC 1
+     * }
+     */
     public static int _STRUCT_TIMESPEC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_PTHREADTYPES_COMMON_H 1
+     * }
+     */
     public static int _BITS_PTHREADTYPES_COMMON_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _THREAD_SHARED_TYPES_H 1
+     * }
+     */
     public static int _THREAD_SHARED_TYPES_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_PTHREADTYPES_ARCH_H 1
+     * }
+     */
     public static int _BITS_PTHREADTYPES_ARCH_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_MUTEX_T 40
+     * }
+     */
     public static int __SIZEOF_PTHREAD_MUTEX_T() {
         return (int)40L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_ATTR_T 56
+     * }
+     */
     public static int __SIZEOF_PTHREAD_ATTR_T() {
         return (int)56L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_RWLOCK_T 56
+     * }
+     */
     public static int __SIZEOF_PTHREAD_RWLOCK_T() {
         return (int)56L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_BARRIER_T 32
+     * }
+     */
     public static int __SIZEOF_PTHREAD_BARRIER_T() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_MUTEXATTR_T 4
+     * }
+     */
     public static int __SIZEOF_PTHREAD_MUTEXATTR_T() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_COND_T 48
+     * }
+     */
     public static int __SIZEOF_PTHREAD_COND_T() {
         return (int)48L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_CONDATTR_T 4
+     * }
+     */
     public static int __SIZEOF_PTHREAD_CONDATTR_T() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_RWLOCKATTR_T 8
+     * }
+     */
     public static int __SIZEOF_PTHREAD_RWLOCKATTR_T() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define __SIZEOF_PTHREAD_BARRIERATTR_T 4
+     * }
+     */
     public static int __SIZEOF_PTHREAD_BARRIERATTR_T() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define _THREAD_MUTEX_INTERNAL_H 1
+     * }
+     */
     public static int _THREAD_MUTEX_INTERNAL_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __PTHREAD_MUTEX_HAVE_PREV 1
+     * }
+     */
     public static int __PTHREAD_MUTEX_HAVE_PREV() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __have_pthread_attr_t 1
+     * }
+     */
     public static int __have_pthread_attr_t() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _ALLOCA_H 1
+     * }
+     */
     public static int _ALLOCA_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _STRING_H 1
+     * }
+     */
     public static int _STRING_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _STRINGS_H 1
+     * }
+     */
     public static int _STRINGS_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _TIME_H 1
+     * }
+     */
     public static int _TIME_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_TIME_H 1
+     * }
+     */
     public static int _BITS_TIME_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_REALTIME 0
+     * }
+     */
     public static int CLOCK_REALTIME() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_MONOTONIC 1
+     * }
+     */
     public static int CLOCK_MONOTONIC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_PROCESS_CPUTIME_ID 2
+     * }
+     */
     public static int CLOCK_PROCESS_CPUTIME_ID() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_THREAD_CPUTIME_ID 3
+     * }
+     */
     public static int CLOCK_THREAD_CPUTIME_ID() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_MONOTONIC_RAW 4
+     * }
+     */
     public static int CLOCK_MONOTONIC_RAW() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_REALTIME_COARSE 5
+     * }
+     */
     public static int CLOCK_REALTIME_COARSE() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_MONOTONIC_COARSE 6
+     * }
+     */
     public static int CLOCK_MONOTONIC_COARSE() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_BOOTTIME 7
+     * }
+     */
     public static int CLOCK_BOOTTIME() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_REALTIME_ALARM 8
+     * }
+     */
     public static int CLOCK_REALTIME_ALARM() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_BOOTTIME_ALARM 9
+     * }
+     */
     public static int CLOCK_BOOTTIME_ALARM() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define CLOCK_TAI 11
+     * }
+     */
     public static int CLOCK_TAI() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * #define TIMER_ABSTIME 1
+     * }
+     */
     public static int TIMER_ABSTIME() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __struct_tm_defined 1
+     * }
+     */
     public static int __struct_tm_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __itimerspec_defined 1
+     * }
+     */
     public static int __itimerspec_defined() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define TIME_UTC 1
+     * }
+     */
     public static int TIME_UTC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _FCNTL_H 1
+     * }
+     */
     public static int _FCNTL_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __O_LARGEFILE 0
+     * }
+     */
     public static int __O_LARGEFILE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define F_GETLK64 5
+     * }
+     */
     public static int F_GETLK64() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define F_SETLK64 6
+     * }
+     */
     public static int F_SETLK64() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define F_SETLKW64 7
+     * }
+     */
     public static int F_SETLKW64() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define O_ACCMODE 3
+     * }
+     */
     public static int O_ACCMODE() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define O_RDONLY 0
+     * }
+     */
     public static int O_RDONLY() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define O_WRONLY 1
+     * }
+     */
     public static int O_WRONLY() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define O_RDWR 2
+     * }
+     */
     public static int O_RDWR() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define O_CREAT 64
+     * }
+     */
     public static int O_CREAT() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define O_EXCL 128
+     * }
+     */
     public static int O_EXCL() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define O_NOCTTY 256
+     * }
+     */
     public static int O_NOCTTY() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define O_TRUNC 512
+     * }
+     */
     public static int O_TRUNC() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * #define O_APPEND 1024
+     * }
+     */
     public static int O_APPEND() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define O_NONBLOCK 2048
+     * }
+     */
     public static int O_NONBLOCK() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define O_SYNC 1052672
+     * }
+     */
     public static int O_SYNC() {
         return (int)1052672L;
     }
+    /**
+     * {@snippet :
+     * #define O_ASYNC 8192
+     * }
+     */
     public static int O_ASYNC() {
         return (int)8192L;
     }
+    /**
+     * {@snippet :
+     * #define __O_DIRECTORY 65536
+     * }
+     */
     public static int __O_DIRECTORY() {
         return (int)65536L;
     }
+    /**
+     * {@snippet :
+     * #define __O_NOFOLLOW 131072
+     * }
+     */
     public static int __O_NOFOLLOW() {
         return (int)131072L;
     }
+    /**
+     * {@snippet :
+     * #define __O_CLOEXEC 524288
+     * }
+     */
     public static int __O_CLOEXEC() {
         return (int)524288L;
     }
+    /**
+     * {@snippet :
+     * #define __O_DIRECT 16384
+     * }
+     */
     public static int __O_DIRECT() {
         return (int)16384L;
     }
+    /**
+     * {@snippet :
+     * #define __O_NOATIME 262144
+     * }
+     */
     public static int __O_NOATIME() {
         return (int)262144L;
     }
+    /**
+     * {@snippet :
+     * #define __O_PATH 2097152
+     * }
+     */
     public static int __O_PATH() {
         return (int)2097152L;
     }
+    /**
+     * {@snippet :
+     * #define __O_DSYNC 4096
+     * }
+     */
     public static int __O_DSYNC() {
         return (int)4096L;
     }
-    public static int F_GETLK() {
-        return (int)5L;
-    }
-    public static int F_SETLK() {
-        return (int)6L;
-    }
-    public static int F_SETLKW() {
-        return (int)7L;
-    }
+    /**
+     * {@snippet :
+     * #define F_DUPFD 0
+     * }
+     */
     public static int F_DUPFD() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define F_GETFD 1
+     * }
+     */
     public static int F_GETFD() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define F_SETFD 2
+     * }
+     */
     public static int F_SETFD() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define F_GETFL 3
+     * }
+     */
     public static int F_GETFL() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define F_SETFL 4
+     * }
+     */
     public static int F_SETFL() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define __F_SETOWN 8
+     * }
+     */
     public static int __F_SETOWN() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define __F_GETOWN 9
+     * }
+     */
     public static int __F_GETOWN() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define __F_SETSIG 10
+     * }
+     */
     public static int __F_SETSIG() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * #define __F_GETSIG 11
+     * }
+     */
     public static int __F_GETSIG() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * #define __F_SETOWN_EX 15
+     * }
+     */
     public static int __F_SETOWN_EX() {
         return (int)15L;
     }
+    /**
+     * {@snippet :
+     * #define __F_GETOWN_EX 16
+     * }
+     */
     public static int __F_GETOWN_EX() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define F_DUPFD_CLOEXEC 1030
+     * }
+     */
     public static int F_DUPFD_CLOEXEC() {
         return (int)1030L;
     }
+    /**
+     * {@snippet :
+     * #define FD_CLOEXEC 1
+     * }
+     */
     public static int FD_CLOEXEC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define F_RDLCK 0
+     * }
+     */
     public static int F_RDLCK() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define F_WRLCK 1
+     * }
+     */
     public static int F_WRLCK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define F_UNLCK 2
+     * }
+     */
     public static int F_UNLCK() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define F_EXLCK 4
+     * }
+     */
     public static int F_EXLCK() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define F_SHLCK 8
+     * }
+     */
     public static int F_SHLCK() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define LOCK_SH 1
+     * }
+     */
     public static int LOCK_SH() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define LOCK_EX 2
+     * }
+     */
     public static int LOCK_EX() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define LOCK_NB 4
+     * }
+     */
     public static int LOCK_NB() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define LOCK_UN 8
+     * }
+     */
     public static int LOCK_UN() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define __POSIX_FADV_DONTNEED 4
+     * }
+     */
     public static int __POSIX_FADV_DONTNEED() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define __POSIX_FADV_NOREUSE 5
+     * }
+     */
     public static int __POSIX_FADV_NOREUSE() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define POSIX_FADV_NORMAL 0
+     * }
+     */
     public static int POSIX_FADV_NORMAL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define POSIX_FADV_RANDOM 1
+     * }
+     */
     public static int POSIX_FADV_RANDOM() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define POSIX_FADV_SEQUENTIAL 2
+     * }
+     */
     public static int POSIX_FADV_SEQUENTIAL() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define POSIX_FADV_WILLNEED 3
+     * }
+     */
     public static int POSIX_FADV_WILLNEED() {
         return (int)3L;
     }
-    public static int AT_SYMLINK_NOFOLLOW() {
-        return (int)256L;
-    }
-    public static int AT_REMOVEDIR() {
-        return (int)512L;
-    }
-    public static int AT_SYMLINK_FOLLOW() {
-        return (int)1024L;
-    }
-    public static int AT_EACCESS() {
-        return (int)512L;
-    }
+    /**
+     * {@snippet :
+     * #define _BITS_STAT_H 1
+     * }
+     */
     public static int _BITS_STAT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_STRUCT_STAT_H 1
+     * }
+     */
     public static int _BITS_STRUCT_STAT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFMT 61440
+     * }
+     */
     public static int __S_IFMT() {
         return (int)61440L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFDIR 16384
+     * }
+     */
     public static int __S_IFDIR() {
         return (int)16384L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFCHR 8192
+     * }
+     */
     public static int __S_IFCHR() {
         return (int)8192L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFBLK 24576
+     * }
+     */
     public static int __S_IFBLK() {
         return (int)24576L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFREG 32768
+     * }
+     */
     public static int __S_IFREG() {
         return (int)32768L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFIFO 4096
+     * }
+     */
     public static int __S_IFIFO() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFLNK 40960
+     * }
+     */
     public static int __S_IFLNK() {
         return (int)40960L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IFSOCK 49152
+     * }
+     */
     public static int __S_IFSOCK() {
         return (int)49152L;
     }
+    /**
+     * {@snippet :
+     * #define __S_ISUID 2048
+     * }
+     */
     public static int __S_ISUID() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * #define __S_ISGID 1024
+     * }
+     */
     public static int __S_ISGID() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define __S_ISVTX 512
+     * }
+     */
     public static int __S_ISVTX() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IREAD 256
+     * }
+     */
     public static int __S_IREAD() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IWRITE 128
+     * }
+     */
     public static int __S_IWRITE() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define __S_IEXEC 64
+     * }
+     */
     public static int __S_IEXEC() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define R_OK 4
+     * }
+     */
     public static int R_OK() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define W_OK 2
+     * }
+     */
     public static int W_OK() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define X_OK 1
+     * }
+     */
     public static int X_OK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define F_OK 0
+     * }
+     */
     public static int F_OK() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define AT_SYMLINK_NOFOLLOW 256
+     * }
+     */
+    public static int AT_SYMLINK_NOFOLLOW() {
+        return (int)256L;
+    }
+    /**
+     * {@snippet :
+     * #define AT_REMOVEDIR 512
+     * }
+     */
+    public static int AT_REMOVEDIR() {
+        return (int)512L;
+    }
+    /**
+     * {@snippet :
+     * #define AT_SYMLINK_FOLLOW 1024
+     * }
+     */
+    public static int AT_SYMLINK_FOLLOW() {
+        return (int)1024L;
+    }
+    /**
+     * {@snippet :
+     * #define AT_EACCESS 512
+     * }
+     */
+    public static int AT_EACCESS() {
+        return (int)512L;
+    }
+    /**
+     * {@snippet :
+     * #define F_ULOCK 0
+     * }
+     */
     public static int F_ULOCK() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define F_LOCK 1
+     * }
+     */
     public static int F_LOCK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define F_TLOCK 2
+     * }
+     */
     public static int F_TLOCK() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define F_TEST 3
+     * }
+     */
     public static int F_TEST() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define _UNISTD_H 1
+     * }
+     */
     public static int _UNISTD_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_VERSION 700
+     * }
+     */
     public static int _XOPEN_VERSION() {
         return (int)700L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_XCU_VERSION 4
+     * }
+     */
     public static int _XOPEN_XCU_VERSION() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_XPG2 1
+     * }
+     */
     public static int _XOPEN_XPG2() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_XPG3 1
+     * }
+     */
     public static int _XOPEN_XPG3() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_XPG4 1
+     * }
+     */
     public static int _XOPEN_XPG4() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_UNIX 1
+     * }
+     */
     public static int _XOPEN_UNIX() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_ENH_I18N 1
+     * }
+     */
     public static int _XOPEN_ENH_I18N() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_LEGACY 1
+     * }
+     */
     public static int _XOPEN_LEGACY() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _BITS_POSIX_OPT_H 1
+     * }
+     */
     public static int _BITS_POSIX_OPT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_JOB_CONTROL 1
+     * }
+     */
     public static int _POSIX_JOB_CONTROL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SAVED_IDS 1
+     * }
+     */
     public static int _POSIX_SAVED_IDS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_CHOWN_RESTRICTED 0
+     * }
+     */
     public static int _POSIX_CHOWN_RESTRICTED() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_NO_TRUNC 1
+     * }
+     */
     public static int _POSIX_NO_TRUNC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_REALTIME 1
+     * }
+     */
     public static int _XOPEN_REALTIME() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_REALTIME_THREADS 1
+     * }
+     */
     public static int _XOPEN_REALTIME_THREADS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XOPEN_SHM 1
+     * }
+     */
     public static int _XOPEN_SHM() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_REENTRANT_FUNCTIONS 1
+     * }
+     */
     public static int _POSIX_REENTRANT_FUNCTIONS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_ASYNC_IO 1
+     * }
+     */
     public static int _POSIX_ASYNC_IO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LFS_ASYNCHRONOUS_IO 1
+     * }
+     */
     public static int _LFS_ASYNCHRONOUS_IO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LFS64_ASYNCHRONOUS_IO 1
+     * }
+     */
     public static int _LFS64_ASYNCHRONOUS_IO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LFS_LARGEFILE 1
+     * }
+     */
     public static int _LFS_LARGEFILE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LFS64_LARGEFILE 1
+     * }
+     */
     public static int _LFS64_LARGEFILE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _LFS64_STDIO 1
+     * }
+     */
     public static int _LFS64_STDIO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_CPUTIME 0
+     * }
+     */
     public static int _POSIX_CPUTIME() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_THREAD_CPUTIME 0
+     * }
+     */
     public static int _POSIX_THREAD_CPUTIME() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_REGEXP 1
+     * }
+     */
     public static int _POSIX_REGEXP() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_SHELL 1
+     * }
+     */
     public static int _POSIX_SHELL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_MONOTONIC_CLOCK 0
+     * }
+     */
     public static int _POSIX_MONOTONIC_CLOCK() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_V7_LP64_OFF64 1
+     * }
+     */
     public static int _POSIX_V7_LP64_OFF64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _POSIX_V6_LP64_OFF64 1
+     * }
+     */
     public static int _POSIX_V6_LP64_OFF64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _XBS5_LP64_OFF64 1
+     * }
+     */
     public static int _XBS5_LP64_OFF64() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define STDIN_FILENO 0
+     * }
+     */
     public static int STDIN_FILENO() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define STDOUT_FILENO 1
+     * }
+     */
     public static int STDOUT_FILENO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define STDERR_FILENO 2
+     * }
+     */
     public static int STDERR_FILENO() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define _GETOPT_POSIX_H 1
+     * }
+     */
     public static int _GETOPT_POSIX_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _GETOPT_CORE_H 1
+     * }
+     */
     public static int _GETOPT_CORE_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_FILE_H 1
+     * }
+     */
     public static int _SYS_FILE_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_STAT_H 1
+     * }
+     */
     public static int _SYS_STAT_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define S_BLKSIZE 512
+     * }
+     */
     public static int S_BLKSIZE() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * #define _SYS_TIME_H 1
+     * }
+     */
     public static int _SYS_TIME_H() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define TBUF_SZ 1024
+     * }
+     */
     public static int TBUF_SZ() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define DF_MAXFNLEN 256
+     * }
+     */
     public static int DF_MAXFNLEN() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define FIELDNAMELENMAX 128
+     * }
+     */
     public static int FIELDNAMELENMAX() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define VSFIELDMAX 256
+     * }
+     */
     public static int VSFIELDMAX() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define VSNAMELENMAX 64
+     * }
+     */
     public static int VSNAMELENMAX() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define VGNAMELENMAX 64
+     * }
+     */
     public static int VGNAMELENMAX() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define MAXNVELT 64
+     * }
+     */
     public static int MAXNVELT() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define VDEFAULTBLKSIZE 4096
+     * }
+     */
     public static int VDEFAULTBLKSIZE() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define VDEFAULTNBLKS 32
+     * }
+     */
     public static int VDEFAULTNBLKS() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_ORDER 65535
+     * }
+     */
     public static int MAX_ORDER() {
         return (int)65535L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_FIELD_SIZE 65535
+     * }
+     */
     public static int MAX_FIELD_SIZE() {
         return (int)65535L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_FILE 32
+     * }
+     */
     public static int MAX_FILE() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_PATH_LEN 1024
+     * }
+     */
     public static int MAX_PATH_LEN() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * #define DEF_NDDS 16
+     * }
+     */
     public static int DEF_NDDS() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define MIN_NDDS 4
+     * }
+     */
     public static int MIN_NDDS() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_APPENDABLE_BLOCK_LEN 4096
+     * }
+     */
     public static int HDF_APPENDABLE_BLOCK_LEN() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_APPENDABLE_BLOCK_NUM 16
+     * }
+     */
     public static int HDF_APPENDABLE_BLOCK_NUM() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define HASH_MASK 255
+     * }
+     */
     public static int HASH_MASK() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define HASH_BLOCK_SIZE 100
+     * }
+     */
     public static int HASH_BLOCK_SIZE() {
         return (int)100L;
     }
+    /**
+     * {@snippet :
+     * #define VDATA_BUFFER_MAX 1000000
+     * }
+     */
     public static int VDATA_BUFFER_MAX() {
         return (int)1000000L;
     }
+    /**
+     * {@snippet :
+     * #define DFS_MAXLEN 255
+     * }
+     */
     public static int DFS_MAXLEN() {
         return (int)255L;
     }
+    /**
+     * {@snippet :
+     * #define DFSD_MAXFILL_LEN 16
+     * }
+     */
     public static int DFSD_MAXFILL_LEN() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_MAX_COMP 12
+     * }
+     */
     public static int COMP_MAX_COMP() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_HEADER_LENGTH 14
+     * }
+     */
     public static int COMP_HEADER_LENGTH() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_GROUPS 8
+     * }
+     */
     public static int MAX_GROUPS() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define FUNC_NAME_LEN 32
+     * }
+     */
     public static int FUNC_NAME_LEN() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define ERR_STACK_SZ 10
+     * }
+     */
     public static int ERR_STACK_SZ() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * #define ERR_STRING_SIZE 512
+     * }
+     */
     public static int ERR_STRING_SIZE() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_NC_DIMS 5000
+     * }
+     */
     public static int H4_MAX_NC_DIMS() {
         return (int)5000L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_NC_ATTRS 3000
+     * }
+     */
     public static int H4_MAX_NC_ATTRS() {
         return (int)3000L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_NC_VARS 5000
+     * }
+     */
     public static int H4_MAX_NC_VARS() {
         return (int)5000L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_NC_NAME 256
+     * }
+     */
     public static int H4_MAX_NC_NAME() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_NC_CLASS 128
+     * }
+     */
     public static int H4_MAX_NC_CLASS() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_VAR_DIMS 32
+     * }
+     */
     public static int H4_MAX_VAR_DIMS() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define H4_MAX_GR_NAME 256
+     * }
+     */
     public static int H4_MAX_GR_NAME() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define _HDF_CHK_TBL_CLASS_VER 0
+     * }
+     */
     public static int _HDF_CHK_TBL_CLASS_VER() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_READ 1
+     * }
+     */
     public static int DFACC_READ() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_WRITE 2
+     * }
+     */
     public static int DFACC_WRITE() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_CREATE 4
+     * }
+     */
     public static int DFACC_CREATE() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_ALL 7
+     * }
+     */
     public static int DFACC_ALL() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_RDONLY 1
+     * }
+     */
     public static int DFACC_RDONLY() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_RDWR 3
+     * }
+     */
     public static int DFACC_RDWR() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_CLOBBER 4
+     * }
+     */
     public static int DFACC_CLOBBER() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_BUFFER 8
+     * }
+     */
     public static int DFACC_BUFFER() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_APPENDABLE 16
+     * }
+     */
     public static int DFACC_APPENDABLE() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_CURRENT 32
+     * }
+     */
     public static int DFACC_CURRENT() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_OLD 1
+     * }
+     */
     public static int DFACC_OLD() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_DEFAULT 0
+     * }
+     */
     public static int DFACC_DEFAULT() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_SERIAL 1
+     * }
+     */
     public static int DFACC_SERIAL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFACC_PARALLEL 9
+     * }
+     */
     public static int DFACC_PARALLEL() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define DF_START 0
+     * }
+     */
     public static int DF_START() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DF_CURRENT 1
+     * }
+     */
     public static int DF_CURRENT() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DF_END 2
+     * }
+     */
     public static int DF_END() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define DF_FORWARD 1
+     * }
+     */
     public static int DF_FORWARD() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DF_BACKWARD 2
+     * }
+     */
     public static int DF_BACKWARD() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SUCCEED 0
+     * }
+     */
     public static int SUCCEED() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define FALSE 0
+     * }
+     */
     public static int FALSE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_HDF 0
+     * }
+     */
     public static int DFNT_HDF() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_NATIVE 4096
+     * }
+     */
     public static int DFNT_NATIVE() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_CUSTOM 8192
+     * }
+     */
     public static int DFNT_CUSTOM() {
         return (int)8192L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_LITEND 16384
+     * }
+     */
     public static int DFNT_LITEND() {
         return (int)16384L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_MASK 4095
+     * }
+     */
     public static int DFNT_MASK() {
         return (int)4095L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_NONE 0
+     * }
+     */
     public static int DFNT_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_QUERY 0
+     * }
+     */
     public static int DFNT_QUERY() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_VERSION 1
+     * }
+     */
     public static int DFNT_VERSION() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_FLOAT32 5
+     * }
+     */
     public static int DFNT_FLOAT32() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_FLOAT 5
+     * }
+     */
     public static int DFNT_FLOAT() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_FLOAT64 6
+     * }
+     */
     public static int DFNT_FLOAT64() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_DOUBLE 6
+     * }
+     */
     public static int DFNT_DOUBLE() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_FLOAT128 7
+     * }
+     */
     public static int DFNT_FLOAT128() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_INT8 20
+     * }
+     */
     public static int DFNT_INT8() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UINT8 21
+     * }
+     */
     public static int DFNT_UINT8() {
         return (int)21L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_INT16 22
+     * }
+     */
     public static int DFNT_INT16() {
         return (int)22L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UINT16 23
+     * }
+     */
     public static int DFNT_UINT16() {
         return (int)23L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_INT32 24
+     * }
+     */
     public static int DFNT_INT32() {
         return (int)24L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UINT32 25
+     * }
+     */
     public static int DFNT_UINT32() {
         return (int)25L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_INT64 26
+     * }
+     */
     public static int DFNT_INT64() {
         return (int)26L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UINT64 27
+     * }
+     */
     public static int DFNT_UINT64() {
         return (int)27L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_INT128 28
+     * }
+     */
     public static int DFNT_INT128() {
         return (int)28L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UINT128 30
+     * }
+     */
     public static int DFNT_UINT128() {
         return (int)30L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UCHAR8 3
+     * }
+     */
     public static int DFNT_UCHAR8() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UCHAR 3
+     * }
+     */
     public static int DFNT_UCHAR() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_CHAR8 4
+     * }
+     */
     public static int DFNT_CHAR8() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_CHAR 4
+     * }
+     */
     public static int DFNT_CHAR() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_CHAR16 42
+     * }
+     */
     public static int DFNT_CHAR16() {
         return (int)42L;
     }
+    /**
+     * {@snippet :
+     * #define DFNT_UCHAR16 43
+     * }
+     */
     public static int DFNT_UCHAR16() {
         return (int)43L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTI_MBO 1
+     * }
+     */
     public static int DFNTI_MBO() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTI_VBO 2
+     * }
+     */
     public static int DFNTI_VBO() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTI_IBO 4
+     * }
+     */
     public static int DFNTI_IBO() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_NONE 0
+     * }
+     */
     public static int DFNTF_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_HDFDEFAULT 1
+     * }
+     */
     public static int DFNTF_HDFDEFAULT() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_IEEE 1
+     * }
+     */
     public static int DFNTF_IEEE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_VAX 2
+     * }
+     */
     public static int DFNTF_VAX() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_CRAY 3
+     * }
+     */
     public static int DFNTF_CRAY() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_PC 4
+     * }
+     */
     public static int DFNTF_PC() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_CONVEX 5
+     * }
+     */
     public static int DFNTF_CONVEX() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTF_VP 6
+     * }
+     */
     public static int DFNTF_VP() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTC_BYTE 0
+     * }
+     */
     public static int DFNTC_BYTE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTC_ASCII 1
+     * }
+     */
     public static int DFNTC_ASCII() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFNTC_EBCDIC 5
+     * }
+     */
     public static int DFNTC_EBCDIC() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define DFO_FORTRAN 1
+     * }
+     */
     public static int DFO_FORTRAN() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFO_C 2
+     * }
+     */
     public static int DFO_C() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_FLOAT32 4
+     * }
+     */
     public static int SIZE_FLOAT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_FLOAT64 8
+     * }
+     */
     public static int SIZE_FLOAT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_FLOAT128 16
+     * }
+     */
     public static int SIZE_FLOAT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_INT8 1
+     * }
+     */
     public static int SIZE_INT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UINT8 1
+     * }
+     */
     public static int SIZE_UINT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_INT16 2
+     * }
+     */
     public static int SIZE_INT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UINT16 2
+     * }
+     */
     public static int SIZE_UINT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_INT32 4
+     * }
+     */
     public static int SIZE_INT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UINT32 4
+     * }
+     */
     public static int SIZE_UINT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_INT64 8
+     * }
+     */
     public static int SIZE_INT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UINT64 8
+     * }
+     */
     public static int SIZE_UINT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_INT128 16
+     * }
+     */
     public static int SIZE_INT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UINT128 16
+     * }
+     */
     public static int SIZE_UINT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_CHAR8 1
+     * }
+     */
     public static int SIZE_CHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_CHAR 1
+     * }
+     */
     public static int SIZE_CHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UCHAR8 1
+     * }
+     */
     public static int SIZE_UCHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UCHAR 1
+     * }
+     */
     public static int SIZE_UCHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_CHAR16 2
+     * }
+     */
     public static int SIZE_CHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_UCHAR16 2
+     * }
+     */
     public static int SIZE_UCHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NFLOAT32 4
+     * }
+     */
     public static int SIZE_NFLOAT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NFLOAT64 8
+     * }
+     */
     public static int SIZE_NFLOAT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NFLOAT128 16
+     * }
+     */
     public static int SIZE_NFLOAT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NINT8 1
+     * }
+     */
     public static int SIZE_NINT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUINT8 1
+     * }
+     */
     public static int SIZE_NUINT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NINT16 2
+     * }
+     */
     public static int SIZE_NINT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUINT16 2
+     * }
+     */
     public static int SIZE_NUINT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NINT32 4
+     * }
+     */
     public static int SIZE_NINT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUINT32 4
+     * }
+     */
     public static int SIZE_NUINT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NINT64 8
+     * }
+     */
     public static int SIZE_NINT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUINT64 8
+     * }
+     */
     public static int SIZE_NUINT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NINT128 16
+     * }
+     */
     public static int SIZE_NINT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUINT128 16
+     * }
+     */
     public static int SIZE_NUINT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NCHAR8 1
+     * }
+     */
     public static int SIZE_NCHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NCHAR 1
+     * }
+     */
     public static int SIZE_NCHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUCHAR8 1
+     * }
+     */
     public static int SIZE_NUCHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUCHAR 1
+     * }
+     */
     public static int SIZE_NUCHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NCHAR16 2
+     * }
+     */
     public static int SIZE_NCHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_NUCHAR16 2
+     * }
+     */
     public static int SIZE_NUCHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LFLOAT32 4
+     * }
+     */
     public static int SIZE_LFLOAT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LFLOAT64 8
+     * }
+     */
     public static int SIZE_LFLOAT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LFLOAT128 16
+     * }
+     */
     public static int SIZE_LFLOAT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LINT8 1
+     * }
+     */
     public static int SIZE_LINT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUINT8 1
+     * }
+     */
     public static int SIZE_LUINT8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LINT16 2
+     * }
+     */
     public static int SIZE_LINT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUINT16 2
+     * }
+     */
     public static int SIZE_LUINT16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LINT32 4
+     * }
+     */
     public static int SIZE_LINT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUINT32 4
+     * }
+     */
     public static int SIZE_LUINT32() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LINT64 8
+     * }
+     */
     public static int SIZE_LINT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUINT64 8
+     * }
+     */
     public static int SIZE_LUINT64() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LINT128 16
+     * }
+     */
     public static int SIZE_LINT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUINT128 16
+     * }
+     */
     public static int SIZE_LUINT128() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LCHAR8 1
+     * }
+     */
     public static int SIZE_LCHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LCHAR 1
+     * }
+     */
     public static int SIZE_LCHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUCHAR8 1
+     * }
+     */
     public static int SIZE_LUCHAR8() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUCHAR 1
+     * }
+     */
     public static int SIZE_LUCHAR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LCHAR16 2
+     * }
+     */
     public static int SIZE_LCHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SIZE_LUCHAR16 2
+     * }
+     */
     public static int SIZE_LUCHAR16() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define MACHINE_I8_SIZE 1
+     * }
+     */
     public static int MACHINE_I8_SIZE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define MACHINE_I16_SIZE 2
+     * }
+     */
     public static int MACHINE_I16_SIZE() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define MACHINE_I32_SIZE 4
+     * }
+     */
     public static int MACHINE_I32_SIZE() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define MACHINE_F32_SIZE 4
+     * }
+     */
     public static int MACHINE_F32_SIZE() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define MACHINE_F64_SIZE 8
+     * }
+     */
     public static int MACHINE_F64_SIZE() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define MAX_NT_SIZE 16
+     * }
+     */
     public static int MAX_NT_SIZE() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define DFREF_WILDCARD 0
+     * }
+     */
     public static int DFREF_WILDCARD() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_WILDCARD 0
+     * }
+     */
     public static int DFTAG_WILDCARD() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFREF_NONE 0
+     * }
+     */
     public static int DFREF_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_NULL 1
+     * }
+     */
     public static int DFTAG_NULL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_LINKED 20
+     * }
+     */
     public static int DFTAG_LINKED() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_VERSION 30
+     * }
+     */
     public static int DFTAG_VERSION() {
         return (int)30L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_COMPRESSED 40
+     * }
+     */
     public static int DFTAG_COMPRESSED() {
         return (int)40L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_VLINKED 50
+     * }
+     */
     public static int DFTAG_VLINKED() {
         return (int)50L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_VLINKED_DATA 51
+     * }
+     */
     public static int DFTAG_VLINKED_DATA() {
         return (int)51L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_CHUNKED 60
+     * }
+     */
     public static int DFTAG_CHUNKED() {
         return (int)60L;
     }
+    /**
+     * {@snippet :
+     * #define DFTAG_CHUNK 61
+     * }
+     */
     public static int DFTAG_CHUNK() {
         return (int)61L;
     }
+    /**
+     * {@snippet :
+     * #define DFIL_PIXEL 0
+     * }
+     */
     public static int DFIL_PIXEL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define DFIL_LINE 1
+     * }
+     */
     public static int DFIL_LINE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define DFIL_PLANE 2
+     * }
+     */
     public static int DFIL_PLANE() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_LINKED 1
+     * }
+     */
     public static int SPECIAL_LINKED() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_EXT 2
+     * }
+     */
     public static int SPECIAL_EXT() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_COMP 3
+     * }
+     */
     public static int SPECIAL_COMP() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_VLINKED 4
+     * }
+     */
     public static int SPECIAL_VLINKED() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_CHUNKED 5
+     * }
+     */
     public static int SPECIAL_CHUNKED() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_BUFFERED 6
+     * }
+     */
     public static int SPECIAL_BUFFERED() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define SPECIAL_COMPRAS 7
+     * }
+     */
     public static int SPECIAL_COMPRAS() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define FULL_INTERLACE 0
+     * }
+     */
     public static int FULL_INTERLACE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NO_INTERLACE 1
+     * }
+     */
     public static int NO_INTERLACE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define BITBUF_SIZE 4096
+     * }
+     */
     public static int BITBUF_SIZE() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_NONE 0
+     * }
+     */
     public static int COMP_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_JPEG 2
+     * }
+     */
     public static int COMP_JPEG() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_RLE 11
+     * }
+     */
     public static int COMP_RLE() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_IMCOMP 12
+     * }
+     */
     public static int COMP_IMCOMP() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_DECODER_ENABLED 1
+     * }
+     */
     public static int COMP_DECODER_ENABLED() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define COMP_ENCODER_ENABLED 2
+     * }
+     */
     public static int COMP_ENCODER_ENABLED() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_NONE 0
+     * }
+     */
     public static int HDF_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_CHUNK 1
+     * }
+     */
     public static int HDF_CHUNK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_COMP 3
+     * }
+     */
     public static int HDF_COMP() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_NBIT 5
+     * }
+     */
     public static int HDF_NBIT() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define HDF_CACHEALL 1
+     * }
+     */
     public static int HDF_CACHEALL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define OLD_VGDESCTAG 61820
+     * }
+     */
     public static int OLD_VGDESCTAG() {
         return (int)61820L;
     }
+    /**
+     * {@snippet :
+     * #define OLD_VSDESCTAG 61821
+     * }
+     */
     public static int OLD_VSDESCTAG() {
         return (int)61821L;
     }
+    /**
+     * {@snippet :
+     * #define OLD_VSDATATAG 61822
+     * }
+     */
     public static int OLD_VSDATATAG() {
         return (int)61822L;
     }
+    /**
+     * {@snippet :
+     * #define _HDF_VSPACK 0
+     * }
+     */
     public static int _HDF_VSPACK() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define _HDF_VSUNPACK 1
+     * }
+     */
     public static int _HDF_VSUNPACK() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define VG_ATTR_SET 1
+     * }
+     */
     public static int VG_ATTR_SET() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define VS_ATTR_SET 1
+     * }
+     */
     public static int VS_ATTR_SET() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define VATOM_HASH_SIZE 256
+     * }
+     */
     public static int VATOM_HASH_SIZE() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define VSET_NEW_VERSION 4
+     * }
+     */
     public static int VSET_NEW_VERSION() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define VSET_VERSION 3
+     * }
+     */
     public static int VSET_VERSION() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define VSET_OLD_VERSION 2
+     * }
+     */
     public static int VSET_OLD_VERSION() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define MFGR_INTERLACE_PIXEL 0
+     * }
+     */
     public static int MFGR_INTERLACE_PIXEL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define MFGR_INTERLACE_LINE 1
+     * }
+     */
     public static int MFGR_INTERLACE_LINE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define MFGR_INTERLACE_COMPONENT 2
+     * }
+     */
     public static int MFGR_INTERLACE_COMPONENT() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define MP_PAGEALL 1
+     * }
+     */
     public static int MP_PAGEALL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define NC_OLD_FILLVALUES 0
+     * }
+     */
     public static int NC_OLD_FILLVALUES() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NC_RDWR 1
+     * }
+     */
     public static int NC_RDWR() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define NC_CREAT 2
+     * }
+     */
     public static int NC_CREAT() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EXCL 4
+     * }
+     */
     public static int NC_EXCL() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define NC_INDEF 8
+     * }
+     */
     public static int NC_INDEF() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define NC_NSYNC 16
+     * }
+     */
     public static int NC_NSYNC() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define NC_HSYNC 32
+     * }
+     */
     public static int NC_HSYNC() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define NC_NDIRTY 64
+     * }
+     */
     public static int NC_NDIRTY() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * #define NC_HDIRTY 128
+     * }
+     */
     public static int NC_HDIRTY() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * #define NC_NOFILL 256
+     * }
+     */
     public static int NC_NOFILL() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * #define NC_LINK 32768
+     * }
+     */
     public static int NC_LINK() {
         return (int)32768L;
     }
+    /**
+     * {@snippet :
+     * #define NC_FILL 0
+     * }
+     */
     public static int NC_FILL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NC_NOWRITE 0
+     * }
+     */
     public static int NC_NOWRITE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NC_UNSPECIFIED 0
+     * }
+     */
     public static int NC_UNSPECIFIED() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NC_BYTE 1
+     * }
+     */
     public static int NC_BYTE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define NC_CHAR 2
+     * }
+     */
     public static int NC_CHAR() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define NC_SHORT 3
+     * }
+     */
     public static int NC_SHORT() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define NC_LONG 4
+     * }
+     */
     public static int NC_LONG() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define NC_FLOAT 5
+     * }
+     */
     public static int NC_FLOAT() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define NC_DOUBLE 6
+     * }
+     */
     public static int NC_DOUBLE() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define NC_BITFIELD 7
+     * }
+     */
     public static int NC_BITFIELD() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define NC_STRING 8
+     * }
+     */
     public static int NC_STRING() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define NC_IARRAY 9
+     * }
+     */
     public static int NC_IARRAY() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define NC_DIMENSION 10
+     * }
+     */
     public static int NC_DIMENSION() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * #define NC_VARIABLE 11
+     * }
+     */
     public static int NC_VARIABLE() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ATTRIBUTE 12
+     * }
+     */
     public static int NC_ATTRIBUTE() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * #define NC_NOERR 0
+     * }
+     */
     public static int NC_NOERR() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EBADID 1
+     * }
+     */
     public static int NC_EBADID() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENFILE 2
+     * }
+     */
     public static int NC_ENFILE() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EEXIST 3
+     * }
+     */
     public static int NC_EEXIST() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EINVAL 4
+     * }
+     */
     public static int NC_EINVAL() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EPERM 5
+     * }
+     */
     public static int NC_EPERM() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENOTINDEFINE 6
+     * }
+     */
     public static int NC_ENOTINDEFINE() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EINDEFINE 7
+     * }
+     */
     public static int NC_EINDEFINE() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EINVALCOORDS 8
+     * }
+     */
     public static int NC_EINVALCOORDS() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EMAXDIMS 9
+     * }
+     */
     public static int NC_EMAXDIMS() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENAMEINUSE 10
+     * }
+     */
     public static int NC_ENAMEINUSE() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENOTATT 11
+     * }
+     */
     public static int NC_ENOTATT() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EMAXATTS 12
+     * }
+     */
     public static int NC_EMAXATTS() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EBADTYPE 13
+     * }
+     */
     public static int NC_EBADTYPE() {
         return (int)13L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EBADDIM 14
+     * }
+     */
     public static int NC_EBADDIM() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EUNLIMPOS 15
+     * }
+     */
     public static int NC_EUNLIMPOS() {
         return (int)15L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EMAXVARS 16
+     * }
+     */
     public static int NC_EMAXVARS() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENOTVAR 17
+     * }
+     */
     public static int NC_ENOTVAR() {
         return (int)17L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EGLOBAL 18
+     * }
+     */
     public static int NC_EGLOBAL() {
         return (int)18L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ENOTNC 19
+     * }
+     */
     public static int NC_ENOTNC() {
         return (int)19L;
     }
+    /**
+     * {@snippet :
+     * #define NC_ESTS 20
+     * }
+     */
     public static int NC_ESTS() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EMAXNAME 21
+     * }
+     */
     public static int NC_EMAXNAME() {
         return (int)21L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EUNLIMIT 22
+     * }
+     */
     public static int NC_EUNLIMIT() {
         return (int)22L;
     }
+    /**
+     * {@snippet :
+     * #define NC_EXDR 32
+     * }
+     */
     public static int NC_EXDR() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * #define NC_FATAL 1
+     * }
+     */
     public static int NC_FATAL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define NC_VERBOSE 2
+     * }
+     */
     public static int NC_VERBOSE() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * #define SD_DIMVAL_BW_COMP 1
+     * }
+     */
     public static int SD_DIMVAL_BW_COMP() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * #define SD_DIMVAL_BW_INCOMP 0
+     * }
+     */
     public static int SD_DIMVAL_BW_INCOMP() {
         return (int)0L;
     }
     public static MethodHandle __assert_fail$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__assert_fail$MH,"__assert_fail");
+        return RuntimeHelper.requireNonNull(constants$0.const$1,"__assert_fail");
     }
-    public static void __assert_fail ( Addressable __assertion,  Addressable __file,  int __line,  Addressable __function) {
+    /**
+     * {@snippet :
+     * void __assert_fail(char* __assertion, char* __file, unsigned int __line, char* __function);
+     * }
+     */
+    public static void __assert_fail(MemorySegment __assertion, MemorySegment __file, int __line, MemorySegment __function) {
         var mh$ = __assert_fail$MH();
         try {
             mh$.invokeExact(__assertion, __file, __line, __function);
@@ -2018,9 +5338,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __assert_perror_fail$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__assert_perror_fail$MH,"__assert_perror_fail");
+        return RuntimeHelper.requireNonNull(constants$0.const$3,"__assert_perror_fail");
     }
-    public static void __assert_perror_fail ( int __errnum,  Addressable __file,  int __line,  Addressable __function) {
+    /**
+     * {@snippet :
+     * void __assert_perror_fail(int __errnum, char* __file, unsigned int __line, char* __function);
+     * }
+     */
+    public static void __assert_perror_fail(int __errnum, MemorySegment __file, int __line, MemorySegment __function) {
         var mh$ = __assert_perror_fail$MH();
         try {
             mh$.invokeExact(__errnum, __file, __line, __function);
@@ -2029,9 +5354,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __assert$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__assert$MH,"__assert");
+        return RuntimeHelper.requireNonNull(constants$0.const$5,"__assert");
     }
-    public static void __assert ( Addressable __assertion,  Addressable __file,  int __line) {
+    /**
+     * {@snippet :
+     * void __assert(char* __assertion, char* __file, int __line);
+     * }
+     */
+    public static void __assert(MemorySegment __assertion, MemorySegment __file, int __line) {
         var mh$ = __assert$MH();
         try {
             mh$.invokeExact(__assertion, __file, __line);
@@ -2039,108 +5369,531 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfShort __int16_t = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt __int32_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong __int64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfShort __int_least16_t = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt __int_least32_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong __int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __off_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __off64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt __pid_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong __clock_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __time_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __suseconds64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt __daddr_t = Constants$root.C_INT$LAYOUT;
-    public static OfInt __key_t = Constants$root.C_INT$LAYOUT;
-    public static OfInt __clockid_t = Constants$root.C_INT$LAYOUT;
-    public static OfAddress __timer_t = Constants$root.C_POINTER$LAYOUT;
-    public static OfLong __blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __blkcnt64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __fsword_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __syscall_slong_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __loff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfAddress __caddr_t = Constants$root.C_POINTER$LAYOUT;
-    public static OfLong __intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt __sig_atomic_t = Constants$root.C_INT$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef unsigned char __u_char;
+     * }
+     */
+    public static final OfByte __u_char = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned short __u_short;
+     * }
+     */
+    public static final OfShort __u_short = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int __u_int;
+     * }
+     */
+    public static final OfInt __u_int = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long __u_long;
+     * }
+     */
+    public static final OfLong __u_long = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef signed char __int8_t;
+     * }
+     */
+    public static final OfByte __int8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned char __uint8_t;
+     * }
+     */
+    public static final OfByte __uint8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef short __int16_t;
+     * }
+     */
+    public static final OfShort __int16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned short __uint16_t;
+     * }
+     */
+    public static final OfShort __uint16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef int __int32_t;
+     * }
+     */
+    public static final OfInt __int32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int __uint32_t;
+     * }
+     */
+    public static final OfInt __uint32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long __int64_t;
+     * }
+     */
+    public static final OfLong __int64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __uint64_t;
+     * }
+     */
+    public static final OfLong __uint64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef signed char __int_least8_t;
+     * }
+     */
+    public static final OfByte __int_least8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned char __uint_least8_t;
+     * }
+     */
+    public static final OfByte __uint_least8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef short __int_least16_t;
+     * }
+     */
+    public static final OfShort __int_least16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned short __uint_least16_t;
+     * }
+     */
+    public static final OfShort __uint_least16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef int __int_least32_t;
+     * }
+     */
+    public static final OfInt __int_least32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int __uint_least32_t;
+     * }
+     */
+    public static final OfInt __uint_least32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long __int_least64_t;
+     * }
+     */
+    public static final OfLong __int_least64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __uint_least64_t;
+     * }
+     */
+    public static final OfLong __uint_least64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __quad_t;
+     * }
+     */
+    public static final OfLong __quad_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __u_quad_t;
+     * }
+     */
+    public static final OfLong __u_quad_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __intmax_t;
+     * }
+     */
+    public static final OfLong __intmax_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __uintmax_t;
+     * }
+     */
+    public static final OfLong __uintmax_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __dev_t;
+     * }
+     */
+    public static final OfLong __dev_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __uid_t;
+     * }
+     */
+    public static final OfInt __uid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int __gid_t;
+     * }
+     */
+    public static final OfInt __gid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long __ino_t;
+     * }
+     */
+    public static final OfLong __ino_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __ino64_t;
+     * }
+     */
+    public static final OfLong __ino64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __mode_t;
+     * }
+     */
+    public static final OfInt __mode_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long __nlink_t;
+     * }
+     */
+    public static final OfLong __nlink_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __off_t;
+     * }
+     */
+    public static final OfLong __off_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __off64_t;
+     * }
+     */
+    public static final OfLong __off64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef int __pid_t;
+     * }
+     */
+    public static final OfInt __pid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long __clock_t;
+     * }
+     */
+    public static final OfLong __clock_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __rlim_t;
+     * }
+     */
+    public static final OfLong __rlim_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __rlim64_t;
+     * }
+     */
+    public static final OfLong __rlim64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __id_t;
+     * }
+     */
+    public static final OfInt __id_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long __time_t;
+     * }
+     */
+    public static final OfLong __time_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __useconds_t;
+     * }
+     */
+    public static final OfInt __useconds_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long __suseconds_t;
+     * }
+     */
+    public static final OfLong __suseconds_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __suseconds64_t;
+     * }
+     */
+    public static final OfLong __suseconds64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef int __daddr_t;
+     * }
+     */
+    public static final OfInt __daddr_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int __key_t;
+     * }
+     */
+    public static final OfInt __key_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int __clockid_t;
+     * }
+     */
+    public static final OfInt __clockid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef void* __timer_t;
+     * }
+     */
+    public static final AddressLayout __timer_t = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef long __blksize_t;
+     * }
+     */
+    public static final OfLong __blksize_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __blkcnt_t;
+     * }
+     */
+    public static final OfLong __blkcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __blkcnt64_t;
+     * }
+     */
+    public static final OfLong __blkcnt64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __fsblkcnt_t;
+     * }
+     */
+    public static final OfLong __fsblkcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __fsblkcnt64_t;
+     * }
+     */
+    public static final OfLong __fsblkcnt64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __fsfilcnt_t;
+     * }
+     */
+    public static final OfLong __fsfilcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __fsfilcnt64_t;
+     * }
+     */
+    public static final OfLong __fsfilcnt64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __fsword_t;
+     * }
+     */
+    public static final OfLong __fsword_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __ssize_t;
+     * }
+     */
+    public static final OfLong __ssize_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __syscall_slong_t;
+     * }
+     */
+    public static final OfLong __syscall_slong_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long __syscall_ulong_t;
+     * }
+     */
+    public static final OfLong __syscall_ulong_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __loff_t;
+     * }
+     */
+    public static final OfLong __loff_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef char* __caddr_t;
+     * }
+     */
+    public static final AddressLayout __caddr_t = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef long __intptr_t;
+     * }
+     */
+    public static final OfLong __intptr_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __socklen_t;
+     * }
+     */
+    public static final OfInt __socklen_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int __sig_atomic_t;
+     * }
+     */
+    public static final OfInt __sig_atomic_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * enum ._ISupper = 256;
+     * }
+     */
     public static int _ISupper() {
         return (int)256L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISlower = 512;
+     * }
+     */
     public static int _ISlower() {
         return (int)512L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISalpha = 1024;
+     * }
+     */
     public static int _ISalpha() {
         return (int)1024L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISdigit = 2048;
+     * }
+     */
     public static int _ISdigit() {
         return (int)2048L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISxdigit = 4096;
+     * }
+     */
     public static int _ISxdigit() {
         return (int)4096L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISspace = 8192;
+     * }
+     */
     public static int _ISspace() {
         return (int)8192L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISprint = 16384;
+     * }
+     */
     public static int _ISprint() {
         return (int)16384L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISgraph = 32768;
+     * }
+     */
     public static int _ISgraph() {
         return (int)32768L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISblank = 1;
+     * }
+     */
     public static int _ISblank() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum ._IScntrl = 2;
+     * }
+     */
     public static int _IScntrl() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISpunct = 4;
+     * }
+     */
     public static int _ISpunct() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum ._ISalnum = 8;
+     * }
+     */
     public static int _ISalnum() {
         return (int)8L;
     }
     public static MethodHandle __ctype_b_loc$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__ctype_b_loc$MH,"__ctype_b_loc");
+        return RuntimeHelper.requireNonNull(constants$1.const$2,"__ctype_b_loc");
     }
-    public static MemoryAddress __ctype_b_loc () {
+    /**
+     * {@snippet :
+     * unsigned short** __ctype_b_loc();
+     * }
+     */
+    public static MemorySegment __ctype_b_loc() {
         var mh$ = __ctype_b_loc$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __ctype_tolower_loc$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__ctype_tolower_loc$MH,"__ctype_tolower_loc");
+        return RuntimeHelper.requireNonNull(constants$1.const$3,"__ctype_tolower_loc");
     }
-    public static MemoryAddress __ctype_tolower_loc () {
+    /**
+     * {@snippet :
+     * const __int32_t** __ctype_tolower_loc();
+     * }
+     */
+    public static MemorySegment __ctype_tolower_loc() {
         var mh$ = __ctype_tolower_loc$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __ctype_toupper_loc$MH() {
-        return RuntimeHelper.requireNonNull(constants$0.__ctype_toupper_loc$MH,"__ctype_toupper_loc");
+        return RuntimeHelper.requireNonNull(constants$1.const$4,"__ctype_toupper_loc");
     }
-    public static MemoryAddress __ctype_toupper_loc () {
+    /**
+     * {@snippet :
+     * const __int32_t** __ctype_toupper_loc();
+     * }
+     */
+    public static MemorySegment __ctype_toupper_loc() {
         var mh$ = __ctype_toupper_loc$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle isalnum$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.isalnum$MH,"isalnum");
+        return RuntimeHelper.requireNonNull(constants$1.const$6,"isalnum");
     }
-    public static int isalnum ( int x0) {
+    /**
+     * {@snippet :
+     * int isalnum(int);
+     * }
+     */
+    public static int isalnum(int x0) {
         var mh$ = isalnum$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2149,9 +5902,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isalpha$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.isalpha$MH,"isalpha");
+        return RuntimeHelper.requireNonNull(constants$2.const$0,"isalpha");
     }
-    public static int isalpha ( int x0) {
+    /**
+     * {@snippet :
+     * int isalpha(int);
+     * }
+     */
+    public static int isalpha(int x0) {
         var mh$ = isalpha$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2160,9 +5918,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle iscntrl$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.iscntrl$MH,"iscntrl");
+        return RuntimeHelper.requireNonNull(constants$2.const$1,"iscntrl");
     }
-    public static int iscntrl ( int x0) {
+    /**
+     * {@snippet :
+     * int iscntrl(int);
+     * }
+     */
+    public static int iscntrl(int x0) {
         var mh$ = iscntrl$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2171,9 +5934,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isdigit$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.isdigit$MH,"isdigit");
+        return RuntimeHelper.requireNonNull(constants$2.const$2,"isdigit");
     }
-    public static int isdigit ( int x0) {
+    /**
+     * {@snippet :
+     * int isdigit(int);
+     * }
+     */
+    public static int isdigit(int x0) {
         var mh$ = isdigit$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2182,9 +5950,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle islower$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.islower$MH,"islower");
+        return RuntimeHelper.requireNonNull(constants$2.const$3,"islower");
     }
-    public static int islower ( int x0) {
+    /**
+     * {@snippet :
+     * int islower(int);
+     * }
+     */
+    public static int islower(int x0) {
         var mh$ = islower$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2193,9 +5966,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isgraph$MH() {
-        return RuntimeHelper.requireNonNull(constants$1.isgraph$MH,"isgraph");
+        return RuntimeHelper.requireNonNull(constants$2.const$4,"isgraph");
     }
-    public static int isgraph ( int x0) {
+    /**
+     * {@snippet :
+     * int isgraph(int);
+     * }
+     */
+    public static int isgraph(int x0) {
         var mh$ = isgraph$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2204,9 +5982,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isprint$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.isprint$MH,"isprint");
+        return RuntimeHelper.requireNonNull(constants$2.const$5,"isprint");
     }
-    public static int isprint ( int x0) {
+    /**
+     * {@snippet :
+     * int isprint(int);
+     * }
+     */
+    public static int isprint(int x0) {
         var mh$ = isprint$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2215,9 +5998,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ispunct$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.ispunct$MH,"ispunct");
+        return RuntimeHelper.requireNonNull(constants$3.const$0,"ispunct");
     }
-    public static int ispunct ( int x0) {
+    /**
+     * {@snippet :
+     * int ispunct(int);
+     * }
+     */
+    public static int ispunct(int x0) {
         var mh$ = ispunct$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2226,9 +6014,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isspace$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.isspace$MH,"isspace");
+        return RuntimeHelper.requireNonNull(constants$3.const$1,"isspace");
     }
-    public static int isspace ( int x0) {
+    /**
+     * {@snippet :
+     * int isspace(int);
+     * }
+     */
+    public static int isspace(int x0) {
         var mh$ = isspace$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2237,9 +6030,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isupper$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.isupper$MH,"isupper");
+        return RuntimeHelper.requireNonNull(constants$3.const$2,"isupper");
     }
-    public static int isupper ( int x0) {
+    /**
+     * {@snippet :
+     * int isupper(int);
+     * }
+     */
+    public static int isupper(int x0) {
         var mh$ = isupper$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2248,9 +6046,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isxdigit$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.isxdigit$MH,"isxdigit");
+        return RuntimeHelper.requireNonNull(constants$3.const$3,"isxdigit");
     }
-    public static int isxdigit ( int x0) {
+    /**
+     * {@snippet :
+     * int isxdigit(int);
+     * }
+     */
+    public static int isxdigit(int x0) {
         var mh$ = isxdigit$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2259,9 +6062,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle tolower$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.tolower$MH,"tolower");
+        return RuntimeHelper.requireNonNull(constants$3.const$4,"tolower");
     }
-    public static int tolower ( int __c) {
+    /**
+     * {@snippet :
+     * int tolower(int __c);
+     * }
+     */
+    public static int tolower(int __c) {
         var mh$ = tolower$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -2270,9 +6078,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle toupper$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.toupper$MH,"toupper");
+        return RuntimeHelper.requireNonNull(constants$3.const$5,"toupper");
     }
-    public static int toupper ( int __c) {
+    /**
+     * {@snippet :
+     * int toupper(int __c);
+     * }
+     */
+    public static int toupper(int __c) {
         var mh$ = toupper$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -2281,9 +6094,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isblank$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.isblank$MH,"isblank");
+        return RuntimeHelper.requireNonNull(constants$4.const$0,"isblank");
     }
-    public static int isblank ( int x0) {
+    /**
+     * {@snippet :
+     * int isblank(int);
+     * }
+     */
+    public static int isblank(int x0) {
         var mh$ = isblank$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2292,9 +6110,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isascii$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.isascii$MH,"isascii");
+        return RuntimeHelper.requireNonNull(constants$4.const$1,"isascii");
     }
-    public static int isascii ( int __c) {
+    /**
+     * {@snippet :
+     * int isascii(int __c);
+     * }
+     */
+    public static int isascii(int __c) {
         var mh$ = isascii$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -2303,9 +6126,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle toascii$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.toascii$MH,"toascii");
+        return RuntimeHelper.requireNonNull(constants$4.const$2,"toascii");
     }
-    public static int toascii ( int __c) {
+    /**
+     * {@snippet :
+     * int toascii(int __c);
+     * }
+     */
+    public static int toascii(int __c) {
         var mh$ = toascii$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -2314,9 +6142,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle _toupper$MH() {
-        return RuntimeHelper.requireNonNull(constants$3._toupper$MH,"_toupper");
+        return RuntimeHelper.requireNonNull(constants$4.const$3,"_toupper");
     }
-    public static int _toupper ( int x0) {
+    /**
+     * {@snippet :
+     * int _toupper(int);
+     * }
+     */
+    public static int _toupper(int x0) {
         var mh$ = _toupper$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2325,9 +6158,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle _tolower$MH() {
-        return RuntimeHelper.requireNonNull(constants$3._tolower$MH,"_tolower");
+        return RuntimeHelper.requireNonNull(constants$4.const$4,"_tolower");
     }
-    public static int _tolower ( int x0) {
+    /**
+     * {@snippet :
+     * int _tolower(int);
+     * }
+     */
+    public static int _tolower(int x0) {
         var mh$ = _tolower$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -2335,12 +6173,27 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfAddress __locale_t = Constants$root.C_POINTER$LAYOUT;
-    public static OfAddress locale_t = Constants$root.C_POINTER$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef struct __locale_struct* __locale_t;
+     * }
+     */
+    public static final AddressLayout __locale_t = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef struct __locale_struct* locale_t;
+     * }
+     */
+    public static final AddressLayout locale_t = RuntimeHelper.POINTER;
     public static MethodHandle isalnum_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.isalnum_l$MH,"isalnum_l");
+        return RuntimeHelper.requireNonNull(constants$5.const$4,"isalnum_l");
     }
-    public static int isalnum_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isalnum_l(int, locale_t);
+     * }
+     */
+    public static int isalnum_l(int x0, MemorySegment x1) {
         var mh$ = isalnum_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2349,9 +6202,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isalpha_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.isalpha_l$MH,"isalpha_l");
+        return RuntimeHelper.requireNonNull(constants$5.const$5,"isalpha_l");
     }
-    public static int isalpha_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isalpha_l(int, locale_t);
+     * }
+     */
+    public static int isalpha_l(int x0, MemorySegment x1) {
         var mh$ = isalpha_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2360,9 +6218,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle iscntrl_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.iscntrl_l$MH,"iscntrl_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$0,"iscntrl_l");
     }
-    public static int iscntrl_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int iscntrl_l(int, locale_t);
+     * }
+     */
+    public static int iscntrl_l(int x0, MemorySegment x1) {
         var mh$ = iscntrl_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2371,9 +6234,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isdigit_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.isdigit_l$MH,"isdigit_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$1,"isdigit_l");
     }
-    public static int isdigit_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isdigit_l(int, locale_t);
+     * }
+     */
+    public static int isdigit_l(int x0, MemorySegment x1) {
         var mh$ = isdigit_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2382,9 +6250,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle islower_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.islower_l$MH,"islower_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$2,"islower_l");
     }
-    public static int islower_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int islower_l(int, locale_t);
+     * }
+     */
+    public static int islower_l(int x0, MemorySegment x1) {
         var mh$ = islower_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2393,9 +6266,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isgraph_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$4.isgraph_l$MH,"isgraph_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$3,"isgraph_l");
     }
-    public static int isgraph_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isgraph_l(int, locale_t);
+     * }
+     */
+    public static int isgraph_l(int x0, MemorySegment x1) {
         var mh$ = isgraph_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2404,9 +6282,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isprint_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.isprint_l$MH,"isprint_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$4,"isprint_l");
     }
-    public static int isprint_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isprint_l(int, locale_t);
+     * }
+     */
+    public static int isprint_l(int x0, MemorySegment x1) {
         var mh$ = isprint_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2415,9 +6298,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ispunct_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.ispunct_l$MH,"ispunct_l");
+        return RuntimeHelper.requireNonNull(constants$6.const$5,"ispunct_l");
     }
-    public static int ispunct_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int ispunct_l(int, locale_t);
+     * }
+     */
+    public static int ispunct_l(int x0, MemorySegment x1) {
         var mh$ = ispunct_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2426,9 +6314,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isspace_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.isspace_l$MH,"isspace_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$0,"isspace_l");
     }
-    public static int isspace_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isspace_l(int, locale_t);
+     * }
+     */
+    public static int isspace_l(int x0, MemorySegment x1) {
         var mh$ = isspace_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2437,9 +6330,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isupper_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.isupper_l$MH,"isupper_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$1,"isupper_l");
     }
-    public static int isupper_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isupper_l(int, locale_t);
+     * }
+     */
+    public static int isupper_l(int x0, MemorySegment x1) {
         var mh$ = isupper_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2448,9 +6346,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isxdigit_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.isxdigit_l$MH,"isxdigit_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$2,"isxdigit_l");
     }
-    public static int isxdigit_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isxdigit_l(int, locale_t);
+     * }
+     */
+    public static int isxdigit_l(int x0, MemorySegment x1) {
         var mh$ = isxdigit_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2459,9 +6362,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle isblank_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$5.isblank_l$MH,"isblank_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$3,"isblank_l");
     }
-    public static int isblank_l ( int x0,  Addressable x1) {
+    /**
+     * {@snippet :
+     * int isblank_l(int, locale_t);
+     * }
+     */
+    public static int isblank_l(int x0, MemorySegment x1) {
         var mh$ = isblank_l$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -2470,9 +6378,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __tolower_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.__tolower_l$MH,"__tolower_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$4,"__tolower_l");
     }
-    public static int __tolower_l ( int __c,  Addressable __l) {
+    /**
+     * {@snippet :
+     * int __tolower_l(int __c, locale_t __l);
+     * }
+     */
+    public static int __tolower_l(int __c, MemorySegment __l) {
         var mh$ = __tolower_l$MH();
         try {
             return (int)mh$.invokeExact(__c, __l);
@@ -2481,9 +6394,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle tolower_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.tolower_l$MH,"tolower_l");
+        return RuntimeHelper.requireNonNull(constants$7.const$5,"tolower_l");
     }
-    public static int tolower_l ( int __c,  Addressable __l) {
+    /**
+     * {@snippet :
+     * int tolower_l(int __c, locale_t __l);
+     * }
+     */
+    public static int tolower_l(int __c, MemorySegment __l) {
         var mh$ = tolower_l$MH();
         try {
             return (int)mh$.invokeExact(__c, __l);
@@ -2492,9 +6410,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __toupper_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.__toupper_l$MH,"__toupper_l");
+        return RuntimeHelper.requireNonNull(constants$8.const$0,"__toupper_l");
     }
-    public static int __toupper_l ( int __c,  Addressable __l) {
+    /**
+     * {@snippet :
+     * int __toupper_l(int __c, locale_t __l);
+     * }
+     */
+    public static int __toupper_l(int __c, MemorySegment __l) {
         var mh$ = __toupper_l$MH();
         try {
             return (int)mh$.invokeExact(__c, __l);
@@ -2503,9 +6426,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle toupper_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.toupper_l$MH,"toupper_l");
+        return RuntimeHelper.requireNonNull(constants$8.const$1,"toupper_l");
     }
-    public static int toupper_l ( int __c,  Addressable __l) {
+    /**
+     * {@snippet :
+     * int toupper_l(int __c, locale_t __l);
+     * }
+     */
+    public static int toupper_l(int __c, MemorySegment __l) {
         var mh$ = toupper_l$MH();
         try {
             return (int)mh$.invokeExact(__c, __l);
@@ -2513,22 +6441,189 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfShort int16_t = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt int32_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong int64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfShort int_least16_t = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt int_least32_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong int_least64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong int_fast16_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong int_fast32_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong int_fast64_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong intptr_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong intmax_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt __gwchar_t = Constants$root.C_INT$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef signed char int8_t;
+     * }
+     */
+    public static final OfByte int8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef short int16_t;
+     * }
+     */
+    public static final OfShort int16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef int int32_t;
+     * }
+     */
+    public static final OfInt int32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long int64_t;
+     * }
+     */
+    public static final OfLong int64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned char uint8_t;
+     * }
+     */
+    public static final OfByte uint8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned short uint16_t;
+     * }
+     */
+    public static final OfShort uint16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int uint32_t;
+     * }
+     */
+    public static final OfInt uint32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long uint64_t;
+     * }
+     */
+    public static final OfLong uint64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef signed char int_least8_t;
+     * }
+     */
+    public static final OfByte int_least8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef short int_least16_t;
+     * }
+     */
+    public static final OfShort int_least16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef int int_least32_t;
+     * }
+     */
+    public static final OfInt int_least32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long int_least64_t;
+     * }
+     */
+    public static final OfLong int_least64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned char uint_least8_t;
+     * }
+     */
+    public static final OfByte uint_least8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned short uint_least16_t;
+     * }
+     */
+    public static final OfShort uint_least16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int uint_least32_t;
+     * }
+     */
+    public static final OfInt uint_least32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long uint_least64_t;
+     * }
+     */
+    public static final OfLong uint_least64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef signed char int_fast8_t;
+     * }
+     */
+    public static final OfByte int_fast8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef long int_fast16_t;
+     * }
+     */
+    public static final OfLong int_fast16_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long int_fast32_t;
+     * }
+     */
+    public static final OfLong int_fast32_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long int_fast64_t;
+     * }
+     */
+    public static final OfLong int_fast64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned char uint_fast8_t;
+     * }
+     */
+    public static final OfByte uint_fast8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned long uint_fast16_t;
+     * }
+     */
+    public static final OfLong uint_fast16_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long uint_fast32_t;
+     * }
+     */
+    public static final OfLong uint_fast32_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long uint_fast64_t;
+     * }
+     */
+    public static final OfLong uint_fast64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long intptr_t;
+     * }
+     */
+    public static final OfLong intptr_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long uintptr_t;
+     * }
+     */
+    public static final OfLong uintptr_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long intmax_t;
+     * }
+     */
+    public static final OfLong intmax_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long uintmax_t;
+     * }
+     */
+    public static final OfLong uintmax_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef int __gwchar_t;
+     * }
+     */
+    public static final OfInt __gwchar_t = JAVA_INT;
     public static MethodHandle imaxabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.imaxabs$MH,"imaxabs");
+        return RuntimeHelper.requireNonNull(constants$8.const$6,"imaxabs");
     }
-    public static long imaxabs ( long __n) {
+    /**
+     * {@snippet :
+     * intmax_t imaxabs(intmax_t __n);
+     * }
+     */
+    public static long imaxabs(long __n) {
         var mh$ = imaxabs$MH();
         try {
             return (long)mh$.invokeExact(__n);
@@ -2537,9 +6632,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle imaxdiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$6.imaxdiv$MH,"imaxdiv");
+        return RuntimeHelper.requireNonNull(constants$9.const$1,"imaxdiv");
     }
-    public static MemorySegment imaxdiv ( SegmentAllocator allocator,  long __numer,  long __denom) {
+    /**
+     * {@snippet :
+     * imaxdiv_t imaxdiv(intmax_t __numer, intmax_t __denom);
+     * }
+     */
+    public static MemorySegment imaxdiv(SegmentAllocator allocator, long __numer, long __denom) {
         var mh$ = imaxdiv$MH();
         try {
             return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
@@ -2548,9 +6648,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoimax$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.strtoimax$MH,"strtoimax");
+        return RuntimeHelper.requireNonNull(constants$9.const$3,"strtoimax");
     }
-    public static long strtoimax ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * intmax_t strtoimax(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoimax$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -2559,9 +6664,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoumax$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.strtoumax$MH,"strtoumax");
+        return RuntimeHelper.requireNonNull(constants$9.const$4,"strtoumax");
     }
-    public static long strtoumax ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * uintmax_t strtoumax(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoumax$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -2570,9 +6680,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle wcstoimax$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.wcstoimax$MH,"wcstoimax");
+        return RuntimeHelper.requireNonNull(constants$9.const$5,"wcstoimax");
     }
-    public static long wcstoimax ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * intmax_t wcstoimax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
+     * }
+     */
+    public static long wcstoimax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = wcstoimax$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -2581,9 +6696,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle wcstoumax$MH() {
-        return RuntimeHelper.requireNonNull(constants$7.wcstoumax$MH,"wcstoumax");
+        return RuntimeHelper.requireNonNull(constants$10.const$0,"wcstoumax");
     }
-    public static long wcstoumax ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * uintmax_t wcstoumax(const __gwchar_t* __nptr, __gwchar_t** __endptr, int __base);
+     * }
+     */
+    public static long wcstoumax(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = wcstoumax$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -2591,59 +6711,126 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfLong ptrdiff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt wchar_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong off_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong ssize_t = Constants$root.C_LONG_LONG$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef long ptrdiff_t;
+     * }
+     */
+    public static final OfLong ptrdiff_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long size_t;
+     * }
+     */
+    public static final OfLong size_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef int wchar_t;
+     * }
+     */
+    public static final OfInt wchar_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long off_t;
+     * }
+     */
+    public static final OfLong off_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long ssize_t;
+     * }
+     */
+    public static final OfLong ssize_t = JAVA_LONG;
     public static MemoryLayout stdin$LAYOUT() {
-        return constants$7.stdin$LAYOUT;
+        return RuntimeHelper.POINTER;
     }
     public static VarHandle stdin$VH() {
-        return constants$7.stdin$VH;
+        return constants$19.const$0;
     }
     public static MemorySegment stdin$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$7.stdin$SEGMENT,"stdin");
+        return RuntimeHelper.requireNonNull(constants$19.const$1,"stdin");
     }
-    public static MemoryAddress stdin$get() {
-        return (java.lang.foreign.MemoryAddress) constants$7.stdin$VH.get(RuntimeHelper.requireNonNull(constants$7.stdin$SEGMENT, "stdin"));
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * FILE* stdin;
+     * }
+     */
+    public static MemorySegment stdin$get() {
+        return (java.lang.foreign.MemorySegment) constants$19.const$0.get(RuntimeHelper.requireNonNull(constants$19.const$1, "stdin"));
     }
-    public static void stdin$set( MemoryAddress x) {
-        constants$7.stdin$VH.set(RuntimeHelper.requireNonNull(constants$7.stdin$SEGMENT, "stdin"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * FILE* stdin;
+     * }
+     */
+    public static void stdin$set(MemorySegment x) {
+        constants$19.const$0.set(RuntimeHelper.requireNonNull(constants$19.const$1, "stdin"), x);
     }
     public static MemoryLayout stdout$LAYOUT() {
-        return constants$7.stdout$LAYOUT;
+        return RuntimeHelper.POINTER;
     }
     public static VarHandle stdout$VH() {
-        return constants$7.stdout$VH;
+        return constants$19.const$0;
     }
     public static MemorySegment stdout$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$7.stdout$SEGMENT,"stdout");
+        return RuntimeHelper.requireNonNull(constants$19.const$2,"stdout");
     }
-    public static MemoryAddress stdout$get() {
-        return (java.lang.foreign.MemoryAddress) constants$7.stdout$VH.get(RuntimeHelper.requireNonNull(constants$7.stdout$SEGMENT, "stdout"));
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * FILE* stdout;
+     * }
+     */
+    public static MemorySegment stdout$get() {
+        return (java.lang.foreign.MemorySegment) constants$19.const$0.get(RuntimeHelper.requireNonNull(constants$19.const$2, "stdout"));
     }
-    public static void stdout$set( MemoryAddress x) {
-        constants$7.stdout$VH.set(RuntimeHelper.requireNonNull(constants$7.stdout$SEGMENT, "stdout"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * FILE* stdout;
+     * }
+     */
+    public static void stdout$set(MemorySegment x) {
+        constants$19.const$0.set(RuntimeHelper.requireNonNull(constants$19.const$2, "stdout"), x);
     }
     public static MemoryLayout stderr$LAYOUT() {
-        return constants$8.stderr$LAYOUT;
+        return RuntimeHelper.POINTER;
     }
     public static VarHandle stderr$VH() {
-        return constants$8.stderr$VH;
+        return constants$19.const$0;
     }
     public static MemorySegment stderr$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$8.stderr$SEGMENT,"stderr");
+        return RuntimeHelper.requireNonNull(constants$19.const$3,"stderr");
     }
-    public static MemoryAddress stderr$get() {
-        return (java.lang.foreign.MemoryAddress) constants$8.stderr$VH.get(RuntimeHelper.requireNonNull(constants$8.stderr$SEGMENT, "stderr"));
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * FILE* stderr;
+     * }
+     */
+    public static MemorySegment stderr$get() {
+        return (java.lang.foreign.MemorySegment) constants$19.const$0.get(RuntimeHelper.requireNonNull(constants$19.const$3, "stderr"));
     }
-    public static void stderr$set( MemoryAddress x) {
-        constants$8.stderr$VH.set(RuntimeHelper.requireNonNull(constants$8.stderr$SEGMENT, "stderr"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * FILE* stderr;
+     * }
+     */
+    public static void stderr$set(MemorySegment x) {
+        constants$19.const$0.set(RuntimeHelper.requireNonNull(constants$19.const$3, "stderr"), x);
     }
     public static MethodHandle remove$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.remove$MH,"remove");
+        return RuntimeHelper.requireNonNull(constants$19.const$4,"remove");
     }
-    public static int remove ( Addressable __filename) {
+    /**
+     * {@snippet :
+     * int remove(char* __filename);
+     * }
+     */
+    public static int remove(MemorySegment __filename) {
         var mh$ = remove$MH();
         try {
             return (int)mh$.invokeExact(__filename);
@@ -2652,9 +6839,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle rename$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.rename$MH,"rename");
+        return RuntimeHelper.requireNonNull(constants$19.const$6,"rename");
     }
-    public static int rename ( Addressable __old,  Addressable __new) {
+    /**
+     * {@snippet :
+     * int rename(char* __old, char* __new);
+     * }
+     */
+    public static int rename(MemorySegment __old, MemorySegment __new) {
         var mh$ = rename$MH();
         try {
             return (int)mh$.invokeExact(__old, __new);
@@ -2663,9 +6855,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle renameat$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.renameat$MH,"renameat");
+        return RuntimeHelper.requireNonNull(constants$20.const$1,"renameat");
     }
-    public static int renameat ( int __oldfd,  Addressable __old,  int __newfd,  Addressable __new) {
+    /**
+     * {@snippet :
+     * int renameat(int __oldfd, char* __old, int __newfd, char* __new);
+     * }
+     */
+    public static int renameat(int __oldfd, MemorySegment __old, int __newfd, MemorySegment __new) {
         var mh$ = renameat$MH();
         try {
             return (int)mh$.invokeExact(__oldfd, __old, __newfd, __new);
@@ -2674,9 +6871,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fclose$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.fclose$MH,"fclose");
+        return RuntimeHelper.requireNonNull(constants$20.const$2,"fclose");
     }
-    public static int fclose ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fclose(FILE* __stream);
+     * }
+     */
+    public static int fclose(MemorySegment __stream) {
         var mh$ = fclose$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -2685,53 +6887,78 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle tmpfile$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.tmpfile$MH,"tmpfile");
+        return RuntimeHelper.requireNonNull(constants$20.const$3,"tmpfile");
     }
-    public static MemoryAddress tmpfile () {
+    /**
+     * {@snippet :
+     * FILE* tmpfile();
+     * }
+     */
+    public static MemorySegment tmpfile() {
         var mh$ = tmpfile$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle tmpnam$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.tmpnam$MH,"tmpnam");
+        return RuntimeHelper.requireNonNull(constants$20.const$5,"tmpnam");
     }
-    public static MemoryAddress tmpnam ( Addressable x0) {
+    /**
+     * {@snippet :
+     * char* tmpnam(char [20]);
+     * }
+     */
+    public static MemorySegment tmpnam(MemorySegment x0) {
         var mh$ = tmpnam$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(x0);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(x0);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle tmpnam_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.tmpnam_r$MH,"tmpnam_r");
+        return RuntimeHelper.requireNonNull(constants$21.const$0,"tmpnam_r");
     }
-    public static MemoryAddress tmpnam_r ( Addressable __s) {
+    /**
+     * {@snippet :
+     * char* tmpnam_r(char __s[20]);
+     * }
+     */
+    public static MemorySegment tmpnam_r(MemorySegment __s) {
         var mh$ = tmpnam_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle tempnam$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.tempnam$MH,"tempnam");
+        return RuntimeHelper.requireNonNull(constants$21.const$2,"tempnam");
     }
-    public static MemoryAddress tempnam ( Addressable __dir,  Addressable __pfx) {
+    /**
+     * {@snippet :
+     * char* tempnam(char* __dir, char* __pfx);
+     * }
+     */
+    public static MemorySegment tempnam(MemorySegment __dir, MemorySegment __pfx) {
         var mh$ = tempnam$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dir, __pfx);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dir, __pfx);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle fflush$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.fflush$MH,"fflush");
+        return RuntimeHelper.requireNonNull(constants$21.const$3,"fflush");
     }
-    public static int fflush ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fflush(FILE* __stream);
+     * }
+     */
+    public static int fflush(MemorySegment __stream) {
         var mh$ = fflush$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -2740,9 +6967,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fflush_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.fflush_unlocked$MH,"fflush_unlocked");
+        return RuntimeHelper.requireNonNull(constants$21.const$4,"fflush_unlocked");
     }
-    public static int fflush_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fflush_unlocked(FILE* __stream);
+     * }
+     */
+    public static int fflush_unlocked(MemorySegment __stream) {
         var mh$ = fflush_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -2751,64 +6983,110 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$9.fopen$MH,"fopen");
+        return RuntimeHelper.requireNonNull(constants$21.const$5,"fopen");
     }
-    public static MemoryAddress fopen ( Addressable __filename,  Addressable __modes) {
+    /**
+     * {@snippet :
+     * FILE* fopen(char* __filename, char* __modes);
+     * }
+     */
+    public static MemorySegment fopen(MemorySegment __filename, MemorySegment __modes) {
         var mh$ = fopen$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__filename, __modes);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__filename, __modes);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle freopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.freopen$MH,"freopen");
+        return RuntimeHelper.requireNonNull(constants$22.const$1,"freopen");
     }
-    public static MemoryAddress freopen ( Addressable __filename,  Addressable __modes,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * FILE* freopen(char* __filename, char* __modes, FILE* __stream);
+     * }
+     */
+    public static MemorySegment freopen(MemorySegment __filename, MemorySegment __modes, MemorySegment __stream) {
         var mh$ = freopen$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__filename, __modes, __stream);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__filename, __modes, __stream);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle fdopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.fdopen$MH,"fdopen");
+        return RuntimeHelper.requireNonNull(constants$22.const$3,"fdopen");
     }
-    public static MemoryAddress fdopen ( int __fd,  Addressable __modes) {
+    /**
+     * {@snippet :
+     * FILE* fdopen(int __fd, char* __modes);
+     * }
+     */
+    public static MemorySegment fdopen(int __fd, MemorySegment __modes) {
         var mh$ = fdopen$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__fd, __modes);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__fd, __modes);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle fopencookie$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.const$5,"fopencookie");
+    }
+    /**
+     * {@snippet :
+     * FILE* fopencookie(void* __magic_cookie, char* __modes, cookie_io_functions_t __io_funcs);
+     * }
+     */
+    public static MemorySegment fopencookie(MemorySegment __magic_cookie, MemorySegment __modes, MemorySegment __io_funcs) {
+        var mh$ = fopencookie$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__magic_cookie, __modes, __io_funcs);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle fmemopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.fmemopen$MH,"fmemopen");
+        return RuntimeHelper.requireNonNull(constants$23.const$1,"fmemopen");
     }
-    public static MemoryAddress fmemopen ( Addressable __s,  long __len,  Addressable __modes) {
+    /**
+     * {@snippet :
+     * FILE* fmemopen(void* __s, size_t __len, char* __modes);
+     * }
+     */
+    public static MemorySegment fmemopen(MemorySegment __s, long __len, MemorySegment __modes) {
         var mh$ = fmemopen$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __len, __modes);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __len, __modes);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle open_memstream$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.open_memstream$MH,"open_memstream");
+        return RuntimeHelper.requireNonNull(constants$23.const$2,"open_memstream");
     }
-    public static MemoryAddress open_memstream ( Addressable __bufloc,  Addressable __sizeloc) {
+    /**
+     * {@snippet :
+     * FILE* open_memstream(char** __bufloc, size_t* __sizeloc);
+     * }
+     */
+    public static MemorySegment open_memstream(MemorySegment __bufloc, MemorySegment __sizeloc) {
         var mh$ = open_memstream$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__bufloc, __sizeloc);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__bufloc, __sizeloc);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle setbuf$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.setbuf$MH,"setbuf");
+        return RuntimeHelper.requireNonNull(constants$23.const$4,"setbuf");
     }
-    public static void setbuf ( Addressable __stream,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * void setbuf(FILE* __stream, char* __buf);
+     * }
+     */
+    public static void setbuf(MemorySegment __stream, MemorySegment __buf) {
         var mh$ = setbuf$MH();
         try {
             mh$.invokeExact(__stream, __buf);
@@ -2817,9 +7095,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle setvbuf$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.setvbuf$MH,"setvbuf");
+        return RuntimeHelper.requireNonNull(constants$23.const$6,"setvbuf");
     }
-    public static int setvbuf ( Addressable __stream,  Addressable __buf,  int __modes,  long __n) {
+    /**
+     * {@snippet :
+     * int setvbuf(FILE* __stream, char* __buf, int __modes, size_t __n);
+     * }
+     */
+    public static int setvbuf(MemorySegment __stream, MemorySegment __buf, int __modes, long __n) {
         var mh$ = setvbuf$MH();
         try {
             return (int)mh$.invokeExact(__stream, __buf, __modes, __n);
@@ -2828,9 +7111,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle setbuffer$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.setbuffer$MH,"setbuffer");
+        return RuntimeHelper.requireNonNull(constants$24.const$1,"setbuffer");
     }
-    public static void setbuffer ( Addressable __stream,  Addressable __buf,  long __size) {
+    /**
+     * {@snippet :
+     * void setbuffer(FILE* __stream, char* __buf, size_t __size);
+     * }
+     */
+    public static void setbuffer(MemorySegment __stream, MemorySegment __buf, long __size) {
         var mh$ = setbuffer$MH();
         try {
             mh$.invokeExact(__stream, __buf, __size);
@@ -2839,9 +7127,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle setlinebuf$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.setlinebuf$MH,"setlinebuf");
+        return RuntimeHelper.requireNonNull(constants$24.const$3,"setlinebuf");
     }
-    public static void setlinebuf ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void setlinebuf(FILE* __stream);
+     * }
+     */
+    public static void setlinebuf(MemorySegment __stream) {
         var mh$ = setlinebuf$MH();
         try {
             mh$.invokeExact(__stream);
@@ -2850,9 +7143,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.fprintf$MH,"fprintf");
+        return RuntimeHelper.requireNonNull(constants$24.const$4,"fprintf");
     }
-    public static int fprintf ( Addressable __stream,  Addressable __format, Object... x2) {
+    /**
+     * {@snippet :
+     * int fprintf(FILE* __stream, char* __format,...);
+     * }
+     */
+    public static int fprintf(MemorySegment __stream, MemorySegment __format, Object... x2) {
         var mh$ = fprintf$MH();
         try {
             return (int)mh$.invokeExact(__stream, __format, x2);
@@ -2861,9 +7159,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle printf$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.printf$MH,"printf");
+        return RuntimeHelper.requireNonNull(constants$24.const$5,"printf");
     }
-    public static int printf ( Addressable __format, Object... x1) {
+    /**
+     * {@snippet :
+     * int printf(char* __format,...);
+     * }
+     */
+    public static int printf(MemorySegment __format, Object... x1) {
         var mh$ = printf$MH();
         try {
             return (int)mh$.invokeExact(__format, x1);
@@ -2872,9 +7175,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle sprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.sprintf$MH,"sprintf");
+        return RuntimeHelper.requireNonNull(constants$25.const$0,"sprintf");
     }
-    public static int sprintf ( Addressable __s,  Addressable __format, Object... x2) {
+    /**
+     * {@snippet :
+     * int sprintf(char* __s, char* __format,...);
+     * }
+     */
+    public static int sprintf(MemorySegment __s, MemorySegment __format, Object... x2) {
         var mh$ = sprintf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, x2);
@@ -2883,9 +7191,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vfprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.vfprintf$MH,"vfprintf");
+        return RuntimeHelper.requireNonNull(constants$25.const$2,"vfprintf");
     }
-    public static int vfprintf ( Addressable __s,  Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vfprintf(FILE* __s, char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vfprintf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
         var mh$ = vfprintf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, __arg);
@@ -2894,9 +7207,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.vprintf$MH,"vprintf");
+        return RuntimeHelper.requireNonNull(constants$25.const$3,"vprintf");
     }
-    public static int vprintf ( Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vprintf(char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vprintf(MemorySegment __format, MemorySegment __arg) {
         var mh$ = vprintf$MH();
         try {
             return (int)mh$.invokeExact(__format, __arg);
@@ -2905,9 +7223,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vsprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.vsprintf$MH,"vsprintf");
+        return RuntimeHelper.requireNonNull(constants$25.const$4,"vsprintf");
     }
-    public static int vsprintf ( Addressable __s,  Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vsprintf(char* __s, char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vsprintf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
         var mh$ = vsprintf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, __arg);
@@ -2916,9 +7239,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle snprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.snprintf$MH,"snprintf");
+        return RuntimeHelper.requireNonNull(constants$25.const$6,"snprintf");
     }
-    public static int snprintf ( Addressable __s,  long __maxlen,  Addressable __format, Object... x3) {
+    /**
+     * {@snippet :
+     * int snprintf(char* __s, size_t __maxlen, char* __format,...);
+     * }
+     */
+    public static int snprintf(MemorySegment __s, long __maxlen, MemorySegment __format, Object... x3) {
         var mh$ = snprintf$MH();
         try {
             return (int)mh$.invokeExact(__s, __maxlen, __format, x3);
@@ -2927,9 +7255,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vsnprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.vsnprintf$MH,"vsnprintf");
+        return RuntimeHelper.requireNonNull(constants$26.const$1,"vsnprintf");
     }
-    public static int vsnprintf ( Addressable __s,  long __maxlen,  Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vsnprintf(char* __s, size_t __maxlen, char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vsnprintf(MemorySegment __s, long __maxlen, MemorySegment __format, MemorySegment __arg) {
         var mh$ = vsnprintf$MH();
         try {
             return (int)mh$.invokeExact(__s, __maxlen, __format, __arg);
@@ -2937,10 +7270,63 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle vdprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.vdprintf$MH,"vdprintf");
+    public static MethodHandle vasprintf$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.const$2,"vasprintf");
     }
-    public static int vdprintf ( int __fd,  Addressable __fmt,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vasprintf(char** __ptr, char* __f, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vasprintf(MemorySegment __ptr, MemorySegment __f, MemorySegment __arg) {
+        var mh$ = vasprintf$MH();
+        try {
+            return (int)mh$.invokeExact(__ptr, __f, __arg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __asprintf$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.const$3,"__asprintf");
+    }
+    /**
+     * {@snippet :
+     * int __asprintf(char** __ptr, char* __fmt,...);
+     * }
+     */
+    public static int __asprintf(MemorySegment __ptr, MemorySegment __fmt, Object... x2) {
+        var mh$ = __asprintf$MH();
+        try {
+            return (int)mh$.invokeExact(__ptr, __fmt, x2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle asprintf$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.const$4,"asprintf");
+    }
+    /**
+     * {@snippet :
+     * int asprintf(char** __ptr, char* __fmt,...);
+     * }
+     */
+    public static int asprintf(MemorySegment __ptr, MemorySegment __fmt, Object... x2) {
+        var mh$ = asprintf$MH();
+        try {
+            return (int)mh$.invokeExact(__ptr, __fmt, x2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle vdprintf$MH() {
+        return RuntimeHelper.requireNonNull(constants$26.const$6,"vdprintf");
+    }
+    /**
+     * {@snippet :
+     * int vdprintf(int __fd, char* __fmt, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vdprintf(int __fd, MemorySegment __fmt, MemorySegment __arg) {
         var mh$ = vdprintf$MH();
         try {
             return (int)mh$.invokeExact(__fd, __fmt, __arg);
@@ -2949,9 +7335,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle dprintf$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.dprintf$MH,"dprintf");
+        return RuntimeHelper.requireNonNull(constants$27.const$0,"dprintf");
     }
-    public static int dprintf ( int __fd,  Addressable __fmt, Object... x2) {
+    /**
+     * {@snippet :
+     * int dprintf(int __fd, char* __fmt,...);
+     * }
+     */
+    public static int dprintf(int __fd, MemorySegment __fmt, Object... x2) {
         var mh$ = dprintf$MH();
         try {
             return (int)mh$.invokeExact(__fd, __fmt, x2);
@@ -2960,9 +7351,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fscanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.fscanf$MH,"fscanf");
+        return RuntimeHelper.requireNonNull(constants$27.const$1,"fscanf");
     }
-    public static int fscanf ( Addressable __stream,  Addressable __format, Object... x2) {
+    /**
+     * {@snippet :
+     * int fscanf(FILE* __stream, char* __format,...);
+     * }
+     */
+    public static int fscanf(MemorySegment __stream, MemorySegment __format, Object... x2) {
         var mh$ = fscanf$MH();
         try {
             return (int)mh$.invokeExact(__stream, __format, x2);
@@ -2971,9 +7367,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle scanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.scanf$MH,"scanf");
+        return RuntimeHelper.requireNonNull(constants$27.const$2,"scanf");
     }
-    public static int scanf ( Addressable __format, Object... x1) {
+    /**
+     * {@snippet :
+     * int scanf(char* __format,...);
+     * }
+     */
+    public static int scanf(MemorySegment __format, Object... x1) {
         var mh$ = scanf$MH();
         try {
             return (int)mh$.invokeExact(__format, x1);
@@ -2982,9 +7383,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle sscanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.sscanf$MH,"sscanf");
+        return RuntimeHelper.requireNonNull(constants$27.const$3,"sscanf");
     }
-    public static int sscanf ( Addressable __s,  Addressable __format, Object... x2) {
+    /**
+     * {@snippet :
+     * int sscanf(char* __s, char* __format,...);
+     * }
+     */
+    public static int sscanf(MemorySegment __s, MemorySegment __format, Object... x2) {
         var mh$ = sscanf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, x2);
@@ -2992,13 +7398,33 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfFloat _Float32 = Constants$root.C_FLOAT$LAYOUT;
-    public static OfDouble _Float64 = Constants$root.C_DOUBLE$LAYOUT;
-    public static OfDouble _Float32x = Constants$root.C_DOUBLE$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef float _Float32;
+     * }
+     */
+    public static final OfFloat _Float32 = JAVA_FLOAT;
+    /**
+     * {@snippet :
+     * typedef double _Float64;
+     * }
+     */
+    public static final OfDouble _Float64 = JAVA_DOUBLE;
+    /**
+     * {@snippet :
+     * typedef double _Float32x;
+     * }
+     */
+    public static final OfDouble _Float32x = JAVA_DOUBLE;
     public static MethodHandle vfscanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.vfscanf$MH,"vfscanf");
+        return RuntimeHelper.requireNonNull(constants$27.const$4,"vfscanf");
     }
-    public static int vfscanf ( Addressable __s,  Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vfscanf(FILE* __s, char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vfscanf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
         var mh$ = vfscanf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, __arg);
@@ -3007,9 +7433,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vscanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.vscanf$MH,"vscanf");
+        return RuntimeHelper.requireNonNull(constants$27.const$5,"vscanf");
     }
-    public static int vscanf ( Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vscanf(char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vscanf(MemorySegment __format, MemorySegment __arg) {
         var mh$ = vscanf$MH();
         try {
             return (int)mh$.invokeExact(__format, __arg);
@@ -3018,9 +7449,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle vsscanf$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.vsscanf$MH,"vsscanf");
+        return RuntimeHelper.requireNonNull(constants$28.const$0,"vsscanf");
     }
-    public static int vsscanf ( Addressable __s,  Addressable __format,  Addressable __arg) {
+    /**
+     * {@snippet :
+     * int vsscanf(char* __s, char* __format, __gnuc_va_list __arg);
+     * }
+     */
+    public static int vsscanf(MemorySegment __s, MemorySegment __format, MemorySegment __arg) {
         var mh$ = vsscanf$MH();
         try {
             return (int)mh$.invokeExact(__s, __format, __arg);
@@ -3029,9 +7465,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fgetc$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.fgetc$MH,"fgetc");
+        return RuntimeHelper.requireNonNull(constants$28.const$1,"fgetc");
     }
-    public static int fgetc ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fgetc(FILE* __stream);
+     * }
+     */
+    public static int fgetc(MemorySegment __stream) {
         var mh$ = fgetc$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3040,9 +7481,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getc$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.getc$MH,"getc");
+        return RuntimeHelper.requireNonNull(constants$28.const$2,"getc");
     }
-    public static int getc ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int getc(FILE* __stream);
+     * }
+     */
+    public static int getc(MemorySegment __stream) {
         var mh$ = getc$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3051,9 +7497,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.getchar$MH,"getchar");
+        return RuntimeHelper.requireNonNull(constants$28.const$4,"getchar");
     }
-    public static int getchar () {
+    /**
+     * {@snippet :
+     * int getchar();
+     * }
+     */
+    public static int getchar() {
         var mh$ = getchar$MH();
         try {
             return (int)mh$.invokeExact();
@@ -3062,9 +7513,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getc_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.getc_unlocked$MH,"getc_unlocked");
+        return RuntimeHelper.requireNonNull(constants$28.const$5,"getc_unlocked");
     }
-    public static int getc_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int getc_unlocked(FILE* __stream);
+     * }
+     */
+    public static int getc_unlocked(MemorySegment __stream) {
         var mh$ = getc_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3073,9 +7529,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getchar_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.getchar_unlocked$MH,"getchar_unlocked");
+        return RuntimeHelper.requireNonNull(constants$29.const$0,"getchar_unlocked");
     }
-    public static int getchar_unlocked () {
+    /**
+     * {@snippet :
+     * int getchar_unlocked();
+     * }
+     */
+    public static int getchar_unlocked() {
         var mh$ = getchar_unlocked$MH();
         try {
             return (int)mh$.invokeExact();
@@ -3084,9 +7545,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fgetc_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.fgetc_unlocked$MH,"fgetc_unlocked");
+        return RuntimeHelper.requireNonNull(constants$29.const$1,"fgetc_unlocked");
     }
-    public static int fgetc_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fgetc_unlocked(FILE* __stream);
+     * }
+     */
+    public static int fgetc_unlocked(MemorySegment __stream) {
         var mh$ = fgetc_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3095,9 +7561,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fputc$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.fputc$MH,"fputc");
+        return RuntimeHelper.requireNonNull(constants$29.const$2,"fputc");
     }
-    public static int fputc ( int __c,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fputc(int __c, FILE* __stream);
+     * }
+     */
+    public static int fputc(int __c, MemorySegment __stream) {
         var mh$ = fputc$MH();
         try {
             return (int)mh$.invokeExact(__c, __stream);
@@ -3106,9 +7577,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle putc$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.putc$MH,"putc");
+        return RuntimeHelper.requireNonNull(constants$29.const$3,"putc");
     }
-    public static int putc ( int __c,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int putc(int __c, FILE* __stream);
+     * }
+     */
+    public static int putc(int __c, MemorySegment __stream) {
         var mh$ = putc$MH();
         try {
             return (int)mh$.invokeExact(__c, __stream);
@@ -3117,9 +7593,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle putchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.putchar$MH,"putchar");
+        return RuntimeHelper.requireNonNull(constants$29.const$4,"putchar");
     }
-    public static int putchar ( int __c) {
+    /**
+     * {@snippet :
+     * int putchar(int __c);
+     * }
+     */
+    public static int putchar(int __c) {
         var mh$ = putchar$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -3128,9 +7609,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fputc_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.fputc_unlocked$MH,"fputc_unlocked");
+        return RuntimeHelper.requireNonNull(constants$29.const$5,"fputc_unlocked");
     }
-    public static int fputc_unlocked ( int __c,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fputc_unlocked(int __c, FILE* __stream);
+     * }
+     */
+    public static int fputc_unlocked(int __c, MemorySegment __stream) {
         var mh$ = fputc_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__c, __stream);
@@ -3139,9 +7625,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle putc_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.putc_unlocked$MH,"putc_unlocked");
+        return RuntimeHelper.requireNonNull(constants$30.const$0,"putc_unlocked");
     }
-    public static int putc_unlocked ( int __c,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int putc_unlocked(int __c, FILE* __stream);
+     * }
+     */
+    public static int putc_unlocked(int __c, MemorySegment __stream) {
         var mh$ = putc_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__c, __stream);
@@ -3150,9 +7641,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle putchar_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.putchar_unlocked$MH,"putchar_unlocked");
+        return RuntimeHelper.requireNonNull(constants$30.const$1,"putchar_unlocked");
     }
-    public static int putchar_unlocked ( int __c) {
+    /**
+     * {@snippet :
+     * int putchar_unlocked(int __c);
+     * }
+     */
+    public static int putchar_unlocked(int __c) {
         var mh$ = putchar_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__c);
@@ -3161,9 +7657,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getw$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.getw$MH,"getw");
+        return RuntimeHelper.requireNonNull(constants$30.const$2,"getw");
     }
-    public static int getw ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int getw(FILE* __stream);
+     * }
+     */
+    public static int getw(MemorySegment __stream) {
         var mh$ = getw$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3172,9 +7673,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle putw$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.putw$MH,"putw");
+        return RuntimeHelper.requireNonNull(constants$30.const$3,"putw");
     }
-    public static int putw ( int __w,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int putw(int __w, FILE* __stream);
+     * }
+     */
+    public static int putw(int __w, MemorySegment __stream) {
         var mh$ = putw$MH();
         try {
             return (int)mh$.invokeExact(__w, __stream);
@@ -3183,20 +7689,30 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fgets$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.fgets$MH,"fgets");
+        return RuntimeHelper.requireNonNull(constants$30.const$5,"fgets");
     }
-    public static MemoryAddress fgets ( Addressable __s,  int __n,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * char* fgets(char* __s, int __n, FILE* __stream);
+     * }
+     */
+    public static MemorySegment fgets(MemorySegment __s, int __n, MemorySegment __stream) {
         var mh$ = fgets$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __n, __stream);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __n, __stream);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __getdelim$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.__getdelim$MH,"__getdelim");
+        return RuntimeHelper.requireNonNull(constants$31.const$1,"__getdelim");
     }
-    public static long __getdelim ( Addressable __lineptr,  Addressable __n,  int __delimiter,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * __ssize_t __getdelim(char** __lineptr, size_t* __n, int __delimiter, FILE* __stream);
+     * }
+     */
+    public static long __getdelim(MemorySegment __lineptr, MemorySegment __n, int __delimiter, MemorySegment __stream) {
         var mh$ = __getdelim$MH();
         try {
             return (long)mh$.invokeExact(__lineptr, __n, __delimiter, __stream);
@@ -3205,9 +7721,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getdelim$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.getdelim$MH,"getdelim");
+        return RuntimeHelper.requireNonNull(constants$31.const$2,"getdelim");
     }
-    public static long getdelim ( Addressable __lineptr,  Addressable __n,  int __delimiter,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * __ssize_t getdelim(char** __lineptr, size_t* __n, int __delimiter, FILE* __stream);
+     * }
+     */
+    public static long getdelim(MemorySegment __lineptr, MemorySegment __n, int __delimiter, MemorySegment __stream) {
         var mh$ = getdelim$MH();
         try {
             return (long)mh$.invokeExact(__lineptr, __n, __delimiter, __stream);
@@ -3216,9 +7737,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle getline$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.getline$MH,"getline");
+        return RuntimeHelper.requireNonNull(constants$31.const$4,"getline");
     }
-    public static long getline ( Addressable __lineptr,  Addressable __n,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * __ssize_t getline(char** __lineptr, size_t* __n, FILE* __stream);
+     * }
+     */
+    public static long getline(MemorySegment __lineptr, MemorySegment __n, MemorySegment __stream) {
         var mh$ = getline$MH();
         try {
             return (long)mh$.invokeExact(__lineptr, __n, __stream);
@@ -3227,9 +7753,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fputs$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.fputs$MH,"fputs");
+        return RuntimeHelper.requireNonNull(constants$31.const$5,"fputs");
     }
-    public static int fputs ( Addressable __s,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fputs(char* __s, FILE* __stream);
+     * }
+     */
+    public static int fputs(MemorySegment __s, MemorySegment __stream) {
         var mh$ = fputs$MH();
         try {
             return (int)mh$.invokeExact(__s, __stream);
@@ -3238,9 +7769,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle puts$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.puts$MH,"puts");
+        return RuntimeHelper.requireNonNull(constants$32.const$0,"puts");
     }
-    public static int puts ( Addressable __s) {
+    /**
+     * {@snippet :
+     * int puts(char* __s);
+     * }
+     */
+    public static int puts(MemorySegment __s) {
         var mh$ = puts$MH();
         try {
             return (int)mh$.invokeExact(__s);
@@ -3249,9 +7785,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ungetc$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.ungetc$MH,"ungetc");
+        return RuntimeHelper.requireNonNull(constants$32.const$1,"ungetc");
     }
-    public static int ungetc ( int __c,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * int ungetc(int __c, FILE* __stream);
+     * }
+     */
+    public static int ungetc(int __c, MemorySegment __stream) {
         var mh$ = ungetc$MH();
         try {
             return (int)mh$.invokeExact(__c, __stream);
@@ -3260,9 +7801,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fread$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.fread$MH,"fread");
+        return RuntimeHelper.requireNonNull(constants$32.const$3,"fread");
     }
-    public static long fread ( Addressable __ptr,  long __size,  long __n,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * unsigned long fread(void* __ptr, size_t __size, size_t __n, FILE* __stream);
+     * }
+     */
+    public static long fread(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
         var mh$ = fread$MH();
         try {
             return (long)mh$.invokeExact(__ptr, __size, __n, __stream);
@@ -3271,9 +7817,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.fwrite$MH,"fwrite");
+        return RuntimeHelper.requireNonNull(constants$32.const$4,"fwrite");
     }
-    public static long fwrite ( Addressable __ptr,  long __size,  long __n,  Addressable __s) {
+    /**
+     * {@snippet :
+     * unsigned long fwrite(void* __ptr, size_t __size, size_t __n, FILE* __s);
+     * }
+     */
+    public static long fwrite(MemorySegment __ptr, long __size, long __n, MemorySegment __s) {
         var mh$ = fwrite$MH();
         try {
             return (long)mh$.invokeExact(__ptr, __size, __n, __s);
@@ -3282,9 +7833,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fread_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.fread_unlocked$MH,"fread_unlocked");
+        return RuntimeHelper.requireNonNull(constants$32.const$5,"fread_unlocked");
     }
-    public static long fread_unlocked ( Addressable __ptr,  long __size,  long __n,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * size_t fread_unlocked(void* __ptr, size_t __size, size_t __n, FILE* __stream);
+     * }
+     */
+    public static long fread_unlocked(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
         var mh$ = fread_unlocked$MH();
         try {
             return (long)mh$.invokeExact(__ptr, __size, __n, __stream);
@@ -3293,9 +7849,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fwrite_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.fwrite_unlocked$MH,"fwrite_unlocked");
+        return RuntimeHelper.requireNonNull(constants$33.const$0,"fwrite_unlocked");
     }
-    public static long fwrite_unlocked ( Addressable __ptr,  long __size,  long __n,  Addressable __stream) {
+    /**
+     * {@snippet :
+     * size_t fwrite_unlocked(void* __ptr, size_t __size, size_t __n, FILE* __stream);
+     * }
+     */
+    public static long fwrite_unlocked(MemorySegment __ptr, long __size, long __n, MemorySegment __stream) {
         var mh$ = fwrite_unlocked$MH();
         try {
             return (long)mh$.invokeExact(__ptr, __size, __n, __stream);
@@ -3304,9 +7865,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fseek$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.fseek$MH,"fseek");
+        return RuntimeHelper.requireNonNull(constants$33.const$2,"fseek");
     }
-    public static int fseek ( Addressable __stream,  long __off,  int __whence) {
+    /**
+     * {@snippet :
+     * int fseek(FILE* __stream, long __off, int __whence);
+     * }
+     */
+    public static int fseek(MemorySegment __stream, long __off, int __whence) {
         var mh$ = fseek$MH();
         try {
             return (int)mh$.invokeExact(__stream, __off, __whence);
@@ -3315,9 +7881,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ftell$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.ftell$MH,"ftell");
+        return RuntimeHelper.requireNonNull(constants$33.const$4,"ftell");
     }
-    public static long ftell ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * long ftell(FILE* __stream);
+     * }
+     */
+    public static long ftell(MemorySegment __stream) {
         var mh$ = ftell$MH();
         try {
             return (long)mh$.invokeExact(__stream);
@@ -3326,9 +7897,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle rewind$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.rewind$MH,"rewind");
+        return RuntimeHelper.requireNonNull(constants$33.const$5,"rewind");
     }
-    public static void rewind ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void rewind(FILE* __stream);
+     * }
+     */
+    public static void rewind(MemorySegment __stream) {
         var mh$ = rewind$MH();
         try {
             mh$.invokeExact(__stream);
@@ -3337,9 +7913,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fseeko$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.fseeko$MH,"fseeko");
+        return RuntimeHelper.requireNonNull(constants$34.const$0,"fseeko");
     }
-    public static int fseeko ( Addressable __stream,  long __off,  int __whence) {
+    /**
+     * {@snippet :
+     * int fseeko(FILE* __stream, __off_t __off, int __whence);
+     * }
+     */
+    public static int fseeko(MemorySegment __stream, long __off, int __whence) {
         var mh$ = fseeko$MH();
         try {
             return (int)mh$.invokeExact(__stream, __off, __whence);
@@ -3348,9 +7929,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ftello$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.ftello$MH,"ftello");
+        return RuntimeHelper.requireNonNull(constants$34.const$1,"ftello");
     }
-    public static long ftello ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * __off_t ftello(FILE* __stream);
+     * }
+     */
+    public static long ftello(MemorySegment __stream) {
         var mh$ = ftello$MH();
         try {
             return (long)mh$.invokeExact(__stream);
@@ -3359,9 +7945,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fgetpos$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.fgetpos$MH,"fgetpos");
+        return RuntimeHelper.requireNonNull(constants$34.const$2,"fgetpos");
     }
-    public static int fgetpos ( Addressable __stream,  Addressable __pos) {
+    /**
+     * {@snippet :
+     * int fgetpos(FILE* __stream, fpos_t* __pos);
+     * }
+     */
+    public static int fgetpos(MemorySegment __stream, MemorySegment __pos) {
         var mh$ = fgetpos$MH();
         try {
             return (int)mh$.invokeExact(__stream, __pos);
@@ -3370,9 +7961,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fsetpos$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.fsetpos$MH,"fsetpos");
+        return RuntimeHelper.requireNonNull(constants$34.const$3,"fsetpos");
     }
-    public static int fsetpos ( Addressable __stream,  Addressable __pos) {
+    /**
+     * {@snippet :
+     * int fsetpos(FILE* __stream, const fpos_t* __pos);
+     * }
+     */
+    public static int fsetpos(MemorySegment __stream, MemorySegment __pos) {
         var mh$ = fsetpos$MH();
         try {
             return (int)mh$.invokeExact(__stream, __pos);
@@ -3381,9 +7977,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle clearerr$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.clearerr$MH,"clearerr");
+        return RuntimeHelper.requireNonNull(constants$34.const$4,"clearerr");
     }
-    public static void clearerr ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void clearerr(FILE* __stream);
+     * }
+     */
+    public static void clearerr(MemorySegment __stream) {
         var mh$ = clearerr$MH();
         try {
             mh$.invokeExact(__stream);
@@ -3392,9 +7993,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle feof$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.feof$MH,"feof");
+        return RuntimeHelper.requireNonNull(constants$34.const$5,"feof");
     }
-    public static int feof ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int feof(FILE* __stream);
+     * }
+     */
+    public static int feof(MemorySegment __stream) {
         var mh$ = feof$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3403,9 +8009,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ferror$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.ferror$MH,"ferror");
+        return RuntimeHelper.requireNonNull(constants$35.const$0,"ferror");
     }
-    public static int ferror ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int ferror(FILE* __stream);
+     * }
+     */
+    public static int ferror(MemorySegment __stream) {
         var mh$ = ferror$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3414,9 +8025,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle clearerr_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.clearerr_unlocked$MH,"clearerr_unlocked");
+        return RuntimeHelper.requireNonNull(constants$35.const$1,"clearerr_unlocked");
     }
-    public static void clearerr_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void clearerr_unlocked(FILE* __stream);
+     * }
+     */
+    public static void clearerr_unlocked(MemorySegment __stream) {
         var mh$ = clearerr_unlocked$MH();
         try {
             mh$.invokeExact(__stream);
@@ -3425,9 +8041,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle feof_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.feof_unlocked$MH,"feof_unlocked");
+        return RuntimeHelper.requireNonNull(constants$35.const$2,"feof_unlocked");
     }
-    public static int feof_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int feof_unlocked(FILE* __stream);
+     * }
+     */
+    public static int feof_unlocked(MemorySegment __stream) {
         var mh$ = feof_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3436,9 +8057,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ferror_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.ferror_unlocked$MH,"ferror_unlocked");
+        return RuntimeHelper.requireNonNull(constants$35.const$3,"ferror_unlocked");
     }
-    public static int ferror_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int ferror_unlocked(FILE* __stream);
+     * }
+     */
+    public static int ferror_unlocked(MemorySegment __stream) {
         var mh$ = ferror_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3447,9 +8073,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle perror$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.perror$MH,"perror");
+        return RuntimeHelper.requireNonNull(constants$35.const$4,"perror");
     }
-    public static void perror ( Addressable __s) {
+    /**
+     * {@snippet :
+     * void perror(char* __s);
+     * }
+     */
+    public static void perror(MemorySegment __s) {
         var mh$ = perror$MH();
         try {
             mh$.invokeExact(__s);
@@ -3458,9 +8089,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fileno$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.fileno$MH,"fileno");
+        return RuntimeHelper.requireNonNull(constants$35.const$5,"fileno");
     }
-    public static int fileno ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fileno(FILE* __stream);
+     * }
+     */
+    public static int fileno(MemorySegment __stream) {
         var mh$ = fileno$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3469,9 +8105,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle fileno_unlocked$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.fileno_unlocked$MH,"fileno_unlocked");
+        return RuntimeHelper.requireNonNull(constants$36.const$0,"fileno_unlocked");
     }
-    public static int fileno_unlocked ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int fileno_unlocked(FILE* __stream);
+     * }
+     */
+    public static int fileno_unlocked(MemorySegment __stream) {
         var mh$ = fileno_unlocked$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3480,9 +8121,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle pclose$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.pclose$MH,"pclose");
+        return RuntimeHelper.requireNonNull(constants$36.const$1,"pclose");
     }
-    public static int pclose ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int pclose(FILE* __stream);
+     * }
+     */
+    public static int pclose(MemorySegment __stream) {
         var mh$ = pclose$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3491,31 +8137,46 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle popen$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.popen$MH,"popen");
+        return RuntimeHelper.requireNonNull(constants$36.const$2,"popen");
     }
-    public static MemoryAddress popen ( Addressable __command,  Addressable __modes) {
+    /**
+     * {@snippet :
+     * FILE* popen(char* __command, char* __modes);
+     * }
+     */
+    public static MemorySegment popen(MemorySegment __command, MemorySegment __modes) {
         var mh$ = popen$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__command, __modes);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__command, __modes);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle ctermid$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.ctermid$MH,"ctermid");
+        return RuntimeHelper.requireNonNull(constants$36.const$3,"ctermid");
     }
-    public static MemoryAddress ctermid ( Addressable __s) {
+    /**
+     * {@snippet :
+     * char* ctermid(char* __s);
+     * }
+     */
+    public static MemorySegment ctermid(MemorySegment __s) {
         var mh$ = ctermid$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle flockfile$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.flockfile$MH,"flockfile");
+        return RuntimeHelper.requireNonNull(constants$36.const$4,"flockfile");
     }
-    public static void flockfile ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void flockfile(FILE* __stream);
+     * }
+     */
+    public static void flockfile(MemorySegment __stream) {
         var mh$ = flockfile$MH();
         try {
             mh$.invokeExact(__stream);
@@ -3524,9 +8185,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle ftrylockfile$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.ftrylockfile$MH,"ftrylockfile");
+        return RuntimeHelper.requireNonNull(constants$36.const$5,"ftrylockfile");
     }
-    public static int ftrylockfile ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * int ftrylockfile(FILE* __stream);
+     * }
+     */
+    public static int ftrylockfile(MemorySegment __stream) {
         var mh$ = ftrylockfile$MH();
         try {
             return (int)mh$.invokeExact(__stream);
@@ -3535,9 +8201,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle funlockfile$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.funlockfile$MH,"funlockfile");
+        return RuntimeHelper.requireNonNull(constants$37.const$0,"funlockfile");
     }
-    public static void funlockfile ( Addressable __stream) {
+    /**
+     * {@snippet :
+     * void funlockfile(FILE* __stream);
+     * }
+     */
+    public static void funlockfile(MemorySegment __stream) {
         var mh$ = funlockfile$MH();
         try {
             mh$.invokeExact(__stream);
@@ -3546,9 +8217,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __uflow$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.__uflow$MH,"__uflow");
+        return RuntimeHelper.requireNonNull(constants$37.const$1,"__uflow");
     }
-    public static int __uflow ( Addressable x0) {
+    /**
+     * {@snippet :
+     * int __uflow(FILE*);
+     * }
+     */
+    public static int __uflow(MemorySegment x0) {
         var mh$ = __uflow$MH();
         try {
             return (int)mh$.invokeExact(x0);
@@ -3557,9 +8233,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __overflow$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.__overflow$MH,"__overflow");
+        return RuntimeHelper.requireNonNull(constants$37.const$3,"__overflow");
     }
-    public static int __overflow ( Addressable x0,  int x1) {
+    /**
+     * {@snippet :
+     * int __overflow(FILE*, int);
+     * }
+     */
+    public static int __overflow(MemorySegment x0, int x1) {
         var mh$ = __overflow$MH();
         try {
             return (int)mh$.invokeExact(x0, x1);
@@ -3568,9 +8249,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle __ctype_get_mb_cur_max$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.__ctype_get_mb_cur_max$MH,"__ctype_get_mb_cur_max");
+        return RuntimeHelper.requireNonNull(constants$38.const$4,"__ctype_get_mb_cur_max");
     }
-    public static long __ctype_get_mb_cur_max () {
+    /**
+     * {@snippet :
+     * size_t __ctype_get_mb_cur_max();
+     * }
+     */
+    public static long __ctype_get_mb_cur_max() {
         var mh$ = __ctype_get_mb_cur_max$MH();
         try {
             return (long)mh$.invokeExact();
@@ -3579,9 +8265,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle atof$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.atof$MH,"atof");
+        return RuntimeHelper.requireNonNull(constants$38.const$6,"atof");
     }
-    public static double atof ( Addressable __nptr) {
+    /**
+     * {@snippet :
+     * double atof(char* __nptr);
+     * }
+     */
+    public static double atof(MemorySegment __nptr) {
         var mh$ = atof$MH();
         try {
             return (double)mh$.invokeExact(__nptr);
@@ -3590,9 +8281,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle atoi$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.atoi$MH,"atoi");
+        return RuntimeHelper.requireNonNull(constants$39.const$0,"atoi");
     }
-    public static int atoi ( Addressable __nptr) {
+    /**
+     * {@snippet :
+     * int atoi(char* __nptr);
+     * }
+     */
+    public static int atoi(MemorySegment __nptr) {
         var mh$ = atoi$MH();
         try {
             return (int)mh$.invokeExact(__nptr);
@@ -3601,9 +8297,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle atol$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.atol$MH,"atol");
+        return RuntimeHelper.requireNonNull(constants$39.const$1,"atol");
     }
-    public static long atol ( Addressable __nptr) {
+    /**
+     * {@snippet :
+     * long atol(char* __nptr);
+     * }
+     */
+    public static long atol(MemorySegment __nptr) {
         var mh$ = atol$MH();
         try {
             return (long)mh$.invokeExact(__nptr);
@@ -3612,9 +8313,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle atoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.atoll$MH,"atoll");
+        return RuntimeHelper.requireNonNull(constants$39.const$2,"atoll");
     }
-    public static long atoll ( Addressable __nptr) {
+    /**
+     * {@snippet :
+     * long long atoll(char* __nptr);
+     * }
+     */
+    public static long atoll(MemorySegment __nptr) {
         var mh$ = atoll$MH();
         try {
             return (long)mh$.invokeExact(__nptr);
@@ -3623,9 +8329,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtod$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtod$MH,"strtod");
+        return RuntimeHelper.requireNonNull(constants$39.const$4,"strtod");
     }
-    public static double strtod ( Addressable __nptr,  Addressable __endptr) {
+    /**
+     * {@snippet :
+     * double strtod(char* __nptr, char** __endptr);
+     * }
+     */
+    public static double strtod(MemorySegment __nptr, MemorySegment __endptr) {
         var mh$ = strtod$MH();
         try {
             return (double)mh$.invokeExact(__nptr, __endptr);
@@ -3634,9 +8345,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtof$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtof$MH,"strtof");
+        return RuntimeHelper.requireNonNull(constants$39.const$6,"strtof");
     }
-    public static float strtof ( Addressable __nptr,  Addressable __endptr) {
+    /**
+     * {@snippet :
+     * float strtof(char* __nptr, char** __endptr);
+     * }
+     */
+    public static float strtof(MemorySegment __nptr, MemorySegment __endptr) {
         var mh$ = strtof$MH();
         try {
             return (float)mh$.invokeExact(__nptr, __endptr);
@@ -3645,9 +8361,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtol$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtol$MH,"strtol");
+        return RuntimeHelper.requireNonNull(constants$40.const$0,"strtol");
     }
-    public static long strtol ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * long strtol(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtol(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtol$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3656,9 +8377,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoul$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtoul$MH,"strtoul");
+        return RuntimeHelper.requireNonNull(constants$40.const$1,"strtoul");
     }
-    public static long strtoul ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * unsigned long strtoul(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoul(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoul$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3667,9 +8393,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoq$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtoq$MH,"strtoq");
+        return RuntimeHelper.requireNonNull(constants$40.const$2,"strtoq");
     }
-    public static long strtoq ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * long long strtoq(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoq(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoq$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3678,9 +8409,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtouq$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.strtouq$MH,"strtouq");
+        return RuntimeHelper.requireNonNull(constants$40.const$3,"strtouq");
     }
-    public static long strtouq ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * unsigned long long strtouq(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtouq(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtouq$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3689,9 +8425,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.strtoll$MH,"strtoll");
+        return RuntimeHelper.requireNonNull(constants$40.const$4,"strtoll");
     }
-    public static long strtoll ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * long long strtoll(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoll(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoll$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3700,9 +8441,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle strtoull$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.strtoull$MH,"strtoull");
+        return RuntimeHelper.requireNonNull(constants$40.const$5,"strtoull");
     }
-    public static long strtoull ( Addressable __nptr,  Addressable __endptr,  int __base) {
+    /**
+     * {@snippet :
+     * unsigned long long strtoull(char* __nptr, char** __endptr, int __base);
+     * }
+     */
+    public static long strtoull(MemorySegment __nptr, MemorySegment __endptr, int __base) {
         var mh$ = strtoull$MH();
         try {
             return (long)mh$.invokeExact(__nptr, __endptr, __base);
@@ -3711,20 +8457,30 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle l64a$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.l64a$MH,"l64a");
+        return RuntimeHelper.requireNonNull(constants$41.const$1,"l64a");
     }
-    public static MemoryAddress l64a ( long __n) {
+    /**
+     * {@snippet :
+     * char* l64a(long __n);
+     * }
+     */
+    public static MemorySegment l64a(long __n) {
         var mh$ = l64a$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__n);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle a64l$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.a64l$MH,"a64l");
+        return RuntimeHelper.requireNonNull(constants$41.const$2,"a64l");
     }
-    public static long a64l ( Addressable __s) {
+    /**
+     * {@snippet :
+     * long a64l(char* __s);
+     * }
+     */
+    public static long a64l(MemorySegment __s) {
         var mh$ = a64l$MH();
         try {
             return (long)mh$.invokeExact(__s);
@@ -3732,90 +8488,213 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfLong quad_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong loff_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt pid_t = Constants$root.C_INT$LAYOUT;
-    public static OfInt daddr_t = Constants$root.C_INT$LAYOUT;
-    public static OfAddress caddr_t = Constants$root.C_POINTER$LAYOUT;
-    public static OfInt key_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong clock_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt clockid_t = Constants$root.C_INT$LAYOUT;
-    public static OfLong time_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfAddress timer_t = Constants$root.C_POINTER$LAYOUT;
-    public static OfLong register_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static MethodHandle __bswap_16$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.__bswap_16$MH,"__bswap_16");
-    }
-    public static short __bswap_16 ( short __bsx) {
-        var mh$ = __bswap_16$MH();
-        try {
-            return (short)mh$.invokeExact(__bsx);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __bswap_32$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.__bswap_32$MH,"__bswap_32");
-    }
-    public static int __bswap_32 ( int __bsx) {
-        var mh$ = __bswap_32$MH();
-        try {
-            return (int)mh$.invokeExact(__bsx);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __bswap_64$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.__bswap_64$MH,"__bswap_64");
-    }
-    public static long __bswap_64 ( long __bsx) {
-        var mh$ = __bswap_64$MH();
-        try {
-            return (long)mh$.invokeExact(__bsx);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __uint16_identity$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.__uint16_identity$MH,"__uint16_identity");
-    }
-    public static short __uint16_identity ( short __x) {
-        var mh$ = __uint16_identity$MH();
-        try {
-            return (short)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __uint32_identity$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.__uint32_identity$MH,"__uint32_identity");
-    }
-    public static int __uint32_identity ( int __x) {
-        var mh$ = __uint32_identity$MH();
-        try {
-            return (int)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __uint64_identity$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.__uint64_identity$MH,"__uint64_identity");
-    }
-    public static long __uint64_identity ( long __x) {
-        var mh$ = __uint64_identity$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static OfLong suseconds_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong __fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong fd_mask = Constants$root.C_LONG_LONG$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef unsigned char u_char;
+     * }
+     */
+    public static final OfByte u_char = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned short u_short;
+     * }
+     */
+    public static final OfShort u_short = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int u_int;
+     * }
+     */
+    public static final OfInt u_int = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long u_long;
+     * }
+     */
+    public static final OfLong u_long = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long quad_t;
+     * }
+     */
+    public static final OfLong quad_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long u_quad_t;
+     * }
+     */
+    public static final OfLong u_quad_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long loff_t;
+     * }
+     */
+    public static final OfLong loff_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long ino_t;
+     * }
+     */
+    public static final OfLong ino_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long dev_t;
+     * }
+     */
+    public static final OfLong dev_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int gid_t;
+     * }
+     */
+    public static final OfInt gid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int mode_t;
+     * }
+     */
+    public static final OfInt mode_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long nlink_t;
+     * }
+     */
+    public static final OfLong nlink_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int uid_t;
+     * }
+     */
+    public static final OfInt uid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int pid_t;
+     * }
+     */
+    public static final OfInt pid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int id_t;
+     * }
+     */
+    public static final OfInt id_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int daddr_t;
+     * }
+     */
+    public static final OfInt daddr_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef char* caddr_t;
+     * }
+     */
+    public static final AddressLayout caddr_t = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef int key_t;
+     * }
+     */
+    public static final OfInt key_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long clock_t;
+     * }
+     */
+    public static final OfLong clock_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef int clockid_t;
+     * }
+     */
+    public static final OfInt clockid_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long time_t;
+     * }
+     */
+    public static final OfLong time_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef void* timer_t;
+     * }
+     */
+    public static final AddressLayout timer_t = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef unsigned long ulong;
+     * }
+     */
+    public static final OfLong ulong = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned short ushort;
+     * }
+     */
+    public static final OfShort ushort = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int uint;
+     * }
+     */
+    public static final OfInt uint = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned char u_int8_t;
+     * }
+     */
+    public static final OfByte u_int8_t = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned short u_int16_t;
+     * }
+     */
+    public static final OfShort u_int16_t = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned int u_int32_t;
+     * }
+     */
+    public static final OfInt u_int32_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long u_int64_t;
+     * }
+     */
+    public static final OfLong u_int64_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long register_t;
+     * }
+     */
+    public static final OfLong register_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long suseconds_t;
+     * }
+     */
+    public static final OfLong suseconds_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long __fd_mask;
+     * }
+     */
+    public static final OfLong __fd_mask = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long fd_mask;
+     * }
+     */
+    public static final OfLong fd_mask = JAVA_LONG;
     public static MethodHandle select$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.select$MH,"select");
+        return RuntimeHelper.requireNonNull(constants$42.const$6,"select");
     }
-    public static int select ( int __nfds,  Addressable __readfds,  Addressable __writefds,  Addressable __exceptfds,  Addressable __timeout) {
+    /**
+     * {@snippet :
+     * int select(int __nfds, fd_set* __readfds, fd_set* __writefds, fd_set* __exceptfds, struct timeval* __timeout);
+     * }
+     */
+    public static int select(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout) {
         var mh$ = select$MH();
         try {
             return (int)mh$.invokeExact(__nfds, __readfds, __writefds, __exceptfds, __timeout);
@@ -3824,9 +8703,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle pselect$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.pselect$MH,"pselect");
+        return RuntimeHelper.requireNonNull(constants$43.const$1,"pselect");
     }
-    public static int pselect ( int __nfds,  Addressable __readfds,  Addressable __writefds,  Addressable __exceptfds,  Addressable __timeout,  Addressable __sigmask) {
+    /**
+     * {@snippet :
+     * int pselect(int __nfds, fd_set* __readfds, fd_set* __writefds, fd_set* __exceptfds, struct timespec* __timeout, const __sigset_t* __sigmask);
+     * }
+     */
+    public static int pselect(int __nfds, MemorySegment __readfds, MemorySegment __writefds, MemorySegment __exceptfds, MemorySegment __timeout, MemorySegment __sigmask) {
         var mh$ = pselect$MH();
         try {
             return (int)mh$.invokeExact(__nfds, __readfds, __writefds, __exceptfds, __timeout, __sigmask);
@@ -3834,14 +8718,75 @@ public class mfhdf_h extends mfhdf_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfLong blksize_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfLong blkcnt_t = Constants$root.C_LONG_LONG$LAYOUT;
-    public static OfInt pthread_once_t = Constants$root.C_INT$LAYOUT;
-    public static OfInt pthread_spinlock_t = Constants$root.C_INT$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef long blksize_t;
+     * }
+     */
+    public static final OfLong blksize_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef long blkcnt_t;
+     * }
+     */
+    public static final OfLong blkcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long fsblkcnt_t;
+     * }
+     */
+    public static final OfLong fsblkcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long fsfilcnt_t;
+     * }
+     */
+    public static final OfLong fsfilcnt_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int __tss_t;
+     * }
+     */
+    public static final OfInt __tss_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned long __thrd_t;
+     * }
+     */
+    public static final OfLong __thrd_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned long pthread_t;
+     * }
+     */
+    public static final OfLong pthread_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * typedef unsigned int pthread_key_t;
+     * }
+     */
+    public static final OfInt pthread_key_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int pthread_once_t;
+     * }
+     */
+    public static final OfInt pthread_once_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int pthread_spinlock_t;
+     * }
+     */
+    public static final OfInt pthread_spinlock_t = JAVA_INT;
     public static MethodHandle random$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.random$MH,"random");
+        return RuntimeHelper.requireNonNull(constants$51.const$1,"random");
     }
-    public static long random () {
+    /**
+     * {@snippet :
+     * long random();
+     * }
+     */
+    public static long random() {
         var mh$ = random$MH();
         try {
             return (long)mh$.invokeExact();
@@ -3850,9 +8795,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle srandom$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.srandom$MH,"srandom");
+        return RuntimeHelper.requireNonNull(constants$51.const$3,"srandom");
     }
-    public static void srandom ( int __seed) {
+    /**
+     * {@snippet :
+     * void srandom(unsigned int __seed);
+     * }
+     */
+    public static void srandom(int __seed) {
         var mh$ = srandom$MH();
         try {
             mh$.invokeExact(__seed);
@@ -3861,31 +8811,46 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle initstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.initstate$MH,"initstate");
+        return RuntimeHelper.requireNonNull(constants$51.const$5,"initstate");
     }
-    public static MemoryAddress initstate ( int __seed,  Addressable __statebuf,  long __statelen) {
+    /**
+     * {@snippet :
+     * char* initstate(unsigned int __seed, char* __statebuf, size_t __statelen);
+     * }
+     */
+    public static MemorySegment initstate(int __seed, MemorySegment __statebuf, long __statelen) {
         var mh$ = initstate$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__seed, __statebuf, __statelen);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__seed, __statebuf, __statelen);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle setstate$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.setstate$MH,"setstate");
+        return RuntimeHelper.requireNonNull(constants$52.const$0,"setstate");
     }
-    public static MemoryAddress setstate ( Addressable __statebuf) {
+    /**
+     * {@snippet :
+     * char* setstate(char* __statebuf);
+     * }
+     */
+    public static MemorySegment setstate(MemorySegment __statebuf) {
         var mh$ = setstate$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__statebuf);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__statebuf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle random_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.random_r$MH,"random_r");
+        return RuntimeHelper.requireNonNull(constants$53.const$3,"random_r");
     }
-    public static int random_r ( Addressable __buf,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int random_r(struct random_data* __buf, int32_t* __result);
+     * }
+     */
+    public static int random_r(MemorySegment __buf, MemorySegment __result) {
         var mh$ = random_r$MH();
         try {
             return (int)mh$.invokeExact(__buf, __result);
@@ -3894,9 +8859,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle srandom_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.srandom_r$MH,"srandom_r");
+        return RuntimeHelper.requireNonNull(constants$53.const$4,"srandom_r");
     }
-    public static int srandom_r ( int __seed,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int srandom_r(unsigned int __seed, struct random_data* __buf);
+     * }
+     */
+    public static int srandom_r(int __seed, MemorySegment __buf) {
         var mh$ = srandom_r$MH();
         try {
             return (int)mh$.invokeExact(__seed, __buf);
@@ -3905,9 +8875,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle initstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.initstate_r$MH,"initstate_r");
+        return RuntimeHelper.requireNonNull(constants$53.const$6,"initstate_r");
     }
-    public static int initstate_r ( int __seed,  Addressable __statebuf,  long __statelen,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int initstate_r(unsigned int __seed, char* __statebuf, size_t __statelen, struct random_data* __buf);
+     * }
+     */
+    public static int initstate_r(int __seed, MemorySegment __statebuf, long __statelen, MemorySegment __buf) {
         var mh$ = initstate_r$MH();
         try {
             return (int)mh$.invokeExact(__seed, __statebuf, __statelen, __buf);
@@ -3916,9 +8891,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle setstate_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.setstate_r$MH,"setstate_r");
+        return RuntimeHelper.requireNonNull(constants$54.const$0,"setstate_r");
     }
-    public static int setstate_r ( Addressable __statebuf,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int setstate_r(char* __statebuf, struct random_data* __buf);
+     * }
+     */
+    public static int setstate_r(MemorySegment __statebuf, MemorySegment __buf) {
         var mh$ = setstate_r$MH();
         try {
             return (int)mh$.invokeExact(__statebuf, __buf);
@@ -3927,9 +8907,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle rand$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.rand$MH,"rand");
+        return RuntimeHelper.requireNonNull(constants$54.const$1,"rand");
     }
-    public static int rand () {
+    /**
+     * {@snippet :
+     * int rand();
+     * }
+     */
+    public static int rand() {
         var mh$ = rand$MH();
         try {
             return (int)mh$.invokeExact();
@@ -3938,9 +8923,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle srand$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.srand$MH,"srand");
+        return RuntimeHelper.requireNonNull(constants$54.const$2,"srand");
     }
-    public static void srand ( int __seed) {
+    /**
+     * {@snippet :
+     * void srand(unsigned int __seed);
+     * }
+     */
+    public static void srand(int __seed) {
         var mh$ = srand$MH();
         try {
             mh$.invokeExact(__seed);
@@ -3949,9 +8939,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle rand_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.rand_r$MH,"rand_r");
+        return RuntimeHelper.requireNonNull(constants$54.const$3,"rand_r");
     }
-    public static int rand_r ( Addressable __seed) {
+    /**
+     * {@snippet :
+     * int rand_r(unsigned int* __seed);
+     * }
+     */
+    public static int rand_r(MemorySegment __seed) {
         var mh$ = rand_r$MH();
         try {
             return (int)mh$.invokeExact(__seed);
@@ -3960,9 +8955,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle drand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.drand48$MH,"drand48");
+        return RuntimeHelper.requireNonNull(constants$54.const$5,"drand48");
     }
-    public static double drand48 () {
+    /**
+     * {@snippet :
+     * double drand48();
+     * }
+     */
+    public static double drand48() {
         var mh$ = drand48$MH();
         try {
             return (double)mh$.invokeExact();
@@ -3971,9 +8971,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle erand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.erand48$MH,"erand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$0,"erand48");
     }
-    public static double erand48 ( Addressable __xsubi) {
+    /**
+     * {@snippet :
+     * double erand48(unsigned short __xsubi[3]);
+     * }
+     */
+    public static double erand48(MemorySegment __xsubi) {
         var mh$ = erand48$MH();
         try {
             return (double)mh$.invokeExact(__xsubi);
@@ -3982,9 +8987,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle lrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.lrand48$MH,"lrand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$1,"lrand48");
     }
-    public static long lrand48 () {
+    /**
+     * {@snippet :
+     * long lrand48();
+     * }
+     */
+    public static long lrand48() {
         var mh$ = lrand48$MH();
         try {
             return (long)mh$.invokeExact();
@@ -3993,9 +9003,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle nrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.nrand48$MH,"nrand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$2,"nrand48");
     }
-    public static long nrand48 ( Addressable __xsubi) {
+    /**
+     * {@snippet :
+     * long nrand48(unsigned short __xsubi[3]);
+     * }
+     */
+    public static long nrand48(MemorySegment __xsubi) {
         var mh$ = nrand48$MH();
         try {
             return (long)mh$.invokeExact(__xsubi);
@@ -4004,9 +9019,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle mrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.mrand48$MH,"mrand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$3,"mrand48");
     }
-    public static long mrand48 () {
+    /**
+     * {@snippet :
+     * long mrand48();
+     * }
+     */
+    public static long mrand48() {
         var mh$ = mrand48$MH();
         try {
             return (long)mh$.invokeExact();
@@ -4015,9 +9035,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle jrand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.jrand48$MH,"jrand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$4,"jrand48");
     }
-    public static long jrand48 ( Addressable __xsubi) {
+    /**
+     * {@snippet :
+     * long jrand48(unsigned short __xsubi[3]);
+     * }
+     */
+    public static long jrand48(MemorySegment __xsubi) {
         var mh$ = jrand48$MH();
         try {
             return (long)mh$.invokeExact(__xsubi);
@@ -4026,9 +9051,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle srand48$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.srand48$MH,"srand48");
+        return RuntimeHelper.requireNonNull(constants$55.const$6,"srand48");
     }
-    public static void srand48 ( long __seedval) {
+    /**
+     * {@snippet :
+     * void srand48(long __seedval);
+     * }
+     */
+    public static void srand48(long __seedval) {
         var mh$ = srand48$MH();
         try {
             mh$.invokeExact(__seedval);
@@ -4037,20 +9067,30 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle seed48$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.seed48$MH,"seed48");
+        return RuntimeHelper.requireNonNull(constants$56.const$0,"seed48");
     }
-    public static MemoryAddress seed48 ( Addressable __seed16v) {
+    /**
+     * {@snippet :
+     * unsigned short* seed48(unsigned short __seed16v[3]);
+     * }
+     */
+    public static MemorySegment seed48(MemorySegment __seed16v) {
         var mh$ = seed48$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__seed16v);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__seed16v);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle lcong48$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.lcong48$MH,"lcong48");
+        return RuntimeHelper.requireNonNull(constants$56.const$1,"lcong48");
     }
-    public static void lcong48 ( Addressable __param) {
+    /**
+     * {@snippet :
+     * void lcong48(unsigned short __param[7]);
+     * }
+     */
+    public static void lcong48(MemorySegment __param) {
         var mh$ = lcong48$MH();
         try {
             mh$.invokeExact(__param);
@@ -4059,9 +9099,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle drand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.drand48_r$MH,"drand48_r");
+        return RuntimeHelper.requireNonNull(constants$57.const$0,"drand48_r");
     }
-    public static int drand48_r ( Addressable __buffer,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int drand48_r(struct drand48_data* __buffer, double* __result);
+     * }
+     */
+    public static int drand48_r(MemorySegment __buffer, MemorySegment __result) {
         var mh$ = drand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
@@ -4070,9 +9115,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle erand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.erand48_r$MH,"erand48_r");
+        return RuntimeHelper.requireNonNull(constants$57.const$1,"erand48_r");
     }
-    public static int erand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int erand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, double* __result);
+     * }
+     */
+    public static int erand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
         var mh$ = erand48_r$MH();
         try {
             return (int)mh$.invokeExact(__xsubi, __buffer, __result);
@@ -4081,9 +9131,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle lrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.lrand48_r$MH,"lrand48_r");
+        return RuntimeHelper.requireNonNull(constants$57.const$2,"lrand48_r");
     }
-    public static int lrand48_r ( Addressable __buffer,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int lrand48_r(struct drand48_data* __buffer, long* __result);
+     * }
+     */
+    public static int lrand48_r(MemorySegment __buffer, MemorySegment __result) {
         var mh$ = lrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
@@ -4092,9 +9147,14 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle nrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.nrand48_r$MH,"nrand48_r");
+        return RuntimeHelper.requireNonNull(constants$57.const$3,"nrand48_r");
     }
-    public static int nrand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int nrand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, long* __result);
+     * }
+     */
+    public static int nrand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
         var mh$ = nrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__xsubi, __buffer, __result);
@@ -4103,826 +9163,17 @@ public class mfhdf_h extends mfhdf_h_2 {
         }
     }
     public static MethodHandle mrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.mrand48_r$MH,"mrand48_r");
+        return RuntimeHelper.requireNonNull(constants$57.const$4,"mrand48_r");
     }
-    public static int mrand48_r ( Addressable __buffer,  Addressable __result) {
+    /**
+     * {@snippet :
+     * int mrand48_r(struct drand48_data* __buffer, long* __result);
+     * }
+     */
+    public static int mrand48_r(MemorySegment __buffer, MemorySegment __result) {
         var mh$ = mrand48_r$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __result);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle jrand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.jrand48_r$MH,"jrand48_r");
-    }
-    public static int jrand48_r ( Addressable __xsubi,  Addressable __buffer,  Addressable __result) {
-        var mh$ = jrand48_r$MH();
-        try {
-            return (int)mh$.invokeExact(__xsubi, __buffer, __result);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle srand48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.srand48_r$MH,"srand48_r");
-    }
-    public static int srand48_r ( long __seedval,  Addressable __buffer) {
-        var mh$ = srand48_r$MH();
-        try {
-            return (int)mh$.invokeExact(__seedval, __buffer);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle seed48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.seed48_r$MH,"seed48_r");
-    }
-    public static int seed48_r ( Addressable __seed16v,  Addressable __buffer) {
-        var mh$ = seed48_r$MH();
-        try {
-            return (int)mh$.invokeExact(__seed16v, __buffer);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle lcong48_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.lcong48_r$MH,"lcong48_r");
-    }
-    public static int lcong48_r ( Addressable __param,  Addressable __buffer) {
-        var mh$ = lcong48_r$MH();
-        try {
-            return (int)mh$.invokeExact(__param, __buffer);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle malloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.malloc$MH,"malloc");
-    }
-    public static MemoryAddress malloc ( long __size) {
-        var mh$ = malloc$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle calloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.calloc$MH,"calloc");
-    }
-    public static MemoryAddress calloc ( long __nmemb,  long __size) {
-        var mh$ = calloc$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__nmemb, __size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle realloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.realloc$MH,"realloc");
-    }
-    public static MemoryAddress realloc ( Addressable __ptr,  long __size) {
-        var mh$ = realloc$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__ptr, __size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle free$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.free$MH,"free");
-    }
-    public static void free ( Addressable __ptr) {
-        var mh$ = free$MH();
-        try {
-            mh$.invokeExact(__ptr);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle reallocarray$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.reallocarray$MH,"reallocarray");
-    }
-    public static MemoryAddress reallocarray ( Addressable __ptr,  long __nmemb,  long __size) {
-        var mh$ = reallocarray$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__ptr, __nmemb, __size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle alloca$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.alloca$MH,"alloca");
-    }
-    public static MemoryAddress alloca ( long __size) {
-        var mh$ = alloca$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle valloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.valloc$MH,"valloc");
-    }
-    public static MemoryAddress valloc ( long __size) {
-        var mh$ = valloc$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle posix_memalign$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.posix_memalign$MH,"posix_memalign");
-    }
-    public static int posix_memalign ( Addressable __memptr,  long __alignment,  long __size) {
-        var mh$ = posix_memalign$MH();
-        try {
-            return (int)mh$.invokeExact(__memptr, __alignment, __size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle aligned_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.aligned_alloc$MH,"aligned_alloc");
-    }
-    public static MemoryAddress aligned_alloc ( long __alignment,  long __size) {
-        var mh$ = aligned_alloc$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__alignment, __size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle abort$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.abort$MH,"abort");
-    }
-    public static void abort () {
-        var mh$ = abort$MH();
-        try {
-            mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle atexit$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.atexit$MH,"atexit");
-    }
-    public static int atexit ( Addressable __func) {
-        var mh$ = atexit$MH();
-        try {
-            return (int)mh$.invokeExact(__func);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle at_quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.at_quick_exit$MH,"at_quick_exit");
-    }
-    public static int at_quick_exit ( Addressable __func) {
-        var mh$ = at_quick_exit$MH();
-        try {
-            return (int)mh$.invokeExact(__func);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle on_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.on_exit$MH,"on_exit");
-    }
-    public static int on_exit ( Addressable __func,  Addressable __arg) {
-        var mh$ = on_exit$MH();
-        try {
-            return (int)mh$.invokeExact(__func, __arg);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.exit$MH,"exit");
-    }
-    public static void exit ( int __status) {
-        var mh$ = exit$MH();
-        try {
-            mh$.invokeExact(__status);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle quick_exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.quick_exit$MH,"quick_exit");
-    }
-    public static void quick_exit ( int __status) {
-        var mh$ = quick_exit$MH();
-        try {
-            mh$.invokeExact(__status);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle _Exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$34._Exit$MH,"_Exit");
-    }
-    public static void _Exit ( int __status) {
-        var mh$ = _Exit$MH();
-        try {
-            mh$.invokeExact(__status);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle getenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.getenv$MH,"getenv");
-    }
-    public static MemoryAddress getenv ( Addressable __name) {
-        var mh$ = getenv$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle putenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.putenv$MH,"putenv");
-    }
-    public static int putenv ( Addressable __string) {
-        var mh$ = putenv$MH();
-        try {
-            return (int)mh$.invokeExact(__string);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle setenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.setenv$MH,"setenv");
-    }
-    public static int setenv ( Addressable __name,  Addressable __value,  int __replace) {
-        var mh$ = setenv$MH();
-        try {
-            return (int)mh$.invokeExact(__name, __value, __replace);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle unsetenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.unsetenv$MH,"unsetenv");
-    }
-    public static int unsetenv ( Addressable __name) {
-        var mh$ = unsetenv$MH();
-        try {
-            return (int)mh$.invokeExact(__name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle clearenv$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.clearenv$MH,"clearenv");
-    }
-    public static int clearenv () {
-        var mh$ = clearenv$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mktemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.mktemp$MH,"mktemp");
-    }
-    public static MemoryAddress mktemp ( Addressable __template) {
-        var mh$ = mktemp$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__template);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mkstemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.mkstemp$MH,"mkstemp");
-    }
-    public static int mkstemp ( Addressable __template) {
-        var mh$ = mkstemp$MH();
-        try {
-            return (int)mh$.invokeExact(__template);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mkstemps$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.mkstemps$MH,"mkstemps");
-    }
-    public static int mkstemps ( Addressable __template,  int __suffixlen) {
-        var mh$ = mkstemps$MH();
-        try {
-            return (int)mh$.invokeExact(__template, __suffixlen);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mkdtemp$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.mkdtemp$MH,"mkdtemp");
-    }
-    public static MemoryAddress mkdtemp ( Addressable __template) {
-        var mh$ = mkdtemp$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__template);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle system$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.system$MH,"system");
-    }
-    public static int system ( Addressable __command) {
-        var mh$ = system$MH();
-        try {
-            return (int)mh$.invokeExact(__command);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle realpath$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.realpath$MH,"realpath");
-    }
-    public static MemoryAddress realpath ( Addressable __name,  Addressable __resolved) {
-        var mh$ = realpath$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__name, __resolved);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle bsearch$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.bsearch$MH,"bsearch");
-    }
-    public static MemoryAddress bsearch ( Addressable __key,  Addressable __base,  long __nmemb,  long __size,  Addressable __compar) {
-        var mh$ = bsearch$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__key, __base, __nmemb, __size, __compar);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle qsort$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.qsort$MH,"qsort");
-    }
-    public static void qsort ( Addressable __base,  long __nmemb,  long __size,  Addressable __compar) {
-        var mh$ = qsort$MH();
-        try {
-            mh$.invokeExact(__base, __nmemb, __size, __compar);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle abs$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.abs$MH,"abs");
-    }
-    public static int abs ( int __x) {
-        var mh$ = abs$MH();
-        try {
-            return (int)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle labs$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.labs$MH,"labs");
-    }
-    public static long labs ( long __x) {
-        var mh$ = labs$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle llabs$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.llabs$MH,"llabs");
-    }
-    public static long llabs ( long __x) {
-        var mh$ = llabs$MH();
-        try {
-            return (long)mh$.invokeExact(__x);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle div$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.div$MH,"div");
-    }
-    public static MemorySegment div ( SegmentAllocator allocator,  int __numer,  int __denom) {
-        var mh$ = div$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.ldiv$MH,"ldiv");
-    }
-    public static MemorySegment ldiv ( SegmentAllocator allocator,  long __numer,  long __denom) {
-        var mh$ = ldiv$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle lldiv$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.lldiv$MH,"lldiv");
-    }
-    public static MemorySegment lldiv ( SegmentAllocator allocator,  long __numer,  long __denom) {
-        var mh$ = lldiv$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ecvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.ecvt$MH,"ecvt");
-    }
-    public static MemoryAddress ecvt ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign) {
-        var mh$ = ecvt$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle fcvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.fcvt$MH,"fcvt");
-    }
-    public static MemoryAddress fcvt ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign) {
-        var mh$ = fcvt$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle gcvt$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.gcvt$MH,"gcvt");
-    }
-    public static MemoryAddress gcvt ( double __value,  int __ndigit,  Addressable __buf) {
-        var mh$ = gcvt$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__value, __ndigit, __buf);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ecvt_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.ecvt_r$MH,"ecvt_r");
-    }
-    public static int ecvt_r ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign,  Addressable __buf,  long __len) {
-        var mh$ = ecvt_r$MH();
-        try {
-            return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle fcvt_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.fcvt_r$MH,"fcvt_r");
-    }
-    public static int fcvt_r ( double __value,  int __ndigit,  Addressable __decpt,  Addressable __sign,  Addressable __buf,  long __len) {
-        var mh$ = fcvt_r$MH();
-        try {
-            return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mblen$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.mblen$MH,"mblen");
-    }
-    public static int mblen ( Addressable __s,  long __n) {
-        var mh$ = mblen$MH();
-        try {
-            return (int)mh$.invokeExact(__s, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mbtowc$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.mbtowc$MH,"mbtowc");
-    }
-    public static int mbtowc ( Addressable __pwc,  Addressable __s,  long __n) {
-        var mh$ = mbtowc$MH();
-        try {
-            return (int)mh$.invokeExact(__pwc, __s, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle wctomb$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.wctomb$MH,"wctomb");
-    }
-    public static int wctomb ( Addressable __s,  int __wchar) {
-        var mh$ = wctomb$MH();
-        try {
-            return (int)mh$.invokeExact(__s, __wchar);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle mbstowcs$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.mbstowcs$MH,"mbstowcs");
-    }
-    public static long mbstowcs ( Addressable __pwcs,  Addressable __s,  long __n) {
-        var mh$ = mbstowcs$MH();
-        try {
-            return (long)mh$.invokeExact(__pwcs, __s, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle wcstombs$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.wcstombs$MH,"wcstombs");
-    }
-    public static long wcstombs ( Addressable __s,  Addressable __pwcs,  long __n) {
-        var mh$ = wcstombs$MH();
-        try {
-            return (long)mh$.invokeExact(__s, __pwcs, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle rpmatch$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.rpmatch$MH,"rpmatch");
-    }
-    public static int rpmatch ( Addressable __response) {
-        var mh$ = rpmatch$MH();
-        try {
-            return (int)mh$.invokeExact(__response);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle getsubopt$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.getsubopt$MH,"getsubopt");
-    }
-    public static int getsubopt ( Addressable __optionp,  Addressable __tokens,  Addressable __valuep) {
-        var mh$ = getsubopt$MH();
-        try {
-            return (int)mh$.invokeExact(__optionp, __tokens, __valuep);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle getloadavg$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.getloadavg$MH,"getloadavg");
-    }
-    public static int getloadavg ( Addressable __loadavg,  int __nelem) {
-        var mh$ = getloadavg$MH();
-        try {
-            return (int)mh$.invokeExact(__loadavg, __nelem);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.memcpy$MH,"memcpy");
-    }
-    public static MemoryAddress memcpy ( Addressable __dest,  Addressable __src,  long __n) {
-        var mh$ = memcpy$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memmove$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.memmove$MH,"memmove");
-    }
-    public static MemoryAddress memmove ( Addressable __dest,  Addressable __src,  long __n) {
-        var mh$ = memmove$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memccpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.memccpy$MH,"memccpy");
-    }
-    public static MemoryAddress memccpy ( Addressable __dest,  Addressable __src,  int __c,  long __n) {
-        var mh$ = memccpy$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __c, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memset$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.memset$MH,"memset");
-    }
-    public static MemoryAddress memset ( Addressable __s,  int __c,  long __n) {
-        var mh$ = memset$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.memcmp$MH,"memcmp");
-    }
-    public static int memcmp ( Addressable __s1,  Addressable __s2,  long __n) {
-        var mh$ = memcmp$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle __memcmpeq$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.__memcmpeq$MH,"__memcmpeq");
-    }
-    public static int __memcmpeq ( Addressable __s1,  Addressable __s2,  long __n) {
-        var mh$ = __memcmpeq$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle memchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.memchr$MH,"memchr");
-    }
-    public static MemoryAddress memchr ( Addressable __s,  int __c,  long __n) {
-        var mh$ = memchr$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.strcpy$MH,"strcpy");
-    }
-    public static MemoryAddress strcpy ( Addressable __dest,  Addressable __src) {
-        var mh$ = strcpy$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.strncpy$MH,"strncpy");
-    }
-    public static MemoryAddress strncpy ( Addressable __dest,  Addressable __src,  long __n) {
-        var mh$ = strncpy$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcat$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.strcat$MH,"strcat");
-    }
-    public static MemoryAddress strcat ( Addressable __dest,  Addressable __src) {
-        var mh$ = strcat$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strncat$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.strncat$MH,"strncat");
-    }
-    public static MemoryAddress strncat ( Addressable __dest,  Addressable __src,  long __n) {
-        var mh$ = strncat$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strcmp$MH,"strcmp");
-    }
-    public static int strcmp ( Addressable __s1,  Addressable __s2) {
-        var mh$ = strcmp$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strncmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strncmp$MH,"strncmp");
-    }
-    public static int strncmp ( Addressable __s1,  Addressable __s2,  long __n) {
-        var mh$ = strncmp$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcoll$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strcoll$MH,"strcoll");
-    }
-    public static int strcoll ( Addressable __s1,  Addressable __s2) {
-        var mh$ = strcoll$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strxfrm$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strxfrm$MH,"strxfrm");
-    }
-    public static long strxfrm ( Addressable __dest,  Addressable __src,  long __n) {
-        var mh$ = strxfrm$MH();
-        try {
-            return (long)mh$.invokeExact(__dest, __src, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcoll_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strcoll_l$MH,"strcoll_l");
-    }
-    public static int strcoll_l ( Addressable __s1,  Addressable __s2,  Addressable __l) {
-        var mh$ = strcoll_l$MH();
-        try {
-            return (int)mh$.invokeExact(__s1, __s2, __l);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strxfrm_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.strxfrm_l$MH,"strxfrm_l");
-    }
-    public static long strxfrm_l ( Addressable __dest,  Addressable __src,  long __n,  Addressable __l) {
-        var mh$ = strxfrm_l$MH();
-        try {
-            return (long)mh$.invokeExact(__dest, __src, __n, __l);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strdup$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strdup$MH,"strdup");
-    }
-    public static MemoryAddress strdup ( Addressable __s) {
-        var mh$ = strdup$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strndup$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strndup$MH,"strndup");
-    }
-    public static MemoryAddress strndup ( Addressable __string,  long __n) {
-        var mh$ = strndup$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__string, __n);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strchr$MH,"strchr");
-    }
-    public static MemoryAddress strchr ( Addressable __s,  int __c) {
-        var mh$ = strchr$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strrchr$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strrchr$MH,"strrchr");
-    }
-    public static MemoryAddress strrchr ( Addressable __s,  int __c) {
-        var mh$ = strrchr$MH();
-        try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle strcspn$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strcspn$MH,"strcspn");
-    }
-    public static long strcspn ( Addressable __s,  Addressable __reject) {
-        var mh$ = strcspn$MH();
-        try {
-            return (long)mh$.invokeExact(__s, __reject);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

@@ -3,78 +3,40 @@
 package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$11 {
 
-class constants$11 {
-
-    static final FunctionDescriptor nc_get_vars$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$11() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle nc_get_vars$MH = RuntimeHelper.downcallHandle(
-        "nc_get_vars",
-        constants$11.nc_get_vars$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_free_vlens",
+        constants$11.const$0
     );
-    static final FunctionDescriptor nc_put_varm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle nc_put_varm$MH = RuntimeHelper.downcallHandle(
-        "nc_put_varm",
-        constants$11.nc_put_varm$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_put_vlen_element",
+        constants$11.const$2
     );
-    static final FunctionDescriptor nc_get_varm$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_get_vlen_element",
+        constants$7.const$3
     );
-    static final MethodHandle nc_get_varm$MH = RuntimeHelper.downcallHandle(
-        "nc_get_varm",
-        constants$11.nc_get_varm$FUNC
-    );
-    static final FunctionDescriptor nc_def_var_quantize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nc_def_var_quantize$MH = RuntimeHelper.downcallHandle(
-        "nc_def_var_quantize",
-        constants$11.nc_def_var_quantize$FUNC
-    );
-    static final FunctionDescriptor nc_inq_var_quantize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_var_quantize$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_var_quantize",
-        constants$11.nc_inq_var_quantize$FUNC
-    );
-    static final FunctionDescriptor nc_def_var_deflate$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nc_def_var_deflate$MH = RuntimeHelper.downcallHandle(
-        "nc_def_var_deflate",
-        constants$11.nc_def_var_deflate$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_free_string",
+        constants$11.const$0
     );
 }
 

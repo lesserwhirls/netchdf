@@ -3,63 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$103 {
 
-class constants$103 {
-
-    static final FunctionDescriptor DFGRreqimil$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$103() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "confstr",
+        constants$96.const$2
     );
-    static final MethodHandle DFGRreqimil$MH = RuntimeHelper.downcallHandle(
-        "DFGRreqimil",
-        constants$103.DFGRreqimil$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getpid",
+        constants$28.const$3
     );
-    static final FunctionDescriptor DFGRgetimage$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "getppid",
+        constants$28.const$3
     );
-    static final MethodHandle DFGRgetimage$MH = RuntimeHelper.downcallHandle(
-        "DFGRgetimage",
-        constants$103.DFGRgetimage$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "getpgrp",
+        constants$28.const$3
     );
-    static final FunctionDescriptor DFGRsetcompress$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "__getpgid",
+        constants$1.const$5
     );
-    static final MethodHandle DFGRsetcompress$MH = RuntimeHelper.downcallHandle(
-        "DFGRsetcompress",
-        constants$103.DFGRsetcompress$FUNC
-    );
-    static final FunctionDescriptor DFGRsetlutdims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFGRsetlutdims$MH = RuntimeHelper.downcallHandle(
-        "DFGRsetlutdims",
-        constants$103.DFGRsetlutdims$FUNC
-    );
-    static final FunctionDescriptor DFGRsetlut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFGRsetlut$MH = RuntimeHelper.downcallHandle(
-        "DFGRsetlut",
-        constants$103.DFGRsetlut$FUNC
-    );
-    static final FunctionDescriptor DFGRaddlut$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFGRaddlut$MH = RuntimeHelper.downcallHandle(
-        "DFGRaddlut",
-        constants$103.DFGRaddlut$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getpgid",
+        constants$1.const$5
     );
 }
 

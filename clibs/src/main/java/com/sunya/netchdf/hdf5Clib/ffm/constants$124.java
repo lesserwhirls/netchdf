@@ -7,46 +7,35 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$124 {
+final class constants$124 {
 
-    static final FunctionDescriptor H5Gget_objinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$124() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "puts",
+        constants$15.const$2
     );
-    static final MethodHandle H5Gget_objinfo$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_objinfo",
-        constants$124.H5Gget_objinfo$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ungetc",
+        constants$22.const$0
     );
-    static final FunctionDescriptor H5Gget_objname_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Gget_objname_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_objname_by_idx",
-        constants$124.H5Gget_objname_by_idx$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fread",
+        constants$124.const$2
     );
-    static final FunctionDescriptor H5Gget_objtype_by_idx$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fwrite",
+        constants$124.const$2
     );
-    static final MethodHandle H5Gget_objtype_by_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Gget_objtype_by_idx",
-        constants$124.H5Gget_objtype_by_idx$FUNC
-    );
-    static final FunctionDescriptor H5MM_allocate_t$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5MM_allocate_t$MH = RuntimeHelper.downcallHandle(
-        constants$124.H5MM_allocate_t$FUNC
-    );
-    static final FunctionDescriptor H5MM_free_t$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fread_unlocked",
+        constants$124.const$2
     );
 }
 

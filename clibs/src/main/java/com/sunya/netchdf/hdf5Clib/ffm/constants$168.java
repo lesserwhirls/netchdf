@@ -7,83 +7,27 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$168 {
+final class constants$168 {
 
-    static final FunctionDescriptor H5Pset_mcdt_search_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_mcdt_search_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_mcdt_search_cb",
-        constants$168.H5Pset_mcdt_search_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pget_mcdt_search_cb$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_mcdt_search_cb$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_mcdt_search_cb",
-        constants$168.H5Pget_mcdt_search_cb$FUNC
-    );
-    static final FunctionDescriptor H5Pregister1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pregister1$MH = RuntimeHelper.downcallHandle(
-        "H5Pregister1",
-        constants$168.H5Pregister1$FUNC
-    );
-    static final FunctionDescriptor H5Pinsert1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pinsert1$MH = RuntimeHelper.downcallHandle(
-        "H5Pinsert1",
-        constants$168.H5Pinsert1$FUNC
-    );
-    static final FunctionDescriptor H5Pget_filter1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_filter1$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_filter1",
-        constants$168.H5Pget_filter1$FUNC
-    );
-    static final FunctionDescriptor H5Pget_filter_by_id1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_filter_by_id1$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_filter_by_id1",
-        constants$168.H5Pget_filter_by_id1$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$168() {}
+    static final VarHandle const$0 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("meta_size"));
+    static final VarHandle const$1 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("tot_space"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("hdr_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("msgs_info")
+    ).withName("");
+    static final VarHandle const$3 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$4 = constants$168.const$2.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("addr"),
+        JAVA_LONG.withName("size")
+    ).withName("H5F_sect_info_t");
 }
 
 

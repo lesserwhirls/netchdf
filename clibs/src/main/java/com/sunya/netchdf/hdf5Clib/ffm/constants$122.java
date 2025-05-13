@@ -7,64 +7,38 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$122 {
+final class constants$122 {
 
-    static final FunctionDescriptor H5Gcreate1$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$122() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fputc_unlocked",
+        constants$22.const$0
     );
-    static final MethodHandle H5Gcreate1$MH = RuntimeHelper.downcallHandle(
-        "H5Gcreate1",
-        constants$122.H5Gcreate1$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "putc_unlocked",
+        constants$22.const$0
     );
-    static final FunctionDescriptor H5Gopen1$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "putchar_unlocked",
+        constants$21.const$0
     );
-    static final MethodHandle H5Gopen1$MH = RuntimeHelper.downcallHandle(
-        "H5Gopen1",
-        constants$122.H5Gopen1$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "getw",
+        constants$15.const$2
     );
-    static final FunctionDescriptor H5Glink$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "putw",
+        constants$22.const$0
     );
-    static final MethodHandle H5Glink$MH = RuntimeHelper.downcallHandle(
-        "H5Glink",
-        constants$122.H5Glink$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Glink2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Glink2$MH = RuntimeHelper.downcallHandle(
-        "H5Glink2",
-        constants$122.H5Glink2$FUNC
-    );
-    static final FunctionDescriptor H5Gmove$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Gmove$MH = RuntimeHelper.downcallHandle(
-        "H5Gmove",
-        constants$122.H5Gmove$FUNC
-    );
-    static final FunctionDescriptor H5Gmove2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Gmove2$MH = RuntimeHelper.downcallHandle(
-        "H5Gmove2",
-        constants$122.H5Gmove2$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "fgets",
+        constants$122.const$5
     );
 }
 

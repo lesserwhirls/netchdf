@@ -3,48 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$72 {
 
-class constants$72 {
-
-    static final FunctionDescriptor daemon$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$72() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "strncat",
+        constants$70.const$0
     );
-    static final MethodHandle daemon$MH = RuntimeHelper.downcallHandle(
-        "daemon",
-        constants$72.daemon$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "strcmp",
+        constants$19.const$5
     );
-    static final FunctionDescriptor chroot$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "strncmp",
+        constants$68.const$5
     );
-    static final MethodHandle chroot$MH = RuntimeHelper.downcallHandle(
-        "chroot",
-        constants$72.chroot$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strcoll",
+        constants$19.const$5
     );
-    static final FunctionDescriptor getpass$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "strxfrm",
+        constants$16.const$3
     );
-    static final MethodHandle getpass$MH = RuntimeHelper.downcallHandle(
-        "getpass",
-        constants$72.getpass$FUNC
-    );
-    static final FunctionDescriptor fsync$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle fsync$MH = RuntimeHelper.downcallHandle(
-        "fsync",
-        constants$72.fsync$FUNC
-    );
-    static final FunctionDescriptor gethostid$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT);
-    static final MethodHandle gethostid$MH = RuntimeHelper.downcallHandle(
-        "gethostid",
-        constants$72.gethostid$FUNC
-    );
-    static final FunctionDescriptor sync$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle sync$MH = RuntimeHelper.downcallHandle(
-        "sync",
-        constants$72.sync$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "strcoll_l",
+        constants$25.const$1
     );
 }
 

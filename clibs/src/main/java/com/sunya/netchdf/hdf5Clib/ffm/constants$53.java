@@ -7,48 +7,42 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$53 {
+final class constants$53 {
 
-    static final FunctionDescriptor H5Aopen_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$53() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tcompiler_conv",
+        constants$40.const$0
     );
-    static final MethodHandle H5Aopen_name$MH = RuntimeHelper.downcallHandle(
-        "H5Aopen_name",
-        constants$53.H5Aopen_name$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Aopen_idx$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tconvert",
+        constants$53.const$1
     );
-    static final MethodHandle H5Aopen_idx$MH = RuntimeHelper.downcallHandle(
-        "H5Aopen_idx",
-        constants$53.H5Aopen_idx$FUNC
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor H5Aget_num_attrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tcommit1",
+        constants$53.const$3
     );
-    static final MethodHandle H5Aget_num_attrs$MH = RuntimeHelper.downcallHandle(
-        "H5Aget_num_attrs",
-        constants$53.H5Aget_num_attrs$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Aiterate1$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Aiterate1$MH = RuntimeHelper.downcallHandle(
-        "H5Aiterate1",
-        constants$53.H5Aiterate1$FUNC
-    );
-    static final FunctionDescriptor H5D_append_cb_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5D_append_cb_t$MH = RuntimeHelper.downcallHandle(
-        constants$53.H5D_append_cb_t$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Topen1",
+        constants$53.const$5
     );
 }
 

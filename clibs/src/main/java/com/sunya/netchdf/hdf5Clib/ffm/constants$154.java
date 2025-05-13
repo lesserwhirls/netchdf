@@ -7,62 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$154 {
+final class constants$154 {
 
-    static final FunctionDescriptor H5Pget_page_buffer_size$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_page_buffer_size$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_page_buffer_size",
-        constants$154.H5Pget_page_buffer_size$FUNC
-    );
-    static final FunctionDescriptor H5Pset_layout$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_layout$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_layout",
-        constants$154.H5Pset_layout$FUNC
-    );
-    static final FunctionDescriptor H5Pget_layout$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_layout$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_layout",
-        constants$154.H5Pget_layout$FUNC
-    );
-    static final FunctionDescriptor H5Pset_chunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_chunk$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk",
-        constants$154.H5Pset_chunk$FUNC
-    );
-    static final FunctionDescriptor H5Pget_chunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_chunk$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk",
-        constants$154.H5Pget_chunk$FUNC
-    );
-    static final FunctionDescriptor H5Pset_virtual$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_virtual$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual",
-        constants$154.H5Pset_virtual$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$154() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSORT_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_MPI_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_MPIERRSTR_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTRECV_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGATHER_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_NO_INDEPENDENT_g", JAVA_LONG);
 }
 
 

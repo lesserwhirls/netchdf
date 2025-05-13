@@ -7,58 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$158 {
+final class constants$158 {
 
-    static final FunctionDescriptor H5Pget_alloc_time$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_alloc_time$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_alloc_time",
-        constants$158.H5Pget_alloc_time$FUNC
-    );
-    static final FunctionDescriptor H5Pset_fill_time$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_fill_time$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_fill_time",
-        constants$158.H5Pset_fill_time$FUNC
-    );
-    static final FunctionDescriptor H5Pget_fill_time$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_fill_time$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_fill_time",
-        constants$158.H5Pget_fill_time$FUNC
-    );
-    static final FunctionDescriptor H5Pget_dset_no_attrs_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_dset_no_attrs_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_dset_no_attrs_hint",
-        constants$158.H5Pget_dset_no_attrs_hint$FUNC
-    );
-    static final FunctionDescriptor H5Pset_dset_no_attrs_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_BOOL$LAYOUT
-    );
-    static final MethodHandle H5Pset_dset_no_attrs_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_dset_no_attrs_hint",
-        constants$158.H5Pset_dset_no_attrs_hint$FUNC
-    );
-    static final FunctionDescriptor H5Pset_chunk_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT
-    );
-    static final MethodHandle H5Pset_chunk_cache$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk_cache",
-        constants$158.H5Pset_chunk_cache$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$158() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTREDISTRIBUTE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSWAP_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTINSERT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTLIST_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMODIFY_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTREMOVE_g", JAVA_LONG);
 }
 
 

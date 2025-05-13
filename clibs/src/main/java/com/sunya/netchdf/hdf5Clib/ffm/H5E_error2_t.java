@@ -7,139 +7,219 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5E_error2_t {
+ *     hid_t cls_id;
+ *     hid_t maj_num;
+ *     hid_t min_num;
+ *     unsigned int line;
+ *     char* func_name;
+ *     char* file_name;
+ *     char* desc;
+ * };
+ * }
+ */
 public class H5E_error2_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("cls_id"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("maj_num"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("min_num"),
-        Constants$root.C_INT$LAYOUT.withName("line"),
-        MemoryLayout.paddingLayout(32),
-        Constants$root.C_POINTER$LAYOUT.withName("func_name"),
-        Constants$root.C_POINTER$LAYOUT.withName("file_name"),
-        Constants$root.C_POINTER$LAYOUT.withName("desc")
-    ).withName("H5E_error2_t");
     public static MemoryLayout $LAYOUT() {
-        return H5E_error2_t.$struct$LAYOUT;
+        return constants$129.const$3;
     }
-    static final VarHandle cls_id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("cls_id"));
     public static VarHandle cls_id$VH() {
-        return H5E_error2_t.cls_id$VH;
+        return constants$129.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hid_t cls_id;
+     * }
+     */
     public static long cls_id$get(MemorySegment seg) {
-        return (long)H5E_error2_t.cls_id$VH.get(seg);
+        return (long)constants$129.const$4.get(seg);
     }
-    public static void cls_id$set( MemorySegment seg, long x) {
-        H5E_error2_t.cls_id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hid_t cls_id;
+     * }
+     */
+    public static void cls_id$set(MemorySegment seg, long x) {
+        constants$129.const$4.set(seg, x);
     }
     public static long cls_id$get(MemorySegment seg, long index) {
-        return (long)H5E_error2_t.cls_id$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$129.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void cls_id$set(MemorySegment seg, long index, long x) {
-        H5E_error2_t.cls_id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$129.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle maj_num$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
     public static VarHandle maj_num$VH() {
-        return H5E_error2_t.maj_num$VH;
+        return constants$129.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hid_t maj_num;
+     * }
+     */
     public static long maj_num$get(MemorySegment seg) {
-        return (long)H5E_error2_t.maj_num$VH.get(seg);
+        return (long)constants$129.const$5.get(seg);
     }
-    public static void maj_num$set( MemorySegment seg, long x) {
-        H5E_error2_t.maj_num$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hid_t maj_num;
+     * }
+     */
+    public static void maj_num$set(MemorySegment seg, long x) {
+        constants$129.const$5.set(seg, x);
     }
     public static long maj_num$get(MemorySegment seg, long index) {
-        return (long)H5E_error2_t.maj_num$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$129.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void maj_num$set(MemorySegment seg, long index, long x) {
-        H5E_error2_t.maj_num$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$129.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle min_num$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
     public static VarHandle min_num$VH() {
-        return H5E_error2_t.min_num$VH;
+        return constants$130.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hid_t min_num;
+     * }
+     */
     public static long min_num$get(MemorySegment seg) {
-        return (long)H5E_error2_t.min_num$VH.get(seg);
+        return (long)constants$130.const$0.get(seg);
     }
-    public static void min_num$set( MemorySegment seg, long x) {
-        H5E_error2_t.min_num$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hid_t min_num;
+     * }
+     */
+    public static void min_num$set(MemorySegment seg, long x) {
+        constants$130.const$0.set(seg, x);
     }
     public static long min_num$get(MemorySegment seg, long index) {
-        return (long)H5E_error2_t.min_num$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$130.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void min_num$set(MemorySegment seg, long index, long x) {
-        H5E_error2_t.min_num$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$130.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle line$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("line"));
     public static VarHandle line$VH() {
-        return H5E_error2_t.line$VH;
+        return constants$130.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * unsigned int line;
+     * }
+     */
     public static int line$get(MemorySegment seg) {
-        return (int)H5E_error2_t.line$VH.get(seg);
+        return (int)constants$130.const$1.get(seg);
     }
-    public static void line$set( MemorySegment seg, int x) {
-        H5E_error2_t.line$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * unsigned int line;
+     * }
+     */
+    public static void line$set(MemorySegment seg, int x) {
+        constants$130.const$1.set(seg, x);
     }
     public static int line$get(MemorySegment seg, long index) {
-        return (int)H5E_error2_t.line$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$130.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void line$set(MemorySegment seg, long index, int x) {
-        H5E_error2_t.line$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$130.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle func_name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
     public static VarHandle func_name$VH() {
-        return H5E_error2_t.func_name$VH;
+        return constants$130.const$2;
     }
-    public static MemoryAddress func_name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.func_name$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* func_name;
+     * }
+     */
+    public static MemorySegment func_name$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$2.get(seg);
     }
-    public static void func_name$set( MemorySegment seg, MemoryAddress x) {
-        H5E_error2_t.func_name$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* func_name;
+     * }
+     */
+    public static void func_name$set(MemorySegment seg, MemorySegment x) {
+        constants$130.const$2.set(seg, x);
     }
-    public static MemoryAddress func_name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.func_name$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment func_name$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void func_name$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5E_error2_t.func_name$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void func_name$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$130.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle file_name$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
     public static VarHandle file_name$VH() {
-        return H5E_error2_t.file_name$VH;
+        return constants$130.const$3;
     }
-    public static MemoryAddress file_name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.file_name$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* file_name;
+     * }
+     */
+    public static MemorySegment file_name$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$3.get(seg);
     }
-    public static void file_name$set( MemorySegment seg, MemoryAddress x) {
-        H5E_error2_t.file_name$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* file_name;
+     * }
+     */
+    public static void file_name$set(MemorySegment seg, MemorySegment x) {
+        constants$130.const$3.set(seg, x);
     }
-    public static MemoryAddress file_name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.file_name$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment file_name$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void file_name$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5E_error2_t.file_name$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void file_name$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$130.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle desc$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("desc"));
     public static VarHandle desc$VH() {
-        return H5E_error2_t.desc$VH;
+        return constants$130.const$4;
     }
-    public static MemoryAddress desc$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.desc$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * char* desc;
+     * }
+     */
+    public static MemorySegment desc$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$4.get(seg);
     }
-    public static void desc$set( MemorySegment seg, MemoryAddress x) {
-        H5E_error2_t.desc$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * char* desc;
+     * }
+     */
+    public static void desc$set(MemorySegment seg, MemorySegment x) {
+        constants$130.const$4.set(seg, x);
     }
-    public static MemoryAddress desc$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)H5E_error2_t.desc$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment desc$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$130.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void desc$set(MemorySegment seg, long index, MemoryAddress x) {
-        H5E_error2_t.desc$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void desc$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$130.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

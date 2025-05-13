@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$180 {
 
-class constants$180 {
-
-    static final MemorySegment PRIxLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment PRIxFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment PRIxFAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$180() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ANstart",
+        constants$1.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ANfileinfo",
+        constants$42.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "ANend",
+        constants$1.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "ANcreate",
+        constants$130.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ANcreatef",
+        constants$93.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ANselect",
+        constants$98.const$3
+    );
 }
 
 

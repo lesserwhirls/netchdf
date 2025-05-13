@@ -2,244 +2,392 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
-
+import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct bitrec_t {
+ *     int32 acc_id;
+ *     int32 bit_id;
+ *     int32 block_offset;
+ *     int32 max_offset;
+ *     int32 byte_offset;
+ *     intn count;
+ *     intn buf_read;
+ *     uint8 access;
+ *     uint8 mode;
+ *     uint8 bits;
+ *     uint8* bytep;
+ *     uint8* bytez;
+ *     uint8* bytea;
+ * };
+ * }
+ */
 public class bitrec_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_INT$LAYOUT.withName("acc_id"),
-        Constants$root.C_INT$LAYOUT.withName("bit_id"),
-        Constants$root.C_INT$LAYOUT.withName("block_offset"),
-        Constants$root.C_INT$LAYOUT.withName("max_offset"),
-        Constants$root.C_INT$LAYOUT.withName("byte_offset"),
-        Constants$root.C_INT$LAYOUT.withName("count"),
-        Constants$root.C_INT$LAYOUT.withName("buf_read"),
-        Constants$root.C_CHAR$LAYOUT.withName("access"),
-        Constants$root.C_CHAR$LAYOUT.withName("mode"),
-        Constants$root.C_CHAR$LAYOUT.withName("bits"),
-        MemoryLayout.paddingLayout(8),
-        Constants$root.C_POINTER$LAYOUT.withName("bytep"),
-        Constants$root.C_POINTER$LAYOUT.withName("bytez"),
-        Constants$root.C_POINTER$LAYOUT.withName("bytea")
-    ).withName("bitrec_t");
     public static MemoryLayout $LAYOUT() {
-        return bitrec_t.$struct$LAYOUT;
+        return constants$122.const$3;
     }
-    static final VarHandle acc_id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("acc_id"));
     public static VarHandle acc_id$VH() {
-        return bitrec_t.acc_id$VH;
+        return constants$122.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32 acc_id;
+     * }
+     */
     public static int acc_id$get(MemorySegment seg) {
-        return (int)bitrec_t.acc_id$VH.get(seg);
+        return (int)constants$122.const$4.get(seg);
     }
-    public static void acc_id$set( MemorySegment seg, int x) {
-        bitrec_t.acc_id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32 acc_id;
+     * }
+     */
+    public static void acc_id$set(MemorySegment seg, int x) {
+        constants$122.const$4.set(seg, x);
     }
     public static int acc_id$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.acc_id$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$122.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void acc_id$set(MemorySegment seg, long index, int x) {
-        bitrec_t.acc_id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$122.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle bit_id$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bit_id"));
     public static VarHandle bit_id$VH() {
-        return bitrec_t.bit_id$VH;
+        return constants$122.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32 bit_id;
+     * }
+     */
     public static int bit_id$get(MemorySegment seg) {
-        return (int)bitrec_t.bit_id$VH.get(seg);
+        return (int)constants$122.const$5.get(seg);
     }
-    public static void bit_id$set( MemorySegment seg, int x) {
-        bitrec_t.bit_id$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32 bit_id;
+     * }
+     */
+    public static void bit_id$set(MemorySegment seg, int x) {
+        constants$122.const$5.set(seg, x);
     }
     public static int bit_id$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.bit_id$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$122.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void bit_id$set(MemorySegment seg, long index, int x) {
-        bitrec_t.bit_id$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$122.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle block_offset$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("block_offset"));
     public static VarHandle block_offset$VH() {
-        return bitrec_t.block_offset$VH;
+        return constants$123.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32 block_offset;
+     * }
+     */
     public static int block_offset$get(MemorySegment seg) {
-        return (int)bitrec_t.block_offset$VH.get(seg);
+        return (int)constants$123.const$0.get(seg);
     }
-    public static void block_offset$set( MemorySegment seg, int x) {
-        bitrec_t.block_offset$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32 block_offset;
+     * }
+     */
+    public static void block_offset$set(MemorySegment seg, int x) {
+        constants$123.const$0.set(seg, x);
     }
     public static int block_offset$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.block_offset$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$123.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void block_offset$set(MemorySegment seg, long index, int x) {
-        bitrec_t.block_offset$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle max_offset$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("max_offset"));
     public static VarHandle max_offset$VH() {
-        return bitrec_t.max_offset$VH;
+        return constants$123.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32 max_offset;
+     * }
+     */
     public static int max_offset$get(MemorySegment seg) {
-        return (int)bitrec_t.max_offset$VH.get(seg);
+        return (int)constants$123.const$1.get(seg);
     }
-    public static void max_offset$set( MemorySegment seg, int x) {
-        bitrec_t.max_offset$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32 max_offset;
+     * }
+     */
+    public static void max_offset$set(MemorySegment seg, int x) {
+        constants$123.const$1.set(seg, x);
     }
     public static int max_offset$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.max_offset$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$123.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void max_offset$set(MemorySegment seg, long index, int x) {
-        bitrec_t.max_offset$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle byte_offset$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("byte_offset"));
     public static VarHandle byte_offset$VH() {
-        return bitrec_t.byte_offset$VH;
+        return constants$123.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * int32 byte_offset;
+     * }
+     */
     public static int byte_offset$get(MemorySegment seg) {
-        return (int)bitrec_t.byte_offset$VH.get(seg);
+        return (int)constants$123.const$2.get(seg);
     }
-    public static void byte_offset$set( MemorySegment seg, int x) {
-        bitrec_t.byte_offset$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * int32 byte_offset;
+     * }
+     */
+    public static void byte_offset$set(MemorySegment seg, int x) {
+        constants$123.const$2.set(seg, x);
     }
     public static int byte_offset$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.byte_offset$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$123.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void byte_offset$set(MemorySegment seg, long index, int x) {
-        bitrec_t.byte_offset$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle count$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("count"));
     public static VarHandle count$VH() {
-        return bitrec_t.count$VH;
+        return constants$123.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * intn count;
+     * }
+     */
     public static int count$get(MemorySegment seg) {
-        return (int)bitrec_t.count$VH.get(seg);
+        return (int)constants$123.const$3.get(seg);
     }
-    public static void count$set( MemorySegment seg, int x) {
-        bitrec_t.count$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * intn count;
+     * }
+     */
+    public static void count$set(MemorySegment seg, int x) {
+        constants$123.const$3.set(seg, x);
     }
     public static int count$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.count$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$123.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void count$set(MemorySegment seg, long index, int x) {
-        bitrec_t.count$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle buf_read$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("buf_read"));
     public static VarHandle buf_read$VH() {
-        return bitrec_t.buf_read$VH;
+        return constants$123.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * intn buf_read;
+     * }
+     */
     public static int buf_read$get(MemorySegment seg) {
-        return (int)bitrec_t.buf_read$VH.get(seg);
+        return (int)constants$123.const$4.get(seg);
     }
-    public static void buf_read$set( MemorySegment seg, int x) {
-        bitrec_t.buf_read$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * intn buf_read;
+     * }
+     */
+    public static void buf_read$set(MemorySegment seg, int x) {
+        constants$123.const$4.set(seg, x);
     }
     public static int buf_read$get(MemorySegment seg, long index) {
-        return (int)bitrec_t.buf_read$VH.get(seg.asSlice(index*sizeof()));
+        return (int)constants$123.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void buf_read$set(MemorySegment seg, long index, int x) {
-        bitrec_t.buf_read$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle access$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("access"));
     public static VarHandle access$VH() {
-        return bitrec_t.access$VH;
+        return constants$123.const$5;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8 access;
+     * }
+     */
     public static byte access$get(MemorySegment seg) {
-        return (byte)bitrec_t.access$VH.get(seg);
+        return (byte)constants$123.const$5.get(seg);
     }
-    public static void access$set( MemorySegment seg, byte x) {
-        bitrec_t.access$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8 access;
+     * }
+     */
+    public static void access$set(MemorySegment seg, byte x) {
+        constants$123.const$5.set(seg, x);
     }
     public static byte access$get(MemorySegment seg, long index) {
-        return (byte)bitrec_t.access$VH.get(seg.asSlice(index*sizeof()));
+        return (byte)constants$123.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void access$set(MemorySegment seg, long index, byte x) {
-        bitrec_t.access$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$123.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle mode$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("mode"));
     public static VarHandle mode$VH() {
-        return bitrec_t.mode$VH;
+        return constants$124.const$0;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8 mode;
+     * }
+     */
     public static byte mode$get(MemorySegment seg) {
-        return (byte)bitrec_t.mode$VH.get(seg);
+        return (byte)constants$124.const$0.get(seg);
     }
-    public static void mode$set( MemorySegment seg, byte x) {
-        bitrec_t.mode$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8 mode;
+     * }
+     */
+    public static void mode$set(MemorySegment seg, byte x) {
+        constants$124.const$0.set(seg, x);
     }
     public static byte mode$get(MemorySegment seg, long index) {
-        return (byte)bitrec_t.mode$VH.get(seg.asSlice(index*sizeof()));
+        return (byte)constants$124.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void mode$set(MemorySegment seg, long index, byte x) {
-        bitrec_t.mode$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$124.const$0.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle bits$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bits"));
     public static VarHandle bits$VH() {
-        return bitrec_t.bits$VH;
+        return constants$124.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8 bits;
+     * }
+     */
     public static byte bits$get(MemorySegment seg) {
-        return (byte)bitrec_t.bits$VH.get(seg);
+        return (byte)constants$124.const$1.get(seg);
     }
-    public static void bits$set( MemorySegment seg, byte x) {
-        bitrec_t.bits$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8 bits;
+     * }
+     */
+    public static void bits$set(MemorySegment seg, byte x) {
+        constants$124.const$1.set(seg, x);
     }
     public static byte bits$get(MemorySegment seg, long index) {
-        return (byte)bitrec_t.bits$VH.get(seg.asSlice(index*sizeof()));
+        return (byte)constants$124.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void bits$set(MemorySegment seg, long index, byte x) {
-        bitrec_t.bits$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$124.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle bytep$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bytep"));
     public static VarHandle bytep$VH() {
-        return bitrec_t.bytep$VH;
+        return constants$124.const$2;
     }
-    public static MemoryAddress bytep$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytep$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8* bytep;
+     * }
+     */
+    public static MemorySegment bytep$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$2.get(seg);
     }
-    public static void bytep$set( MemorySegment seg, MemoryAddress x) {
-        bitrec_t.bytep$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8* bytep;
+     * }
+     */
+    public static void bytep$set(MemorySegment seg, MemorySegment x) {
+        constants$124.const$2.set(seg, x);
     }
-    public static MemoryAddress bytep$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytep$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment bytep$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$2.get(seg.asSlice(index*sizeof()));
     }
-    public static void bytep$set(MemorySegment seg, long index, MemoryAddress x) {
-        bitrec_t.bytep$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void bytep$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$124.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle bytez$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bytez"));
     public static VarHandle bytez$VH() {
-        return bitrec_t.bytez$VH;
+        return constants$124.const$3;
     }
-    public static MemoryAddress bytez$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytez$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8* bytez;
+     * }
+     */
+    public static MemorySegment bytez$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$3.get(seg);
     }
-    public static void bytez$set( MemorySegment seg, MemoryAddress x) {
-        bitrec_t.bytez$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8* bytez;
+     * }
+     */
+    public static void bytez$set(MemorySegment seg, MemorySegment x) {
+        constants$124.const$3.set(seg, x);
     }
-    public static MemoryAddress bytez$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytez$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment bytez$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$3.get(seg.asSlice(index*sizeof()));
     }
-    public static void bytez$set(MemorySegment seg, long index, MemoryAddress x) {
-        bitrec_t.bytez$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void bytez$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$124.const$3.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle bytea$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("bytea"));
     public static VarHandle bytea$VH() {
-        return bitrec_t.bytea$VH;
+        return constants$124.const$4;
     }
-    public static MemoryAddress bytea$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytea$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint8* bytea;
+     * }
+     */
+    public static MemorySegment bytea$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$4.get(seg);
     }
-    public static void bytea$set( MemorySegment seg, MemoryAddress x) {
-        bitrec_t.bytea$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint8* bytea;
+     * }
+     */
+    public static void bytea$set(MemorySegment seg, MemorySegment x) {
+        constants$124.const$4.set(seg, x);
     }
-    public static MemoryAddress bytea$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)bitrec_t.bytea$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment bytea$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$124.const$4.get(seg.asSlice(index*sizeof()));
     }
-    public static void bytea$set(MemorySegment seg, long index, MemoryAddress x) {
-        bitrec_t.bytea$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void bytea$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$124.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -3,55 +3,40 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$134 {
 
-class constants$134 {
-
-    static final FunctionDescriptor VSelts$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$134() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle VSelts$MH = RuntimeHelper.downcallHandle(
-        "VSelts",
-        constants$134.VSelts$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hputelement",
+        constants$134.const$0
     );
-    static final FunctionDescriptor VSgetinterlace$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Hlength",
+        constants$130.const$0
     );
-    static final MethodHandle VSgetinterlace$MH = RuntimeHelper.downcallHandle(
-        "VSgetinterlace",
-        constants$134.VSgetinterlace$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hoffset",
+        constants$130.const$0
     );
-    static final FunctionDescriptor VSsetinterlace$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hsync",
+        constants$1.const$5
     );
-    static final MethodHandle VSsetinterlace$MH = RuntimeHelper.downcallHandle(
-        "VSsetinterlace",
-        constants$134.VSsetinterlace$FUNC
-    );
-    static final FunctionDescriptor VSgetfields$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetfields$MH = RuntimeHelper.downcallHandle(
-        "VSgetfields",
-        constants$134.VSgetfields$FUNC
-    );
-    static final FunctionDescriptor VSfexist$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSfexist$MH = RuntimeHelper.downcallHandle(
-        "VSfexist",
-        constants$134.VSfexist$FUNC
-    );
-    static final FunctionDescriptor VSsizeof$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSsizeof$MH = RuntimeHelper.downcallHandle(
-        "VSsizeof",
-        constants$134.VSsizeof$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Hcache",
+        constants$93.const$3
     );
 }
 

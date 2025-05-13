@@ -3,64 +3,41 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$114 {
 
-class constants$114 {
-
-    static final FunctionDescriptor DFSDsetdims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$114() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "gethostid",
+        constants$38.const$3
     );
-    static final MethodHandle DFSDsetdims$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetdims",
-        constants$114.DFSDsetdims$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sync",
+        constants$61.const$1
     );
-    static final FunctionDescriptor DFSDsetdatastrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "getpagesize",
+        constants$28.const$3
     );
-    static final MethodHandle DFSDsetdatastrs$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetdatastrs",
-        constants$114.DFSDsetdatastrs$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "getdtablesize",
+        constants$28.const$3
     );
-    static final FunctionDescriptor DFSDsetdimstrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "truncate",
+        constants$68.const$3
     );
-    static final MethodHandle DFSDsetdimstrs$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetdimstrs",
-        constants$114.DFSDsetdimstrs$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final FunctionDescriptor DFSDsetdimscale$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDsetdimscale$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetdimscale",
-        constants$114.DFSDsetdimscale$FUNC
-    );
-    static final FunctionDescriptor DFSDsetrange$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDsetrange$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetrange",
-        constants$114.DFSDsetrange$FUNC
-    );
-    static final FunctionDescriptor DFSDputdata$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDputdata$MH = RuntimeHelper.downcallHandle(
-        "DFSDputdata",
-        constants$114.DFSDputdata$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "ftruncate",
+        constants$114.const$5
     );
 }
 

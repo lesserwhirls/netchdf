@@ -3,59 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$153 {
 
-class constants$153 {
-
-    static final FunctionDescriptor sd_ncabort$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$153() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "DFdisetup",
+        constants$1.const$5
     );
-    static final MethodHandle sd_ncabort$MH = RuntimeHelper.downcallHandle(
-        "sd_ncabort",
-        constants$153.sd_ncabort$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "DFdiput",
+        constants$130.const$0
     );
-    static final FunctionDescriptor sd_ncnobuf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle sd_ncnobuf$MH = RuntimeHelper.downcallHandle(
-        "sd_ncnobuf",
-        constants$153.sd_ncnobuf$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "DFdiwrite",
+        constants$153.const$2
     );
-    static final FunctionDescriptor sd_ncdimdef$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "DFdifree",
+        constants$51.const$2
     );
-    static final MethodHandle sd_ncdimdef$MH = RuntimeHelper.downcallHandle(
-        "sd_ncdimdef",
-        constants$153.sd_ncdimdef$FUNC
-    );
-    static final FunctionDescriptor sd_ncdimid$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncdimid$MH = RuntimeHelper.downcallHandle(
-        "sd_ncdimid",
-        constants$153.sd_ncdimid$FUNC
-    );
-    static final FunctionDescriptor sd_ncdiminq$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncdiminq$MH = RuntimeHelper.downcallHandle(
-        "sd_ncdiminq",
-        constants$153.sd_ncdiminq$FUNC
-    );
-    static final FunctionDescriptor sd_ncdimrename$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle sd_ncdimrename$MH = RuntimeHelper.downcallHandle(
-        "sd_ncdimrename",
-        constants$153.sd_ncdimrename$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "DFPgetpal",
+        constants$19.const$5
     );
 }
 

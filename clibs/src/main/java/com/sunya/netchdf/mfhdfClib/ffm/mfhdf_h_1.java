@@ -4,14 +4,1268 @@ package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
- class mfhdf_h_1 {
+public class mfhdf_h_1 {
 
-    public static MethodHandle strspn$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.strspn$MH,"strspn");
+    public static MethodHandle jrand48_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$57.const$5,"jrand48_r");
     }
-    public static long strspn ( Addressable __s,  Addressable __accept) {
+    /**
+     * {@snippet :
+     * int jrand48_r(unsigned short __xsubi[3], struct drand48_data* __buffer, long* __result);
+     * }
+     */
+    public static int jrand48_r(MemorySegment __xsubi, MemorySegment __buffer, MemorySegment __result) {
+        var mh$ = jrand48_r$MH();
+        try {
+            return (int)mh$.invokeExact(__xsubi, __buffer, __result);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle srand48_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$58.const$1,"srand48_r");
+    }
+    /**
+     * {@snippet :
+     * int srand48_r(long __seedval, struct drand48_data* __buffer);
+     * }
+     */
+    public static int srand48_r(long __seedval, MemorySegment __buffer) {
+        var mh$ = srand48_r$MH();
+        try {
+            return (int)mh$.invokeExact(__seedval, __buffer);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle seed48_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$58.const$2,"seed48_r");
+    }
+    /**
+     * {@snippet :
+     * int seed48_r(unsigned short __seed16v[3], struct drand48_data* __buffer);
+     * }
+     */
+    public static int seed48_r(MemorySegment __seed16v, MemorySegment __buffer) {
+        var mh$ = seed48_r$MH();
+        try {
+            return (int)mh$.invokeExact(__seed16v, __buffer);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle lcong48_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$58.const$3,"lcong48_r");
+    }
+    /**
+     * {@snippet :
+     * int lcong48_r(unsigned short __param[7], struct drand48_data* __buffer);
+     * }
+     */
+    public static int lcong48_r(MemorySegment __param, MemorySegment __buffer) {
+        var mh$ = lcong48_r$MH();
+        try {
+            return (int)mh$.invokeExact(__param, __buffer);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle arc4random$MH() {
+        return RuntimeHelper.requireNonNull(constants$58.const$4,"arc4random");
+    }
+    /**
+     * {@snippet :
+     * __uint32_t arc4random();
+     * }
+     */
+    public static int arc4random() {
+        var mh$ = arc4random$MH();
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle arc4random_buf$MH() {
+        return RuntimeHelper.requireNonNull(constants$58.const$6,"arc4random_buf");
+    }
+    /**
+     * {@snippet :
+     * void arc4random_buf(void* __buf, size_t __size);
+     * }
+     */
+    public static void arc4random_buf(MemorySegment __buf, long __size) {
+        var mh$ = arc4random_buf$MH();
+        try {
+            mh$.invokeExact(__buf, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle arc4random_uniform$MH() {
+        return RuntimeHelper.requireNonNull(constants$59.const$0,"arc4random_uniform");
+    }
+    /**
+     * {@snippet :
+     * __uint32_t arc4random_uniform(__uint32_t __upper_bound);
+     * }
+     */
+    public static int arc4random_uniform(int __upper_bound) {
+        var mh$ = arc4random_uniform$MH();
+        try {
+            return (int)mh$.invokeExact(__upper_bound);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle malloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$59.const$1,"malloc");
+    }
+    /**
+     * {@snippet :
+     * void* malloc(size_t __size);
+     * }
+     */
+    public static MemorySegment malloc(long __size) {
+        var mh$ = malloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle calloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$59.const$3,"calloc");
+    }
+    /**
+     * {@snippet :
+     * void* calloc(size_t __nmemb, size_t __size);
+     * }
+     */
+    public static MemorySegment calloc(long __nmemb, long __size) {
+        var mh$ = calloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__nmemb, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle realloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$59.const$5,"realloc");
+    }
+    /**
+     * {@snippet :
+     * void* realloc(void* __ptr, size_t __size);
+     * }
+     */
+    public static MemorySegment realloc(MemorySegment __ptr, long __size) {
+        var mh$ = realloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__ptr, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle free$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.const$0,"free");
+    }
+    /**
+     * {@snippet :
+     * void free(void* __ptr);
+     * }
+     */
+    public static void free(MemorySegment __ptr) {
+        var mh$ = free$MH();
+        try {
+            mh$.invokeExact(__ptr);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle reallocarray$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.const$2,"reallocarray");
+    }
+    /**
+     * {@snippet :
+     * void* reallocarray(void* __ptr, size_t __nmemb, size_t __size);
+     * }
+     */
+    public static MemorySegment reallocarray(MemorySegment __ptr, long __nmemb, long __size) {
+        var mh$ = reallocarray$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__ptr, __nmemb, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle alloca$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.const$3,"alloca");
+    }
+    /**
+     * {@snippet :
+     * void* alloca(size_t __size);
+     * }
+     */
+    public static MemorySegment alloca(long __size) {
+        var mh$ = alloca$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle valloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.const$4,"valloc");
+    }
+    /**
+     * {@snippet :
+     * void* valloc(size_t __size);
+     * }
+     */
+    public static MemorySegment valloc(long __size) {
+        var mh$ = valloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle posix_memalign$MH() {
+        return RuntimeHelper.requireNonNull(constants$60.const$6,"posix_memalign");
+    }
+    /**
+     * {@snippet :
+     * int posix_memalign(void** __memptr, size_t __alignment, size_t __size);
+     * }
+     */
+    public static int posix_memalign(MemorySegment __memptr, long __alignment, long __size) {
+        var mh$ = posix_memalign$MH();
+        try {
+            return (int)mh$.invokeExact(__memptr, __alignment, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle aligned_alloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.const$0,"aligned_alloc");
+    }
+    /**
+     * {@snippet :
+     * void* aligned_alloc(size_t __alignment, size_t __size);
+     * }
+     */
+    public static MemorySegment aligned_alloc(long __alignment, long __size) {
+        var mh$ = aligned_alloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__alignment, __size);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle abort$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.const$2,"abort");
+    }
+    /**
+     * {@snippet :
+     * void abort();
+     * }
+     */
+    public static void abort() {
+        var mh$ = abort$MH();
+        try {
+            mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle atexit$MH() {
+        return RuntimeHelper.requireNonNull(constants$61.const$5,"atexit");
+    }
+    /**
+     * {@snippet :
+     * int atexit(void (*__func)());
+     * }
+     */
+    public static int atexit(MemorySegment __func) {
+        var mh$ = atexit$MH();
+        try {
+            return (int)mh$.invokeExact(__func);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle at_quick_exit$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.const$1,"at_quick_exit");
+    }
+    /**
+     * {@snippet :
+     * int at_quick_exit(void (*__func)());
+     * }
+     */
+    public static int at_quick_exit(MemorySegment __func) {
+        var mh$ = at_quick_exit$MH();
+        try {
+            return (int)mh$.invokeExact(__func);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle on_exit$MH() {
+        return RuntimeHelper.requireNonNull(constants$62.const$5,"on_exit");
+    }
+    /**
+     * {@snippet :
+     * int on_exit(void (*__func)(int,void*), void* __arg);
+     * }
+     */
+    public static int on_exit(MemorySegment __func, MemorySegment __arg) {
+        var mh$ = on_exit$MH();
+        try {
+            return (int)mh$.invokeExact(__func, __arg);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle exit$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$0,"exit");
+    }
+    /**
+     * {@snippet :
+     * void exit(int __status);
+     * }
+     */
+    public static void exit(int __status) {
+        var mh$ = exit$MH();
+        try {
+            mh$.invokeExact(__status);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle quick_exit$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$1,"quick_exit");
+    }
+    /**
+     * {@snippet :
+     * void quick_exit(int __status);
+     * }
+     */
+    public static void quick_exit(int __status) {
+        var mh$ = quick_exit$MH();
+        try {
+            mh$.invokeExact(__status);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle _Exit$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$2,"_Exit");
+    }
+    /**
+     * {@snippet :
+     * void _Exit(int __status);
+     * }
+     */
+    public static void _Exit(int __status) {
+        var mh$ = _Exit$MH();
+        try {
+            mh$.invokeExact(__status);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle getenv$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$3,"getenv");
+    }
+    /**
+     * {@snippet :
+     * char* getenv(char* __name);
+     * }
+     */
+    public static MemorySegment getenv(MemorySegment __name) {
+        var mh$ = getenv$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__name);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle putenv$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$4,"putenv");
+    }
+    /**
+     * {@snippet :
+     * int putenv(char* __string);
+     * }
+     */
+    public static int putenv(MemorySegment __string) {
+        var mh$ = putenv$MH();
+        try {
+            return (int)mh$.invokeExact(__string);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle setenv$MH() {
+        return RuntimeHelper.requireNonNull(constants$63.const$5,"setenv");
+    }
+    /**
+     * {@snippet :
+     * int setenv(char* __name, char* __value, int __replace);
+     * }
+     */
+    public static int setenv(MemorySegment __name, MemorySegment __value, int __replace) {
+        var mh$ = setenv$MH();
+        try {
+            return (int)mh$.invokeExact(__name, __value, __replace);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle unsetenv$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$0,"unsetenv");
+    }
+    /**
+     * {@snippet :
+     * int unsetenv(char* __name);
+     * }
+     */
+    public static int unsetenv(MemorySegment __name) {
+        var mh$ = unsetenv$MH();
+        try {
+            return (int)mh$.invokeExact(__name);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle clearenv$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$1,"clearenv");
+    }
+    /**
+     * {@snippet :
+     * int clearenv();
+     * }
+     */
+    public static int clearenv() {
+        var mh$ = clearenv$MH();
+        try {
+            return (int)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mktemp$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$2,"mktemp");
+    }
+    /**
+     * {@snippet :
+     * char* mktemp(char* __template);
+     * }
+     */
+    public static MemorySegment mktemp(MemorySegment __template) {
+        var mh$ = mktemp$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__template);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mkstemp$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$3,"mkstemp");
+    }
+    /**
+     * {@snippet :
+     * int mkstemp(char* __template);
+     * }
+     */
+    public static int mkstemp(MemorySegment __template) {
+        var mh$ = mkstemp$MH();
+        try {
+            return (int)mh$.invokeExact(__template);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mkstemps$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$4,"mkstemps");
+    }
+    /**
+     * {@snippet :
+     * int mkstemps(char* __template, int __suffixlen);
+     * }
+     */
+    public static int mkstemps(MemorySegment __template, int __suffixlen) {
+        var mh$ = mkstemps$MH();
+        try {
+            return (int)mh$.invokeExact(__template, __suffixlen);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mkdtemp$MH() {
+        return RuntimeHelper.requireNonNull(constants$64.const$5,"mkdtemp");
+    }
+    /**
+     * {@snippet :
+     * char* mkdtemp(char* __template);
+     * }
+     */
+    public static MemorySegment mkdtemp(MemorySegment __template) {
+        var mh$ = mkdtemp$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__template);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle system$MH() {
+        return RuntimeHelper.requireNonNull(constants$65.const$0,"system");
+    }
+    /**
+     * {@snippet :
+     * int system(char* __command);
+     * }
+     */
+    public static int system(MemorySegment __command) {
+        var mh$ = system$MH();
+        try {
+            return (int)mh$.invokeExact(__command);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle realpath$MH() {
+        return RuntimeHelper.requireNonNull(constants$65.const$1,"realpath");
+    }
+    /**
+     * {@snippet :
+     * char* realpath(char* __name, char* __resolved);
+     * }
+     */
+    public static MemorySegment realpath(MemorySegment __name, MemorySegment __resolved) {
+        var mh$ = realpath$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__name, __resolved);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle bsearch$MH() {
+        return RuntimeHelper.requireNonNull(constants$65.const$5,"bsearch");
+    }
+    /**
+     * {@snippet :
+     * void* bsearch(void* __key, void* __base, size_t __nmemb, size_t __size, __compar_fn_t __compar);
+     * }
+     */
+    public static MemorySegment bsearch(MemorySegment __key, MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
+        var mh$ = bsearch$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__key, __base, __nmemb, __size, __compar);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle qsort$MH() {
+        return RuntimeHelper.requireNonNull(constants$66.const$1,"qsort");
+    }
+    /**
+     * {@snippet :
+     * void qsort(void* __base, size_t __nmemb, size_t __size, __compar_fn_t __compar);
+     * }
+     */
+    public static void qsort(MemorySegment __base, long __nmemb, long __size, MemorySegment __compar) {
+        var mh$ = qsort$MH();
+        try {
+            mh$.invokeExact(__base, __nmemb, __size, __compar);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle abs$MH() {
+        return RuntimeHelper.requireNonNull(constants$66.const$2,"abs");
+    }
+    /**
+     * {@snippet :
+     * int abs(int __x);
+     * }
+     */
+    public static int abs(int __x) {
+        var mh$ = abs$MH();
+        try {
+            return (int)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle labs$MH() {
+        return RuntimeHelper.requireNonNull(constants$66.const$3,"labs");
+    }
+    /**
+     * {@snippet :
+     * long labs(long __x);
+     * }
+     */
+    public static long labs(long __x) {
+        var mh$ = labs$MH();
+        try {
+            return (long)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle llabs$MH() {
+        return RuntimeHelper.requireNonNull(constants$66.const$4,"llabs");
+    }
+    /**
+     * {@snippet :
+     * long long llabs(long long __x);
+     * }
+     */
+    public static long llabs(long __x) {
+        var mh$ = llabs$MH();
+        try {
+            return (long)mh$.invokeExact(__x);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle div$MH() {
+        return RuntimeHelper.requireNonNull(constants$66.const$6,"div");
+    }
+    /**
+     * {@snippet :
+     * div_t div(int __numer, int __denom);
+     * }
+     */
+    public static MemorySegment div(SegmentAllocator allocator, int __numer, int __denom) {
+        var mh$ = div$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ldiv$MH() {
+        return RuntimeHelper.requireNonNull(constants$67.const$0,"ldiv");
+    }
+    /**
+     * {@snippet :
+     * ldiv_t ldiv(long __numer, long __denom);
+     * }
+     */
+    public static MemorySegment ldiv(SegmentAllocator allocator, long __numer, long __denom) {
+        var mh$ = ldiv$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle lldiv$MH() {
+        return RuntimeHelper.requireNonNull(constants$67.const$1,"lldiv");
+    }
+    /**
+     * {@snippet :
+     * lldiv_t lldiv(long long __numer, long long __denom);
+     * }
+     */
+    public static MemorySegment lldiv(SegmentAllocator allocator, long __numer, long __denom) {
+        var mh$ = lldiv$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(allocator, __numer, __denom);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ecvt$MH() {
+        return RuntimeHelper.requireNonNull(constants$67.const$3,"ecvt");
+    }
+    /**
+     * {@snippet :
+     * char* ecvt(double __value, int __ndigit, int* __decpt, int* __sign);
+     * }
+     */
+    public static MemorySegment ecvt(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign) {
+        var mh$ = ecvt$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle fcvt$MH() {
+        return RuntimeHelper.requireNonNull(constants$67.const$4,"fcvt");
+    }
+    /**
+     * {@snippet :
+     * char* fcvt(double __value, int __ndigit, int* __decpt, int* __sign);
+     * }
+     */
+    public static MemorySegment fcvt(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign) {
+        var mh$ = fcvt$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __decpt, __sign);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle gcvt$MH() {
+        return RuntimeHelper.requireNonNull(constants$67.const$6,"gcvt");
+    }
+    /**
+     * {@snippet :
+     * char* gcvt(double __value, int __ndigit, char* __buf);
+     * }
+     */
+    public static MemorySegment gcvt(double __value, int __ndigit, MemorySegment __buf) {
+        var mh$ = gcvt$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__value, __ndigit, __buf);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle ecvt_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$68.const$1,"ecvt_r");
+    }
+    /**
+     * {@snippet :
+     * int ecvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, size_t __len);
+     * }
+     */
+    public static int ecvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
+        var mh$ = ecvt_r$MH();
+        try {
+            return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle fcvt_r$MH() {
+        return RuntimeHelper.requireNonNull(constants$68.const$2,"fcvt_r");
+    }
+    /**
+     * {@snippet :
+     * int fcvt_r(double __value, int __ndigit, int* __decpt, int* __sign, char* __buf, size_t __len);
+     * }
+     */
+    public static int fcvt_r(double __value, int __ndigit, MemorySegment __decpt, MemorySegment __sign, MemorySegment __buf, long __len) {
+        var mh$ = fcvt_r$MH();
+        try {
+            return (int)mh$.invokeExact(__value, __ndigit, __decpt, __sign, __buf, __len);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mblen$MH() {
+        return RuntimeHelper.requireNonNull(constants$68.const$4,"mblen");
+    }
+    /**
+     * {@snippet :
+     * int mblen(char* __s, size_t __n);
+     * }
+     */
+    public static int mblen(MemorySegment __s, long __n) {
+        var mh$ = mblen$MH();
+        try {
+            return (int)mh$.invokeExact(__s, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mbtowc$MH() {
+        return RuntimeHelper.requireNonNull(constants$68.const$6,"mbtowc");
+    }
+    /**
+     * {@snippet :
+     * int mbtowc(wchar_t* __pwc, char* __s, size_t __n);
+     * }
+     */
+    public static int mbtowc(MemorySegment __pwc, MemorySegment __s, long __n) {
+        var mh$ = mbtowc$MH();
+        try {
+            return (int)mh$.invokeExact(__pwc, __s, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle wctomb$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$0,"wctomb");
+    }
+    /**
+     * {@snippet :
+     * int wctomb(char* __s, wchar_t __wchar);
+     * }
+     */
+    public static int wctomb(MemorySegment __s, int __wchar) {
+        var mh$ = wctomb$MH();
+        try {
+            return (int)mh$.invokeExact(__s, __wchar);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mbstowcs$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$1,"mbstowcs");
+    }
+    /**
+     * {@snippet :
+     * size_t mbstowcs(wchar_t* __pwcs, char* __s, size_t __n);
+     * }
+     */
+    public static long mbstowcs(MemorySegment __pwcs, MemorySegment __s, long __n) {
+        var mh$ = mbstowcs$MH();
+        try {
+            return (long)mh$.invokeExact(__pwcs, __s, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle wcstombs$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$2,"wcstombs");
+    }
+    /**
+     * {@snippet :
+     * size_t wcstombs(char* __s, const wchar_t* __pwcs, size_t __n);
+     * }
+     */
+    public static long wcstombs(MemorySegment __s, MemorySegment __pwcs, long __n) {
+        var mh$ = wcstombs$MH();
+        try {
+            return (long)mh$.invokeExact(__s, __pwcs, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle rpmatch$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$3,"rpmatch");
+    }
+    /**
+     * {@snippet :
+     * int rpmatch(char* __response);
+     * }
+     */
+    public static int rpmatch(MemorySegment __response) {
+        var mh$ = rpmatch$MH();
+        try {
+            return (int)mh$.invokeExact(__response);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle getsubopt$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$4,"getsubopt");
+    }
+    /**
+     * {@snippet :
+     * int getsubopt(char** __optionp, char** __tokens, char** __valuep);
+     * }
+     */
+    public static int getsubopt(MemorySegment __optionp, MemorySegment __tokens, MemorySegment __valuep) {
+        var mh$ = getsubopt$MH();
+        try {
+            return (int)mh$.invokeExact(__optionp, __tokens, __valuep);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle getloadavg$MH() {
+        return RuntimeHelper.requireNonNull(constants$69.const$5,"getloadavg");
+    }
+    /**
+     * {@snippet :
+     * int getloadavg(double __loadavg[], int __nelem);
+     * }
+     */
+    public static int getloadavg(MemorySegment __loadavg, int __nelem) {
+        var mh$ = getloadavg$MH();
+        try {
+            return (int)mh$.invokeExact(__loadavg, __nelem);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memcpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$70.const$1,"memcpy");
+    }
+    /**
+     * {@snippet :
+     * void* memcpy(void* __dest, void* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment memcpy(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = memcpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memmove$MH() {
+        return RuntimeHelper.requireNonNull(constants$70.const$2,"memmove");
+    }
+    /**
+     * {@snippet :
+     * void* memmove(void* __dest, void* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment memmove(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = memmove$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memccpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$70.const$4,"memccpy");
+    }
+    /**
+     * {@snippet :
+     * void* memccpy(void* __dest, void* __src, int __c, size_t __n);
+     * }
+     */
+    public static MemorySegment memccpy(MemorySegment __dest, MemorySegment __src, int __c, long __n) {
+        var mh$ = memccpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __c, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memset$MH() {
+        return RuntimeHelper.requireNonNull(constants$70.const$6,"memset");
+    }
+    /**
+     * {@snippet :
+     * void* memset(void* __s, int __c, size_t __n);
+     * }
+     */
+    public static MemorySegment memset(MemorySegment __s, int __c, long __n) {
+        var mh$ = memset$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memcmp$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$0,"memcmp");
+    }
+    /**
+     * {@snippet :
+     * int memcmp(void* __s1, void* __s2, size_t __n);
+     * }
+     */
+    public static int memcmp(MemorySegment __s1, MemorySegment __s2, long __n) {
+        var mh$ = memcmp$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __memcmpeq$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$1,"__memcmpeq");
+    }
+    /**
+     * {@snippet :
+     * int __memcmpeq(void* __s1, void* __s2, size_t __n);
+     * }
+     */
+    public static int __memcmpeq(MemorySegment __s1, MemorySegment __s2, long __n) {
+        var mh$ = __memcmpeq$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memchr$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$2,"memchr");
+    }
+    /**
+     * {@snippet :
+     * void* memchr(void* __s, int __c, size_t __n);
+     * }
+     */
+    public static MemorySegment memchr(MemorySegment __s, int __c, long __n) {
+        var mh$ = memchr$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$3,"strcpy");
+    }
+    /**
+     * {@snippet :
+     * char* strcpy(char* __dest, char* __src);
+     * }
+     */
+    public static MemorySegment strcpy(MemorySegment __dest, MemorySegment __src) {
+        var mh$ = strcpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strncpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$4,"strncpy");
+    }
+    /**
+     * {@snippet :
+     * char* strncpy(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment strncpy(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = strncpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcat$MH() {
+        return RuntimeHelper.requireNonNull(constants$71.const$5,"strcat");
+    }
+    /**
+     * {@snippet :
+     * char* strcat(char* __dest, char* __src);
+     * }
+     */
+    public static MemorySegment strcat(MemorySegment __dest, MemorySegment __src) {
+        var mh$ = strcat$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strncat$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$0,"strncat");
+    }
+    /**
+     * {@snippet :
+     * char* strncat(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment strncat(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = strncat$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcmp$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$1,"strcmp");
+    }
+    /**
+     * {@snippet :
+     * int strcmp(char* __s1, char* __s2);
+     * }
+     */
+    public static int strcmp(MemorySegment __s1, MemorySegment __s2) {
+        var mh$ = strcmp$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strncmp$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$2,"strncmp");
+    }
+    /**
+     * {@snippet :
+     * int strncmp(char* __s1, char* __s2, size_t __n);
+     * }
+     */
+    public static int strncmp(MemorySegment __s1, MemorySegment __s2, long __n) {
+        var mh$ = strncmp$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcoll$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$3,"strcoll");
+    }
+    /**
+     * {@snippet :
+     * int strcoll(char* __s1, char* __s2);
+     * }
+     */
+    public static int strcoll(MemorySegment __s1, MemorySegment __s2) {
+        var mh$ = strcoll$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strxfrm$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$4,"strxfrm");
+    }
+    /**
+     * {@snippet :
+     * unsigned long strxfrm(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static long strxfrm(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = strxfrm$MH();
+        try {
+            return (long)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcoll_l$MH() {
+        return RuntimeHelper.requireNonNull(constants$72.const$5,"strcoll_l");
+    }
+    /**
+     * {@snippet :
+     * int strcoll_l(char* __s1, char* __s2, locale_t __l);
+     * }
+     */
+    public static int strcoll_l(MemorySegment __s1, MemorySegment __s2, MemorySegment __l) {
+        var mh$ = strcoll_l$MH();
+        try {
+            return (int)mh$.invokeExact(__s1, __s2, __l);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strxfrm_l$MH() {
+        return RuntimeHelper.requireNonNull(constants$73.const$1,"strxfrm_l");
+    }
+    /**
+     * {@snippet :
+     * size_t strxfrm_l(char* __dest, char* __src, size_t __n, locale_t __l);
+     * }
+     */
+    public static long strxfrm_l(MemorySegment __dest, MemorySegment __src, long __n, MemorySegment __l) {
+        var mh$ = strxfrm_l$MH();
+        try {
+            return (long)mh$.invokeExact(__dest, __src, __n, __l);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strdup$MH() {
+        return RuntimeHelper.requireNonNull(constants$73.const$2,"strdup");
+    }
+    /**
+     * {@snippet :
+     * char* strdup(char* __s);
+     * }
+     */
+    public static MemorySegment strdup(MemorySegment __s) {
+        var mh$ = strdup$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strndup$MH() {
+        return RuntimeHelper.requireNonNull(constants$73.const$3,"strndup");
+    }
+    /**
+     * {@snippet :
+     * char* strndup(char* __string, size_t __n);
+     * }
+     */
+    public static MemorySegment strndup(MemorySegment __string, long __n) {
+        var mh$ = strndup$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__string, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strchr$MH() {
+        return RuntimeHelper.requireNonNull(constants$73.const$5,"strchr");
+    }
+    /**
+     * {@snippet :
+     * char* strchr(char* __s, int __c);
+     * }
+     */
+    public static MemorySegment strchr(MemorySegment __s, int __c) {
+        var mh$ = strchr$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strrchr$MH() {
+        return RuntimeHelper.requireNonNull(constants$74.const$0,"strrchr");
+    }
+    /**
+     * {@snippet :
+     * char* strrchr(char* __s, int __c);
+     * }
+     */
+    public static MemorySegment strrchr(MemorySegment __s, int __c) {
+        var mh$ = strrchr$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strchrnul$MH() {
+        return RuntimeHelper.requireNonNull(constants$74.const$1,"strchrnul");
+    }
+    /**
+     * {@snippet :
+     * char* strchrnul(char* __s, int __c);
+     * }
+     */
+    public static MemorySegment strchrnul(MemorySegment __s, int __c) {
+        var mh$ = strchrnul$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcspn$MH() {
+        return RuntimeHelper.requireNonNull(constants$74.const$3,"strcspn");
+    }
+    /**
+     * {@snippet :
+     * unsigned long strcspn(char* __s, char* __reject);
+     * }
+     */
+    public static long strcspn(MemorySegment __s, MemorySegment __reject) {
+        var mh$ = strcspn$MH();
+        try {
+            return (long)mh$.invokeExact(__s, __reject);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strspn$MH() {
+        return RuntimeHelper.requireNonNull(constants$74.const$4,"strspn");
+    }
+    /**
+     * {@snippet :
+     * unsigned long strspn(char* __s, char* __accept);
+     * }
+     */
+    public static long strspn(MemorySegment __s, MemorySegment __accept) {
         var mh$ = strspn$MH();
         try {
             return (long)mh$.invokeExact(__s, __accept);
@@ -20,64 +1274,158 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strpbrk$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.strpbrk$MH,"strpbrk");
+        return RuntimeHelper.requireNonNull(constants$74.const$5,"strpbrk");
     }
-    public static MemoryAddress strpbrk ( Addressable __s,  Addressable __accept) {
+    /**
+     * {@snippet :
+     * char* strpbrk(char* __s, char* __accept);
+     * }
+     */
+    public static MemorySegment strpbrk(MemorySegment __s, MemorySegment __accept) {
         var mh$ = strpbrk$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __accept);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __accept);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strstr$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.strstr$MH,"strstr");
+        return RuntimeHelper.requireNonNull(constants$75.const$0,"strstr");
     }
-    public static MemoryAddress strstr ( Addressable __haystack,  Addressable __needle) {
+    /**
+     * {@snippet :
+     * char* strstr(char* __haystack, char* __needle);
+     * }
+     */
+    public static MemorySegment strstr(MemorySegment __haystack, MemorySegment __needle) {
         var mh$ = strstr$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__haystack, __needle);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__haystack, __needle);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strtok$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.strtok$MH,"strtok");
+        return RuntimeHelper.requireNonNull(constants$75.const$1,"strtok");
     }
-    public static MemoryAddress strtok ( Addressable __s,  Addressable __delim) {
+    /**
+     * {@snippet :
+     * char* strtok(char* __s, char* __delim);
+     * }
+     */
+    public static MemorySegment strtok(MemorySegment __s, MemorySegment __delim) {
         var mh$ = strtok$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __delim);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __delim);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __strtok_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.__strtok_r$MH,"__strtok_r");
+        return RuntimeHelper.requireNonNull(constants$75.const$2,"__strtok_r");
     }
-    public static MemoryAddress __strtok_r ( Addressable __s,  Addressable __delim,  Addressable __save_ptr) {
+    /**
+     * {@snippet :
+     * char* __strtok_r(char* __s, char* __delim, char** __save_ptr);
+     * }
+     */
+    public static MemorySegment __strtok_r(MemorySegment __s, MemorySegment __delim, MemorySegment __save_ptr) {
         var mh$ = __strtok_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __delim, __save_ptr);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __delim, __save_ptr);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strtok_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.strtok_r$MH,"strtok_r");
+        return RuntimeHelper.requireNonNull(constants$75.const$3,"strtok_r");
     }
-    public static MemoryAddress strtok_r ( Addressable __s,  Addressable __delim,  Addressable __save_ptr) {
+    /**
+     * {@snippet :
+     * char* strtok_r(char* __s, char* __delim, char** __save_ptr);
+     * }
+     */
+    public static MemorySegment strtok_r(MemorySegment __s, MemorySegment __delim, MemorySegment __save_ptr) {
         var mh$ = strtok_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __delim, __save_ptr);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __delim, __save_ptr);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strcasestr$MH() {
+        return RuntimeHelper.requireNonNull(constants$75.const$4,"strcasestr");
+    }
+    /**
+     * {@snippet :
+     * char* strcasestr(char* __haystack, char* __needle);
+     * }
+     */
+    public static MemorySegment strcasestr(MemorySegment __haystack, MemorySegment __needle) {
+        var mh$ = strcasestr$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__haystack, __needle);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle memmem$MH() {
+        return RuntimeHelper.requireNonNull(constants$75.const$6,"memmem");
+    }
+    /**
+     * {@snippet :
+     * void* memmem(void* __haystack, size_t __haystacklen, void* __needle, size_t __needlelen);
+     * }
+     */
+    public static MemorySegment memmem(MemorySegment __haystack, long __haystacklen, MemorySegment __needle, long __needlelen) {
+        var mh$ = memmem$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__haystack, __haystacklen, __needle, __needlelen);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle __mempcpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$76.const$0,"__mempcpy");
+    }
+    /**
+     * {@snippet :
+     * void* __mempcpy(void* __dest, void* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment __mempcpy(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = __mempcpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle mempcpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$76.const$1,"mempcpy");
+    }
+    /**
+     * {@snippet :
+     * void* mempcpy(void* __dest, void* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment mempcpy(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = mempcpy$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.strlen$MH,"strlen");
+        return RuntimeHelper.requireNonNull(constants$76.const$2,"strlen");
     }
-    public static long strlen ( Addressable __s) {
+    /**
+     * {@snippet :
+     * unsigned long strlen(char* __s);
+     * }
+     */
+    public static long strlen(MemorySegment __s) {
         var mh$ = strlen$MH();
         try {
             return (long)mh$.invokeExact(__s);
@@ -86,9 +1434,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strnlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.strnlen$MH,"strnlen");
+        return RuntimeHelper.requireNonNull(constants$76.const$4,"strnlen");
     }
-    public static long strnlen ( Addressable __string,  long __maxlen) {
+    /**
+     * {@snippet :
+     * size_t strnlen(char* __string, size_t __maxlen);
+     * }
+     */
+    public static long strnlen(MemorySegment __string, long __maxlen) {
         var mh$ = strnlen$MH();
         try {
             return (long)mh$.invokeExact(__string, __maxlen);
@@ -97,20 +1450,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strerror$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.strerror$MH,"strerror");
+        return RuntimeHelper.requireNonNull(constants$76.const$6,"strerror");
     }
-    public static MemoryAddress strerror ( int __errnum) {
+    /**
+     * {@snippet :
+     * char* strerror(int __errnum);
+     * }
+     */
+    public static MemorySegment strerror(int __errnum) {
         var mh$ = strerror$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__errnum);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__errnum);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strerror_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.strerror_r$MH,"strerror_r");
+        return RuntimeHelper.requireNonNull(constants$77.const$1,"strerror_r");
     }
-    public static int strerror_r ( int __errnum,  Addressable __buf,  long __buflen) {
+    /**
+     * {@snippet :
+     * int strerror_r(int __errnum, char* __buf, size_t __buflen);
+     * }
+     */
+    public static int strerror_r(int __errnum, MemorySegment __buf, long __buflen) {
         var mh$ = strerror_r$MH();
         try {
             return (int)mh$.invokeExact(__errnum, __buf, __buflen);
@@ -119,20 +1482,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strerror_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.strerror_l$MH,"strerror_l");
+        return RuntimeHelper.requireNonNull(constants$77.const$2,"strerror_l");
     }
-    public static MemoryAddress strerror_l ( int __errnum,  Addressable __l) {
+    /**
+     * {@snippet :
+     * char* strerror_l(int __errnum, locale_t __l);
+     * }
+     */
+    public static MemorySegment strerror_l(int __errnum, MemorySegment __l) {
         var mh$ = strerror_l$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__errnum, __l);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__errnum, __l);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle bcmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.bcmp$MH,"bcmp");
+        return RuntimeHelper.requireNonNull(constants$77.const$3,"bcmp");
     }
-    public static int bcmp ( Addressable __s1,  Addressable __s2,  long __n) {
+    /**
+     * {@snippet :
+     * int bcmp(void* __s1, void* __s2, size_t __n);
+     * }
+     */
+    public static int bcmp(MemorySegment __s1, MemorySegment __s2, long __n) {
         var mh$ = bcmp$MH();
         try {
             return (int)mh$.invokeExact(__s1, __s2, __n);
@@ -141,9 +1514,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle bcopy$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.bcopy$MH,"bcopy");
+        return RuntimeHelper.requireNonNull(constants$77.const$4,"bcopy");
     }
-    public static void bcopy ( Addressable __src,  Addressable __dest,  long __n) {
+    /**
+     * {@snippet :
+     * void bcopy(void* __src, void* __dest, size_t __n);
+     * }
+     */
+    public static void bcopy(MemorySegment __src, MemorySegment __dest, long __n) {
         var mh$ = bcopy$MH();
         try {
             mh$.invokeExact(__src, __dest, __n);
@@ -152,9 +1530,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle bzero$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.bzero$MH,"bzero");
+        return RuntimeHelper.requireNonNull(constants$77.const$5,"bzero");
     }
-    public static void bzero ( Addressable __s,  long __n) {
+    /**
+     * {@snippet :
+     * void bzero(void* __s, size_t __n);
+     * }
+     */
+    public static void bzero(MemorySegment __s, long __n) {
         var mh$ = bzero$MH();
         try {
             mh$.invokeExact(__s, __n);
@@ -163,31 +1546,46 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle index$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.index$MH,"index");
+        return RuntimeHelper.requireNonNull(constants$78.const$0,"index");
     }
-    public static MemoryAddress index ( Addressable __s,  int __c) {
+    /**
+     * {@snippet :
+     * char* index(char* __s, int __c);
+     * }
+     */
+    public static MemorySegment index(MemorySegment __s, int __c) {
         var mh$ = index$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle rindex$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.rindex$MH,"rindex");
+        return RuntimeHelper.requireNonNull(constants$78.const$1,"rindex");
     }
-    public static MemoryAddress rindex ( Addressable __s,  int __c) {
+    /**
+     * {@snippet :
+     * char* rindex(char* __s, int __c);
+     * }
+     */
+    public static MemorySegment rindex(MemorySegment __s, int __c) {
         var mh$ = rindex$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__s, __c);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__s, __c);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle ffs$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.ffs$MH,"ffs");
+        return RuntimeHelper.requireNonNull(constants$78.const$2,"ffs");
     }
-    public static int ffs ( int __i) {
+    /**
+     * {@snippet :
+     * int ffs(int __i);
+     * }
+     */
+    public static int ffs(int __i) {
         var mh$ = ffs$MH();
         try {
             return (int)mh$.invokeExact(__i);
@@ -196,9 +1594,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ffsl$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.ffsl$MH,"ffsl");
+        return RuntimeHelper.requireNonNull(constants$78.const$4,"ffsl");
     }
-    public static int ffsl ( long __l) {
+    /**
+     * {@snippet :
+     * int ffsl(long __l);
+     * }
+     */
+    public static int ffsl(long __l) {
         var mh$ = ffsl$MH();
         try {
             return (int)mh$.invokeExact(__l);
@@ -207,9 +1610,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ffsll$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.ffsll$MH,"ffsll");
+        return RuntimeHelper.requireNonNull(constants$78.const$5,"ffsll");
     }
-    public static int ffsll ( long __ll) {
+    /**
+     * {@snippet :
+     * int ffsll(long long __ll);
+     * }
+     */
+    public static int ffsll(long __ll) {
         var mh$ = ffsll$MH();
         try {
             return (int)mh$.invokeExact(__ll);
@@ -218,9 +1626,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strcasecmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.strcasecmp$MH,"strcasecmp");
+        return RuntimeHelper.requireNonNull(constants$79.const$0,"strcasecmp");
     }
-    public static int strcasecmp ( Addressable __s1,  Addressable __s2) {
+    /**
+     * {@snippet :
+     * int strcasecmp(char* __s1, char* __s2);
+     * }
+     */
+    public static int strcasecmp(MemorySegment __s1, MemorySegment __s2) {
         var mh$ = strcasecmp$MH();
         try {
             return (int)mh$.invokeExact(__s1, __s2);
@@ -229,9 +1642,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strncasecmp$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.strncasecmp$MH,"strncasecmp");
+        return RuntimeHelper.requireNonNull(constants$79.const$1,"strncasecmp");
     }
-    public static int strncasecmp ( Addressable __s1,  Addressable __s2,  long __n) {
+    /**
+     * {@snippet :
+     * int strncasecmp(char* __s1, char* __s2, size_t __n);
+     * }
+     */
+    public static int strncasecmp(MemorySegment __s1, MemorySegment __s2, long __n) {
         var mh$ = strncasecmp$MH();
         try {
             return (int)mh$.invokeExact(__s1, __s2, __n);
@@ -240,9 +1658,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strcasecmp_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.strcasecmp_l$MH,"strcasecmp_l");
+        return RuntimeHelper.requireNonNull(constants$79.const$2,"strcasecmp_l");
     }
-    public static int strcasecmp_l ( Addressable __s1,  Addressable __s2,  Addressable __loc) {
+    /**
+     * {@snippet :
+     * int strcasecmp_l(char* __s1, char* __s2, locale_t __loc);
+     * }
+     */
+    public static int strcasecmp_l(MemorySegment __s1, MemorySegment __s2, MemorySegment __loc) {
         var mh$ = strcasecmp_l$MH();
         try {
             return (int)mh$.invokeExact(__s1, __s2, __loc);
@@ -251,9 +1674,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strncasecmp_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.strncasecmp_l$MH,"strncasecmp_l");
+        return RuntimeHelper.requireNonNull(constants$79.const$4,"strncasecmp_l");
     }
-    public static int strncasecmp_l ( Addressable __s1,  Addressable __s2,  long __n,  Addressable __loc) {
+    /**
+     * {@snippet :
+     * int strncasecmp_l(char* __s1, char* __s2, size_t __n, locale_t __loc);
+     * }
+     */
+    public static int strncasecmp_l(MemorySegment __s1, MemorySegment __s2, long __n, MemorySegment __loc) {
         var mh$ = strncasecmp_l$MH();
         try {
             return (int)mh$.invokeExact(__s1, __s2, __n, __loc);
@@ -262,9 +1690,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle explicit_bzero$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.explicit_bzero$MH,"explicit_bzero");
+        return RuntimeHelper.requireNonNull(constants$79.const$5,"explicit_bzero");
     }
-    public static void explicit_bzero ( Addressable __s,  long __n) {
+    /**
+     * {@snippet :
+     * void explicit_bzero(void* __s, size_t __n);
+     * }
+     */
+    public static void explicit_bzero(MemorySegment __s, long __n) {
         var mh$ = explicit_bzero$MH();
         try {
             mh$.invokeExact(__s, __n);
@@ -273,75 +1706,142 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strsep$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.strsep$MH,"strsep");
+        return RuntimeHelper.requireNonNull(constants$80.const$0,"strsep");
     }
-    public static MemoryAddress strsep ( Addressable __stringp,  Addressable __delim) {
+    /**
+     * {@snippet :
+     * char* strsep(char** __stringp, char* __delim);
+     * }
+     */
+    public static MemorySegment strsep(MemorySegment __stringp, MemorySegment __delim) {
         var mh$ = strsep$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__stringp, __delim);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__stringp, __delim);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle strsignal$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.strsignal$MH,"strsignal");
+        return RuntimeHelper.requireNonNull(constants$80.const$1,"strsignal");
     }
-    public static MemoryAddress strsignal ( int __sig) {
+    /**
+     * {@snippet :
+     * char* strsignal(int __sig);
+     * }
+     */
+    public static MemorySegment strsignal(int __sig) {
         var mh$ = strsignal$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__sig);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__sig);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __stpcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.__stpcpy$MH,"__stpcpy");
+        return RuntimeHelper.requireNonNull(constants$80.const$2,"__stpcpy");
     }
-    public static MemoryAddress __stpcpy ( Addressable __dest,  Addressable __src) {
+    /**
+     * {@snippet :
+     * char* __stpcpy(char* __dest, char* __src);
+     * }
+     */
+    public static MemorySegment __stpcpy(MemorySegment __dest, MemorySegment __src) {
         var mh$ = __stpcpy$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle stpcpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.stpcpy$MH,"stpcpy");
+        return RuntimeHelper.requireNonNull(constants$80.const$3,"stpcpy");
     }
-    public static MemoryAddress stpcpy ( Addressable __dest,  Addressable __src) {
+    /**
+     * {@snippet :
+     * char* stpcpy(char* __dest, char* __src);
+     * }
+     */
+    public static MemorySegment stpcpy(MemorySegment __dest, MemorySegment __src) {
         var mh$ = stpcpy$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle __stpncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.__stpncpy$MH,"__stpncpy");
+        return RuntimeHelper.requireNonNull(constants$80.const$4,"__stpncpy");
     }
-    public static MemoryAddress __stpncpy ( Addressable __dest,  Addressable __src,  long __n) {
+    /**
+     * {@snippet :
+     * char* __stpncpy(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment __stpncpy(MemorySegment __dest, MemorySegment __src, long __n) {
         var mh$ = __stpncpy$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle stpncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.stpncpy$MH,"stpncpy");
+        return RuntimeHelper.requireNonNull(constants$80.const$5,"stpncpy");
     }
-    public static MemoryAddress stpncpy ( Addressable __dest,  Addressable __src,  long __n) {
+    /**
+     * {@snippet :
+     * char* stpncpy(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static MemorySegment stpncpy(MemorySegment __dest, MemorySegment __src, long __n) {
         var mh$ = stpncpy$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__dest, __src, __n);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strlcpy$MH() {
+        return RuntimeHelper.requireNonNull(constants$81.const$0,"strlcpy");
+    }
+    /**
+     * {@snippet :
+     * unsigned long strlcpy(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static long strlcpy(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = strlcpy$MH();
+        try {
+            return (long)mh$.invokeExact(__dest, __src, __n);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle strlcat$MH() {
+        return RuntimeHelper.requireNonNull(constants$81.const$1,"strlcat");
+    }
+    /**
+     * {@snippet :
+     * unsigned long strlcat(char* __dest, char* __src, size_t __n);
+     * }
+     */
+    public static long strlcat(MemorySegment __dest, MemorySegment __src, long __n) {
+        var mh$ = strlcat$MH();
+        try {
+            return (long)mh$.invokeExact(__dest, __src, __n);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle clock$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.clock$MH,"clock");
+        return RuntimeHelper.requireNonNull(constants$83.const$3,"clock");
     }
-    public static long clock () {
+    /**
+     * {@snippet :
+     * clock_t clock();
+     * }
+     */
+    public static long clock() {
         var mh$ = clock$MH();
         try {
             return (long)mh$.invokeExact();
@@ -350,9 +1850,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle time$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.time$MH,"time");
+        return RuntimeHelper.requireNonNull(constants$83.const$4,"time");
     }
-    public static long time ( Addressable __timer) {
+    /**
+     * {@snippet :
+     * time_t time(time_t* __timer);
+     * }
+     */
+    public static long time(MemorySegment __timer) {
         var mh$ = time$MH();
         try {
             return (long)mh$.invokeExact(__timer);
@@ -361,9 +1866,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle difftime$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.difftime$MH,"difftime");
+        return RuntimeHelper.requireNonNull(constants$83.const$6,"difftime");
     }
-    public static double difftime ( long __time1,  long __time0) {
+    /**
+     * {@snippet :
+     * double difftime(time_t __time1, time_t __time0);
+     * }
+     */
+    public static double difftime(long __time1, long __time0) {
         var mh$ = difftime$MH();
         try {
             return (double)mh$.invokeExact(__time1, __time0);
@@ -372,9 +1882,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mktime$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.mktime$MH,"mktime");
+        return RuntimeHelper.requireNonNull(constants$84.const$0,"mktime");
     }
-    public static long mktime ( Addressable __tp) {
+    /**
+     * {@snippet :
+     * time_t mktime(struct tm* __tp);
+     * }
+     */
+    public static long mktime(MemorySegment __tp) {
         var mh$ = mktime$MH();
         try {
             return (long)mh$.invokeExact(__tp);
@@ -383,9 +1898,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strftime$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.strftime$MH,"strftime");
+        return RuntimeHelper.requireNonNull(constants$84.const$2,"strftime");
     }
-    public static long strftime ( Addressable __s,  long __maxsize,  Addressable __format,  Addressable __tp) {
+    /**
+     * {@snippet :
+     * size_t strftime(char* __s, size_t __maxsize, char* __format, struct tm* __tp);
+     * }
+     */
+    public static long strftime(MemorySegment __s, long __maxsize, MemorySegment __format, MemorySegment __tp) {
         var mh$ = strftime$MH();
         try {
             return (long)mh$.invokeExact(__s, __maxsize, __format, __tp);
@@ -394,9 +1914,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle strftime_l$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.strftime_l$MH,"strftime_l");
+        return RuntimeHelper.requireNonNull(constants$84.const$4,"strftime_l");
     }
-    public static long strftime_l ( Addressable __s,  long __maxsize,  Addressable __format,  Addressable __tp,  Addressable __loc) {
+    /**
+     * {@snippet :
+     * size_t strftime_l(char* __s, size_t __maxsize, char* __format, struct tm* __tp, locale_t __loc);
+     * }
+     */
+    public static long strftime_l(MemorySegment __s, long __maxsize, MemorySegment __format, MemorySegment __tp, MemorySegment __loc) {
         var mh$ = strftime_l$MH();
         try {
             return (long)mh$.invokeExact(__s, __maxsize, __format, __tp, __loc);
@@ -405,133 +1930,212 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle gmtime$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.gmtime$MH,"gmtime");
+        return RuntimeHelper.requireNonNull(constants$84.const$5,"gmtime");
     }
-    public static MemoryAddress gmtime ( Addressable __timer) {
+    /**
+     * {@snippet :
+     * struct tm* gmtime(const time_t* __timer);
+     * }
+     */
+    public static MemorySegment gmtime(MemorySegment __timer) {
         var mh$ = gmtime$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle localtime$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.localtime$MH,"localtime");
+        return RuntimeHelper.requireNonNull(constants$85.const$0,"localtime");
     }
-    public static MemoryAddress localtime ( Addressable __timer) {
+    /**
+     * {@snippet :
+     * struct tm* localtime(const time_t* __timer);
+     * }
+     */
+    public static MemorySegment localtime(MemorySegment __timer) {
         var mh$ = localtime$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle gmtime_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.gmtime_r$MH,"gmtime_r");
+        return RuntimeHelper.requireNonNull(constants$85.const$1,"gmtime_r");
     }
-    public static MemoryAddress gmtime_r ( Addressable __timer,  Addressable __tp) {
+    /**
+     * {@snippet :
+     * struct tm* gmtime_r(const time_t* __timer, struct tm* __tp);
+     * }
+     */
+    public static MemorySegment gmtime_r(MemorySegment __timer, MemorySegment __tp) {
         var mh$ = gmtime_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer, __tp);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer, __tp);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle localtime_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.localtime_r$MH,"localtime_r");
+        return RuntimeHelper.requireNonNull(constants$85.const$2,"localtime_r");
     }
-    public static MemoryAddress localtime_r ( Addressable __timer,  Addressable __tp) {
+    /**
+     * {@snippet :
+     * struct tm* localtime_r(const time_t* __timer, struct tm* __tp);
+     * }
+     */
+    public static MemorySegment localtime_r(MemorySegment __timer, MemorySegment __tp) {
         var mh$ = localtime_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer, __tp);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer, __tp);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle asctime$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.asctime$MH,"asctime");
+        return RuntimeHelper.requireNonNull(constants$85.const$3,"asctime");
     }
-    public static MemoryAddress asctime ( Addressable __tp) {
+    /**
+     * {@snippet :
+     * char* asctime(struct tm* __tp);
+     * }
+     */
+    public static MemorySegment asctime(MemorySegment __tp) {
         var mh$ = asctime$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__tp);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__tp);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle ctime$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.ctime$MH,"ctime");
+        return RuntimeHelper.requireNonNull(constants$85.const$4,"ctime");
     }
-    public static MemoryAddress ctime ( Addressable __timer) {
+    /**
+     * {@snippet :
+     * char* ctime(const time_t* __timer);
+     * }
+     */
+    public static MemorySegment ctime(MemorySegment __timer) {
         var mh$ = ctime$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle asctime_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.asctime_r$MH,"asctime_r");
+        return RuntimeHelper.requireNonNull(constants$85.const$5,"asctime_r");
     }
-    public static MemoryAddress asctime_r ( Addressable __tp,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * char* asctime_r(struct tm* __tp, char* __buf);
+     * }
+     */
+    public static MemorySegment asctime_r(MemorySegment __tp, MemorySegment __buf) {
         var mh$ = asctime_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__tp, __buf);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__tp, __buf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle ctime_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.ctime_r$MH,"ctime_r");
+        return RuntimeHelper.requireNonNull(constants$86.const$0,"ctime_r");
     }
-    public static MemoryAddress ctime_r ( Addressable __timer,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * char* ctime_r(const time_t* __timer, char* __buf);
+     * }
+     */
+    public static MemorySegment ctime_r(MemorySegment __timer, MemorySegment __buf) {
         var mh$ = ctime_r$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__timer, __buf);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__timer, __buf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    /**
+     * {@snippet :
+     * char* __tzname[2];
+     * }
+     */
     public static MemorySegment __tzname$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$51.__tzname$SEGMENT,"__tzname");
+        return RuntimeHelper.requireNonNull(constants$86.const$2,"__tzname");
     }
     public static MemoryLayout __daylight$LAYOUT() {
-        return constants$51.__daylight$LAYOUT;
+        return JAVA_INT;
     }
     public static VarHandle __daylight$VH() {
-        return constants$51.__daylight$VH;
+        return constants$86.const$3;
     }
     public static MemorySegment __daylight$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$51.__daylight$SEGMENT,"__daylight");
+        return RuntimeHelper.requireNonNull(constants$86.const$4,"__daylight");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * int __daylight;
+     * }
+     */
     public static int __daylight$get() {
-        return (int) constants$51.__daylight$VH.get(RuntimeHelper.requireNonNull(constants$51.__daylight$SEGMENT, "__daylight"));
+        return (int) constants$86.const$3.get(RuntimeHelper.requireNonNull(constants$86.const$4, "__daylight"));
     }
-    public static void __daylight$set( int x) {
-        constants$51.__daylight$VH.set(RuntimeHelper.requireNonNull(constants$51.__daylight$SEGMENT, "__daylight"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * int __daylight;
+     * }
+     */
+    public static void __daylight$set(int x) {
+        constants$86.const$3.set(RuntimeHelper.requireNonNull(constants$86.const$4, "__daylight"), x);
     }
     public static MemoryLayout __timezone$LAYOUT() {
-        return constants$51.__timezone$LAYOUT;
+        return JAVA_LONG;
     }
     public static VarHandle __timezone$VH() {
-        return constants$51.__timezone$VH;
+        return constants$86.const$5;
     }
     public static MemorySegment __timezone$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$51.__timezone$SEGMENT,"__timezone");
+        return RuntimeHelper.requireNonNull(constants$87.const$0,"__timezone");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * long __timezone;
+     * }
+     */
     public static long __timezone$get() {
-        return (long) constants$51.__timezone$VH.get(RuntimeHelper.requireNonNull(constants$51.__timezone$SEGMENT, "__timezone"));
+        return (long) constants$86.const$5.get(RuntimeHelper.requireNonNull(constants$87.const$0, "__timezone"));
     }
-    public static void __timezone$set( long x) {
-        constants$51.__timezone$VH.set(RuntimeHelper.requireNonNull(constants$51.__timezone$SEGMENT, "__timezone"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * long __timezone;
+     * }
+     */
+    public static void __timezone$set(long x) {
+        constants$86.const$5.set(RuntimeHelper.requireNonNull(constants$87.const$0, "__timezone"), x);
     }
+    /**
+     * {@snippet :
+     * char* tzname[2];
+     * }
+     */
     public static MemorySegment tzname$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$51.tzname$SEGMENT,"tzname");
+        return RuntimeHelper.requireNonNull(constants$87.const$1,"tzname");
     }
     public static MethodHandle tzset$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.tzset$MH,"tzset");
+        return RuntimeHelper.requireNonNull(constants$87.const$2,"tzset");
     }
-    public static void tzset () {
+    /**
+     * {@snippet :
+     * void tzset();
+     * }
+     */
+    public static void tzset() {
         var mh$ = tzset$MH();
         try {
             mh$.invokeExact();
@@ -540,39 +2144,68 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MemoryLayout daylight$LAYOUT() {
-        return constants$52.daylight$LAYOUT;
+        return JAVA_INT;
     }
     public static VarHandle daylight$VH() {
-        return constants$52.daylight$VH;
+        return constants$86.const$3;
     }
     public static MemorySegment daylight$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$52.daylight$SEGMENT,"daylight");
+        return RuntimeHelper.requireNonNull(constants$87.const$3,"daylight");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * int daylight;
+     * }
+     */
     public static int daylight$get() {
-        return (int) constants$52.daylight$VH.get(RuntimeHelper.requireNonNull(constants$52.daylight$SEGMENT, "daylight"));
+        return (int) constants$86.const$3.get(RuntimeHelper.requireNonNull(constants$87.const$3, "daylight"));
     }
-    public static void daylight$set( int x) {
-        constants$52.daylight$VH.set(RuntimeHelper.requireNonNull(constants$52.daylight$SEGMENT, "daylight"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * int daylight;
+     * }
+     */
+    public static void daylight$set(int x) {
+        constants$86.const$3.set(RuntimeHelper.requireNonNull(constants$87.const$3, "daylight"), x);
     }
     public static MemoryLayout timezone$LAYOUT() {
-        return constants$52.timezone$LAYOUT;
+        return JAVA_LONG;
     }
     public static VarHandle timezone$VH() {
-        return constants$52.timezone$VH;
+        return constants$86.const$5;
     }
     public static MemorySegment timezone$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$52.timezone$SEGMENT,"timezone");
+        return RuntimeHelper.requireNonNull(constants$87.const$4,"timezone");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * long timezone;
+     * }
+     */
     public static long timezone$get() {
-        return (long) constants$52.timezone$VH.get(RuntimeHelper.requireNonNull(constants$52.timezone$SEGMENT, "timezone"));
+        return (long) constants$86.const$5.get(RuntimeHelper.requireNonNull(constants$87.const$4, "timezone"));
     }
-    public static void timezone$set( long x) {
-        constants$52.timezone$VH.set(RuntimeHelper.requireNonNull(constants$52.timezone$SEGMENT, "timezone"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * long timezone;
+     * }
+     */
+    public static void timezone$set(long x) {
+        constants$86.const$5.set(RuntimeHelper.requireNonNull(constants$87.const$4, "timezone"), x);
     }
     public static MethodHandle timegm$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.timegm$MH,"timegm");
+        return RuntimeHelper.requireNonNull(constants$87.const$5,"timegm");
     }
-    public static long timegm ( Addressable __tp) {
+    /**
+     * {@snippet :
+     * time_t timegm(struct tm* __tp);
+     * }
+     */
+    public static long timegm(MemorySegment __tp) {
         var mh$ = timegm$MH();
         try {
             return (long)mh$.invokeExact(__tp);
@@ -581,9 +2214,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timelocal$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.timelocal$MH,"timelocal");
+        return RuntimeHelper.requireNonNull(constants$88.const$0,"timelocal");
     }
-    public static long timelocal ( Addressable __tp) {
+    /**
+     * {@snippet :
+     * time_t timelocal(struct tm* __tp);
+     * }
+     */
+    public static long timelocal(MemorySegment __tp) {
         var mh$ = timelocal$MH();
         try {
             return (long)mh$.invokeExact(__tp);
@@ -592,9 +2230,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle dysize$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.dysize$MH,"dysize");
+        return RuntimeHelper.requireNonNull(constants$88.const$1,"dysize");
     }
-    public static int dysize ( int __year) {
+    /**
+     * {@snippet :
+     * int dysize(int __year);
+     * }
+     */
+    public static int dysize(int __year) {
         var mh$ = dysize$MH();
         try {
             return (int)mh$.invokeExact(__year);
@@ -603,9 +2246,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle nanosleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.nanosleep$MH,"nanosleep");
+        return RuntimeHelper.requireNonNull(constants$88.const$2,"nanosleep");
     }
-    public static int nanosleep ( Addressable __requested_time,  Addressable __remaining) {
+    /**
+     * {@snippet :
+     * int nanosleep(struct timespec* __requested_time, struct timespec* __remaining);
+     * }
+     */
+    public static int nanosleep(MemorySegment __requested_time, MemorySegment __remaining) {
         var mh$ = nanosleep$MH();
         try {
             return (int)mh$.invokeExact(__requested_time, __remaining);
@@ -614,9 +2262,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle clock_getres$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.clock_getres$MH,"clock_getres");
+        return RuntimeHelper.requireNonNull(constants$88.const$3,"clock_getres");
     }
-    public static int clock_getres ( int __clock_id,  Addressable __res) {
+    /**
+     * {@snippet :
+     * int clock_getres(clockid_t __clock_id, struct timespec* __res);
+     * }
+     */
+    public static int clock_getres(int __clock_id, MemorySegment __res) {
         var mh$ = clock_getres$MH();
         try {
             return (int)mh$.invokeExact(__clock_id, __res);
@@ -625,9 +2278,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle clock_gettime$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.clock_gettime$MH,"clock_gettime");
+        return RuntimeHelper.requireNonNull(constants$88.const$4,"clock_gettime");
     }
-    public static int clock_gettime ( int __clock_id,  Addressable __tp) {
+    /**
+     * {@snippet :
+     * int clock_gettime(clockid_t __clock_id, struct timespec* __tp);
+     * }
+     */
+    public static int clock_gettime(int __clock_id, MemorySegment __tp) {
         var mh$ = clock_gettime$MH();
         try {
             return (int)mh$.invokeExact(__clock_id, __tp);
@@ -636,9 +2294,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle clock_settime$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.clock_settime$MH,"clock_settime");
+        return RuntimeHelper.requireNonNull(constants$88.const$5,"clock_settime");
     }
-    public static int clock_settime ( int __clock_id,  Addressable __tp) {
+    /**
+     * {@snippet :
+     * int clock_settime(clockid_t __clock_id, struct timespec* __tp);
+     * }
+     */
+    public static int clock_settime(int __clock_id, MemorySegment __tp) {
         var mh$ = clock_settime$MH();
         try {
             return (int)mh$.invokeExact(__clock_id, __tp);
@@ -647,9 +2310,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle clock_nanosleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.clock_nanosleep$MH,"clock_nanosleep");
+        return RuntimeHelper.requireNonNull(constants$89.const$1,"clock_nanosleep");
     }
-    public static int clock_nanosleep ( int __clock_id,  int __flags,  Addressable __req,  Addressable __rem) {
+    /**
+     * {@snippet :
+     * int clock_nanosleep(clockid_t __clock_id, int __flags, struct timespec* __req, struct timespec* __rem);
+     * }
+     */
+    public static int clock_nanosleep(int __clock_id, int __flags, MemorySegment __req, MemorySegment __rem) {
         var mh$ = clock_nanosleep$MH();
         try {
             return (int)mh$.invokeExact(__clock_id, __flags, __req, __rem);
@@ -658,9 +2326,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle clock_getcpuclockid$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.clock_getcpuclockid$MH,"clock_getcpuclockid");
+        return RuntimeHelper.requireNonNull(constants$89.const$2,"clock_getcpuclockid");
     }
-    public static int clock_getcpuclockid ( int __pid,  Addressable __clock_id) {
+    /**
+     * {@snippet :
+     * int clock_getcpuclockid(pid_t __pid, clockid_t* __clock_id);
+     * }
+     */
+    public static int clock_getcpuclockid(int __pid, MemorySegment __clock_id) {
         var mh$ = clock_getcpuclockid$MH();
         try {
             return (int)mh$.invokeExact(__pid, __clock_id);
@@ -669,9 +2342,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timer_create$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.timer_create$MH,"timer_create");
+        return RuntimeHelper.requireNonNull(constants$89.const$3,"timer_create");
     }
-    public static int timer_create ( int __clock_id,  Addressable __evp,  Addressable __timerid) {
+    /**
+     * {@snippet :
+     * int timer_create(clockid_t __clock_id, struct sigevent* __evp, timer_t* __timerid);
+     * }
+     */
+    public static int timer_create(int __clock_id, MemorySegment __evp, MemorySegment __timerid) {
         var mh$ = timer_create$MH();
         try {
             return (int)mh$.invokeExact(__clock_id, __evp, __timerid);
@@ -680,9 +2358,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timer_delete$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.timer_delete$MH,"timer_delete");
+        return RuntimeHelper.requireNonNull(constants$89.const$4,"timer_delete");
     }
-    public static int timer_delete ( Addressable __timerid) {
+    /**
+     * {@snippet :
+     * int timer_delete(timer_t __timerid);
+     * }
+     */
+    public static int timer_delete(MemorySegment __timerid) {
         var mh$ = timer_delete$MH();
         try {
             return (int)mh$.invokeExact(__timerid);
@@ -691,9 +2374,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timer_settime$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.timer_settime$MH,"timer_settime");
+        return RuntimeHelper.requireNonNull(constants$89.const$6,"timer_settime");
     }
-    public static int timer_settime ( Addressable __timerid,  int __flags,  Addressable __value,  Addressable __ovalue) {
+    /**
+     * {@snippet :
+     * int timer_settime(timer_t __timerid, int __flags, struct itimerspec* __value, struct itimerspec* __ovalue);
+     * }
+     */
+    public static int timer_settime(MemorySegment __timerid, int __flags, MemorySegment __value, MemorySegment __ovalue) {
         var mh$ = timer_settime$MH();
         try {
             return (int)mh$.invokeExact(__timerid, __flags, __value, __ovalue);
@@ -702,9 +2390,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timer_gettime$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.timer_gettime$MH,"timer_gettime");
+        return RuntimeHelper.requireNonNull(constants$90.const$0,"timer_gettime");
     }
-    public static int timer_gettime ( Addressable __timerid,  Addressable __value) {
+    /**
+     * {@snippet :
+     * int timer_gettime(timer_t __timerid, struct itimerspec* __value);
+     * }
+     */
+    public static int timer_gettime(MemorySegment __timerid, MemorySegment __value) {
         var mh$ = timer_gettime$MH();
         try {
             return (int)mh$.invokeExact(__timerid, __value);
@@ -713,9 +2406,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timer_getoverrun$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.timer_getoverrun$MH,"timer_getoverrun");
+        return RuntimeHelper.requireNonNull(constants$90.const$1,"timer_getoverrun");
     }
-    public static int timer_getoverrun ( Addressable __timerid) {
+    /**
+     * {@snippet :
+     * int timer_getoverrun(timer_t __timerid);
+     * }
+     */
+    public static int timer_getoverrun(MemorySegment __timerid) {
         var mh$ = timer_getoverrun$MH();
         try {
             return (int)mh$.invokeExact(__timerid);
@@ -724,9 +2422,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle timespec_get$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.timespec_get$MH,"timespec_get");
+        return RuntimeHelper.requireNonNull(constants$90.const$2,"timespec_get");
     }
-    public static int timespec_get ( Addressable __ts,  int __base) {
+    /**
+     * {@snippet :
+     * int timespec_get(struct timespec* __ts, int __base);
+     * }
+     */
+    public static int timespec_get(MemorySegment __ts, int __base) {
         var mh$ = timespec_get$MH();
         try {
             return (int)mh$.invokeExact(__ts, __base);
@@ -735,9 +2438,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fcntl$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.fcntl$MH,"fcntl");
+        return RuntimeHelper.requireNonNull(constants$93.const$4,"fcntl");
     }
-    public static int fcntl ( int __fd,  int __cmd, Object... x2) {
+    /**
+     * {@snippet :
+     * int fcntl(int __fd, int __cmd,...);
+     * }
+     */
+    public static int fcntl(int __fd, int __cmd, Object... x2) {
         var mh$ = fcntl$MH();
         try {
             return (int)mh$.invokeExact(__fd, __cmd, x2);
@@ -746,9 +2454,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle open$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.open$MH,"open");
+        return RuntimeHelper.requireNonNull(constants$93.const$5,"open");
     }
-    public static int open ( Addressable __file,  int __oflag, Object... x2) {
+    /**
+     * {@snippet :
+     * int open(char* __file, int __oflag,...);
+     * }
+     */
+    public static int open(MemorySegment __file, int __oflag, Object... x2) {
         var mh$ = open$MH();
         try {
             return (int)mh$.invokeExact(__file, __oflag, x2);
@@ -757,9 +2470,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle openat$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.openat$MH,"openat");
+        return RuntimeHelper.requireNonNull(constants$94.const$1,"openat");
     }
-    public static int openat ( int __fd,  Addressable __file,  int __oflag, Object... x3) {
+    /**
+     * {@snippet :
+     * int openat(int __fd, char* __file, int __oflag,...);
+     * }
+     */
+    public static int openat(int __fd, MemorySegment __file, int __oflag, Object... x3) {
         var mh$ = openat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __file, __oflag, x3);
@@ -768,9 +2486,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle creat$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.creat$MH,"creat");
+        return RuntimeHelper.requireNonNull(constants$94.const$2,"creat");
     }
-    public static int creat ( Addressable __file,  int __mode) {
+    /**
+     * {@snippet :
+     * int creat(char* __file, mode_t __mode);
+     * }
+     */
+    public static int creat(MemorySegment __file, int __mode) {
         var mh$ = creat$MH();
         try {
             return (int)mh$.invokeExact(__file, __mode);
@@ -779,9 +2502,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lockf$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.lockf$MH,"lockf");
+        return RuntimeHelper.requireNonNull(constants$94.const$4,"lockf");
     }
-    public static int lockf ( int __fd,  int __cmd,  long __len) {
+    /**
+     * {@snippet :
+     * int lockf(int __fd, int __cmd, off_t __len);
+     * }
+     */
+    public static int lockf(int __fd, int __cmd, long __len) {
         var mh$ = lockf$MH();
         try {
             return (int)mh$.invokeExact(__fd, __cmd, __len);
@@ -790,9 +2518,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle posix_fadvise$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.posix_fadvise$MH,"posix_fadvise");
+        return RuntimeHelper.requireNonNull(constants$94.const$6,"posix_fadvise");
     }
-    public static int posix_fadvise ( int __fd,  long __offset,  long __len,  int __advise) {
+    /**
+     * {@snippet :
+     * int posix_fadvise(int __fd, off_t __offset, off_t __len, int __advise);
+     * }
+     */
+    public static int posix_fadvise(int __fd, long __offset, long __len, int __advise) {
         var mh$ = posix_fadvise$MH();
         try {
             return (int)mh$.invokeExact(__fd, __offset, __len, __advise);
@@ -801,9 +2534,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle posix_fallocate$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.posix_fallocate$MH,"posix_fallocate");
+        return RuntimeHelper.requireNonNull(constants$95.const$1,"posix_fallocate");
     }
-    public static int posix_fallocate ( int __fd,  long __offset,  long __len) {
+    /**
+     * {@snippet :
+     * int posix_fallocate(int __fd, off_t __offset, off_t __len);
+     * }
+     */
+    public static int posix_fallocate(int __fd, long __offset, long __len) {
         var mh$ = posix_fallocate$MH();
         try {
             return (int)mh$.invokeExact(__fd, __offset, __len);
@@ -811,10 +2549,27 @@ import static java.lang.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    /**
+     * {@snippet :
+     * typedef unsigned int useconds_t;
+     * }
+     */
+    public static final OfInt useconds_t = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int socklen_t;
+     * }
+     */
+    public static final OfInt socklen_t = JAVA_INT;
     public static MethodHandle access$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.access$MH,"access");
+        return RuntimeHelper.requireNonNull(constants$95.const$2,"access");
     }
-    public static int access ( Addressable __name,  int __type) {
+    /**
+     * {@snippet :
+     * int access(char* __name, int __type);
+     * }
+     */
+    public static int access(MemorySegment __name, int __type) {
         var mh$ = access$MH();
         try {
             return (int)mh$.invokeExact(__name, __type);
@@ -823,9 +2578,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle faccessat$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.faccessat$MH,"faccessat");
+        return RuntimeHelper.requireNonNull(constants$95.const$4,"faccessat");
     }
-    public static int faccessat ( int __fd,  Addressable __file,  int __type,  int __flag) {
+    /**
+     * {@snippet :
+     * int faccessat(int __fd, char* __file, int __type, int __flag);
+     * }
+     */
+    public static int faccessat(int __fd, MemorySegment __file, int __type, int __flag) {
         var mh$ = faccessat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __file, __type, __flag);
@@ -834,9 +2594,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lseek$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.lseek$MH,"lseek");
+        return RuntimeHelper.requireNonNull(constants$95.const$6,"lseek");
     }
-    public static long lseek ( int __fd,  long __offset,  int __whence) {
+    /**
+     * {@snippet :
+     * __off_t lseek(int __fd, __off_t __offset, int __whence);
+     * }
+     */
+    public static long lseek(int __fd, long __offset, int __whence) {
         var mh$ = lseek$MH();
         try {
             return (long)mh$.invokeExact(__fd, __offset, __whence);
@@ -845,9 +2610,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle close$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.close$MH,"close");
+        return RuntimeHelper.requireNonNull(constants$96.const$0,"close");
     }
-    public static int close ( int __fd) {
+    /**
+     * {@snippet :
+     * int close(int __fd);
+     * }
+     */
+    public static int close(int __fd) {
         var mh$ = close$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -856,9 +2626,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle closefrom$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.closefrom$MH,"closefrom");
+        return RuntimeHelper.requireNonNull(constants$96.const$1,"closefrom");
     }
-    public static void closefrom ( int __lowfd) {
+    /**
+     * {@snippet :
+     * void closefrom(int __lowfd);
+     * }
+     */
+    public static void closefrom(int __lowfd) {
         var mh$ = closefrom$MH();
         try {
             mh$.invokeExact(__lowfd);
@@ -867,9 +2642,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle read$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.read$MH,"read");
+        return RuntimeHelper.requireNonNull(constants$96.const$3,"read");
     }
-    public static long read ( int __fd,  Addressable __buf,  long __nbytes) {
+    /**
+     * {@snippet :
+     * ssize_t read(int __fd, void* __buf, size_t __nbytes);
+     * }
+     */
+    public static long read(int __fd, MemorySegment __buf, long __nbytes) {
         var mh$ = read$MH();
         try {
             return (long)mh$.invokeExact(__fd, __buf, __nbytes);
@@ -878,9 +2658,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle write$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.write$MH,"write");
+        return RuntimeHelper.requireNonNull(constants$96.const$4,"write");
     }
-    public static long write ( int __fd,  Addressable __buf,  long __n) {
+    /**
+     * {@snippet :
+     * ssize_t write(int __fd, void* __buf, size_t __n);
+     * }
+     */
+    public static long write(int __fd, MemorySegment __buf, long __n) {
         var mh$ = write$MH();
         try {
             return (long)mh$.invokeExact(__fd, __buf, __n);
@@ -889,9 +2674,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle pread$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.pread$MH,"pread");
+        return RuntimeHelper.requireNonNull(constants$96.const$6,"pread");
     }
-    public static long pread ( int __fd,  Addressable __buf,  long __nbytes,  long __offset) {
+    /**
+     * {@snippet :
+     * ssize_t pread(int __fd, void* __buf, size_t __nbytes, __off_t __offset);
+     * }
+     */
+    public static long pread(int __fd, MemorySegment __buf, long __nbytes, long __offset) {
         var mh$ = pread$MH();
         try {
             return (long)mh$.invokeExact(__fd, __buf, __nbytes, __offset);
@@ -900,9 +2690,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle pwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.pwrite$MH,"pwrite");
+        return RuntimeHelper.requireNonNull(constants$97.const$0,"pwrite");
     }
-    public static long pwrite ( int __fd,  Addressable __buf,  long __n,  long __offset) {
+    /**
+     * {@snippet :
+     * ssize_t pwrite(int __fd, void* __buf, size_t __n, __off_t __offset);
+     * }
+     */
+    public static long pwrite(int __fd, MemorySegment __buf, long __n, long __offset) {
         var mh$ = pwrite$MH();
         try {
             return (long)mh$.invokeExact(__fd, __buf, __n, __offset);
@@ -911,9 +2706,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle pipe$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.pipe$MH,"pipe");
+        return RuntimeHelper.requireNonNull(constants$97.const$1,"pipe");
     }
-    public static int pipe ( Addressable __pipedes) {
+    /**
+     * {@snippet :
+     * int pipe(int __pipedes[2]);
+     * }
+     */
+    public static int pipe(MemorySegment __pipedes) {
         var mh$ = pipe$MH();
         try {
             return (int)mh$.invokeExact(__pipedes);
@@ -922,9 +2722,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle alarm$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.alarm$MH,"alarm");
+        return RuntimeHelper.requireNonNull(constants$97.const$2,"alarm");
     }
-    public static int alarm ( int __seconds) {
+    /**
+     * {@snippet :
+     * unsigned int alarm(unsigned int __seconds);
+     * }
+     */
+    public static int alarm(int __seconds) {
         var mh$ = alarm$MH();
         try {
             return (int)mh$.invokeExact(__seconds);
@@ -933,9 +2738,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.sleep$MH,"sleep");
+        return RuntimeHelper.requireNonNull(constants$97.const$3,"sleep");
     }
-    public static int sleep ( int __seconds) {
+    /**
+     * {@snippet :
+     * unsigned int sleep(unsigned int __seconds);
+     * }
+     */
+    public static int sleep(int __seconds) {
         var mh$ = sleep$MH();
         try {
             return (int)mh$.invokeExact(__seconds);
@@ -944,9 +2754,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ualarm$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.ualarm$MH,"ualarm");
+        return RuntimeHelper.requireNonNull(constants$97.const$4,"ualarm");
     }
-    public static int ualarm ( int __value,  int __interval) {
+    /**
+     * {@snippet :
+     * __useconds_t ualarm(__useconds_t __value, __useconds_t __interval);
+     * }
+     */
+    public static int ualarm(int __value, int __interval) {
         var mh$ = ualarm$MH();
         try {
             return (int)mh$.invokeExact(__value, __interval);
@@ -955,9 +2770,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle usleep$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.usleep$MH,"usleep");
+        return RuntimeHelper.requireNonNull(constants$97.const$5,"usleep");
     }
-    public static int usleep ( int __useconds) {
+    /**
+     * {@snippet :
+     * int usleep(__useconds_t __useconds);
+     * }
+     */
+    public static int usleep(int __useconds) {
         var mh$ = usleep$MH();
         try {
             return (int)mh$.invokeExact(__useconds);
@@ -966,9 +2786,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle pause$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.pause$MH,"pause");
+        return RuntimeHelper.requireNonNull(constants$98.const$0,"pause");
     }
-    public static int pause () {
+    /**
+     * {@snippet :
+     * int pause();
+     * }
+     */
+    public static int pause() {
         var mh$ = pause$MH();
         try {
             return (int)mh$.invokeExact();
@@ -977,9 +2802,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle chown$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.chown$MH,"chown");
+        return RuntimeHelper.requireNonNull(constants$98.const$2,"chown");
     }
-    public static int chown ( Addressable __file,  int __owner,  int __group) {
+    /**
+     * {@snippet :
+     * int chown(char* __file, __uid_t __owner, __gid_t __group);
+     * }
+     */
+    public static int chown(MemorySegment __file, int __owner, int __group) {
         var mh$ = chown$MH();
         try {
             return (int)mh$.invokeExact(__file, __owner, __group);
@@ -988,9 +2818,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fchown$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.fchown$MH,"fchown");
+        return RuntimeHelper.requireNonNull(constants$98.const$4,"fchown");
     }
-    public static int fchown ( int __fd,  int __owner,  int __group) {
+    /**
+     * {@snippet :
+     * int fchown(int __fd, __uid_t __owner, __gid_t __group);
+     * }
+     */
+    public static int fchown(int __fd, int __owner, int __group) {
         var mh$ = fchown$MH();
         try {
             return (int)mh$.invokeExact(__fd, __owner, __group);
@@ -999,9 +2834,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lchown$MH() {
-        return RuntimeHelper.requireNonNull(constants$58.lchown$MH,"lchown");
+        return RuntimeHelper.requireNonNull(constants$98.const$5,"lchown");
     }
-    public static int lchown ( Addressable __file,  int __owner,  int __group) {
+    /**
+     * {@snippet :
+     * int lchown(char* __file, __uid_t __owner, __gid_t __group);
+     * }
+     */
+    public static int lchown(MemorySegment __file, int __owner, int __group) {
         var mh$ = lchown$MH();
         try {
             return (int)mh$.invokeExact(__file, __owner, __group);
@@ -1010,9 +2850,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fchownat$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.fchownat$MH,"fchownat");
+        return RuntimeHelper.requireNonNull(constants$99.const$1,"fchownat");
     }
-    public static int fchownat ( int __fd,  Addressable __file,  int __owner,  int __group,  int __flag) {
+    /**
+     * {@snippet :
+     * int fchownat(int __fd, char* __file, __uid_t __owner, __gid_t __group, int __flag);
+     * }
+     */
+    public static int fchownat(int __fd, MemorySegment __file, int __owner, int __group, int __flag) {
         var mh$ = fchownat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __file, __owner, __group, __flag);
@@ -1021,9 +2866,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle chdir$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.chdir$MH,"chdir");
+        return RuntimeHelper.requireNonNull(constants$99.const$2,"chdir");
     }
-    public static int chdir ( Addressable __path) {
+    /**
+     * {@snippet :
+     * int chdir(char* __path);
+     * }
+     */
+    public static int chdir(MemorySegment __path) {
         var mh$ = chdir$MH();
         try {
             return (int)mh$.invokeExact(__path);
@@ -1032,9 +2882,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fchdir$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.fchdir$MH,"fchdir");
+        return RuntimeHelper.requireNonNull(constants$99.const$3,"fchdir");
     }
-    public static int fchdir ( int __fd) {
+    /**
+     * {@snippet :
+     * int fchdir(int __fd);
+     * }
+     */
+    public static int fchdir(int __fd) {
         var mh$ = fchdir$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -1043,31 +2898,46 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getcwd$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.getcwd$MH,"getcwd");
+        return RuntimeHelper.requireNonNull(constants$99.const$4,"getcwd");
     }
-    public static MemoryAddress getcwd ( Addressable __buf,  long __size) {
+    /**
+     * {@snippet :
+     * char* getcwd(char* __buf, size_t __size);
+     * }
+     */
+    public static MemorySegment getcwd(MemorySegment __buf, long __size) {
         var mh$ = getcwd$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__buf, __size);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__buf, __size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle getwd$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.getwd$MH,"getwd");
+        return RuntimeHelper.requireNonNull(constants$99.const$5,"getwd");
     }
-    public static MemoryAddress getwd ( Addressable __buf) {
+    /**
+     * {@snippet :
+     * char* getwd(char* __buf);
+     * }
+     */
+    public static MemorySegment getwd(MemorySegment __buf) {
         var mh$ = getwd$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__buf);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__buf);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle dup$MH() {
-        return RuntimeHelper.requireNonNull(constants$59.dup$MH,"dup");
+        return RuntimeHelper.requireNonNull(constants$100.const$0,"dup");
     }
-    public static int dup ( int __fd) {
+    /**
+     * {@snippet :
+     * int dup(int __fd);
+     * }
+     */
+    public static int dup(int __fd) {
         var mh$ = dup$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -1076,9 +2946,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle dup2$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.dup2$MH,"dup2");
+        return RuntimeHelper.requireNonNull(constants$100.const$1,"dup2");
     }
-    public static int dup2 ( int __fd,  int __fd2) {
+    /**
+     * {@snippet :
+     * int dup2(int __fd, int __fd2);
+     * }
+     */
+    public static int dup2(int __fd, int __fd2) {
         var mh$ = dup2$MH();
         try {
             return (int)mh$.invokeExact(__fd, __fd2);
@@ -1087,24 +2962,41 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MemoryLayout __environ$LAYOUT() {
-        return constants$60.__environ$LAYOUT;
+        return RuntimeHelper.POINTER;
     }
     public static VarHandle __environ$VH() {
-        return constants$60.__environ$VH;
+        return constants$19.const$0;
     }
     public static MemorySegment __environ$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$60.__environ$SEGMENT,"__environ");
+        return RuntimeHelper.requireNonNull(constants$100.const$2,"__environ");
     }
-    public static MemoryAddress __environ$get() {
-        return (java.lang.foreign.MemoryAddress) constants$60.__environ$VH.get(RuntimeHelper.requireNonNull(constants$60.__environ$SEGMENT, "__environ"));
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * char** __environ;
+     * }
+     */
+    public static MemorySegment __environ$get() {
+        return (java.lang.foreign.MemorySegment) constants$19.const$0.get(RuntimeHelper.requireNonNull(constants$100.const$2, "__environ"));
     }
-    public static void __environ$set( MemoryAddress x) {
-        constants$60.__environ$VH.set(RuntimeHelper.requireNonNull(constants$60.__environ$SEGMENT, "__environ"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * char** __environ;
+     * }
+     */
+    public static void __environ$set(MemorySegment x) {
+        constants$19.const$0.set(RuntimeHelper.requireNonNull(constants$100.const$2, "__environ"), x);
     }
     public static MethodHandle execve$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.execve$MH,"execve");
+        return RuntimeHelper.requireNonNull(constants$100.const$3,"execve");
     }
-    public static int execve ( Addressable __path,  Addressable __argv,  Addressable __envp) {
+    /**
+     * {@snippet :
+     * int execve(char* __path, char* __argv[], char* __envp[]);
+     * }
+     */
+    public static int execve(MemorySegment __path, MemorySegment __argv, MemorySegment __envp) {
         var mh$ = execve$MH();
         try {
             return (int)mh$.invokeExact(__path, __argv, __envp);
@@ -1113,9 +3005,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fexecve$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.fexecve$MH,"fexecve");
+        return RuntimeHelper.requireNonNull(constants$100.const$4,"fexecve");
     }
-    public static int fexecve ( int __fd,  Addressable __argv,  Addressable __envp) {
+    /**
+     * {@snippet :
+     * int fexecve(int __fd, char* __argv[], char* __envp[]);
+     * }
+     */
+    public static int fexecve(int __fd, MemorySegment __argv, MemorySegment __envp) {
         var mh$ = fexecve$MH();
         try {
             return (int)mh$.invokeExact(__fd, __argv, __envp);
@@ -1124,9 +3021,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle execv$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.execv$MH,"execv");
+        return RuntimeHelper.requireNonNull(constants$100.const$5,"execv");
     }
-    public static int execv ( Addressable __path,  Addressable __argv) {
+    /**
+     * {@snippet :
+     * int execv(char* __path, char* __argv[]);
+     * }
+     */
+    public static int execv(MemorySegment __path, MemorySegment __argv) {
         var mh$ = execv$MH();
         try {
             return (int)mh$.invokeExact(__path, __argv);
@@ -1135,9 +3037,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle execle$MH() {
-        return RuntimeHelper.requireNonNull(constants$60.execle$MH,"execle");
+        return RuntimeHelper.requireNonNull(constants$101.const$0,"execle");
     }
-    public static int execle ( Addressable __path,  Addressable __arg, Object... x2) {
+    /**
+     * {@snippet :
+     * int execle(char* __path, char* __arg,...);
+     * }
+     */
+    public static int execle(MemorySegment __path, MemorySegment __arg, Object... x2) {
         var mh$ = execle$MH();
         try {
             return (int)mh$.invokeExact(__path, __arg, x2);
@@ -1146,9 +3053,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle execl$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.execl$MH,"execl");
+        return RuntimeHelper.requireNonNull(constants$101.const$1,"execl");
     }
-    public static int execl ( Addressable __path,  Addressable __arg, Object... x2) {
+    /**
+     * {@snippet :
+     * int execl(char* __path, char* __arg,...);
+     * }
+     */
+    public static int execl(MemorySegment __path, MemorySegment __arg, Object... x2) {
         var mh$ = execl$MH();
         try {
             return (int)mh$.invokeExact(__path, __arg, x2);
@@ -1157,9 +3069,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle execvp$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.execvp$MH,"execvp");
+        return RuntimeHelper.requireNonNull(constants$101.const$2,"execvp");
     }
-    public static int execvp ( Addressable __file,  Addressable __argv) {
+    /**
+     * {@snippet :
+     * int execvp(char* __file, char* __argv[]);
+     * }
+     */
+    public static int execvp(MemorySegment __file, MemorySegment __argv) {
         var mh$ = execvp$MH();
         try {
             return (int)mh$.invokeExact(__file, __argv);
@@ -1168,9 +3085,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle execlp$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.execlp$MH,"execlp");
+        return RuntimeHelper.requireNonNull(constants$101.const$3,"execlp");
     }
-    public static int execlp ( Addressable __file,  Addressable __arg, Object... x2) {
+    /**
+     * {@snippet :
+     * int execlp(char* __file, char* __arg,...);
+     * }
+     */
+    public static int execlp(MemorySegment __file, MemorySegment __arg, Object... x2) {
         var mh$ = execlp$MH();
         try {
             return (int)mh$.invokeExact(__file, __arg, x2);
@@ -1179,9 +3101,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle nice$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.nice$MH,"nice");
+        return RuntimeHelper.requireNonNull(constants$101.const$4,"nice");
     }
-    public static int nice ( int __inc) {
+    /**
+     * {@snippet :
+     * int nice(int __inc);
+     * }
+     */
+    public static int nice(int __inc) {
         var mh$ = nice$MH();
         try {
             return (int)mh$.invokeExact(__inc);
@@ -1190,9 +3117,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle _exit$MH() {
-        return RuntimeHelper.requireNonNull(constants$61._exit$MH,"_exit");
+        return RuntimeHelper.requireNonNull(constants$101.const$5,"_exit");
     }
-    public static void _exit ( int __status) {
+    /**
+     * {@snippet :
+     * void _exit(int __status);
+     * }
+     */
+    public static void _exit(int __status) {
         var mh$ = _exit$MH();
         try {
             mh$.invokeExact(__status);
@@ -1200,916 +3132,2431 @@ import static java.lang.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    /**
+     * {@snippet :
+     * enum ._PC_LINK_MAX = 0;
+     * }
+     */
     public static int _PC_LINK_MAX() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_MAX_CANON = 1;
+     * }
+     */
     public static int _PC_MAX_CANON() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_MAX_INPUT = 2;
+     * }
+     */
     public static int _PC_MAX_INPUT() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_NAME_MAX = 3;
+     * }
+     */
     public static int _PC_NAME_MAX() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_PATH_MAX = 4;
+     * }
+     */
     public static int _PC_PATH_MAX() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_PIPE_BUF = 5;
+     * }
+     */
     public static int _PC_PIPE_BUF() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_CHOWN_RESTRICTED = 6;
+     * }
+     */
     public static int _PC_CHOWN_RESTRICTED() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_NO_TRUNC = 7;
+     * }
+     */
     public static int _PC_NO_TRUNC() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_VDISABLE = 8;
+     * }
+     */
     public static int _PC_VDISABLE() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_SYNC_IO = 9;
+     * }
+     */
     public static int _PC_SYNC_IO() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_ASYNC_IO = 10;
+     * }
+     */
     public static int _PC_ASYNC_IO() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_PRIO_IO = 11;
+     * }
+     */
     public static int _PC_PRIO_IO() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_SOCK_MAXBUF = 12;
+     * }
+     */
     public static int _PC_SOCK_MAXBUF() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_FILESIZEBITS = 13;
+     * }
+     */
     public static int _PC_FILESIZEBITS() {
         return (int)13L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_REC_INCR_XFER_SIZE = 14;
+     * }
+     */
     public static int _PC_REC_INCR_XFER_SIZE() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_REC_MAX_XFER_SIZE = 15;
+     * }
+     */
     public static int _PC_REC_MAX_XFER_SIZE() {
         return (int)15L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_REC_MIN_XFER_SIZE = 16;
+     * }
+     */
     public static int _PC_REC_MIN_XFER_SIZE() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_REC_XFER_ALIGN = 17;
+     * }
+     */
     public static int _PC_REC_XFER_ALIGN() {
         return (int)17L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_ALLOC_SIZE_MIN = 18;
+     * }
+     */
     public static int _PC_ALLOC_SIZE_MIN() {
         return (int)18L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_SYMLINK_MAX = 19;
+     * }
+     */
     public static int _PC_SYMLINK_MAX() {
         return (int)19L;
     }
+    /**
+     * {@snippet :
+     * enum ._PC_2_SYMLINKS = 20;
+     * }
+     */
     public static int _PC_2_SYMLINKS() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_ARG_MAX = 0;
+     * }
+     */
     public static int _SC_ARG_MAX() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CHILD_MAX = 1;
+     * }
+     */
     public static int _SC_CHILD_MAX() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CLK_TCK = 2;
+     * }
+     */
     public static int _SC_CLK_TCK() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NGROUPS_MAX = 3;
+     * }
+     */
     public static int _SC_NGROUPS_MAX() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_OPEN_MAX = 4;
+     * }
+     */
     public static int _SC_OPEN_MAX() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_STREAM_MAX = 5;
+     * }
+     */
     public static int _SC_STREAM_MAX() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TZNAME_MAX = 6;
+     * }
+     */
     public static int _SC_TZNAME_MAX() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_JOB_CONTROL = 7;
+     * }
+     */
     public static int _SC_JOB_CONTROL() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SAVED_IDS = 8;
+     * }
+     */
     public static int _SC_SAVED_IDS() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_REALTIME_SIGNALS = 9;
+     * }
+     */
     public static int _SC_REALTIME_SIGNALS() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PRIORITY_SCHEDULING = 10;
+     * }
+     */
     public static int _SC_PRIORITY_SCHEDULING() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TIMERS = 11;
+     * }
+     */
     public static int _SC_TIMERS() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_ASYNCHRONOUS_IO = 12;
+     * }
+     */
     public static int _SC_ASYNCHRONOUS_IO() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PRIORITIZED_IO = 13;
+     * }
+     */
     public static int _SC_PRIORITIZED_IO() {
         return (int)13L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SYNCHRONIZED_IO = 14;
+     * }
+     */
     public static int _SC_SYNCHRONIZED_IO() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FSYNC = 15;
+     * }
+     */
     public static int _SC_FSYNC() {
         return (int)15L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MAPPED_FILES = 16;
+     * }
+     */
     public static int _SC_MAPPED_FILES() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MEMLOCK = 17;
+     * }
+     */
     public static int _SC_MEMLOCK() {
         return (int)17L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MEMLOCK_RANGE = 18;
+     * }
+     */
     public static int _SC_MEMLOCK_RANGE() {
         return (int)18L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MEMORY_PROTECTION = 19;
+     * }
+     */
     public static int _SC_MEMORY_PROTECTION() {
         return (int)19L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MESSAGE_PASSING = 20;
+     * }
+     */
     public static int _SC_MESSAGE_PASSING() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SEMAPHORES = 21;
+     * }
+     */
     public static int _SC_SEMAPHORES() {
         return (int)21L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SHARED_MEMORY_OBJECTS = 22;
+     * }
+     */
     public static int _SC_SHARED_MEMORY_OBJECTS() {
         return (int)22L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_AIO_LISTIO_MAX = 23;
+     * }
+     */
     public static int _SC_AIO_LISTIO_MAX() {
         return (int)23L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_AIO_MAX = 24;
+     * }
+     */
     public static int _SC_AIO_MAX() {
         return (int)24L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_AIO_PRIO_DELTA_MAX = 25;
+     * }
+     */
     public static int _SC_AIO_PRIO_DELTA_MAX() {
         return (int)25L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_DELAYTIMER_MAX = 26;
+     * }
+     */
     public static int _SC_DELAYTIMER_MAX() {
         return (int)26L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MQ_OPEN_MAX = 27;
+     * }
+     */
     public static int _SC_MQ_OPEN_MAX() {
         return (int)27L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MQ_PRIO_MAX = 28;
+     * }
+     */
     public static int _SC_MQ_PRIO_MAX() {
         return (int)28L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_VERSION = 29;
+     * }
+     */
     public static int _SC_VERSION() {
         return (int)29L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PAGESIZE = 30;
+     * }
+     */
     public static int _SC_PAGESIZE() {
         return (int)30L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_RTSIG_MAX = 31;
+     * }
+     */
     public static int _SC_RTSIG_MAX() {
         return (int)31L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SEM_NSEMS_MAX = 32;
+     * }
+     */
     public static int _SC_SEM_NSEMS_MAX() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SEM_VALUE_MAX = 33;
+     * }
+     */
     public static int _SC_SEM_VALUE_MAX() {
         return (int)33L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SIGQUEUE_MAX = 34;
+     * }
+     */
     public static int _SC_SIGQUEUE_MAX() {
         return (int)34L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TIMER_MAX = 35;
+     * }
+     */
     public static int _SC_TIMER_MAX() {
         return (int)35L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BC_BASE_MAX = 36;
+     * }
+     */
     public static int _SC_BC_BASE_MAX() {
         return (int)36L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BC_DIM_MAX = 37;
+     * }
+     */
     public static int _SC_BC_DIM_MAX() {
         return (int)37L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BC_SCALE_MAX = 38;
+     * }
+     */
     public static int _SC_BC_SCALE_MAX() {
         return (int)38L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BC_STRING_MAX = 39;
+     * }
+     */
     public static int _SC_BC_STRING_MAX() {
         return (int)39L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_COLL_WEIGHTS_MAX = 40;
+     * }
+     */
     public static int _SC_COLL_WEIGHTS_MAX() {
         return (int)40L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_EQUIV_CLASS_MAX = 41;
+     * }
+     */
     public static int _SC_EQUIV_CLASS_MAX() {
         return (int)41L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_EXPR_NEST_MAX = 42;
+     * }
+     */
     public static int _SC_EXPR_NEST_MAX() {
         return (int)42L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LINE_MAX = 43;
+     * }
+     */
     public static int _SC_LINE_MAX() {
         return (int)43L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_RE_DUP_MAX = 44;
+     * }
+     */
     public static int _SC_RE_DUP_MAX() {
         return (int)44L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CHARCLASS_NAME_MAX = 45;
+     * }
+     */
     public static int _SC_CHARCLASS_NAME_MAX() {
         return (int)45L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_VERSION = 46;
+     * }
+     */
     public static int _SC_2_VERSION() {
         return (int)46L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_C_BIND = 47;
+     * }
+     */
     public static int _SC_2_C_BIND() {
         return (int)47L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_C_DEV = 48;
+     * }
+     */
     public static int _SC_2_C_DEV() {
         return (int)48L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_FORT_DEV = 49;
+     * }
+     */
     public static int _SC_2_FORT_DEV() {
         return (int)49L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_FORT_RUN = 50;
+     * }
+     */
     public static int _SC_2_FORT_RUN() {
         return (int)50L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_SW_DEV = 51;
+     * }
+     */
     public static int _SC_2_SW_DEV() {
         return (int)51L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_LOCALEDEF = 52;
+     * }
+     */
     public static int _SC_2_LOCALEDEF() {
         return (int)52L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII = 53;
+     * }
+     */
     public static int _SC_PII() {
         return (int)53L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_XTI = 54;
+     * }
+     */
     public static int _SC_PII_XTI() {
         return (int)54L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_SOCKET = 55;
+     * }
+     */
     public static int _SC_PII_SOCKET() {
         return (int)55L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_INTERNET = 56;
+     * }
+     */
     public static int _SC_PII_INTERNET() {
         return (int)56L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_OSI = 57;
+     * }
+     */
     public static int _SC_PII_OSI() {
         return (int)57L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_POLL = 58;
+     * }
+     */
     public static int _SC_POLL() {
         return (int)58L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SELECT = 59;
+     * }
+     */
     public static int _SC_SELECT() {
         return (int)59L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_UIO_MAXIOV = 60;
+     * }
+     */
     public static int _SC_UIO_MAXIOV() {
         return (int)60L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_IOV_MAX = 60;
+     * }
+     */
     public static int _SC_IOV_MAX() {
         return (int)60L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_INTERNET_STREAM = 61;
+     * }
+     */
     public static int _SC_PII_INTERNET_STREAM() {
         return (int)61L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_INTERNET_DGRAM = 62;
+     * }
+     */
     public static int _SC_PII_INTERNET_DGRAM() {
         return (int)62L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_OSI_COTS = 63;
+     * }
+     */
     public static int _SC_PII_OSI_COTS() {
         return (int)63L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_OSI_CLTS = 64;
+     * }
+     */
     public static int _SC_PII_OSI_CLTS() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PII_OSI_M = 65;
+     * }
+     */
     public static int _SC_PII_OSI_M() {
         return (int)65L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_T_IOV_MAX = 66;
+     * }
+     */
     public static int _SC_T_IOV_MAX() {
         return (int)66L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREADS = 67;
+     * }
+     */
     public static int _SC_THREADS() {
         return (int)67L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_SAFE_FUNCTIONS = 68;
+     * }
+     */
     public static int _SC_THREAD_SAFE_FUNCTIONS() {
         return (int)68L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_GETGR_R_SIZE_MAX = 69;
+     * }
+     */
     public static int _SC_GETGR_R_SIZE_MAX() {
         return (int)69L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_GETPW_R_SIZE_MAX = 70;
+     * }
+     */
     public static int _SC_GETPW_R_SIZE_MAX() {
         return (int)70L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LOGIN_NAME_MAX = 71;
+     * }
+     */
     public static int _SC_LOGIN_NAME_MAX() {
         return (int)71L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TTY_NAME_MAX = 72;
+     * }
+     */
     public static int _SC_TTY_NAME_MAX() {
         return (int)72L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_DESTRUCTOR_ITERATIONS = 73;
+     * }
+     */
     public static int _SC_THREAD_DESTRUCTOR_ITERATIONS() {
         return (int)73L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_KEYS_MAX = 74;
+     * }
+     */
     public static int _SC_THREAD_KEYS_MAX() {
         return (int)74L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_STACK_MIN = 75;
+     * }
+     */
     public static int _SC_THREAD_STACK_MIN() {
         return (int)75L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_THREADS_MAX = 76;
+     * }
+     */
     public static int _SC_THREAD_THREADS_MAX() {
         return (int)76L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_ATTR_STACKADDR = 77;
+     * }
+     */
     public static int _SC_THREAD_ATTR_STACKADDR() {
         return (int)77L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_ATTR_STACKSIZE = 78;
+     * }
+     */
     public static int _SC_THREAD_ATTR_STACKSIZE() {
         return (int)78L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_PRIORITY_SCHEDULING = 79;
+     * }
+     */
     public static int _SC_THREAD_PRIORITY_SCHEDULING() {
         return (int)79L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_PRIO_INHERIT = 80;
+     * }
+     */
     public static int _SC_THREAD_PRIO_INHERIT() {
         return (int)80L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_PRIO_PROTECT = 81;
+     * }
+     */
     public static int _SC_THREAD_PRIO_PROTECT() {
         return (int)81L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_PROCESS_SHARED = 82;
+     * }
+     */
     public static int _SC_THREAD_PROCESS_SHARED() {
         return (int)82L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NPROCESSORS_CONF = 83;
+     * }
+     */
     public static int _SC_NPROCESSORS_CONF() {
         return (int)83L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NPROCESSORS_ONLN = 84;
+     * }
+     */
     public static int _SC_NPROCESSORS_ONLN() {
         return (int)84L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PHYS_PAGES = 85;
+     * }
+     */
     public static int _SC_PHYS_PAGES() {
         return (int)85L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_AVPHYS_PAGES = 86;
+     * }
+     */
     public static int _SC_AVPHYS_PAGES() {
         return (int)86L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_ATEXIT_MAX = 87;
+     * }
+     */
     public static int _SC_ATEXIT_MAX() {
         return (int)87L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PASS_MAX = 88;
+     * }
+     */
     public static int _SC_PASS_MAX() {
         return (int)88L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_VERSION = 89;
+     * }
+     */
     public static int _SC_XOPEN_VERSION() {
         return (int)89L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_XCU_VERSION = 90;
+     * }
+     */
     public static int _SC_XOPEN_XCU_VERSION() {
         return (int)90L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_UNIX = 91;
+     * }
+     */
     public static int _SC_XOPEN_UNIX() {
         return (int)91L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_CRYPT = 92;
+     * }
+     */
     public static int _SC_XOPEN_CRYPT() {
         return (int)92L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_ENH_I18N = 93;
+     * }
+     */
     public static int _SC_XOPEN_ENH_I18N() {
         return (int)93L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_SHM = 94;
+     * }
+     */
     public static int _SC_XOPEN_SHM() {
         return (int)94L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_CHAR_TERM = 95;
+     * }
+     */
     public static int _SC_2_CHAR_TERM() {
         return (int)95L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_C_VERSION = 96;
+     * }
+     */
     public static int _SC_2_C_VERSION() {
         return (int)96L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_UPE = 97;
+     * }
+     */
     public static int _SC_2_UPE() {
         return (int)97L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_XPG2 = 98;
+     * }
+     */
     public static int _SC_XOPEN_XPG2() {
         return (int)98L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_XPG3 = 99;
+     * }
+     */
     public static int _SC_XOPEN_XPG3() {
         return (int)99L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_XPG4 = 100;
+     * }
+     */
     public static int _SC_XOPEN_XPG4() {
         return (int)100L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CHAR_BIT = 101;
+     * }
+     */
     public static int _SC_CHAR_BIT() {
         return (int)101L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CHAR_MAX = 102;
+     * }
+     */
     public static int _SC_CHAR_MAX() {
         return (int)102L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CHAR_MIN = 103;
+     * }
+     */
     public static int _SC_CHAR_MIN() {
         return (int)103L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_INT_MAX = 104;
+     * }
+     */
     public static int _SC_INT_MAX() {
         return (int)104L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_INT_MIN = 105;
+     * }
+     */
     public static int _SC_INT_MIN() {
         return (int)105L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LONG_BIT = 106;
+     * }
+     */
     public static int _SC_LONG_BIT() {
         return (int)106L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_WORD_BIT = 107;
+     * }
+     */
     public static int _SC_WORD_BIT() {
         return (int)107L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MB_LEN_MAX = 108;
+     * }
+     */
     public static int _SC_MB_LEN_MAX() {
         return (int)108L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NZERO = 109;
+     * }
+     */
     public static int _SC_NZERO() {
         return (int)109L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SSIZE_MAX = 110;
+     * }
+     */
     public static int _SC_SSIZE_MAX() {
         return (int)110L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SCHAR_MAX = 111;
+     * }
+     */
     public static int _SC_SCHAR_MAX() {
         return (int)111L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SCHAR_MIN = 112;
+     * }
+     */
     public static int _SC_SCHAR_MIN() {
         return (int)112L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SHRT_MAX = 113;
+     * }
+     */
     public static int _SC_SHRT_MAX() {
         return (int)113L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SHRT_MIN = 114;
+     * }
+     */
     public static int _SC_SHRT_MIN() {
         return (int)114L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_UCHAR_MAX = 115;
+     * }
+     */
     public static int _SC_UCHAR_MAX() {
         return (int)115L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_UINT_MAX = 116;
+     * }
+     */
     public static int _SC_UINT_MAX() {
         return (int)116L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_ULONG_MAX = 117;
+     * }
+     */
     public static int _SC_ULONG_MAX() {
         return (int)117L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_USHRT_MAX = 118;
+     * }
+     */
     public static int _SC_USHRT_MAX() {
         return (int)118L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_ARGMAX = 119;
+     * }
+     */
     public static int _SC_NL_ARGMAX() {
         return (int)119L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_LANGMAX = 120;
+     * }
+     */
     public static int _SC_NL_LANGMAX() {
         return (int)120L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_MSGMAX = 121;
+     * }
+     */
     public static int _SC_NL_MSGMAX() {
         return (int)121L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_NMAX = 122;
+     * }
+     */
     public static int _SC_NL_NMAX() {
         return (int)122L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_SETMAX = 123;
+     * }
+     */
     public static int _SC_NL_SETMAX() {
         return (int)123L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NL_TEXTMAX = 124;
+     * }
+     */
     public static int _SC_NL_TEXTMAX() {
         return (int)124L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XBS5_ILP32_OFF32 = 125;
+     * }
+     */
     public static int _SC_XBS5_ILP32_OFF32() {
         return (int)125L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XBS5_ILP32_OFFBIG = 126;
+     * }
+     */
     public static int _SC_XBS5_ILP32_OFFBIG() {
         return (int)126L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XBS5_LP64_OFF64 = 127;
+     * }
+     */
     public static int _SC_XBS5_LP64_OFF64() {
         return (int)127L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XBS5_LPBIG_OFFBIG = 128;
+     * }
+     */
     public static int _SC_XBS5_LPBIG_OFFBIG() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_LEGACY = 129;
+     * }
+     */
     public static int _SC_XOPEN_LEGACY() {
         return (int)129L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_REALTIME = 130;
+     * }
+     */
     public static int _SC_XOPEN_REALTIME() {
         return (int)130L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_REALTIME_THREADS = 131;
+     * }
+     */
     public static int _SC_XOPEN_REALTIME_THREADS() {
         return (int)131L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_ADVISORY_INFO = 132;
+     * }
+     */
     public static int _SC_ADVISORY_INFO() {
         return (int)132L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BARRIERS = 133;
+     * }
+     */
     public static int _SC_BARRIERS() {
         return (int)133L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_BASE = 134;
+     * }
+     */
     public static int _SC_BASE() {
         return (int)134L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_C_LANG_SUPPORT = 135;
+     * }
+     */
     public static int _SC_C_LANG_SUPPORT() {
         return (int)135L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_C_LANG_SUPPORT_R = 136;
+     * }
+     */
     public static int _SC_C_LANG_SUPPORT_R() {
         return (int)136L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CLOCK_SELECTION = 137;
+     * }
+     */
     public static int _SC_CLOCK_SELECTION() {
         return (int)137L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_CPUTIME = 138;
+     * }
+     */
     public static int _SC_CPUTIME() {
         return (int)138L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_CPUTIME = 139;
+     * }
+     */
     public static int _SC_THREAD_CPUTIME() {
         return (int)139L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_DEVICE_IO = 140;
+     * }
+     */
     public static int _SC_DEVICE_IO() {
         return (int)140L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_DEVICE_SPECIFIC = 141;
+     * }
+     */
     public static int _SC_DEVICE_SPECIFIC() {
         return (int)141L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_DEVICE_SPECIFIC_R = 142;
+     * }
+     */
     public static int _SC_DEVICE_SPECIFIC_R() {
         return (int)142L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FD_MGMT = 143;
+     * }
+     */
     public static int _SC_FD_MGMT() {
         return (int)143L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FIFO = 144;
+     * }
+     */
     public static int _SC_FIFO() {
         return (int)144L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_PIPE = 145;
+     * }
+     */
     public static int _SC_PIPE() {
         return (int)145L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FILE_ATTRIBUTES = 146;
+     * }
+     */
     public static int _SC_FILE_ATTRIBUTES() {
         return (int)146L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FILE_LOCKING = 147;
+     * }
+     */
     public static int _SC_FILE_LOCKING() {
         return (int)147L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_FILE_SYSTEM = 148;
+     * }
+     */
     public static int _SC_FILE_SYSTEM() {
         return (int)148L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MONOTONIC_CLOCK = 149;
+     * }
+     */
     public static int _SC_MONOTONIC_CLOCK() {
         return (int)149L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MULTI_PROCESS = 150;
+     * }
+     */
     public static int _SC_MULTI_PROCESS() {
         return (int)150L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SINGLE_PROCESS = 151;
+     * }
+     */
     public static int _SC_SINGLE_PROCESS() {
         return (int)151L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_NETWORKING = 152;
+     * }
+     */
     public static int _SC_NETWORKING() {
         return (int)152L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_READER_WRITER_LOCKS = 153;
+     * }
+     */
     public static int _SC_READER_WRITER_LOCKS() {
         return (int)153L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SPIN_LOCKS = 154;
+     * }
+     */
     public static int _SC_SPIN_LOCKS() {
         return (int)154L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_REGEXP = 155;
+     * }
+     */
     public static int _SC_REGEXP() {
         return (int)155L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_REGEX_VERSION = 156;
+     * }
+     */
     public static int _SC_REGEX_VERSION() {
         return (int)156L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SHELL = 157;
+     * }
+     */
     public static int _SC_SHELL() {
         return (int)157L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SIGNALS = 158;
+     * }
+     */
     public static int _SC_SIGNALS() {
         return (int)158L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SPAWN = 159;
+     * }
+     */
     public static int _SC_SPAWN() {
         return (int)159L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SPORADIC_SERVER = 160;
+     * }
+     */
     public static int _SC_SPORADIC_SERVER() {
         return (int)160L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_SPORADIC_SERVER = 161;
+     * }
+     */
     public static int _SC_THREAD_SPORADIC_SERVER() {
         return (int)161L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SYSTEM_DATABASE = 162;
+     * }
+     */
     public static int _SC_SYSTEM_DATABASE() {
         return (int)162L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SYSTEM_DATABASE_R = 163;
+     * }
+     */
     public static int _SC_SYSTEM_DATABASE_R() {
         return (int)163L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TIMEOUTS = 164;
+     * }
+     */
     public static int _SC_TIMEOUTS() {
         return (int)164L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TYPED_MEMORY_OBJECTS = 165;
+     * }
+     */
     public static int _SC_TYPED_MEMORY_OBJECTS() {
         return (int)165L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_USER_GROUPS = 166;
+     * }
+     */
     public static int _SC_USER_GROUPS() {
         return (int)166L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_USER_GROUPS_R = 167;
+     * }
+     */
     public static int _SC_USER_GROUPS_R() {
         return (int)167L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS = 168;
+     * }
+     */
     public static int _SC_2_PBS() {
         return (int)168L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS_ACCOUNTING = 169;
+     * }
+     */
     public static int _SC_2_PBS_ACCOUNTING() {
         return (int)169L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS_LOCATE = 170;
+     * }
+     */
     public static int _SC_2_PBS_LOCATE() {
         return (int)170L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS_MESSAGE = 171;
+     * }
+     */
     public static int _SC_2_PBS_MESSAGE() {
         return (int)171L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS_TRACK = 172;
+     * }
+     */
     public static int _SC_2_PBS_TRACK() {
         return (int)172L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SYMLOOP_MAX = 173;
+     * }
+     */
     public static int _SC_SYMLOOP_MAX() {
         return (int)173L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_STREAMS = 174;
+     * }
+     */
     public static int _SC_STREAMS() {
         return (int)174L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_2_PBS_CHECKPOINT = 175;
+     * }
+     */
     public static int _SC_2_PBS_CHECKPOINT() {
         return (int)175L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V6_ILP32_OFF32 = 176;
+     * }
+     */
     public static int _SC_V6_ILP32_OFF32() {
         return (int)176L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V6_ILP32_OFFBIG = 177;
+     * }
+     */
     public static int _SC_V6_ILP32_OFFBIG() {
         return (int)177L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V6_LP64_OFF64 = 178;
+     * }
+     */
     public static int _SC_V6_LP64_OFF64() {
         return (int)178L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V6_LPBIG_OFFBIG = 179;
+     * }
+     */
     public static int _SC_V6_LPBIG_OFFBIG() {
         return (int)179L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_HOST_NAME_MAX = 180;
+     * }
+     */
     public static int _SC_HOST_NAME_MAX() {
         return (int)180L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE = 181;
+     * }
+     */
     public static int _SC_TRACE() {
         return (int)181L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_EVENT_FILTER = 182;
+     * }
+     */
     public static int _SC_TRACE_EVENT_FILTER() {
         return (int)182L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_INHERIT = 183;
+     * }
+     */
     public static int _SC_TRACE_INHERIT() {
         return (int)183L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_LOG = 184;
+     * }
+     */
     public static int _SC_TRACE_LOG() {
         return (int)184L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_ICACHE_SIZE = 185;
+     * }
+     */
     public static int _SC_LEVEL1_ICACHE_SIZE() {
         return (int)185L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_ICACHE_ASSOC = 186;
+     * }
+     */
     public static int _SC_LEVEL1_ICACHE_ASSOC() {
         return (int)186L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_ICACHE_LINESIZE = 187;
+     * }
+     */
     public static int _SC_LEVEL1_ICACHE_LINESIZE() {
         return (int)187L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_DCACHE_SIZE = 188;
+     * }
+     */
     public static int _SC_LEVEL1_DCACHE_SIZE() {
         return (int)188L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_DCACHE_ASSOC = 189;
+     * }
+     */
     public static int _SC_LEVEL1_DCACHE_ASSOC() {
         return (int)189L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL1_DCACHE_LINESIZE = 190;
+     * }
+     */
     public static int _SC_LEVEL1_DCACHE_LINESIZE() {
         return (int)190L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL2_CACHE_SIZE = 191;
+     * }
+     */
     public static int _SC_LEVEL2_CACHE_SIZE() {
         return (int)191L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL2_CACHE_ASSOC = 192;
+     * }
+     */
     public static int _SC_LEVEL2_CACHE_ASSOC() {
         return (int)192L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL2_CACHE_LINESIZE = 193;
+     * }
+     */
     public static int _SC_LEVEL2_CACHE_LINESIZE() {
         return (int)193L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL3_CACHE_SIZE = 194;
+     * }
+     */
     public static int _SC_LEVEL3_CACHE_SIZE() {
         return (int)194L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL3_CACHE_ASSOC = 195;
+     * }
+     */
     public static int _SC_LEVEL3_CACHE_ASSOC() {
         return (int)195L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL3_CACHE_LINESIZE = 196;
+     * }
+     */
     public static int _SC_LEVEL3_CACHE_LINESIZE() {
         return (int)196L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL4_CACHE_SIZE = 197;
+     * }
+     */
     public static int _SC_LEVEL4_CACHE_SIZE() {
         return (int)197L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL4_CACHE_ASSOC = 198;
+     * }
+     */
     public static int _SC_LEVEL4_CACHE_ASSOC() {
         return (int)198L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_LEVEL4_CACHE_LINESIZE = 199;
+     * }
+     */
     public static int _SC_LEVEL4_CACHE_LINESIZE() {
         return (int)199L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_IPV6 = 235;
+     * }
+     */
     public static int _SC_IPV6() {
         return (int)235L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_RAW_SOCKETS = 236;
+     * }
+     */
     public static int _SC_RAW_SOCKETS() {
         return (int)236L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V7_ILP32_OFF32 = 237;
+     * }
+     */
     public static int _SC_V7_ILP32_OFF32() {
         return (int)237L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V7_ILP32_OFFBIG = 238;
+     * }
+     */
     public static int _SC_V7_ILP32_OFFBIG() {
         return (int)238L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V7_LP64_OFF64 = 239;
+     * }
+     */
     public static int _SC_V7_LP64_OFF64() {
         return (int)239L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_V7_LPBIG_OFFBIG = 240;
+     * }
+     */
     public static int _SC_V7_LPBIG_OFFBIG() {
         return (int)240L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SS_REPL_MAX = 241;
+     * }
+     */
     public static int _SC_SS_REPL_MAX() {
         return (int)241L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_EVENT_NAME_MAX = 242;
+     * }
+     */
     public static int _SC_TRACE_EVENT_NAME_MAX() {
         return (int)242L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_NAME_MAX = 243;
+     * }
+     */
     public static int _SC_TRACE_NAME_MAX() {
         return (int)243L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_SYS_MAX = 244;
+     * }
+     */
     public static int _SC_TRACE_SYS_MAX() {
         return (int)244L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_TRACE_USER_EVENT_MAX = 245;
+     * }
+     */
     public static int _SC_TRACE_USER_EVENT_MAX() {
         return (int)245L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_XOPEN_STREAMS = 246;
+     * }
+     */
     public static int _SC_XOPEN_STREAMS() {
         return (int)246L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_ROBUST_PRIO_INHERIT = 247;
+     * }
+     */
     public static int _SC_THREAD_ROBUST_PRIO_INHERIT() {
         return (int)247L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_THREAD_ROBUST_PRIO_PROTECT = 248;
+     * }
+     */
     public static int _SC_THREAD_ROBUST_PRIO_PROTECT() {
         return (int)248L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_MINSIGSTKSZ = 249;
+     * }
+     */
     public static int _SC_MINSIGSTKSZ() {
         return (int)249L;
     }
+    /**
+     * {@snippet :
+     * enum ._SC_SIGSTKSZ = 250;
+     * }
+     */
     public static int _SC_SIGSTKSZ() {
         return (int)250L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_PATH = 0;
+     * }
+     */
     public static int _CS_PATH() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_V6_WIDTH_RESTRICTED_ENVS = 1;
+     * }
+     */
     public static int _CS_V6_WIDTH_RESTRICTED_ENVS() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_GNU_LIBC_VERSION = 2;
+     * }
+     */
     public static int _CS_GNU_LIBC_VERSION() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_GNU_LIBPTHREAD_VERSION = 3;
+     * }
+     */
     public static int _CS_GNU_LIBPTHREAD_VERSION() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_V5_WIDTH_RESTRICTED_ENVS = 4;
+     * }
+     */
     public static int _CS_V5_WIDTH_RESTRICTED_ENVS() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_V7_WIDTH_RESTRICTED_ENVS = 5;
+     * }
+     */
     public static int _CS_V7_WIDTH_RESTRICTED_ENVS() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS_CFLAGS = 1000;
+     * }
+     */
     public static int _CS_LFS_CFLAGS() {
         return (int)1000L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS_LDFLAGS = 1001;
+     * }
+     */
     public static int _CS_LFS_LDFLAGS() {
         return (int)1001L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS_LIBS = 1002;
+     * }
+     */
     public static int _CS_LFS_LIBS() {
         return (int)1002L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS_LINTFLAGS = 1003;
+     * }
+     */
     public static int _CS_LFS_LINTFLAGS() {
         return (int)1003L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS64_CFLAGS = 1004;
+     * }
+     */
     public static int _CS_LFS64_CFLAGS() {
         return (int)1004L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS64_LDFLAGS = 1005;
+     * }
+     */
     public static int _CS_LFS64_LDFLAGS() {
         return (int)1005L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS64_LIBS = 1006;
+     * }
+     */
     public static int _CS_LFS64_LIBS() {
         return (int)1006L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_LFS64_LINTFLAGS = 1007;
+     * }
+     */
     public static int _CS_LFS64_LINTFLAGS() {
         return (int)1007L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFF32_CFLAGS = 1100;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFF32_CFLAGS() {
         return (int)1100L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFF32_LDFLAGS = 1101;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFF32_LDFLAGS() {
         return (int)1101L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFF32_LIBS = 1102;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFF32_LIBS() {
         return (int)1102L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFF32_LINTFLAGS = 1103;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFF32_LINTFLAGS() {
         return (int)1103L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFFBIG_CFLAGS = 1104;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFFBIG_CFLAGS() {
         return (int)1104L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFFBIG_LDFLAGS = 1105;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFFBIG_LDFLAGS() {
         return (int)1105L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFFBIG_LIBS = 1106;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFFBIG_LIBS() {
         return (int)1106L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_ILP32_OFFBIG_LINTFLAGS = 1107;
+     * }
+     */
     public static int _CS_XBS5_ILP32_OFFBIG_LINTFLAGS() {
         return (int)1107L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LP64_OFF64_CFLAGS = 1108;
+     * }
+     */
     public static int _CS_XBS5_LP64_OFF64_CFLAGS() {
         return (int)1108L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LP64_OFF64_LDFLAGS = 1109;
+     * }
+     */
     public static int _CS_XBS5_LP64_OFF64_LDFLAGS() {
         return (int)1109L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LP64_OFF64_LIBS = 1110;
+     * }
+     */
     public static int _CS_XBS5_LP64_OFF64_LIBS() {
         return (int)1110L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LP64_OFF64_LINTFLAGS = 1111;
+     * }
+     */
     public static int _CS_XBS5_LP64_OFF64_LINTFLAGS() {
         return (int)1111L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LPBIG_OFFBIG_CFLAGS = 1112;
+     * }
+     */
     public static int _CS_XBS5_LPBIG_OFFBIG_CFLAGS() {
         return (int)1112L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LPBIG_OFFBIG_LDFLAGS = 1113;
+     * }
+     */
     public static int _CS_XBS5_LPBIG_OFFBIG_LDFLAGS() {
         return (int)1113L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LPBIG_OFFBIG_LIBS = 1114;
+     * }
+     */
     public static int _CS_XBS5_LPBIG_OFFBIG_LIBS() {
         return (int)1114L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_XBS5_LPBIG_OFFBIG_LINTFLAGS = 1115;
+     * }
+     */
     public static int _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS() {
         return (int)1115L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFF32_CFLAGS = 1116;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFF32_CFLAGS() {
         return (int)1116L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFF32_LDFLAGS = 1117;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFF32_LDFLAGS() {
         return (int)1117L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFF32_LIBS = 1118;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFF32_LIBS() {
         return (int)1118L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFF32_LINTFLAGS = 1119;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS() {
         return (int)1119L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFFBIG_CFLAGS = 1120;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS() {
         return (int)1120L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS = 1121;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS() {
         return (int)1121L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFFBIG_LIBS = 1122;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFFBIG_LIBS() {
         return (int)1122L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS = 1123;
+     * }
+     */
     public static int _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS() {
         return (int)1123L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LP64_OFF64_CFLAGS = 1124;
+     * }
+     */
     public static int _CS_POSIX_V6_LP64_OFF64_CFLAGS() {
         return (int)1124L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LP64_OFF64_LDFLAGS = 1125;
+     * }
+     */
     public static int _CS_POSIX_V6_LP64_OFF64_LDFLAGS() {
         return (int)1125L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LP64_OFF64_LIBS = 1126;
+     * }
+     */
     public static int _CS_POSIX_V6_LP64_OFF64_LIBS() {
         return (int)1126L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LP64_OFF64_LINTFLAGS = 1127;
+     * }
+     */
     public static int _CS_POSIX_V6_LP64_OFF64_LINTFLAGS() {
         return (int)1127L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS = 1128;
+     * }
+     */
     public static int _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS() {
         return (int)1128L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS = 1129;
+     * }
+     */
     public static int _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS() {
         return (int)1129L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LPBIG_OFFBIG_LIBS = 1130;
+     * }
+     */
     public static int _CS_POSIX_V6_LPBIG_OFFBIG_LIBS() {
         return (int)1130L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS = 1131;
+     * }
+     */
     public static int _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS() {
         return (int)1131L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFF32_CFLAGS = 1132;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFF32_CFLAGS() {
         return (int)1132L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFF32_LDFLAGS = 1133;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFF32_LDFLAGS() {
         return (int)1133L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFF32_LIBS = 1134;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFF32_LIBS() {
         return (int)1134L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFF32_LINTFLAGS = 1135;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS() {
         return (int)1135L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFFBIG_CFLAGS = 1136;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS() {
         return (int)1136L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS = 1137;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS() {
         return (int)1137L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFFBIG_LIBS = 1138;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFFBIG_LIBS() {
         return (int)1138L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS = 1139;
+     * }
+     */
     public static int _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS() {
         return (int)1139L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LP64_OFF64_CFLAGS = 1140;
+     * }
+     */
     public static int _CS_POSIX_V7_LP64_OFF64_CFLAGS() {
         return (int)1140L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LP64_OFF64_LDFLAGS = 1141;
+     * }
+     */
     public static int _CS_POSIX_V7_LP64_OFF64_LDFLAGS() {
         return (int)1141L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LP64_OFF64_LIBS = 1142;
+     * }
+     */
     public static int _CS_POSIX_V7_LP64_OFF64_LIBS() {
         return (int)1142L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LP64_OFF64_LINTFLAGS = 1143;
+     * }
+     */
     public static int _CS_POSIX_V7_LP64_OFF64_LINTFLAGS() {
         return (int)1143L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS = 1144;
+     * }
+     */
     public static int _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS() {
         return (int)1144L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS = 1145;
+     * }
+     */
     public static int _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS() {
         return (int)1145L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LPBIG_OFFBIG_LIBS = 1146;
+     * }
+     */
     public static int _CS_POSIX_V7_LPBIG_OFFBIG_LIBS() {
         return (int)1146L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS = 1147;
+     * }
+     */
     public static int _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS() {
         return (int)1147L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_V6_ENV = 1148;
+     * }
+     */
     public static int _CS_V6_ENV() {
         return (int)1148L;
     }
+    /**
+     * {@snippet :
+     * enum ._CS_V7_ENV = 1149;
+     * }
+     */
     public static int _CS_V7_ENV() {
         return (int)1149L;
     }
     public static MethodHandle pathconf$MH() {
-        return RuntimeHelper.requireNonNull(constants$61.pathconf$MH,"pathconf");
+        return RuntimeHelper.requireNonNull(constants$102.const$1,"pathconf");
     }
-    public static long pathconf ( Addressable __path,  int __name) {
+    /**
+     * {@snippet :
+     * long pathconf(char* __path, int __name);
+     * }
+     */
+    public static long pathconf(MemorySegment __path, int __name) {
         var mh$ = pathconf$MH();
         try {
             return (long)mh$.invokeExact(__path, __name);
@@ -2118,9 +5565,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fpathconf$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.fpathconf$MH,"fpathconf");
+        return RuntimeHelper.requireNonNull(constants$102.const$3,"fpathconf");
     }
-    public static long fpathconf ( int __fd,  int __name) {
+    /**
+     * {@snippet :
+     * long fpathconf(int __fd, int __name);
+     * }
+     */
+    public static long fpathconf(int __fd, int __name) {
         var mh$ = fpathconf$MH();
         try {
             return (long)mh$.invokeExact(__fd, __name);
@@ -2129,9 +5581,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sysconf$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.sysconf$MH,"sysconf");
+        return RuntimeHelper.requireNonNull(constants$102.const$5,"sysconf");
     }
-    public static long sysconf ( int __name) {
+    /**
+     * {@snippet :
+     * long sysconf(int __name);
+     * }
+     */
+    public static long sysconf(int __name) {
         var mh$ = sysconf$MH();
         try {
             return (long)mh$.invokeExact(__name);
@@ -2140,9 +5597,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle confstr$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.confstr$MH,"confstr");
+        return RuntimeHelper.requireNonNull(constants$103.const$0,"confstr");
     }
-    public static long confstr ( int __name,  Addressable __buf,  long __len) {
+    /**
+     * {@snippet :
+     * size_t confstr(int __name, char* __buf, size_t __len);
+     * }
+     */
+    public static long confstr(int __name, MemorySegment __buf, long __len) {
         var mh$ = confstr$MH();
         try {
             return (long)mh$.invokeExact(__name, __buf, __len);
@@ -2151,9 +5613,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getpid$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.getpid$MH,"getpid");
+        return RuntimeHelper.requireNonNull(constants$103.const$1,"getpid");
     }
-    public static int getpid () {
+    /**
+     * {@snippet :
+     * __pid_t getpid();
+     * }
+     */
+    public static int getpid() {
         var mh$ = getpid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2162,9 +5629,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getppid$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.getppid$MH,"getppid");
+        return RuntimeHelper.requireNonNull(constants$103.const$2,"getppid");
     }
-    public static int getppid () {
+    /**
+     * {@snippet :
+     * __pid_t getppid();
+     * }
+     */
+    public static int getppid() {
         var mh$ = getppid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2173,9 +5645,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getpgrp$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.getpgrp$MH,"getpgrp");
+        return RuntimeHelper.requireNonNull(constants$103.const$3,"getpgrp");
     }
-    public static int getpgrp () {
+    /**
+     * {@snippet :
+     * __pid_t getpgrp();
+     * }
+     */
+    public static int getpgrp() {
         var mh$ = getpgrp$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2184,9 +5661,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle __getpgid$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.__getpgid$MH,"__getpgid");
+        return RuntimeHelper.requireNonNull(constants$103.const$4,"__getpgid");
     }
-    public static int __getpgid ( int __pid) {
+    /**
+     * {@snippet :
+     * __pid_t __getpgid(__pid_t __pid);
+     * }
+     */
+    public static int __getpgid(int __pid) {
         var mh$ = __getpgid$MH();
         try {
             return (int)mh$.invokeExact(__pid);
@@ -2195,9 +5677,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getpgid$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.getpgid$MH,"getpgid");
+        return RuntimeHelper.requireNonNull(constants$103.const$5,"getpgid");
     }
-    public static int getpgid ( int __pid) {
+    /**
+     * {@snippet :
+     * __pid_t getpgid(__pid_t __pid);
+     * }
+     */
+    public static int getpgid(int __pid) {
         var mh$ = getpgid$MH();
         try {
             return (int)mh$.invokeExact(__pid);
@@ -2206,9 +5693,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setpgid$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.setpgid$MH,"setpgid");
+        return RuntimeHelper.requireNonNull(constants$104.const$0,"setpgid");
     }
-    public static int setpgid ( int __pid,  int __pgid) {
+    /**
+     * {@snippet :
+     * int setpgid(__pid_t __pid, __pid_t __pgid);
+     * }
+     */
+    public static int setpgid(int __pid, int __pgid) {
         var mh$ = setpgid$MH();
         try {
             return (int)mh$.invokeExact(__pid, __pgid);
@@ -2217,9 +5709,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setpgrp$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.setpgrp$MH,"setpgrp");
+        return RuntimeHelper.requireNonNull(constants$104.const$1,"setpgrp");
     }
-    public static int setpgrp () {
+    /**
+     * {@snippet :
+     * int setpgrp();
+     * }
+     */
+    public static int setpgrp() {
         var mh$ = setpgrp$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2228,9 +5725,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setsid$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.setsid$MH,"setsid");
+        return RuntimeHelper.requireNonNull(constants$104.const$2,"setsid");
     }
-    public static int setsid () {
+    /**
+     * {@snippet :
+     * __pid_t setsid();
+     * }
+     */
+    public static int setsid() {
         var mh$ = setsid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2239,9 +5741,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getsid$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.getsid$MH,"getsid");
+        return RuntimeHelper.requireNonNull(constants$104.const$3,"getsid");
     }
-    public static int getsid ( int __pid) {
+    /**
+     * {@snippet :
+     * __pid_t getsid(__pid_t __pid);
+     * }
+     */
+    public static int getsid(int __pid) {
         var mh$ = getsid$MH();
         try {
             return (int)mh$.invokeExact(__pid);
@@ -2250,9 +5757,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getuid$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.getuid$MH,"getuid");
+        return RuntimeHelper.requireNonNull(constants$104.const$4,"getuid");
     }
-    public static int getuid () {
+    /**
+     * {@snippet :
+     * __uid_t getuid();
+     * }
+     */
+    public static int getuid() {
         var mh$ = getuid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2261,9 +5773,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle geteuid$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.geteuid$MH,"geteuid");
+        return RuntimeHelper.requireNonNull(constants$104.const$5,"geteuid");
     }
-    public static int geteuid () {
+    /**
+     * {@snippet :
+     * __uid_t geteuid();
+     * }
+     */
+    public static int geteuid() {
         var mh$ = geteuid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2272,9 +5789,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getgid$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.getgid$MH,"getgid");
+        return RuntimeHelper.requireNonNull(constants$105.const$0,"getgid");
     }
-    public static int getgid () {
+    /**
+     * {@snippet :
+     * __gid_t getgid();
+     * }
+     */
+    public static int getgid() {
         var mh$ = getgid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2283,9 +5805,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getegid$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.getegid$MH,"getegid");
+        return RuntimeHelper.requireNonNull(constants$105.const$1,"getegid");
     }
-    public static int getegid () {
+    /**
+     * {@snippet :
+     * __gid_t getegid();
+     * }
+     */
+    public static int getegid() {
         var mh$ = getegid$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2294,9 +5821,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getgroups$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.getgroups$MH,"getgroups");
+        return RuntimeHelper.requireNonNull(constants$105.const$2,"getgroups");
     }
-    public static int getgroups ( int __size,  Addressable __list) {
+    /**
+     * {@snippet :
+     * int getgroups(int __size, __gid_t __list[]);
+     * }
+     */
+    public static int getgroups(int __size, MemorySegment __list) {
         var mh$ = getgroups$MH();
         try {
             return (int)mh$.invokeExact(__size, __list);
@@ -2305,9 +5837,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setuid$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.setuid$MH,"setuid");
+        return RuntimeHelper.requireNonNull(constants$105.const$3,"setuid");
     }
-    public static int setuid ( int __uid) {
+    /**
+     * {@snippet :
+     * int setuid(__uid_t __uid);
+     * }
+     */
+    public static int setuid(int __uid) {
         var mh$ = setuid$MH();
         try {
             return (int)mh$.invokeExact(__uid);
@@ -2316,9 +5853,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setreuid$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.setreuid$MH,"setreuid");
+        return RuntimeHelper.requireNonNull(constants$105.const$4,"setreuid");
     }
-    public static int setreuid ( int __ruid,  int __euid) {
+    /**
+     * {@snippet :
+     * int setreuid(__uid_t __ruid, __uid_t __euid);
+     * }
+     */
+    public static int setreuid(int __ruid, int __euid) {
         var mh$ = setreuid$MH();
         try {
             return (int)mh$.invokeExact(__ruid, __euid);
@@ -2327,9 +5869,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle seteuid$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.seteuid$MH,"seteuid");
+        return RuntimeHelper.requireNonNull(constants$105.const$5,"seteuid");
     }
-    public static int seteuid ( int __uid) {
+    /**
+     * {@snippet :
+     * int seteuid(__uid_t __uid);
+     * }
+     */
+    public static int seteuid(int __uid) {
         var mh$ = seteuid$MH();
         try {
             return (int)mh$.invokeExact(__uid);
@@ -2338,9 +5885,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setgid$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.setgid$MH,"setgid");
+        return RuntimeHelper.requireNonNull(constants$106.const$0,"setgid");
     }
-    public static int setgid ( int __gid) {
+    /**
+     * {@snippet :
+     * int setgid(__gid_t __gid);
+     * }
+     */
+    public static int setgid(int __gid) {
         var mh$ = setgid$MH();
         try {
             return (int)mh$.invokeExact(__gid);
@@ -2349,9 +5901,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setregid$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.setregid$MH,"setregid");
+        return RuntimeHelper.requireNonNull(constants$106.const$1,"setregid");
     }
-    public static int setregid ( int __rgid,  int __egid) {
+    /**
+     * {@snippet :
+     * int setregid(__gid_t __rgid, __gid_t __egid);
+     * }
+     */
+    public static int setregid(int __rgid, int __egid) {
         var mh$ = setregid$MH();
         try {
             return (int)mh$.invokeExact(__rgid, __egid);
@@ -2360,9 +5917,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setegid$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.setegid$MH,"setegid");
+        return RuntimeHelper.requireNonNull(constants$106.const$2,"setegid");
     }
-    public static int setegid ( int __gid) {
+    /**
+     * {@snippet :
+     * int setegid(__gid_t __gid);
+     * }
+     */
+    public static int setegid(int __gid) {
         var mh$ = setegid$MH();
         try {
             return (int)mh$.invokeExact(__gid);
@@ -2371,9 +5933,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fork$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.fork$MH,"fork");
+        return RuntimeHelper.requireNonNull(constants$106.const$3,"fork");
     }
-    public static int fork () {
+    /**
+     * {@snippet :
+     * __pid_t fork();
+     * }
+     */
+    public static int fork() {
         var mh$ = fork$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2382,9 +5949,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle vfork$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.vfork$MH,"vfork");
+        return RuntimeHelper.requireNonNull(constants$106.const$4,"vfork");
     }
-    public static int vfork () {
+    /**
+     * {@snippet :
+     * int vfork();
+     * }
+     */
+    public static int vfork() {
         var mh$ = vfork$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2393,20 +5965,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ttyname$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.ttyname$MH,"ttyname");
+        return RuntimeHelper.requireNonNull(constants$106.const$5,"ttyname");
     }
-    public static MemoryAddress ttyname ( int __fd) {
+    /**
+     * {@snippet :
+     * char* ttyname(int __fd);
+     * }
+     */
+    public static MemorySegment ttyname(int __fd) {
         var mh$ = ttyname$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__fd);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__fd);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle ttyname_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.ttyname_r$MH,"ttyname_r");
+        return RuntimeHelper.requireNonNull(constants$107.const$0,"ttyname_r");
     }
-    public static int ttyname_r ( int __fd,  Addressable __buf,  long __buflen) {
+    /**
+     * {@snippet :
+     * int ttyname_r(int __fd, char* __buf, size_t __buflen);
+     * }
+     */
+    public static int ttyname_r(int __fd, MemorySegment __buf, long __buflen) {
         var mh$ = ttyname_r$MH();
         try {
             return (int)mh$.invokeExact(__fd, __buf, __buflen);
@@ -2415,9 +5997,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle isatty$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.isatty$MH,"isatty");
+        return RuntimeHelper.requireNonNull(constants$107.const$1,"isatty");
     }
-    public static int isatty ( int __fd) {
+    /**
+     * {@snippet :
+     * int isatty(int __fd);
+     * }
+     */
+    public static int isatty(int __fd) {
         var mh$ = isatty$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -2426,9 +6013,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ttyslot$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.ttyslot$MH,"ttyslot");
+        return RuntimeHelper.requireNonNull(constants$107.const$2,"ttyslot");
     }
-    public static int ttyslot () {
+    /**
+     * {@snippet :
+     * int ttyslot();
+     * }
+     */
+    public static int ttyslot() {
         var mh$ = ttyslot$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2437,9 +6029,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle link$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.link$MH,"link");
+        return RuntimeHelper.requireNonNull(constants$107.const$3,"link");
     }
-    public static int link ( Addressable __from,  Addressable __to) {
+    /**
+     * {@snippet :
+     * int link(char* __from, char* __to);
+     * }
+     */
+    public static int link(MemorySegment __from, MemorySegment __to) {
         var mh$ = link$MH();
         try {
             return (int)mh$.invokeExact(__from, __to);
@@ -2448,9 +6045,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle linkat$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.linkat$MH,"linkat");
+        return RuntimeHelper.requireNonNull(constants$107.const$5,"linkat");
     }
-    public static int linkat ( int __fromfd,  Addressable __from,  int __tofd,  Addressable __to,  int __flags) {
+    /**
+     * {@snippet :
+     * int linkat(int __fromfd, char* __from, int __tofd, char* __to, int __flags);
+     * }
+     */
+    public static int linkat(int __fromfd, MemorySegment __from, int __tofd, MemorySegment __to, int __flags) {
         var mh$ = linkat$MH();
         try {
             return (int)mh$.invokeExact(__fromfd, __from, __tofd, __to, __flags);
@@ -2459,9 +6061,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle symlink$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.symlink$MH,"symlink");
+        return RuntimeHelper.requireNonNull(constants$108.const$0,"symlink");
     }
-    public static int symlink ( Addressable __from,  Addressable __to) {
+    /**
+     * {@snippet :
+     * int symlink(char* __from, char* __to);
+     * }
+     */
+    public static int symlink(MemorySegment __from, MemorySegment __to) {
         var mh$ = symlink$MH();
         try {
             return (int)mh$.invokeExact(__from, __to);
@@ -2470,9 +6077,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle readlink$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.readlink$MH,"readlink");
+        return RuntimeHelper.requireNonNull(constants$108.const$1,"readlink");
     }
-    public static long readlink ( Addressable __path,  Addressable __buf,  long __len) {
+    /**
+     * {@snippet :
+     * ssize_t readlink(char* __path, char* __buf, size_t __len);
+     * }
+     */
+    public static long readlink(MemorySegment __path, MemorySegment __buf, long __len) {
         var mh$ = readlink$MH();
         try {
             return (long)mh$.invokeExact(__path, __buf, __len);
@@ -2481,9 +6093,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle symlinkat$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.symlinkat$MH,"symlinkat");
+        return RuntimeHelper.requireNonNull(constants$108.const$3,"symlinkat");
     }
-    public static int symlinkat ( Addressable __from,  int __tofd,  Addressable __to) {
+    /**
+     * {@snippet :
+     * int symlinkat(char* __from, int __tofd, char* __to);
+     * }
+     */
+    public static int symlinkat(MemorySegment __from, int __tofd, MemorySegment __to) {
         var mh$ = symlinkat$MH();
         try {
             return (int)mh$.invokeExact(__from, __tofd, __to);
@@ -2492,9 +6109,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle readlinkat$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.readlinkat$MH,"readlinkat");
+        return RuntimeHelper.requireNonNull(constants$108.const$5,"readlinkat");
     }
-    public static long readlinkat ( int __fd,  Addressable __path,  Addressable __buf,  long __len) {
+    /**
+     * {@snippet :
+     * ssize_t readlinkat(int __fd, char* __path, char* __buf, size_t __len);
+     * }
+     */
+    public static long readlinkat(int __fd, MemorySegment __path, MemorySegment __buf, long __len) {
         var mh$ = readlinkat$MH();
         try {
             return (long)mh$.invokeExact(__fd, __path, __buf, __len);
@@ -2503,9 +6125,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle unlink$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.unlink$MH,"unlink");
+        return RuntimeHelper.requireNonNull(constants$109.const$0,"unlink");
     }
-    public static int unlink ( Addressable __name) {
+    /**
+     * {@snippet :
+     * int unlink(char* __name);
+     * }
+     */
+    public static int unlink(MemorySegment __name) {
         var mh$ = unlink$MH();
         try {
             return (int)mh$.invokeExact(__name);
@@ -2514,9 +6141,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle unlinkat$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.unlinkat$MH,"unlinkat");
+        return RuntimeHelper.requireNonNull(constants$109.const$1,"unlinkat");
     }
-    public static int unlinkat ( int __fd,  Addressable __name,  int __flag) {
+    /**
+     * {@snippet :
+     * int unlinkat(int __fd, char* __name, int __flag);
+     * }
+     */
+    public static int unlinkat(int __fd, MemorySegment __name, int __flag) {
         var mh$ = unlinkat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __name, __flag);
@@ -2525,9 +6157,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle rmdir$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.rmdir$MH,"rmdir");
+        return RuntimeHelper.requireNonNull(constants$109.const$2,"rmdir");
     }
-    public static int rmdir ( Addressable __path) {
+    /**
+     * {@snippet :
+     * int rmdir(char* __path);
+     * }
+     */
+    public static int rmdir(MemorySegment __path) {
         var mh$ = rmdir$MH();
         try {
             return (int)mh$.invokeExact(__path);
@@ -2536,9 +6173,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle tcgetpgrp$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.tcgetpgrp$MH,"tcgetpgrp");
+        return RuntimeHelper.requireNonNull(constants$109.const$3,"tcgetpgrp");
     }
-    public static int tcgetpgrp ( int __fd) {
+    /**
+     * {@snippet :
+     * __pid_t tcgetpgrp(int __fd);
+     * }
+     */
+    public static int tcgetpgrp(int __fd) {
         var mh$ = tcgetpgrp$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -2547,9 +6189,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle tcsetpgrp$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.tcsetpgrp$MH,"tcsetpgrp");
+        return RuntimeHelper.requireNonNull(constants$109.const$4,"tcsetpgrp");
     }
-    public static int tcsetpgrp ( int __fd,  int __pgrp_id) {
+    /**
+     * {@snippet :
+     * int tcsetpgrp(int __fd, __pid_t __pgrp_id);
+     * }
+     */
+    public static int tcsetpgrp(int __fd, int __pgrp_id) {
         var mh$ = tcsetpgrp$MH();
         try {
             return (int)mh$.invokeExact(__fd, __pgrp_id);
@@ -2558,20 +6205,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getlogin$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.getlogin$MH,"getlogin");
+        return RuntimeHelper.requireNonNull(constants$109.const$5,"getlogin");
     }
-    public static MemoryAddress getlogin () {
+    /**
+     * {@snippet :
+     * char* getlogin();
+     * }
+     */
+    public static MemorySegment getlogin() {
         var mh$ = getlogin$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle getlogin_r$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.getlogin_r$MH,"getlogin_r");
+        return RuntimeHelper.requireNonNull(constants$110.const$0,"getlogin_r");
     }
-    public static int getlogin_r ( Addressable __name,  long __name_len) {
+    /**
+     * {@snippet :
+     * int getlogin_r(char* __name, size_t __name_len);
+     * }
+     */
+    public static int getlogin_r(MemorySegment __name, long __name_len) {
         var mh$ = getlogin_r$MH();
         try {
             return (int)mh$.invokeExact(__name, __name_len);
@@ -2580,9 +6237,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setlogin$MH() {
-        return RuntimeHelper.requireNonNull(constants$69.setlogin$MH,"setlogin");
+        return RuntimeHelper.requireNonNull(constants$110.const$1,"setlogin");
     }
-    public static int setlogin ( Addressable __name) {
+    /**
+     * {@snippet :
+     * int setlogin(char* __name);
+     * }
+     */
+    public static int setlogin(MemorySegment __name) {
         var mh$ = setlogin$MH();
         try {
             return (int)mh$.invokeExact(__name);
@@ -2591,69 +6253,122 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MemoryLayout optarg$LAYOUT() {
-        return constants$69.optarg$LAYOUT;
+        return RuntimeHelper.POINTER;
     }
     public static VarHandle optarg$VH() {
-        return constants$69.optarg$VH;
+        return constants$19.const$0;
     }
     public static MemorySegment optarg$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$69.optarg$SEGMENT,"optarg");
+        return RuntimeHelper.requireNonNull(constants$110.const$2,"optarg");
     }
-    public static MemoryAddress optarg$get() {
-        return (java.lang.foreign.MemoryAddress) constants$69.optarg$VH.get(RuntimeHelper.requireNonNull(constants$69.optarg$SEGMENT, "optarg"));
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * char* optarg;
+     * }
+     */
+    public static MemorySegment optarg$get() {
+        return (java.lang.foreign.MemorySegment) constants$19.const$0.get(RuntimeHelper.requireNonNull(constants$110.const$2, "optarg"));
     }
-    public static void optarg$set( MemoryAddress x) {
-        constants$69.optarg$VH.set(RuntimeHelper.requireNonNull(constants$69.optarg$SEGMENT, "optarg"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * char* optarg;
+     * }
+     */
+    public static void optarg$set(MemorySegment x) {
+        constants$19.const$0.set(RuntimeHelper.requireNonNull(constants$110.const$2, "optarg"), x);
     }
     public static MemoryLayout optind$LAYOUT() {
-        return constants$69.optind$LAYOUT;
+        return JAVA_INT;
     }
     public static VarHandle optind$VH() {
-        return constants$69.optind$VH;
+        return constants$86.const$3;
     }
     public static MemorySegment optind$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$69.optind$SEGMENT,"optind");
+        return RuntimeHelper.requireNonNull(constants$110.const$3,"optind");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * int optind;
+     * }
+     */
     public static int optind$get() {
-        return (int) constants$69.optind$VH.get(RuntimeHelper.requireNonNull(constants$69.optind$SEGMENT, "optind"));
+        return (int) constants$86.const$3.get(RuntimeHelper.requireNonNull(constants$110.const$3, "optind"));
     }
-    public static void optind$set( int x) {
-        constants$69.optind$VH.set(RuntimeHelper.requireNonNull(constants$69.optind$SEGMENT, "optind"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * int optind;
+     * }
+     */
+    public static void optind$set(int x) {
+        constants$86.const$3.set(RuntimeHelper.requireNonNull(constants$110.const$3, "optind"), x);
     }
     public static MemoryLayout opterr$LAYOUT() {
-        return constants$69.opterr$LAYOUT;
+        return JAVA_INT;
     }
     public static VarHandle opterr$VH() {
-        return constants$69.opterr$VH;
+        return constants$86.const$3;
     }
     public static MemorySegment opterr$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$69.opterr$SEGMENT,"opterr");
+        return RuntimeHelper.requireNonNull(constants$110.const$4,"opterr");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * int opterr;
+     * }
+     */
     public static int opterr$get() {
-        return (int) constants$69.opterr$VH.get(RuntimeHelper.requireNonNull(constants$69.opterr$SEGMENT, "opterr"));
+        return (int) constants$86.const$3.get(RuntimeHelper.requireNonNull(constants$110.const$4, "opterr"));
     }
-    public static void opterr$set( int x) {
-        constants$69.opterr$VH.set(RuntimeHelper.requireNonNull(constants$69.opterr$SEGMENT, "opterr"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * int opterr;
+     * }
+     */
+    public static void opterr$set(int x) {
+        constants$86.const$3.set(RuntimeHelper.requireNonNull(constants$110.const$4, "opterr"), x);
     }
     public static MemoryLayout optopt$LAYOUT() {
-        return constants$69.optopt$LAYOUT;
+        return JAVA_INT;
     }
     public static VarHandle optopt$VH() {
-        return constants$69.optopt$VH;
+        return constants$86.const$3;
     }
     public static MemorySegment optopt$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$69.optopt$SEGMENT,"optopt");
+        return RuntimeHelper.requireNonNull(constants$110.const$5,"optopt");
     }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * int optopt;
+     * }
+     */
     public static int optopt$get() {
-        return (int) constants$69.optopt$VH.get(RuntimeHelper.requireNonNull(constants$69.optopt$SEGMENT, "optopt"));
+        return (int) constants$86.const$3.get(RuntimeHelper.requireNonNull(constants$110.const$5, "optopt"));
     }
-    public static void optopt$set( int x) {
-        constants$69.optopt$VH.set(RuntimeHelper.requireNonNull(constants$69.optopt$SEGMENT, "optopt"), x);
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * int optopt;
+     * }
+     */
+    public static void optopt$set(int x) {
+        constants$86.const$3.set(RuntimeHelper.requireNonNull(constants$110.const$5, "optopt"), x);
     }
     public static MethodHandle getopt$MH() {
-        return RuntimeHelper.requireNonNull(constants$69.getopt$MH,"getopt");
+        return RuntimeHelper.requireNonNull(constants$111.const$0,"getopt");
     }
-    public static int getopt ( int ___argc,  Addressable ___argv,  Addressable __shortopts) {
+    /**
+     * {@snippet :
+     * int getopt(int ___argc, char** ___argv, char* __shortopts);
+     * }
+     */
+    public static int getopt(int ___argc, MemorySegment ___argv, MemorySegment __shortopts) {
         var mh$ = getopt$MH();
         try {
             return (int)mh$.invokeExact(___argc, ___argv, __shortopts);
@@ -2662,9 +6377,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle gethostname$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.gethostname$MH,"gethostname");
+        return RuntimeHelper.requireNonNull(constants$111.const$1,"gethostname");
     }
-    public static int gethostname ( Addressable __name,  long __len) {
+    /**
+     * {@snippet :
+     * int gethostname(char* __name, size_t __len);
+     * }
+     */
+    public static int gethostname(MemorySegment __name, long __len) {
         var mh$ = gethostname$MH();
         try {
             return (int)mh$.invokeExact(__name, __len);
@@ -2673,9 +6393,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sethostname$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.sethostname$MH,"sethostname");
+        return RuntimeHelper.requireNonNull(constants$111.const$2,"sethostname");
     }
-    public static int sethostname ( Addressable __name,  long __len) {
+    /**
+     * {@snippet :
+     * int sethostname(char* __name, size_t __len);
+     * }
+     */
+    public static int sethostname(MemorySegment __name, long __len) {
         var mh$ = sethostname$MH();
         try {
             return (int)mh$.invokeExact(__name, __len);
@@ -2684,9 +6409,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sethostid$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.sethostid$MH,"sethostid");
+        return RuntimeHelper.requireNonNull(constants$111.const$3,"sethostid");
     }
-    public static int sethostid ( long __id) {
+    /**
+     * {@snippet :
+     * int sethostid(long __id);
+     * }
+     */
+    public static int sethostid(long __id) {
         var mh$ = sethostid$MH();
         try {
             return (int)mh$.invokeExact(__id);
@@ -2695,9 +6425,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getdomainname$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.getdomainname$MH,"getdomainname");
+        return RuntimeHelper.requireNonNull(constants$111.const$4,"getdomainname");
     }
-    public static int getdomainname ( Addressable __name,  long __len) {
+    /**
+     * {@snippet :
+     * int getdomainname(char* __name, size_t __len);
+     * }
+     */
+    public static int getdomainname(MemorySegment __name, long __len) {
         var mh$ = getdomainname$MH();
         try {
             return (int)mh$.invokeExact(__name, __len);
@@ -2706,9 +6441,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setdomainname$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.setdomainname$MH,"setdomainname");
+        return RuntimeHelper.requireNonNull(constants$111.const$5,"setdomainname");
     }
-    public static int setdomainname ( Addressable __name,  long __len) {
+    /**
+     * {@snippet :
+     * int setdomainname(char* __name, size_t __len);
+     * }
+     */
+    public static int setdomainname(MemorySegment __name, long __len) {
         var mh$ = setdomainname$MH();
         try {
             return (int)mh$.invokeExact(__name, __len);
@@ -2717,9 +6457,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle vhangup$MH() {
-        return RuntimeHelper.requireNonNull(constants$70.vhangup$MH,"vhangup");
+        return RuntimeHelper.requireNonNull(constants$112.const$0,"vhangup");
     }
-    public static int vhangup () {
+    /**
+     * {@snippet :
+     * int vhangup();
+     * }
+     */
+    public static int vhangup() {
         var mh$ = vhangup$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2728,9 +6473,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle revoke$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.revoke$MH,"revoke");
+        return RuntimeHelper.requireNonNull(constants$112.const$1,"revoke");
     }
-    public static int revoke ( Addressable __file) {
+    /**
+     * {@snippet :
+     * int revoke(char* __file);
+     * }
+     */
+    public static int revoke(MemorySegment __file) {
         var mh$ = revoke$MH();
         try {
             return (int)mh$.invokeExact(__file);
@@ -2739,9 +6489,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle profil$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.profil$MH,"profil");
+        return RuntimeHelper.requireNonNull(constants$112.const$3,"profil");
     }
-    public static int profil ( Addressable __sample_buffer,  long __size,  long __offset,  int __scale) {
+    /**
+     * {@snippet :
+     * int profil(unsigned short* __sample_buffer, size_t __size, size_t __offset, unsigned int __scale);
+     * }
+     */
+    public static int profil(MemorySegment __sample_buffer, long __size, long __offset, int __scale) {
         var mh$ = profil$MH();
         try {
             return (int)mh$.invokeExact(__sample_buffer, __size, __offset, __scale);
@@ -2750,9 +6505,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle acct$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.acct$MH,"acct");
+        return RuntimeHelper.requireNonNull(constants$112.const$4,"acct");
     }
-    public static int acct ( Addressable __name) {
+    /**
+     * {@snippet :
+     * int acct(char* __name);
+     * }
+     */
+    public static int acct(MemorySegment __name) {
         var mh$ = acct$MH();
         try {
             return (int)mh$.invokeExact(__name);
@@ -2761,20 +6521,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getusershell$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.getusershell$MH,"getusershell");
+        return RuntimeHelper.requireNonNull(constants$112.const$5,"getusershell");
     }
-    public static MemoryAddress getusershell () {
+    /**
+     * {@snippet :
+     * char* getusershell();
+     * }
+     */
+    public static MemorySegment getusershell() {
         var mh$ = getusershell$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact();
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle endusershell$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.endusershell$MH,"endusershell");
+        return RuntimeHelper.requireNonNull(constants$113.const$0,"endusershell");
     }
-    public static void endusershell () {
+    /**
+     * {@snippet :
+     * void endusershell();
+     * }
+     */
+    public static void endusershell() {
         var mh$ = endusershell$MH();
         try {
             mh$.invokeExact();
@@ -2783,9 +6553,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setusershell$MH() {
-        return RuntimeHelper.requireNonNull(constants$71.setusershell$MH,"setusershell");
+        return RuntimeHelper.requireNonNull(constants$113.const$1,"setusershell");
     }
-    public static void setusershell () {
+    /**
+     * {@snippet :
+     * void setusershell();
+     * }
+     */
+    public static void setusershell() {
         var mh$ = setusershell$MH();
         try {
             mh$.invokeExact();
@@ -2794,9 +6569,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle daemon$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.daemon$MH,"daemon");
+        return RuntimeHelper.requireNonNull(constants$113.const$2,"daemon");
     }
-    public static int daemon ( int __nochdir,  int __noclose) {
+    /**
+     * {@snippet :
+     * int daemon(int __nochdir, int __noclose);
+     * }
+     */
+    public static int daemon(int __nochdir, int __noclose) {
         var mh$ = daemon$MH();
         try {
             return (int)mh$.invokeExact(__nochdir, __noclose);
@@ -2805,9 +6585,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle chroot$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.chroot$MH,"chroot");
+        return RuntimeHelper.requireNonNull(constants$113.const$3,"chroot");
     }
-    public static int chroot ( Addressable __path) {
+    /**
+     * {@snippet :
+     * int chroot(char* __path);
+     * }
+     */
+    public static int chroot(MemorySegment __path) {
         var mh$ = chroot$MH();
         try {
             return (int)mh$.invokeExact(__path);
@@ -2816,20 +6601,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getpass$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.getpass$MH,"getpass");
+        return RuntimeHelper.requireNonNull(constants$113.const$4,"getpass");
     }
-    public static MemoryAddress getpass ( Addressable __prompt) {
+    /**
+     * {@snippet :
+     * char* getpass(char* __prompt);
+     * }
+     */
+    public static MemorySegment getpass(MemorySegment __prompt) {
         var mh$ = getpass$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__prompt);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__prompt);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle fsync$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.fsync$MH,"fsync");
+        return RuntimeHelper.requireNonNull(constants$113.const$5,"fsync");
     }
-    public static int fsync ( int __fd) {
+    /**
+     * {@snippet :
+     * int fsync(int __fd);
+     * }
+     */
+    public static int fsync(int __fd) {
         var mh$ = fsync$MH();
         try {
             return (int)mh$.invokeExact(__fd);
@@ -2838,9 +6633,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle gethostid$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.gethostid$MH,"gethostid");
+        return RuntimeHelper.requireNonNull(constants$114.const$0,"gethostid");
     }
-    public static long gethostid () {
+    /**
+     * {@snippet :
+     * long gethostid();
+     * }
+     */
+    public static long gethostid() {
         var mh$ = gethostid$MH();
         try {
             return (long)mh$.invokeExact();
@@ -2849,9 +6649,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sync$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.sync$MH,"sync");
+        return RuntimeHelper.requireNonNull(constants$114.const$1,"sync");
     }
-    public static void sync () {
+    /**
+     * {@snippet :
+     * void sync();
+     * }
+     */
+    public static void sync() {
         var mh$ = sync$MH();
         try {
             mh$.invokeExact();
@@ -2860,9 +6665,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getpagesize$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.getpagesize$MH,"getpagesize");
+        return RuntimeHelper.requireNonNull(constants$114.const$2,"getpagesize");
     }
-    public static int getpagesize () {
+    /**
+     * {@snippet :
+     * int getpagesize();
+     * }
+     */
+    public static int getpagesize() {
         var mh$ = getpagesize$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2871,9 +6681,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle getdtablesize$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.getdtablesize$MH,"getdtablesize");
+        return RuntimeHelper.requireNonNull(constants$114.const$3,"getdtablesize");
     }
-    public static int getdtablesize () {
+    /**
+     * {@snippet :
+     * int getdtablesize();
+     * }
+     */
+    public static int getdtablesize() {
         var mh$ = getdtablesize$MH();
         try {
             return (int)mh$.invokeExact();
@@ -2882,9 +6697,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle truncate$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.truncate$MH,"truncate");
+        return RuntimeHelper.requireNonNull(constants$114.const$4,"truncate");
     }
-    public static int truncate ( Addressable __file,  long __length) {
+    /**
+     * {@snippet :
+     * int truncate(char* __file, __off_t __length);
+     * }
+     */
+    public static int truncate(MemorySegment __file, long __length) {
         var mh$ = truncate$MH();
         try {
             return (int)mh$.invokeExact(__file, __length);
@@ -2893,9 +6713,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle ftruncate$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.ftruncate$MH,"ftruncate");
+        return RuntimeHelper.requireNonNull(constants$114.const$6,"ftruncate");
     }
-    public static int ftruncate ( int __fd,  long __length) {
+    /**
+     * {@snippet :
+     * int ftruncate(int __fd, __off_t __length);
+     * }
+     */
+    public static int ftruncate(int __fd, long __length) {
         var mh$ = ftruncate$MH();
         try {
             return (int)mh$.invokeExact(__fd, __length);
@@ -2904,9 +6729,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle brk$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.brk$MH,"brk");
+        return RuntimeHelper.requireNonNull(constants$115.const$0,"brk");
     }
-    public static int brk ( Addressable __addr) {
+    /**
+     * {@snippet :
+     * int brk(void* __addr);
+     * }
+     */
+    public static int brk(MemorySegment __addr) {
         var mh$ = brk$MH();
         try {
             return (int)mh$.invokeExact(__addr);
@@ -2915,20 +6745,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle sbrk$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.sbrk$MH,"sbrk");
+        return RuntimeHelper.requireNonNull(constants$115.const$1,"sbrk");
     }
-    public static MemoryAddress sbrk ( long __delta) {
+    /**
+     * {@snippet :
+     * void* sbrk(intptr_t __delta);
+     * }
+     */
+    public static MemorySegment sbrk(long __delta) {
         var mh$ = sbrk$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__delta);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__delta);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle syscall$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.syscall$MH,"syscall");
+        return RuntimeHelper.requireNonNull(constants$115.const$2,"syscall");
     }
-    public static long syscall ( long __sysno, Object... x1) {
+    /**
+     * {@snippet :
+     * long syscall(long __sysno,...);
+     * }
+     */
+    public static long syscall(long __sysno, Object... x1) {
         var mh$ = syscall$MH();
         try {
             return (long)mh$.invokeExact(__sysno, x1);
@@ -2937,9 +6777,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fdatasync$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.fdatasync$MH,"fdatasync");
+        return RuntimeHelper.requireNonNull(constants$115.const$3,"fdatasync");
     }
-    public static int fdatasync ( int __fildes) {
+    /**
+     * {@snippet :
+     * int fdatasync(int __fildes);
+     * }
+     */
+    public static int fdatasync(int __fildes) {
         var mh$ = fdatasync$MH();
         try {
             return (int)mh$.invokeExact(__fildes);
@@ -2948,20 +6793,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle crypt$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.crypt$MH,"crypt");
+        return RuntimeHelper.requireNonNull(constants$115.const$4,"crypt");
     }
-    public static MemoryAddress crypt ( Addressable __key,  Addressable __salt) {
+    /**
+     * {@snippet :
+     * char* crypt(char* __key, char* __salt);
+     * }
+     */
+    public static MemorySegment crypt(MemorySegment __key, MemorySegment __salt) {
         var mh$ = crypt$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(__key, __salt);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(__key, __salt);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle getentropy$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.getentropy$MH,"getentropy");
+        return RuntimeHelper.requireNonNull(constants$115.const$5,"getentropy");
     }
-    public static int getentropy ( Addressable __buffer,  long __length) {
+    /**
+     * {@snippet :
+     * int getentropy(void* __buffer, size_t __length);
+     * }
+     */
+    public static int getentropy(MemorySegment __buffer, long __length) {
         var mh$ = getentropy$MH();
         try {
             return (int)mh$.invokeExact(__buffer, __length);
@@ -2970,9 +6825,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle flock$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.flock$MH,"flock");
+        return RuntimeHelper.requireNonNull(constants$116.const$0,"flock");
     }
-    public static int flock ( int __fd,  int __operation) {
+    /**
+     * {@snippet :
+     * int flock(int __fd, int __operation);
+     * }
+     */
+    public static int flock(int __fd, int __operation) {
         var mh$ = flock$MH();
         try {
             return (int)mh$.invokeExact(__fd, __operation);
@@ -2981,9 +6841,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle stat$MH() {
-        return RuntimeHelper.requireNonNull(constants$74.stat$MH,"stat");
+        return RuntimeHelper.requireNonNull(constants$116.const$1,"stat");
     }
-    public static int stat ( Addressable __file,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int stat(char* __file, struct stat* __buf);
+     * }
+     */
+    public static int stat(MemorySegment __file, MemorySegment __buf) {
         var mh$ = stat$MH();
         try {
             return (int)mh$.invokeExact(__file, __buf);
@@ -2992,9 +6857,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fstat$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.fstat$MH,"fstat");
+        return RuntimeHelper.requireNonNull(constants$116.const$2,"fstat");
     }
-    public static int fstat ( int __fd,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int fstat(int __fd, struct stat* __buf);
+     * }
+     */
+    public static int fstat(int __fd, MemorySegment __buf) {
         var mh$ = fstat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __buf);
@@ -3003,9 +6873,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fstatat$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.fstatat$MH,"fstatat");
+        return RuntimeHelper.requireNonNull(constants$116.const$4,"fstatat");
     }
-    public static int fstatat ( int __fd,  Addressable __file,  Addressable __buf,  int __flag) {
+    /**
+     * {@snippet :
+     * int fstatat(int __fd, char* __file, struct stat* __buf, int __flag);
+     * }
+     */
+    public static int fstatat(int __fd, MemorySegment __file, MemorySegment __buf, int __flag) {
         var mh$ = fstatat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __file, __buf, __flag);
@@ -3014,9 +6889,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lstat$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.lstat$MH,"lstat");
+        return RuntimeHelper.requireNonNull(constants$116.const$5,"lstat");
     }
-    public static int lstat ( Addressable __file,  Addressable __buf) {
+    /**
+     * {@snippet :
+     * int lstat(char* __file, struct stat* __buf);
+     * }
+     */
+    public static int lstat(MemorySegment __file, MemorySegment __buf) {
         var mh$ = lstat$MH();
         try {
             return (int)mh$.invokeExact(__file, __buf);
@@ -3025,9 +6905,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle chmod$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.chmod$MH,"chmod");
+        return RuntimeHelper.requireNonNull(constants$117.const$0,"chmod");
     }
-    public static int chmod ( Addressable __file,  int __mode) {
+    /**
+     * {@snippet :
+     * int chmod(char* __file, __mode_t __mode);
+     * }
+     */
+    public static int chmod(MemorySegment __file, int __mode) {
         var mh$ = chmod$MH();
         try {
             return (int)mh$.invokeExact(__file, __mode);
@@ -3036,9 +6921,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lchmod$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.lchmod$MH,"lchmod");
+        return RuntimeHelper.requireNonNull(constants$117.const$1,"lchmod");
     }
-    public static int lchmod ( Addressable __file,  int __mode) {
+    /**
+     * {@snippet :
+     * int lchmod(char* __file, __mode_t __mode);
+     * }
+     */
+    public static int lchmod(MemorySegment __file, int __mode) {
         var mh$ = lchmod$MH();
         try {
             return (int)mh$.invokeExact(__file, __mode);
@@ -3047,9 +6937,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fchmod$MH() {
-        return RuntimeHelper.requireNonNull(constants$75.fchmod$MH,"fchmod");
+        return RuntimeHelper.requireNonNull(constants$117.const$2,"fchmod");
     }
-    public static int fchmod ( int __fd,  int __mode) {
+    /**
+     * {@snippet :
+     * int fchmod(int __fd, __mode_t __mode);
+     * }
+     */
+    public static int fchmod(int __fd, int __mode) {
         var mh$ = fchmod$MH();
         try {
             return (int)mh$.invokeExact(__fd, __mode);
@@ -3058,9 +6953,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle fchmodat$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.fchmodat$MH,"fchmodat");
+        return RuntimeHelper.requireNonNull(constants$117.const$3,"fchmodat");
     }
-    public static int fchmodat ( int __fd,  Addressable __file,  int __mode,  int __flag) {
+    /**
+     * {@snippet :
+     * int fchmodat(int __fd, char* __file, __mode_t __mode, int __flag);
+     * }
+     */
+    public static int fchmodat(int __fd, MemorySegment __file, int __mode, int __flag) {
         var mh$ = fchmodat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __file, __mode, __flag);
@@ -3069,9 +6969,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle umask$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.umask$MH,"umask");
+        return RuntimeHelper.requireNonNull(constants$117.const$4,"umask");
     }
-    public static int umask ( int __mask) {
+    /**
+     * {@snippet :
+     * __mode_t umask(__mode_t __mask);
+     * }
+     */
+    public static int umask(int __mask) {
         var mh$ = umask$MH();
         try {
             return (int)mh$.invokeExact(__mask);
@@ -3080,9 +6985,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mkdir$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.mkdir$MH,"mkdir");
+        return RuntimeHelper.requireNonNull(constants$117.const$5,"mkdir");
     }
-    public static int mkdir ( Addressable __path,  int __mode) {
+    /**
+     * {@snippet :
+     * int mkdir(char* __path, __mode_t __mode);
+     * }
+     */
+    public static int mkdir(MemorySegment __path, int __mode) {
         var mh$ = mkdir$MH();
         try {
             return (int)mh$.invokeExact(__path, __mode);
@@ -3091,9 +7001,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mkdirat$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.mkdirat$MH,"mkdirat");
+        return RuntimeHelper.requireNonNull(constants$118.const$0,"mkdirat");
     }
-    public static int mkdirat ( int __fd,  Addressable __path,  int __mode) {
+    /**
+     * {@snippet :
+     * int mkdirat(int __fd, char* __path, __mode_t __mode);
+     * }
+     */
+    public static int mkdirat(int __fd, MemorySegment __path, int __mode) {
         var mh$ = mkdirat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __path, __mode);
@@ -3102,9 +7017,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mknod$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.mknod$MH,"mknod");
+        return RuntimeHelper.requireNonNull(constants$118.const$2,"mknod");
     }
-    public static int mknod ( Addressable __path,  int __mode,  long __dev) {
+    /**
+     * {@snippet :
+     * int mknod(char* __path, __mode_t __mode, __dev_t __dev);
+     * }
+     */
+    public static int mknod(MemorySegment __path, int __mode, long __dev) {
         var mh$ = mknod$MH();
         try {
             return (int)mh$.invokeExact(__path, __mode, __dev);
@@ -3113,9 +7033,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mknodat$MH() {
-        return RuntimeHelper.requireNonNull(constants$76.mknodat$MH,"mknodat");
+        return RuntimeHelper.requireNonNull(constants$118.const$4,"mknodat");
     }
-    public static int mknodat ( int __fd,  Addressable __path,  int __mode,  long __dev) {
+    /**
+     * {@snippet :
+     * int mknodat(int __fd, char* __path, __mode_t __mode, __dev_t __dev);
+     * }
+     */
+    public static int mknodat(int __fd, MemorySegment __path, int __mode, long __dev) {
         var mh$ = mknodat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __path, __mode, __dev);
@@ -3124,9 +7049,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mkfifo$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.mkfifo$MH,"mkfifo");
+        return RuntimeHelper.requireNonNull(constants$118.const$5,"mkfifo");
     }
-    public static int mkfifo ( Addressable __path,  int __mode) {
+    /**
+     * {@snippet :
+     * int mkfifo(char* __path, __mode_t __mode);
+     * }
+     */
+    public static int mkfifo(MemorySegment __path, int __mode) {
         var mh$ = mkfifo$MH();
         try {
             return (int)mh$.invokeExact(__path, __mode);
@@ -3135,9 +7065,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle mkfifoat$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.mkfifoat$MH,"mkfifoat");
+        return RuntimeHelper.requireNonNull(constants$119.const$0,"mkfifoat");
     }
-    public static int mkfifoat ( int __fd,  Addressable __path,  int __mode) {
+    /**
+     * {@snippet :
+     * int mkfifoat(int __fd, char* __path, __mode_t __mode);
+     * }
+     */
+    public static int mkfifoat(int __fd, MemorySegment __path, int __mode) {
         var mh$ = mkfifoat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __path, __mode);
@@ -3146,9 +7081,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle utimensat$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.utimensat$MH,"utimensat");
+        return RuntimeHelper.requireNonNull(constants$119.const$1,"utimensat");
     }
-    public static int utimensat ( int __fd,  Addressable __path,  Addressable __times,  int __flags) {
+    /**
+     * {@snippet :
+     * int utimensat(int __fd, char* __path, struct timespec __times[2], int __flags);
+     * }
+     */
+    public static int utimensat(int __fd, MemorySegment __path, MemorySegment __times, int __flags) {
         var mh$ = utimensat$MH();
         try {
             return (int)mh$.invokeExact(__fd, __path, __times, __flags);
@@ -3157,9 +7097,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle futimens$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.futimens$MH,"futimens");
+        return RuntimeHelper.requireNonNull(constants$119.const$2,"futimens");
     }
-    public static int futimens ( int __fd,  Addressable __times) {
+    /**
+     * {@snippet :
+     * int futimens(int __fd, struct timespec __times[2]);
+     * }
+     */
+    public static int futimens(int __fd, MemorySegment __times) {
         var mh$ = futimens$MH();
         try {
             return (int)mh$.invokeExact(__fd, __times);
@@ -3168,9 +7113,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle gettimeofday$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.gettimeofday$MH,"gettimeofday");
+        return RuntimeHelper.requireNonNull(constants$120.const$0,"gettimeofday");
     }
-    public static int gettimeofday ( Addressable __tv,  Addressable __tz) {
+    /**
+     * {@snippet :
+     * int gettimeofday(struct timeval* __tv, void* __tz);
+     * }
+     */
+    public static int gettimeofday(MemorySegment __tv, MemorySegment __tz) {
         var mh$ = gettimeofday$MH();
         try {
             return (int)mh$.invokeExact(__tv, __tz);
@@ -3179,9 +7129,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle settimeofday$MH() {
-        return RuntimeHelper.requireNonNull(constants$77.settimeofday$MH,"settimeofday");
+        return RuntimeHelper.requireNonNull(constants$120.const$1,"settimeofday");
     }
-    public static int settimeofday ( Addressable __tv,  Addressable __tz) {
+    /**
+     * {@snippet :
+     * int settimeofday(struct timeval* __tv, struct timezone* __tz);
+     * }
+     */
+    public static int settimeofday(MemorySegment __tv, MemorySegment __tz) {
         var mh$ = settimeofday$MH();
         try {
             return (int)mh$.invokeExact(__tv, __tz);
@@ -3190,9 +7145,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle adjtime$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.adjtime$MH,"adjtime");
+        return RuntimeHelper.requireNonNull(constants$120.const$2,"adjtime");
     }
-    public static int adjtime ( Addressable __delta,  Addressable __olddelta) {
+    /**
+     * {@snippet :
+     * int adjtime(struct timeval* __delta, struct timeval* __olddelta);
+     * }
+     */
+    public static int adjtime(MemorySegment __delta, MemorySegment __olddelta) {
         var mh$ = adjtime$MH();
         try {
             return (int)mh$.invokeExact(__delta, __olddelta);
@@ -3200,20 +7160,45 @@ import static java.lang.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    /**
+     * {@snippet :
+     * enum __itimer_which.ITIMER_REAL = 0;
+     * }
+     */
     public static int ITIMER_REAL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum __itimer_which.ITIMER_VIRTUAL = 1;
+     * }
+     */
     public static int ITIMER_VIRTUAL() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum __itimer_which.ITIMER_PROF = 2;
+     * }
+     */
     public static int ITIMER_PROF() {
         return (int)2L;
     }
-    public static OfInt __itimer_which_t = Constants$root.C_INT$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef int __itimer_which_t;
+     * }
+     */
+    public static final OfInt __itimer_which_t = JAVA_INT;
     public static MethodHandle getitimer$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.getitimer$MH,"getitimer");
+        return RuntimeHelper.requireNonNull(constants$120.const$4,"getitimer");
     }
-    public static int getitimer ( int __which,  Addressable __value) {
+    /**
+     * {@snippet :
+     * int getitimer(__itimer_which_t __which, struct itimerval* __value);
+     * }
+     */
+    public static int getitimer(int __which, MemorySegment __value) {
         var mh$ = getitimer$MH();
         try {
             return (int)mh$.invokeExact(__which, __value);
@@ -3222,9 +7207,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle setitimer$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.setitimer$MH,"setitimer");
+        return RuntimeHelper.requireNonNull(constants$120.const$5,"setitimer");
     }
-    public static int setitimer ( int __which,  Addressable __new,  Addressable __old) {
+    /**
+     * {@snippet :
+     * int setitimer(__itimer_which_t __which, struct itimerval* __new, struct itimerval* __old);
+     * }
+     */
+    public static int setitimer(int __which, MemorySegment __new, MemorySegment __old) {
         var mh$ = setitimer$MH();
         try {
             return (int)mh$.invokeExact(__which, __new, __old);
@@ -3233,9 +7223,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle utimes$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.utimes$MH,"utimes");
+        return RuntimeHelper.requireNonNull(constants$121.const$0,"utimes");
     }
-    public static int utimes ( Addressable __file,  Addressable __tvp) {
+    /**
+     * {@snippet :
+     * int utimes(char* __file, struct timeval __tvp[2]);
+     * }
+     */
+    public static int utimes(MemorySegment __file, MemorySegment __tvp) {
         var mh$ = utimes$MH();
         try {
             return (int)mh$.invokeExact(__file, __tvp);
@@ -3244,9 +7239,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle lutimes$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.lutimes$MH,"lutimes");
+        return RuntimeHelper.requireNonNull(constants$121.const$1,"lutimes");
     }
-    public static int lutimes ( Addressable __file,  Addressable __tvp) {
+    /**
+     * {@snippet :
+     * int lutimes(char* __file, struct timeval __tvp[2]);
+     * }
+     */
+    public static int lutimes(MemorySegment __file, MemorySegment __tvp) {
         var mh$ = lutimes$MH();
         try {
             return (int)mh$.invokeExact(__file, __tvp);
@@ -3255,9 +7255,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle futimes$MH() {
-        return RuntimeHelper.requireNonNull(constants$78.futimes$MH,"futimes");
+        return RuntimeHelper.requireNonNull(constants$121.const$2,"futimes");
     }
-    public static int futimes ( int __fd,  Addressable __tvp) {
+    /**
+     * {@snippet :
+     * int futimes(int __fd, struct timeval __tvp[2]);
+     * }
+     */
+    public static int futimes(int __fd, MemorySegment __tvp) {
         var mh$ = futimes$MH();
         try {
             return (int)mh$.invokeExact(__fd, __tvp);
@@ -3265,480 +7270,1341 @@ import static java.lang.foreign.ValueLayout.*;
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static OfFloat float32 = Constants$root.C_FLOAT$LAYOUT;
-    public static OfDouble float64 = Constants$root.C_DOUBLE$LAYOUT;
-    public static OfByte char8 = Constants$root.C_CHAR$LAYOUT;
-    public static OfAddress _fcd = Constants$root.C_POINTER$LAYOUT;
-    public static OfShort int16 = Constants$root.C_SHORT$LAYOUT;
-    public static OfInt int32 = Constants$root.C_INT$LAYOUT;
-    public static OfInt intn = Constants$root.C_INT$LAYOUT;
-    public static OfAddress VOIDP = Constants$root.C_POINTER$LAYOUT;
-    public static OfInt intf = Constants$root.C_INT$LAYOUT;
-    public static OfLong hdf_pint_t = Constants$root.C_LONG_LONG$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef float float32;
+     * }
+     */
+    public static final OfFloat float32 = JAVA_FLOAT;
+    /**
+     * {@snippet :
+     * typedef double float64;
+     * }
+     */
+    public static final OfDouble float64 = JAVA_DOUBLE;
+    /**
+     * {@snippet :
+     * typedef char char8;
+     * }
+     */
+    public static final OfByte char8 = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned char uchar8;
+     * }
+     */
+    public static final OfByte uchar8 = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef char* _fcd;
+     * }
+     */
+    public static final AddressLayout _fcd = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef signed char int8;
+     * }
+     */
+    public static final OfByte int8 = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef unsigned char uint8;
+     * }
+     */
+    public static final OfByte uint8 = JAVA_BYTE;
+    /**
+     * {@snippet :
+     * typedef short int16;
+     * }
+     */
+    public static final OfShort int16 = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef unsigned short uint16;
+     * }
+     */
+    public static final OfShort uint16 = JAVA_SHORT;
+    /**
+     * {@snippet :
+     * typedef int int32;
+     * }
+     */
+    public static final OfInt int32 = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int uint32;
+     * }
+     */
+    public static final OfInt uint32 = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef int intn;
+     * }
+     */
+    public static final OfInt intn = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef unsigned int uintn;
+     * }
+     */
+    public static final OfInt uintn = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef void* VOIDP;
+     * }
+     */
+    public static final AddressLayout VOIDP = RuntimeHelper.POINTER;
+    /**
+     * {@snippet :
+     * typedef int intf;
+     * }
+     */
+    public static final OfInt intf = JAVA_INT;
+    /**
+     * {@snippet :
+     * typedef long hdf_pint_t;
+     * }
+     */
+    public static final OfLong hdf_pint_t = JAVA_LONG;
+    /**
+     * {@snippet :
+     * enum .AN_UNDEF = -1;
+     * }
+     */
     public static int AN_UNDEF() {
         return (int)-1L;
     }
+    /**
+     * {@snippet :
+     * enum .AN_DATA_LABEL = 0;
+     * }
+     */
     public static int AN_DATA_LABEL() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum .AN_DATA_DESC = 1;
+     * }
+     */
     public static int AN_DATA_DESC() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum .AN_FILE_LABEL = 2;
+     * }
+     */
     public static int AN_FILE_LABEL() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum .AN_FILE_DESC = 3;
+     * }
+     */
     public static int AN_FILE_DESC() {
         return (int)3L;
     }
-    public static OfInt HFILEID = Constants$root.C_INT$LAYOUT;
+    /**
+     * {@snippet :
+     * typedef int HFILEID;
+     * }
+     */
+    public static final OfInt HFILEID = JAVA_INT;
+    /**
+     * {@snippet :
+     * const uint8 maskc[9];
+     * }
+     */
     public static MemorySegment maskc$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$79.maskc$SEGMENT,"maskc");
+        return RuntimeHelper.requireNonNull(constants$124.const$6,"maskc");
     }
+    /**
+     * {@snippet :
+     * const uint32 maskl[33];
+     * }
+     */
     public static MemorySegment maskl$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$79.maskl$SEGMENT,"maskl");
+        return RuntimeHelper.requireNonNull(constants$125.const$1,"maskl");
     }
+    /**
+     * {@snippet :
+     * enum .COMP_MODEL_STDIO = 0;
+     * }
+     */
     public static int COMP_MODEL_STDIO() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_NONE = 0;
+     * }
+     */
     public static int COMP_CODE_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_RLE = 1;
+     * }
+     */
     public static int COMP_CODE_RLE() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_NBIT = 2;
+     * }
+     */
     public static int COMP_CODE_NBIT() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_SKPHUFF = 3;
+     * }
+     */
     public static int COMP_CODE_SKPHUFF() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_DEFLATE = 4;
+     * }
+     */
     public static int COMP_CODE_DEFLATE() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_SZIP = 5;
+     * }
+     */
     public static int COMP_CODE_SZIP() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_INVALID = 6;
+     * }
+     */
     public static int COMP_CODE_INVALID() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_JPEG = 7;
+     * }
+     */
     public static int COMP_CODE_JPEG() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * enum .COMP_CODE_IMCOMP = 12;
+     * }
+     */
     public static int COMP_CODE_IMCOMP() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NONE = 0;
+     * }
+     */
     public static int DFE_NONE() {
         return (int)0L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_FNF = 1;
+     * }
+     */
     public static int DFE_FNF() {
         return (int)1L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_DENIED = 2;
+     * }
+     */
     public static int DFE_DENIED() {
         return (int)2L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_ALROPEN = 3;
+     * }
+     */
     public static int DFE_ALROPEN() {
         return (int)3L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_TOOMANY = 4;
+     * }
+     */
     public static int DFE_TOOMANY() {
         return (int)4L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADNAME = 5;
+     * }
+     */
     public static int DFE_BADNAME() {
         return (int)5L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADACC = 6;
+     * }
+     */
     public static int DFE_BADACC() {
         return (int)6L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADOPEN = 7;
+     * }
+     */
     public static int DFE_BADOPEN() {
         return (int)7L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOTOPEN = 8;
+     * }
+     */
     public static int DFE_NOTOPEN() {
         return (int)8L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTCLOSE = 9;
+     * }
+     */
     public static int DFE_CANTCLOSE() {
         return (int)9L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_READERROR = 10;
+     * }
+     */
     public static int DFE_READERROR() {
         return (int)10L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_WRITEERROR = 11;
+     * }
+     */
     public static int DFE_WRITEERROR() {
         return (int)11L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_SEEKERROR = 12;
+     * }
+     */
     public static int DFE_SEEKERROR() {
         return (int)12L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_RDONLY = 13;
+     * }
+     */
     public static int DFE_RDONLY() {
         return (int)13L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADSEEK = 14;
+     * }
+     */
     public static int DFE_BADSEEK() {
         return (int)14L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_INVFILE = 15;
+     * }
+     */
     public static int DFE_INVFILE() {
         return (int)15L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_PUTELEM = 16;
+     * }
+     */
     public static int DFE_PUTELEM() {
         return (int)16L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_GETELEM = 17;
+     * }
+     */
     public static int DFE_GETELEM() {
         return (int)17L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTLINK = 18;
+     * }
+     */
     public static int DFE_CANTLINK() {
         return (int)18L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTSYNC = 19;
+     * }
+     */
     public static int DFE_CANTSYNC() {
         return (int)19L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADGROUP = 20;
+     * }
+     */
     public static int DFE_BADGROUP() {
         return (int)20L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_GROUPSETUP = 21;
+     * }
+     */
     public static int DFE_GROUPSETUP() {
         return (int)21L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_PUTGROUP = 22;
+     * }
+     */
     public static int DFE_PUTGROUP() {
         return (int)22L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_GROUPWRITE = 23;
+     * }
+     */
     public static int DFE_GROUPWRITE() {
         return (int)23L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_DFNULL = 24;
+     * }
+     */
     public static int DFE_DFNULL() {
         return (int)24L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_ILLTYPE = 25;
+     * }
+     */
     public static int DFE_ILLTYPE() {
         return (int)25L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADDDLIST = 26;
+     * }
+     */
     public static int DFE_BADDDLIST() {
         return (int)26L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOTDFFILE = 27;
+     * }
+     */
     public static int DFE_NOTDFFILE() {
         return (int)27L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_SEEDTWICE = 28;
+     * }
+     */
     public static int DFE_SEEDTWICE() {
         return (int)28L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOSUCHTAG = 29;
+     * }
+     */
     public static int DFE_NOSUCHTAG() {
         return (int)29L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOFREEDD = 30;
+     * }
+     */
     public static int DFE_NOFREEDD() {
         return (int)30L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADTAG = 31;
+     * }
+     */
     public static int DFE_BADTAG() {
         return (int)31L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADREF = 32;
+     * }
+     */
     public static int DFE_BADREF() {
         return (int)32L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOMATCH = 33;
+     * }
+     */
     public static int DFE_NOMATCH() {
         return (int)33L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOTINSET = 34;
+     * }
+     */
     public static int DFE_NOTINSET() {
         return (int)34L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADOFFSET = 35;
+     * }
+     */
     public static int DFE_BADOFFSET() {
         return (int)35L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CORRUPT = 36;
+     * }
+     */
     public static int DFE_CORRUPT() {
         return (int)36L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOREF = 37;
+     * }
+     */
     public static int DFE_NOREF() {
         return (int)37L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_DUPDD = 38;
+     * }
+     */
     public static int DFE_DUPDD() {
         return (int)38L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTMOD = 39;
+     * }
+     */
     public static int DFE_CANTMOD() {
         return (int)39L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_DIFFFILES = 40;
+     * }
+     */
     public static int DFE_DIFFFILES() {
         return (int)40L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADAID = 41;
+     * }
+     */
     public static int DFE_BADAID() {
         return (int)41L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_OPENAID = 42;
+     * }
+     */
     public static int DFE_OPENAID() {
         return (int)42L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTFLUSH = 43;
+     * }
+     */
     public static int DFE_CANTFLUSH() {
         return (int)43L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTUPDATE = 44;
+     * }
+     */
     public static int DFE_CANTUPDATE() {
         return (int)44L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTHASH = 45;
+     * }
+     */
     public static int DFE_CANTHASH() {
         return (int)45L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTDELDD = 46;
+     * }
+     */
     public static int DFE_CANTDELDD() {
         return (int)46L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTDELHASH = 47;
+     * }
+     */
     public static int DFE_CANTDELHASH() {
         return (int)47L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTACCESS = 48;
+     * }
+     */
     public static int DFE_CANTACCESS() {
         return (int)48L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTENDACCESS = 49;
+     * }
+     */
     public static int DFE_CANTENDACCESS() {
         return (int)49L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_TABLEFULL = 50;
+     * }
+     */
     public static int DFE_TABLEFULL() {
         return (int)50L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOTINTABLE = 51;
+     * }
+     */
     public static int DFE_NOTINTABLE() {
         return (int)51L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_UNSUPPORTED = 52;
+     * }
+     */
     public static int DFE_UNSUPPORTED() {
         return (int)52L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOSPACE = 53;
+     * }
+     */
     public static int DFE_NOSPACE() {
         return (int)53L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADCALL = 54;
+     * }
+     */
     public static int DFE_BADCALL() {
         return (int)54L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADPTR = 55;
+     * }
+     */
     public static int DFE_BADPTR() {
         return (int)55L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADLEN = 56;
+     * }
+     */
     public static int DFE_BADLEN() {
         return (int)56L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOTENOUGH = 57;
+     * }
+     */
     public static int DFE_NOTENOUGH() {
         return (int)57L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOVALS = 58;
+     * }
+     */
     public static int DFE_NOVALS() {
         return (int)58L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_ARGS = 59;
+     * }
+     */
     public static int DFE_ARGS() {
         return (int)59L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_INTERNAL = 60;
+     * }
+     */
     public static int DFE_INTERNAL() {
         return (int)60L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NORESET = 61;
+     * }
+     */
     public static int DFE_NORESET() {
         return (int)61L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_EXCEEDMAX = 62;
+     * }
+     */
     public static int DFE_EXCEEDMAX() {
         return (int)62L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_GENAPP = 63;
+     * }
+     */
     public static int DFE_GENAPP() {
         return (int)63L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_UNINIT = 64;
+     * }
+     */
     public static int DFE_UNINIT() {
         return (int)64L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTINIT = 65;
+     * }
+     */
     public static int DFE_CANTINIT() {
         return (int)65L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTSHUTDOWN = 66;
+     * }
+     */
     public static int DFE_CANTSHUTDOWN() {
         return (int)66L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADDIM = 67;
+     * }
+     */
     public static int DFE_BADDIM() {
         return (int)67L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADFP = 68;
+     * }
+     */
     public static int DFE_BADFP() {
         return (int)68L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADDATATYPE = 69;
+     * }
+     */
     public static int DFE_BADDATATYPE() {
         return (int)69L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADMCTYPE = 70;
+     * }
+     */
     public static int DFE_BADMCTYPE() {
         return (int)70L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADNUMTYPE = 71;
+     * }
+     */
     public static int DFE_BADNUMTYPE() {
         return (int)71L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADORDER = 72;
+     * }
+     */
     public static int DFE_BADORDER() {
         return (int)72L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_RANGE = 73;
+     * }
+     */
     public static int DFE_RANGE() {
         return (int)73L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADCONV = 74;
+     * }
+     */
     public static int DFE_BADCONV() {
         return (int)74L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADTYPE = 75;
+     * }
+     */
     public static int DFE_BADTYPE() {
         return (int)75L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADDIMNAME = 76;
+     * }
+     */
     public static int DFE_BADDIMNAME() {
         return (int)76L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOVGREP = 77;
+     * }
+     */
     public static int DFE_NOVGREP() {
         return (int)77L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADSCHEME = 78;
+     * }
+     */
     public static int DFE_BADSCHEME() {
         return (int)78L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADMODEL = 79;
+     * }
+     */
     public static int DFE_BADMODEL() {
         return (int)79L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADCODER = 80;
+     * }
+     */
     public static int DFE_BADCODER() {
         return (int)80L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_MODEL = 81;
+     * }
+     */
     public static int DFE_MODEL() {
         return (int)81L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CODER = 82;
+     * }
+     */
     public static int DFE_CODER() {
         return (int)82L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CINIT = 83;
+     * }
+     */
     public static int DFE_CINIT() {
         return (int)83L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CDECODE = 84;
+     * }
+     */
     public static int DFE_CDECODE() {
         return (int)84L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CENCODE = 85;
+     * }
+     */
     public static int DFE_CENCODE() {
         return (int)85L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CTERM = 86;
+     * }
+     */
     public static int DFE_CTERM() {
         return (int)86L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CSEEK = 87;
+     * }
+     */
     public static int DFE_CSEEK() {
         return (int)87L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_MINIT = 88;
+     * }
+     */
     public static int DFE_MINIT() {
         return (int)88L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_COMPINFO = 89;
+     * }
+     */
     public static int DFE_COMPINFO() {
         return (int)89L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTCOMP = 90;
+     * }
+     */
     public static int DFE_CANTCOMP() {
         return (int)90L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTDECOMP = 91;
+     * }
+     */
     public static int DFE_CANTDECOMP() {
         return (int)91L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOENCODER = 92;
+     * }
+     */
     public static int DFE_NOENCODER() {
         return (int)92L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOSZLIB = 93;
+     * }
+     */
     public static int DFE_NOSZLIB() {
         return (int)93L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_COMPVERSION = 94;
+     * }
+     */
     public static int DFE_COMPVERSION() {
         return (int)94L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_READCOMP = 95;
+     * }
+     */
     public static int DFE_READCOMP() {
         return (int)95L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NODIM = 96;
+     * }
+     */
     public static int DFE_NODIM() {
         return (int)96L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADRIG = 97;
+     * }
+     */
     public static int DFE_BADRIG() {
         return (int)97L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_RINOTFOUND = 98;
+     * }
+     */
     public static int DFE_RINOTFOUND() {
         return (int)98L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADATTR = 99;
+     * }
+     */
     public static int DFE_BADATTR() {
         return (int)99L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_LUTNOTFOUND = 100;
+     * }
+     */
     public static int DFE_LUTNOTFOUND() {
         return (int)100L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_GRNOTFOUND = 101;
+     * }
+     */
     public static int DFE_GRNOTFOUND() {
         return (int)101L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADTABLE = 102;
+     * }
+     */
     public static int DFE_BADTABLE() {
         return (int)102L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADSDG = 103;
+     * }
+     */
     public static int DFE_BADSDG() {
         return (int)103L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADNDG = 104;
+     * }
+     */
     public static int DFE_BADNDG() {
         return (int)104L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VGSIZE = 105;
+     * }
+     */
     public static int DFE_VGSIZE() {
         return (int)105L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VTAB = 106;
+     * }
+     */
     public static int DFE_VTAB() {
         return (int)106L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTADDELEM = 107;
+     * }
+     */
     public static int DFE_CANTADDELEM() {
         return (int)107L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADVGNAME = 108;
+     * }
+     */
     public static int DFE_BADVGNAME() {
         return (int)108L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADVGCLASS = 109;
+     * }
+     */
     public static int DFE_BADVGCLASS() {
         return (int)109L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADFIELDS = 110;
+     * }
+     */
     public static int DFE_BADFIELDS() {
         return (int)110L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_NOVS = 111;
+     * }
+     */
     public static int DFE_NOVS() {
         return (int)111L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_SYMSIZE = 112;
+     * }
+     */
     public static int DFE_SYMSIZE() {
         return (int)112L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADATTACH = 113;
+     * }
+     */
     public static int DFE_BADATTACH() {
         return (int)113L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADVSNAME = 114;
+     * }
+     */
     public static int DFE_BADVSNAME() {
         return (int)114L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADVSCLASS = 115;
+     * }
+     */
     public static int DFE_BADVSCLASS() {
         return (int)115L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VSWRITE = 116;
+     * }
+     */
     public static int DFE_VSWRITE() {
         return (int)116L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VSREAD = 117;
+     * }
+     */
     public static int DFE_VSREAD() {
         return (int)117L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BADVH = 118;
+     * }
+     */
     public static int DFE_BADVH() {
         return (int)118L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_FIELDSSET = 119;
+     * }
+     */
     public static int DFE_FIELDSSET() {
         return (int)119L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VSCANTCREATE = 120;
+     * }
+     */
     public static int DFE_VSCANTCREATE() {
         return (int)120L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_VGCANTCREATE = 121;
+     * }
+     */
     public static int DFE_VGCANTCREATE() {
         return (int)121L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTATTACH = 122;
+     * }
+     */
     public static int DFE_CANTATTACH() {
         return (int)122L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTDETACH = 123;
+     * }
+     */
     public static int DFE_CANTDETACH() {
         return (int)123L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_XDRERROR = 124;
+     * }
+     */
     public static int DFE_XDRERROR() {
         return (int)124L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BITREAD = 125;
+     * }
+     */
     public static int DFE_BITREAD() {
         return (int)125L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BITWRITE = 126;
+     * }
+     */
     public static int DFE_BITWRITE() {
         return (int)126L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BITSEEK = 127;
+     * }
+     */
     public static int DFE_BITSEEK() {
         return (int)127L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_TBBTINS = 128;
+     * }
+     */
     public static int DFE_TBBTINS() {
         return (int)128L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BVNEW = 129;
+     * }
+     */
     public static int DFE_BVNEW() {
         return (int)129L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BVSET = 130;
+     * }
+     */
     public static int DFE_BVSET() {
         return (int)130L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BVGET = 131;
+     * }
+     */
     public static int DFE_BVGET() {
         return (int)131L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_BVFIND = 132;
+     * }
+     */
     public static int DFE_BVFIND() {
         return (int)132L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTSETATTR = 133;
+     * }
+     */
     public static int DFE_CANTSETATTR() {
         return (int)133L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_CANTGETATTR = 134;
+     * }
+     */
     public static int DFE_CANTGETATTR() {
         return (int)134L;
     }
+    /**
+     * {@snippet :
+     * enum .DFE_ANAPIERROR = 135;
+     * }
+     */
     public static int DFE_ANAPIERROR() {
         return (int)135L;
     }
     public static MethodHandle Hopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$79.Hopen$MH,"Hopen");
+        return RuntimeHelper.requireNonNull(constants$129.const$4,"Hopen");
     }
-    public static int Hopen ( Addressable path,  int acc_mode,  short ndds) {
+    /**
+     * {@snippet :
+     * int32 Hopen(char* path, intn acc_mode, int16 ndds);
+     * }
+     */
+    public static int Hopen(MemorySegment path, int acc_mode, short ndds) {
         var mh$ = Hopen$MH();
         try {
             return (int)mh$.invokeExact(path, acc_mode, ndds);
@@ -3747,9 +8613,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hclose$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hclose$MH,"Hclose");
+        return RuntimeHelper.requireNonNull(constants$129.const$5,"Hclose");
     }
-    public static int Hclose ( int file_id) {
+    /**
+     * {@snippet :
+     * intn Hclose(int32 file_id);
+     * }
+     */
+    public static int Hclose(int file_id) {
         var mh$ = Hclose$MH();
         try {
             return (int)mh$.invokeExact(file_id);
@@ -3758,9 +8629,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hstartread$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hstartread$MH,"Hstartread");
+        return RuntimeHelper.requireNonNull(constants$130.const$1,"Hstartread");
     }
-    public static int Hstartread ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 Hstartread(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int Hstartread(int file_id, short tag, short ref) {
         var mh$ = Hstartread$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -3769,9 +8645,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hnextread$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hnextread$MH,"Hnextread");
+        return RuntimeHelper.requireNonNull(constants$130.const$3,"Hnextread");
     }
-    public static int Hnextread ( int access_id,  short tag,  short ref,  int origin) {
+    /**
+     * {@snippet :
+     * intn Hnextread(int32 access_id, uint16 tag, uint16 ref, intn origin);
+     * }
+     */
+    public static int Hnextread(int access_id, short tag, short ref, int origin) {
         var mh$ = Hnextread$MH();
         try {
             return (int)mh$.invokeExact(access_id, tag, ref, origin);
@@ -3780,9 +8661,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hexist$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hexist$MH,"Hexist");
+        return RuntimeHelper.requireNonNull(constants$130.const$4,"Hexist");
     }
-    public static int Hexist ( int file_id,  short search_tag,  short search_ref) {
+    /**
+     * {@snippet :
+     * intn Hexist(int32 file_id, uint16 search_tag, uint16 search_ref);
+     * }
+     */
+    public static int Hexist(int file_id, short search_tag, short search_ref) {
         var mh$ = Hexist$MH();
         try {
             return (int)mh$.invokeExact(file_id, search_tag, search_ref);
@@ -3791,9 +8677,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hinquire$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hinquire$MH,"Hinquire");
+        return RuntimeHelper.requireNonNull(constants$130.const$6,"Hinquire");
     }
-    public static int Hinquire ( int access_id,  Addressable pfile_id,  Addressable ptag,  Addressable pref,  Addressable plength,  Addressable poffset,  Addressable pposn,  Addressable paccess,  Addressable pspecial) {
+    /**
+     * {@snippet :
+     * intn Hinquire(int32 access_id, int32* pfile_id, uint16* ptag, uint16* pref, int32* plength, int32* poffset, int32* pposn, int16* paccess, int16* pspecial);
+     * }
+     */
+    public static int Hinquire(int access_id, MemorySegment pfile_id, MemorySegment ptag, MemorySegment pref, MemorySegment plength, MemorySegment poffset, MemorySegment pposn, MemorySegment paccess, MemorySegment pspecial) {
         var mh$ = Hinquire$MH();
         try {
             return (int)mh$.invokeExact(access_id, pfile_id, ptag, pref, plength, poffset, pposn, paccess, pspecial);
@@ -3802,9 +8693,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hstartwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$80.Hstartwrite$MH,"Hstartwrite");
+        return RuntimeHelper.requireNonNull(constants$131.const$0,"Hstartwrite");
     }
-    public static int Hstartwrite ( int file_id,  short tag,  short ref,  int length) {
+    /**
+     * {@snippet :
+     * int32 Hstartwrite(int32 file_id, uint16 tag, uint16 ref, int32 length);
+     * }
+     */
+    public static int Hstartwrite(int file_id, short tag, short ref, int length) {
         var mh$ = Hstartwrite$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, length);
@@ -3813,9 +8709,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hstartaccess$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.Hstartaccess$MH,"Hstartaccess");
+        return RuntimeHelper.requireNonNull(constants$131.const$1,"Hstartaccess");
     }
-    public static int Hstartaccess ( int file_id,  short tag,  short ref,  int flags) {
+    /**
+     * {@snippet :
+     * int32 Hstartaccess(int32 file_id, uint16 tag, uint16 ref, uint32 flags);
+     * }
+     */
+    public static int Hstartaccess(int file_id, short tag, short ref, int flags) {
         var mh$ = Hstartaccess$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, flags);
@@ -3824,9 +8725,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hsetlength$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.Hsetlength$MH,"Hsetlength");
+        return RuntimeHelper.requireNonNull(constants$131.const$2,"Hsetlength");
     }
-    public static int Hsetlength ( int file_id,  int length) {
+    /**
+     * {@snippet :
+     * intn Hsetlength(int32 file_id, int32 length);
+     * }
+     */
+    public static int Hsetlength(int file_id, int length) {
         var mh$ = Hsetlength$MH();
         try {
             return (int)mh$.invokeExact(file_id, length);
@@ -3835,9 +8741,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Happendable$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.Happendable$MH,"Happendable");
+        return RuntimeHelper.requireNonNull(constants$131.const$3,"Happendable");
     }
-    public static int Happendable ( int aid) {
+    /**
+     * {@snippet :
+     * intn Happendable(int32 aid);
+     * }
+     */
+    public static int Happendable(int aid) {
         var mh$ = Happendable$MH();
         try {
             return (int)mh$.invokeExact(aid);
@@ -3846,9 +8757,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HPisappendable$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.HPisappendable$MH,"HPisappendable");
+        return RuntimeHelper.requireNonNull(constants$131.const$4,"HPisappendable");
     }
-    public static int HPisappendable ( int aid) {
+    /**
+     * {@snippet :
+     * intn HPisappendable(int32 aid);
+     * }
+     */
+    public static int HPisappendable(int aid) {
         var mh$ = HPisappendable$MH();
         try {
             return (int)mh$.invokeExact(aid);
@@ -3857,9 +8773,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HPregister_term_func$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.HPregister_term_func$MH,"HPregister_term_func");
+        return RuntimeHelper.requireNonNull(constants$131.const$5,"HPregister_term_func");
     }
-    public static int HPregister_term_func ( Addressable term_func) {
+    /**
+     * {@snippet :
+     * intn HPregister_term_func(hdf_termfunc_t term_func);
+     * }
+     */
+    public static int HPregister_term_func(MemorySegment term_func) {
         var mh$ = HPregister_term_func$MH();
         try {
             return (int)mh$.invokeExact(term_func);
@@ -3868,9 +8789,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hseek$MH() {
-        return RuntimeHelper.requireNonNull(constants$81.Hseek$MH,"Hseek");
+        return RuntimeHelper.requireNonNull(constants$132.const$0,"Hseek");
     }
-    public static int Hseek ( int access_id,  int offset,  int origin) {
+    /**
+     * {@snippet :
+     * intn Hseek(int32 access_id, int32 offset, intn origin);
+     * }
+     */
+    public static int Hseek(int access_id, int offset, int origin) {
         var mh$ = Hseek$MH();
         try {
             return (int)mh$.invokeExact(access_id, offset, origin);
@@ -3879,9 +8805,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Htell$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.Htell$MH,"Htell");
+        return RuntimeHelper.requireNonNull(constants$132.const$1,"Htell");
     }
-    public static int Htell ( int access_id) {
+    /**
+     * {@snippet :
+     * int32 Htell(int32 access_id);
+     * }
+     */
+    public static int Htell(int access_id) {
         var mh$ = Htell$MH();
         try {
             return (int)mh$.invokeExact(access_id);
@@ -3890,9 +8821,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hread$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.Hread$MH,"Hread");
+        return RuntimeHelper.requireNonNull(constants$132.const$3,"Hread");
     }
-    public static int Hread ( int access_id,  int length,  Addressable data) {
+    /**
+     * {@snippet :
+     * int32 Hread(int32 access_id, int32 length, void* data);
+     * }
+     */
+    public static int Hread(int access_id, int length, MemorySegment data) {
         var mh$ = Hread$MH();
         try {
             return (int)mh$.invokeExact(access_id, length, data);
@@ -3901,9 +8837,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.Hwrite$MH,"Hwrite");
+        return RuntimeHelper.requireNonNull(constants$132.const$4,"Hwrite");
     }
-    public static int Hwrite ( int access_id,  int length,  Addressable data) {
+    /**
+     * {@snippet :
+     * int32 Hwrite(int32 access_id, int32 length, void* data);
+     * }
+     */
+    public static int Hwrite(int access_id, int length, MemorySegment data) {
         var mh$ = Hwrite$MH();
         try {
             return (int)mh$.invokeExact(access_id, length, data);
@@ -3912,9 +8853,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Htrunc$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.Htrunc$MH,"Htrunc");
+        return RuntimeHelper.requireNonNull(constants$132.const$5,"Htrunc");
     }
-    public static int Htrunc ( int access_id,  int trunc_len) {
+    /**
+     * {@snippet :
+     * int32 Htrunc(int32 access_id, int32 trunc_len);
+     * }
+     */
+    public static int Htrunc(int access_id, int trunc_len) {
         var mh$ = Htrunc$MH();
         try {
             return (int)mh$.invokeExact(access_id, trunc_len);
@@ -3923,9 +8869,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hendaccess$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.Hendaccess$MH,"Hendaccess");
+        return RuntimeHelper.requireNonNull(constants$133.const$0,"Hendaccess");
     }
-    public static int Hendaccess ( int access_id) {
+    /**
+     * {@snippet :
+     * intn Hendaccess(int32 access_id);
+     * }
+     */
+    public static int Hendaccess(int access_id) {
         var mh$ = Hendaccess$MH();
         try {
             return (int)mh$.invokeExact(access_id);
@@ -3934,9 +8885,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDgetc$MH() {
-        return RuntimeHelper.requireNonNull(constants$82.HDgetc$MH,"HDgetc");
+        return RuntimeHelper.requireNonNull(constants$133.const$1,"HDgetc");
     }
-    public static int HDgetc ( int access_id) {
+    /**
+     * {@snippet :
+     * intn HDgetc(int32 access_id);
+     * }
+     */
+    public static int HDgetc(int access_id) {
         var mh$ = HDgetc$MH();
         try {
             return (int)mh$.invokeExact(access_id);
@@ -3945,9 +8901,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDputc$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.HDputc$MH,"HDputc");
+        return RuntimeHelper.requireNonNull(constants$133.const$3,"HDputc");
     }
-    public static int HDputc ( byte c,  int access_id) {
+    /**
+     * {@snippet :
+     * intn HDputc(uint8 c, int32 access_id);
+     * }
+     */
+    public static int HDputc(byte c, int access_id) {
         var mh$ = HDputc$MH();
         try {
             return (int)mh$.invokeExact(c, access_id);
@@ -3956,9 +8917,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hgetelement$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.Hgetelement$MH,"Hgetelement");
+        return RuntimeHelper.requireNonNull(constants$133.const$5,"Hgetelement");
     }
-    public static int Hgetelement ( int file_id,  short tag,  short ref,  Addressable data) {
+    /**
+     * {@snippet :
+     * int32 Hgetelement(int32 file_id, uint16 tag, uint16 ref, uint8* data);
+     * }
+     */
+    public static int Hgetelement(int file_id, short tag, short ref, MemorySegment data) {
         var mh$ = Hgetelement$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, data);
@@ -3967,9 +8933,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hputelement$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.Hputelement$MH,"Hputelement");
+        return RuntimeHelper.requireNonNull(constants$134.const$1,"Hputelement");
     }
-    public static int Hputelement ( int file_id,  short tag,  short ref,  Addressable data,  int length) {
+    /**
+     * {@snippet :
+     * int32 Hputelement(int32 file_id, uint16 tag, uint16 ref, const uint8* data, int32 length);
+     * }
+     */
+    public static int Hputelement(int file_id, short tag, short ref, MemorySegment data, int length) {
         var mh$ = Hputelement$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, data, length);
@@ -3978,9 +8949,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hlength$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.Hlength$MH,"Hlength");
+        return RuntimeHelper.requireNonNull(constants$134.const$2,"Hlength");
     }
-    public static int Hlength ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 Hlength(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int Hlength(int file_id, short tag, short ref) {
         var mh$ = Hlength$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -3989,9 +8965,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hoffset$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.Hoffset$MH,"Hoffset");
+        return RuntimeHelper.requireNonNull(constants$134.const$3,"Hoffset");
     }
-    public static int Hoffset ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 Hoffset(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int Hoffset(int file_id, short tag, short ref) {
         var mh$ = Hoffset$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4000,9 +8981,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hsync$MH() {
-        return RuntimeHelper.requireNonNull(constants$83.Hsync$MH,"Hsync");
+        return RuntimeHelper.requireNonNull(constants$134.const$4,"Hsync");
     }
-    public static int Hsync ( int file_id) {
+    /**
+     * {@snippet :
+     * intn Hsync(int32 file_id);
+     * }
+     */
+    public static int Hsync(int file_id) {
         var mh$ = Hsync$MH();
         try {
             return (int)mh$.invokeExact(file_id);
@@ -4011,9 +8997,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hcache$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.Hcache$MH,"Hcache");
+        return RuntimeHelper.requireNonNull(constants$134.const$5,"Hcache");
     }
-    public static int Hcache ( int file_id,  int cache_on) {
+    /**
+     * {@snippet :
+     * intn Hcache(int32 file_id, intn cache_on);
+     * }
+     */
+    public static int Hcache(int file_id, int cache_on) {
         var mh$ = Hcache$MH();
         try {
             return (int)mh$.invokeExact(file_id, cache_on);
@@ -4022,9 +9013,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hgetlibversion$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.Hgetlibversion$MH,"Hgetlibversion");
+        return RuntimeHelper.requireNonNull(constants$135.const$1,"Hgetlibversion");
     }
-    public static int Hgetlibversion ( Addressable majorv,  Addressable minorv,  Addressable releasev,  Addressable string) {
+    /**
+     * {@snippet :
+     * intn Hgetlibversion(uint32* majorv, uint32* minorv, uint32* releasev, char* string);
+     * }
+     */
+    public static int Hgetlibversion(MemorySegment majorv, MemorySegment minorv, MemorySegment releasev, MemorySegment string) {
         var mh$ = Hgetlibversion$MH();
         try {
             return (int)mh$.invokeExact(majorv, minorv, releasev, string);
@@ -4033,9 +9029,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hgetfileversion$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.Hgetfileversion$MH,"Hgetfileversion");
+        return RuntimeHelper.requireNonNull(constants$135.const$2,"Hgetfileversion");
     }
-    public static int Hgetfileversion ( int file_id,  Addressable majorv,  Addressable minorv,  Addressable release,  Addressable string) {
+    /**
+     * {@snippet :
+     * intn Hgetfileversion(int32 file_id, uint32* majorv, uint32* minorv, uint32* release, char* string);
+     * }
+     */
+    public static int Hgetfileversion(int file_id, MemorySegment majorv, MemorySegment minorv, MemorySegment release, MemorySegment string) {
         var mh$ = Hgetfileversion$MH();
         try {
             return (int)mh$.invokeExact(file_id, majorv, minorv, release, string);
@@ -4044,9 +9045,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hsetaccesstype$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.Hsetaccesstype$MH,"Hsetaccesstype");
+        return RuntimeHelper.requireNonNull(constants$135.const$3,"Hsetaccesstype");
     }
-    public static int Hsetaccesstype ( int access_id,  int accesstype) {
+    /**
+     * {@snippet :
+     * intn Hsetaccesstype(int32 access_id, uintn accesstype);
+     * }
+     */
+    public static int Hsetaccesstype(int access_id, int accesstype) {
         var mh$ = Hsetaccesstype$MH();
         try {
             return (int)mh$.invokeExact(access_id, accesstype);
@@ -4055,9 +9061,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDmake_special_tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.HDmake_special_tag$MH,"HDmake_special_tag");
+        return RuntimeHelper.requireNonNull(constants$135.const$5,"HDmake_special_tag");
     }
-    public static short HDmake_special_tag ( short tag) {
+    /**
+     * {@snippet :
+     * uint16 HDmake_special_tag(uint16 tag);
+     * }
+     */
+    public static short HDmake_special_tag(short tag) {
         var mh$ = HDmake_special_tag$MH();
         try {
             return (short)mh$.invokeExact(tag);
@@ -4066,9 +9077,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDis_special_tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$84.HDis_special_tag$MH,"HDis_special_tag");
+        return RuntimeHelper.requireNonNull(constants$136.const$1,"HDis_special_tag");
     }
-    public static int HDis_special_tag ( short tag) {
+    /**
+     * {@snippet :
+     * intn HDis_special_tag(uint16 tag);
+     * }
+     */
+    public static int HDis_special_tag(short tag) {
         var mh$ = HDis_special_tag$MH();
         try {
             return (int)mh$.invokeExact(tag);
@@ -4077,9 +9093,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDbase_tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDbase_tag$MH,"HDbase_tag");
+        return RuntimeHelper.requireNonNull(constants$136.const$2,"HDbase_tag");
     }
-    public static short HDbase_tag ( short tag) {
+    /**
+     * {@snippet :
+     * uint16 HDbase_tag(uint16 tag);
+     * }
+     */
+    public static short HDbase_tag(short tag) {
         var mh$ = HDbase_tag$MH();
         try {
             return (short)mh$.invokeExact(tag);
@@ -4088,9 +9109,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDerr$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDerr$MH,"HDerr");
+        return RuntimeHelper.requireNonNull(constants$136.const$3,"HDerr");
     }
-    public static int HDerr ( int file_id) {
+    /**
+     * {@snippet :
+     * int HDerr(int32 file_id);
+     * }
+     */
+    public static int HDerr(int file_id) {
         var mh$ = HDerr$MH();
         try {
             return (int)mh$.invokeExact(file_id);
@@ -4099,9 +9125,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDvalidfid$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDvalidfid$MH,"HDvalidfid");
+        return RuntimeHelper.requireNonNull(constants$136.const$4,"HDvalidfid");
     }
-    public static int HDvalidfid ( int file_id) {
+    /**
+     * {@snippet :
+     * intn HDvalidfid(int32 file_id);
+     * }
+     */
+    public static int HDvalidfid(int file_id) {
         var mh$ = HDvalidfid$MH();
         try {
             return (int)mh$.invokeExact(file_id);
@@ -4110,31 +9141,46 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDgettagdesc$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDgettagdesc$MH,"HDgettagdesc");
+        return RuntimeHelper.requireNonNull(constants$136.const$6,"HDgettagdesc");
     }
-    public static MemoryAddress HDgettagdesc ( short tag) {
+    /**
+     * {@snippet :
+     * char* HDgettagdesc(uint16 tag);
+     * }
+     */
+    public static MemorySegment HDgettagdesc(short tag) {
         var mh$ = HDgettagdesc$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(tag);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(tag);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDgettagsname$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDgettagsname$MH,"HDgettagsname");
+        return RuntimeHelper.requireNonNull(constants$137.const$0,"HDgettagsname");
     }
-    public static MemoryAddress HDgettagsname ( short tag) {
+    /**
+     * {@snippet :
+     * char* HDgettagsname(uint16 tag);
+     * }
+     */
+    public static MemorySegment HDgettagsname(short tag) {
         var mh$ = HDgettagsname$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(tag);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(tag);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDgettagnum$MH() {
-        return RuntimeHelper.requireNonNull(constants$85.HDgettagnum$MH,"HDgettagnum");
+        return RuntimeHelper.requireNonNull(constants$137.const$1,"HDgettagnum");
     }
-    public static int HDgettagnum ( Addressable tag_name) {
+    /**
+     * {@snippet :
+     * intn HDgettagnum(char* tag_name);
+     * }
+     */
+    public static int HDgettagnum(MemorySegment tag_name) {
         var mh$ = HDgettagnum$MH();
         try {
             return (int)mh$.invokeExact(tag_name);
@@ -4143,31 +9189,46 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDgetNTdesc$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.HDgetNTdesc$MH,"HDgetNTdesc");
+        return RuntimeHelper.requireNonNull(constants$137.const$2,"HDgetNTdesc");
     }
-    public static MemoryAddress HDgetNTdesc ( int nt) {
+    /**
+     * {@snippet :
+     * char* HDgetNTdesc(int32 nt);
+     * }
+     */
+    public static MemorySegment HDgetNTdesc(int nt) {
         var mh$ = HDgetNTdesc$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(nt);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(nt);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDfidtoname$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.HDfidtoname$MH,"HDfidtoname");
+        return RuntimeHelper.requireNonNull(constants$137.const$3,"HDfidtoname");
     }
-    public static MemoryAddress HDfidtoname ( int fid) {
+    /**
+     * {@snippet :
+     * char* HDfidtoname(int32 fid);
+     * }
+     */
+    public static MemorySegment HDfidtoname(int fid) {
         var mh$ = HDfidtoname$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(fid);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(fid);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle Hgetntinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.Hgetntinfo$MH,"Hgetntinfo");
+        return RuntimeHelper.requireNonNull(constants$137.const$4,"Hgetntinfo");
     }
-    public static int Hgetntinfo ( int numbertype,  Addressable nt_info) {
+    /**
+     * {@snippet :
+     * intn Hgetntinfo(int32 numbertype, hdf_ntinfo_t* nt_info);
+     * }
+     */
+    public static int Hgetntinfo(int numbertype, MemorySegment nt_info) {
         var mh$ = Hgetntinfo$MH();
         try {
             return (int)mh$.invokeExact(numbertype, nt_info);
@@ -4176,9 +9237,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hishdf$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.Hishdf$MH,"Hishdf");
+        return RuntimeHelper.requireNonNull(constants$137.const$5,"Hishdf");
     }
-    public static int Hishdf ( Addressable filename) {
+    /**
+     * {@snippet :
+     * intn Hishdf(char* filename);
+     * }
+     */
+    public static int Hishdf(MemorySegment filename) {
         var mh$ = Hishdf$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -4187,9 +9253,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hfidinquire$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.Hfidinquire$MH,"Hfidinquire");
+        return RuntimeHelper.requireNonNull(constants$138.const$1,"Hfidinquire");
     }
-    public static int Hfidinquire ( int file_id,  Addressable fname,  Addressable acc_mode,  Addressable attach) {
+    /**
+     * {@snippet :
+     * intn Hfidinquire(int32 file_id, char** fname, intn* acc_mode, intn* attach);
+     * }
+     */
+    public static int Hfidinquire(int file_id, MemorySegment fname, MemorySegment acc_mode, MemorySegment attach) {
         var mh$ = Hfidinquire$MH();
         try {
             return (int)mh$.invokeExact(file_id, fname, acc_mode, attach);
@@ -4198,9 +9269,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$86.Hshutdown$MH,"Hshutdown");
+        return RuntimeHelper.requireNonNull(constants$138.const$2,"Hshutdown");
     }
-    public static int Hshutdown () {
+    /**
+     * {@snippet :
+     * intn Hshutdown();
+     * }
+     */
+    public static int Hshutdown() {
         var mh$ = Hshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -4209,9 +9285,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HPend$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.HPend$MH,"HPend");
+        return RuntimeHelper.requireNonNull(constants$138.const$3,"HPend");
     }
-    public static void HPend () {
+    /**
+     * {@snippet :
+     * void HPend();
+     * }
+     */
+    public static void HPend() {
         var mh$ = HPend$MH();
         try {
             mh$.invokeExact();
@@ -4220,9 +9301,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDdont_atexit$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.HDdont_atexit$MH,"HDdont_atexit");
+        return RuntimeHelper.requireNonNull(constants$138.const$4,"HDdont_atexit");
     }
-    public static int HDdont_atexit () {
+    /**
+     * {@snippet :
+     * intn HDdont_atexit();
+     * }
+     */
+    public static int HDdont_atexit() {
         var mh$ = HDdont_atexit$MH();
         try {
             return (int)mh$.invokeExact();
@@ -4231,9 +9317,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hdupdd$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.Hdupdd$MH,"Hdupdd");
+        return RuntimeHelper.requireNonNull(constants$138.const$6,"Hdupdd");
     }
-    public static int Hdupdd ( int file_id,  short tag,  short ref,  short old_tag,  short old_ref) {
+    /**
+     * {@snippet :
+     * intn Hdupdd(int32 file_id, uint16 tag, uint16 ref, uint16 old_tag, uint16 old_ref);
+     * }
+     */
+    public static int Hdupdd(int file_id, short tag, short ref, short old_tag, short old_ref) {
         var mh$ = Hdupdd$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, old_tag, old_ref);
@@ -4242,9 +9333,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hnumber$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.Hnumber$MH,"Hnumber");
+        return RuntimeHelper.requireNonNull(constants$139.const$1,"Hnumber");
     }
-    public static int Hnumber ( int file_id,  short tag) {
+    /**
+     * {@snippet :
+     * int32 Hnumber(int32 file_id, uint16 tag);
+     * }
+     */
+    public static int Hnumber(int file_id, short tag) {
         var mh$ = Hnumber$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag);
@@ -4253,9 +9349,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hnewref$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.Hnewref$MH,"Hnewref");
+        return RuntimeHelper.requireNonNull(constants$139.const$3,"Hnewref");
     }
-    public static short Hnewref ( int file_id) {
+    /**
+     * {@snippet :
+     * uint16 Hnewref(int32 file_id);
+     * }
+     */
+    public static short Hnewref(int file_id) {
         var mh$ = Hnewref$MH();
         try {
             return (short)mh$.invokeExact(file_id);
@@ -4264,9 +9365,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Htagnewref$MH() {
-        return RuntimeHelper.requireNonNull(constants$87.Htagnewref$MH,"Htagnewref");
+        return RuntimeHelper.requireNonNull(constants$139.const$5,"Htagnewref");
     }
-    public static short Htagnewref ( int file_id,  short tag) {
+    /**
+     * {@snippet :
+     * uint16 Htagnewref(int32 file_id, uint16 tag);
+     * }
+     */
+    public static short Htagnewref(int file_id, short tag) {
         var mh$ = Htagnewref$MH();
         try {
             return (short)mh$.invokeExact(file_id, tag);
@@ -4275,9 +9381,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hfind$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.Hfind$MH,"Hfind");
+        return RuntimeHelper.requireNonNull(constants$140.const$1,"Hfind");
     }
-    public static int Hfind ( int file_id,  short search_tag,  short search_ref,  Addressable find_tag,  Addressable find_ref,  Addressable find_offset,  Addressable find_length,  int direction) {
+    /**
+     * {@snippet :
+     * intn Hfind(int32 file_id, uint16 search_tag, uint16 search_ref, uint16* find_tag, uint16* find_ref, int32* find_offset, int32* find_length, intn direction);
+     * }
+     */
+    public static int Hfind(int file_id, short search_tag, short search_ref, MemorySegment find_tag, MemorySegment find_ref, MemorySegment find_offset, MemorySegment find_length, int direction) {
         var mh$ = Hfind$MH();
         try {
             return (int)mh$.invokeExact(file_id, search_tag, search_ref, find_tag, find_ref, find_offset, find_length, direction);
@@ -4286,9 +9397,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDcheck_tagref$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.HDcheck_tagref$MH,"HDcheck_tagref");
+        return RuntimeHelper.requireNonNull(constants$140.const$2,"HDcheck_tagref");
     }
-    public static int HDcheck_tagref ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * intn HDcheck_tagref(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int HDcheck_tagref(int file_id, short tag, short ref) {
         var mh$ = HDcheck_tagref$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4297,9 +9413,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDreuse_tagref$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.HDreuse_tagref$MH,"HDreuse_tagref");
+        return RuntimeHelper.requireNonNull(constants$140.const$3,"HDreuse_tagref");
     }
-    public static int HDreuse_tagref ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * intn HDreuse_tagref(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int HDreuse_tagref(int file_id, short tag, short ref) {
         var mh$ = HDreuse_tagref$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4308,9 +9429,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hdeldd$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.Hdeldd$MH,"Hdeldd");
+        return RuntimeHelper.requireNonNull(constants$140.const$4,"Hdeldd");
     }
-    public static int Hdeldd ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * intn Hdeldd(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int Hdeldd(int file_id, short tag, short ref) {
         var mh$ = Hdeldd$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4319,31 +9445,46 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDmemfill$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.HDmemfill$MH,"HDmemfill");
+        return RuntimeHelper.requireNonNull(constants$140.const$6,"HDmemfill");
     }
-    public static MemoryAddress HDmemfill ( Addressable dest,  Addressable src,  int item_size,  int num_items) {
+    /**
+     * {@snippet :
+     * void* HDmemfill(void* dest, void* src, uint32 item_size, uint32 num_items);
+     * }
+     */
+    public static MemorySegment HDmemfill(MemorySegment dest, MemorySegment src, int item_size, int num_items) {
         var mh$ = HDmemfill$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(dest, src, item_size, num_items);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(dest, src, item_size, num_items);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HIstrncpy$MH() {
-        return RuntimeHelper.requireNonNull(constants$88.HIstrncpy$MH,"HIstrncpy");
+        return RuntimeHelper.requireNonNull(constants$141.const$1,"HIstrncpy");
     }
-    public static MemoryAddress HIstrncpy ( Addressable dest,  Addressable source,  int len) {
+    /**
+     * {@snippet :
+     * char* HIstrncpy(char* dest, char* source, intn len);
+     * }
+     */
+    public static MemorySegment HIstrncpy(MemorySegment dest, MemorySegment source, int len) {
         var mh$ = HIstrncpy$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(dest, source, len);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(dest, source, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDspaceleft$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDspaceleft$MH,"HDspaceleft");
+        return RuntimeHelper.requireNonNull(constants$141.const$2,"HDspaceleft");
     }
-    public static int HDspaceleft () {
+    /**
+     * {@snippet :
+     * int32 HDspaceleft();
+     * }
+     */
+    public static int HDspaceleft() {
         var mh$ = HDspaceleft$MH();
         try {
             return (int)mh$.invokeExact();
@@ -4352,20 +9493,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDstrdup$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDstrdup$MH,"HDstrdup");
+        return RuntimeHelper.requireNonNull(constants$141.const$3,"HDstrdup");
     }
-    public static MemoryAddress HDstrdup ( Addressable s) {
+    /**
+     * {@snippet :
+     * char* HDstrdup(char* s);
+     * }
+     */
+    public static MemorySegment HDstrdup(MemorySegment s) {
         var mh$ = HDstrdup$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(s);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(s);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDc2fstr$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDc2fstr$MH,"HDc2fstr");
+        return RuntimeHelper.requireNonNull(constants$141.const$4,"HDc2fstr");
     }
-    public static int HDc2fstr ( Addressable str,  int len) {
+    /**
+     * {@snippet :
+     * intn HDc2fstr(char* str, intn len);
+     * }
+     */
+    public static int HDc2fstr(MemorySegment str, int len) {
         var mh$ = HDc2fstr$MH();
         try {
             return (int)mh$.invokeExact(str, len);
@@ -4374,20 +9525,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDf2cstring$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDf2cstring$MH,"HDf2cstring");
+        return RuntimeHelper.requireNonNull(constants$141.const$5,"HDf2cstring");
     }
-    public static MemoryAddress HDf2cstring ( Addressable fdesc,  int len) {
+    /**
+     * {@snippet :
+     * char* HDf2cstring(_fcd fdesc, intn len);
+     * }
+     */
+    public static MemorySegment HDf2cstring(MemorySegment fdesc, int len) {
         var mh$ = HDf2cstring$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(fdesc, len);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(fdesc, len);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HDflush$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDflush$MH,"HDflush");
+        return RuntimeHelper.requireNonNull(constants$142.const$0,"HDflush");
     }
-    public static int HDflush ( int file_id) {
+    /**
+     * {@snippet :
+     * intn HDflush(int32 file_id);
+     * }
+     */
+    public static int HDflush(int file_id) {
         var mh$ = HDflush$MH();
         try {
             return (int)mh$.invokeExact(file_id);
@@ -4396,9 +9557,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDpackFstring$MH() {
-        return RuntimeHelper.requireNonNull(constants$89.HDpackFstring$MH,"HDpackFstring");
+        return RuntimeHelper.requireNonNull(constants$142.const$1,"HDpackFstring");
     }
-    public static int HDpackFstring ( Addressable src,  Addressable dest,  int len) {
+    /**
+     * {@snippet :
+     * intn HDpackFstring(char* src, char* dest, intn len);
+     * }
+     */
+    public static int HDpackFstring(MemorySegment src, MemorySegment dest, int len) {
         var mh$ = HDpackFstring$MH();
         try {
             return (int)mh$.invokeExact(src, dest, len);
@@ -4407,9 +9573,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HLcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HLcreate$MH,"HLcreate");
+        return RuntimeHelper.requireNonNull(constants$142.const$3,"HLcreate");
     }
-    public static int HLcreate ( int file_id,  short tag,  short ref,  int block_length,  int number_blocks) {
+    /**
+     * {@snippet :
+     * int32 HLcreate(int32 file_id, uint16 tag, uint16 ref, int32 block_length, int32 number_blocks);
+     * }
+     */
+    public static int HLcreate(int file_id, short tag, short ref, int block_length, int number_blocks) {
         var mh$ = HLcreate$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, block_length, number_blocks);
@@ -4418,9 +9589,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HLconvert$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HLconvert$MH,"HLconvert");
+        return RuntimeHelper.requireNonNull(constants$142.const$4,"HLconvert");
     }
-    public static int HLconvert ( int aid,  int block_length,  int number_blocks) {
+    /**
+     * {@snippet :
+     * intn HLconvert(int32 aid, int32 block_length, int32 number_blocks);
+     * }
+     */
+    public static int HLconvert(int aid, int block_length, int number_blocks) {
         var mh$ = HLconvert$MH();
         try {
             return (int)mh$.invokeExact(aid, block_length, number_blocks);
@@ -4429,9 +9605,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HDinqblockinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HDinqblockinfo$MH,"HDinqblockinfo");
+        return RuntimeHelper.requireNonNull(constants$142.const$5,"HDinqblockinfo");
     }
-    public static int HDinqblockinfo ( int aid,  Addressable length,  Addressable first_length,  Addressable block_length,  Addressable number_blocks) {
+    /**
+     * {@snippet :
+     * int HDinqblockinfo(int32 aid, int32* length, int32* first_length, int32* block_length, int32* number_blocks);
+     * }
+     */
+    public static int HDinqblockinfo(int aid, MemorySegment length, MemorySegment first_length, MemorySegment block_length, MemorySegment number_blocks) {
         var mh$ = HDinqblockinfo$MH();
         try {
             return (int)mh$.invokeExact(aid, length, first_length, block_length, number_blocks);
@@ -4440,9 +9621,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HLsetblockinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HLsetblockinfo$MH,"HLsetblockinfo");
+        return RuntimeHelper.requireNonNull(constants$143.const$0,"HLsetblockinfo");
     }
-    public static int HLsetblockinfo ( int aid,  int block_size,  int num_blocks) {
+    /**
+     * {@snippet :
+     * intn HLsetblockinfo(int32 aid, int32 block_size, int32 num_blocks);
+     * }
+     */
+    public static int HLsetblockinfo(int aid, int block_size, int num_blocks) {
         var mh$ = HLsetblockinfo$MH();
         try {
             return (int)mh$.invokeExact(aid, block_size, num_blocks);
@@ -4451,9 +9637,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HLgetblockinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HLgetblockinfo$MH,"HLgetblockinfo");
+        return RuntimeHelper.requireNonNull(constants$143.const$1,"HLgetblockinfo");
     }
-    public static int HLgetblockinfo ( int aid,  Addressable block_size,  Addressable num_blocks) {
+    /**
+     * {@snippet :
+     * intn HLgetblockinfo(int32 aid, int32* block_size, int32* num_blocks);
+     * }
+     */
+    public static int HLgetblockinfo(int aid, MemorySegment block_size, MemorySegment num_blocks) {
         var mh$ = HLgetblockinfo$MH();
         try {
             return (int)mh$.invokeExact(aid, block_size, num_blocks);
@@ -4462,9 +9653,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HLgetdatainfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$90.HLgetdatainfo$MH,"HLgetdatainfo");
+        return RuntimeHelper.requireNonNull(constants$143.const$3,"HLgetdatainfo");
     }
-    public static int HLgetdatainfo ( int file_id,  Addressable buf,  int start_block,  int info_count,  Addressable offsetarray,  Addressable lengtharray) {
+    /**
+     * {@snippet :
+     * intn HLgetdatainfo(int32 file_id, uint8* buf, uintn start_block, uintn info_count, int32* offsetarray, int32* lengtharray);
+     * }
+     */
+    public static int HLgetdatainfo(int file_id, MemorySegment buf, int start_block, int info_count, MemorySegment offsetarray, MemorySegment lengtharray) {
         var mh$ = HLgetdatainfo$MH();
         try {
             return (int)mh$.invokeExact(file_id, buf, start_block, info_count, offsetarray, lengtharray);
@@ -4473,9 +9669,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HXcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HXcreate$MH,"HXcreate");
+        return RuntimeHelper.requireNonNull(constants$143.const$5,"HXcreate");
     }
-    public static int HXcreate ( int file_id,  short tag,  short ref,  Addressable extern_file_name,  int offset,  int start_len) {
+    /**
+     * {@snippet :
+     * int32 HXcreate(int32 file_id, uint16 tag, uint16 ref, char* extern_file_name, int32 offset, int32 start_len);
+     * }
+     */
+    public static int HXcreate(int file_id, short tag, short ref, MemorySegment extern_file_name, int offset, int start_len) {
         var mh$ = HXcreate$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, extern_file_name, offset, start_len);
@@ -4484,9 +9685,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HXsetcreatedir$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HXsetcreatedir$MH,"HXsetcreatedir");
+        return RuntimeHelper.requireNonNull(constants$144.const$0,"HXsetcreatedir");
     }
-    public static int HXsetcreatedir ( Addressable dir) {
+    /**
+     * {@snippet :
+     * intn HXsetcreatedir(char* dir);
+     * }
+     */
+    public static int HXsetcreatedir(MemorySegment dir) {
         var mh$ = HXsetcreatedir$MH();
         try {
             return (int)mh$.invokeExact(dir);
@@ -4495,9 +9701,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HXsetdir$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HXsetdir$MH,"HXsetdir");
+        return RuntimeHelper.requireNonNull(constants$144.const$1,"HXsetdir");
     }
-    public static int HXsetdir ( Addressable dir) {
+    /**
+     * {@snippet :
+     * intn HXsetdir(char* dir);
+     * }
+     */
+    public static int HXsetdir(MemorySegment dir) {
         var mh$ = HXsetdir$MH();
         try {
             return (int)mh$.invokeExact(dir);
@@ -4506,9 +9717,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HCcreate$MH,"HCcreate");
+        return RuntimeHelper.requireNonNull(constants$144.const$3,"HCcreate");
     }
-    public static int HCcreate ( int file_id,  short tag,  short ref,  int model_type,  Addressable m_info,  int coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * int32 HCcreate(int32 file_id, uint16 tag, uint16 ref, comp_model_t model_type, model_info* m_info, comp_coder_t coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCcreate(int file_id, short tag, short ref, int model_type, MemorySegment m_info, int coder_type, MemorySegment c_info) {
         var mh$ = HCcreate$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, model_type, m_info, coder_type, c_info);
@@ -4517,9 +9733,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPgetcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HCPgetcompress$MH,"HCPgetcompress");
+        return RuntimeHelper.requireNonNull(constants$144.const$5,"HCPgetcompress");
     }
-    public static int HCPgetcompress ( int file_id,  short data_tag,  short data_ref,  Addressable coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * intn HCPgetcompress(int32 file_id, uint16 data_tag, uint16 data_ref, comp_coder_t* coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCPgetcompress(int file_id, short data_tag, short data_ref, MemorySegment coder_type, MemorySegment c_info) {
         var mh$ = HCPgetcompress$MH();
         try {
             return (int)mh$.invokeExact(file_id, data_tag, data_ref, coder_type, c_info);
@@ -4528,9 +9749,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPgetcompinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$91.HCPgetcompinfo$MH,"HCPgetcompinfo");
+        return RuntimeHelper.requireNonNull(constants$145.const$0,"HCPgetcompinfo");
     }
-    public static int HCPgetcompinfo ( int file_id,  short data_tag,  short data_ref,  Addressable coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * intn HCPgetcompinfo(int32 file_id, uint16 data_tag, uint16 data_ref, comp_coder_t* coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCPgetcompinfo(int file_id, short data_tag, short data_ref, MemorySegment coder_type, MemorySegment c_info) {
         var mh$ = HCPgetcompinfo$MH();
         try {
             return (int)mh$.invokeExact(file_id, data_tag, data_ref, coder_type, c_info);
@@ -4539,9 +9765,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPgetcomptype$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCPgetcomptype$MH,"HCPgetcomptype");
+        return RuntimeHelper.requireNonNull(constants$145.const$1,"HCPgetcomptype");
     }
-    public static int HCPgetcomptype ( int file_id,  short data_tag,  short data_ref,  Addressable coder_type) {
+    /**
+     * {@snippet :
+     * intn HCPgetcomptype(int32 file_id, uint16 data_tag, uint16 data_ref, comp_coder_t* coder_type);
+     * }
+     */
+    public static int HCPgetcomptype(int file_id, short data_tag, short data_ref, MemorySegment coder_type) {
         var mh$ = HCPgetcomptype$MH();
         try {
             return (int)mh$.invokeExact(file_id, data_tag, data_ref, coder_type);
@@ -4550,9 +9781,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPgetdatasize$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCPgetdatasize$MH,"HCPgetdatasize");
+        return RuntimeHelper.requireNonNull(constants$145.const$2,"HCPgetdatasize");
     }
-    public static int HCPgetdatasize ( int file_id,  short data_tag,  short data_ref,  Addressable comp_size,  Addressable orig_size) {
+    /**
+     * {@snippet :
+     * intn HCPgetdatasize(int32 file_id, uint16 data_tag, uint16 data_ref, int32* comp_size, int32* orig_size);
+     * }
+     */
+    public static int HCPgetdatasize(int file_id, short data_tag, short data_ref, MemorySegment comp_size, MemorySegment orig_size) {
         var mh$ = HCPgetdatasize$MH();
         try {
             return (int)mh$.invokeExact(file_id, data_tag, data_ref, comp_size, orig_size);
@@ -4561,9 +9797,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCget_config_info$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCget_config_info$MH,"HCget_config_info");
+        return RuntimeHelper.requireNonNull(constants$145.const$3,"HCget_config_info");
     }
-    public static int HCget_config_info ( int coder_type,  Addressable compression_config_info) {
+    /**
+     * {@snippet :
+     * intn HCget_config_info(comp_coder_t coder_type, uint32* compression_config_info);
+     * }
+     */
+    public static int HCget_config_info(int coder_type, MemorySegment compression_config_info) {
         var mh$ = HCget_config_info$MH();
         try {
             return (int)mh$.invokeExact(coder_type, compression_config_info);
@@ -4572,9 +9813,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPquery_encode_header$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCPquery_encode_header$MH,"HCPquery_encode_header");
+        return RuntimeHelper.requireNonNull(constants$145.const$4,"HCPquery_encode_header");
     }
-    public static int HCPquery_encode_header ( int model_type,  Addressable m_info,  int coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * int32 HCPquery_encode_header(comp_model_t model_type, model_info* m_info, comp_coder_t coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCPquery_encode_header(int model_type, MemorySegment m_info, int coder_type, MemorySegment c_info) {
         var mh$ = HCPquery_encode_header$MH();
         try {
             return (int)mh$.invokeExact(model_type, m_info, coder_type, c_info);
@@ -4583,9 +9829,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPencode_header$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCPencode_header$MH,"HCPencode_header");
+        return RuntimeHelper.requireNonNull(constants$145.const$6,"HCPencode_header");
     }
-    public static int HCPencode_header ( Addressable p,  int model_type,  Addressable m_info,  int coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * intn HCPencode_header(uint8* p, comp_model_t model_type, model_info* m_info, comp_coder_t coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCPencode_header(MemorySegment p, int model_type, MemorySegment m_info, int coder_type, MemorySegment c_info) {
         var mh$ = HCPencode_header$MH();
         try {
             return (int)mh$.invokeExact(p, model_type, m_info, coder_type, c_info);
@@ -4594,9 +9845,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPdecode_header$MH() {
-        return RuntimeHelper.requireNonNull(constants$92.HCPdecode_header$MH,"HCPdecode_header");
+        return RuntimeHelper.requireNonNull(constants$146.const$1,"HCPdecode_header");
     }
-    public static int HCPdecode_header ( Addressable p,  Addressable model_type,  Addressable m_info,  Addressable coder_type,  Addressable c_info) {
+    /**
+     * {@snippet :
+     * intn HCPdecode_header(uint8* p, comp_model_t* model_type, model_info* m_info, comp_coder_t* coder_type, comp_info* c_info);
+     * }
+     */
+    public static int HCPdecode_header(MemorySegment p, MemorySegment model_type, MemorySegment m_info, MemorySegment coder_type, MemorySegment c_info) {
         var mh$ = HCPdecode_header$MH();
         try {
             return (int)mh$.invokeExact(p, model_type, m_info, coder_type, c_info);
@@ -4605,9 +9861,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HCPsetup_szip_parms$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HCPsetup_szip_parms$MH,"HCPsetup_szip_parms");
+        return RuntimeHelper.requireNonNull(constants$146.const$3,"HCPsetup_szip_parms");
     }
-    public static int HCPsetup_szip_parms ( Addressable c_info,  int nt,  int ncomp,  int ndims,  Addressable dims,  Addressable cdims) {
+    /**
+     * {@snippet :
+     * intn HCPsetup_szip_parms(comp_info* c_info, int32 nt, int32 ncomp, int32 ndims, int32* dims, int32* cdims);
+     * }
+     */
+    public static int HCPsetup_szip_parms(MemorySegment c_info, int nt, int ncomp, int ndims, MemorySegment dims, MemorySegment cdims) {
         var mh$ = HCPsetup_szip_parms$MH();
         try {
             return (int)mh$.invokeExact(c_info, nt, ncomp, ndims, dims, cdims);
@@ -4616,9 +9877,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HBconvert$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HBconvert$MH,"HBconvert");
+        return RuntimeHelper.requireNonNull(constants$146.const$4,"HBconvert");
     }
-    public static int HBconvert ( int aid) {
+    /**
+     * {@snippet :
+     * intn HBconvert(int32 aid);
+     * }
+     */
+    public static int HBconvert(int aid) {
         var mh$ = HBconvert$MH();
         try {
             return (int)mh$.invokeExact(aid);
@@ -4627,9 +9893,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HRPconvert$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HRPconvert$MH,"HRPconvert");
+        return RuntimeHelper.requireNonNull(constants$146.const$6,"HRPconvert");
     }
-    public static int HRPconvert ( int fid,  short tag,  short ref,  int xdim,  int ydim,  short scheme,  Addressable cinfo,  int pixel_size) {
+    /**
+     * {@snippet :
+     * int32 HRPconvert(int32 fid, uint16 tag, uint16 ref, int32 xdim, int32 ydim, int16 scheme, comp_info* cinfo, uintn pixel_size);
+     * }
+     */
+    public static int HRPconvert(int fid, short tag, short ref, int xdim, int ydim, short scheme, MemorySegment cinfo, int pixel_size) {
         var mh$ = HRPconvert$MH();
         try {
             return (int)mh$.invokeExact(fid, tag, ref, xdim, ydim, scheme, cinfo, pixel_size);
@@ -4638,20 +9909,30 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEstring$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HEstring$MH,"HEstring");
+        return RuntimeHelper.requireNonNull(constants$147.const$0,"HEstring");
     }
-    public static MemoryAddress HEstring ( int error_code) {
+    /**
+     * {@snippet :
+     * char* HEstring(hdf_err_code_t error_code);
+     * }
+     */
+    public static MemorySegment HEstring(int error_code) {
         var mh$ = HEstring$MH();
         try {
-            return (java.lang.foreign.MemoryAddress)mh$.invokeExact(error_code);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(error_code);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
     }
     public static MethodHandle HEpush$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HEpush$MH,"HEpush");
+        return RuntimeHelper.requireNonNull(constants$147.const$2,"HEpush");
     }
-    public static void HEpush ( int error_code,  Addressable function_name,  Addressable file_name,  int line) {
+    /**
+     * {@snippet :
+     * void HEpush(hdf_err_code_t error_code, char* function_name, char* file_name, intn line);
+     * }
+     */
+    public static void HEpush(int error_code, MemorySegment function_name, MemorySegment file_name, int line) {
         var mh$ = HEpush$MH();
         try {
             mh$.invokeExact(error_code, function_name, file_name, line);
@@ -4660,9 +9941,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEreport$MH() {
-        return RuntimeHelper.requireNonNull(constants$93.HEreport$MH,"HEreport");
+        return RuntimeHelper.requireNonNull(constants$147.const$3,"HEreport");
     }
-    public static void HEreport ( Addressable x0, Object... x1) {
+    /**
+     * {@snippet :
+     * void HEreport(char*,...);
+     * }
+     */
+    public static void HEreport(MemorySegment x0, Object... x1) {
         var mh$ = HEreport$MH();
         try {
             mh$.invokeExact(x0, x1);
@@ -4671,9 +9957,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEprint$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.HEprint$MH,"HEprint");
+        return RuntimeHelper.requireNonNull(constants$147.const$5,"HEprint");
     }
-    public static void HEprint ( Addressable stream,  int print_level) {
+    /**
+     * {@snippet :
+     * void HEprint(FILE* stream, int32 print_level);
+     * }
+     */
+    public static void HEprint(MemorySegment stream, int print_level) {
         var mh$ = HEprint$MH();
         try {
             mh$.invokeExact(stream, print_level);
@@ -4682,9 +9973,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEvalue$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.HEvalue$MH,"HEvalue");
+        return RuntimeHelper.requireNonNull(constants$148.const$0,"HEvalue");
     }
-    public static short HEvalue ( int level) {
+    /**
+     * {@snippet :
+     * int16 HEvalue(int32 level);
+     * }
+     */
+    public static short HEvalue(int level) {
         var mh$ = HEvalue$MH();
         try {
             return (short)mh$.invokeExact(level);
@@ -4693,9 +9989,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEclear$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.HEclear$MH,"HEclear");
+        return RuntimeHelper.requireNonNull(constants$148.const$1,"HEclear");
     }
-    public static void HEclear () {
+    /**
+     * {@snippet :
+     * void HEclear();
+     * }
+     */
+    public static void HEclear() {
         var mh$ = HEclear$MH();
         try {
             mh$.invokeExact();
@@ -4704,9 +10005,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HEshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.HEshutdown$MH,"HEshutdown");
+        return RuntimeHelper.requireNonNull(constants$148.const$2,"HEshutdown");
     }
-    public static int HEshutdown () {
+    /**
+     * {@snippet :
+     * intn HEshutdown();
+     * }
+     */
+    public static int HEshutdown() {
         var mh$ = HEshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -4715,9 +10021,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hstartbitread$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.Hstartbitread$MH,"Hstartbitread");
+        return RuntimeHelper.requireNonNull(constants$148.const$3,"Hstartbitread");
     }
-    public static int Hstartbitread ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 Hstartbitread(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int Hstartbitread(int file_id, short tag, short ref) {
         var mh$ = Hstartbitread$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4726,9 +10037,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hstartbitwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$94.Hstartbitwrite$MH,"Hstartbitwrite");
+        return RuntimeHelper.requireNonNull(constants$148.const$4,"Hstartbitwrite");
     }
-    public static int Hstartbitwrite ( int file_id,  short tag,  short ref,  int length) {
+    /**
+     * {@snippet :
+     * int32 Hstartbitwrite(int32 file_id, uint16 tag, uint16 ref, int32 length);
+     * }
+     */
+    public static int Hstartbitwrite(int file_id, short tag, short ref, int length) {
         var mh$ = Hstartbitwrite$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, length);
@@ -4737,9 +10053,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hbitappendable$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hbitappendable$MH,"Hbitappendable");
+        return RuntimeHelper.requireNonNull(constants$148.const$5,"Hbitappendable");
     }
-    public static int Hbitappendable ( int bitid) {
+    /**
+     * {@snippet :
+     * intn Hbitappendable(int32 bitid);
+     * }
+     */
+    public static int Hbitappendable(int bitid) {
         var mh$ = Hbitappendable$MH();
         try {
             return (int)mh$.invokeExact(bitid);
@@ -4748,9 +10069,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hbitwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hbitwrite$MH,"Hbitwrite");
+        return RuntimeHelper.requireNonNull(constants$149.const$0,"Hbitwrite");
     }
-    public static int Hbitwrite ( int bitid,  int count,  int data) {
+    /**
+     * {@snippet :
+     * intn Hbitwrite(int32 bitid, intn count, uint32 data);
+     * }
+     */
+    public static int Hbitwrite(int bitid, int count, int data) {
         var mh$ = Hbitwrite$MH();
         try {
             return (int)mh$.invokeExact(bitid, count, data);
@@ -4759,9 +10085,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hbitread$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hbitread$MH,"Hbitread");
+        return RuntimeHelper.requireNonNull(constants$149.const$1,"Hbitread");
     }
-    public static int Hbitread ( int bitid,  int count,  Addressable data) {
+    /**
+     * {@snippet :
+     * intn Hbitread(int32 bitid, intn count, uint32* data);
+     * }
+     */
+    public static int Hbitread(int bitid, int count, MemorySegment data) {
         var mh$ = Hbitread$MH();
         try {
             return (int)mh$.invokeExact(bitid, count, data);
@@ -4770,9 +10101,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hbitseek$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hbitseek$MH,"Hbitseek");
+        return RuntimeHelper.requireNonNull(constants$149.const$2,"Hbitseek");
     }
-    public static int Hbitseek ( int bitid,  int byte_offset,  int bit_offset) {
+    /**
+     * {@snippet :
+     * intn Hbitseek(int32 bitid, int32 byte_offset, intn bit_offset);
+     * }
+     */
+    public static int Hbitseek(int bitid, int byte_offset, int bit_offset) {
         var mh$ = Hbitseek$MH();
         try {
             return (int)mh$.invokeExact(bitid, byte_offset, bit_offset);
@@ -4781,9 +10117,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hgetbit$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hgetbit$MH,"Hgetbit");
+        return RuntimeHelper.requireNonNull(constants$149.const$3,"Hgetbit");
     }
-    public static int Hgetbit ( int bitid) {
+    /**
+     * {@snippet :
+     * intn Hgetbit(int32 bitid);
+     * }
+     */
+    public static int Hgetbit(int bitid) {
         var mh$ = Hgetbit$MH();
         try {
             return (int)mh$.invokeExact(bitid);
@@ -4792,9 +10133,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle Hendbitaccess$MH() {
-        return RuntimeHelper.requireNonNull(constants$95.Hendbitaccess$MH,"Hendbitaccess");
+        return RuntimeHelper.requireNonNull(constants$149.const$4,"Hendbitaccess");
     }
-    public static int Hendbitaccess ( int bitfile_id,  int flushbit) {
+    /**
+     * {@snippet :
+     * int32 Hendbitaccess(int32 bitfile_id, intn flushbit);
+     * }
+     */
+    public static int Hendbitaccess(int bitfile_id, int flushbit) {
         var mh$ = Hendbitaccess$MH();
         try {
             return (int)mh$.invokeExact(bitfile_id, flushbit);
@@ -4803,9 +10149,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle HPbitshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.HPbitshutdown$MH,"HPbitshutdown");
+        return RuntimeHelper.requireNonNull(constants$149.const$5,"HPbitshutdown");
     }
-    public static int HPbitshutdown () {
+    /**
+     * {@snippet :
+     * intn HPbitshutdown();
+     * }
+     */
+    public static int HPbitshutdown() {
         var mh$ = HPbitshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -4814,9 +10165,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFfindnextref$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.DFfindnextref$MH,"DFfindnextref");
+        return RuntimeHelper.requireNonNull(constants$150.const$1,"DFfindnextref");
     }
-    public static short DFfindnextref ( int file_id,  short tag,  short lref) {
+    /**
+     * {@snippet :
+     * uint16 DFfindnextref(int32 file_id, uint16 tag, uint16 lref);
+     * }
+     */
+    public static short DFfindnextref(int file_id, short tag, short lref) {
         var mh$ = DFfindnextref$MH();
         try {
             return (short)mh$.invokeExact(file_id, tag, lref);
@@ -4825,9 +10181,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFputcomp$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.DFputcomp$MH,"DFputcomp");
+        return RuntimeHelper.requireNonNull(constants$150.const$3,"DFputcomp");
     }
-    public static int DFputcomp ( int file_id,  short tag,  short ref,  Addressable image,  int xdim,  int ydim,  Addressable palette,  Addressable newpal,  short scheme,  Addressable cinfo) {
+    /**
+     * {@snippet :
+     * intn DFputcomp(int32 file_id, uint16 tag, uint16 ref, const uint8* image, int32 xdim, int32 ydim, uint8* palette, uint8* newpal, int16 scheme, comp_info* cinfo);
+     * }
+     */
+    public static int DFputcomp(int file_id, short tag, short ref, MemorySegment image, int xdim, int ydim, MemorySegment palette, MemorySegment newpal, short scheme, MemorySegment cinfo) {
         var mh$ = DFputcomp$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, image, xdim, ydim, palette, newpal, scheme, cinfo);
@@ -4836,9 +10197,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFgetcomp$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.DFgetcomp$MH,"DFgetcomp");
+        return RuntimeHelper.requireNonNull(constants$150.const$5,"DFgetcomp");
     }
-    public static int DFgetcomp ( int file_id,  short tag,  short ref,  Addressable image,  int xdim,  int ydim,  short scheme) {
+    /**
+     * {@snippet :
+     * int DFgetcomp(int32 file_id, uint16 tag, uint16 ref, uint8* image, int32 xdim, int32 ydim, uint16 scheme);
+     * }
+     */
+    public static int DFgetcomp(int file_id, short tag, short ref, MemorySegment image, int xdim, int ydim, short scheme) {
         var mh$ = DFgetcomp$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, image, xdim, ydim, scheme);
@@ -4847,9 +10213,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIrle$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.DFCIrle$MH,"DFCIrle");
+        return RuntimeHelper.requireNonNull(constants$151.const$0,"DFCIrle");
     }
-    public static int DFCIrle ( Addressable buf,  Addressable bufto,  int len) {
+    /**
+     * {@snippet :
+     * int32 DFCIrle(void* buf, void* bufto, int32 len);
+     * }
+     */
+    public static int DFCIrle(MemorySegment buf, MemorySegment bufto, int len) {
         var mh$ = DFCIrle$MH();
         try {
             return (int)mh$.invokeExact(buf, bufto, len);
@@ -4858,9 +10229,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIunrle$MH() {
-        return RuntimeHelper.requireNonNull(constants$96.DFCIunrle$MH,"DFCIunrle");
+        return RuntimeHelper.requireNonNull(constants$151.const$2,"DFCIunrle");
     }
-    public static int DFCIunrle ( Addressable buf,  Addressable bufto,  int outlen,  int resetsave) {
+    /**
+     * {@snippet :
+     * int32 DFCIunrle(uint8* buf, uint8* bufto, int32 outlen, int resetsave);
+     * }
+     */
+    public static int DFCIunrle(MemorySegment buf, MemorySegment bufto, int outlen, int resetsave) {
         var mh$ = DFCIunrle$MH();
         try {
             return (int)mh$.invokeExact(buf, bufto, outlen, resetsave);
@@ -4869,9 +10245,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIimcomp$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFCIimcomp$MH,"DFCIimcomp");
+        return RuntimeHelper.requireNonNull(constants$151.const$4,"DFCIimcomp");
     }
-    public static void DFCIimcomp ( int xdim,  int ydim,  Addressable in,  Addressable out,  Addressable in_pal,  Addressable out_pal,  int mode) {
+    /**
+     * {@snippet :
+     * void DFCIimcomp(int32 xdim, int32 ydim, const uint8* in, uint8 out[], uint8 in_pal[], uint8 out_pal[], int mode);
+     * }
+     */
+    public static void DFCIimcomp(int xdim, int ydim, MemorySegment in, MemorySegment out, MemorySegment in_pal, MemorySegment out_pal, int mode) {
         var mh$ = DFCIimcomp$MH();
         try {
             mh$.invokeExact(xdim, ydim, in, out, in_pal, out_pal, mode);
@@ -4880,9 +10261,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIunimcomp$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFCIunimcomp$MH,"DFCIunimcomp");
+        return RuntimeHelper.requireNonNull(constants$151.const$6,"DFCIunimcomp");
     }
-    public static void DFCIunimcomp ( int xdim,  int ydim,  Addressable in,  Addressable out) {
+    /**
+     * {@snippet :
+     * void DFCIunimcomp(int32 xdim, int32 ydim, uint8 in[], uint8 out[]);
+     * }
+     */
+    public static void DFCIunimcomp(int xdim, int ydim, MemorySegment in, MemorySegment out) {
         var mh$ = DFCIunimcomp$MH();
         try {
             mh$.invokeExact(xdim, ydim, in, out);
@@ -4891,9 +10277,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIjpeg$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFCIjpeg$MH,"DFCIjpeg");
+        return RuntimeHelper.requireNonNull(constants$152.const$1,"DFCIjpeg");
     }
-    public static int DFCIjpeg ( int file_id,  short tag,  short ref,  int xdim,  int ydim,  Addressable image,  short scheme,  Addressable scheme_info) {
+    /**
+     * {@snippet :
+     * intn DFCIjpeg(int32 file_id, uint16 tag, uint16 ref, int32 xdim, int32 ydim, void* image, int16 scheme, comp_info* scheme_info);
+     * }
+     */
+    public static int DFCIjpeg(int file_id, short tag, short ref, int xdim, int ydim, MemorySegment image, short scheme, MemorySegment scheme_info) {
         var mh$ = DFCIjpeg$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, xdim, ydim, image, scheme, scheme_info);
@@ -4902,9 +10293,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFCIunjpeg$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFCIunjpeg$MH,"DFCIunjpeg");
+        return RuntimeHelper.requireNonNull(constants$152.const$2,"DFCIunjpeg");
     }
-    public static int DFCIunjpeg ( int file_id,  short tag,  short ref,  Addressable image,  int xdim,  int ydim,  short scheme) {
+    /**
+     * {@snippet :
+     * intn DFCIunjpeg(int32 file_id, uint16 tag, uint16 ref, void* image, int32 xdim, int32 ydim, int16 scheme);
+     * }
+     */
+    public static int DFCIunjpeg(int file_id, short tag, short ref, MemorySegment image, int xdim, int ydim, short scheme) {
         var mh$ = DFCIunjpeg$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref, image, xdim, ydim, scheme);
@@ -4913,9 +10309,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdiread$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFdiread$MH,"DFdiread");
+        return RuntimeHelper.requireNonNull(constants$152.const$3,"DFdiread");
     }
-    public static int DFdiread ( int file_id,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 DFdiread(int32 file_id, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int DFdiread(int file_id, short tag, short ref) {
         var mh$ = DFdiread$MH();
         try {
             return (int)mh$.invokeExact(file_id, tag, ref);
@@ -4924,9 +10325,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdiget$MH() {
-        return RuntimeHelper.requireNonNull(constants$97.DFdiget$MH,"DFdiget");
+        return RuntimeHelper.requireNonNull(constants$152.const$4,"DFdiget");
     }
-    public static int DFdiget ( int list,  Addressable ptag,  Addressable pref) {
+    /**
+     * {@snippet :
+     * intn DFdiget(int32 list, uint16* ptag, uint16* pref);
+     * }
+     */
+    public static int DFdiget(int list, MemorySegment ptag, MemorySegment pref) {
         var mh$ = DFdiget$MH();
         try {
             return (int)mh$.invokeExact(list, ptag, pref);
@@ -4935,9 +10341,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdinobj$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFdinobj$MH,"DFdinobj");
+        return RuntimeHelper.requireNonNull(constants$152.const$5,"DFdinobj");
     }
-    public static int DFdinobj ( int list) {
+    /**
+     * {@snippet :
+     * intn DFdinobj(int32 list);
+     * }
+     */
+    public static int DFdinobj(int list) {
         var mh$ = DFdinobj$MH();
         try {
             return (int)mh$.invokeExact(list);
@@ -4946,9 +10357,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdisetup$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFdisetup$MH,"DFdisetup");
+        return RuntimeHelper.requireNonNull(constants$153.const$0,"DFdisetup");
     }
-    public static int DFdisetup ( int maxsize) {
+    /**
+     * {@snippet :
+     * int32 DFdisetup(int maxsize);
+     * }
+     */
+    public static int DFdisetup(int maxsize) {
         var mh$ = DFdisetup$MH();
         try {
             return (int)mh$.invokeExact(maxsize);
@@ -4957,9 +10373,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdiput$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFdiput$MH,"DFdiput");
+        return RuntimeHelper.requireNonNull(constants$153.const$1,"DFdiput");
     }
-    public static int DFdiput ( int list,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFdiput(int32 list, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int DFdiput(int list, short tag, short ref) {
         var mh$ = DFdiput$MH();
         try {
             return (int)mh$.invokeExact(list, tag, ref);
@@ -4968,9 +10389,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdiwrite$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFdiwrite$MH,"DFdiwrite");
+        return RuntimeHelper.requireNonNull(constants$153.const$3,"DFdiwrite");
     }
-    public static int DFdiwrite ( int file_id,  int list,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFdiwrite(int32 file_id, int32 list, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int DFdiwrite(int file_id, int list, short tag, short ref) {
         var mh$ = DFdiwrite$MH();
         try {
             return (int)mh$.invokeExact(file_id, list, tag, ref);
@@ -4979,9 +10405,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFdifree$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFdifree$MH,"DFdifree");
+        return RuntimeHelper.requireNonNull(constants$153.const$4,"DFdifree");
     }
-    public static void DFdifree ( int groupID) {
+    /**
+     * {@snippet :
+     * void DFdifree(int32 groupID);
+     * }
+     */
+    public static void DFdifree(int groupID) {
         var mh$ = DFdifree$MH();
         try {
             mh$.invokeExact(groupID);
@@ -4990,9 +10421,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPgetpal$MH() {
-        return RuntimeHelper.requireNonNull(constants$98.DFPgetpal$MH,"DFPgetpal");
+        return RuntimeHelper.requireNonNull(constants$153.const$5,"DFPgetpal");
     }
-    public static int DFPgetpal ( Addressable filename,  Addressable palette) {
+    /**
+     * {@snippet :
+     * intn DFPgetpal(char* filename, void* palette);
+     * }
+     */
+    public static int DFPgetpal(MemorySegment filename, MemorySegment palette) {
         var mh$ = DFPgetpal$MH();
         try {
             return (int)mh$.invokeExact(filename, palette);
@@ -5001,9 +10437,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPputpal$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPputpal$MH,"DFPputpal");
+        return RuntimeHelper.requireNonNull(constants$154.const$1,"DFPputpal");
     }
-    public static int DFPputpal ( Addressable filename,  Addressable palette,  int overwrite,  Addressable filemode) {
+    /**
+     * {@snippet :
+     * intn DFPputpal(char* filename, void* palette, intn overwrite, char* filemode);
+     * }
+     */
+    public static int DFPputpal(MemorySegment filename, MemorySegment palette, int overwrite, MemorySegment filemode) {
         var mh$ = DFPputpal$MH();
         try {
             return (int)mh$.invokeExact(filename, palette, overwrite, filemode);
@@ -5012,9 +10453,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPaddpal$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPaddpal$MH,"DFPaddpal");
+        return RuntimeHelper.requireNonNull(constants$154.const$2,"DFPaddpal");
     }
-    public static int DFPaddpal ( Addressable filename,  Addressable palette) {
+    /**
+     * {@snippet :
+     * intn DFPaddpal(char* filename, void* palette);
+     * }
+     */
+    public static int DFPaddpal(MemorySegment filename, MemorySegment palette) {
         var mh$ = DFPaddpal$MH();
         try {
             return (int)mh$.invokeExact(filename, palette);
@@ -5023,9 +10469,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPnpals$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPnpals$MH,"DFPnpals");
+        return RuntimeHelper.requireNonNull(constants$154.const$3,"DFPnpals");
     }
-    public static int DFPnpals ( Addressable filename) {
+    /**
+     * {@snippet :
+     * intn DFPnpals(char* filename);
+     * }
+     */
+    public static int DFPnpals(MemorySegment filename) {
         var mh$ = DFPnpals$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -5034,9 +10485,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPreadref$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPreadref$MH,"DFPreadref");
+        return RuntimeHelper.requireNonNull(constants$154.const$5,"DFPreadref");
     }
-    public static int DFPreadref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFPreadref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFPreadref(MemorySegment filename, short ref) {
         var mh$ = DFPreadref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5045,9 +10501,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPwriteref$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPwriteref$MH,"DFPwriteref");
+        return RuntimeHelper.requireNonNull(constants$155.const$0,"DFPwriteref");
     }
-    public static int DFPwriteref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFPwriteref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFPwriteref(MemorySegment filename, short ref) {
         var mh$ = DFPwriteref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5056,9 +10517,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPrestart$MH() {
-        return RuntimeHelper.requireNonNull(constants$99.DFPrestart$MH,"DFPrestart");
+        return RuntimeHelper.requireNonNull(constants$155.const$1,"DFPrestart");
     }
-    public static int DFPrestart () {
+    /**
+     * {@snippet :
+     * intn DFPrestart();
+     * }
+     */
+    public static int DFPrestart() {
         var mh$ = DFPrestart$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5067,9 +10533,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFPlastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFPlastref$MH,"DFPlastref");
+        return RuntimeHelper.requireNonNull(constants$155.const$3,"DFPlastref");
     }
-    public static short DFPlastref () {
+    /**
+     * {@snippet :
+     * uint16 DFPlastref();
+     * }
+     */
+    public static short DFPlastref() {
         var mh$ = DFPlastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -5078,9 +10549,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8setcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFR8setcompress$MH,"DFR8setcompress");
+        return RuntimeHelper.requireNonNull(constants$155.const$4,"DFR8setcompress");
     }
-    public static int DFR8setcompress ( int scheme,  Addressable cinfo) {
+    /**
+     * {@snippet :
+     * int DFR8setcompress(int32 scheme, comp_info* cinfo);
+     * }
+     */
+    public static int DFR8setcompress(int scheme, MemorySegment cinfo) {
         var mh$ = DFR8setcompress$MH();
         try {
             return (int)mh$.invokeExact(scheme, cinfo);
@@ -5089,9 +10565,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8getdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFR8getdims$MH,"DFR8getdims");
+        return RuntimeHelper.requireNonNull(constants$155.const$5,"DFR8getdims");
     }
-    public static int DFR8getdims ( Addressable filename,  Addressable pxdim,  Addressable pydim,  Addressable pispal) {
+    /**
+     * {@snippet :
+     * intn DFR8getdims(char* filename, int32* pxdim, int32* pydim, int* pispal);
+     * }
+     */
+    public static int DFR8getdims(MemorySegment filename, MemorySegment pxdim, MemorySegment pydim, MemorySegment pispal) {
         var mh$ = DFR8getdims$MH();
         try {
             return (int)mh$.invokeExact(filename, pxdim, pydim, pispal);
@@ -5100,9 +10581,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8getimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFR8getimage$MH,"DFR8getimage");
+        return RuntimeHelper.requireNonNull(constants$156.const$1,"DFR8getimage");
     }
-    public static int DFR8getimage ( Addressable filename,  Addressable image,  int xdim,  int ydim,  Addressable pal) {
+    /**
+     * {@snippet :
+     * intn DFR8getimage(char* filename, uint8* image, int32 xdim, int32 ydim, uint8* pal);
+     * }
+     */
+    public static int DFR8getimage(MemorySegment filename, MemorySegment image, int xdim, int ydim, MemorySegment pal) {
         var mh$ = DFR8getimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim, pal);
@@ -5111,9 +10597,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8setpalette$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFR8setpalette$MH,"DFR8setpalette");
+        return RuntimeHelper.requireNonNull(constants$156.const$2,"DFR8setpalette");
     }
-    public static int DFR8setpalette ( Addressable pal) {
+    /**
+     * {@snippet :
+     * intn DFR8setpalette(uint8* pal);
+     * }
+     */
+    public static int DFR8setpalette(MemorySegment pal) {
         var mh$ = DFR8setpalette$MH();
         try {
             return (int)mh$.invokeExact(pal);
@@ -5122,9 +10613,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8putimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$100.DFR8putimage$MH,"DFR8putimage");
+        return RuntimeHelper.requireNonNull(constants$156.const$4,"DFR8putimage");
     }
-    public static int DFR8putimage ( Addressable filename,  Addressable image,  int xdim,  int ydim,  short compress) {
+    /**
+     * {@snippet :
+     * intn DFR8putimage(char* filename, void* image, int32 xdim, int32 ydim, uint16 compress);
+     * }
+     */
+    public static int DFR8putimage(MemorySegment filename, MemorySegment image, int xdim, int ydim, short compress) {
         var mh$ = DFR8putimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim, compress);
@@ -5133,9 +10629,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8addimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8addimage$MH,"DFR8addimage");
+        return RuntimeHelper.requireNonNull(constants$156.const$5,"DFR8addimage");
     }
-    public static int DFR8addimage ( Addressable filename,  Addressable image,  int xdim,  int ydim,  short compress) {
+    /**
+     * {@snippet :
+     * intn DFR8addimage(char* filename, void* image, int32 xdim, int32 ydim, uint16 compress);
+     * }
+     */
+    public static int DFR8addimage(MemorySegment filename, MemorySegment image, int xdim, int ydim, short compress) {
         var mh$ = DFR8addimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim, compress);
@@ -5144,9 +10645,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8nimages$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8nimages$MH,"DFR8nimages");
+        return RuntimeHelper.requireNonNull(constants$157.const$0,"DFR8nimages");
     }
-    public static int DFR8nimages ( Addressable filename) {
+    /**
+     * {@snippet :
+     * intn DFR8nimages(char* filename);
+     * }
+     */
+    public static int DFR8nimages(MemorySegment filename) {
         var mh$ = DFR8nimages$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -5155,9 +10661,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8readref$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8readref$MH,"DFR8readref");
+        return RuntimeHelper.requireNonNull(constants$157.const$1,"DFR8readref");
     }
-    public static int DFR8readref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFR8readref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFR8readref(MemorySegment filename, short ref) {
         var mh$ = DFR8readref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5166,9 +10677,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8writeref$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8writeref$MH,"DFR8writeref");
+        return RuntimeHelper.requireNonNull(constants$157.const$2,"DFR8writeref");
     }
-    public static int DFR8writeref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFR8writeref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFR8writeref(MemorySegment filename, short ref) {
         var mh$ = DFR8writeref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5177,9 +10693,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8restart$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8restart$MH,"DFR8restart");
+        return RuntimeHelper.requireNonNull(constants$157.const$3,"DFR8restart");
     }
-    public static int DFR8restart () {
+    /**
+     * {@snippet :
+     * intn DFR8restart();
+     * }
+     */
+    public static int DFR8restart() {
         var mh$ = DFR8restart$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5188,9 +10709,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8lastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$101.DFR8lastref$MH,"DFR8lastref");
+        return RuntimeHelper.requireNonNull(constants$157.const$4,"DFR8lastref");
     }
-    public static short DFR8lastref () {
+    /**
+     * {@snippet :
+     * uint16 DFR8lastref();
+     * }
+     */
+    public static short DFR8lastref() {
         var mh$ = DFR8lastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -5199,9 +10725,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8getpalref$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFR8getpalref$MH,"DFR8getpalref");
+        return RuntimeHelper.requireNonNull(constants$157.const$5,"DFR8getpalref");
     }
-    public static int DFR8getpalref ( Addressable pal_ref) {
+    /**
+     * {@snippet :
+     * intn DFR8getpalref(uint16* pal_ref);
+     * }
+     */
+    public static int DFR8getpalref(MemorySegment pal_ref) {
         var mh$ = DFR8getpalref$MH();
         try {
             return (int)mh$.invokeExact(pal_ref);
@@ -5210,9 +10741,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFR8Pshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFR8Pshutdown$MH,"DFR8Pshutdown");
+        return RuntimeHelper.requireNonNull(constants$158.const$0,"DFR8Pshutdown");
     }
-    public static int DFR8Pshutdown () {
+    /**
+     * {@snippet :
+     * intn DFR8Pshutdown();
+     * }
+     */
+    public static int DFR8Pshutdown() {
         var mh$ = DFR8Pshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5221,9 +10757,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRgetlutdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFGRgetlutdims$MH,"DFGRgetlutdims");
+        return RuntimeHelper.requireNonNull(constants$158.const$1,"DFGRgetlutdims");
     }
-    public static int DFGRgetlutdims ( Addressable filename,  Addressable pxdim,  Addressable pydim,  Addressable pncomps,  Addressable pil) {
+    /**
+     * {@snippet :
+     * intn DFGRgetlutdims(char* filename, int32* pxdim, int32* pydim, intn* pncomps, intn* pil);
+     * }
+     */
+    public static int DFGRgetlutdims(MemorySegment filename, MemorySegment pxdim, MemorySegment pydim, MemorySegment pncomps, MemorySegment pil) {
         var mh$ = DFGRgetlutdims$MH();
         try {
             return (int)mh$.invokeExact(filename, pxdim, pydim, pncomps, pil);
@@ -5232,9 +10773,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRreqlutil$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFGRreqlutil$MH,"DFGRreqlutil");
+        return RuntimeHelper.requireNonNull(constants$158.const$2,"DFGRreqlutil");
     }
-    public static int DFGRreqlutil ( int il) {
+    /**
+     * {@snippet :
+     * intn DFGRreqlutil(intn il);
+     * }
+     */
+    public static int DFGRreqlutil(int il) {
         var mh$ = DFGRreqlutil$MH();
         try {
             return (int)mh$.invokeExact(il);
@@ -5243,9 +10789,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRgetlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFGRgetlut$MH,"DFGRgetlut");
+        return RuntimeHelper.requireNonNull(constants$158.const$3,"DFGRgetlut");
     }
-    public static int DFGRgetlut ( Addressable filename,  Addressable lut,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRgetlut(char* filename, void* lut, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRgetlut(MemorySegment filename, MemorySegment lut, int xdim, int ydim) {
         var mh$ = DFGRgetlut$MH();
         try {
             return (int)mh$.invokeExact(filename, lut, xdim, ydim);
@@ -5254,9 +10805,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRgetimdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$102.DFGRgetimdims$MH,"DFGRgetimdims");
+        return RuntimeHelper.requireNonNull(constants$158.const$4,"DFGRgetimdims");
     }
-    public static int DFGRgetimdims ( Addressable filename,  Addressable pxdim,  Addressable pydim,  Addressable pncomps,  Addressable pil) {
+    /**
+     * {@snippet :
+     * intn DFGRgetimdims(char* filename, int32* pxdim, int32* pydim, intn* pncomps, intn* pil);
+     * }
+     */
+    public static int DFGRgetimdims(MemorySegment filename, MemorySegment pxdim, MemorySegment pydim, MemorySegment pncomps, MemorySegment pil) {
         var mh$ = DFGRgetimdims$MH();
         try {
             return (int)mh$.invokeExact(filename, pxdim, pydim, pncomps, pil);
@@ -5265,9 +10821,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRreqimil$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRreqimil$MH,"DFGRreqimil");
+        return RuntimeHelper.requireNonNull(constants$158.const$5,"DFGRreqimil");
     }
-    public static int DFGRreqimil ( int il) {
+    /**
+     * {@snippet :
+     * intn DFGRreqimil(intn il);
+     * }
+     */
+    public static int DFGRreqimil(int il) {
         var mh$ = DFGRreqimil$MH();
         try {
             return (int)mh$.invokeExact(il);
@@ -5276,9 +10837,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRgetimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRgetimage$MH,"DFGRgetimage");
+        return RuntimeHelper.requireNonNull(constants$159.const$0,"DFGRgetimage");
     }
-    public static int DFGRgetimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRgetimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRgetimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DFGRgetimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5287,9 +10853,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRsetcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRsetcompress$MH,"DFGRsetcompress");
+        return RuntimeHelper.requireNonNull(constants$159.const$1,"DFGRsetcompress");
     }
-    public static int DFGRsetcompress ( int scheme,  Addressable cinfo) {
+    /**
+     * {@snippet :
+     * intn DFGRsetcompress(int32 scheme, comp_info* cinfo);
+     * }
+     */
+    public static int DFGRsetcompress(int scheme, MemorySegment cinfo) {
         var mh$ = DFGRsetcompress$MH();
         try {
             return (int)mh$.invokeExact(scheme, cinfo);
@@ -5298,9 +10869,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRsetlutdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRsetlutdims$MH,"DFGRsetlutdims");
+        return RuntimeHelper.requireNonNull(constants$159.const$3,"DFGRsetlutdims");
     }
-    public static int DFGRsetlutdims ( int xdim,  int ydim,  int ncomps,  int il) {
+    /**
+     * {@snippet :
+     * intn DFGRsetlutdims(int32 xdim, int32 ydim, intn ncomps, intn il);
+     * }
+     */
+    public static int DFGRsetlutdims(int xdim, int ydim, int ncomps, int il) {
         var mh$ = DFGRsetlutdims$MH();
         try {
             return (int)mh$.invokeExact(xdim, ydim, ncomps, il);
@@ -5309,9 +10885,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRsetlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRsetlut$MH,"DFGRsetlut");
+        return RuntimeHelper.requireNonNull(constants$159.const$4,"DFGRsetlut");
     }
-    public static int DFGRsetlut ( Addressable lut,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRsetlut(void* lut, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRsetlut(MemorySegment lut, int xdim, int ydim) {
         var mh$ = DFGRsetlut$MH();
         try {
             return (int)mh$.invokeExact(lut, xdim, ydim);
@@ -5320,9 +10901,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRaddlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$103.DFGRaddlut$MH,"DFGRaddlut");
+        return RuntimeHelper.requireNonNull(constants$159.const$5,"DFGRaddlut");
     }
-    public static int DFGRaddlut ( Addressable filename,  Addressable lut,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRaddlut(char* filename, void* lut, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRaddlut(MemorySegment filename, MemorySegment lut, int xdim, int ydim) {
         var mh$ = DFGRaddlut$MH();
         try {
             return (int)mh$.invokeExact(filename, lut, xdim, ydim);
@@ -5331,9 +10917,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRsetimdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRsetimdims$MH,"DFGRsetimdims");
+        return RuntimeHelper.requireNonNull(constants$160.const$0,"DFGRsetimdims");
     }
-    public static int DFGRsetimdims ( int xdim,  int ydim,  int ncomps,  int il) {
+    /**
+     * {@snippet :
+     * intn DFGRsetimdims(int32 xdim, int32 ydim, intn ncomps, intn il);
+     * }
+     */
+    public static int DFGRsetimdims(int xdim, int ydim, int ncomps, int il) {
         var mh$ = DFGRsetimdims$MH();
         try {
             return (int)mh$.invokeExact(xdim, ydim, ncomps, il);
@@ -5342,9 +10933,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRaddimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRaddimage$MH,"DFGRaddimage");
+        return RuntimeHelper.requireNonNull(constants$160.const$1,"DFGRaddimage");
     }
-    public static int DFGRaddimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRaddimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRaddimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DFGRaddimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5353,9 +10949,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRputimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRputimage$MH,"DFGRputimage");
+        return RuntimeHelper.requireNonNull(constants$160.const$2,"DFGRputimage");
     }
-    public static int DFGRputimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DFGRputimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DFGRputimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DFGRputimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5364,9 +10965,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRreadref$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRreadref$MH,"DFGRreadref");
+        return RuntimeHelper.requireNonNull(constants$160.const$3,"DFGRreadref");
     }
-    public static int DFGRreadref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DFGRreadref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFGRreadref(MemorySegment filename, short ref) {
         var mh$ = DFGRreadref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5375,9 +10981,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIlastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRIlastref$MH,"DFGRIlastref");
+        return RuntimeHelper.requireNonNull(constants$160.const$4,"DFGRIlastref");
     }
-    public static short DFGRIlastref () {
+    /**
+     * {@snippet :
+     * uint16 DFGRIlastref();
+     * }
+     */
+    public static short DFGRIlastref() {
         var mh$ = DFGRIlastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -5386,9 +10997,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIgetdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$104.DFGRIgetdims$MH,"DFGRIgetdims");
+        return RuntimeHelper.requireNonNull(constants$160.const$6,"DFGRIgetdims");
     }
-    public static int DFGRIgetdims ( Addressable filename,  Addressable pxdim,  Addressable pydim,  Addressable pncomps,  Addressable pil,  int type) {
+    /**
+     * {@snippet :
+     * intn DFGRIgetdims(char* filename, int32* pxdim, int32* pydim, intn* pncomps, intn* pil, intn type);
+     * }
+     */
+    public static int DFGRIgetdims(MemorySegment filename, MemorySegment pxdim, MemorySegment pydim, MemorySegment pncomps, MemorySegment pil, int type) {
         var mh$ = DFGRIgetdims$MH();
         try {
             return (int)mh$.invokeExact(filename, pxdim, pydim, pncomps, pil, type);
@@ -5397,9 +11013,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIreqil$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIreqil$MH,"DFGRIreqil");
+        return RuntimeHelper.requireNonNull(constants$161.const$0,"DFGRIreqil");
     }
-    public static int DFGRIreqil ( int il,  int type) {
+    /**
+     * {@snippet :
+     * intn DFGRIreqil(intn il, intn type);
+     * }
+     */
+    public static int DFGRIreqil(int il, int type) {
         var mh$ = DFGRIreqil$MH();
         try {
             return (int)mh$.invokeExact(il, type);
@@ -5408,9 +11029,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIgetimlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIgetimlut$MH,"DFGRIgetimlut");
+        return RuntimeHelper.requireNonNull(constants$161.const$2,"DFGRIgetimlut");
     }
-    public static int DFGRIgetimlut ( Addressable filename,  Addressable imlut,  int xdim,  int ydim,  int type,  int isfortran,  Addressable compressed,  Addressable compr_type,  Addressable has_pal) {
+    /**
+     * {@snippet :
+     * intn DFGRIgetimlut(char* filename, void* imlut, int32 xdim, int32 ydim, intn type, intn isfortran, int* compressed, uint16* compr_type, int* has_pal);
+     * }
+     */
+    public static int DFGRIgetimlut(MemorySegment filename, MemorySegment imlut, int xdim, int ydim, int type, int isfortran, MemorySegment compressed, MemorySegment compr_type, MemorySegment has_pal) {
         var mh$ = DFGRIgetimlut$MH();
         try {
             return (int)mh$.invokeExact(filename, imlut, xdim, ydim, type, isfortran, compressed, compr_type, has_pal);
@@ -5419,9 +11045,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIsetdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIsetdims$MH,"DFGRIsetdims");
+        return RuntimeHelper.requireNonNull(constants$161.const$3,"DFGRIsetdims");
     }
-    public static int DFGRIsetdims ( int xdim,  int ydim,  int ncomps,  int type) {
+    /**
+     * {@snippet :
+     * intn DFGRIsetdims(int32 xdim, int32 ydim, intn ncomps, intn type);
+     * }
+     */
+    public static int DFGRIsetdims(int xdim, int ydim, int ncomps, int type) {
         var mh$ = DFGRIsetdims$MH();
         try {
             return (int)mh$.invokeExact(xdim, ydim, ncomps, type);
@@ -5430,9 +11061,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIsetil$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIsetil$MH,"DFGRIsetil");
+        return RuntimeHelper.requireNonNull(constants$161.const$4,"DFGRIsetil");
     }
-    public static int DFGRIsetil ( int il,  int type) {
+    /**
+     * {@snippet :
+     * intn DFGRIsetil(intn il, intn type);
+     * }
+     */
+    public static int DFGRIsetil(int il, int type) {
         var mh$ = DFGRIsetil$MH();
         try {
             return (int)mh$.invokeExact(il, type);
@@ -5441,9 +11077,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIrestart$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIrestart$MH,"DFGRIrestart");
+        return RuntimeHelper.requireNonNull(constants$161.const$5,"DFGRIrestart");
     }
-    public static int DFGRIrestart () {
+    /**
+     * {@snippet :
+     * intn DFGRIrestart();
+     * }
+     */
+    public static int DFGRIrestart() {
         var mh$ = DFGRIrestart$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5452,9 +11093,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRIaddimlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$105.DFGRIaddimlut$MH,"DFGRIaddimlut");
+        return RuntimeHelper.requireNonNull(constants$162.const$1,"DFGRIaddimlut");
     }
-    public static int DFGRIaddimlut ( Addressable filename,  Addressable imlut,  int xdim,  int ydim,  int type,  int isfortran,  int newfile) {
+    /**
+     * {@snippet :
+     * intn DFGRIaddimlut(char* filename, void* imlut, int32 xdim, int32 ydim, intn type, intn isfortran, intn newfile);
+     * }
+     */
+    public static int DFGRIaddimlut(MemorySegment filename, MemorySegment imlut, int xdim, int ydim, int type, int isfortran, int newfile) {
         var mh$ = DFGRIaddimlut$MH();
         try {
             return (int)mh$.invokeExact(filename, imlut, xdim, ydim, type, isfortran, newfile);
@@ -5463,9 +11109,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFGRPshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DFGRPshutdown$MH,"DFGRPshutdown");
+        return RuntimeHelper.requireNonNull(constants$162.const$2,"DFGRPshutdown");
     }
-    public static int DFGRPshutdown () {
+    /**
+     * {@snippet :
+     * intn DFGRPshutdown();
+     * }
+     */
+    public static int DFGRPshutdown() {
         var mh$ = DFGRPshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5474,9 +11125,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24getdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DF24getdims$MH,"DF24getdims");
+        return RuntimeHelper.requireNonNull(constants$162.const$3,"DF24getdims");
     }
-    public static int DF24getdims ( Addressable filename,  Addressable pxdim,  Addressable pydim,  Addressable pil) {
+    /**
+     * {@snippet :
+     * intn DF24getdims(char* filename, int32* pxdim, int32* pydim, intn* pil);
+     * }
+     */
+    public static int DF24getdims(MemorySegment filename, MemorySegment pxdim, MemorySegment pydim, MemorySegment pil) {
         var mh$ = DF24getdims$MH();
         try {
             return (int)mh$.invokeExact(filename, pxdim, pydim, pil);
@@ -5485,9 +11141,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24reqil$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DF24reqil$MH,"DF24reqil");
+        return RuntimeHelper.requireNonNull(constants$162.const$4,"DF24reqil");
     }
-    public static int DF24reqil ( int il) {
+    /**
+     * {@snippet :
+     * intn DF24reqil(intn il);
+     * }
+     */
+    public static int DF24reqil(int il) {
         var mh$ = DF24reqil$MH();
         try {
             return (int)mh$.invokeExact(il);
@@ -5496,9 +11157,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24getimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DF24getimage$MH,"DF24getimage");
+        return RuntimeHelper.requireNonNull(constants$162.const$5,"DF24getimage");
     }
-    public static int DF24getimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DF24getimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DF24getimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DF24getimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5507,9 +11173,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24setdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DF24setdims$MH,"DF24setdims");
+        return RuntimeHelper.requireNonNull(constants$163.const$0,"DF24setdims");
     }
-    public static int DF24setdims ( int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DF24setdims(int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DF24setdims(int xdim, int ydim) {
         var mh$ = DF24setdims$MH();
         try {
             return (int)mh$.invokeExact(xdim, ydim);
@@ -5518,9 +11189,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24setil$MH() {
-        return RuntimeHelper.requireNonNull(constants$106.DF24setil$MH,"DF24setil");
+        return RuntimeHelper.requireNonNull(constants$163.const$1,"DF24setil");
     }
-    public static int DF24setil ( int il) {
+    /**
+     * {@snippet :
+     * intn DF24setil(intn il);
+     * }
+     */
+    public static int DF24setil(int il) {
         var mh$ = DF24setil$MH();
         try {
             return (int)mh$.invokeExact(il);
@@ -5529,9 +11205,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24setcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24setcompress$MH,"DF24setcompress");
+        return RuntimeHelper.requireNonNull(constants$163.const$2,"DF24setcompress");
     }
-    public static int DF24setcompress ( int type,  Addressable cinfo) {
+    /**
+     * {@snippet :
+     * intn DF24setcompress(int32 type, comp_info* cinfo);
+     * }
+     */
+    public static int DF24setcompress(int type, MemorySegment cinfo) {
         var mh$ = DF24setcompress$MH();
         try {
             return (int)mh$.invokeExact(type, cinfo);
@@ -5540,9 +11221,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24restart$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24restart$MH,"DF24restart");
+        return RuntimeHelper.requireNonNull(constants$163.const$3,"DF24restart");
     }
-    public static int DF24restart () {
+    /**
+     * {@snippet :
+     * intn DF24restart();
+     * }
+     */
+    public static int DF24restart() {
         var mh$ = DF24restart$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5551,9 +11237,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24addimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24addimage$MH,"DF24addimage");
+        return RuntimeHelper.requireNonNull(constants$163.const$4,"DF24addimage");
     }
-    public static int DF24addimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DF24addimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DF24addimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DF24addimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5562,9 +11253,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24putimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24putimage$MH,"DF24putimage");
+        return RuntimeHelper.requireNonNull(constants$163.const$5,"DF24putimage");
     }
-    public static int DF24putimage ( Addressable filename,  Addressable image,  int xdim,  int ydim) {
+    /**
+     * {@snippet :
+     * intn DF24putimage(char* filename, void* image, int32 xdim, int32 ydim);
+     * }
+     */
+    public static int DF24putimage(MemorySegment filename, MemorySegment image, int xdim, int ydim) {
         var mh$ = DF24putimage$MH();
         try {
             return (int)mh$.invokeExact(filename, image, xdim, ydim);
@@ -5573,9 +11269,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24nimages$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24nimages$MH,"DF24nimages");
+        return RuntimeHelper.requireNonNull(constants$164.const$0,"DF24nimages");
     }
-    public static int DF24nimages ( Addressable filename) {
+    /**
+     * {@snippet :
+     * intn DF24nimages(char* filename);
+     * }
+     */
+    public static int DF24nimages(MemorySegment filename) {
         var mh$ = DF24nimages$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -5584,9 +11285,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24readref$MH() {
-        return RuntimeHelper.requireNonNull(constants$107.DF24readref$MH,"DF24readref");
+        return RuntimeHelper.requireNonNull(constants$164.const$1,"DF24readref");
     }
-    public static int DF24readref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * intn DF24readref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DF24readref(MemorySegment filename, short ref) {
         var mh$ = DF24readref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -5595,9 +11301,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DF24lastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DF24lastref$MH,"DF24lastref");
+        return RuntimeHelper.requireNonNull(constants$164.const$2,"DF24lastref");
     }
-    public static short DF24lastref () {
+    /**
+     * {@snippet :
+     * uint16 DF24lastref();
+     * }
+     */
+    public static short DF24lastref() {
         var mh$ = DF24lastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -5606,9 +11317,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetlablen$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DFANgetlablen$MH,"DFANgetlablen");
+        return RuntimeHelper.requireNonNull(constants$164.const$4,"DFANgetlablen");
     }
-    public static int DFANgetlablen ( Addressable filename,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 DFANgetlablen(char* filename, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int DFANgetlablen(MemorySegment filename, short tag, short ref) {
         var mh$ = DFANgetlablen$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref);
@@ -5617,9 +11333,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetlabel$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DFANgetlabel$MH,"DFANgetlabel");
+        return RuntimeHelper.requireNonNull(constants$164.const$6,"DFANgetlabel");
     }
-    public static int DFANgetlabel ( Addressable filename,  short tag,  short ref,  Addressable label,  int maxlen) {
+    /**
+     * {@snippet :
+     * intn DFANgetlabel(char* filename, uint16 tag, uint16 ref, char* label, int32 maxlen);
+     * }
+     */
+    public static int DFANgetlabel(MemorySegment filename, short tag, short ref, MemorySegment label, int maxlen) {
         var mh$ = DFANgetlabel$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, label, maxlen);
@@ -5628,9 +11349,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetdesclen$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DFANgetdesclen$MH,"DFANgetdesclen");
+        return RuntimeHelper.requireNonNull(constants$165.const$0,"DFANgetdesclen");
     }
-    public static int DFANgetdesclen ( Addressable filename,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * int32 DFANgetdesclen(char* filename, uint16 tag, uint16 ref);
+     * }
+     */
+    public static int DFANgetdesclen(MemorySegment filename, short tag, short ref) {
         var mh$ = DFANgetdesclen$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref);
@@ -5639,9 +11365,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetdesc$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DFANgetdesc$MH,"DFANgetdesc");
+        return RuntimeHelper.requireNonNull(constants$165.const$1,"DFANgetdesc");
     }
-    public static int DFANgetdesc ( Addressable filename,  short tag,  short ref,  Addressable desc,  int maxlen) {
+    /**
+     * {@snippet :
+     * intn DFANgetdesc(char* filename, uint16 tag, uint16 ref, char* desc, int32 maxlen);
+     * }
+     */
+    public static int DFANgetdesc(MemorySegment filename, short tag, short ref, MemorySegment desc, int maxlen) {
         var mh$ = DFANgetdesc$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, desc, maxlen);
@@ -5650,9 +11381,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetfidlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$108.DFANgetfidlen$MH,"DFANgetfidlen");
+        return RuntimeHelper.requireNonNull(constants$165.const$2,"DFANgetfidlen");
     }
-    public static int DFANgetfidlen ( int file_id,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANgetfidlen(int32 file_id, intn isfirst);
+     * }
+     */
+    public static int DFANgetfidlen(int file_id, int isfirst) {
         var mh$ = DFANgetfidlen$MH();
         try {
             return (int)mh$.invokeExact(file_id, isfirst);
@@ -5661,9 +11397,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetfid$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANgetfid$MH,"DFANgetfid");
+        return RuntimeHelper.requireNonNull(constants$165.const$3,"DFANgetfid");
     }
-    public static int DFANgetfid ( int file_id,  Addressable id,  int maxlen,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANgetfid(int32 file_id, char* id, int32 maxlen, intn isfirst);
+     * }
+     */
+    public static int DFANgetfid(int file_id, MemorySegment id, int maxlen, int isfirst) {
         var mh$ = DFANgetfid$MH();
         try {
             return (int)mh$.invokeExact(file_id, id, maxlen, isfirst);
@@ -5672,9 +11413,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetfdslen$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANgetfdslen$MH,"DFANgetfdslen");
+        return RuntimeHelper.requireNonNull(constants$165.const$4,"DFANgetfdslen");
     }
-    public static int DFANgetfdslen ( int file_id,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANgetfdslen(int32 file_id, intn isfirst);
+     * }
+     */
+    public static int DFANgetfdslen(int file_id, int isfirst) {
         var mh$ = DFANgetfdslen$MH();
         try {
             return (int)mh$.invokeExact(file_id, isfirst);
@@ -5683,9 +11429,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANgetfds$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANgetfds$MH,"DFANgetfds");
+        return RuntimeHelper.requireNonNull(constants$165.const$5,"DFANgetfds");
     }
-    public static int DFANgetfds ( int file_id,  Addressable desc,  int maxlen,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANgetfds(int32 file_id, char* desc, int32 maxlen, intn isfirst);
+     * }
+     */
+    public static int DFANgetfds(int file_id, MemorySegment desc, int maxlen, int isfirst) {
         var mh$ = DFANgetfds$MH();
         try {
             return (int)mh$.invokeExact(file_id, desc, maxlen, isfirst);
@@ -5694,9 +11445,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANputlabel$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANputlabel$MH,"DFANputlabel");
+        return RuntimeHelper.requireNonNull(constants$166.const$1,"DFANputlabel");
     }
-    public static int DFANputlabel ( Addressable filename,  short tag,  short ref,  Addressable label) {
+    /**
+     * {@snippet :
+     * intn DFANputlabel(char* filename, uint16 tag, uint16 ref, char* label);
+     * }
+     */
+    public static int DFANputlabel(MemorySegment filename, short tag, short ref, MemorySegment label) {
         var mh$ = DFANputlabel$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, label);
@@ -5705,9 +11461,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANputdesc$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANputdesc$MH,"DFANputdesc");
+        return RuntimeHelper.requireNonNull(constants$166.const$2,"DFANputdesc");
     }
-    public static int DFANputdesc ( Addressable filename,  short tag,  short ref,  Addressable desc,  int desclen) {
+    /**
+     * {@snippet :
+     * intn DFANputdesc(char* filename, uint16 tag, uint16 ref, char* desc, int32 desclen);
+     * }
+     */
+    public static int DFANputdesc(MemorySegment filename, short tag, short ref, MemorySegment desc, int desclen) {
         var mh$ = DFANputdesc$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, desc, desclen);
@@ -5716,9 +11477,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANaddfid$MH() {
-        return RuntimeHelper.requireNonNull(constants$109.DFANaddfid$MH,"DFANaddfid");
+        return RuntimeHelper.requireNonNull(constants$166.const$3,"DFANaddfid");
     }
-    public static int DFANaddfid ( int file_id,  Addressable id) {
+    /**
+     * {@snippet :
+     * intn DFANaddfid(int32 file_id, char* id);
+     * }
+     */
+    public static int DFANaddfid(int file_id, MemorySegment id) {
         var mh$ = DFANaddfid$MH();
         try {
             return (int)mh$.invokeExact(file_id, id);
@@ -5727,9 +11493,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANaddfds$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANaddfds$MH,"DFANaddfds");
+        return RuntimeHelper.requireNonNull(constants$166.const$4,"DFANaddfds");
     }
-    public static int DFANaddfds ( int file_id,  Addressable desc,  int desclen) {
+    /**
+     * {@snippet :
+     * intn DFANaddfds(int32 file_id, char* desc, int32 desclen);
+     * }
+     */
+    public static int DFANaddfds(int file_id, MemorySegment desc, int desclen) {
         var mh$ = DFANaddfds$MH();
         try {
             return (int)mh$.invokeExact(file_id, desc, desclen);
@@ -5738,9 +11509,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANlastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANlastref$MH,"DFANlastref");
+        return RuntimeHelper.requireNonNull(constants$166.const$5,"DFANlastref");
     }
-    public static short DFANlastref () {
+    /**
+     * {@snippet :
+     * uint16 DFANlastref();
+     * }
+     */
+    public static short DFANlastref() {
         var mh$ = DFANlastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -5749,9 +11525,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANlablist$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANlablist$MH,"DFANlablist");
+        return RuntimeHelper.requireNonNull(constants$167.const$1,"DFANlablist");
     }
-    public static int DFANlablist ( Addressable filename,  short tag,  Addressable reflist,  Addressable labellist,  int listsize,  int maxlen,  int startpos) {
+    /**
+     * {@snippet :
+     * intn DFANlablist(char* filename, uint16 tag, uint16 reflist[], char* labellist, intn listsize, intn maxlen, intn startpos);
+     * }
+     */
+    public static int DFANlablist(MemorySegment filename, short tag, MemorySegment reflist, MemorySegment labellist, int listsize, int maxlen, int startpos) {
         var mh$ = DFANlablist$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, reflist, labellist, listsize, maxlen, startpos);
@@ -5760,9 +11541,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANclear$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANclear$MH,"DFANclear");
+        return RuntimeHelper.requireNonNull(constants$167.const$2,"DFANclear");
     }
-    public static int DFANclear () {
+    /**
+     * {@snippet :
+     * intn DFANclear();
+     * }
+     */
+    public static int DFANclear() {
         var mh$ = DFANclear$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5771,9 +11557,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIclear$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANIclear$MH,"DFANIclear");
+        return RuntimeHelper.requireNonNull(constants$167.const$3,"DFANIclear");
     }
-    public static int DFANIclear () {
+    /**
+     * {@snippet :
+     * intn DFANIclear();
+     * }
+     */
+    public static int DFANIclear() {
         var mh$ = DFANIclear$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5782,9 +11573,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIlocate$MH() {
-        return RuntimeHelper.requireNonNull(constants$110.DFANIlocate$MH,"DFANIlocate");
+        return RuntimeHelper.requireNonNull(constants$167.const$5,"DFANIlocate");
     }
-    public static short DFANIlocate ( int file_id,  int type,  short tag,  short ref) {
+    /**
+     * {@snippet :
+     * uint16 DFANIlocate(int32 file_id, int type, uint16 tag, uint16 ref);
+     * }
+     */
+    public static short DFANIlocate(int file_id, int type, short tag, short ref) {
         var mh$ = DFANIlocate$MH();
         try {
             return (short)mh$.invokeExact(file_id, type, tag, ref);
@@ -5793,9 +11589,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIaddentry$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIaddentry$MH,"DFANIaddentry");
+        return RuntimeHelper.requireNonNull(constants$168.const$1,"DFANIaddentry");
     }
-    public static int DFANIaddentry ( int type,  short annref,  short datatag,  short dataref) {
+    /**
+     * {@snippet :
+     * int DFANIaddentry(int type, uint16 annref, uint16 datatag, uint16 dataref);
+     * }
+     */
+    public static int DFANIaddentry(int type, short annref, short datatag, short dataref) {
         var mh$ = DFANIaddentry$MH();
         try {
             return (int)mh$.invokeExact(type, annref, datatag, dataref);
@@ -5804,9 +11605,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIgetannlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIgetannlen$MH,"DFANIgetannlen");
+        return RuntimeHelper.requireNonNull(constants$168.const$3,"DFANIgetannlen");
     }
-    public static int DFANIgetannlen ( Addressable filename,  short tag,  short ref,  int type) {
+    /**
+     * {@snippet :
+     * int32 DFANIgetannlen(char* filename, uint16 tag, uint16 ref, int type);
+     * }
+     */
+    public static int DFANIgetannlen(MemorySegment filename, short tag, short ref, int type) {
         var mh$ = DFANIgetannlen$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, type);
@@ -5815,9 +11621,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIgetann$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIgetann$MH,"DFANIgetann");
+        return RuntimeHelper.requireNonNull(constants$168.const$5,"DFANIgetann");
     }
-    public static int DFANIgetann ( Addressable filename,  short tag,  short ref,  Addressable ann,  int maxlen,  int type,  int isfortran) {
+    /**
+     * {@snippet :
+     * intn DFANIgetann(char* filename, uint16 tag, uint16 ref, uint8* ann, int32 maxlen, int type, int isfortran);
+     * }
+     */
+    public static int DFANIgetann(MemorySegment filename, short tag, short ref, MemorySegment ann, int maxlen, int type, int isfortran) {
         var mh$ = DFANIgetann$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, ann, maxlen, type, isfortran);
@@ -5826,9 +11637,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIputann$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIputann$MH,"DFANIputann");
+        return RuntimeHelper.requireNonNull(constants$169.const$1,"DFANIputann");
     }
-    public static int DFANIputann ( Addressable filename,  short tag,  short ref,  Addressable ann,  int annlen,  int type) {
+    /**
+     * {@snippet :
+     * intn DFANIputann(char* filename, uint16 tag, uint16 ref, uint8* ann, int32 annlen, int type);
+     * }
+     */
+    public static int DFANIputann(MemorySegment filename, short tag, short ref, MemorySegment ann, int annlen, int type) {
         var mh$ = DFANIputann$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, ref, ann, annlen, type);
@@ -5837,9 +11653,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIlablist$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIlablist$MH,"DFANIlablist");
+        return RuntimeHelper.requireNonNull(constants$169.const$3,"DFANIlablist");
     }
-    public static int DFANIlablist ( Addressable filename,  short tag,  Addressable reflist,  Addressable labellist,  int listsize,  int maxlen,  int startpos,  int isfortran) {
+    /**
+     * {@snippet :
+     * int DFANIlablist(char* filename, uint16 tag, uint16 reflist[], uint8* labellist, int listsize, int maxlen, int startpos, int isfortran);
+     * }
+     */
+    public static int DFANIlablist(MemorySegment filename, short tag, MemorySegment reflist, MemorySegment labellist, int listsize, int maxlen, int startpos, int isfortran) {
         var mh$ = DFANIlablist$MH();
         try {
             return (int)mh$.invokeExact(filename, tag, reflist, labellist, listsize, maxlen, startpos, isfortran);
@@ -5848,9 +11669,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIaddfann$MH() {
-        return RuntimeHelper.requireNonNull(constants$111.DFANIaddfann$MH,"DFANIaddfann");
+        return RuntimeHelper.requireNonNull(constants$169.const$4,"DFANIaddfann");
     }
-    public static int DFANIaddfann ( int file_id,  Addressable ann,  int annlen,  int type) {
+    /**
+     * {@snippet :
+     * int DFANIaddfann(int32 file_id, char* ann, int32 annlen, int type);
+     * }
+     */
+    public static int DFANIaddfann(int file_id, MemorySegment ann, int annlen, int type) {
         var mh$ = DFANIaddfann$MH();
         try {
             return (int)mh$.invokeExact(file_id, ann, annlen, type);
@@ -5859,9 +11685,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIgetfannlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFANIgetfannlen$MH,"DFANIgetfannlen");
+        return RuntimeHelper.requireNonNull(constants$169.const$5,"DFANIgetfannlen");
     }
-    public static int DFANIgetfannlen ( int file_id,  int type,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANIgetfannlen(int32 file_id, int type, int isfirst);
+     * }
+     */
+    public static int DFANIgetfannlen(int file_id, int type, int isfirst) {
         var mh$ = DFANIgetfannlen$MH();
         try {
             return (int)mh$.invokeExact(file_id, type, isfirst);
@@ -5870,9 +11701,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANIgetfann$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFANIgetfann$MH,"DFANIgetfann");
+        return RuntimeHelper.requireNonNull(constants$170.const$0,"DFANIgetfann");
     }
-    public static int DFANIgetfann ( int file_id,  Addressable ann,  int maxlen,  int type,  int isfirst) {
+    /**
+     * {@snippet :
+     * int32 DFANIgetfann(int32 file_id, char* ann, int32 maxlen, int type, int isfirst);
+     * }
+     */
+    public static int DFANIgetfann(int file_id, MemorySegment ann, int maxlen, int type, int isfirst) {
         var mh$ = DFANIgetfann$MH();
         try {
             return (int)mh$.invokeExact(file_id, ann, maxlen, type, isfirst);
@@ -5881,9 +11717,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFANPshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFANPshutdown$MH,"DFANPshutdown");
+        return RuntimeHelper.requireNonNull(constants$170.const$1,"DFANPshutdown");
     }
-    public static int DFANPshutdown () {
+    /**
+     * {@snippet :
+     * intn DFANPshutdown();
+     * }
+     */
+    public static int DFANPshutdown() {
         var mh$ = DFANPshutdown$MH();
         try {
             return (int)mh$.invokeExact();
@@ -5892,9 +11733,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFSDgetdims$MH,"DFSDgetdims");
+        return RuntimeHelper.requireNonNull(constants$170.const$3,"DFSDgetdims");
     }
-    public static int DFSDgetdims ( Addressable filename,  Addressable prank,  Addressable sizes,  int maxrank) {
+    /**
+     * {@snippet :
+     * int DFSDgetdims(char* filename, intn* prank, int32 sizes[], intn maxrank);
+     * }
+     */
+    public static int DFSDgetdims(MemorySegment filename, MemorySegment prank, MemorySegment sizes, int maxrank) {
         var mh$ = DFSDgetdims$MH();
         try {
             return (int)mh$.invokeExact(filename, prank, sizes, maxrank);
@@ -5903,9 +11749,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdatastrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFSDgetdatastrs$MH,"DFSDgetdatastrs");
+        return RuntimeHelper.requireNonNull(constants$170.const$4,"DFSDgetdatastrs");
     }
-    public static int DFSDgetdatastrs ( Addressable label,  Addressable unit,  Addressable format,  Addressable coordsys) {
+    /**
+     * {@snippet :
+     * int DFSDgetdatastrs(char* label, char* unit, char* format, char* coordsys);
+     * }
+     */
+    public static int DFSDgetdatastrs(MemorySegment label, MemorySegment unit, MemorySegment format, MemorySegment coordsys) {
         var mh$ = DFSDgetdatastrs$MH();
         try {
             return (int)mh$.invokeExact(label, unit, format, coordsys);
@@ -5914,9 +11765,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdimstrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$112.DFSDgetdimstrs$MH,"DFSDgetdimstrs");
+        return RuntimeHelper.requireNonNull(constants$170.const$5,"DFSDgetdimstrs");
     }
-    public static int DFSDgetdimstrs ( int dim,  Addressable label,  Addressable unit,  Addressable format) {
+    /**
+     * {@snippet :
+     * int DFSDgetdimstrs(int dim, char* label, char* unit, char* format);
+     * }
+     */
+    public static int DFSDgetdimstrs(int dim, MemorySegment label, MemorySegment unit, MemorySegment format) {
         var mh$ = DFSDgetdimstrs$MH();
         try {
             return (int)mh$.invokeExact(dim, label, unit, format);
@@ -5925,9 +11781,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdatalen$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDgetdatalen$MH,"DFSDgetdatalen");
+        return RuntimeHelper.requireNonNull(constants$171.const$0,"DFSDgetdatalen");
     }
-    public static int DFSDgetdatalen ( Addressable llabel,  Addressable lunit,  Addressable lformat,  Addressable lcoordsys) {
+    /**
+     * {@snippet :
+     * int DFSDgetdatalen(int* llabel, int* lunit, int* lformat, int* lcoordsys);
+     * }
+     */
+    public static int DFSDgetdatalen(MemorySegment llabel, MemorySegment lunit, MemorySegment lformat, MemorySegment lcoordsys) {
         var mh$ = DFSDgetdatalen$MH();
         try {
             return (int)mh$.invokeExact(llabel, lunit, lformat, lcoordsys);
@@ -5936,9 +11797,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdimlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDgetdimlen$MH,"DFSDgetdimlen");
+        return RuntimeHelper.requireNonNull(constants$171.const$1,"DFSDgetdimlen");
     }
-    public static int DFSDgetdimlen ( int dim,  Addressable llabel,  Addressable lunit,  Addressable lformat) {
+    /**
+     * {@snippet :
+     * int DFSDgetdimlen(int dim, int* llabel, int* lunit, int* lformat);
+     * }
+     */
+    public static int DFSDgetdimlen(int dim, MemorySegment llabel, MemorySegment lunit, MemorySegment lformat) {
         var mh$ = DFSDgetdimlen$MH();
         try {
             return (int)mh$.invokeExact(dim, llabel, lunit, lformat);
@@ -5947,9 +11813,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdimscale$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDgetdimscale$MH,"DFSDgetdimscale");
+        return RuntimeHelper.requireNonNull(constants$171.const$2,"DFSDgetdimscale");
     }
-    public static int DFSDgetdimscale ( int dim,  int maxsize,  Addressable scale) {
+    /**
+     * {@snippet :
+     * int DFSDgetdimscale(intn dim, int32 maxsize, void* scale);
+     * }
+     */
+    public static int DFSDgetdimscale(int dim, int maxsize, MemorySegment scale) {
         var mh$ = DFSDgetdimscale$MH();
         try {
             return (int)mh$.invokeExact(dim, maxsize, scale);
@@ -5958,9 +11829,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetrange$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDgetrange$MH,"DFSDgetrange");
+        return RuntimeHelper.requireNonNull(constants$171.const$3,"DFSDgetrange");
     }
-    public static int DFSDgetrange ( Addressable pmax,  Addressable pmin) {
+    /**
+     * {@snippet :
+     * int DFSDgetrange(void* pmax, void* pmin);
+     * }
+     */
+    public static int DFSDgetrange(MemorySegment pmax, MemorySegment pmin) {
         var mh$ = DFSDgetrange$MH();
         try {
             return (int)mh$.invokeExact(pmax, pmin);
@@ -5969,9 +11845,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetdata$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDgetdata$MH,"DFSDgetdata");
+        return RuntimeHelper.requireNonNull(constants$171.const$4,"DFSDgetdata");
     }
-    public static int DFSDgetdata ( Addressable filename,  int rank,  Addressable maxsizes,  Addressable data) {
+    /**
+     * {@snippet :
+     * int DFSDgetdata(char* filename, intn rank, int32 maxsizes[], void* data);
+     * }
+     */
+    public static int DFSDgetdata(MemorySegment filename, int rank, MemorySegment maxsizes, MemorySegment data) {
         var mh$ = DFSDgetdata$MH();
         try {
             return (int)mh$.invokeExact(filename, rank, maxsizes, data);
@@ -5980,9 +11861,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetlengths$MH() {
-        return RuntimeHelper.requireNonNull(constants$113.DFSDsetlengths$MH,"DFSDsetlengths");
+        return RuntimeHelper.requireNonNull(constants$171.const$5,"DFSDsetlengths");
     }
-    public static int DFSDsetlengths ( int maxlen_label,  int maxlen_unit,  int maxlen_format,  int maxlen_coordsys) {
+    /**
+     * {@snippet :
+     * int DFSDsetlengths(int maxlen_label, int maxlen_unit, int maxlen_format, int maxlen_coordsys);
+     * }
+     */
+    public static int DFSDsetlengths(int maxlen_label, int maxlen_unit, int maxlen_format, int maxlen_coordsys) {
         var mh$ = DFSDsetlengths$MH();
         try {
             return (int)mh$.invokeExact(maxlen_label, maxlen_unit, maxlen_format, maxlen_coordsys);
@@ -5991,9 +11877,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDsetdims$MH,"DFSDsetdims");
+        return RuntimeHelper.requireNonNull(constants$172.const$0,"DFSDsetdims");
     }
-    public static int DFSDsetdims ( int rank,  Addressable dimsizes) {
+    /**
+     * {@snippet :
+     * int DFSDsetdims(intn rank, int32 dimsizes[]);
+     * }
+     */
+    public static int DFSDsetdims(int rank, MemorySegment dimsizes) {
         var mh$ = DFSDsetdims$MH();
         try {
             return (int)mh$.invokeExact(rank, dimsizes);
@@ -6002,9 +11893,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetdatastrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDsetdatastrs$MH,"DFSDsetdatastrs");
+        return RuntimeHelper.requireNonNull(constants$172.const$1,"DFSDsetdatastrs");
     }
-    public static int DFSDsetdatastrs ( Addressable label,  Addressable unit,  Addressable format,  Addressable coordsys) {
+    /**
+     * {@snippet :
+     * int DFSDsetdatastrs(char* label, char* unit, char* format, char* coordsys);
+     * }
+     */
+    public static int DFSDsetdatastrs(MemorySegment label, MemorySegment unit, MemorySegment format, MemorySegment coordsys) {
         var mh$ = DFSDsetdatastrs$MH();
         try {
             return (int)mh$.invokeExact(label, unit, format, coordsys);
@@ -6013,9 +11909,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetdimstrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDsetdimstrs$MH,"DFSDsetdimstrs");
+        return RuntimeHelper.requireNonNull(constants$172.const$2,"DFSDsetdimstrs");
     }
-    public static int DFSDsetdimstrs ( int dim,  Addressable label,  Addressable unit,  Addressable format) {
+    /**
+     * {@snippet :
+     * int DFSDsetdimstrs(int dim, char* label, char* unit, char* format);
+     * }
+     */
+    public static int DFSDsetdimstrs(int dim, MemorySegment label, MemorySegment unit, MemorySegment format) {
         var mh$ = DFSDsetdimstrs$MH();
         try {
             return (int)mh$.invokeExact(dim, label, unit, format);
@@ -6024,9 +11925,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetdimscale$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDsetdimscale$MH,"DFSDsetdimscale");
+        return RuntimeHelper.requireNonNull(constants$172.const$3,"DFSDsetdimscale");
     }
-    public static int DFSDsetdimscale ( int dim,  int dimsize,  Addressable scale) {
+    /**
+     * {@snippet :
+     * int DFSDsetdimscale(intn dim, int32 dimsize, void* scale);
+     * }
+     */
+    public static int DFSDsetdimscale(int dim, int dimsize, MemorySegment scale) {
         var mh$ = DFSDsetdimscale$MH();
         try {
             return (int)mh$.invokeExact(dim, dimsize, scale);
@@ -6035,9 +11941,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetrange$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDsetrange$MH,"DFSDsetrange");
+        return RuntimeHelper.requireNonNull(constants$172.const$4,"DFSDsetrange");
     }
-    public static int DFSDsetrange ( Addressable maxi,  Addressable mini) {
+    /**
+     * {@snippet :
+     * int DFSDsetrange(void* maxi, void* mini);
+     * }
+     */
+    public static int DFSDsetrange(MemorySegment maxi, MemorySegment mini) {
         var mh$ = DFSDsetrange$MH();
         try {
             return (int)mh$.invokeExact(maxi, mini);
@@ -6046,9 +11957,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDputdata$MH() {
-        return RuntimeHelper.requireNonNull(constants$114.DFSDputdata$MH,"DFSDputdata");
+        return RuntimeHelper.requireNonNull(constants$172.const$5,"DFSDputdata");
     }
-    public static int DFSDputdata ( Addressable filename,  int rank,  Addressable dimsizes,  Addressable data) {
+    /**
+     * {@snippet :
+     * int DFSDputdata(char* filename, intn rank, int32 dimsizes[], void* data);
+     * }
+     */
+    public static int DFSDputdata(MemorySegment filename, int rank, MemorySegment dimsizes, MemorySegment data) {
         var mh$ = DFSDputdata$MH();
         try {
             return (int)mh$.invokeExact(filename, rank, dimsizes, data);
@@ -6057,9 +11973,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDadddata$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDadddata$MH,"DFSDadddata");
+        return RuntimeHelper.requireNonNull(constants$173.const$0,"DFSDadddata");
     }
-    public static int DFSDadddata ( Addressable filename,  int rank,  Addressable dimsizes,  Addressable data) {
+    /**
+     * {@snippet :
+     * int DFSDadddata(char* filename, intn rank, int32 dimsizes[], void* data);
+     * }
+     */
+    public static int DFSDadddata(MemorySegment filename, int rank, MemorySegment dimsizes, MemorySegment data) {
         var mh$ = DFSDadddata$MH();
         try {
             return (int)mh$.invokeExact(filename, rank, dimsizes, data);
@@ -6068,9 +11989,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDrestart$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDrestart$MH,"DFSDrestart");
+        return RuntimeHelper.requireNonNull(constants$173.const$1,"DFSDrestart");
     }
-    public static int DFSDrestart () {
+    /**
+     * {@snippet :
+     * int DFSDrestart();
+     * }
+     */
+    public static int DFSDrestart() {
         var mh$ = DFSDrestart$MH();
         try {
             return (int)mh$.invokeExact();
@@ -6079,9 +12005,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDndatasets$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDndatasets$MH,"DFSDndatasets");
+        return RuntimeHelper.requireNonNull(constants$173.const$2,"DFSDndatasets");
     }
-    public static int DFSDndatasets ( Addressable filename) {
+    /**
+     * {@snippet :
+     * int32 DFSDndatasets(char* filename);
+     * }
+     */
+    public static int DFSDndatasets(MemorySegment filename) {
         var mh$ = DFSDndatasets$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -6090,9 +12021,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDclear$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDclear$MH,"DFSDclear");
+        return RuntimeHelper.requireNonNull(constants$173.const$3,"DFSDclear");
     }
-    public static int DFSDclear () {
+    /**
+     * {@snippet :
+     * int DFSDclear();
+     * }
+     */
+    public static int DFSDclear() {
         var mh$ = DFSDclear$MH();
         try {
             return (int)mh$.invokeExact();
@@ -6101,9 +12037,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDlastref$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDlastref$MH,"DFSDlastref");
+        return RuntimeHelper.requireNonNull(constants$173.const$4,"DFSDlastref");
     }
-    public static short DFSDlastref () {
+    /**
+     * {@snippet :
+     * uint16 DFSDlastref();
+     * }
+     */
+    public static short DFSDlastref() {
         var mh$ = DFSDlastref$MH();
         try {
             return (short)mh$.invokeExact();
@@ -6112,9 +12053,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDreadref$MH() {
-        return RuntimeHelper.requireNonNull(constants$115.DFSDreadref$MH,"DFSDreadref");
+        return RuntimeHelper.requireNonNull(constants$173.const$5,"DFSDreadref");
     }
-    public static int DFSDreadref ( Addressable filename,  short ref) {
+    /**
+     * {@snippet :
+     * int DFSDreadref(char* filename, uint16 ref);
+     * }
+     */
+    public static int DFSDreadref(MemorySegment filename, short ref) {
         var mh$ = DFSDreadref$MH();
         try {
             return (int)mh$.invokeExact(filename, ref);
@@ -6123,9 +12069,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetslice$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDgetslice$MH,"DFSDgetslice");
+        return RuntimeHelper.requireNonNull(constants$174.const$0,"DFSDgetslice");
     }
-    public static int DFSDgetslice ( Addressable filename,  Addressable winst,  Addressable windims,  Addressable data,  Addressable dims) {
+    /**
+     * {@snippet :
+     * int DFSDgetslice(char* filename, int32 winst[], int32 windims[], void* data, int32 dims[]);
+     * }
+     */
+    public static int DFSDgetslice(MemorySegment filename, MemorySegment winst, MemorySegment windims, MemorySegment data, MemorySegment dims) {
         var mh$ = DFSDgetslice$MH();
         try {
             return (int)mh$.invokeExact(filename, winst, windims, data, dims);
@@ -6134,9 +12085,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDstartslice$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDstartslice$MH,"DFSDstartslice");
+        return RuntimeHelper.requireNonNull(constants$174.const$1,"DFSDstartslice");
     }
-    public static int DFSDstartslice ( Addressable filename) {
+    /**
+     * {@snippet :
+     * int DFSDstartslice(char* filename);
+     * }
+     */
+    public static int DFSDstartslice(MemorySegment filename) {
         var mh$ = DFSDstartslice$MH();
         try {
             return (int)mh$.invokeExact(filename);
@@ -6145,9 +12101,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDputslice$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDputslice$MH,"DFSDputslice");
+        return RuntimeHelper.requireNonNull(constants$174.const$2,"DFSDputslice");
     }
-    public static int DFSDputslice ( Addressable winend,  Addressable data,  Addressable dims) {
+    /**
+     * {@snippet :
+     * int DFSDputslice(int32 winend[], void* data, int32 dims[]);
+     * }
+     */
+    public static int DFSDputslice(MemorySegment winend, MemorySegment data, MemorySegment dims) {
         var mh$ = DFSDputslice$MH();
         try {
             return (int)mh$.invokeExact(winend, data, dims);
@@ -6156,9 +12117,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDendslice$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDendslice$MH,"DFSDendslice");
+        return RuntimeHelper.requireNonNull(constants$174.const$3,"DFSDendslice");
     }
-    public static int DFSDendslice () {
+    /**
+     * {@snippet :
+     * int DFSDendslice();
+     * }
+     */
+    public static int DFSDendslice() {
         var mh$ = DFSDendslice$MH();
         try {
             return (int)mh$.invokeExact();
@@ -6167,9 +12133,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetNT$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDsetNT$MH,"DFSDsetNT");
+        return RuntimeHelper.requireNonNull(constants$174.const$4,"DFSDsetNT");
     }
-    public static int DFSDsetNT ( int numbertype) {
+    /**
+     * {@snippet :
+     * int DFSDsetNT(int32 numbertype);
+     * }
+     */
+    public static int DFSDsetNT(int numbertype) {
         var mh$ = DFSDsetNT$MH();
         try {
             return (int)mh$.invokeExact(numbertype);
@@ -6178,9 +12149,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDsetorder$MH() {
-        return RuntimeHelper.requireNonNull(constants$116.DFSDsetorder$MH,"DFSDsetorder");
+        return RuntimeHelper.requireNonNull(constants$174.const$5,"DFSDsetorder");
     }
-    public static int DFSDsetorder ( int arrayorder) {
+    /**
+     * {@snippet :
+     * int DFSDsetorder(int arrayorder);
+     * }
+     */
+    public static int DFSDsetorder(int arrayorder) {
         var mh$ = DFSDsetorder$MH();
         try {
             return (int)mh$.invokeExact(arrayorder);
@@ -6189,9 +12165,14 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDgetNT$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDgetNT$MH,"DFSDgetNT");
+        return RuntimeHelper.requireNonNull(constants$175.const$0,"DFSDgetNT");
     }
-    public static int DFSDgetNT ( Addressable pnumbertype) {
+    /**
+     * {@snippet :
+     * int DFSDgetNT(int32* pnumbertype);
+     * }
+     */
+    public static int DFSDgetNT(MemorySegment pnumbertype) {
         var mh$ = DFSDgetNT$MH();
         try {
             return (int)mh$.invokeExact(pnumbertype);
@@ -6200,1024 +12181,17 @@ import static java.lang.foreign.ValueLayout.*;
         }
     }
     public static MethodHandle DFSDpre32sdg$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDpre32sdg$MH,"DFSDpre32sdg");
+        return RuntimeHelper.requireNonNull(constants$175.const$2,"DFSDpre32sdg");
     }
-    public static int DFSDpre32sdg ( Addressable filename,  short ref,  Addressable ispre32) {
+    /**
+     * {@snippet :
+     * intn DFSDpre32sdg(char* filename, uint16 ref, intn* ispre32);
+     * }
+     */
+    public static int DFSDpre32sdg(MemorySegment filename, short ref, MemorySegment ispre32) {
         var mh$ = DFSDpre32sdg$MH();
         try {
             return (int)mh$.invokeExact(filename, ref, ispre32);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDsetcal$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDsetcal$MH,"DFSDsetcal");
-    }
-    public static int DFSDsetcal ( double cal,  double cal_err,  double ioff,  double ioff_err,  int cal_nt) {
-        var mh$ = DFSDsetcal$MH();
-        try {
-            return (int)mh$.invokeExact(cal, cal_err, ioff, ioff_err, cal_nt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDgetcal$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDgetcal$MH,"DFSDgetcal");
-    }
-    public static int DFSDgetcal ( Addressable pcal,  Addressable pcal_err,  Addressable pioff,  Addressable pioff_err,  Addressable cal_nt) {
-        var mh$ = DFSDgetcal$MH();
-        try {
-            return (int)mh$.invokeExact(pcal, pcal_err, pioff, pioff_err, cal_nt);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDwriteref$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDwriteref$MH,"DFSDwriteref");
-    }
-    public static int DFSDwriteref ( Addressable filename,  short ref) {
-        var mh$ = DFSDwriteref$MH();
-        try {
-            return (int)mh$.invokeExact(filename, ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDsetfillvalue$MH() {
-        return RuntimeHelper.requireNonNull(constants$117.DFSDsetfillvalue$MH,"DFSDsetfillvalue");
-    }
-    public static int DFSDsetfillvalue ( Addressable fill_value) {
-        var mh$ = DFSDsetfillvalue$MH();
-        try {
-            return (int)mh$.invokeExact(fill_value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDgetfillvalue$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDgetfillvalue$MH,"DFSDgetfillvalue");
-    }
-    public static int DFSDgetfillvalue ( Addressable fill_value) {
-        var mh$ = DFSDgetfillvalue$MH();
-        try {
-            return (int)mh$.invokeExact(fill_value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDstartslab$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDstartslab$MH,"DFSDstartslab");
-    }
-    public static int DFSDstartslab ( Addressable filename) {
-        var mh$ = DFSDstartslab$MH();
-        try {
-            return (int)mh$.invokeExact(filename);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDwriteslab$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDwriteslab$MH,"DFSDwriteslab");
-    }
-    public static int DFSDwriteslab ( Addressable start,  Addressable stride,  Addressable count,  Addressable data) {
-        var mh$ = DFSDwriteslab$MH();
-        try {
-            return (int)mh$.invokeExact(start, stride, count, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDendslab$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDendslab$MH,"DFSDendslab");
-    }
-    public static int DFSDendslab () {
-        var mh$ = DFSDendslab$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDreadslab$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDreadslab$MH,"DFSDreadslab");
-    }
-    public static int DFSDreadslab ( Addressable filename,  Addressable start,  Addressable slab_size,  Addressable stride,  Addressable buffer,  Addressable buffer_size) {
-        var mh$ = DFSDreadslab$MH();
-        try {
-            return (int)mh$.invokeExact(filename, start, slab_size, stride, buffer, buffer_size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFSDPshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$118.DFSDPshutdown$MH,"DFSDPshutdown");
-    }
-    public static int DFSDPshutdown () {
-        var mh$ = DFSDPshutdown$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKNTsize$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKNTsize$MH,"DFKNTsize");
-    }
-    public static int DFKNTsize ( int number_type) {
-        var mh$ = DFKNTsize$MH();
-        try {
-            return (int)mh$.invokeExact(number_type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKisnativeNT$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKisnativeNT$MH,"DFKisnativeNT");
-    }
-    public static int DFKisnativeNT ( int numbertype) {
-        var mh$ = DFKisnativeNT$MH();
-        try {
-            return (int)mh$.invokeExact(numbertype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKislitendNT$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKislitendNT$MH,"DFKislitendNT");
-    }
-    public static int DFKislitendNT ( int numbertype) {
-        var mh$ = DFKislitendNT$MH();
-        try {
-            return (int)mh$.invokeExact(numbertype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKgetPNSC$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKgetPNSC$MH,"DFKgetPNSC");
-    }
-    public static byte DFKgetPNSC ( int numbertype,  int machinetype) {
-        var mh$ = DFKgetPNSC$MH();
-        try {
-            return (byte)mh$.invokeExact(numbertype, machinetype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKsetNT$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKsetNT$MH,"DFKsetNT");
-    }
-    public static int DFKsetNT ( int ntype) {
-        var mh$ = DFKsetNT$MH();
-        try {
-            return (int)mh$.invokeExact(ntype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKconvert$MH() {
-        return RuntimeHelper.requireNonNull(constants$119.DFKconvert$MH,"DFKconvert");
-    }
-    public static int DFKconvert ( Addressable source,  Addressable dest,  int ntype,  int num_elm,  short acc_mode,  int source_stride,  int dest_stride) {
-        var mh$ = DFKconvert$MH();
-        try {
-            return (int)mh$.invokeExact(source, dest, ntype, num_elm, acc_mode, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKnb1b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKnb1b$MH,"DFKnb1b");
-    }
-    public static int DFKnb1b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKnb1b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKnb2b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKnb2b$MH,"DFKnb2b");
-    }
-    public static int DFKnb2b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKnb2b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKnb4b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKnb4b$MH,"DFKnb4b");
-    }
-    public static int DFKnb4b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKnb4b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKnb8b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKnb8b$MH,"DFKnb8b");
-    }
-    public static int DFKnb8b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKnb8b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKsb2b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKsb2b$MH,"DFKsb2b");
-    }
-    public static int DFKsb2b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKsb2b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKsb4b$MH() {
-        return RuntimeHelper.requireNonNull(constants$120.DFKsb4b$MH,"DFKsb4b");
-    }
-    public static int DFKsb4b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKsb4b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle DFKsb8b$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.DFKsb8b$MH,"DFKsb8b");
-    }
-    public static int DFKsb8b ( Addressable s,  Addressable d,  int num_elm,  int source_stride,  int dest_stride) {
-        var mh$ = DFKsb8b$MH();
-        try {
-            return (int)mh$.invokeExact(s, d, num_elm, source_stride, dest_stride);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANstart$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.ANstart$MH,"ANstart");
-    }
-    public static int ANstart ( int file_id) {
-        var mh$ = ANstart$MH();
-        try {
-            return (int)mh$.invokeExact(file_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANfileinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.ANfileinfo$MH,"ANfileinfo");
-    }
-    public static int ANfileinfo ( int an_id,  Addressable n_file_label,  Addressable n_file_desc,  Addressable n_obj_label,  Addressable n_obj_desc) {
-        var mh$ = ANfileinfo$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, n_file_label, n_file_desc, n_obj_label, n_obj_desc);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANend$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.ANend$MH,"ANend");
-    }
-    public static int ANend ( int an_id) {
-        var mh$ = ANend$MH();
-        try {
-            return (int)mh$.invokeExact(an_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.ANcreate$MH,"ANcreate");
-    }
-    public static int ANcreate ( int an_id,  short elem_tag,  short elem_ref,  int type) {
-        var mh$ = ANcreate$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, elem_tag, elem_ref, type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANcreatef$MH() {
-        return RuntimeHelper.requireNonNull(constants$121.ANcreatef$MH,"ANcreatef");
-    }
-    public static int ANcreatef ( int an_id,  int type) {
-        var mh$ = ANcreatef$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANselect$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANselect$MH,"ANselect");
-    }
-    public static int ANselect ( int an_id,  int idx,  int type) {
-        var mh$ = ANselect$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, idx, type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANnumann$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANnumann$MH,"ANnumann");
-    }
-    public static int ANnumann ( int an_id,  int type,  short elem_tag,  short elem_ref) {
-        var mh$ = ANnumann$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, type, elem_tag, elem_ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANannlist$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANannlist$MH,"ANannlist");
-    }
-    public static int ANannlist ( int an_id,  int type,  short elem_tag,  short elem_ref,  Addressable ann_list) {
-        var mh$ = ANannlist$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, type, elem_tag, elem_ref, ann_list);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANannlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANannlen$MH,"ANannlen");
-    }
-    public static int ANannlen ( int ann_id) {
-        var mh$ = ANannlen$MH();
-        try {
-            return (int)mh$.invokeExact(ann_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANwriteann$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANwriteann$MH,"ANwriteann");
-    }
-    public static int ANwriteann ( int ann_id,  Addressable ann,  int annlen) {
-        var mh$ = ANwriteann$MH();
-        try {
-            return (int)mh$.invokeExact(ann_id, ann, annlen);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANreadann$MH() {
-        return RuntimeHelper.requireNonNull(constants$122.ANreadann$MH,"ANreadann");
-    }
-    public static int ANreadann ( int ann_id,  Addressable ann,  int maxlen) {
-        var mh$ = ANreadann$MH();
-        try {
-            return (int)mh$.invokeExact(ann_id, ann, maxlen);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANendaccess$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANendaccess$MH,"ANendaccess");
-    }
-    public static int ANendaccess ( int ann_id) {
-        var mh$ = ANendaccess$MH();
-        try {
-            return (int)mh$.invokeExact(ann_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANget_tagref$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANget_tagref$MH,"ANget_tagref");
-    }
-    public static int ANget_tagref ( int an_id,  int idx,  int type,  Addressable ann_tag,  Addressable ann_ref) {
-        var mh$ = ANget_tagref$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, idx, type, ann_tag, ann_ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANid2tagref$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANid2tagref$MH,"ANid2tagref");
-    }
-    public static int ANid2tagref ( int an_id,  Addressable ann_tag,  Addressable ann_ref) {
-        var mh$ = ANid2tagref$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, ann_tag, ann_ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANtagref2id$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANtagref2id$MH,"ANtagref2id");
-    }
-    public static int ANtagref2id ( int an_id,  short ann_tag,  short ann_ref) {
-        var mh$ = ANtagref2id$MH();
-        try {
-            return (int)mh$.invokeExact(an_id, ann_tag, ann_ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANatype2tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANatype2tag$MH,"ANatype2tag");
-    }
-    public static short ANatype2tag ( int atype) {
-        var mh$ = ANatype2tag$MH();
-        try {
-            return (short)mh$.invokeExact(atype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle ANtag2atype$MH() {
-        return RuntimeHelper.requireNonNull(constants$123.ANtag2atype$MH,"ANtag2atype");
-    }
-    public static int ANtag2atype ( short atag) {
-        var mh$ = ANtag2atype$MH();
-        try {
-            return (int)mh$.invokeExact(atag);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle rigcompare$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.rigcompare$MH,"rigcompare");
-    }
-    public static int rigcompare ( Addressable k1,  Addressable k2,  int cmparg) {
-        var mh$ = rigcompare$MH();
-        try {
-            return (int)mh$.invokeExact(k1, k2, cmparg);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRstart$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.GRstart$MH,"GRstart");
-    }
-    public static int GRstart ( int hdf_file_id) {
-        var mh$ = GRstart$MH();
-        try {
-            return (int)mh$.invokeExact(hdf_file_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRfileinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.GRfileinfo$MH,"GRfileinfo");
-    }
-    public static int GRfileinfo ( int grid,  Addressable n_datasets,  Addressable n_attrs) {
-        var mh$ = GRfileinfo$MH();
-        try {
-            return (int)mh$.invokeExact(grid, n_datasets, n_attrs);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRend$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.GRend$MH,"GRend");
-    }
-    public static int GRend ( int grid) {
-        var mh$ = GRend$MH();
-        try {
-            return (int)mh$.invokeExact(grid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.GRcreate$MH,"GRcreate");
-    }
-    public static int GRcreate ( int grid,  Addressable name,  int ncomp,  int nt,  int il,  Addressable dimsizes) {
-        var mh$ = GRcreate$MH();
-        try {
-            return (int)mh$.invokeExact(grid, name, ncomp, nt, il, dimsizes);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRselect$MH() {
-        return RuntimeHelper.requireNonNull(constants$124.GRselect$MH,"GRselect");
-    }
-    public static int GRselect ( int grid,  int idx) {
-        var mh$ = GRselect$MH();
-        try {
-            return (int)mh$.invokeExact(grid, idx);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRnametoindex$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRnametoindex$MH,"GRnametoindex");
-    }
-    public static int GRnametoindex ( int grid,  Addressable name) {
-        var mh$ = GRnametoindex$MH();
-        try {
-            return (int)mh$.invokeExact(grid, name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetiminfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRgetiminfo$MH,"GRgetiminfo");
-    }
-    public static int GRgetiminfo ( int riid,  Addressable name,  Addressable ncomp,  Addressable nt,  Addressable il,  Addressable dimsizes,  Addressable n_attr) {
-        var mh$ = GRgetiminfo$MH();
-        try {
-            return (int)mh$.invokeExact(riid, name, ncomp, nt, il, dimsizes, n_attr);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetnluts$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRgetnluts$MH,"GRgetnluts");
-    }
-    public static int GRgetnluts ( int riid) {
-        var mh$ = GRgetnluts$MH();
-        try {
-            return (int)mh$.invokeExact(riid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRwriteimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRwriteimage$MH,"GRwriteimage");
-    }
-    public static int GRwriteimage ( int riid,  Addressable start,  Addressable stride,  Addressable count,  Addressable data) {
-        var mh$ = GRwriteimage$MH();
-        try {
-            return (int)mh$.invokeExact(riid, start, stride, count, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreadimage$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRreadimage$MH,"GRreadimage");
-    }
-    public static int GRreadimage ( int riid,  Addressable start,  Addressable stride,  Addressable count,  Addressable data) {
-        var mh$ = GRreadimage$MH();
-        try {
-            return (int)mh$.invokeExact(riid, start, stride, count, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRendaccess$MH() {
-        return RuntimeHelper.requireNonNull(constants$125.GRendaccess$MH,"GRendaccess");
-    }
-    public static int GRendaccess ( int riid) {
-        var mh$ = GRendaccess$MH();
-        try {
-            return (int)mh$.invokeExact(riid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRidtoref$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRidtoref$MH,"GRidtoref");
-    }
-    public static short GRidtoref ( int riid) {
-        var mh$ = GRidtoref$MH();
-        try {
-            return (short)mh$.invokeExact(riid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreftoindex$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRreftoindex$MH,"GRreftoindex");
-    }
-    public static int GRreftoindex ( int grid,  short ref) {
-        var mh$ = GRreftoindex$MH();
-        try {
-            return (int)mh$.invokeExact(grid, ref);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreqlutil$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRreqlutil$MH,"GRreqlutil");
-    }
-    public static int GRreqlutil ( int riid,  int il) {
-        var mh$ = GRreqlutil$MH();
-        try {
-            return (int)mh$.invokeExact(riid, il);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreqimageil$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRreqimageil$MH,"GRreqimageil");
-    }
-    public static int GRreqimageil ( int riid,  int il) {
-        var mh$ = GRreqimageil$MH();
-        try {
-            return (int)mh$.invokeExact(riid, il);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetlutid$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRgetlutid$MH,"GRgetlutid");
-    }
-    public static int GRgetlutid ( int riid,  int idx) {
-        var mh$ = GRgetlutid$MH();
-        try {
-            return (int)mh$.invokeExact(riid, idx);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRluttoref$MH() {
-        return RuntimeHelper.requireNonNull(constants$126.GRluttoref$MH,"GRluttoref");
-    }
-    public static short GRluttoref ( int lutid) {
-        var mh$ = GRluttoref$MH();
-        try {
-            return (short)mh$.invokeExact(lutid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetlutinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRgetlutinfo$MH,"GRgetlutinfo");
-    }
-    public static int GRgetlutinfo ( int riid,  Addressable ncomp,  Addressable nt,  Addressable il,  Addressable nentries) {
-        var mh$ = GRgetlutinfo$MH();
-        try {
-            return (int)mh$.invokeExact(riid, ncomp, nt, il, nentries);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRwritelut$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRwritelut$MH,"GRwritelut");
-    }
-    public static int GRwritelut ( int riid,  int ncomps,  int nt,  int il,  int nentries,  Addressable data) {
-        var mh$ = GRwritelut$MH();
-        try {
-            return (int)mh$.invokeExact(riid, ncomps, nt, il, nentries, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreadlut$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRreadlut$MH,"GRreadlut");
-    }
-    public static int GRreadlut ( int lutid,  Addressable data) {
-        var mh$ = GRreadlut$MH();
-        try {
-            return (int)mh$.invokeExact(lutid, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetexternalfile$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRsetexternalfile$MH,"GRsetexternalfile");
-    }
-    public static int GRsetexternalfile ( int riid,  Addressable filename,  int offset) {
-        var mh$ = GRsetexternalfile$MH();
-        try {
-            return (int)mh$.invokeExact(riid, filename, offset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetaccesstype$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRsetaccesstype$MH,"GRsetaccesstype");
-    }
-    public static int GRsetaccesstype ( int riid,  int accesstype) {
-        var mh$ = GRsetaccesstype$MH();
-        try {
-            return (int)mh$.invokeExact(riid, accesstype);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$127.GRsetcompress$MH,"GRsetcompress");
-    }
-    public static int GRsetcompress ( int riid,  int comp_type,  Addressable cinfo) {
-        var mh$ = GRsetcompress$MH();
-        try {
-            return (int)mh$.invokeExact(riid, comp_type, cinfo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetcompress$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRgetcompress$MH,"GRgetcompress");
-    }
-    public static int GRgetcompress ( int riid,  Addressable comp_type,  Addressable cinfo) {
-        var mh$ = GRgetcompress$MH();
-        try {
-            return (int)mh$.invokeExact(riid, comp_type, cinfo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetcompinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRgetcompinfo$MH,"GRgetcompinfo");
-    }
-    public static int GRgetcompinfo ( int riid,  Addressable comp_type,  Addressable cinfo) {
-        var mh$ = GRgetcompinfo$MH();
-        try {
-            return (int)mh$.invokeExact(riid, comp_type, cinfo);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRsetattr$MH,"GRsetattr");
-    }
-    public static int GRsetattr ( int id,  Addressable name,  int attr_nt,  int count,  Addressable data) {
-        var mh$ = GRsetattr$MH();
-        try {
-            return (int)mh$.invokeExact(id, name, attr_nt, count, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRattrinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRattrinfo$MH,"GRattrinfo");
-    }
-    public static int GRattrinfo ( int id,  int idx,  Addressable name,  Addressable attr_nt,  Addressable count) {
-        var mh$ = GRattrinfo$MH();
-        try {
-            return (int)mh$.invokeExact(id, idx, name, attr_nt, count);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRgetattr$MH,"GRgetattr");
-    }
-    public static int GRgetattr ( int id,  int idx,  Addressable data) {
-        var mh$ = GRgetattr$MH();
-        try {
-            return (int)mh$.invokeExact(id, idx, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRfindattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$128.GRfindattr$MH,"GRfindattr");
-    }
-    public static int GRfindattr ( int id,  Addressable name) {
-        var mh$ = GRfindattr$MH();
-        try {
-            return (int)mh$.invokeExact(id, name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetcomptype$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GRgetcomptype$MH,"GRgetcomptype");
-    }
-    public static int GRgetcomptype ( int riid,  Addressable comp_type) {
-        var mh$ = GRgetcomptype$MH();
-        try {
-            return (int)mh$.invokeExact(riid, comp_type);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRPshutdown$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GRPshutdown$MH,"GRPshutdown");
-    }
-    public static int GRPshutdown () {
-        var mh$ = GRPshutdown$MH();
-        try {
-            return (int)mh$.invokeExact();
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GR2bmapped$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GR2bmapped$MH,"GR2bmapped");
-    }
-    public static int GR2bmapped ( int riid,  Addressable tobe_mapped,  Addressable created_byGR) {
-        var mh$ = GR2bmapped$MH();
-        try {
-            return (int)mh$.invokeExact(riid, tobe_mapped, created_byGR);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetchunk$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GRsetchunk$MH,"GRsetchunk");
-    }
-    public static int GRsetchunk ( int riid,  MemorySegment chunk_def,  int flags) {
-        var mh$ = GRsetchunk$MH();
-        try {
-            return (int)mh$.invokeExact(riid, chunk_def, flags);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRgetchunkinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GRgetchunkinfo$MH,"GRgetchunkinfo");
-    }
-    public static int GRgetchunkinfo ( int riid,  Addressable chunk_def,  Addressable flags) {
-        var mh$ = GRgetchunkinfo$MH();
-        try {
-            return (int)mh$.invokeExact(riid, chunk_def, flags);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRwritechunk$MH() {
-        return RuntimeHelper.requireNonNull(constants$129.GRwritechunk$MH,"GRwritechunk");
-    }
-    public static int GRwritechunk ( int riid,  Addressable origin,  Addressable datap) {
-        var mh$ = GRwritechunk$MH();
-        try {
-            return (int)mh$.invokeExact(riid, origin, datap);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRreadchunk$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.GRreadchunk$MH,"GRreadchunk");
-    }
-    public static int GRreadchunk ( int riid,  Addressable origin,  Addressable datap) {
-        var mh$ = GRreadchunk$MH();
-        try {
-            return (int)mh$.invokeExact(riid, origin, datap);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle GRsetchunkcache$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.GRsetchunkcache$MH,"GRsetchunkcache");
-    }
-    public static int GRsetchunkcache ( int riid,  int maxcache,  int flags) {
-        var mh$ = GRsetchunkcache$MH();
-        try {
-            return (int)mh$.invokeExact(riid, maxcache, flags);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vsetattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.Vsetattr$MH,"Vsetattr");
-    }
-    public static int Vsetattr ( int vgid,  Addressable attrname,  int datatype,  int count,  Addressable values) {
-        var mh$ = Vsetattr$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrname, datatype, count, values);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vnattrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.Vnattrs$MH,"Vnattrs");
-    }
-    public static int Vnattrs ( int vgid) {
-        var mh$ = Vnattrs$MH();
-        try {
-            return (int)mh$.invokeExact(vgid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vnattrs2$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.Vnattrs2$MH,"Vnattrs2");
-    }
-    public static int Vnattrs2 ( int vgid) {
-        var mh$ = Vnattrs2$MH();
-        try {
-            return (int)mh$.invokeExact(vgid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vnoldattrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$130.Vnoldattrs$MH,"Vnoldattrs");
-    }
-    public static int Vnoldattrs ( int vgid) {
-        var mh$ = Vnoldattrs$MH();
-        try {
-            return (int)mh$.invokeExact(vgid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vfindattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vfindattr$MH,"Vfindattr");
-    }
-    public static int Vfindattr ( int vgid,  Addressable attrname) {
-        var mh$ = Vfindattr$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrname);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vattrinfo$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vattrinfo$MH,"Vattrinfo");
-    }
-    public static int Vattrinfo ( int vgid,  int attrindex,  Addressable name,  Addressable datatype,  Addressable count,  Addressable size) {
-        var mh$ = Vattrinfo$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrindex, name, datatype, count, size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vattrinfo2$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vattrinfo2$MH,"Vattrinfo2");
-    }
-    public static int Vattrinfo2 ( int vgid,  int attrindex,  Addressable name,  Addressable datatype,  Addressable count,  Addressable size,  Addressable nfields,  Addressable refnum) {
-        var mh$ = Vattrinfo2$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrindex, name, datatype, count, size, nfields, refnum);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vgetattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vgetattr$MH,"Vgetattr");
-    }
-    public static int Vgetattr ( int vgid,  int attrindex,  Addressable values) {
-        var mh$ = Vgetattr$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrindex, values);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vgetattr2$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vgetattr2$MH,"Vgetattr2");
-    }
-    public static int Vgetattr2 ( int vgid,  int attrindex,  Addressable values) {
-        var mh$ = Vgetattr2$MH();
-        try {
-            return (int)mh$.invokeExact(vgid, attrindex, values);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle Vgetversion$MH() {
-        return RuntimeHelper.requireNonNull(constants$131.Vgetversion$MH,"Vgetversion");
-    }
-    public static int Vgetversion ( int vgid) {
-        var mh$ = Vgetversion$MH();
-        try {
-            return (int)mh$.invokeExact(vgid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle VSfindex$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.VSfindex$MH,"VSfindex");
-    }
-    public static int VSfindex ( int vsid,  Addressable fieldname,  Addressable fldindex) {
-        var mh$ = VSfindex$MH();
-        try {
-            return (int)mh$.invokeExact(vsid, fieldname, fldindex);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle VSsetattr$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.VSsetattr$MH,"VSsetattr");
-    }
-    public static int VSsetattr ( int vsid,  int findex,  Addressable attrname,  int datatype,  int count,  Addressable values) {
-        var mh$ = VSsetattr$MH();
-        try {
-            return (int)mh$.invokeExact(vsid, findex, attrname, datatype, count, values);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle VSnattrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.VSnattrs$MH,"VSnattrs");
-    }
-    public static int VSnattrs ( int vsid) {
-        var mh$ = VSnattrs$MH();
-        try {
-            return (int)mh$.invokeExact(vsid);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle VSfnattrs$MH() {
-        return RuntimeHelper.requireNonNull(constants$132.VSfnattrs$MH,"VSfnattrs");
-    }
-    public static int VSfnattrs ( int vsid,  int findex) {
-        var mh$ = VSfnattrs$MH();
-        try {
-            return (int)mh$.invokeExact(vsid, findex);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

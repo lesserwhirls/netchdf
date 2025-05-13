@@ -1,5 +1,5 @@
-# netchdf-kotlin
-_last updated: 5/11/2025_
+# netchdf
+_last updated: 5/12/2025_
 
 This is a rewrite in kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -100,7 +100,7 @@ We need to get representative samples of recent files for improved testing and c
 
 ### Scope
 
-We have the goal to give read access to all the content in NetCDF, HDF5, HDF4 and HDF-EOS files. 
+We have the goal to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files. 
 
 The library will be thread-safe for reading multiple files concurrently.
 
@@ -162,7 +162,7 @@ local to the variable they are referenced by.
 An independent implementation of HDF4/HDF5/HDF-EOS in kotlin.
 
 I am working on an independent library implementation of HDF4/HDF5/HDF-EOS in kotlin 
-[here](https://github.com/JohnLCaron/netchdf-kotlin). 
+[here](https://github.com/JohnLCaron/netchdf). 
 This will be complementary to the important work of maintaining the primary HDF libraries.
 The goal is to give read access to all the content in NetCDF, HDF5, HDF4 and HDF-EOS files.
 
@@ -178,4 +178,4 @@ are mostly 10-20 years old.
 Currently the code is in alpha, and you must build it yourself with gradle. 
 When it hits beta, I will start releasing compiled versions to Maven Central.
 
-I welcome any feedback, questions and concerns. Thanks!
+I welcome any feedback, questions, and concerns. Thanks!

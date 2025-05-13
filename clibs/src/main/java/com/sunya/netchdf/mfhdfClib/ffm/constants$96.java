@@ -3,71 +3,44 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$96 {
 
-class constants$96 {
-
-    static final FunctionDescriptor HPbitshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle HPbitshutdown$MH = RuntimeHelper.downcallHandle(
-        "HPbitshutdown",
-        constants$96.HPbitshutdown$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$96() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "close",
+        constants$1.const$5
     );
-    static final FunctionDescriptor DFfindnextref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "closefrom",
+        constants$51.const$2
     );
-    static final MethodHandle DFfindnextref$MH = RuntimeHelper.downcallHandle(
-        "DFfindnextref",
-        constants$96.DFfindnextref$FUNC
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final FunctionDescriptor DFputcomp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "read",
+        constants$96.const$2
     );
-    static final MethodHandle DFputcomp$MH = RuntimeHelper.downcallHandle(
-        "DFputcomp",
-        constants$96.DFputcomp$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "write",
+        constants$96.const$2
     );
-    static final FunctionDescriptor DFgetcomp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle DFgetcomp$MH = RuntimeHelper.downcallHandle(
-        "DFgetcomp",
-        constants$96.DFgetcomp$FUNC
-    );
-    static final FunctionDescriptor DFCIrle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFCIrle$MH = RuntimeHelper.downcallHandle(
-        "DFCIrle",
-        constants$96.DFCIrle$FUNC
-    );
-    static final FunctionDescriptor DFCIunrle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFCIunrle$MH = RuntimeHelper.downcallHandle(
-        "DFCIunrle",
-        constants$96.DFCIunrle$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "pread",
+        constants$96.const$5
     );
 }
 

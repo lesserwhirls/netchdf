@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5P_prp_compare_func_t)(void* value1,void* value2,unsigned long size);
+ * }
+ */
 public interface H5P_prp_compare_func_t {
 
-    int apply(java.lang.foreign.MemoryAddress value1, java.lang.foreign.MemoryAddress value2, long size);
-    static MemorySegment allocate(H5P_prp_compare_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5P_prp_compare_func_t.class, fi, constants$130.H5P_prp_compare_func_t$FUNC, session);
+    int apply(java.lang.foreign.MemorySegment value1, java.lang.foreign.MemorySegment value2, long size);
+    static MemorySegment allocate(H5P_prp_compare_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$222.const$2, fi, constants$222.const$1, scope);
     }
-    static H5P_prp_compare_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _value1, java.lang.foreign.MemoryAddress _value2, long _size) -> {
+    static H5P_prp_compare_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _value1, java.lang.foreign.MemorySegment _value2, long _size) -> {
             try {
-                return (int)constants$130.H5P_prp_compare_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_value1, (java.lang.foreign.Addressable)_value2, _size);
+                return (int)constants$222.const$3.invokeExact(symbol, _value1, _value2, _size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

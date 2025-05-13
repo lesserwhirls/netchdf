@@ -7,38 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$130 {
+final class constants$130 {
 
-    static final FunctionDescriptor H5P_prp_delete_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5P_prp_delete_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$130.H5P_prp_delete_func_t$FUNC
-    );
-    static final FunctionDescriptor H5P_prp_copy_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5P_prp_copy_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$130.H5P_prp_copy_func_t$FUNC
-    );
-    static final FunctionDescriptor H5P_prp_compare_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5P_prp_compare_func_t$MH = RuntimeHelper.downcallHandle(
-        constants$130.H5P_prp_compare_func_t$FUNC
-    );
-    static final FunctionDescriptor H5P_prp_close_func_t$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$130() {}
+    static final VarHandle const$0 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
+    static final VarHandle const$1 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("line"));
+    static final VarHandle const$2 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
+    static final VarHandle const$3 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
+    static final VarHandle const$4 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("desc"));
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_ERR_CLS_g", JAVA_LONG);
 }
 
 

@@ -3,64 +3,39 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$112 {
 
-class constants$112 {
-
-    static final FunctionDescriptor DFANIgetfannlen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$112() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "vhangup",
+        constants$28.const$3
     );
-    static final MethodHandle DFANIgetfannlen$MH = RuntimeHelper.downcallHandle(
-        "DFANIgetfannlen",
-        constants$112.DFANIgetfannlen$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "revoke",
+        constants$17.const$4
     );
-    static final FunctionDescriptor DFANIgetfann$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
     );
-    static final MethodHandle DFANIgetfann$MH = RuntimeHelper.downcallHandle(
-        "DFANIgetfann",
-        constants$112.DFANIgetfann$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "profil",
+        constants$112.const$2
     );
-    static final FunctionDescriptor DFANPshutdown$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFANPshutdown$MH = RuntimeHelper.downcallHandle(
-        "DFANPshutdown",
-        constants$112.DFANPshutdown$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "acct",
+        constants$17.const$4
     );
-    static final FunctionDescriptor DFSDgetdims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle DFSDgetdims$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdims",
-        constants$112.DFSDgetdims$FUNC
-    );
-    static final FunctionDescriptor DFSDgetdatastrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDgetdatastrs$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdatastrs",
-        constants$112.DFSDgetdatastrs$FUNC
-    );
-    static final FunctionDescriptor DFSDgetdimstrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDgetdimstrs$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetdimstrs",
-        constants$112.DFSDgetdimstrs$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getusershell",
+        constants$1.const$1
     );
 }
 

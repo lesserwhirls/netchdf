@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * long (*H5L_query_func_t)(char* link_name,void* lnkdata,unsigned long lnkdata_size,void* buf,unsigned long buf_size);
+ * }
+ */
 public interface H5L_query_func_t {
 
-    long apply(java.lang.foreign.MemoryAddress link_name, java.lang.foreign.MemoryAddress lnkdata, long lnkdata_size, java.lang.foreign.MemoryAddress buf, long buf_size);
-    static MemorySegment allocate(H5L_query_func_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5L_query_func_t.class, fi, constants$37.H5L_query_func_t$FUNC, session);
+    long apply(java.lang.foreign.MemorySegment link_name, java.lang.foreign.MemorySegment lnkdata, long lnkdata_size, java.lang.foreign.MemorySegment buf, long buf_size);
+    static MemorySegment allocate(H5L_query_func_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$58.const$2, fi, constants$58.const$1, scope);
     }
-    static H5L_query_func_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (java.lang.foreign.MemoryAddress _link_name, java.lang.foreign.MemoryAddress _lnkdata, long _lnkdata_size, java.lang.foreign.MemoryAddress _buf, long _buf_size) -> {
+    static H5L_query_func_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (java.lang.foreign.MemorySegment _link_name, java.lang.foreign.MemorySegment _lnkdata, long _lnkdata_size, java.lang.foreign.MemorySegment _buf, long _buf_size) -> {
             try {
-                return (long)constants$37.H5L_query_func_t$MH.invokeExact((Addressable)symbol, (java.lang.foreign.Addressable)_link_name, (java.lang.foreign.Addressable)_lnkdata, _lnkdata_size, (java.lang.foreign.Addressable)_buf, _buf_size);
+                return (long)constants$58.const$3.invokeExact(symbol, _link_name, _lnkdata, _lnkdata_size, _buf, _buf_size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -7,57 +7,19 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$159 {
+final class constants$159 {
 
-    static final FunctionDescriptor H5Pget_chunk_cache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$159() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCONVERT_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_BADSIZE_g", JAVA_LONG);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5E_walk2_t.class, "apply", constants$119.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$119.const$0
     );
-    static final MethodHandle H5Pget_chunk_cache$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk_cache",
-        constants$159.H5Pget_chunk_cache$FUNC
-    );
-    static final FunctionDescriptor H5Pset_virtual_view$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_virtual_view$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_view",
-        constants$159.H5Pset_virtual_view$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_view$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_view$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_view",
-        constants$159.H5Pget_virtual_view$FUNC
-    );
-    static final FunctionDescriptor H5Pset_virtual_printf_gap$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_virtual_printf_gap$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_printf_gap",
-        constants$159.H5Pset_virtual_printf_gap$FUNC
-    );
-    static final FunctionDescriptor H5Pget_virtual_printf_gap$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_virtual_printf_gap$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_printf_gap",
-        constants$159.H5Pget_virtual_printf_gap$FUNC
-    );
-    static final FunctionDescriptor H5Pset_virtual_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_virtual_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_prefix",
-        constants$159.H5Pset_virtual_prefix$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5E_auto2_t.class, "apply", constants$44.const$4);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$44.const$4
     );
 }
 

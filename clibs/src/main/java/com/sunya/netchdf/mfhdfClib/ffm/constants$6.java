@@ -3,59 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$6 {
 
-class constants$6 {
-
-    static final FunctionDescriptor __tolower_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$6() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "iscntrl_l",
+        constants$5.const$3
     );
-    static final MethodHandle __tolower_l$MH = RuntimeHelper.downcallHandle(
-        "__tolower_l",
-        constants$6.__tolower_l$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "isdigit_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor tolower_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "islower_l",
+        constants$5.const$3
     );
-    static final MethodHandle tolower_l$MH = RuntimeHelper.downcallHandle(
-        "tolower_l",
-        constants$6.tolower_l$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "isgraph_l",
+        constants$5.const$3
     );
-    static final FunctionDescriptor __toupper_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "isprint_l",
+        constants$5.const$3
     );
-    static final MethodHandle __toupper_l$MH = RuntimeHelper.downcallHandle(
-        "__toupper_l",
-        constants$6.__toupper_l$FUNC
-    );
-    static final FunctionDescriptor toupper_l$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle toupper_l$MH = RuntimeHelper.downcallHandle(
-        "toupper_l",
-        constants$6.toupper_l$FUNC
-    );
-    static final FunctionDescriptor imaxabs$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle imaxabs$MH = RuntimeHelper.downcallHandle(
-        "imaxabs",
-        constants$6.imaxabs$FUNC
-    );
-    static final FunctionDescriptor imaxdiv$FUNC = FunctionDescriptor.of(MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("quot"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("rem")
-    ),
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle imaxdiv$MH = RuntimeHelper.downcallHandle(
-        "imaxdiv",
-        constants$6.imaxdiv$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ispunct_l",
+        constants$5.const$3
     );
 }
 

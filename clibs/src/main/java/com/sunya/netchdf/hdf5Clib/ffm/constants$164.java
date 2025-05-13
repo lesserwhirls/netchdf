@@ -7,60 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$164 {
+final class constants$164 {
 
-    static final FunctionDescriptor H5Pset_local_heap_size_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_local_heap_size_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_local_heap_size_hint",
-        constants$164.H5Pset_local_heap_size_hint$FUNC
-    );
-    static final FunctionDescriptor H5Pget_local_heap_size_hint$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_local_heap_size_hint$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_local_heap_size_hint",
-        constants$164.H5Pget_local_heap_size_hint$FUNC
-    );
-    static final FunctionDescriptor H5Pset_link_phase_change$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_link_phase_change$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_link_phase_change",
-        constants$164.H5Pset_link_phase_change$FUNC
-    );
-    static final FunctionDescriptor H5Pget_link_phase_change$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_link_phase_change$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_link_phase_change",
-        constants$164.H5Pget_link_phase_change$FUNC
-    );
-    static final FunctionDescriptor H5Pset_est_link_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_est_link_info$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_est_link_info",
-        constants$164.H5Pset_est_link_info$FUNC
-    );
-    static final FunctionDescriptor H5Pget_est_link_info$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_est_link_info$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_est_link_info",
-        constants$164.H5Pget_est_link_info$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$164() {}
+    static final VarHandle const$0 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
+    static final VarHandle const$1 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
+    static final VarHandle const$2 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
+    static final VarHandle const$3 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
+    static final VarHandle const$4 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("line"));
+    static final VarHandle const$5 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("desc"));
 }
 
 

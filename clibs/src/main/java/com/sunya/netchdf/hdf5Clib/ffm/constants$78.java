@@ -7,26 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$78 {
+final class constants$78 {
 
-    static final  OfLong H5E_EFL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_EFL_g$VH = constants$78.H5E_EFL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_EFL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_EFL_g", constants$78.H5E_EFL_g$LAYOUT);
-    static final  OfLong H5E_TST_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_TST_g$VH = constants$78.H5E_TST_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_TST_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_TST_g", constants$78.H5E_TST_g$LAYOUT);
-    static final  OfLong H5E_PAGEBUF_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_PAGEBUF_g$VH = constants$78.H5E_PAGEBUF_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_PAGEBUF_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_PAGEBUF_g", constants$78.H5E_PAGEBUF_g$LAYOUT);
-    static final  OfLong H5E_FSPACE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_FSPACE_g$VH = constants$78.H5E_FSPACE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_FSPACE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_FSPACE_g", constants$78.H5E_FSPACE_g$LAYOUT);
-    static final  OfLong H5E_DATASET_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_DATASET_g$VH = constants$78.H5E_DATASET_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_DATASET_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_DATASET_g", constants$78.H5E_DATASET_g$LAYOUT);
-    static final  OfLong H5E_STORAGE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_STORAGE_g$VH = constants$78.H5E_STORAGE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_STORAGE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_STORAGE_g", constants$78.H5E_STORAGE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$78() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_idx",
+        constants$65.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Ovisit",
+        constants$66.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ovisit_by_name",
+        constants$66.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Oget_info1",
+        constants$44.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_name1",
+        constants$43.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_idx1",
+        constants$65.const$0
+    );
 }
 
 

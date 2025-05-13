@@ -1,18 +1,22 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlin.jvm)
 }
 
 dependencies {
     api(project(":core"))
     implementation(project(":testdata"))
-    implementation(libs.microutils.logging)
+    implementation(libs.oshai.logging)
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
 
-    testImplementation(libs.guava)
+    // testImplementation(libs.guava)
     testImplementation(kotlin("test"))
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.1.0")
+    testImplementation(libs.bundles.jvmtest)
+    testImplementation(libs.kotest.property)
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 tasks {
@@ -20,7 +24,7 @@ tasks {
     withType<JavaCompile>() {
         options.compilerArgs.add(ENABLE_PREVIEW)
         // Optionally we can show which preview feature we use.
-        options.compilerArgs.add("-Xlint:preview")
+        options.compilerArgs.add("-Xlint:-preview")
         // Explicitly setting compiler option --release
         // is needed when we wouldn't set the
         // sourceCompatiblity and targetCompatibility
@@ -46,15 +50,3 @@ tasks {
     //    kotlinOptions.jvmTarget = "21"
     //}
 }
-
-kotlin {
-    jvmToolchain(21)
-}
-
-/*
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
-    }
-}
-*/

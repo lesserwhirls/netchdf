@@ -7,46 +7,28 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$2 {
+final class constants$2 {
 
-    static final FunctionDescriptor wcstoimax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle wcstoimax$MH = RuntimeHelper.downcallHandle(
-        "wcstoimax",
-        constants$2.wcstoimax$FUNC
-    );
-    static final FunctionDescriptor wcstoumax$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle wcstoumax$MH = RuntimeHelper.downcallHandle(
-        "wcstoumax",
-        constants$2.wcstoumax$FUNC
-    );
-    static final FunctionDescriptor H5open$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle H5open$MH = RuntimeHelper.downcallHandle(
-        "H5open",
-        constants$2.H5open$FUNC
-    );
-    static final FunctionDescriptor H5close$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle H5close$MH = RuntimeHelper.downcallHandle(
-        "H5close",
-        constants$2.H5close$FUNC
-    );
-    static final FunctionDescriptor H5dont_atexit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle H5dont_atexit$MH = RuntimeHelper.downcallHandle(
-        "H5dont_atexit",
-        constants$2.H5dont_atexit$FUNC
-    );
-    static final FunctionDescriptor H5garbage_collect$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle H5garbage_collect$MH = RuntimeHelper.downcallHandle(
-        "H5garbage_collect",
-        constants$2.H5garbage_collect$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$2() {}
+    static final UnionLayout const$0 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("__value64"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__low"),
+            JAVA_INT.withName("__high")
+        ).withName("__value32")
+    ).withName("");
+    static final VarHandle const$1 = constants$2.const$0.varHandle(MemoryLayout.PathElement.groupElement("__value64"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__low"),
+        JAVA_INT.withName("__high")
+    ).withName("");
+    static final VarHandle const$3 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("__low"));
+    static final VarHandle const$4 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("__high"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("__prev"),
+        RuntimeHelper.POINTER.withName("__next")
+    ).withName("__pthread_internal_list");
 }
 
 

@@ -7,26 +7,27 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$12 {
+final class constants$12 {
 
-    static final  OfLong H5T_STD_U64BE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_U64BE_g$VH = constants$12.H5T_STD_U64BE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_U64BE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_U64BE_g", constants$12.H5T_STD_U64BE_g$LAYOUT);
-    static final  OfLong H5T_STD_U64LE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_U64LE_g$VH = constants$12.H5T_STD_U64LE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_U64LE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_U64LE_g", constants$12.H5T_STD_U64LE_g$LAYOUT);
-    static final  OfLong H5T_STD_B8BE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_B8BE_g$VH = constants$12.H5T_STD_B8BE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_B8BE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_B8BE_g", constants$12.H5T_STD_B8BE_g$LAYOUT);
-    static final  OfLong H5T_STD_B8LE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_B8LE_g$VH = constants$12.H5T_STD_B8LE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_B8LE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_B8LE_g", constants$12.H5T_STD_B8LE_g$LAYOUT);
-    static final  OfLong H5T_STD_B16BE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_B16BE_g$VH = constants$12.H5T_STD_B16BE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_B16BE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_B16BE_g", constants$12.H5T_STD_B16BE_g$LAYOUT);
-    static final  OfLong H5T_STD_B16LE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5T_STD_B16LE_g$VH = constants$12.H5T_STD_B16LE_g$LAYOUT.varHandle();
-    static final MemorySegment H5T_STD_B16LE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5T_STD_B16LE_g", constants$12.H5T_STD_B16LE_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$12() {}
+    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("index_size"),
+        JAVA_LONG.withName("heap_size")
+    ).withName("H5_ih_info_t");
+    static final VarHandle const$2 = constants$12.const$1.varHandle(MemoryLayout.PathElement.groupElement("index_size"));
+    static final VarHandle const$3 = constants$12.const$1.varHandle(MemoryLayout.PathElement.groupElement("heap_size"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("total_alloc_bytes"),
+        JAVA_LONG.withName("curr_alloc_bytes"),
+        JAVA_LONG.withName("peak_alloc_bytes"),
+        JAVA_LONG.withName("max_block_size"),
+        JAVA_LONG.withName("total_alloc_blocks_count"),
+        JAVA_LONG.withName("curr_alloc_blocks_count"),
+        JAVA_LONG.withName("peak_alloc_blocks_count")
+    ).withName("H5_alloc_stats_t");
+    static final VarHandle const$5 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_bytes"));
 }
 
 

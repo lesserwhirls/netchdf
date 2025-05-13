@@ -7,53 +7,41 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$7 {
+final class constants$7 {
 
-    static final FunctionDescriptor H5Idestroy_type$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Idestroy_type$MH = RuntimeHelper.downcallHandle(
-        "H5Idestroy_type",
-        constants$7.H5Idestroy_type$FUNC
-    );
-    static final FunctionDescriptor H5Iinc_type_ref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Iinc_type_ref$MH = RuntimeHelper.downcallHandle(
-        "H5Iinc_type_ref",
-        constants$7.H5Iinc_type_ref$FUNC
-    );
-    static final FunctionDescriptor H5Idec_type_ref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Idec_type_ref$MH = RuntimeHelper.downcallHandle(
-        "H5Idec_type_ref",
-        constants$7.H5Idec_type_ref$FUNC
-    );
-    static final FunctionDescriptor H5Iget_type_ref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Iget_type_ref$MH = RuntimeHelper.downcallHandle(
-        "H5Iget_type_ref",
-        constants$7.H5Iget_type_ref$FUNC
-    );
-    static final FunctionDescriptor H5Isearch$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Isearch$MH = RuntimeHelper.downcallHandle(
-        "H5Isearch",
-        constants$7.H5Isearch$FUNC
-    );
-    static final FunctionDescriptor H5Inmembers$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Inmembers$MH = RuntimeHelper.downcallHandle(
-        "H5Inmembers",
-        constants$7.H5Inmembers$FUNC
-    );
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$7() {}
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("__value64"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("__low"),
+                JAVA_INT.withName("__high")
+            ).withName("__value32")
+        ).withName("__wseq"),
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("__value64"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("__low"),
+                JAVA_INT.withName("__high")
+            ).withName("__value32")
+        ).withName("__g1_start"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_refs"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_size"),
+        JAVA_INT.withName("__g1_orig_size"),
+        JAVA_INT.withName("__wrefs"),
+        MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__g_signals")
+    ).withName("__pthread_cond_s");
+    static final VarHandle const$1 = constants$7.const$0.varHandle(MemoryLayout.PathElement.groupElement("__g1_orig_size"));
+    static final VarHandle const$2 = constants$7.const$0.varHandle(MemoryLayout.PathElement.groupElement("__wrefs"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__data")
+    ).withName("");
+    static final VarHandle const$4 = constants$7.const$3.varHandle(MemoryLayout.PathElement.groupElement("__data"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
+        JAVA_INT.withName("__align")
+    ).withName("");
 }
 
 

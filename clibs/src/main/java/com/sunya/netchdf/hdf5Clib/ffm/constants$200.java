@@ -7,14 +7,26 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$200 {
+final class constants$200 {
 
-    static final MemorySegment SCNdLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
-    static final MemorySegment SCNdLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment SCNdLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment SCNdFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
-    static final MemorySegment SCNdFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$200() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5FDdriver_query",
+        constants$44.const$4
+    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("storage_type"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("nlinks"),
+        JAVA_LONG.withName("max_corder"),
+        JAVA_BOOLEAN.withName("mounted"),
+        MemoryLayout.paddingLayout(7)
+    ).withName("H5G_info_t");
+    static final VarHandle const$2 = constants$200.const$1.varHandle(MemoryLayout.PathElement.groupElement("storage_type"));
+    static final VarHandle const$3 = constants$200.const$1.varHandle(MemoryLayout.PathElement.groupElement("nlinks"));
+    static final VarHandle const$4 = constants$200.const$1.varHandle(MemoryLayout.PathElement.groupElement("max_corder"));
+    static final VarHandle const$5 = constants$200.const$1.varHandle(MemoryLayout.PathElement.groupElement("mounted"));
 }
 
 

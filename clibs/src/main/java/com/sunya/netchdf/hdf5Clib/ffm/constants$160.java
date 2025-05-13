@@ -7,63 +7,30 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$160 {
+final class constants$160 {
 
-    static final FunctionDescriptor H5Pget_virtual_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$160() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eregister_class",
+        constants$123.const$3
     );
-    static final MethodHandle H5Pget_virtual_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_prefix",
-        constants$160.H5Pget_virtual_prefix$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eunregister_class",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Pset_append_flush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eclose_msg",
+        constants$19.const$0
     );
-    static final MethodHandle H5Pset_append_flush$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_append_flush",
-        constants$160.H5Pset_append_flush$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ecreate_msg",
+        constants$44.const$1
     );
-    static final FunctionDescriptor H5Pget_append_flush$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_append_flush$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_append_flush",
-        constants$160.H5Pget_append_flush$FUNC
-    );
-    static final FunctionDescriptor H5Pset_efile_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_efile_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_efile_prefix",
-        constants$160.H5Pset_efile_prefix$FUNC
-    );
-    static final FunctionDescriptor H5Pget_efile_prefix$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pget_efile_prefix$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_efile_prefix",
-        constants$160.H5Pget_efile_prefix$FUNC
-    );
-    static final FunctionDescriptor H5Pset_data_transform$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pset_data_transform$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_data_transform",
-        constants$160.H5Pset_data_transform$FUNC
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ecreate_stack",
+        constants$160.const$4
     );
 }
 

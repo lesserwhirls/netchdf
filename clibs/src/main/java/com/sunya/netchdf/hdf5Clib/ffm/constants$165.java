@@ -7,55 +7,31 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$165 {
+final class constants$165 {
 
-    static final FunctionDescriptor H5Pset_link_creation_order$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$165() {}
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5E_walk1_t.class, "apply", constants$119.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_auto1_t.class, "apply", constants$15.const$2);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eclear1",
+        constants$14.const$0
     );
-    static final MethodHandle H5Pset_link_creation_order$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_link_creation_order",
-        constants$165.H5Pset_link_creation_order$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eget_auto1",
+        constants$112.const$0
     );
-    static final FunctionDescriptor H5Pget_link_creation_order$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Pget_link_creation_order$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_link_creation_order",
-        constants$165.H5Pget_link_creation_order$FUNC
-    );
-    static final FunctionDescriptor H5Pset_char_encoding$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Pset_char_encoding$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_char_encoding",
-        constants$165.H5Pset_char_encoding$FUNC
-    );
-    static final FunctionDescriptor H5Pget_char_encoding$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_char_encoding$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_char_encoding",
-        constants$165.H5Pget_char_encoding$FUNC
-    );
-    static final FunctionDescriptor H5Pset_nlinks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Pset_nlinks$MH = RuntimeHelper.downcallHandle(
-        "H5Pset_nlinks",
-        constants$165.H5Pset_nlinks$FUNC
-    );
-    static final FunctionDescriptor H5Pget_nlinks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Pget_nlinks$MH = RuntimeHelper.downcallHandle(
-        "H5Pget_nlinks",
-        constants$165.H5Pget_nlinks$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Epush1",
+        constants$165.const$4
     );
 }
 

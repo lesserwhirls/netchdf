@@ -7,14 +7,16 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$192 {
+final class constants$192 {
 
-    static final MemorySegment PRIuLEAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIuLEAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIuLEAST64$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment PRIuFAST8$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment PRIuFAST16$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment PRIuFAST32$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$192() {}
+    static final VarHandle const$0 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final VarHandle const$1 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("access_flags"));
+    static final VarHandle const$2 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
+    static final VarHandle const$3 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
+    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("base_addr"));
+    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("threshold"));
 }
 
 

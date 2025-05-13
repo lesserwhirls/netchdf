@@ -3,63 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$137 {
 
-class constants$137 {
-
-    static final FunctionDescriptor VSfindclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$137() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "HDgettagsname",
+        constants$136.const$5
     );
-    static final MethodHandle VSfindclass$MH = RuntimeHelper.downcallHandle(
-        "VSfindclass",
-        constants$137.VSfindclass$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HDgettagnum",
+        constants$17.const$4
     );
-    static final FunctionDescriptor VSofclass$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HDgetNTdesc",
+        constants$76.const$5
     );
-    static final MethodHandle VSofclass$MH = RuntimeHelper.downcallHandle(
-        "VSofclass",
-        constants$137.VSofclass$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HDfidtoname",
+        constants$76.const$5
     );
-    static final FunctionDescriptor VSgetvdatas$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hgetntinfo",
+        constants$5.const$3
     );
-    static final MethodHandle VSgetvdatas$MH = RuntimeHelper.downcallHandle(
-        "VSgetvdatas",
-        constants$137.VSgetvdatas$FUNC
-    );
-    static final FunctionDescriptor VSsetblocksize$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSsetblocksize$MH = RuntimeHelper.downcallHandle(
-        "VSsetblocksize",
-        constants$137.VSsetblocksize$FUNC
-    );
-    static final FunctionDescriptor VSsetnumblocks$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VSsetnumblocks$MH = RuntimeHelper.downcallHandle(
-        "VSsetnumblocks",
-        constants$137.VSsetnumblocks$FUNC
-    );
-    static final FunctionDescriptor VSgetblockinfo$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle VSgetblockinfo$MH = RuntimeHelper.downcallHandle(
-        "VSgetblockinfo",
-        constants$137.VSgetblockinfo$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "Hishdf",
+        constants$17.const$4
     );
 }
 

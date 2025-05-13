@@ -7,53 +7,79 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5_ih_info_t {
+ *     hsize_t index_size;
+ *     hsize_t heap_size;
+ * };
+ * }
+ */
 public class H5_ih_info_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-        Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-    ).withName("H5_ih_info_t");
     public static MemoryLayout $LAYOUT() {
-        return H5_ih_info_t.$struct$LAYOUT;
+        return constants$12.const$1;
     }
-    static final VarHandle index_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("index_size"));
     public static VarHandle index_size$VH() {
-        return H5_ih_info_t.index_size$VH;
+        return constants$12.const$2;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t index_size;
+     * }
+     */
     public static long index_size$get(MemorySegment seg) {
-        return (long)H5_ih_info_t.index_size$VH.get(seg);
+        return (long)constants$12.const$2.get(seg);
     }
-    public static void index_size$set( MemorySegment seg, long x) {
-        H5_ih_info_t.index_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t index_size;
+     * }
+     */
+    public static void index_size$set(MemorySegment seg, long x) {
+        constants$12.const$2.set(seg, x);
     }
     public static long index_size$get(MemorySegment seg, long index) {
-        return (long)H5_ih_info_t.index_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$12.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void index_size$set(MemorySegment seg, long index, long x) {
-        H5_ih_info_t.index_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$12.const$2.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle heap_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("heap_size"));
     public static VarHandle heap_size$VH() {
-        return H5_ih_info_t.heap_size$VH;
+        return constants$12.const$3;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t heap_size;
+     * }
+     */
     public static long heap_size$get(MemorySegment seg) {
-        return (long)H5_ih_info_t.heap_size$VH.get(seg);
+        return (long)constants$12.const$3.get(seg);
     }
-    public static void heap_size$set( MemorySegment seg, long x) {
-        H5_ih_info_t.heap_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t heap_size;
+     * }
+     */
+    public static void heap_size$set(MemorySegment seg, long x) {
+        constants$12.const$3.set(seg, x);
     }
     public static long heap_size$get(MemorySegment seg, long index) {
-        return (long)H5_ih_info_t.heap_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$12.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void heap_size$set(MemorySegment seg, long index, long x) {
-        H5_ih_info_t.heap_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$12.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

@@ -7,17 +7,22 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * int (*H5E_auto2_t)(long estack,void* client_data);
+ * }
+ */
 public interface H5E_auto2_t {
 
-    int apply(long estack, java.lang.foreign.MemoryAddress client_data);
-    static MemorySegment allocate(H5E_auto2_t fi, MemorySession session) {
-        return RuntimeHelper.upcallStub(H5E_auto2_t.class, fi, constants$104.H5E_auto2_t$FUNC, session);
+    int apply(long prop_id, java.lang.foreign.MemorySegment close_data);
+    static MemorySegment allocate(H5E_auto2_t fi, Arena scope) {
+        return RuntimeHelper.upcallStub(constants$159.const$4, fi, constants$44.const$4, scope);
     }
-    static H5E_auto2_t ofAddress(MemoryAddress addr, MemorySession session) {
-        MemorySegment symbol = MemorySegment.ofAddress(addr, 0, session);
-        return (long _estack, java.lang.foreign.MemoryAddress _client_data) -> {
+    static H5E_auto2_t ofAddress(MemorySegment addr, Arena arena) {
+        MemorySegment symbol = addr.reinterpret(arena, null);
+        return (long _prop_id, java.lang.foreign.MemorySegment _close_data) -> {
             try {
-                return (int)constants$104.H5E_auto2_t$MH.invokeExact((Addressable)symbol, _estack, (java.lang.foreign.Addressable)_client_data);
+                return (int)constants$159.const$5.invokeExact(symbol, _prop_id, _close_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

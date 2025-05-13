@@ -7,69 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$44 {
+final class constants$44 {
 
-    static final FunctionDescriptor H5Ocopy$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$44() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tvlen_create",
+        constants$10.const$2
     );
-    static final MethodHandle H5Ocopy$MH = RuntimeHelper.downcallHandle(
-        "H5Ocopy",
-        constants$44.H5Ocopy$FUNC
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor H5Oset_comment$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tarray_create2",
+        constants$44.const$1
     );
-    static final MethodHandle H5Oset_comment$MH = RuntimeHelper.downcallHandle(
-        "H5Oset_comment",
-        constants$44.H5Oset_comment$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tget_array_ndims",
+        constants$19.const$0
     );
-    static final FunctionDescriptor H5Oset_comment_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle H5Oset_comment_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Oset_comment_by_name",
-        constants$44.H5Oset_comment_by_name$FUNC
-    );
-    static final FunctionDescriptor H5Oget_comment$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oget_comment$MH = RuntimeHelper.downcallHandle(
-        "H5Oget_comment",
-        constants$44.H5Oget_comment$FUNC
-    );
-    static final FunctionDescriptor H5Oget_comment_by_name$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Oget_comment_by_name$MH = RuntimeHelper.downcallHandle(
-        "H5Oget_comment_by_name",
-        constants$44.H5Oget_comment_by_name$FUNC
-    );
-    static final FunctionDescriptor H5Ovisit2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Ovisit2$MH = RuntimeHelper.downcallHandle(
-        "H5Ovisit2",
-        constants$44.H5Ovisit2$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tget_array_dims2",
+        constants$44.const$4
     );
 }
 

@@ -4,55 +4,37 @@ package com.sunya.netchdf.netcdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$51 {
+final class constants$51 {
 
-    static final FunctionDescriptor nc__open_mp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$51() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_put_var_long",
+        constants$7.const$5
     );
-    static final MethodHandle nc__open_mp$MH = RuntimeHelper.downcallHandle(
-        "nc__open_mp",
-        constants$51.nc__open_mp$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "nc_get_var_long",
+        constants$7.const$5
     );
-    static final FunctionDescriptor nc_delete_mp$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_put_var_float",
+        constants$7.const$5
     );
-    static final MethodHandle nc_delete_mp$MH = RuntimeHelper.downcallHandle(
-        "nc_delete_mp",
-        constants$51.nc_delete_mp$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_get_var_float",
+        constants$7.const$5
     );
-    static final FunctionDescriptor nc_set_base_pe$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_put_var_double",
+        constants$7.const$5
     );
-    static final MethodHandle nc_set_base_pe$MH = RuntimeHelper.downcallHandle(
-        "nc_set_base_pe",
-        constants$51.nc_set_base_pe$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_get_var_double",
+        constants$7.const$5
     );
-    static final FunctionDescriptor nc_inq_base_pe$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle nc_inq_base_pe$MH = RuntimeHelper.downcallHandle(
-        "nc_inq_base_pe",
-        constants$51.nc_inq_base_pe$FUNC
-    );
-    static final FunctionDescriptor nctypelen$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle nctypelen$MH = RuntimeHelper.downcallHandle(
-        "nctypelen",
-        constants$51.nctypelen$FUNC
-    );
-    static final  OfInt ncerr$LAYOUT = Constants$root.C_INT$LAYOUT;
-    static final VarHandle ncerr$VH = constants$51.ncerr$LAYOUT.varHandle();
-    static final MemorySegment ncerr$SEGMENT = RuntimeHelper.lookupGlobalVariable("ncerr", constants$51.ncerr$LAYOUT);
 }
 
 

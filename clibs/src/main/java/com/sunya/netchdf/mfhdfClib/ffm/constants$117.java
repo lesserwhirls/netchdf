@@ -3,62 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$117 {
 
-class constants$117 {
-
-    static final FunctionDescriptor DFSDgetNT$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$117() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "chmod",
+        constants$37.const$2
     );
-    static final MethodHandle DFSDgetNT$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetNT",
-        constants$117.DFSDgetNT$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "lchmod",
+        constants$37.const$2
     );
-    static final FunctionDescriptor DFSDpre32sdg$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fchmod",
+        constants$93.const$3
     );
-    static final MethodHandle DFSDpre32sdg$MH = RuntimeHelper.downcallHandle(
-        "DFSDpre32sdg",
-        constants$117.DFSDpre32sdg$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fchmodat",
+        constants$95.const$3
     );
-    static final FunctionDescriptor DFSDsetcal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_DOUBLE$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "umask",
+        constants$1.const$5
     );
-    static final MethodHandle DFSDsetcal$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetcal",
-        constants$117.DFSDsetcal$FUNC
-    );
-    static final FunctionDescriptor DFSDgetcal$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDgetcal$MH = RuntimeHelper.downcallHandle(
-        "DFSDgetcal",
-        constants$117.DFSDgetcal$FUNC
-    );
-    static final FunctionDescriptor DFSDwriteref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFSDwriteref$MH = RuntimeHelper.downcallHandle(
-        "DFSDwriteref",
-        constants$117.DFSDwriteref$FUNC
-    );
-    static final FunctionDescriptor DFSDsetfillvalue$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle DFSDsetfillvalue$MH = RuntimeHelper.downcallHandle(
-        "DFSDsetfillvalue",
-        constants$117.DFSDsetfillvalue$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "mkdir",
+        constants$37.const$2
     );
 }
 

@@ -7,53 +7,33 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$173 {
+final class constants$173 {
 
-    static final FunctionDescriptor H5Sencode$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$173() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fincrement_filesize",
+        constants$40.const$0
     );
-    static final MethodHandle H5Sencode$MH = RuntimeHelper.downcallHandle(
-        "H5Sencode",
-        constants$173.H5Sencode$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_file_image",
+        constants$19.const$3
     );
-    static final FunctionDescriptor H5Sdecode$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_config",
+        constants$44.const$4
     );
-    static final MethodHandle H5Sdecode$MH = RuntimeHelper.downcallHandle(
-        "H5Sdecode",
-        constants$173.H5Sdecode$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fset_mdc_config",
+        constants$44.const$4
     );
-    static final FunctionDescriptor H5Sget_simple_extent_npoints$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_hit_rate",
+        constants$44.const$4
     );
-    static final MethodHandle H5Sget_simple_extent_npoints$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_npoints",
-        constants$173.H5Sget_simple_extent_npoints$FUNC
-    );
-    static final FunctionDescriptor H5Sget_simple_extent_ndims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sget_simple_extent_ndims$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_ndims",
-        constants$173.H5Sget_simple_extent_ndims$FUNC
-    );
-    static final FunctionDescriptor H5Sget_simple_extent_dims$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Sget_simple_extent_dims$MH = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_dims",
-        constants$173.H5Sget_simple_extent_dims$FUNC
-    );
-    static final FunctionDescriptor H5Sis_simple$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Sis_simple$MH = RuntimeHelper.downcallHandle(
-        "H5Sis_simple",
-        constants$173.H5Sis_simple$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_size",
+        constants$97.const$2
     );
 }
 

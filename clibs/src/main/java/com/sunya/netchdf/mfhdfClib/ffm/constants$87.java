@@ -3,53 +3,25 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$87 {
 
-class constants$87 {
-
-    static final FunctionDescriptor HPend$FUNC = FunctionDescriptor.ofVoid();
-    static final MethodHandle HPend$MH = RuntimeHelper.downcallHandle(
-        "HPend",
-        constants$87.HPend$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$87() {}
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("__timezone", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("tzname", constants$86.const$1);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "tzset",
+        constants$61.const$1
     );
-    static final FunctionDescriptor HDdont_atexit$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle HDdont_atexit$MH = RuntimeHelper.downcallHandle(
-        "HDdont_atexit",
-        constants$87.HDdont_atexit$FUNC
-    );
-    static final FunctionDescriptor Hdupdd$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hdupdd$MH = RuntimeHelper.downcallHandle(
-        "Hdupdd",
-        constants$87.Hdupdd$FUNC
-    );
-    static final FunctionDescriptor Hnumber$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Hnumber$MH = RuntimeHelper.downcallHandle(
-        "Hnumber",
-        constants$87.Hnumber$FUNC
-    );
-    static final FunctionDescriptor Hnewref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Hnewref$MH = RuntimeHelper.downcallHandle(
-        "Hnewref",
-        constants$87.Hnewref$FUNC
-    );
-    static final FunctionDescriptor Htagnewref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle Htagnewref$MH = RuntimeHelper.downcallHandle(
-        "Htagnewref",
-        constants$87.Htagnewref$FUNC
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("daylight", JAVA_INT);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("timezone", JAVA_LONG);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "timegm",
+        constants$33.const$3
     );
 }
 

@@ -3,49 +3,37 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$115 {
 
-class constants$115 {
-
-    static final FunctionDescriptor DFSDadddata$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$115() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "brk",
+        constants$17.const$4
     );
-    static final MethodHandle DFSDadddata$MH = RuntimeHelper.downcallHandle(
-        "DFSDadddata",
-        constants$115.DFSDadddata$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "sbrk",
+        constants$41.const$0
     );
-    static final FunctionDescriptor DFSDrestart$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFSDrestart$MH = RuntimeHelper.downcallHandle(
-        "DFSDrestart",
-        constants$115.DFSDrestart$FUNC
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandleVariadic(
+        "syscall",
+        constants$8.const$5
     );
-    static final FunctionDescriptor DFSDndatasets$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fdatasync",
+        constants$1.const$5
     );
-    static final MethodHandle DFSDndatasets$MH = RuntimeHelper.downcallHandle(
-        "DFSDndatasets",
-        constants$115.DFSDndatasets$FUNC
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "crypt",
+        constants$21.const$1
     );
-    static final FunctionDescriptor DFSDclear$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT);
-    static final MethodHandle DFSDclear$MH = RuntimeHelper.downcallHandle(
-        "DFSDclear",
-        constants$115.DFSDclear$FUNC
-    );
-    static final FunctionDescriptor DFSDlastref$FUNC = FunctionDescriptor.of(Constants$root.C_SHORT$LAYOUT);
-    static final MethodHandle DFSDlastref$MH = RuntimeHelper.downcallHandle(
-        "DFSDlastref",
-        constants$115.DFSDlastref$FUNC
-    );
-    static final FunctionDescriptor DFSDreadref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_SHORT$LAYOUT
-    );
-    static final MethodHandle DFSDreadref$MH = RuntimeHelper.downcallHandle(
-        "DFSDreadref",
-        constants$115.DFSDreadref$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "getentropy",
+        constants$68.const$3
     );
 }
 

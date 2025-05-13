@@ -2,16 +2,39 @@
 
 package com.sunya.netchdf.mfhdfClib.ffm;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$198 {
 
-class constants$198 {
-
-    static final MemorySegment GR_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RIG0.0");
-    static final MemorySegment RI_NAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RI0.0");
-    static final MemorySegment RIGATTRNAME$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RIATTR0.0N");
-    static final MemorySegment RIGATTRCLASS$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("RIATTR0.0C");
-    static final MemorySegment _HDF_ATTRIBUTE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Attr0.0");
-    static final MemorySegment _HDF_VARIABLE$SEGMENT = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("Var0.0");
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$198() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "VSlone",
+        constants$94.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Vlone",
+        constants$94.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "Vfind",
+        constants$5.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "VSfind",
+        constants$5.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Vfindclass",
+        constants$5.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "VSfindclass",
+        constants$5.const$3
+    );
 }
 
 

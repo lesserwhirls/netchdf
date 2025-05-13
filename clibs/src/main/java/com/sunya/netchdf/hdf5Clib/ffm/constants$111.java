@@ -7,59 +7,18 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$111 {
+final class constants$111 {
 
-    static final FunctionDescriptor H5Fget_access_plist$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fget_access_plist$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_access_plist",
-        constants$111.H5Fget_access_plist$FUNC
-    );
-    static final FunctionDescriptor H5Fget_intent$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_intent$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_intent",
-        constants$111.H5Fget_intent$FUNC
-    );
-    static final FunctionDescriptor H5Fget_obj_count$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle H5Fget_obj_count$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_obj_count",
-        constants$111.H5Fget_obj_count$FUNC
-    );
-    static final FunctionDescriptor H5Fget_obj_ids$FUNC = FunctionDescriptor.of(Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_obj_ids$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_obj_ids",
-        constants$111.H5Fget_obj_ids$FUNC
-    );
-    static final FunctionDescriptor H5Fget_vfd_handle$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle H5Fget_vfd_handle$MH = RuntimeHelper.downcallHandle(
-        "H5Fget_vfd_handle",
-        constants$111.H5Fget_vfd_handle$FUNC
-    );
-    static final FunctionDescriptor H5Fmount$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle H5Fmount$MH = RuntimeHelper.downcallHandle(
-        "H5Fmount",
-        constants$111.H5Fmount$FUNC
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$111() {}
+    static final VarHandle const$0 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final VarHandle const$1 = RuntimeHelper.POINTER.varHandle();
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "remove",
+        constants$15.const$2
     );
 }
 

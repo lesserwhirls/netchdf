@@ -7,26 +7,34 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$82 {
+final class constants$82 {
 
-    static final  OfLong H5E_FCNTL_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_FCNTL_g$VH = constants$82.H5E_FCNTL_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_FCNTL_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_FCNTL_g", constants$82.H5E_FCNTL_g$LAYOUT);
-    static final  OfLong H5E_NOSPACE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_NOSPACE_g$VH = constants$82.H5E_NOSPACE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_NOSPACE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_NOSPACE_g", constants$82.H5E_NOSPACE_g$LAYOUT);
-    static final  OfLong H5E_CANTALLOC_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTALLOC_g$VH = constants$82.H5E_CANTALLOC_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTALLOC_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTALLOC_g", constants$82.H5E_CANTALLOC_g$LAYOUT);
-    static final  OfLong H5E_CANTCOPY_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTCOPY_g$VH = constants$82.H5E_CANTCOPY_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTCOPY_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOPY_g", constants$82.H5E_CANTCOPY_g$LAYOUT);
-    static final  OfLong H5E_CANTFREE_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_CANTFREE_g$VH = constants$82.H5E_CANTFREE_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_CANTFREE_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_CANTFREE_g", constants$82.H5E_CANTFREE_g$LAYOUT);
-    static final  OfLong H5E_ALREADYEXISTS_g$LAYOUT = Constants$root.C_LONG_LONG$LAYOUT;
-    static final VarHandle H5E_ALREADYEXISTS_g$VH = constants$82.H5E_ALREADYEXISTS_g$LAYOUT.varHandle();
-    static final MemorySegment H5E_ALREADYEXISTS_g$SEGMENT = RuntimeHelper.lookupGlobalVariable("H5E_ALREADYEXISTS_g", constants$82.H5E_ALREADYEXISTS_g$LAYOUT);
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$82() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Adelete",
+        constants$44.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_idx",
+        constants$63.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_name",
+        constants$43.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aexists",
+        constants$44.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name",
+        constants$43.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Aget_create_plist",
+        constants$10.const$2
+    );
 }
 
 

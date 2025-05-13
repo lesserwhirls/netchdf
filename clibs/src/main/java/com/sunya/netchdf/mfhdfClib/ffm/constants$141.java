@@ -3,60 +3,38 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$141 {
 
-class constants$141 {
-
-    static final FunctionDescriptor Vgetuservgs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$141() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
     );
-    static final MethodHandle Vgetuservgs$MH = RuntimeHelper.downcallHandle(
-        "Vgetuservgs",
-        constants$141.Vgetuservgs$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "HIstrncpy",
+        constants$141.const$0
     );
-    static final FunctionDescriptor Vgettagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "HDspaceleft",
+        constants$28.const$3
     );
-    static final MethodHandle Vgettagref$MH = RuntimeHelper.downcallHandle(
-        "Vgettagref",
-        constants$141.Vgettagref$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "HDstrdup",
+        constants$20.const$4
     );
-    static final FunctionDescriptor VQueryref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "HDc2fstr",
+        constants$37.const$2
     );
-    static final MethodHandle VQueryref$MH = RuntimeHelper.downcallHandle(
-        "VQueryref",
-        constants$141.VQueryref$FUNC
-    );
-    static final FunctionDescriptor VQuerytag$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle VQuerytag$MH = RuntimeHelper.downcallHandle(
-        "VQuerytag",
-        constants$141.VQuerytag$FUNC
-    );
-    static final FunctionDescriptor Vaddtagref$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vaddtagref$MH = RuntimeHelper.downcallHandle(
-        "Vaddtagref",
-        constants$141.Vaddtagref$FUNC
-    );
-    static final FunctionDescriptor Ventries$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Ventries$MH = RuntimeHelper.downcallHandle(
-        "Ventries",
-        constants$141.Ventries$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "HDf2cstring",
+        constants$73.const$4
     );
 }
 

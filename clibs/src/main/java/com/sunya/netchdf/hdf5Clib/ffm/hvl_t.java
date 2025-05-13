@@ -7,53 +7,79 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct {
+ *     size_t len;
+ *     void* p;
+ * };
+ * }
+ */
 public class hvl_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("len"),
-        Constants$root.C_POINTER$LAYOUT.withName("p")
-    );
     public static MemoryLayout $LAYOUT() {
-        return hvl_t.$struct$LAYOUT;
+        return constants$23.const$3;
     }
-    static final VarHandle len$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("len"));
     public static VarHandle len$VH() {
-        return hvl_t.len$VH;
+        return constants$23.const$4;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * size_t len;
+     * }
+     */
     public static long len$get(MemorySegment seg) {
-        return (long)hvl_t.len$VH.get(seg);
+        return (long)constants$23.const$4.get(seg);
     }
-    public static void len$set( MemorySegment seg, long x) {
-        hvl_t.len$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * size_t len;
+     * }
+     */
+    public static void len$set(MemorySegment seg, long x) {
+        constants$23.const$4.set(seg, x);
     }
     public static long len$get(MemorySegment seg, long index) {
-        return (long)hvl_t.len$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$23.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void len$set(MemorySegment seg, long index, long x) {
-        hvl_t.len$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$23.const$4.set(seg.asSlice(index*sizeof()), x);
     }
-    static final VarHandle p$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("p"));
     public static VarHandle p$VH() {
-        return hvl_t.p$VH;
+        return constants$23.const$5;
     }
-    public static MemoryAddress p$get(MemorySegment seg) {
-        return (java.lang.foreign.MemoryAddress)hvl_t.p$VH.get(seg);
+    /**
+     * Getter for field:
+     * {@snippet :
+     * void* p;
+     * }
+     */
+    public static MemorySegment p$get(MemorySegment seg) {
+        return (java.lang.foreign.MemorySegment)constants$23.const$5.get(seg);
     }
-    public static void p$set( MemorySegment seg, MemoryAddress x) {
-        hvl_t.p$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * void* p;
+     * }
+     */
+    public static void p$set(MemorySegment seg, MemorySegment x) {
+        constants$23.const$5.set(seg, x);
     }
-    public static MemoryAddress p$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemoryAddress)hvl_t.p$VH.get(seg.asSlice(index*sizeof()));
+    public static MemorySegment p$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$23.const$5.get(seg.asSlice(index*sizeof()));
     }
-    public static void p$set(MemorySegment seg, long index, MemoryAddress x) {
-        hvl_t.p$VH.set(seg.asSlice(index*sizeof()), x);
+    public static void p$set(MemorySegment seg, long index, MemorySegment x) {
+        constants$23.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

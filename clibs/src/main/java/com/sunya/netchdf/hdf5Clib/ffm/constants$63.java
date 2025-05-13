@@ -7,59 +7,37 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
-class constants$63 {
+final class constants$63 {
 
-    static final FunctionDescriptor freopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$63() {}
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Lcopy",
+        constants$62.const$5
     );
-    static final MethodHandle freopen$MH = RuntimeHelper.downcallHandle(
-        "freopen",
-        constants$63.freopen$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_hard",
+        constants$62.const$5
     );
-    static final FunctionDescriptor fdopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft",
+        constants$55.const$5
     );
-    static final MethodHandle fdopen$MH = RuntimeHelper.downcallHandle(
-        "fdopen",
-        constants$63.fdopen$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ldelete",
+        constants$53.const$3
     );
-    static final FunctionDescriptor fmemopen$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle fmemopen$MH = RuntimeHelper.downcallHandle(
-        "fmemopen",
-        constants$63.fmemopen$FUNC
-    );
-    static final FunctionDescriptor open_memstream$FUNC = FunctionDescriptor.of(Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle open_memstream$MH = RuntimeHelper.downcallHandle(
-        "open_memstream",
-        constants$63.open_memstream$FUNC
-    );
-    static final FunctionDescriptor setbuf$FUNC = FunctionDescriptor.ofVoid(
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
-    );
-    static final MethodHandle setbuf$MH = RuntimeHelper.downcallHandle(
-        "setbuf",
-        constants$63.setbuf$FUNC
-    );
-    static final FunctionDescriptor setvbuf$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_LONG_LONG$LAYOUT
-    );
-    static final MethodHandle setvbuf$MH = RuntimeHelper.downcallHandle(
-        "setvbuf",
-        constants$63.setvbuf$FUNC
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_by_idx",
+        constants$63.const$4
     );
 }
 

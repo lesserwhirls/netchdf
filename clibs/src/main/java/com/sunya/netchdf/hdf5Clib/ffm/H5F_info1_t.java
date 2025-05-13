@@ -7,74 +7,97 @@ import java.lang.invoke.VarHandle;
 import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
+/**
+ * {@snippet :
+ * struct H5F_info1_t {
+ *     hsize_t super_ext_size;
+ *     struct  sohm;
+ * };
+ * }
+ */
 public class H5F_info1_t {
 
-    static final  GroupLayout $struct$LAYOUT = MemoryLayout.structLayout(
-        Constants$root.C_LONG_LONG$LAYOUT.withName("super_ext_size"),
-        MemoryLayout.structLayout(
-            Constants$root.C_LONG_LONG$LAYOUT.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("msgs_info")
-        ).withName("sohm")
-    ).withName("H5F_info1_t");
     public static MemoryLayout $LAYOUT() {
-        return H5F_info1_t.$struct$LAYOUT;
+        return constants$177.const$0;
     }
-    static final VarHandle super_ext_size$VH = $struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
     public static VarHandle super_ext_size$VH() {
-        return H5F_info1_t.super_ext_size$VH;
+        return constants$177.const$1;
     }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * hsize_t super_ext_size;
+     * }
+     */
     public static long super_ext_size$get(MemorySegment seg) {
-        return (long)H5F_info1_t.super_ext_size$VH.get(seg);
+        return (long)constants$177.const$1.get(seg);
     }
-    public static void super_ext_size$set( MemorySegment seg, long x) {
-        H5F_info1_t.super_ext_size$VH.set(seg, x);
+    /**
+     * Setter for field:
+     * {@snippet :
+     * hsize_t super_ext_size;
+     * }
+     */
+    public static void super_ext_size$set(MemorySegment seg, long x) {
+        constants$177.const$1.set(seg, x);
     }
     public static long super_ext_size$get(MemorySegment seg, long index) {
-        return (long)H5F_info1_t.super_ext_size$VH.get(seg.asSlice(index*sizeof()));
+        return (long)constants$177.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void super_ext_size$set(MemorySegment seg, long index, long x) {
-        H5F_info1_t.super_ext_size$VH.set(seg.asSlice(index*sizeof()), x);
+        constants$177.const$1.set(seg.asSlice(index*sizeof()), x);
     }
-    public static class sohm {
+    /**
+     * {@snippet :
+     * struct {
+     *     hsize_t hdr_size;
+     *     H5_ih_info_t msgs_info;
+     * };
+     * }
+     */
+    public static final class sohm {
 
-        static final  GroupLayout sohm$struct$LAYOUT = MemoryLayout.structLayout(
-            Constants$root.C_LONG_LONG$LAYOUT.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                Constants$root.C_LONG_LONG$LAYOUT.withName("index_size"),
-                Constants$root.C_LONG_LONG$LAYOUT.withName("heap_size")
-            ).withName("msgs_info")
-        );
+        // Suppresses default constructor, ensuring non-instantiability.
+        private sohm() {}
         public static MemoryLayout $LAYOUT() {
-            return sohm.sohm$struct$LAYOUT;
+            return constants$177.const$2;
         }
-        static final VarHandle hdr_size$VH = sohm$struct$LAYOUT.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
         public static VarHandle hdr_size$VH() {
-            return sohm.hdr_size$VH;
+            return constants$177.const$3;
         }
+        /**
+         * Getter for field:
+         * {@snippet :
+         * hsize_t hdr_size;
+         * }
+         */
         public static long hdr_size$get(MemorySegment seg) {
-            return (long)sohm.hdr_size$VH.get(seg);
+            return (long)constants$177.const$3.get(seg);
         }
-        public static void hdr_size$set( MemorySegment seg, long x) {
-            sohm.hdr_size$VH.set(seg, x);
+        /**
+         * Setter for field:
+         * {@snippet :
+         * hsize_t hdr_size;
+         * }
+         */
+        public static void hdr_size$set(MemorySegment seg, long x) {
+            constants$177.const$3.set(seg, x);
         }
         public static long hdr_size$get(MemorySegment seg, long index) {
-            return (long)sohm.hdr_size$VH.get(seg.asSlice(index*sizeof()));
+            return (long)constants$177.const$3.get(seg.asSlice(index*sizeof()));
         }
         public static void hdr_size$set(MemorySegment seg, long index, long x) {
-            sohm.hdr_size$VH.set(seg.asSlice(index*sizeof()), x);
+            constants$177.const$3.set(seg.asSlice(index*sizeof()), x);
         }
         public static MemorySegment msgs_info$slice(MemorySegment seg) {
             return seg.asSlice(8, 16);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-        public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+        public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
             return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
         }
-        public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+        public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
     }
 
     public static MemorySegment sohm$slice(MemorySegment seg) {
@@ -82,10 +105,10 @@ public class H5F_info1_t {
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }
-    public static MemorySegment allocateArray(int len, SegmentAllocator allocator) {
+    public static MemorySegment allocateArray(long len, SegmentAllocator allocator) {
         return allocator.allocate(MemoryLayout.sequenceLayout(len, $LAYOUT()));
     }
-    public static MemorySegment ofAddress(MemoryAddress addr, MemorySession session) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, session); }
+    public static MemorySegment ofAddress(MemorySegment addr, Arena arena) { return RuntimeHelper.asArray(addr, $LAYOUT(), 1, arena); }
 }
 
 

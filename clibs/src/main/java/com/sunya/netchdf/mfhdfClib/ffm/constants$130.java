@@ -3,59 +3,51 @@
 package com.sunya.netchdf.mfhdfClib.ffm;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.VarHandle;
+import java.nio.ByteOrder;
 import java.lang.foreign.*;
+import static java.lang.foreign.ValueLayout.*;
+final class constants$130 {
 
-class constants$130 {
-
-    static final FunctionDescriptor GRreadchunk$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    // Suppresses default constructor, ensuring non-instantiability.
+    private constants$130() {}
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT
     );
-    static final MethodHandle GRreadchunk$MH = RuntimeHelper.downcallHandle(
-        "GRreadchunk",
-        constants$130.GRreadchunk$FUNC
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "Hstartread",
+        constants$130.const$0
     );
-    static final FunctionDescriptor GRsetchunkcache$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_SHORT,
+        JAVA_SHORT,
+        JAVA_INT
     );
-    static final MethodHandle GRsetchunkcache$MH = RuntimeHelper.downcallHandle(
-        "GRsetchunkcache",
-        constants$130.GRsetchunkcache$FUNC
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "Hnextread",
+        constants$130.const$2
     );
-    static final FunctionDescriptor Vsetattr$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT,
-        Constants$root.C_POINTER$LAYOUT
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "Hexist",
+        constants$130.const$0
     );
-    static final MethodHandle Vsetattr$MH = RuntimeHelper.downcallHandle(
-        "Vsetattr",
-        constants$130.Vsetattr$FUNC
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor Vnattrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vnattrs$MH = RuntimeHelper.downcallHandle(
-        "Vnattrs",
-        constants$130.Vnattrs$FUNC
-    );
-    static final FunctionDescriptor Vnattrs2$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vnattrs2$MH = RuntimeHelper.downcallHandle(
-        "Vnattrs2",
-        constants$130.Vnattrs2$FUNC
-    );
-    static final FunctionDescriptor Vnoldattrs$FUNC = FunctionDescriptor.of(Constants$root.C_INT$LAYOUT,
-        Constants$root.C_INT$LAYOUT
-    );
-    static final MethodHandle Vnoldattrs$MH = RuntimeHelper.downcallHandle(
-        "Vnoldattrs",
-        constants$130.Vnoldattrs$FUNC
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "Hinquire",
+        constants$130.const$5
     );
 }
 
