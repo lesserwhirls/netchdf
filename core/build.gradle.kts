@@ -7,7 +7,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     testImplementation(project(":testdata"))
-    // testImplementation(libs.guava)
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)

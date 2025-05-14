@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.kotlin.jvm)
 }
@@ -7,7 +6,7 @@ dependencies {
     api(project(":core"))
     implementation(project(":testdata"))
     implementation(libs.oshai.logging)
-    implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.4")
+    implementation(libs.kotlinx.coroutines.core)
 
     // testImplementation(libs.guava)
     testImplementation(kotlin("test"))
