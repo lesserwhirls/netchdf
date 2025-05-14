@@ -1,0 +1,30 @@
+on: [pull_request]
+
+permissions: {}
+
+jobs:
+  netchdf-tests:
+    name: netchdf tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-vendor: ['temurin']
+        java-version: [21]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup ${{ matrix.java-vendor }} JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: ${{ matrix.java-vendor }}
+          java-version: ${{ matrix.java-version }}
+          cache: 'gradle'
+      - name: Build netchdf using ${{ matrix.java-vendor }} JDK ${{ matrix.java-version }}
+        run: ./gradlew classes testClasses
+      - name: Test netchdf using ${{ matrix.java-vendor }} JDK ${{ matrix.java-version }}
+        run: ./gradlew :core:test --tests "com.sunya.cdm.*"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: netchdf_test_report_${{ github.sha }}_${{ matrix.java-vendor }}-${{ matrix.java-version }}
+          path: build/reports/tests/test
