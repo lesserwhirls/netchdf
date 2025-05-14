@@ -25,5 +25,5 @@ data class ArraySection<T>(val array : ArrayTyped<T>, val section : Section)
 fun <T> Netchdf.chunkConcurrent(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null, lamda : (ArraySection<T>) -> Unit) {
     val reader = ReadChunkConcurrent()
     val chunkIter = this.chunkIterator( v2, section, maxElements)
-    reader.readChunks(20, chunkIter, lamda)
+    reader.readChunks(20, chunkIter, lamda) // TODO set nthreads
 }

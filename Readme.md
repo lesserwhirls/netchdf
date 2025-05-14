@@ -1,7 +1,7 @@
 # netchdf
-_last updated: 5/12/2025_
+_last updated: 5/14/2025_
 
-This is a rewrite in kotlin of parts of the devcdm and netcdf-java libraries. 
+This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
 The intention is to create a maintainable, read-only, pure JVM library allowing full access to 
 netcdf3, netcdf4, hdf4, hdf5, hdf-eos2 and hdf-eos5 data files. 
@@ -47,7 +47,7 @@ but does not support concurrent reading. These are serious limitations for high 
 Our library tries to ameliorate these problems for scientists and the interested public to access the data without
 having to become specialists in the file formats and legacy APIs.
 
-### Why kotlin?
+### Why Kotlin?
 
 Kotlin is a modern, statically typed, garbage-collected language suitable for large development projects. 
 It has many new features for safer (like null-safety) and more concise (like functional idioms) code, and is an important 
@@ -61,7 +61,7 @@ For HDF5 files using deflate filters, the deflate library dominates the read tim
 are about 2X slower than native code. Unless the deflate libraries get better, theres not much gain in trying to make
 other parts of the code faster.
 
-Its possible we can use kotlin coroutines to speed up performance bottlenecks. TBD.
+Its possible we can use Kotlin coroutines to speed up performance bottlenecks. TBD.
 
 ### Testing
 
@@ -112,6 +112,8 @@ We do not plan to provide write capabilities.
 
 #### Type Safety and Generics
 
+Also see [Netchdf core UML](https://docs.google.com/drawings/d/1lkouJBUG5uy8aUtbKfAZN9D5h_v22JNWf6QUQWjPNBc)
+
 Datatype\<T\>, Attribute\<T\>, Variable\<T\>, StructureMember\<T\>, Array\<T\> and ArraySection\<T\> are all generics, 
 with T indicating the data type returned when read, eg:
 
@@ -159,9 +161,9 @@ local to the variable they are referenced by.
 
 ## Elevator blurb
 
-An independent implementation of HDF4/HDF5/HDF-EOS in kotlin.
+An independent implementation of HDF4/HDF5/HDF-EOS in Kotlin.
 
-I am working on an independent library implementation of HDF4/HDF5/HDF-EOS in kotlin 
+I am working on an independent library implementation of HDF4/HDF5/HDF-EOS in Kotlin 
 [here](https://github.com/JohnLCaron/netchdf). 
 This will be complementary to the important work of maintaining the primary HDF libraries.
 The goal is to give read access to all the content in NetCDF, HDF5, HDF4 and HDF-EOS files.

@@ -7,7 +7,8 @@ Copyright 2018, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
 2015, 2016, 2017, 2018, 2019
 University Corporation for Atmospheric Research/Unidata.
 
-See \ref copyright file for more info.
+netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
+
 */
 
 #ifndef _NETCDF_
