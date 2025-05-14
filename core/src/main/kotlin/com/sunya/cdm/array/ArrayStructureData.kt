@@ -35,7 +35,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
         return result
     }
 
-    // not a bad ide to start at 1, so that 0 == not set
+    // TODO not a bad idea to start at 1, so that 0 == not set
     fun getFromHeap(offset: Int): Any? {
         val index = bb.getInt(offset) // youve clobbered the byte buffer. is that ok ??
         return heap[index]
@@ -71,6 +71,8 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
         return ArrayStructureData(section.shape.toIntArray(), sectionBB, recsize, members)
     }
 
+    // structure data is packed into the ByteBuffer starting at the given offset
+    // vlens and strings are on the "heap" stored in the parent ArrayStructureData
     inner class StructureData(val bb: ByteBuffer, val offset: Int, val members: List<StructureMember<*>>) {
         override fun toString(): String {
             return buildString {

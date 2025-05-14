@@ -11,8 +11,8 @@ import java.nio.ByteBuffer
  * @param size Size in bytes of one element of this data type.
  * @param typedef used for ENUM, VLEN, OPAQUE, COMPOUND
  * @param isVlen HDF5 needs to track if this is a Vlen or regular String.
- *
  */
+// TODO should this be an Enum?
 data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef? = null, val isVlen : Boolean? = null) {
 
     companion object {

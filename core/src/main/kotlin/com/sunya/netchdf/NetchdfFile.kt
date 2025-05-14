@@ -9,7 +9,8 @@ import com.sunya.netchdf.netcdf3.Netcdf3File
 fun openNetchdfFile(filename : String, strict : Boolean = false) : Netchdf? {
     val useFilename = filename.trim()
     OpenFile(useFilename).use { raf ->
-        return when (val format = NetchdfFileFormat.findNetcdfFormatType(raf)) {
+        val format = NetchdfFileFormat.findNetcdfFormatType(raf)
+        return when (format) {
             NetchdfFileFormat.NC_FORMAT_CLASSIC,
             NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET,
             NetchdfFileFormat.NC_FORMAT_64BIT_DATA -> Netcdf3File(useFilename)
@@ -17,7 +18,7 @@ fun openNetchdfFile(filename : String, strict : Boolean = false) : Netchdf? {
             NetchdfFileFormat.NC_FORMAT_NETCDF4_CLASSIC  -> Hdf5File(useFilename, strict)
             NetchdfFileFormat.HDF5  -> Hdf5File(useFilename, strict)
             NetchdfFileFormat.HDF4  -> Hdf4File(useFilename)
-            else  -> throw RuntimeException(" unsupported NetcdfFileFormat $format")
+            else  -> null // throw RuntimeException(" unsupported NetcdfFileFormat $format")
         }
     }
 }

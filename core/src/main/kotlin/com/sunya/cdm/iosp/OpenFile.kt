@@ -13,11 +13,10 @@ import java.nio.charset.StandardCharsets
 data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
     private var allowTruncation = true
     val raf : com.sunya.io.RandomAccessFile = com.sunya.io.RandomAccessFile(location, "r")
-    private val fileChannel : FileChannel
+    private val fileChannel : FileChannel = raf.fileChannel
     val size : Long
 
     init {
-        fileChannel = raf.fileChannel
         raf.order(ByteOrder.LITTLE_ENDIAN)
         size = raf.length()
     }
