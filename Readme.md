@@ -63,9 +63,30 @@ other parts of the code faster.
 
 Its possible we can use Kotlin coroutines to speed up performance bottlenecks. TBD.
 
+## What version of the JVM?
+
+We will always use the latest the latest LTS (long term support) Java version, and will not be explicitly supporting older versions.
+Currently that is Java 21.
+
+### Scope
+
+We have the goal to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files.
+
+The library will be thread-safe for reading multiple files concurrently.
+
+We are focussing on earth science data, and dont plan to support other uses except as a byproduct.
+
+We will not provide write capabilities.
+
+The core module will remain pure Kotlin with very minimal dependencies. In particular, there will be no dependency on the reference C libraries
+(except for testing). There will be no dependencies on native libraries in the core module, but other modules or
+projects that use the core are free to use dependencies as needed. We will add runtime discovery to facilitate this, for example
+HDF5 filters that use native libraries.
+
+
 ### Testing
 
-We will use the Foreign Function & Memory API for testing against the Netcdf, HDF5, and HDF4 C libraries. 
+We use the Foreign Function & Memory API for testing against the Netcdf, HDF5, and HDF4 C libraries. 
 With these tools we can be confident that our library gives the same results as the reference libraries.
 
 Currently we have this test coverage from core/test:
@@ -98,21 +119,11 @@ Currently we have ~1500 test files:
 
 We need to get representative samples of recent files for improved testing and code coverage.
 
-### Scope
-
-We have the goal to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files. 
-
-The library will be thread-safe for reading multiple files concurrently.
-
-We are focussing on earth science data, and dont plan to support other uses except as a byproduct.
-
-We do not plan to provide write capabilities.
-
 ### Data Model notes
 
-#### Type Safety and Generics
-
 Also see [Netchdf core UML](https://docs.google.com/drawings/d/1lkouJBUG5uy8aUtbKfAZN9D5h_v22JNWf6QUQWjPNBc)
+
+#### Type Safety and Generics
 
 Datatype\<T\>, Attribute\<T\>, Variable\<T\>, StructureMember\<T\>, Array\<T\> and ArraySection\<T\> are all generics, 
 with T indicating the data type returned when read, eg:
@@ -120,6 +131,8 @@ with T indicating the data type returned when read, eg:
 ````
     fun <T> readArrayData(v2: Variable<T>, section: SectionPartial? = null) : ArrayTyped<T>
 ````
+
+For example, a Variable of datatype Float will return an ArrayFloat, which is ArrayTyped<Float>.
 
 #### Datatype
 * __Datatype.ENUM__ returns an array of the corresponding UBYTE/USHORT/UINT. Call _data.convertEnums()_ to turn this into
@@ -131,7 +144,7 @@ with T indicating the data type returned when read, eg:
     legacy CHAR variables in HDF5 files. NC_CHAR should not be used in Netcdf-4, use NC_UBYTE or NC_STRING.
   * _HDF4_ does not have a STRING type, but does have signed and unsigned CHAR, and signed and unsigned BYTE. 
     We map both signed and unsigned to Datatype.CHAR and handle it as above (Attributes are Strings, Variables are UBytes).
-* __Datatype.STRING__ is variable length, whether the file storage is variable or fixed length.
+* __Datatype.STRING__ is always variable length, regardless of whether the data in the file is variable or fixed length.
 
 #### Typedef
 Unlike Netcdf-Java, we follow Netcdf-4 "user defined types" and add typedefs for Compound, Enum, Opaque, and Vlen.
@@ -147,13 +160,13 @@ local to the variable they are referenced by.
 
 #### Compare with HDF5 data model
 * Creation order is ignored
-* Not including symbolic links in a group, as these point to an existing dataset (variable)
+* We dont include symbolic links in a group, as these point to an existing dataset (variable)
 * Opaque: hdf5 makes arrays of Opaque all the same size, which gives up some of its usefulness. If theres a need,
   we will allow Opaque(*) indicating that the sizes can vary.
 * Attributes can be of type REFERENCE, with value the full path name of the referenced dataset.
 
 #### Compare with HDF4 data model
-* All data access is unified under the netchdf API
+* All data access is unified under the netchdf API.
 
 #### Compare with HDF-EOS data model
 * The _StructMetadata_ ODL is gathered and applied to the file header metadata as well as possible. 

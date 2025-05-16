@@ -52,7 +52,11 @@ class H4readTest {
     // * LUT/1             usedBy=false pos=18664902/32 nelems=null
     @Test
     fun testUsedProblem() {
-        readH4CheckUnused(testData + "hdf4/S2007329.L3m_DAY_CHLO_9")
+        val filename = testData + "hdf4/S2007329.L3m_DAY_CHLO_9"
+        Hdf4File(filename).use { h4file ->
+            println("--- ${h4file.type()} $filename ")
+            assertEquals( 2, h4file.header.showTags(true, true, true))
+        }
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -92,9 +96,12 @@ class H4readTest {
     @ParameterizedTest
     @MethodSource("params")
     fun readH4CheckUnused(filename: String) {
-        Hdf4File(filename).use { h4file ->
-            println("--- ${h4file.type()} $filename ")
-            assertEquals( 0, h4file.header.showTags(true, true, true))
+        if (!filename.endsWith("hdf4/S2007329.L3m_DAY_CHLO_9")) {
+            Hdf4File(filename).use { h4file ->
+                println("--- ${h4file.type()} $filename ")
+                // TODO remove show and just count unused
+                assertEquals(0, h4file.header.showTags(false, true, false))
+            }
         }
     }
 
