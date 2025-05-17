@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 5/14/2025_
+_last updated: 5/17/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -20,7 +20,18 @@ By focusing on read-only access to just these formats, the API and the code are 
 In short, a library that focuses on simplicity and clarity is a safeguard for the huge investment in these
 scientific datasets.
 
-### Why do we need an alternative to the standard reference libraries?
+### Why do we need another library besides the standard reference libraries?
+
+Its a huge advantage to have independent implementations of any standard. If you dont have multiple implementations, its
+very easy for the single implementator to mistake the implementation for the actual standard. Its easy to hide problems 
+that are actually in the standard by adding work-arounds in the code, instead of documenting problems and creating new
+versions with clear fixes. For Netcdf/Hdf, the standard is the file formats, along with their semantic descriptions. The API
+is language and library specific, and is secondary to the standard.
+
+Having multiple implementations is a huge win for the reference library, in that bugs are more quickly found, and 
+ambiguities more quickly identified. 
+
+### Whats wrong with the standard reference libraries?
 
 The reference libraries are well maintained but complex. They are coded in C, which is a difficult language to master
 and keep bug free, with implication for memory safety and security. The libraries require various machine and OS dependent
@@ -58,7 +69,7 @@ open-source developers, and hopefully some of them will be willing to keep this 
 
 We are aiming to be within 2x of the C libraries for reading data. Preliminary tests indicate that's a reasonable goal. 
 For HDF5 files using deflate filters, the deflate library dominates the read time, and standard Java deflate libraries 
-are about 2X slower than native code. Unless the deflate libraries get better, theres not much gain in trying to make
+are about 2X slower than native code. Unless the deflate libraries get better, there's not much gain in trying to make
 other parts of the code faster.
 
 Its possible we can use Kotlin coroutines to speed up performance bottlenecks. TBD.
@@ -161,7 +172,7 @@ local to the variable they are referenced by.
 #### Compare with HDF5 data model
 * Creation order is ignored
 * We dont include symbolic links in a group, as these point to an existing dataset (variable)
-* Opaque: hdf5 makes arrays of Opaque all the same size, which gives up some of its usefulness. If theres a need,
+* Opaque: hdf5 makes arrays of Opaque all the same size, which gives up some of its usefulness. If there's a need,
   we will allow Opaque(*) indicating that the sizes can vary.
 * Attributes can be of type REFERENCE, with value the full path name of the referenced dataset.
 
