@@ -70,9 +70,10 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
 
         val slist = mutableListOf<String>()
         for (i in 0 until nelems) {
-            val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-            if (s2 != MemorySegment.NULL) {
-                val value = s2.getUtf8String(0)
+            val address: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+            if (address != MemorySegment.NULL) {
+                val cString = address.reinterpret(Long.MAX_VALUE)
+                val value = cString.getUtf8String(0)
                 // val tvalue = transcodeString(value)
                 slist.add(value)
             } else {

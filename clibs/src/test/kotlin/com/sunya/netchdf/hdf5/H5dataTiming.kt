@@ -105,7 +105,7 @@ class H5dataTiming {
 
     @Test
     fun hasMissing() {
-        val filename = testData + "cdmUnitTest/formats/netcdf4/new/OR_ABI-L2-CMIPF-M6C13_G16_s20230451800207_e20230451809526_c20230451810015.nc"
+        val filename = testData + "cdmUnitTest/formats/netcdf4/goes16/OR_ABI-L2-CMIPF-M6C13_G16_s20230451800207_e20230451809526_c20230451810015.nc"
         readData(filename, "CMI", SectionPartial.fromSpec(":, :"))
         readData(filename, "DQF", SectionPartial.fromSpec(":, :"))
     }

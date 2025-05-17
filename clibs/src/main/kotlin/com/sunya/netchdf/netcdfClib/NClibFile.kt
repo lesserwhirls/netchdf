@@ -98,6 +98,7 @@ class NClibFile(val filename: String) : Netchdf {
                     return ArrayVlen.fromArray(shape, listOfVlen, basetype) as ArrayTyped<T>
                     // TODO nc_free_vlen(nc_vlen_t *vl);
                     //      nc_free_string(size_t len, char **data);
+                    //      nc_reclaim_data()
                 }
 
                 Datatype.COMPOUND -> {
@@ -114,10 +115,13 @@ class NClibFile(val filename: String) : Netchdf {
 
                     val members = (datatype.typedef as CompoundTypedef).members
                     val sdataArray = ArrayStructureData(shape, bb, userType.size, members)
-                    // strings vs array of strings, also duplicate readCompoundAttValues
+                    // TODO strings vs array of strings
                     sdataArray.putStringsOnHeap {  member, offset ->
                         val address = val_p.get(ValueLayout.ADDRESS, (offset).toLong())
-                        listOf(address.getUtf8String(0)) // LOOK not right
+                        val cString = address.reinterpret(Long.MAX_VALUE)
+                        val s = cString.getUtf8String(0)
+                        if (debugUserTypes) println("OK CompoundAttribute read string offset=$offset value=$s")
+                        listOf(s)
                     }
                     sdataArray.putVlensOnHeap { member, offset ->
                         // look duplicate (maybe)
@@ -283,7 +287,9 @@ class NClibFile(val filename: String) : Netchdf {
                         nc_get_vars_string(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = mutableListOf<String>()
                     for (i in 0 until nelems) {
-                        values.add(val_p.getAtIndex(ValueLayout.ADDRESS, i).getUtf8String(0))
+                        val address = val_p.getAtIndex(ValueLayout.ADDRESS, i)
+                        val cString = address.reinterpret(Long.MAX_VALUE)
+                        values.add(cString.getUtf8String(0))
                     }
                     return ArrayString(shape, values) as ArrayTyped<T>
                 }

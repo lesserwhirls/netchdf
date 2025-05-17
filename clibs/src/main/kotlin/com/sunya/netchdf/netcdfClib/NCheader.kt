@@ -389,7 +389,8 @@ class NCheader(val filename: String) {
                     // val s1 = strings_p.getUtf8String(i*8) // LOOK wrong
                     val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
                     if (s2 != MemorySegment.NULL) {
-                        val value = s2.getUtf8String(0)
+                        val cString = s2.reinterpret(Long.MAX_VALUE)
+                        val value = cString.getUtf8String(0)
                         val tvalue = transcodeString(value)
                         result.add(tvalue)
                     } else {
