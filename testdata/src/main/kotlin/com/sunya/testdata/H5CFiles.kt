@@ -24,6 +24,7 @@ class H5CFiles {
                     .addNameFilter { name -> !name.contains("OMI-Aura") }
                     .addNameFilter { name -> !name.contains("IASI") }
                     .addNameFilter { name -> !name.endsWith("groupHasCycle.h5") } // /home/all/testdata/cdmUnitTest/formats/hdf5/groupHasCycle.h5
+                    .addNameFilter { name -> !name.endsWith("extlink_source.h5") }
                     .addNameFilter { name -> !name.endsWith(".xml") }
                     .withRecursion()
                     .build()

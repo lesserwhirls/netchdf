@@ -15,7 +15,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.*
 
-private val debugUserTypes = false
+val debugUserTypes = false
 
 @Throws(IOException::class)
 internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builder, userTypes : MutableMap<Int, UserType>) {
@@ -123,7 +123,7 @@ private fun NCheader.readCompoundFields(session: Arena, grpid: Int, typeid: Int,
         val ndims = ndims_p[C_INT, 0]
         val dims = IntArray(ndims) { dims_p.getAtIndex(ValueLayout.JAVA_INT, it.toLong())}
 
-        // open class StructureMember(val name: String, val datatype : Datatype, val offset: Int, val nelems : Int) {
+        // class StructureMember(val name: String, val datatype : Datatype, val offset: Int, val nelems : Int) {
         val fld = StructureMember(name, convertType(ftypeid), offset.toInt(), dims)
         members.add(fld)
         if (debugUserTypes) println(" add StructureMember= $fld")
@@ -165,7 +165,11 @@ internal fun readVlenDataList(nelems : Long, basetype : Datatype<*>, vlen_p : Me
     val attValues = mutableListOf<List<*>>()
     for (elem in 0 until nelems) {
         val count = nc_vlen_t.getLength(vlen_p, elem)
-        val address: MemorySegment = nc_vlen_t.getAddress(vlen_p, elem)
+        val zaddress = nc_vlen_t.getAddress(vlen_p, elem)
+        // val zaddress = vlen_p.get(ADDRESS, elem)  // zero length memory segment
+        // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p
+        val address = zaddress.reinterpret(Long.MAX_VALUE)
+
         val vlenValues = mutableListOf<Any>()
         for (idx in 0 until count) {
             val value = when (basetype) {
@@ -243,20 +247,30 @@ internal fun NCheader.readCompoundAttValues(session: Arena,
     val val_p = session.allocate(buffSize)
 
     // apparently have to call nc_get_att(), not readAttributeValues()
+    // read data into val_p
     checkErr("nc_get_att", nc_get_att(grpid, varid, attname_p, val_p))
+    // convert to byte array
     val raw = val_p.toArray(ValueLayout.JAVA_BYTE)
+    // wrap in a LE ByteBuffer
     val bb = ByteBuffer.wrap(raw)
     bb.order(ByteOrder.LITTLE_ENDIAN)
 
     val members = (userType.typedef as CompoundTypedef).members
     val sdataArray = ArrayStructureData(intArrayOf(nelems.toInt()), bb, userType.size, members)
     sdataArray.putStringsOnHeap {  member, offset ->
-        val address = val_p.get(ADDRESS, (offset).toLong())
-        listOf(address.getUtf8String(0)) // LOOK not right
-        // LOOK heres a pointer, see decodeCompoundAttData():
-        //             lval = getNativeAddr(pos, nc4bytes);
-        //            Pointer p = new Pointer(lval);
-        //            String strval = p.getString(0, CDM.UTF8);
+        // this lamda is only called when datatype.isVlenString
+        val address = val_p.get(ADDRESS, offset.toLong())
+        // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p
+        val cString = address.reinterpret(Long.MAX_VALUE)
+        // copy the string out of user memory onto Java heap
+        val s = cString.getUtf8String(0)
+        if (debugUserTypes) println("OK CompoundAttribute read string offset=$offset value=$s nelems=${member.nelems}")
+        // TODO what about a list of strings? do we have to look at member.nelems?
+        listOf(s)
+        // TODO nc_free_vlen(nc_vlen_t *vl);
+        //      nc_free_string(size_t len, char **data);
+        //      nc_reclaim_data()
+        //   see https://docs.unidata.ucar.edu/netcdf-c/4.9.3/md__2home_2vagrant_2Desktop_2netcdf-c_2docs_2internal.html#intern_vlens
     }
 
     attb.setValues(sdataArray.toList())

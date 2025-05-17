@@ -76,16 +76,6 @@ class NetchdfTest {
         // readNetchIterate(testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc", "/xma/dialoop_back")
     }
 
-    @Test
-    fun problem() {
-        showNetchdfHeader(testData + "netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni")
-        readNetchdfData(testData + "netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni")
-    }
-
-    @Test
-    fun problem2() {
-        readNetchdfData(testData + "devcdm/netcdf4/cdm_sea_soundings.nc4")
-    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 

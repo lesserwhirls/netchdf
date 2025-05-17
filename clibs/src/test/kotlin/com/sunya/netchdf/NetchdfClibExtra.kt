@@ -1,6 +1,5 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.api.*
 import com.sunya.cdm.util.Stats
 import com.sunya.testdata.NetchdfExtraFiles
 import org.junit.jupiter.api.Disabled
@@ -10,7 +9,6 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.testdata.testData
 import org.junit.jupiter.api.AfterAll
-import java.util.*
 import java.util.stream.Stream
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
@@ -50,7 +48,7 @@ class NetchdfClibExtra {
 
     // this one we could probably fix
     @Test
-    @Disabled
+    // @Disabled
     fun unsolved2() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
         // showMyHeader(filename)
@@ -59,6 +57,7 @@ class NetchdfClibExtra {
         compareCdlWithClib(filename)
         //readDataCompareNC(filename)
     }
+
 
     ///////////////////////////////////////////////////////
     @ParameterizedTest

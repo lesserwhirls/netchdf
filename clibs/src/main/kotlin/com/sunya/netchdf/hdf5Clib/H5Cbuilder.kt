@@ -470,15 +470,18 @@ class H5Cbuilder(val filename: String) {
         return results
     }
 
+    // TODO almost duplicate of H5ClibFile
+    //        internal fun readVlenStrings(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : ArrayString {
     internal fun readVlenStrings(session : Arena, attrId : Long, typeId : Long, nelems : Long) : List<String> {
         val strings_p: MemorySegment = session.allocateArray(ValueLayout.ADDRESS, nelems)
         checkErr("H5Aread VlenString", H5Aread(attrId, typeId, strings_p))
 
         val slist = mutableListOf<String>()
         for (i in 0 until nelems) {
-            val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-            if (s2 != MemorySegment.NULL) {
-                val value = s2.getUtf8String(0)
+            val address: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+            if (address != MemorySegment.NULL) {
+                val cString = address.reinterpret(Long.MAX_VALUE)
+                val value = cString.getUtf8String(0)
                 // val tvalue = transcodeString(value)
                 slist.add(value)
             } else {
@@ -664,7 +667,8 @@ internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureDat
             // MemorySegment get(ValueLayout.OfAddress layout, long offset) {
             val longAddress = bb.getLong(moffset + idx * 8)
             val address = MemorySegment.ofAddress(longAddress)
-            val sval = address.getUtf8String(0)
+            val cString = address.reinterpret(Long.MAX_VALUE)
+            val sval = cString.getUtf8String(0)
             values.add(sval)
         }
         values
