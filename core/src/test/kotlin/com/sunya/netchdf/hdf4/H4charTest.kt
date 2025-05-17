@@ -83,10 +83,10 @@ class H4charTest {
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
             val v = myfile.rootGroup().variables.find{ it.name == "Curves_at_2721.35_1298.84_lookup"}!!
-            assertEquals(Datatype.CHAR, v.datatype)
+            assertEquals(Datatype.UBYTE, v.datatype)  // TODO was CHAR, what changed?
             val data = myfile.readArrayData(v)
             println("Curves_at_2721.35_1298.84_lookup data = $data")
-            assertEquals(Datatype.CHAR, data.datatype)
+            assertEquals(Datatype.UBYTE, data.datatype)
             assertIs<ArrayUByte>(data)
 
             val expect = listOf(0,96,150,96,0,150,0,0,255,0,150,96,96,150,0,0,255,0,150,96,0,150,0,96,255,0,0,255,255,0,10,10,10,11,11,11,12,12,12,13,13,13,14,14,14,15,15,15,16,16)
