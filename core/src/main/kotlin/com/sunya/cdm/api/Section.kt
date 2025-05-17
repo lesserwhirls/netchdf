@@ -88,6 +88,7 @@ data class SectionPartial(val ranges : List<LongProgression?>) {
             }
             val errs = s.checkInRange(varShape)
             if (errs != null) {
+                s.checkInRange(varShape)
                 throw InvalidRangeException(errs)
             }
             // where the range is missing, we want the entire variable's dimension length

@@ -118,8 +118,16 @@ class NetchdfClibTest {
     // /home/all/testdata/devcdm/netcdf4/test_enum_type.nc
 
     @Test
-    fun problem() {
-        val filename = testData + "devcdm/hdf4/TOVS_BROWSE_MONTHLY_AM_B861001.E861031_NF.HDF"
+    fun problemHdf4() {
+        val filename = testData + "hdf4/nsidc/GESC/GV/1C51.070101.1.HSTN.4.HDF"
+        // compareN4withH5cdl(filename)
+        compareCdlWithClib(filename)
+        compareDataWithClib(filename)
+    }
+
+    @Test
+    fun problem2() {
+        val filename = testData + "devcdm/netcdf4/IntTimSciSamp.nc"
         // compareN4withH5cdl(filename)
         compareCdlWithClib(filename)
         compareDataWithClib(filename)

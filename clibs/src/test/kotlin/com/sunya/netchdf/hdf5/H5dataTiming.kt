@@ -1,11 +1,13 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
+import com.sunya.netchdf.netcdf3.Netcdf3File
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.netcdfClib.NClibFile
 import org.junit.jupiter.api.Test
 import com.sunya.testdata.testData
 import kotlin.system.measureNanoTime
+import kotlin.test.assertTrue
 
 private const val showDetail = true
 
@@ -82,12 +84,17 @@ class H5dataTiming {
 
     @Test
     fun netcdf3() {
-        if (showDetail) println("===============================================")
-        if (showDetail) println("netcdf3 [5, 40, 56, 75]")
         val filename = testData + "cdmUnitTest/formats/netcdf3/awips.nc"
-        readData(filename, "uw", SectionPartial.fromSpec("5, 40, 56, 75"))
+        if (showDetail) println("===============================================")
+        if (showDetail) {
+            Netcdf3File(filename).use { ncfile ->
+                println("${ncfile.type()} $filename ")
+                println("${ncfile.cdl()} ")
+            }
+        }
+        readData(filename, "uw", SectionPartial.fromSpec("4, 39, 55, 74"))
         readData(filename, "uw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "vw", SectionPartial.fromSpec("5, 40, 56, 75"))
+        readData(filename, "vw", SectionPartial.fromSpec("4, 39, 55, 74"))
         readData(filename, "vw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
         readData(filename, "uw", SectionPartial.fromSpec(":,:,:,25"))
     }

@@ -93,7 +93,10 @@ class NClibFile(val filename: String) : Netchdf {
                     for (elem in 0 until nelems) {
                         val arraySize = nc_vlen_t.getLength(vlen_p, elem).toInt()
                         val address = nc_vlen_t.getAddress(vlen_p, elem)
-                        listOfVlen.add( readVlenArray(arraySize, address, basetype))
+                        //println("elem=$elem arraySize=$arraySize address=$address")
+                        val adata = readVlenArray(arraySize, address, basetype)
+                        //println("   data=${adata.contentToString()}")
+                        listOfVlen.add( adata)
                     }
                     return ArrayVlen.fromArray(shape, listOfVlen, basetype) as ArrayTyped<T>
                     // TODO nc_free_vlen(nc_vlen_t *vl);
@@ -117,7 +120,7 @@ class NClibFile(val filename: String) : Netchdf {
                     val sdataArray = ArrayStructureData(shape, bb, userType.size, members)
                     // TODO strings vs array of strings
                     sdataArray.putStringsOnHeap {  member, offset ->
-                        val address = val_p.get(ValueLayout.ADDRESS, (offset).toLong())
+                        val address = val_p.get(ADDRESS, (offset).toLong())
                         val cString = address.reinterpret(Long.MAX_VALUE)
                         val s = cString.getUtf8String(0)
                         if (debugUserTypes) println("OK CompoundAttribute read string offset=$offset value=$s")
@@ -127,8 +130,9 @@ class NClibFile(val filename: String) : Netchdf {
                         // look duplicate (maybe)
                         val listOfVlen = mutableListOf<Array<*>>()
                         for (elem in 0 until member.nelems) {
-                            val arraySize = val_p.get(ValueLayout.JAVA_LONG, (offset).toLong()).toInt()
-                            val address = val_p.get(ValueLayout.ADDRESS, (offset + 8).toLong())
+                            val arraySize = val_p.get(JAVA_LONG, (offset).toLong()).toInt()
+                            val zaddress = val_p.get(ValueLayout.ADDRESS, (offset + 8).toLong())
+                            val address = zaddress.reinterpret(Long.MAX_VALUE)
                             listOfVlen.add( readVlenArray(arraySize, address, member.datatype.typedef!!.baseType))
                         }
                         ArrayVlen.fromArray(member.dims, listOfVlen, member.datatype.typedef!!.baseType)

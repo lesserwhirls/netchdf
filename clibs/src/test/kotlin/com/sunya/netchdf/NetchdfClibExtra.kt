@@ -48,7 +48,7 @@ class NetchdfClibExtra {
 
     // this one we could probably fix
     @Test
-    @Disabled
+    // @Disabled
     fun unsolved2() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
         // showMyHeader(filename)
@@ -57,6 +57,7 @@ class NetchdfClibExtra {
         compareCdlWithClib(filename)
         //readDataCompareNC(filename)
     }
+
 
     ///////////////////////////////////////////////////////
     @ParameterizedTest

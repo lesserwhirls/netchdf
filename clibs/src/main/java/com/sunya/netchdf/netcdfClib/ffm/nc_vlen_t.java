@@ -37,10 +37,6 @@ public class nc_vlen_t {
     public static long len$get(MemorySegment seg) {
         return (long)constants$10.const$0.get(seg);
     }
-    // added
-    public static long getLength(MemorySegment seg, long index) {
-        return (long)constants$10.const$0.get(seg);
-    }
     /**
      * Setter for field:
      * @snippet :
@@ -51,6 +47,10 @@ public class nc_vlen_t {
         constants$10.const$0.set(seg, x);
     }
     public static long len$get(MemorySegment seg, long index) {
+        return (long)constants$10.const$0.get(seg.asSlice(index*sizeof()));
+    }
+    // added
+    public static long getLength(MemorySegment seg, long index) {
         return (long)constants$10.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void len$set(MemorySegment seg, long index, long x) {
@@ -68,10 +68,6 @@ public class nc_vlen_t {
     public static MemorySegment p$get(MemorySegment seg) {
         return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg);
     }
-    // added
-    public static MemorySegment getAddress(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg);
-    }
     /**
      * Setter for field:
      * @snippet :
@@ -82,6 +78,10 @@ public class nc_vlen_t {
         constants$10.const$1.set(seg, x);
     }
     public static MemorySegment p$get(MemorySegment seg, long index) {
+        return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
+    }
+    // added
+    public static MemorySegment getAddress(MemorySegment seg, long index) {
         return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void p$set(MemorySegment seg, long index, MemorySegment x) {

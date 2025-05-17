@@ -9,7 +9,7 @@ gcc -o testClib testClib.c -lnetcdf
 #include <netcdf.h>
 
 /* This is the name of the data file we will read. */
-#define FILE_NAME "/home/all/testdata/netchdf/joleenf/IASI_20120229022657Z.atm_prof_rtv.h5"
+#define FILE_NAME "/home/all/testdata/netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni"
 
 /* We are reading 2D data, a 6 x 12 grid. */
 #define NX 6
@@ -34,13 +34,8 @@ main()
    if ((retval = nc_open(FILE_NAME, NC_NOWRITE, &ncid)))
       ERR(retval);
 
-   /* Get the grpid, based on its name. */
-   if ((retval = nc_inq_grp_ncid(ncid, "All_Data", &grpid)))
-      ERR(retval);
-    printf("*** nc_inq_grp_ncid =%d\n", grpid);
-
    /* Get the varid of the data variable, based on its name. */
-   if ((retval = nc_inq_varid(grpid, "CAPE", &varid)))
+   if ((retval = nc_inq_varid(ncid, "mbReflectivity", &varid)))
       ERR(retval);
     printf("*** nc_inq_varid =%d\n", varid);
 

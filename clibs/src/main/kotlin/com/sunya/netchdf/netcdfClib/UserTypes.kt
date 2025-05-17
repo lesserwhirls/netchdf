@@ -165,7 +165,11 @@ internal fun readVlenDataList(nelems : Long, basetype : Datatype<*>, vlen_p : Me
     val attValues = mutableListOf<List<*>>()
     for (elem in 0 until nelems) {
         val count = nc_vlen_t.getLength(vlen_p, elem)
-        val address: MemorySegment = nc_vlen_t.getAddress(vlen_p, elem)
+        val zaddress = nc_vlen_t.getAddress(vlen_p, elem)
+        // val zaddress = vlen_p.get(ADDRESS, elem)  // zero length memory segment
+        // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p
+        val address = zaddress.reinterpret(Long.MAX_VALUE)
+
         val vlenValues = mutableListOf<Any>()
         for (idx in 0 until count) {
             val value = when (basetype) {
