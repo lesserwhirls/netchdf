@@ -17,12 +17,21 @@ import java.util.*
 
 val debugUserTypes = false
 
+//         val nvars_p = session.allocate(C_INT, 0)
+//        checkErr("nc_inq_nvars", nc_inq_nvars(g4.grpid, nvars_p))
+//        val nvars = nvars_p[C_INT, 0]
+//
+//        val varids_p = session.allocateArray(C_INT, nvars.toLong())
+//        checkErr("nc_inq_varids", nc_inq_varids(g4.grpid, nvars_p, varids_p))
+
 @Throws(IOException::class)
 internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builder, userTypes : MutableMap<Int, UserType>) {
     val numUserTypes_p = session.allocate(C_INT, 0)
     val MAX_USER_TYPES = 1000L // bad API
     val userTypes_p = session.allocateArray(C_INT, MAX_USER_TYPES)
+    //     public static int nc_inq_typeids(int ncid, MemorySegment ntypes, MemorySegment typeids) {
     checkErr("nc_inq_typeids", nc_inq_typeids(grpid, numUserTypes_p, userTypes_p))
+
     val numUserTypes = numUserTypes_p[C_INT, 0]
     if (numUserTypes == 0) {
         return

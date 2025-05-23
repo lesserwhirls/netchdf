@@ -13,19 +13,19 @@ final class constants$64 {
     private constants$64() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "ncvarputs",
-        constants$13.const$1
+        constants$12.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "ncvargets",
-        constants$13.const$1
+        constants$12.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "ncvarputg",
-        constants$12.const$0
+        constants$11.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "ncvargetg",
-        constants$12.const$0
+        constants$11.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "ncvarrename",

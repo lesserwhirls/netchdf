@@ -12,28 +12,37 @@ final class constants$15 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$15() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_put_vara",
-        constants$7.const$3
+        "nc_put_varm",
+        constants$11.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_get_vara",
-        constants$7.const$3
+        "nc_get_varm",
+        constants$11.const$1
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_put_vars",
-        constants$13.const$1
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_get_vars",
-        constants$13.const$1
+        "nc_def_var_quantize",
+        constants$15.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_put_varm",
-        constants$12.const$0
+        "nc_inq_var_quantize",
+        constants$7.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "nc_get_varm",
-        constants$12.const$0
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "nc_def_var_deflate",
+        constants$15.const$5
     );
 }
 

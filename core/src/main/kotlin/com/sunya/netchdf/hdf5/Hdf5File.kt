@@ -72,7 +72,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         return if (vinfo.isChunked) {
             H5chunkIterator(header, v2, wantSection)
         } else {
-            H5maxIterator(header, v2, wantSection, maxElements ?: 100_000)
+            H5maxIterator(this, v2, wantSection, maxElements ?: 100_000)
         }
     }
 

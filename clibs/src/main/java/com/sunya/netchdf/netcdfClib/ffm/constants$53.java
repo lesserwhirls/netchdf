@@ -11,31 +11,34 @@ final class constants$53 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$53() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_put_var_ulonglong",
-        constants$7.const$5
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_get_var_ulonglong",
-        constants$7.const$5
+        "nc_free_string",
+        constants$53.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_put_var_string",
-        constants$7.const$5
+        "nc_free_vlens",
+        constants$53.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_get_var_string",
-        constants$7.const$5
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_free_vlen",
+        constants$53.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
         JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
         "nc_reclaim_data",
-        constants$53.const$4
+        constants$53.const$5
     );
 }
 

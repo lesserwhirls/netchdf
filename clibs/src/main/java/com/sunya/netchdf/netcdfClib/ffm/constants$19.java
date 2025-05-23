@@ -11,34 +11,35 @@ final class constants$19 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$19() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_inq_var_filter",
-        constants$7.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_set_fill",
-        constants$7.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_set_default_format",
-        constants$3.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_FLOAT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_set_chunk_cache",
-        constants$19.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "nc_get_chunk_cache",
+        constants$19.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_FLOAT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_set_var_chunk_cache",
+        constants$19.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_get_var_chunk_cache",
+        constants$7.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "nc_redef",
         constants$19.const$5
     );
 }

@@ -8,7 +8,7 @@ import java.nio.ByteOrder;
 import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
- * @snippet :
+ * {@snippet :
  * struct {
  *     size_t len;
  *     void* p;
@@ -39,7 +39,7 @@ public class nc_vlen_t {
     }
     /**
      * Setter for field:
-     * @snippet :
+     * {@snippet :
      * size_t len;
      * }
      */
@@ -61,7 +61,7 @@ public class nc_vlen_t {
     }
     /**
      * Getter for field:
-     * @snippet :
+     * {@snippet :
      * void* p;
      * }
      */
@@ -70,7 +70,7 @@ public class nc_vlen_t {
     }
     /**
      * Setter for field:
-     * @snippet :
+     * {@snippet :
      * void* p;
      * }
      */
@@ -78,11 +78,11 @@ public class nc_vlen_t {
         constants$10.const$1.set(seg, x);
     }
     public static MemorySegment p$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
+        return (MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
     }
     // added
     public static MemorySegment getAddress(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
+        return (MemorySegment)constants$10.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void p$set(MemorySegment seg, long index, MemorySegment x) {
         constants$10.const$1.set(seg.asSlice(index*sizeof()), x);
