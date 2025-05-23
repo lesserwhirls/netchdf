@@ -2673,40 +2673,8 @@ public class netcdf_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle nc_free_vlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$10.const$6,"nc_free_vlen");
-    }
-    /**
-     * {@snippet :
-     * int nc_free_vlen(nc_vlen_t* vl);
-     * }
-     */
-    public static int nc_free_vlen(MemorySegment vl) {
-        var mh$ = nc_free_vlen$MH();
-        try {
-            return (int)mh$.invokeExact(vl);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle nc_free_vlens$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$1,"nc_free_vlens");
-    }
-    /**
-     * {@snippet :
-     * int nc_free_vlens(size_t len, nc_vlen_t vlens[]);
-     * }
-     */
-    public static int nc_free_vlens(long len, MemorySegment vlens) {
-        var mh$ = nc_free_vlens$MH();
-        try {
-            return (int)mh$.invokeExact(len, vlens);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle nc_put_vlen_element$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$3,"nc_put_vlen_element");
+        return RuntimeHelper.requireNonNull(constants$10.const$6,"nc_put_vlen_element");
     }
     /**
      * {@snippet :
@@ -2722,7 +2690,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vlen_element$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$4,"nc_get_vlen_element");
+        return RuntimeHelper.requireNonNull(constants$11.const$0,"nc_get_vlen_element");
     }
     /**
      * {@snippet :
@@ -2737,24 +2705,8 @@ public class netcdf_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle nc_free_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$11.const$5,"nc_free_string");
-    }
-    /**
-     * {@snippet :
-     * int nc_free_string(size_t len, char** data);
-     * }
-     */
-    public static int nc_free_string(long len, MemorySegment data) {
-        var mh$ = nc_free_string$MH();
-        try {
-            return (int)mh$.invokeExact(len, data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle nc_inq_user_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$1,"nc_inq_user_type");
+        return RuntimeHelper.requireNonNull(constants$11.const$2,"nc_inq_user_type");
     }
     /**
      * {@snippet :
@@ -2770,7 +2722,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$3,"nc_put_att");
+        return RuntimeHelper.requireNonNull(constants$11.const$4,"nc_put_att");
     }
     /**
      * {@snippet :
@@ -2786,7 +2738,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$4,"nc_get_att");
+        return RuntimeHelper.requireNonNull(constants$11.const$5,"nc_get_att");
     }
     /**
      * {@snippet :
@@ -2802,7 +2754,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_enum$MH() {
-        return RuntimeHelper.requireNonNull(constants$12.const$5,"nc_def_enum");
+        return RuntimeHelper.requireNonNull(constants$12.const$0,"nc_def_enum");
     }
     /**
      * {@snippet :
@@ -2818,7 +2770,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_insert_enum$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$0,"nc_insert_enum");
+        return RuntimeHelper.requireNonNull(constants$12.const$1,"nc_insert_enum");
     }
     /**
      * {@snippet :
@@ -2834,7 +2786,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_enum$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$2,"nc_inq_enum");
+        return RuntimeHelper.requireNonNull(constants$12.const$3,"nc_inq_enum");
     }
     /**
      * {@snippet :
@@ -2850,7 +2802,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_enum_member$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$4,"nc_inq_enum_member");
+        return RuntimeHelper.requireNonNull(constants$12.const$5,"nc_inq_enum_member");
     }
     /**
      * {@snippet :
@@ -2866,7 +2818,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_enum_ident$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$6,"nc_inq_enum_ident");
+        return RuntimeHelper.requireNonNull(constants$13.const$1,"nc_inq_enum_ident");
     }
     /**
      * {@snippet :
@@ -2882,7 +2834,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_opaque$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$0,"nc_def_opaque");
+        return RuntimeHelper.requireNonNull(constants$13.const$2,"nc_def_opaque");
     }
     /**
      * {@snippet :
@@ -2898,7 +2850,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_opaque$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$1,"nc_inq_opaque");
+        return RuntimeHelper.requireNonNull(constants$13.const$3,"nc_inq_opaque");
     }
     /**
      * {@snippet :
@@ -2914,7 +2866,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$2,"nc_put_var");
+        return RuntimeHelper.requireNonNull(constants$13.const$4,"nc_put_var");
     }
     /**
      * {@snippet :
@@ -2930,7 +2882,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$3,"nc_get_var");
+        return RuntimeHelper.requireNonNull(constants$13.const$5,"nc_get_var");
     }
     /**
      * {@snippet :
@@ -2946,7 +2898,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$4,"nc_put_var1");
+        return RuntimeHelper.requireNonNull(constants$14.const$0,"nc_put_var1");
     }
     /**
      * {@snippet :
@@ -2962,7 +2914,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$5,"nc_get_var1");
+        return RuntimeHelper.requireNonNull(constants$14.const$1,"nc_get_var1");
     }
     /**
      * {@snippet :
@@ -2978,7 +2930,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$0,"nc_put_vara");
+        return RuntimeHelper.requireNonNull(constants$14.const$2,"nc_put_vara");
     }
     /**
      * {@snippet :
@@ -2994,7 +2946,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$1,"nc_get_vara");
+        return RuntimeHelper.requireNonNull(constants$14.const$3,"nc_get_vara");
     }
     /**
      * {@snippet :
@@ -3010,7 +2962,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$2,"nc_put_vars");
+        return RuntimeHelper.requireNonNull(constants$14.const$4,"nc_put_vars");
     }
     /**
      * {@snippet :
@@ -3026,7 +2978,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$3,"nc_get_vars");
+        return RuntimeHelper.requireNonNull(constants$14.const$5,"nc_get_vars");
     }
     /**
      * {@snippet :
@@ -3042,7 +2994,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$4,"nc_put_varm");
+        return RuntimeHelper.requireNonNull(constants$15.const$0,"nc_put_varm");
     }
     /**
      * {@snippet :
@@ -3058,7 +3010,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$5,"nc_get_varm");
+        return RuntimeHelper.requireNonNull(constants$15.const$1,"nc_get_varm");
     }
     /**
      * {@snippet :
@@ -3074,7 +3026,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_quantize$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$1,"nc_def_var_quantize");
+        return RuntimeHelper.requireNonNull(constants$15.const$3,"nc_def_var_quantize");
     }
     /**
      * {@snippet :
@@ -3090,7 +3042,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_quantize$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$2,"nc_inq_var_quantize");
+        return RuntimeHelper.requireNonNull(constants$15.const$4,"nc_inq_var_quantize");
     }
     /**
      * {@snippet :
@@ -3106,7 +3058,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_deflate$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$4,"nc_def_var_deflate");
+        return RuntimeHelper.requireNonNull(constants$15.const$6,"nc_def_var_deflate");
     }
     /**
      * {@snippet :
@@ -3122,7 +3074,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_deflate$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$5,"nc_inq_var_deflate");
+        return RuntimeHelper.requireNonNull(constants$16.const$0,"nc_inq_var_deflate");
     }
     /**
      * {@snippet :
@@ -3138,7 +3090,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_szip$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$0,"nc_def_var_szip");
+        return RuntimeHelper.requireNonNull(constants$16.const$1,"nc_def_var_szip");
     }
     /**
      * {@snippet :
@@ -3154,7 +3106,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_szip$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$1,"nc_inq_var_szip");
+        return RuntimeHelper.requireNonNull(constants$16.const$2,"nc_inq_var_szip");
     }
     /**
      * {@snippet :
@@ -3170,7 +3122,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_fletcher32$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$3,"nc_def_var_fletcher32");
+        return RuntimeHelper.requireNonNull(constants$16.const$4,"nc_def_var_fletcher32");
     }
     /**
      * {@snippet :
@@ -3186,7 +3138,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_fletcher32$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$4,"nc_inq_var_fletcher32");
+        return RuntimeHelper.requireNonNull(constants$16.const$5,"nc_inq_var_fletcher32");
     }
     /**
      * {@snippet :
@@ -3202,7 +3154,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_chunking$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$5,"nc_def_var_chunking");
+        return RuntimeHelper.requireNonNull(constants$17.const$0,"nc_def_var_chunking");
     }
     /**
      * {@snippet :
@@ -3218,7 +3170,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_chunking$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$0,"nc_inq_var_chunking");
+        return RuntimeHelper.requireNonNull(constants$17.const$1,"nc_inq_var_chunking");
     }
     /**
      * {@snippet :
@@ -3234,7 +3186,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_fill$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$1,"nc_def_var_fill");
+        return RuntimeHelper.requireNonNull(constants$17.const$2,"nc_def_var_fill");
     }
     /**
      * {@snippet :
@@ -3250,7 +3202,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_fill$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$2,"nc_inq_var_fill");
+        return RuntimeHelper.requireNonNull(constants$17.const$3,"nc_inq_var_fill");
     }
     /**
      * {@snippet :
@@ -3266,7 +3218,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_endian$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$3,"nc_def_var_endian");
+        return RuntimeHelper.requireNonNull(constants$17.const$4,"nc_def_var_endian");
     }
     /**
      * {@snippet :
@@ -3282,7 +3234,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_endian$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$4,"nc_inq_var_endian");
+        return RuntimeHelper.requireNonNull(constants$17.const$5,"nc_inq_var_endian");
     }
     /**
      * {@snippet :
@@ -3298,7 +3250,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var_filter$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$6,"nc_def_var_filter");
+        return RuntimeHelper.requireNonNull(constants$18.const$1,"nc_def_var_filter");
     }
     /**
      * {@snippet :
@@ -3314,7 +3266,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var_filter$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$0,"nc_inq_var_filter");
+        return RuntimeHelper.requireNonNull(constants$18.const$2,"nc_inq_var_filter");
     }
     /**
      * {@snippet :
@@ -3330,7 +3282,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_set_fill$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$1,"nc_set_fill");
+        return RuntimeHelper.requireNonNull(constants$18.const$3,"nc_set_fill");
     }
     /**
      * {@snippet :
@@ -3346,7 +3298,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_set_default_format$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$2,"nc_set_default_format");
+        return RuntimeHelper.requireNonNull(constants$18.const$4,"nc_set_default_format");
     }
     /**
      * {@snippet :
@@ -3362,7 +3314,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_set_chunk_cache$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$4,"nc_set_chunk_cache");
+        return RuntimeHelper.requireNonNull(constants$18.const$6,"nc_set_chunk_cache");
     }
     /**
      * {@snippet :
@@ -3378,7 +3330,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_chunk_cache$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$6,"nc_get_chunk_cache");
+        return RuntimeHelper.requireNonNull(constants$19.const$1,"nc_get_chunk_cache");
     }
     /**
      * {@snippet :
@@ -3394,7 +3346,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_set_var_chunk_cache$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$1,"nc_set_var_chunk_cache");
+        return RuntimeHelper.requireNonNull(constants$19.const$3,"nc_set_var_chunk_cache");
     }
     /**
      * {@snippet :
@@ -3410,7 +3362,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_chunk_cache$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$2,"nc_get_var_chunk_cache");
+        return RuntimeHelper.requireNonNull(constants$19.const$4,"nc_get_var_chunk_cache");
     }
     /**
      * {@snippet :
@@ -3426,7 +3378,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_redef$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$4,"nc_redef");
+        return RuntimeHelper.requireNonNull(constants$19.const$6,"nc_redef");
     }
     /**
      * {@snippet :
@@ -3442,7 +3394,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc__enddef$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$6,"nc__enddef");
+        return RuntimeHelper.requireNonNull(constants$20.const$1,"nc__enddef");
     }
     /**
      * {@snippet :
@@ -3458,7 +3410,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_enddef$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$0,"nc_enddef");
+        return RuntimeHelper.requireNonNull(constants$20.const$2,"nc_enddef");
     }
     /**
      * {@snippet :
@@ -3474,7 +3426,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_sync$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$1,"nc_sync");
+        return RuntimeHelper.requireNonNull(constants$20.const$3,"nc_sync");
     }
     /**
      * {@snippet :
@@ -3490,7 +3442,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_abort$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$2,"nc_abort");
+        return RuntimeHelper.requireNonNull(constants$20.const$4,"nc_abort");
     }
     /**
      * {@snippet :
@@ -3506,7 +3458,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_close$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$3,"nc_close");
+        return RuntimeHelper.requireNonNull(constants$20.const$5,"nc_close");
     }
     /**
      * {@snippet :
@@ -3522,7 +3474,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$5,"nc_inq");
+        return RuntimeHelper.requireNonNull(constants$21.const$1,"nc_inq");
     }
     /**
      * {@snippet :
@@ -3538,7 +3490,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_ndims$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$0,"nc_inq_ndims");
+        return RuntimeHelper.requireNonNull(constants$21.const$2,"nc_inq_ndims");
     }
     /**
      * {@snippet :
@@ -3554,7 +3506,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_nvars$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$1,"nc_inq_nvars");
+        return RuntimeHelper.requireNonNull(constants$21.const$3,"nc_inq_nvars");
     }
     /**
      * {@snippet :
@@ -3570,7 +3522,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_natts$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$2,"nc_inq_natts");
+        return RuntimeHelper.requireNonNull(constants$21.const$4,"nc_inq_natts");
     }
     /**
      * {@snippet :
@@ -3586,7 +3538,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_unlimdim$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$3,"nc_inq_unlimdim");
+        return RuntimeHelper.requireNonNull(constants$21.const$5,"nc_inq_unlimdim");
     }
     /**
      * {@snippet :
@@ -3602,7 +3554,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_unlimdims$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$4,"nc_inq_unlimdims");
+        return RuntimeHelper.requireNonNull(constants$22.const$0,"nc_inq_unlimdims");
     }
     /**
      * {@snippet :
@@ -3618,7 +3570,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_format$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$5,"nc_inq_format");
+        return RuntimeHelper.requireNonNull(constants$22.const$1,"nc_inq_format");
     }
     /**
      * {@snippet :
@@ -3634,7 +3586,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_format_extended$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$0,"nc_inq_format_extended");
+        return RuntimeHelper.requireNonNull(constants$22.const$2,"nc_inq_format_extended");
     }
     /**
      * {@snippet :
@@ -3650,7 +3602,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_dim$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$2,"nc_def_dim");
+        return RuntimeHelper.requireNonNull(constants$22.const$4,"nc_def_dim");
     }
     /**
      * {@snippet :
@@ -3666,7 +3618,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_dimid$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$3,"nc_inq_dimid");
+        return RuntimeHelper.requireNonNull(constants$22.const$5,"nc_inq_dimid");
     }
     /**
      * {@snippet :
@@ -3682,7 +3634,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_dim$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$4,"nc_inq_dim");
+        return RuntimeHelper.requireNonNull(constants$23.const$0,"nc_inq_dim");
     }
     /**
      * {@snippet :
@@ -3698,7 +3650,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_dimname$MH() {
-        return RuntimeHelper.requireNonNull(constants$23.const$5,"nc_inq_dimname");
+        return RuntimeHelper.requireNonNull(constants$23.const$1,"nc_inq_dimname");
     }
     /**
      * {@snippet :
@@ -3714,7 +3666,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_dimlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$0,"nc_inq_dimlen");
+        return RuntimeHelper.requireNonNull(constants$23.const$2,"nc_inq_dimlen");
     }
     /**
      * {@snippet :
@@ -3730,7 +3682,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_rename_dim$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$1,"nc_rename_dim");
+        return RuntimeHelper.requireNonNull(constants$23.const$3,"nc_rename_dim");
     }
     /**
      * {@snippet :
@@ -3746,7 +3698,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$2,"nc_inq_att");
+        return RuntimeHelper.requireNonNull(constants$23.const$4,"nc_inq_att");
     }
     /**
      * {@snippet :
@@ -3762,7 +3714,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_attid$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$3,"nc_inq_attid");
+        return RuntimeHelper.requireNonNull(constants$23.const$5,"nc_inq_attid");
     }
     /**
      * {@snippet :
@@ -3778,7 +3730,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_atttype$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$4,"nc_inq_atttype");
+        return RuntimeHelper.requireNonNull(constants$24.const$0,"nc_inq_atttype");
     }
     /**
      * {@snippet :
@@ -3794,7 +3746,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_attlen$MH() {
-        return RuntimeHelper.requireNonNull(constants$24.const$5,"nc_inq_attlen");
+        return RuntimeHelper.requireNonNull(constants$24.const$1,"nc_inq_attlen");
     }
     /**
      * {@snippet :
@@ -3810,7 +3762,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_attname$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$0,"nc_inq_attname");
+        return RuntimeHelper.requireNonNull(constants$24.const$2,"nc_inq_attname");
     }
     /**
      * {@snippet :
@@ -3826,7 +3778,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_copy_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$2,"nc_copy_att");
+        return RuntimeHelper.requireNonNull(constants$24.const$4,"nc_copy_att");
     }
     /**
      * {@snippet :
@@ -3842,7 +3794,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_rename_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$3,"nc_rename_att");
+        return RuntimeHelper.requireNonNull(constants$24.const$5,"nc_rename_att");
     }
     /**
      * {@snippet :
@@ -3858,7 +3810,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_del_att$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$4,"nc_del_att");
+        return RuntimeHelper.requireNonNull(constants$25.const$0,"nc_del_att");
     }
     /**
      * {@snippet :
@@ -3874,7 +3826,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$25.const$5,"nc_put_att_text");
+        return RuntimeHelper.requireNonNull(constants$25.const$1,"nc_put_att_text");
     }
     /**
      * {@snippet :
@@ -3890,7 +3842,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$0,"nc_get_att_text");
+        return RuntimeHelper.requireNonNull(constants$25.const$2,"nc_get_att_text");
     }
     /**
      * {@snippet :
@@ -3906,7 +3858,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$1,"nc_put_att_string");
+        return RuntimeHelper.requireNonNull(constants$25.const$3,"nc_put_att_string");
     }
     /**
      * {@snippet :
@@ -3922,7 +3874,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$2,"nc_get_att_string");
+        return RuntimeHelper.requireNonNull(constants$25.const$4,"nc_get_att_string");
     }
     /**
      * {@snippet :
@@ -3938,7 +3890,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$3,"nc_put_att_uchar");
+        return RuntimeHelper.requireNonNull(constants$25.const$5,"nc_put_att_uchar");
     }
     /**
      * {@snippet :
@@ -3954,7 +3906,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$4,"nc_get_att_uchar");
+        return RuntimeHelper.requireNonNull(constants$26.const$0,"nc_get_att_uchar");
     }
     /**
      * {@snippet :
@@ -3970,7 +3922,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$26.const$5,"nc_put_att_schar");
+        return RuntimeHelper.requireNonNull(constants$26.const$1,"nc_put_att_schar");
     }
     /**
      * {@snippet :
@@ -3986,7 +3938,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$0,"nc_get_att_schar");
+        return RuntimeHelper.requireNonNull(constants$26.const$2,"nc_get_att_schar");
     }
     /**
      * {@snippet :
@@ -4002,7 +3954,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$1,"nc_put_att_short");
+        return RuntimeHelper.requireNonNull(constants$26.const$3,"nc_put_att_short");
     }
     /**
      * {@snippet :
@@ -4018,7 +3970,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$2,"nc_get_att_short");
+        return RuntimeHelper.requireNonNull(constants$26.const$4,"nc_get_att_short");
     }
     /**
      * {@snippet :
@@ -4034,7 +3986,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$3,"nc_put_att_int");
+        return RuntimeHelper.requireNonNull(constants$26.const$5,"nc_put_att_int");
     }
     /**
      * {@snippet :
@@ -4050,7 +4002,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$4,"nc_get_att_int");
+        return RuntimeHelper.requireNonNull(constants$27.const$0,"nc_get_att_int");
     }
     /**
      * {@snippet :
@@ -4066,7 +4018,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$27.const$5,"nc_put_att_long");
+        return RuntimeHelper.requireNonNull(constants$27.const$1,"nc_put_att_long");
     }
     /**
      * {@snippet :
@@ -4082,7 +4034,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$0,"nc_get_att_long");
+        return RuntimeHelper.requireNonNull(constants$27.const$2,"nc_get_att_long");
     }
     /**
      * {@snippet :
@@ -4098,7 +4050,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$1,"nc_put_att_float");
+        return RuntimeHelper.requireNonNull(constants$27.const$3,"nc_put_att_float");
     }
     /**
      * {@snippet :
@@ -4114,7 +4066,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$2,"nc_get_att_float");
+        return RuntimeHelper.requireNonNull(constants$27.const$4,"nc_get_att_float");
     }
     /**
      * {@snippet :
@@ -4130,7 +4082,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$3,"nc_put_att_double");
+        return RuntimeHelper.requireNonNull(constants$27.const$5,"nc_put_att_double");
     }
     /**
      * {@snippet :
@@ -4146,7 +4098,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$4,"nc_get_att_double");
+        return RuntimeHelper.requireNonNull(constants$28.const$0,"nc_get_att_double");
     }
     /**
      * {@snippet :
@@ -4162,7 +4114,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$28.const$5,"nc_put_att_ushort");
+        return RuntimeHelper.requireNonNull(constants$28.const$1,"nc_put_att_ushort");
     }
     /**
      * {@snippet :
@@ -4178,7 +4130,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$0,"nc_get_att_ushort");
+        return RuntimeHelper.requireNonNull(constants$28.const$2,"nc_get_att_ushort");
     }
     /**
      * {@snippet :
@@ -4194,7 +4146,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$1,"nc_put_att_uint");
+        return RuntimeHelper.requireNonNull(constants$28.const$3,"nc_put_att_uint");
     }
     /**
      * {@snippet :
@@ -4210,7 +4162,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$2,"nc_get_att_uint");
+        return RuntimeHelper.requireNonNull(constants$28.const$4,"nc_get_att_uint");
     }
     /**
      * {@snippet :
@@ -4226,7 +4178,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$3,"nc_put_att_longlong");
+        return RuntimeHelper.requireNonNull(constants$28.const$5,"nc_put_att_longlong");
     }
     /**
      * {@snippet :
@@ -4242,7 +4194,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$4,"nc_get_att_longlong");
+        return RuntimeHelper.requireNonNull(constants$29.const$0,"nc_get_att_longlong");
     }
     /**
      * {@snippet :
@@ -4258,7 +4210,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_att_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$29.const$5,"nc_put_att_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$29.const$1,"nc_put_att_ulonglong");
     }
     /**
      * {@snippet :
@@ -4274,7 +4226,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$0,"nc_get_att_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$29.const$2,"nc_get_att_ulonglong");
     }
     /**
      * {@snippet :
@@ -4290,7 +4242,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_def_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$2,"nc_def_var");
+        return RuntimeHelper.requireNonNull(constants$29.const$4,"nc_def_var");
     }
     /**
      * {@snippet :
@@ -4306,7 +4258,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$3,"nc_inq_var");
+        return RuntimeHelper.requireNonNull(constants$29.const$5,"nc_inq_var");
     }
     /**
      * {@snippet :
@@ -4322,7 +4274,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_varid$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$4,"nc_inq_varid");
+        return RuntimeHelper.requireNonNull(constants$30.const$0,"nc_inq_varid");
     }
     /**
      * {@snippet :
@@ -4338,7 +4290,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_varname$MH() {
-        return RuntimeHelper.requireNonNull(constants$30.const$5,"nc_inq_varname");
+        return RuntimeHelper.requireNonNull(constants$30.const$1,"nc_inq_varname");
     }
     /**
      * {@snippet :
@@ -4354,7 +4306,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_vartype$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$0,"nc_inq_vartype");
+        return RuntimeHelper.requireNonNull(constants$30.const$2,"nc_inq_vartype");
     }
     /**
      * {@snippet :
@@ -4370,7 +4322,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_varndims$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$1,"nc_inq_varndims");
+        return RuntimeHelper.requireNonNull(constants$30.const$3,"nc_inq_varndims");
     }
     /**
      * {@snippet :
@@ -4386,7 +4338,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_vardimid$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$2,"nc_inq_vardimid");
+        return RuntimeHelper.requireNonNull(constants$30.const$4,"nc_inq_vardimid");
     }
     /**
      * {@snippet :
@@ -4402,7 +4354,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_inq_varnatts$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$3,"nc_inq_varnatts");
+        return RuntimeHelper.requireNonNull(constants$30.const$5,"nc_inq_varnatts");
     }
     /**
      * {@snippet :
@@ -4418,7 +4370,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_rename_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$4,"nc_rename_var");
+        return RuntimeHelper.requireNonNull(constants$31.const$0,"nc_rename_var");
     }
     /**
      * {@snippet :
@@ -4434,7 +4386,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_copy_var$MH() {
-        return RuntimeHelper.requireNonNull(constants$31.const$5,"nc_copy_var");
+        return RuntimeHelper.requireNonNull(constants$31.const$1,"nc_copy_var");
     }
     /**
      * {@snippet :
@@ -4450,7 +4402,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$0,"nc_put_var1_text");
+        return RuntimeHelper.requireNonNull(constants$31.const$2,"nc_put_var1_text");
     }
     /**
      * {@snippet :
@@ -4466,7 +4418,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$1,"nc_get_var1_text");
+        return RuntimeHelper.requireNonNull(constants$31.const$3,"nc_get_var1_text");
     }
     /**
      * {@snippet :
@@ -4482,7 +4434,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$2,"nc_put_var1_uchar");
+        return RuntimeHelper.requireNonNull(constants$31.const$4,"nc_put_var1_uchar");
     }
     /**
      * {@snippet :
@@ -4498,7 +4450,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$3,"nc_get_var1_uchar");
+        return RuntimeHelper.requireNonNull(constants$31.const$5,"nc_get_var1_uchar");
     }
     /**
      * {@snippet :
@@ -4514,7 +4466,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$4,"nc_put_var1_schar");
+        return RuntimeHelper.requireNonNull(constants$32.const$0,"nc_put_var1_schar");
     }
     /**
      * {@snippet :
@@ -4530,7 +4482,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$32.const$5,"nc_get_var1_schar");
+        return RuntimeHelper.requireNonNull(constants$32.const$1,"nc_get_var1_schar");
     }
     /**
      * {@snippet :
@@ -4546,7 +4498,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$0,"nc_put_var1_short");
+        return RuntimeHelper.requireNonNull(constants$32.const$2,"nc_put_var1_short");
     }
     /**
      * {@snippet :
@@ -4562,7 +4514,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$1,"nc_get_var1_short");
+        return RuntimeHelper.requireNonNull(constants$32.const$3,"nc_get_var1_short");
     }
     /**
      * {@snippet :
@@ -4578,7 +4530,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$2,"nc_put_var1_int");
+        return RuntimeHelper.requireNonNull(constants$32.const$4,"nc_put_var1_int");
     }
     /**
      * {@snippet :
@@ -4594,7 +4546,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$3,"nc_get_var1_int");
+        return RuntimeHelper.requireNonNull(constants$32.const$5,"nc_get_var1_int");
     }
     /**
      * {@snippet :
@@ -4610,7 +4562,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$4,"nc_put_var1_long");
+        return RuntimeHelper.requireNonNull(constants$33.const$0,"nc_put_var1_long");
     }
     /**
      * {@snippet :
@@ -4626,7 +4578,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$33.const$5,"nc_get_var1_long");
+        return RuntimeHelper.requireNonNull(constants$33.const$1,"nc_get_var1_long");
     }
     /**
      * {@snippet :
@@ -4642,7 +4594,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$0,"nc_put_var1_float");
+        return RuntimeHelper.requireNonNull(constants$33.const$2,"nc_put_var1_float");
     }
     /**
      * {@snippet :
@@ -4658,7 +4610,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$1,"nc_get_var1_float");
+        return RuntimeHelper.requireNonNull(constants$33.const$3,"nc_get_var1_float");
     }
     /**
      * {@snippet :
@@ -4674,7 +4626,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$2,"nc_put_var1_double");
+        return RuntimeHelper.requireNonNull(constants$33.const$4,"nc_put_var1_double");
     }
     /**
      * {@snippet :
@@ -4690,7 +4642,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$3,"nc_get_var1_double");
+        return RuntimeHelper.requireNonNull(constants$33.const$5,"nc_get_var1_double");
     }
     /**
      * {@snippet :
@@ -4706,7 +4658,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$4,"nc_put_var1_ushort");
+        return RuntimeHelper.requireNonNull(constants$34.const$0,"nc_put_var1_ushort");
     }
     /**
      * {@snippet :
@@ -4722,7 +4674,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$34.const$5,"nc_get_var1_ushort");
+        return RuntimeHelper.requireNonNull(constants$34.const$1,"nc_get_var1_ushort");
     }
     /**
      * {@snippet :
@@ -4738,7 +4690,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$0,"nc_put_var1_uint");
+        return RuntimeHelper.requireNonNull(constants$34.const$2,"nc_put_var1_uint");
     }
     /**
      * {@snippet :
@@ -4754,7 +4706,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$1,"nc_get_var1_uint");
+        return RuntimeHelper.requireNonNull(constants$34.const$3,"nc_get_var1_uint");
     }
     /**
      * {@snippet :
@@ -4770,7 +4722,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$2,"nc_put_var1_longlong");
+        return RuntimeHelper.requireNonNull(constants$34.const$4,"nc_put_var1_longlong");
     }
     /**
      * {@snippet :
@@ -4786,7 +4738,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$3,"nc_get_var1_longlong");
+        return RuntimeHelper.requireNonNull(constants$34.const$5,"nc_get_var1_longlong");
     }
     /**
      * {@snippet :
@@ -4802,7 +4754,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$4,"nc_put_var1_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$35.const$0,"nc_put_var1_ulonglong");
     }
     /**
      * {@snippet :
@@ -4818,7 +4770,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$35.const$5,"nc_get_var1_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$35.const$1,"nc_get_var1_ulonglong");
     }
     /**
      * {@snippet :
@@ -4834,7 +4786,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$0,"nc_put_var1_string");
+        return RuntimeHelper.requireNonNull(constants$35.const$2,"nc_put_var1_string");
     }
     /**
      * {@snippet :
@@ -4850,7 +4802,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$1,"nc_get_var1_string");
+        return RuntimeHelper.requireNonNull(constants$35.const$3,"nc_get_var1_string");
     }
     /**
      * {@snippet :
@@ -4866,7 +4818,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$2,"nc_put_vara_text");
+        return RuntimeHelper.requireNonNull(constants$35.const$4,"nc_put_vara_text");
     }
     /**
      * {@snippet :
@@ -4882,7 +4834,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$3,"nc_get_vara_text");
+        return RuntimeHelper.requireNonNull(constants$35.const$5,"nc_get_vara_text");
     }
     /**
      * {@snippet :
@@ -4898,7 +4850,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$4,"nc_put_vara_uchar");
+        return RuntimeHelper.requireNonNull(constants$36.const$0,"nc_put_vara_uchar");
     }
     /**
      * {@snippet :
@@ -4914,7 +4866,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$5,"nc_get_vara_uchar");
+        return RuntimeHelper.requireNonNull(constants$36.const$1,"nc_get_vara_uchar");
     }
     /**
      * {@snippet :
@@ -4930,7 +4882,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$0,"nc_put_vara_schar");
+        return RuntimeHelper.requireNonNull(constants$36.const$2,"nc_put_vara_schar");
     }
     /**
      * {@snippet :
@@ -4946,7 +4898,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$1,"nc_get_vara_schar");
+        return RuntimeHelper.requireNonNull(constants$36.const$3,"nc_get_vara_schar");
     }
     /**
      * {@snippet :
@@ -4962,7 +4914,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$2,"nc_put_vara_short");
+        return RuntimeHelper.requireNonNull(constants$36.const$4,"nc_put_vara_short");
     }
     /**
      * {@snippet :
@@ -4978,7 +4930,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$3,"nc_get_vara_short");
+        return RuntimeHelper.requireNonNull(constants$36.const$5,"nc_get_vara_short");
     }
     /**
      * {@snippet :
@@ -4994,7 +4946,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$4,"nc_put_vara_int");
+        return RuntimeHelper.requireNonNull(constants$37.const$0,"nc_put_vara_int");
     }
     /**
      * {@snippet :
@@ -5010,7 +4962,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$5,"nc_get_vara_int");
+        return RuntimeHelper.requireNonNull(constants$37.const$1,"nc_get_vara_int");
     }
     /**
      * {@snippet :
@@ -5026,7 +4978,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$0,"nc_put_vara_long");
+        return RuntimeHelper.requireNonNull(constants$37.const$2,"nc_put_vara_long");
     }
     /**
      * {@snippet :
@@ -5042,7 +4994,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$1,"nc_get_vara_long");
+        return RuntimeHelper.requireNonNull(constants$37.const$3,"nc_get_vara_long");
     }
     /**
      * {@snippet :
@@ -5058,7 +5010,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$2,"nc_put_vara_float");
+        return RuntimeHelper.requireNonNull(constants$37.const$4,"nc_put_vara_float");
     }
     /**
      * {@snippet :
@@ -5074,7 +5026,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$3,"nc_get_vara_float");
+        return RuntimeHelper.requireNonNull(constants$37.const$5,"nc_get_vara_float");
     }
     /**
      * {@snippet :
@@ -5090,7 +5042,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$4,"nc_put_vara_double");
+        return RuntimeHelper.requireNonNull(constants$38.const$0,"nc_put_vara_double");
     }
     /**
      * {@snippet :
@@ -5106,7 +5058,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$38.const$5,"nc_get_vara_double");
+        return RuntimeHelper.requireNonNull(constants$38.const$1,"nc_get_vara_double");
     }
     /**
      * {@snippet :
@@ -5122,7 +5074,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$0,"nc_put_vara_ushort");
+        return RuntimeHelper.requireNonNull(constants$38.const$2,"nc_put_vara_ushort");
     }
     /**
      * {@snippet :
@@ -5138,7 +5090,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$1,"nc_get_vara_ushort");
+        return RuntimeHelper.requireNonNull(constants$38.const$3,"nc_get_vara_ushort");
     }
     /**
      * {@snippet :
@@ -5154,7 +5106,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$2,"nc_put_vara_uint");
+        return RuntimeHelper.requireNonNull(constants$38.const$4,"nc_put_vara_uint");
     }
     /**
      * {@snippet :
@@ -5170,7 +5122,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$3,"nc_get_vara_uint");
+        return RuntimeHelper.requireNonNull(constants$38.const$5,"nc_get_vara_uint");
     }
     /**
      * {@snippet :
@@ -5186,7 +5138,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$4,"nc_put_vara_longlong");
+        return RuntimeHelper.requireNonNull(constants$39.const$0,"nc_put_vara_longlong");
     }
     /**
      * {@snippet :
@@ -5202,7 +5154,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$5,"nc_get_vara_longlong");
+        return RuntimeHelper.requireNonNull(constants$39.const$1,"nc_get_vara_longlong");
     }
     /**
      * {@snippet :
@@ -5218,7 +5170,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$0,"nc_put_vara_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$39.const$2,"nc_put_vara_ulonglong");
     }
     /**
      * {@snippet :
@@ -5234,7 +5186,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$1,"nc_get_vara_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$39.const$3,"nc_get_vara_ulonglong");
     }
     /**
      * {@snippet :
@@ -5250,7 +5202,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$2,"nc_put_vara_string");
+        return RuntimeHelper.requireNonNull(constants$39.const$4,"nc_put_vara_string");
     }
     /**
      * {@snippet :
@@ -5266,7 +5218,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$3,"nc_get_vara_string");
+        return RuntimeHelper.requireNonNull(constants$39.const$5,"nc_get_vara_string");
     }
     /**
      * {@snippet :
@@ -5282,7 +5234,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$4,"nc_put_vars_text");
+        return RuntimeHelper.requireNonNull(constants$40.const$0,"nc_put_vars_text");
     }
     /**
      * {@snippet :
@@ -5298,7 +5250,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$5,"nc_get_vars_text");
+        return RuntimeHelper.requireNonNull(constants$40.const$1,"nc_get_vars_text");
     }
     /**
      * {@snippet :
@@ -5314,7 +5266,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$0,"nc_put_vars_uchar");
+        return RuntimeHelper.requireNonNull(constants$40.const$2,"nc_put_vars_uchar");
     }
     /**
      * {@snippet :
@@ -5330,7 +5282,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$1,"nc_get_vars_uchar");
+        return RuntimeHelper.requireNonNull(constants$40.const$3,"nc_get_vars_uchar");
     }
     /**
      * {@snippet :
@@ -5346,7 +5298,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$2,"nc_put_vars_schar");
+        return RuntimeHelper.requireNonNull(constants$40.const$4,"nc_put_vars_schar");
     }
     /**
      * {@snippet :
@@ -5362,7 +5314,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$3,"nc_get_vars_schar");
+        return RuntimeHelper.requireNonNull(constants$40.const$5,"nc_get_vars_schar");
     }
     /**
      * {@snippet :
@@ -5378,7 +5330,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$4,"nc_put_vars_short");
+        return RuntimeHelper.requireNonNull(constants$41.const$0,"nc_put_vars_short");
     }
     /**
      * {@snippet :
@@ -5394,7 +5346,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$5,"nc_get_vars_short");
+        return RuntimeHelper.requireNonNull(constants$41.const$1,"nc_get_vars_short");
     }
     /**
      * {@snippet :
@@ -5410,7 +5362,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$0,"nc_put_vars_int");
+        return RuntimeHelper.requireNonNull(constants$41.const$2,"nc_put_vars_int");
     }
     /**
      * {@snippet :
@@ -5426,7 +5378,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$1,"nc_get_vars_int");
+        return RuntimeHelper.requireNonNull(constants$41.const$3,"nc_get_vars_int");
     }
     /**
      * {@snippet :
@@ -5442,7 +5394,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$2,"nc_put_vars_long");
+        return RuntimeHelper.requireNonNull(constants$41.const$4,"nc_put_vars_long");
     }
     /**
      * {@snippet :
@@ -5458,7 +5410,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$3,"nc_get_vars_long");
+        return RuntimeHelper.requireNonNull(constants$41.const$5,"nc_get_vars_long");
     }
     /**
      * {@snippet :
@@ -5474,7 +5426,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$4,"nc_put_vars_float");
+        return RuntimeHelper.requireNonNull(constants$42.const$0,"nc_put_vars_float");
     }
     /**
      * {@snippet :
@@ -5490,7 +5442,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$5,"nc_get_vars_float");
+        return RuntimeHelper.requireNonNull(constants$42.const$1,"nc_get_vars_float");
     }
     /**
      * {@snippet :
@@ -5506,7 +5458,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$0,"nc_put_vars_double");
+        return RuntimeHelper.requireNonNull(constants$42.const$2,"nc_put_vars_double");
     }
     /**
      * {@snippet :
@@ -5522,7 +5474,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$1,"nc_get_vars_double");
+        return RuntimeHelper.requireNonNull(constants$42.const$3,"nc_get_vars_double");
     }
     /**
      * {@snippet :
@@ -5538,7 +5490,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$2,"nc_put_vars_ushort");
+        return RuntimeHelper.requireNonNull(constants$42.const$4,"nc_put_vars_ushort");
     }
     /**
      * {@snippet :
@@ -5554,7 +5506,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$3,"nc_get_vars_ushort");
+        return RuntimeHelper.requireNonNull(constants$42.const$5,"nc_get_vars_ushort");
     }
     /**
      * {@snippet :
@@ -5570,7 +5522,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$4,"nc_put_vars_uint");
+        return RuntimeHelper.requireNonNull(constants$43.const$0,"nc_put_vars_uint");
     }
     /**
      * {@snippet :
@@ -5586,7 +5538,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$5,"nc_get_vars_uint");
+        return RuntimeHelper.requireNonNull(constants$43.const$1,"nc_get_vars_uint");
     }
     /**
      * {@snippet :
@@ -5602,7 +5554,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$0,"nc_put_vars_longlong");
+        return RuntimeHelper.requireNonNull(constants$43.const$2,"nc_put_vars_longlong");
     }
     /**
      * {@snippet :
@@ -5618,7 +5570,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$1,"nc_get_vars_longlong");
+        return RuntimeHelper.requireNonNull(constants$43.const$3,"nc_get_vars_longlong");
     }
     /**
      * {@snippet :
@@ -5634,7 +5586,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$2,"nc_put_vars_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$43.const$4,"nc_put_vars_ulonglong");
     }
     /**
      * {@snippet :
@@ -5650,7 +5602,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$3,"nc_get_vars_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$43.const$5,"nc_get_vars_ulonglong");
     }
     /**
      * {@snippet :
@@ -5666,7 +5618,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$4,"nc_put_vars_string");
+        return RuntimeHelper.requireNonNull(constants$44.const$0,"nc_put_vars_string");
     }
     /**
      * {@snippet :
@@ -5682,7 +5634,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$5,"nc_get_vars_string");
+        return RuntimeHelper.requireNonNull(constants$44.const$1,"nc_get_vars_string");
     }
     /**
      * {@snippet :
@@ -5698,7 +5650,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$0,"nc_put_varm_text");
+        return RuntimeHelper.requireNonNull(constants$44.const$2,"nc_put_varm_text");
     }
     /**
      * {@snippet :
@@ -5714,7 +5666,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$1,"nc_get_varm_text");
+        return RuntimeHelper.requireNonNull(constants$44.const$3,"nc_get_varm_text");
     }
     /**
      * {@snippet :
@@ -5730,7 +5682,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$2,"nc_put_varm_uchar");
+        return RuntimeHelper.requireNonNull(constants$44.const$4,"nc_put_varm_uchar");
     }
     /**
      * {@snippet :
@@ -5746,7 +5698,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$3,"nc_get_varm_uchar");
+        return RuntimeHelper.requireNonNull(constants$44.const$5,"nc_get_varm_uchar");
     }
     /**
      * {@snippet :
@@ -5762,7 +5714,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$4,"nc_put_varm_schar");
+        return RuntimeHelper.requireNonNull(constants$45.const$0,"nc_put_varm_schar");
     }
     /**
      * {@snippet :
@@ -5778,7 +5730,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$5,"nc_get_varm_schar");
+        return RuntimeHelper.requireNonNull(constants$45.const$1,"nc_get_varm_schar");
     }
     /**
      * {@snippet :
@@ -5794,7 +5746,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$0,"nc_put_varm_short");
+        return RuntimeHelper.requireNonNull(constants$45.const$2,"nc_put_varm_short");
     }
     /**
      * {@snippet :
@@ -5810,7 +5762,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$1,"nc_get_varm_short");
+        return RuntimeHelper.requireNonNull(constants$45.const$3,"nc_get_varm_short");
     }
     /**
      * {@snippet :
@@ -5826,7 +5778,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$2,"nc_put_varm_int");
+        return RuntimeHelper.requireNonNull(constants$45.const$4,"nc_put_varm_int");
     }
     /**
      * {@snippet :
@@ -5842,7 +5794,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$3,"nc_get_varm_int");
+        return RuntimeHelper.requireNonNull(constants$45.const$5,"nc_get_varm_int");
     }
     /**
      * {@snippet :
@@ -5858,7 +5810,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$4,"nc_put_varm_long");
+        return RuntimeHelper.requireNonNull(constants$46.const$0,"nc_put_varm_long");
     }
     /**
      * {@snippet :
@@ -5874,7 +5826,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$5,"nc_get_varm_long");
+        return RuntimeHelper.requireNonNull(constants$46.const$1,"nc_get_varm_long");
     }
     /**
      * {@snippet :
@@ -5890,7 +5842,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$0,"nc_put_varm_float");
+        return RuntimeHelper.requireNonNull(constants$46.const$2,"nc_put_varm_float");
     }
     /**
      * {@snippet :
@@ -5906,7 +5858,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$1,"nc_get_varm_float");
+        return RuntimeHelper.requireNonNull(constants$46.const$3,"nc_get_varm_float");
     }
     /**
      * {@snippet :
@@ -5922,7 +5874,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$2,"nc_put_varm_double");
+        return RuntimeHelper.requireNonNull(constants$46.const$4,"nc_put_varm_double");
     }
     /**
      * {@snippet :
@@ -5938,7 +5890,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$3,"nc_get_varm_double");
+        return RuntimeHelper.requireNonNull(constants$46.const$5,"nc_get_varm_double");
     }
     /**
      * {@snippet :
@@ -5954,7 +5906,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$4,"nc_put_varm_ushort");
+        return RuntimeHelper.requireNonNull(constants$47.const$0,"nc_put_varm_ushort");
     }
     /**
      * {@snippet :
@@ -5970,7 +5922,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$5,"nc_get_varm_ushort");
+        return RuntimeHelper.requireNonNull(constants$47.const$1,"nc_get_varm_ushort");
     }
     /**
      * {@snippet :
@@ -5986,7 +5938,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$0,"nc_put_varm_uint");
+        return RuntimeHelper.requireNonNull(constants$47.const$2,"nc_put_varm_uint");
     }
     /**
      * {@snippet :
@@ -6002,7 +5954,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$1,"nc_get_varm_uint");
+        return RuntimeHelper.requireNonNull(constants$47.const$3,"nc_get_varm_uint");
     }
     /**
      * {@snippet :
@@ -6018,7 +5970,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$2,"nc_put_varm_longlong");
+        return RuntimeHelper.requireNonNull(constants$47.const$4,"nc_put_varm_longlong");
     }
     /**
      * {@snippet :
@@ -6034,7 +5986,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$3,"nc_get_varm_longlong");
+        return RuntimeHelper.requireNonNull(constants$47.const$5,"nc_get_varm_longlong");
     }
     /**
      * {@snippet :
@@ -6050,7 +6002,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$4,"nc_put_varm_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$48.const$0,"nc_put_varm_ulonglong");
     }
     /**
      * {@snippet :
@@ -6066,7 +6018,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$5,"nc_get_varm_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$48.const$1,"nc_get_varm_ulonglong");
     }
     /**
      * {@snippet :
@@ -6082,7 +6034,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$0,"nc_put_varm_string");
+        return RuntimeHelper.requireNonNull(constants$48.const$2,"nc_put_varm_string");
     }
     /**
      * {@snippet :
@@ -6098,7 +6050,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$1,"nc_get_varm_string");
+        return RuntimeHelper.requireNonNull(constants$48.const$3,"nc_get_varm_string");
     }
     /**
      * {@snippet :
@@ -6114,7 +6066,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$2,"nc_put_var_text");
+        return RuntimeHelper.requireNonNull(constants$48.const$4,"nc_put_var_text");
     }
     /**
      * {@snippet :
@@ -6130,7 +6082,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_text$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$3,"nc_get_var_text");
+        return RuntimeHelper.requireNonNull(constants$48.const$5,"nc_get_var_text");
     }
     /**
      * {@snippet :
@@ -6146,7 +6098,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$4,"nc_put_var_uchar");
+        return RuntimeHelper.requireNonNull(constants$49.const$0,"nc_put_var_uchar");
     }
     /**
      * {@snippet :
@@ -6162,7 +6114,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_uchar$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$5,"nc_get_var_uchar");
+        return RuntimeHelper.requireNonNull(constants$49.const$1,"nc_get_var_uchar");
     }
     /**
      * {@snippet :
@@ -6178,7 +6130,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$0,"nc_put_var_schar");
+        return RuntimeHelper.requireNonNull(constants$49.const$2,"nc_put_var_schar");
     }
     /**
      * {@snippet :
@@ -6194,7 +6146,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_schar$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$1,"nc_get_var_schar");
+        return RuntimeHelper.requireNonNull(constants$49.const$3,"nc_get_var_schar");
     }
     /**
      * {@snippet :
@@ -6210,7 +6162,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$2,"nc_put_var_short");
+        return RuntimeHelper.requireNonNull(constants$49.const$4,"nc_put_var_short");
     }
     /**
      * {@snippet :
@@ -6226,7 +6178,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_short$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$3,"nc_get_var_short");
+        return RuntimeHelper.requireNonNull(constants$49.const$5,"nc_get_var_short");
     }
     /**
      * {@snippet :
@@ -6242,7 +6194,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$4,"nc_put_var_int");
+        return RuntimeHelper.requireNonNull(constants$50.const$0,"nc_put_var_int");
     }
     /**
      * {@snippet :
@@ -6258,7 +6210,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_int$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$5,"nc_get_var_int");
+        return RuntimeHelper.requireNonNull(constants$50.const$1,"nc_get_var_int");
     }
     /**
      * {@snippet :
@@ -6274,7 +6226,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$0,"nc_put_var_long");
+        return RuntimeHelper.requireNonNull(constants$50.const$2,"nc_put_var_long");
     }
     /**
      * {@snippet :
@@ -6290,7 +6242,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_long$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$1,"nc_get_var_long");
+        return RuntimeHelper.requireNonNull(constants$50.const$3,"nc_get_var_long");
     }
     /**
      * {@snippet :
@@ -6306,7 +6258,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$2,"nc_put_var_float");
+        return RuntimeHelper.requireNonNull(constants$50.const$4,"nc_put_var_float");
     }
     /**
      * {@snippet :
@@ -6322,7 +6274,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_float$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$3,"nc_get_var_float");
+        return RuntimeHelper.requireNonNull(constants$50.const$5,"nc_get_var_float");
     }
     /**
      * {@snippet :
@@ -6338,7 +6290,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$4,"nc_put_var_double");
+        return RuntimeHelper.requireNonNull(constants$51.const$0,"nc_put_var_double");
     }
     /**
      * {@snippet :
@@ -6354,7 +6306,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_double$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$5,"nc_get_var_double");
+        return RuntimeHelper.requireNonNull(constants$51.const$1,"nc_get_var_double");
     }
     /**
      * {@snippet :
@@ -6370,7 +6322,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$0,"nc_put_var_ushort");
+        return RuntimeHelper.requireNonNull(constants$51.const$2,"nc_put_var_ushort");
     }
     /**
      * {@snippet :
@@ -6386,7 +6338,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_ushort$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$1,"nc_get_var_ushort");
+        return RuntimeHelper.requireNonNull(constants$51.const$3,"nc_get_var_ushort");
     }
     /**
      * {@snippet :
@@ -6402,7 +6354,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$2,"nc_put_var_uint");
+        return RuntimeHelper.requireNonNull(constants$51.const$4,"nc_put_var_uint");
     }
     /**
      * {@snippet :
@@ -6418,7 +6370,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_uint$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$3,"nc_get_var_uint");
+        return RuntimeHelper.requireNonNull(constants$51.const$5,"nc_get_var_uint");
     }
     /**
      * {@snippet :
@@ -6434,7 +6386,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$4,"nc_put_var_longlong");
+        return RuntimeHelper.requireNonNull(constants$52.const$0,"nc_put_var_longlong");
     }
     /**
      * {@snippet :
@@ -6450,7 +6402,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_longlong$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$5,"nc_get_var_longlong");
+        return RuntimeHelper.requireNonNull(constants$52.const$1,"nc_get_var_longlong");
     }
     /**
      * {@snippet :
@@ -6466,7 +6418,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$0,"nc_put_var_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$52.const$2,"nc_put_var_ulonglong");
     }
     /**
      * {@snippet :
@@ -6482,7 +6434,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_ulonglong$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$1,"nc_get_var_ulonglong");
+        return RuntimeHelper.requireNonNull(constants$52.const$3,"nc_get_var_ulonglong");
     }
     /**
      * {@snippet :
@@ -6498,7 +6450,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$2,"nc_put_var_string");
+        return RuntimeHelper.requireNonNull(constants$52.const$4,"nc_put_var_string");
     }
     /**
      * {@snippet :
@@ -6514,7 +6466,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_string$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$3,"nc_get_var_string");
+        return RuntimeHelper.requireNonNull(constants$52.const$5,"nc_get_var_string");
     }
     /**
      * {@snippet :
@@ -6529,18 +6481,66 @@ public class netcdf_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle nc_reclaim_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$5,"nc_reclaim_data");
+    public static MethodHandle nc_free_string$MH() {
+        return RuntimeHelper.requireNonNull(constants$53.const$1,"nc_free_string");
     }
     /**
      * {@snippet :
-     * int nc_reclaim_data(int ncid, nc_type xtypeid, void* memory, size_t count);
+     * int nc_free_string(size_t nelems, char** data);
      * }
      */
-    public static int nc_reclaim_data(int ncid, int xtypeid, MemorySegment memory, long count) {
+    public static int nc_free_string(long nelems, MemorySegment data) {
+        var mh$ = nc_free_string$MH();
+        try {
+            return (int)mh$.invokeExact(nelems, data);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle nc_free_vlens$MH() {
+        return RuntimeHelper.requireNonNull(constants$53.const$2,"nc_free_vlens");
+    }
+    /**
+     * {@snippet :
+     * int nc_free_vlens(size_t nelems, nc_vlen_t vlens[]);
+     * }
+     */
+    public static int nc_free_vlens(long nelems, MemorySegment vlens) {
+        var mh$ = nc_free_vlens$MH();
+        try {
+            return (int)mh$.invokeExact(nelems, vlens);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle nc_free_vlen$MH() {
+        return RuntimeHelper.requireNonNull(constants$53.const$4,"nc_free_vlen");
+    }
+    /**
+     * {@snippet :
+     * int nc_free_vlen(nc_vlen_t* vl);
+     * }
+     */
+    public static int nc_free_vlen(MemorySegment vl) {
+        var mh$ = nc_free_vlen$MH();
+        try {
+            return (int)mh$.invokeExact(vl);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle nc_reclaim_data$MH() {
+        return RuntimeHelper.requireNonNull(constants$53.const$6,"nc_reclaim_data");
+    }
+    /**
+     * {@snippet :
+     * int nc_reclaim_data(int ncid, nc_type xtypeid, void* memory, size_t nelems);
+     * }
+     */
+    public static int nc_reclaim_data(int ncid, int xtypeid, MemorySegment memory, long nelems) {
         var mh$ = nc_reclaim_data$MH();
         try {
-            return (int)mh$.invokeExact(ncid, xtypeid, memory, count);
+            return (int)mh$.invokeExact(ncid, xtypeid, memory, nelems);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6550,13 +6550,13 @@ public class netcdf_h  {
     }
     /**
      * {@snippet :
-     * int nc_reclaim_data_all(int ncid, nc_type xtypeid, void* memory, size_t count);
+     * int nc_reclaim_data_all(int ncid, nc_type xtypeid, void* memory, size_t nelems);
      * }
      */
-    public static int nc_reclaim_data_all(int ncid, int xtypeid, MemorySegment memory, long count) {
+    public static int nc_reclaim_data_all(int ncid, int xtypeid, MemorySegment memory, long nelems) {
         var mh$ = nc_reclaim_data_all$MH();
         try {
-            return (int)mh$.invokeExact(ncid, xtypeid, memory, count);
+            return (int)mh$.invokeExact(ncid, xtypeid, memory, nelems);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
@@ -6593,24 +6593,8 @@ public class netcdf_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
-    public static MethodHandle nc_dump_data$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.const$3,"nc_dump_data");
-    }
-    /**
-     * {@snippet :
-     * int nc_dump_data(int ncid, nc_type xtypeid, void* memory, size_t count, char** buf);
-     * }
-     */
-    public static int nc_dump_data(int ncid, int xtypeid, MemorySegment memory, long count, MemorySegment buf) {
-        var mh$ = nc_dump_data$MH();
-        try {
-            return (int)mh$.invokeExact(ncid, xtypeid, memory, count, buf);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
     public static MethodHandle nc_put_att_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.const$4,"nc_put_att_ubyte");
+        return RuntimeHelper.requireNonNull(constants$54.const$3,"nc_put_att_ubyte");
     }
     /**
      * {@snippet :
@@ -6626,7 +6610,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_att_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.const$5,"nc_get_att_ubyte");
+        return RuntimeHelper.requireNonNull(constants$54.const$4,"nc_get_att_ubyte");
     }
     /**
      * {@snippet :
@@ -6642,7 +6626,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var1_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$0,"nc_put_var1_ubyte");
+        return RuntimeHelper.requireNonNull(constants$54.const$5,"nc_put_var1_ubyte");
     }
     /**
      * {@snippet :
@@ -6658,7 +6642,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var1_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$1,"nc_get_var1_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$0,"nc_get_var1_ubyte");
     }
     /**
      * {@snippet :
@@ -6674,7 +6658,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vara_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$2,"nc_put_vara_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$1,"nc_put_vara_ubyte");
     }
     /**
      * {@snippet :
@@ -6690,7 +6674,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vara_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$3,"nc_get_vara_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$2,"nc_get_vara_ubyte");
     }
     /**
      * {@snippet :
@@ -6706,7 +6690,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_vars_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$4,"nc_put_vars_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$3,"nc_put_vars_ubyte");
     }
     /**
      * {@snippet :
@@ -6722,7 +6706,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_vars_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$55.const$5,"nc_get_vars_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$4,"nc_get_vars_ubyte");
     }
     /**
      * {@snippet :
@@ -6738,7 +6722,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_varm_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$0,"nc_put_varm_ubyte");
+        return RuntimeHelper.requireNonNull(constants$55.const$5,"nc_put_varm_ubyte");
     }
     /**
      * {@snippet :
@@ -6754,7 +6738,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_varm_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$1,"nc_get_varm_ubyte");
+        return RuntimeHelper.requireNonNull(constants$56.const$0,"nc_get_varm_ubyte");
     }
     /**
      * {@snippet :
@@ -6770,7 +6754,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_put_var_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$2,"nc_put_var_ubyte");
+        return RuntimeHelper.requireNonNull(constants$56.const$1,"nc_put_var_ubyte");
     }
     /**
      * {@snippet :
@@ -6786,7 +6770,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_get_var_ubyte$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$3,"nc_get_var_ubyte");
+        return RuntimeHelper.requireNonNull(constants$56.const$2,"nc_get_var_ubyte");
     }
     /**
      * {@snippet :
@@ -6802,7 +6786,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_set_log_level$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$4,"nc_set_log_level");
+        return RuntimeHelper.requireNonNull(constants$56.const$3,"nc_set_log_level");
     }
     /**
      * {@snippet :
@@ -6818,7 +6802,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_show_metadata$MH() {
-        return RuntimeHelper.requireNonNull(constants$56.const$5,"nc_show_metadata");
+        return RuntimeHelper.requireNonNull(constants$56.const$4,"nc_show_metadata");
     }
     /**
      * {@snippet :
@@ -6834,7 +6818,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_delete$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.const$0,"nc_delete");
+        return RuntimeHelper.requireNonNull(constants$56.const$5,"nc_delete");
     }
     /**
      * {@snippet :
@@ -6850,7 +6834,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc__create_mp$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.const$2,"nc__create_mp");
+        return RuntimeHelper.requireNonNull(constants$57.const$1,"nc__create_mp");
     }
     /**
      * {@snippet :
@@ -6866,7 +6850,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc__open_mp$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.const$4,"nc__open_mp");
+        return RuntimeHelper.requireNonNull(constants$57.const$3,"nc__open_mp");
     }
     /**
      * {@snippet :
@@ -6882,7 +6866,7 @@ public class netcdf_h  {
         }
     }
     public static MethodHandle nc_delete_mp$MH() {
-        return RuntimeHelper.requireNonNull(constants$57.const$6,"nc_delete_mp");
+        return RuntimeHelper.requireNonNull(constants$57.const$5,"nc_delete_mp");
     }
     /**
      * {@snippet :
@@ -7927,10 +7911,10 @@ public class netcdf_h  {
     }
     /**
      * {@snippet :
-     * #define _FillValue "_FillValue"
+     * #define NC_FillValue "_FillValue"
      * }
      */
-    public static MemorySegment _FillValue() {
+    public static MemorySegment NC_FillValue() {
         return constants$66.const$4;
     }
     /**
@@ -8172,6 +8156,14 @@ public class netcdf_h  {
      */
     public static int NC_FORMAT_UNDEFINED() {
         return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define NC_FORMATX_ZARR 10
+     * }
+     */
+    public static int NC_FORMATX_ZARR() {
+        return (int)10L;
     }
     /**
      * {@snippet :

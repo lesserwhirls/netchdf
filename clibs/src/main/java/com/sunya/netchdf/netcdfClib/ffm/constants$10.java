@@ -28,10 +28,14 @@ final class constants$10 {
         constants$7.const$3
     );
     static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "nc_free_vlen",
+        "nc_put_vlen_element",
         constants$10.const$5
     );
 }

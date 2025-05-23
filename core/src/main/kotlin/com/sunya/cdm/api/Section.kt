@@ -39,8 +39,6 @@ data class Section(val ranges : List<LongProgression>, val varShape : LongArray)
         result = 31 * result + varShape.contentHashCode()
         return result
     }
-
-
 }
 
 /** A partially filled section of multidimensional array indices. */

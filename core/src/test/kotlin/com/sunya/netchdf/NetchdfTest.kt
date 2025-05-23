@@ -71,11 +71,10 @@ class NetchdfTest {
     }
 
     @Test
-    fun testNetchIterate() { // cant readArrayData too many bytes= 2_524_250_575
+    fun testNetchIterate() {
+        //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
         compareNetchIterate(testData + "cdmUnitTest/formats/netcdf4/UpperDeschutes_t4p10_swemelt.nc", "UpperDeschutes_t4p10_swemelt")
-        // readNetchIterate(testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc", "/xma/dialoop_back")
     }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -263,7 +262,7 @@ fun compareOneVarIterate(myFile: Netchdf, myvar: Variable<*>, compare : Boolean 
     val filename = myFile.location().substringAfterLast('/')
     val varBytes = myvar.nelems
     if (varBytes >= maxBytes) {
-        println(" *** ${myvar.nameAndShape()} cant readArrayData too many bytes= $varBytes")
+        println(" *** ${myvar.nameAndShape()} skip reading ArrayData too many bytes= $varBytes max = $maxBytes")
         return 0
     }
 

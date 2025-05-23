@@ -21,8 +21,7 @@ dpkg -L libhdf5-dev
  /usr/include/hdf5/serial/hdf5.h
  /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so
 
-netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
-
+netcdf library version 4.10.0-development of May 23 2025 14:45:19
 
 cd /home/stormy/install/jextract-21/bin
 ./jextract --source \

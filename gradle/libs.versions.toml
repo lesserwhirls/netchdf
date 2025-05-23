@@ -4,13 +4,13 @@ netchdf = "0.2.0"
 # main dependency versions
 kotlin = "2.1.10"
 kotlinx-coroutines = "1.8.1"
-kotest = "5.9.1"
-oshai-logging = "7.0.0"
+oshai-version = "7.0.0"
 
-# test only  dependency versions
+# test only dependency versions
 junit-jupiter-params = "5.10.0"
 logback = "1.5.15"
 mockk = "1.13.12"
+kotest = "5.9.1"
 
 [libraries]
 
@@ -22,7 +22,7 @@ mockk = "1.13.12"
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 # Logging
-oshai-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "oshai-logging" }
+oshai-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "oshai-version" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 ########################
