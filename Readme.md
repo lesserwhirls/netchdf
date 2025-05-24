@@ -1,12 +1,25 @@
 # netchdf
-_last updated: 5/22/2025_
+_last updated: 5/24/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
 The intention is to create a maintainable, read-only, pure JVM library allowing full access to 
-netcdf3, netcdf4, hdf4, hdf5, hdf-eos2 and hdf-eos5 data files. 
+netcdf3, netcdf4, hdf4, hdf5, hdf-eos2, and hdf-eos5 data files. 
 
 Please contact me if you'd like to help out. Especially needed are test datasets from all the important data archives!!
+
+## Building
+
+* Download Java 21 JDK and set JAVA_HOME.
+* Download git and add to PATH.
+
+cd <your_build_dir>
+git clone https://github.com/JohnLCaron/netchdf.git
+cd netchdf
+./gradlew clean assemble
+
+Also see:
+  * [Building and Running ncdump](clibs/Readme.md)
 
 ### Why this library? 
 
@@ -87,7 +100,6 @@ Currently that is Gradle 8.14.
 For now, you must download and build the library yourself. Eventually we will publish it to Maven Central. 
 The IntelliJ IDE is highly recommended for all JVM development.
 
-
 ### Scope
 
 Our goal is to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files.
@@ -128,16 +140,17 @@ only supported for test purposes.
 Currently we have ~1500 test files:
 
 ````
- hdf4      = 205 files
- hdf-eos2  = 267 files
- hdf5      = 113 files
- hdf-eos5  =  18 files
- netcdf3   = 664 files
- netcdf3.2 =  81 files
- netcdf3.5 =   1 files
- netcdf4   = 121 files
- ````
+hdf-eos2  = 267 files
+hdf-eos5  = 18 files
+hdf4      = 205 files
+hdf5      = 113 files
+netcdf3   = 664 files
+netcdf3.2 = 81 files
+netcdf3.5 = 1 files
+netcdf4   = 121 files
 
+total # files = 1470
+````
 We need to get representative samples of recent files for improved testing and code coverage.
 
 ### Data Model notes

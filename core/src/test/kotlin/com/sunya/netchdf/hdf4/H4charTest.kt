@@ -5,8 +5,8 @@ import com.sunya.cdm.array.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.readNetchdfData
 import com.sunya.netchdf.showNetchdfHeader
-import com.sunya.testdata.N3Files
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.N3Files
+import com.sunya.netchdf.testdata.testData
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

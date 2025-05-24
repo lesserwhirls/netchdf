@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.N3Files
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.N3Files
+import com.sunya.netchdf.testdata.testData
 import java.util.*
 import java.util.stream.Stream
 

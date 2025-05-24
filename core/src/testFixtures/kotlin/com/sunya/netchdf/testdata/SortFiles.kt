@@ -1,4 +1,4 @@
-package com.sunya.testdata
+package com.sunya.netchdf.testdata
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.params.ParameterizedTest

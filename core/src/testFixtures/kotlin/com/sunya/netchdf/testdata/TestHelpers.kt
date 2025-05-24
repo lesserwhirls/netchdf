@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalCoroutinesApi::class)
 
-package com.sunya.testdata
+package com.sunya.netchdf.testdata
 
 import io.kotest.property.PropTestConfig
 import io.kotest.property.ShrinkingMode

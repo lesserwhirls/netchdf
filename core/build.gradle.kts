@@ -1,12 +1,18 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    id ("java-test-fixtures")
 }
 
 dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 
-    testImplementation(project(":testdata"))
+    testFixturesImplementation(libs.bundles.jvmtest)
+    testFixturesImplementation(libs.kotest.property)
+    testFixturesImplementation(libs.kotlinx.coroutines.core)
+    // runTest() for running suspend functions in tests
+    testFixturesImplementation(libs.kotlinx.coroutines.test)
+
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)
@@ -27,20 +33,5 @@ tasks.test {
 
 kotlin {
     jvmToolchain(21)
-}
-
-tasks.register<Jar>("uberJar") {
-    archiveClassifier = "uber"
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-    //manifest {
-    //    attributes("Main-Class" to "com.sunya.netchdf.ncdump")
-    //}
-
-    from(sourceSets.main.get().output)
-    dependsOn(configurations.runtimeClasspath)
-    from({
-        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
-    })
 }
 

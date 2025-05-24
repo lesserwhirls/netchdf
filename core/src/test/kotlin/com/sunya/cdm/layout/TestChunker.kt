@@ -7,6 +7,7 @@ import com.sunya.cdm.api.toLongArray
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
+private const val show = false
 /** Test [com.sunya.cdm.layout.Chunker]  */
 class TestChunker {
 
@@ -17,20 +18,21 @@ class TestChunker {
                        check : Boolean = true,
                        merge : Merge = Merge.all,
                        expect : (Int) -> Pair<Int, Int>) { // (srcElem, dstElem)
-        println("Chunker dataChunk = ${dataChunk} wantSection = [$wantSection]")
-
         val layout = Chunker(dataChunk, IndexSpace(wantSection), merge)
-        println("dataChunk $dataChunk")
-        println("wantSection $wantSection")
-        println("wantSpace ${IndexSpace(wantSection)}")
-        println("layout $layout")
+        if (show) {
+            println("Chunker dataChunk = ${dataChunk} wantSection = [$wantSection]")
+            println("dataChunk $dataChunk")
+            println("wantSection $wantSection")
+            println("wantSpace ${IndexSpace(wantSection)}")
+            println("layout $layout")
+        }
 
         val expectNelems = expectElems ?: (dataChunk.totalElements.toInt() / expectNchunks)
         var count = 0
         var totalNelems = 0
         while (layout.hasNext()) {
             val chunk = layout.next()
-            println(" chunk = $chunk")
+            if (show) println(" chunk = $chunk")
             if (check) {
                 val (srcElem, dstElem) = expect(count)
                 assertEquals(srcElem, chunk.srcElem.toInt(), "srcPos ")
@@ -44,8 +46,10 @@ class TestChunker {
             assertEquals(expectNchunks, count, "nchunks ")
             assertEquals(expectNelems * expectNchunks, totalNelems, "totalNelems ")
         }
-        println("nchunks expect ${expectNchunks}, actual ${count}")
-        println("totalElements expect ${expectNelems * expectNchunks}, actual ${totalNelems}")
+        if (show) {
+            println("nchunks expect ${expectNchunks}, actual ${count}")
+            println("totalElements expect ${expectNelems * expectNchunks}, actual ${totalNelems}")
+        }
     }
 
     @Test

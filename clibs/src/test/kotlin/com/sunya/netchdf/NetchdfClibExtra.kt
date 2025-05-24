@@ -1,13 +1,13 @@
 package com.sunya.netchdf
 
 import com.sunya.cdm.util.Stats
-import com.sunya.testdata.NetchdfExtraFiles
+import com.sunya.netchdf.testdata.NetchdfExtraFiles
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.testData
 import org.junit.jupiter.api.AfterAll
 import java.util.stream.Stream
 

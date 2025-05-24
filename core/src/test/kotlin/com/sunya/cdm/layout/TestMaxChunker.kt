@@ -26,9 +26,9 @@ class TestMaxChunker {
     fun testMaxChunker(shape : IntArray, max : Int) {
         var totalTransfer = 0
         val chunker = MaxChunker(max, Section(shape.toLongArray()))
-        println("shape=${shape.contentToString()} total=${shape.computeSize()} maxElems=$max ")
+        // println("shape=${shape.contentToString()} total=${shape.computeSize()} maxElems=$max ")
         for (chunk in chunker) {
-            println("  chunk=${chunk}")
+            // println("  chunk=${chunk}")
             totalTransfer += chunk.totalElements.toInt()
         }
         assertEquals(shape.computeSize(), totalTransfer)

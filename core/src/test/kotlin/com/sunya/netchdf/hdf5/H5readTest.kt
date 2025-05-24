@@ -8,8 +8,8 @@ import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.util.Stats
 import com.sunya.netchdf.compareNetchIterate
 import com.sunya.netchdf.readNetchdfData
-import com.sunya.testdata.H5Files
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.H5Files
+import com.sunya.netchdf.testdata.testData
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
