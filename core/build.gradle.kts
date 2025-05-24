@@ -29,3 +29,18 @@ kotlin {
     jvmToolchain(21)
 }
 
+tasks.register<Jar>("uberJar") {
+    archiveClassifier = "uber"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    //manifest {
+    //    attributes("Main-Class" to "com.sunya.netchdf.ncdump")
+    //}
+
+    from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
+}
+

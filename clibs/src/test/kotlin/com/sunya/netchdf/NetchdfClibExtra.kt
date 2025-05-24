@@ -46,9 +46,7 @@ class NetchdfClibExtra {
         compareCdlWithClib(testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5")
     }
 
-    // this one we could probably fix
     @Test
-    // @Disabled
     fun unsolved2() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
         // showMyHeader(filename)
@@ -80,7 +78,7 @@ class NetchdfClibExtra {
         compareCdlWithClib(filename)
     }
 
-    // @ParameterizedTest
+    @ParameterizedTest
     @MethodSource("params")
     fun readNetchdfData(filename: String) {
         readNetchdfData(filename, null)

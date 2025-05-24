@@ -3,9 +3,12 @@ plugins {
 }
 
 dependencies {
+    api(project(":core"))
+
     implementation(libs.oshai.logging)
     implementation(kotlin("test"))
     implementation(libs.bundles.jvmtest)
+    implementation(libs.kotlinx.cli)
 
     // runTest() for running suspend functions in tests
     implementation(libs.kotlinx.coroutines.test)

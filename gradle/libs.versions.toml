@@ -3,6 +3,7 @@ netchdf = "0.2.0"
 
 # main dependency versions
 kotlin = "2.1.10"
+kotlinx-cli = "0.3.6"
 kotlinx-coroutines = "1.8.1"
 oshai-version = "7.0.0"
 
@@ -20,6 +21,7 @@ kotest = "5.9.1"
 
 # Kotlinx libraries
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "kotlinx-cli" }
 
 # Logging
 oshai-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "oshai-version" }
