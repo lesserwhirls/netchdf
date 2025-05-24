@@ -41,7 +41,10 @@ class NetchdfClibTest {
         @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
-                versions.keys.forEach{ println("$it = ${versions[it]!!.size } files") }
+                val sversions = versions.toSortedMap()
+                sversions.keys.forEach{ println("$it = ${sversions[it]!!.size } files") }
+                val total = sversions.keys.map{ sversions[it]!!.size }.sum()
+                println("total # files = $total")
             }
             Stats.show()
         }

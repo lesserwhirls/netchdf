@@ -8,18 +8,20 @@ netcdf3, netcdf4, hdf4, hdf5, hdf-eos2, and hdf-eos5 data files.
 
 Please contact me if you'd like to help out. Especially needed are test datasets from all the important data archives!!
 
-## Building
+### Building
 
 * Download Java 21 JDK and set JAVA_HOME.
 * Download git and add to PATH.
-
+* 
+````
 cd <your_build_dir>
 git clone https://github.com/JohnLCaron/netchdf.git
 cd netchdf
 ./gradlew clean assemble
+````
 
 Also see:
-  * [Building and Running ncdump](clibs/Readme.md)
+  * [Building and Running ncdump](cli/Readme.md)
 
 ### Why this library? 
 
@@ -137,7 +139,7 @@ More and deeper test coverage is provided in the clibs module, which compares ne
 the Netcdf, HDF5, and HDF4 C libraries. The clibs module is not part of the released netchdf library and is 
 only supported for test purposes.
 
-Currently we have ~1500 test files:
+Currently we have 1470 test files in the core test suite:
 
 ````
 hdf-eos2  = 267 files
