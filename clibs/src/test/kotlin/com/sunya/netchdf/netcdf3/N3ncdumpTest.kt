@@ -10,8 +10,8 @@ import kotlin.test.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
-import com.sunya.testdata.testFilesIn
+import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testdata.testFilesIn
 import java.io.File
 
 // doesnt work because of differences in the value printout.

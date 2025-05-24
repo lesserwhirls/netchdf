@@ -4,7 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.testdata.N4Files
+import com.sunya.netchdf.testdata.N4Files
 import java.util.stream.Stream
 import kotlin.test.Test
 import kotlin.test.assertTrue

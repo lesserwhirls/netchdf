@@ -3,8 +3,8 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.util.Stats
 import com.sunya.netchdf.*
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.testdata.H4Files
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.H4Files
+import com.sunya.netchdf.testdata.testData
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Disabled

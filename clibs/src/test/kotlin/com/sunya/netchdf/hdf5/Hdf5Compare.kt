@@ -5,7 +5,7 @@ import com.sunya.netchdf.compareCdlWithClib
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.compareSelectedDataWithClib
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.testdata.*
+import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments

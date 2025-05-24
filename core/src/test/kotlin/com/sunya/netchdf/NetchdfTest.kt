@@ -5,7 +5,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.util.Stats
 import com.sunya.cdm.util.nearlyEquals
-import com.sunya.testdata.*
+import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -39,8 +39,9 @@ class NetchdfTest {
         @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
-                versions.keys.forEach{ println(" $it = ${versions[it]!!.size } files") }
-                val total = versions.keys.map{ versions[it]!!.size }.sum()
+                val sversions = versions.toSortedMap()
+                sversions.keys.forEach{ println(" $it = ${sversions[it]!!.size } files") }
+                val total = sversions.keys.map{ sversions[it]!!.size }.sum()
                 println("total # files = $total")
             }
             Stats.show()

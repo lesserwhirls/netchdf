@@ -8,7 +8,7 @@ import com.sunya.cdm.util.nearlyEquals
 import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
 import com.sunya.netchdf.hdf5Clib.Hdf5ClibFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.testdata.*
+import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Disabled
