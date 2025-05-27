@@ -13,29 +13,29 @@ final class constants$247 {
     private constants$247() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT
+        JAVA_BOOLEAN,
+        RuntimeHelper.POINTER,
+        JAVA_BOOLEAN
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_page_buffer_size",
+        "H5Pset_mdc_log_options",
         constants$247.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pfill_value_defined",
-        constants$44.const$4
+        "H5Pset_meta_block_size",
+        constants$41.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_alloc_time",
-        constants$44.const$4
+        "H5Pset_metadata_read_attempts",
+        constants$46.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk",
-        constants$20.const$2
+        "H5Pset_multi_type",
+        constants$46.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk_opts",
-        constants$44.const$4
+        "H5Pset_object_flush_cb",
+        constants$42.const$5
     );
 }
 

@@ -12,28 +12,28 @@ final class constants$236 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$236() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_istore_k",
-        constants$44.const$4
+        "H5Pset_deflate",
+        constants$46.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_index",
-        constants$162.const$2
+        "H5Pset_filter",
+        constants$235.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_nindexes",
-        constants$44.const$4
+        "H5Pset_fletcher32",
+        constants$19.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_phase_change",
-        constants$41.const$4
+        "H5Pset_obj_track_times",
+        constants$182.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_sizes",
-        constants$41.const$4
+        "H5Pget_file_space_page_size",
+        constants$18.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_sym_k",
-        constants$41.const$4
+        "H5Pget_file_space_strategy",
+        constants$61.const$0
     );
 }
 

@@ -84,7 +84,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
             val ename = ename_p.getUtf8String(0)
 
             // herr_t H5Tget_member_value	(	hid_t 	type_id, unsigned 	membno, void * 	value)
-            val value_p = context.session.allocate(type_size.toLong()) // assume that the elem_size gives you the base type
+            val value_p = context.arena.allocate(type_size.toLong()) // assume that the elem_size gives you the base type
             checkErr("H5Tget_member_name", H5Tget_member_value(type_id, membno, value_p))
             val raw = value_p.toArray(ValueLayout.JAVA_BYTE)
             val bb = ByteBuffer.wrap(raw)
@@ -131,7 +131,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
         val base_type_id = H5Tget_super(type_id)
         val basetype = readH5CTypeInfo(context, base_type_id, name)
 
-        val dims_p = context.session.allocateArray(C_LONG as MemoryLayout, MAX_DIMS)
+        val dims_p = context.arena.allocateArray(C_LONG as MemoryLayout, MAX_DIMS)
         val ndims = H5Tget_array_dims2(type_id, dims_p)
         val dims = IntArray(ndims) { dims_p.getAtIndex(C_LONG, it.toLong()).toInt() } // where to put this ??
         return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, null, basetype, dims)

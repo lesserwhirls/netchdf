@@ -11,14 +11,30 @@ final class constants$180 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$180() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_decode.class, "apply", constants$15.const$4);
-    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_decode"));
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_size"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_get.class, "apply", constants$113.const$0);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$113.const$0
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Freset_mdc_hit_rate_stats",
+        constants$19.const$5
     );
-    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_get"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_name",
+        constants$20.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_info2",
+        constants$18.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_metadata_read_retry_info",
+        constants$18.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fstart_swmr_write",
+        constants$19.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fget_free_sections",
+        constants$177.const$5
+    );
 }
 
 

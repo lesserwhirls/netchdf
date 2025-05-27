@@ -11,12 +11,30 @@ final class constants$275 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$275() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.10.10");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ll");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("l");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("d");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("ld");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_elem_npoints",
+        constants$10.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_elem_pointlist",
+        constants$54.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_hyper_blocklist",
+        constants$54.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_hyper_nblocks",
+        constants$10.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_npoints",
+        constants$10.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_type",
+        constants$19.const$5
+    );
 }
 
 

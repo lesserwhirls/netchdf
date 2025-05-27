@@ -11,16 +11,15 @@ final class constants$189 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$189() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.flush.class, "apply", constants$188.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$188.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$188.const$4
     );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("flush"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.truncate.class, "apply", constants$188.const$5);
-    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("truncate"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_BOOLEAN
+    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.close.class, "apply", constants$15.const$4);
+    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.cmp.class, "apply", constants$117.const$4);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$117.const$4
     );
 }
 

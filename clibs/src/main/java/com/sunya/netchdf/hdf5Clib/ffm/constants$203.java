@@ -11,27 +11,26 @@ final class constants$203 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$203() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("fileno"),
-        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("objno"),
-        JAVA_INT.withName("nlink"),
-        JAVA_INT.withName("type"),
-        JAVA_LONG.withName("mtime"),
-        JAVA_LONG.withName("linklen"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("size"),
-            JAVA_LONG.withName("free"),
-            JAVA_INT.withName("nmesgs"),
-            JAVA_INT.withName("nchunks")
-        ).withName("ohdr")
-    ).withName("H5G_stat_t");
-    static final VarHandle const$1 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("nlink"));
-    static final VarHandle const$2 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$3 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$4 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("linklen"));
+    static final VarHandle const$0 = constants$199.const$3.varHandle(MemoryLayout.PathElement.groupElement("udata"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5FDregister",
+        constants$43.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5FDunregister",
+        constants$19.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5FDopen",
+        constants$188.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5FDclose",
+        constants$15.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Gcreate1",
-        constants$19.const$3
+        "H5FDcmp",
+        constants$117.const$4
     );
 }
 

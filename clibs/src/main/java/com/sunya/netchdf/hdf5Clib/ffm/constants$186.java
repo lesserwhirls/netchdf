@@ -11,19 +11,13 @@ final class constants$186 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$186() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eoa.class, "apply", constants$185.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$185.const$5
-    );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_eoa"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.set_eoa.class, "apply", constants$186.const$3);
+    static final VarHandle const$0 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("sb_encode"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_decode.class, "apply", constants$16.const$0);
+    static final VarHandle const$2 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("sb_decode"));
+    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("fapl_size"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_get.class, "apply", constants$118.const$5);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$186.const$3
+        constants$118.const$5
     );
 }
 

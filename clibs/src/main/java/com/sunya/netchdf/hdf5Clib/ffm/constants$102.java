@@ -11,29 +11,32 @@ final class constants$102 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$102() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ddebug",
-        constants$19.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dformat_convert",
-        constants$19.const$0
+        "H5Dcreate_anon",
+        constants$102.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_index_type",
-        constants$44.const$4
+        "H5Dopen2",
+        constants$20.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Dcreate1",
-        constants$86.const$5
+        "H5Dget_space",
+        constants$10.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dopen1",
-        constants$53.const$5
+        "H5Dget_space_status",
+        constants$18.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dextend",
-        constants$44.const$4
+        "H5Dget_type",
+        constants$10.const$2
     );
 }
 

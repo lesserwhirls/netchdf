@@ -195,14 +195,6 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5_HAVE_FILTER_SZIP 1
-     * }
-     */
-    public static int H5_HAVE_FILTER_SZIP() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
      * #define H5_HAVE_FLOAT128 1
      * }
      */
@@ -355,14 +347,6 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5_HAVE_LIBSZ 1
-     * }
-     */
-    public static int H5_HAVE_LIBSZ() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
      * #define H5_HAVE_LIBZ 1
      * }
      */
@@ -419,6 +403,14 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
+     * #define H5_HAVE_MEMORY_H 1
+     * }
+     */
+    public static int H5_HAVE_MEMORY_H() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
      * #define H5_HAVE_NETDB_H 1
      * }
      */
@@ -471,14 +463,6 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static int H5_HAVE_PTHREAD_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define H5_HAVE_PWD_H 1
-     * }
-     */
-    public static int H5_HAVE_PWD_H() {
         return (int)1L;
     }
     /**
@@ -619,14 +603,6 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5_HAVE_STDIO_H 1
-     * }
-     */
-    public static int H5_HAVE_STDIO_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
      * #define H5_HAVE_STDLIB_H 1
      * }
      */
@@ -751,14 +727,6 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static int H5_HAVE_SYS_TYPES_H() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * #define H5_HAVE_SZLIB_H 1
-     * }
-     */
-    public static int H5_HAVE_SZLIB_H() {
         return (int)1L;
     }
     /**
@@ -895,6 +863,14 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static int H5_LLONG_TO_LDOUBLE_CORRECT() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5_NO_ALIGNMENT_RESTRICTIONS 1
+     * }
+     */
+    public static int H5_NO_ALIGNMENT_RESTRICTIONS() {
         return (int)1L;
     }
     /**
@@ -1267,11 +1243,11 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5_TEST_EXPRESS_LEVEL_DEFAULT 3
+     * #define H5_TIME_WITH_SYS_TIME 1
      * }
      */
-    public static int H5_TEST_EXPRESS_LEVEL_DEFAULT() {
-        return (int)3L;
+    public static int H5_TIME_WITH_SYS_TIME() {
+        return (int)1L;
     }
     /**
      * {@snippet :
@@ -1287,6 +1263,14 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static int H5_USE_FILE_LOCKING() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5_USING_MEMCHECKER 1
+     * }
+     */
+    public static int H5_USING_MEMCHECKER() {
         return (int)1L;
     }
     /**
@@ -1419,6 +1403,94 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
+     * #define H5Lget_info_vers 1
+     * }
+     */
+    public static int H5Lget_info_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Lget_info_by_idx_vers 1
+     * }
+     */
+    public static int H5Lget_info_by_idx_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Literate_vers 1
+     * }
+     */
+    public static int H5Literate_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Literate_by_name_vers 1
+     * }
+     */
+    public static int H5Literate_by_name_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Lvisit_vers 1
+     * }
+     */
+    public static int H5Lvisit_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Lvisit_by_name_vers 1
+     * }
+     */
+    public static int H5Lvisit_by_name_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Oget_info_vers 1
+     * }
+     */
+    public static int H5Oget_info_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Oget_info_by_idx_vers 1
+     * }
+     */
+    public static int H5Oget_info_by_idx_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Oget_info_by_name_vers 1
+     * }
+     */
+    public static int H5Oget_info_by_name_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Ovisit_vers 1
+     * }
+     */
+    public static int H5Ovisit_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Ovisit_by_name_vers 1
+     * }
+     */
+    public static int H5Ovisit_by_name_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
      * #define H5Pget_filter_vers 2
      * }
      */
@@ -1467,6 +1539,14 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
+     * #define H5Sencode_vers 1
+     * }
+     */
+    public static int H5Sencode_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
      * #define H5Tarray_create_vers 2
      * }
      */
@@ -1507,10 +1587,34 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
+     * #define H5O_info_t_vers 1
+     * }
+     */
+    public static int H5O_info_t_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5O_iterate_t_vers 1
+     * }
+     */
+    public static int H5O_iterate_t_vers() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
      * #define H5Z_class_t_vers 2
      * }
      */
     public static int H5Z_class_t_vers() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5Pencode_vers 2
+     * }
+     */
+    public static int H5Pencode_vers() {
         return (int)2L;
     }
     /**
@@ -2803,19 +2907,19 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5_VERS_MINOR 10
+     * #define H5_VERS_MINOR 12
      * }
      */
     public static int H5_VERS_MINOR() {
-        return (int)10L;
+        return (int)12L;
     }
     /**
      * {@snippet :
-     * #define H5_VERS_RELEASE 10
+     * #define H5_VERS_RELEASE 1
      * }
      */
     public static int H5_VERS_RELEASE() {
-        return (int)10L;
+        return (int)1L;
     }
     /**
      * {@snippet :
@@ -2848,14 +2952,6 @@ public class hdf5_h extends hdf5_h_2 {
      */
     public static int H5T_OPAQUE_TAG_MAX() {
         return (int)256L;
-    }
-    /**
-     * {@snippet :
-     * #define H5L_SAME_LOC 0
-     * }
-     */
-    public static int H5L_SAME_LOC() {
-        return (int)0L;
     }
     /**
      * {@snippet :
@@ -3291,22 +3387,6 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5E_DEFAULT 0
-     * }
-     */
-    public static int H5E_DEFAULT() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * #define H5F_FAMILY_DEFAULT 0
-     * }
-     */
-    public static int H5F_FAMILY_DEFAULT() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
      * #define H5F_NUM_METADATA_READ_RETRY_TYPES 21
      * }
      */
@@ -3475,11 +3555,75 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5S_MAX_RANK 32
+     * #define H5VL_MAP_CREATE 1
      * }
      */
-    public static int H5S_MAX_RANK() {
-        return (int)32L;
+    public static int H5VL_MAP_CREATE() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_OPEN 2
+     * }
+     */
+    public static int H5VL_MAP_OPEN() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_GET_VAL 3
+     * }
+     */
+    public static int H5VL_MAP_GET_VAL() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_EXISTS 4
+     * }
+     */
+    public static int H5VL_MAP_EXISTS() {
+        return (int)4L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_PUT 5
+     * }
+     */
+    public static int H5VL_MAP_PUT() {
+        return (int)5L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_GET 6
+     * }
+     */
+    public static int H5VL_MAP_GET() {
+        return (int)6L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_SPECIFIC 7
+     * }
+     */
+    public static int H5VL_MAP_SPECIFIC() {
+        return (int)7L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_OPTIONAL 8
+     * }
+     */
+    public static int H5VL_MAP_OPTIONAL() {
+        return (int)8L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_MAP_CLOSE 9
+     * }
+     */
+    public static int H5VL_MAP_CLOSE() {
+        return (int)9L;
     }
     /**
      * {@snippet :
@@ -3763,14 +3907,6 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * #define H5P_DEFAULT 0
-     * }
-     */
-    public static int H5P_DEFAULT() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
      * #define H5PL_FILTER_PLUGIN 1
      * }
      */
@@ -3779,11 +3915,491 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
+     * #define H5PL_VOL_PLUGIN 2
+     * }
+     */
+    public static int H5PL_VOL_PLUGIN() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
      * #define H5PL_ALL_PLUGIN 65535
      * }
      */
     public static int H5PL_ALL_PLUGIN() {
         return (int)65535L;
+    }
+    /**
+     * {@snippet :
+     * #define H5S_MAX_RANK 32
+     * }
+     */
+    public static int H5S_MAX_RANK() {
+        return (int)32L;
+    }
+    /**
+     * {@snippet :
+     * #define H5S_SEL_ITER_GET_SEQ_LIST_SORTED 1
+     * }
+     */
+    public static int H5S_SEL_ITER_GET_SEQ_LIST_SORTED() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5S_SEL_ITER_SHARE_WITH_DATASPACE 2
+     * }
+     */
+    public static int H5S_SEL_ITER_SHARE_WITH_DATASPACE() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_VERSION 0
+     * }
+     */
+    public static int H5VL_VERSION() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5_VOL_NATIVE 0
+     * }
+     */
+    public static int H5_VOL_NATIVE() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5_VOL_RESERVED 256
+     * }
+     */
+    public static int H5_VOL_RESERVED() {
+        return (int)256L;
+    }
+    /**
+     * {@snippet :
+     * #define H5_VOL_MAX 65535
+     * }
+     */
+    public static int H5_VOL_MAX() {
+        return (int)65535L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_CAP_FLAG_NONE 0
+     * }
+     */
+    public static int H5VL_CAP_FLAG_NONE() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_CAP_FLAG_THREADSAFE 1
+     * }
+     */
+    public static int H5VL_CAP_FLAG_THREADSAFE() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_CONTAINER_INFO_VERSION 1
+     * }
+     */
+    public static int H5VL_CONTAINER_INFO_VERSION() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_VERSION 0
+     * }
+     */
+    public static int H5VL_NATIVE_VERSION() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_ATTR_ITERATE_OLD 0
+     * }
+     */
+    public static int H5VL_NATIVE_ATTR_ITERATE_OLD() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_FORMAT_CONVERT 0
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_FORMAT_CONVERT() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_CHUNK_INDEX_TYPE 1
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_CHUNK_INDEX_TYPE() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_CHUNK_STORAGE_SIZE 2
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_CHUNK_STORAGE_SIZE() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_NUM_CHUNKS 3
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_NUM_CHUNKS() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_CHUNK_INFO_BY_IDX 4
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_CHUNK_INFO_BY_IDX() {
+        return (int)4L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_CHUNK_INFO_BY_COORD 5
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_CHUNK_INFO_BY_COORD() {
+        return (int)5L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_CHUNK_READ 6
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_CHUNK_READ() {
+        return (int)6L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_CHUNK_WRITE 7
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_CHUNK_WRITE() {
+        return (int)7L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_VLEN_BUF_SIZE 8
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_VLEN_BUF_SIZE() {
+        return (int)8L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_DATASET_GET_OFFSET 9
+     * }
+     */
+    public static int H5VL_NATIVE_DATASET_GET_OFFSET() {
+        return (int)9L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_CLEAR_ELINK_CACHE 0
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_CLEAR_ELINK_CACHE() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_FILE_IMAGE 1
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_FILE_IMAGE() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_FREE_SECTIONS 2
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_FREE_SECTIONS() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_FREE_SPACE 3
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_FREE_SPACE() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_INFO 4
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_INFO() {
+        return (int)4L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MDC_CONF 5
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MDC_CONF() {
+        return (int)5L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MDC_HR 6
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MDC_HR() {
+        return (int)6L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MDC_SIZE 7
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MDC_SIZE() {
+        return (int)7L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_SIZE 8
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_SIZE() {
+        return (int)8L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_VFD_HANDLE 9
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_VFD_HANDLE() {
+        return (int)9L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_RESET_MDC_HIT_RATE 10
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_RESET_MDC_HIT_RATE() {
+        return (int)10L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_SET_MDC_CONFIG 11
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_SET_MDC_CONFIG() {
+        return (int)11L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_METADATA_READ_RETRY_INFO 12
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_METADATA_READ_RETRY_INFO() {
+        return (int)12L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_START_SWMR_WRITE 13
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_START_SWMR_WRITE() {
+        return (int)13L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_START_MDC_LOGGING 14
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_START_MDC_LOGGING() {
+        return (int)14L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_STOP_MDC_LOGGING 15
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_STOP_MDC_LOGGING() {
+        return (int)15L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MDC_LOGGING_STATUS 16
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MDC_LOGGING_STATUS() {
+        return (int)16L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_FORMAT_CONVERT 17
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_FORMAT_CONVERT() {
+        return (int)17L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_RESET_PAGE_BUFFERING_STATS 18
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_RESET_PAGE_BUFFERING_STATS() {
+        return (int)18L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_PAGE_BUFFERING_STATS 19
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_PAGE_BUFFERING_STATS() {
+        return (int)19L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MDC_IMAGE_INFO 20
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MDC_IMAGE_INFO() {
+        return (int)20L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_EOA 21
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_EOA() {
+        return (int)21L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_INCR_FILESIZE 22
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_INCR_FILESIZE() {
+        return (int)22L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_SET_LIBVER_BOUNDS 23
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_SET_LIBVER_BOUNDS() {
+        return (int)23L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MIN_DSET_OHDR_FLAG 24
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MIN_DSET_OHDR_FLAG() {
+        return (int)24L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_SET_MIN_DSET_OHDR_FLAG 25
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_SET_MIN_DSET_OHDR_FLAG() {
+        return (int)25L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_GET_MPI_ATOMICITY 26
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_GET_MPI_ATOMICITY() {
+        return (int)26L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_SET_MPI_ATOMICITY 27
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_SET_MPI_ATOMICITY() {
+        return (int)27L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_FILE_POST_OPEN 28
+     * }
+     */
+    public static int H5VL_NATIVE_FILE_POST_OPEN() {
+        return (int)28L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_GROUP_ITERATE_OLD 0
+     * }
+     */
+    public static int H5VL_NATIVE_GROUP_ITERATE_OLD() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_GROUP_GET_OBJINFO 1
+     * }
+     */
+    public static int H5VL_NATIVE_GROUP_GET_OBJINFO() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_GET_COMMENT 0
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_GET_COMMENT() {
+        return (int)0L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_SET_COMMENT 1
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_SET_COMMENT() {
+        return (int)1L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_DISABLE_MDC_FLUSHES 2
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_DISABLE_MDC_FLUSHES() {
+        return (int)2L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_ENABLE_MDC_FLUSHES 3
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_ENABLE_MDC_FLUSHES() {
+        return (int)3L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_ARE_MDC_FLUSHES_DISABLED 4
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_ARE_MDC_FLUSHES_DISABLED() {
+        return (int)4L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_NATIVE_OBJECT_GET_NATIVE_INFO 5
+     * }
+     */
+    public static int H5VL_NATIVE_OBJECT_GET_NATIVE_INFO() {
+        return (int)5L;
     }
     /**
      * {@snippet :
@@ -4048,6 +4664,22 @@ public class hdf5_h extends hdf5_h_2 {
      */
     public static int H5FD_SPLITTER_MAGIC() {
         return (int)730949760L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_PASSTHRU_VALUE 505
+     * }
+     */
+    public static int H5VL_PASSTHRU_VALUE() {
+        return (int)505L;
+    }
+    /**
+     * {@snippet :
+     * #define H5VL_PASSTHRU_VERSION 0
+     * }
+     */
+    public static int H5VL_PASSTHRU_VERSION() {
+        return (int)0L;
     }
     /**
      * {@snippet :
@@ -5114,7 +5746,7 @@ public class hdf5_h extends hdf5_h_2 {
         return (int)2L;
     }
     public static MethodHandle H5open$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$1,"H5open");
+        return RuntimeHelper.requireNonNull(constants$14.const$2,"H5open");
     }
     /**
      * {@snippet :
@@ -5130,7 +5762,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5close$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$2,"H5close");
+        return RuntimeHelper.requireNonNull(constants$14.const$3,"H5close");
     }
     /**
      * {@snippet :
@@ -5146,7 +5778,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5dont_atexit$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$3,"H5dont_atexit");
+        return RuntimeHelper.requireNonNull(constants$14.const$4,"H5dont_atexit");
     }
     /**
      * {@snippet :
@@ -5162,7 +5794,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5garbage_collect$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$4,"H5garbage_collect");
+        return RuntimeHelper.requireNonNull(constants$14.const$5,"H5garbage_collect");
     }
     /**
      * {@snippet :
@@ -5178,7 +5810,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5set_free_list_limits$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$6,"H5set_free_list_limits");
+        return RuntimeHelper.requireNonNull(constants$15.const$1,"H5set_free_list_limits");
     }
     /**
      * {@snippet :
@@ -5194,7 +5826,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5get_free_list_sizes$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$1,"H5get_free_list_sizes");
+        return RuntimeHelper.requireNonNull(constants$15.const$3,"H5get_free_list_sizes");
     }
     /**
      * {@snippet :
@@ -5210,7 +5842,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5get_alloc_stats$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$3,"H5get_alloc_stats");
+        return RuntimeHelper.requireNonNull(constants$15.const$5,"H5get_alloc_stats");
     }
     /**
      * {@snippet :
@@ -5226,7 +5858,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5get_libversion$MH() {
-        return RuntimeHelper.requireNonNull(constants$15.const$5,"H5get_libversion");
+        return RuntimeHelper.requireNonNull(constants$16.const$1,"H5get_libversion");
     }
     /**
      * {@snippet :
@@ -5242,7 +5874,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5check_version$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$1,"H5check_version");
+        return RuntimeHelper.requireNonNull(constants$16.const$3,"H5check_version");
     }
     /**
      * {@snippet :
@@ -5258,7 +5890,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5is_library_threadsafe$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$2,"H5is_library_threadsafe");
+        return RuntimeHelper.requireNonNull(constants$16.const$4,"H5is_library_threadsafe");
     }
     /**
      * {@snippet :
@@ -5274,7 +5906,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5free_memory$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$3,"H5free_memory");
+        return RuntimeHelper.requireNonNull(constants$16.const$5,"H5free_memory");
     }
     /**
      * {@snippet :
@@ -5290,7 +5922,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5allocate_memory$MH() {
-        return RuntimeHelper.requireNonNull(constants$16.const$5,"H5allocate_memory");
+        return RuntimeHelper.requireNonNull(constants$17.const$1,"H5allocate_memory");
     }
     /**
      * {@snippet :
@@ -5306,7 +5938,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5resize_memory$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$1,"H5resize_memory");
+        return RuntimeHelper.requireNonNull(constants$17.const$3,"H5resize_memory");
     }
     /**
      * {@snippet :
@@ -5379,18 +6011,18 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_ATTR = 6;
+     * enum H5I_type_t.H5I_MAP = 6;
      * }
      */
-    public static int H5I_ATTR() {
+    public static int H5I_MAP() {
         return (int)6L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_REFERENCE = 7;
+     * enum H5I_type_t.H5I_ATTR = 7;
      * }
      */
-    public static int H5I_REFERENCE() {
+    public static int H5I_ATTR() {
         return (int)7L;
     }
     /**
@@ -5403,51 +6035,67 @@ public class hdf5_h extends hdf5_h_2 {
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_GENPROP_CLS = 9;
+     * enum H5I_type_t.H5I_VOL = 9;
      * }
      */
-    public static int H5I_GENPROP_CLS() {
+    public static int H5I_VOL() {
         return (int)9L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_GENPROP_LST = 10;
+     * enum H5I_type_t.H5I_GENPROP_CLS = 10;
      * }
      */
-    public static int H5I_GENPROP_LST() {
+    public static int H5I_GENPROP_CLS() {
         return (int)10L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_ERROR_CLASS = 11;
+     * enum H5I_type_t.H5I_GENPROP_LST = 11;
      * }
      */
-    public static int H5I_ERROR_CLASS() {
+    public static int H5I_GENPROP_LST() {
         return (int)11L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_ERROR_MSG = 12;
+     * enum H5I_type_t.H5I_ERROR_CLASS = 12;
      * }
      */
-    public static int H5I_ERROR_MSG() {
+    public static int H5I_ERROR_CLASS() {
         return (int)12L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_ERROR_STACK = 13;
+     * enum H5I_type_t.H5I_ERROR_MSG = 13;
      * }
      */
-    public static int H5I_ERROR_STACK() {
+    public static int H5I_ERROR_MSG() {
         return (int)13L;
     }
     /**
      * {@snippet :
-     * enum H5I_type_t.H5I_NTYPES = 14;
+     * enum H5I_type_t.H5I_ERROR_STACK = 14;
+     * }
+     */
+    public static int H5I_ERROR_STACK() {
+        return (int)14L;
+    }
+    /**
+     * {@snippet :
+     * enum H5I_type_t.H5I_SPACE_SEL_ITER = 15;
+     * }
+     */
+    public static int H5I_SPACE_SEL_ITER() {
+        return (int)15L;
+    }
+    /**
+     * {@snippet :
+     * enum H5I_type_t.H5I_NTYPES = 16;
      * }
      */
     public static int H5I_NTYPES() {
-        return (int)14L;
+        return (int)16L;
     }
     /**
      * {@snippet :
@@ -5456,7 +6104,7 @@ public class hdf5_h extends hdf5_h_2 {
      */
     public static final OfLong hid_t = JAVA_LONG;
     public static MethodHandle H5Iregister$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$2,"H5Iregister");
+        return RuntimeHelper.requireNonNull(constants$19.const$1,"H5Iregister");
     }
     /**
      * {@snippet :
@@ -5472,7 +6120,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iobject_verify$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$4,"H5Iobject_verify");
+        return RuntimeHelper.requireNonNull(constants$19.const$3,"H5Iobject_verify");
     }
     /**
      * {@snippet :
@@ -5488,7 +6136,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iremove_verify$MH() {
-        return RuntimeHelper.requireNonNull(constants$18.const$5,"H5Iremove_verify");
+        return RuntimeHelper.requireNonNull(constants$19.const$4,"H5Iremove_verify");
     }
     /**
      * {@snippet :
@@ -5504,7 +6152,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iget_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$1,"H5Iget_type");
+        return RuntimeHelper.requireNonNull(constants$19.const$6,"H5Iget_type");
     }
     /**
      * {@snippet :
@@ -5520,7 +6168,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iget_file_id$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$2,"H5Iget_file_id");
+        return RuntimeHelper.requireNonNull(constants$20.const$0,"H5Iget_file_id");
     }
     /**
      * {@snippet :
@@ -5536,7 +6184,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iget_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$4,"H5Iget_name");
+        return RuntimeHelper.requireNonNull(constants$20.const$2,"H5Iget_name");
     }
     /**
      * {@snippet :
@@ -5552,7 +6200,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iinc_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$19.const$5,"H5Iinc_ref");
+        return RuntimeHelper.requireNonNull(constants$20.const$3,"H5Iinc_ref");
     }
     /**
      * {@snippet :
@@ -5568,7 +6216,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Idec_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$0,"H5Idec_ref");
+        return RuntimeHelper.requireNonNull(constants$20.const$4,"H5Idec_ref");
     }
     /**
      * {@snippet :
@@ -5584,7 +6232,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iget_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$1,"H5Iget_ref");
+        return RuntimeHelper.requireNonNull(constants$20.const$5,"H5Iget_ref");
     }
     /**
      * {@snippet :
@@ -5600,7 +6248,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iregister_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$3,"H5Iregister_type");
+        return RuntimeHelper.requireNonNull(constants$21.const$1,"H5Iregister_type");
     }
     /**
      * {@snippet :
@@ -5616,7 +6264,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iclear_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$20.const$5,"H5Iclear_type");
+        return RuntimeHelper.requireNonNull(constants$21.const$3,"H5Iclear_type");
     }
     /**
      * {@snippet :
@@ -5632,7 +6280,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Idestroy_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$1,"H5Idestroy_type");
+        return RuntimeHelper.requireNonNull(constants$21.const$5,"H5Idestroy_type");
     }
     /**
      * {@snippet :
@@ -5648,7 +6296,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iinc_type_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$2,"H5Iinc_type_ref");
+        return RuntimeHelper.requireNonNull(constants$22.const$0,"H5Iinc_type_ref");
     }
     /**
      * {@snippet :
@@ -5664,7 +6312,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Idec_type_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$3,"H5Idec_type_ref");
+        return RuntimeHelper.requireNonNull(constants$22.const$1,"H5Idec_type_ref");
     }
     /**
      * {@snippet :
@@ -5680,7 +6328,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iget_type_ref$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$4,"H5Iget_type_ref");
+        return RuntimeHelper.requireNonNull(constants$22.const$2,"H5Iget_type_ref");
     }
     /**
      * {@snippet :
@@ -5696,7 +6344,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Isearch$MH() {
-        return RuntimeHelper.requireNonNull(constants$21.const$6,"H5Isearch");
+        return RuntimeHelper.requireNonNull(constants$22.const$4,"H5Isearch");
     }
     /**
      * {@snippet :
@@ -5711,8 +6359,24 @@ public class hdf5_h extends hdf5_h_2 {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle H5Iiterate$MH() {
+        return RuntimeHelper.requireNonNull(constants$22.const$6,"H5Iiterate");
+    }
+    /**
+     * {@snippet :
+     * herr_t H5Iiterate(H5I_type_t type, H5I_iterate_func_t op, void* op_data);
+     * }
+     */
+    public static int H5Iiterate(int type, MemorySegment op, MemorySegment op_data) {
+        var mh$ = H5Iiterate$MH();
+        try {
+            return (int)mh$.invokeExact(type, op, op_data);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle H5Inmembers$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$1,"H5Inmembers");
+        return RuntimeHelper.requireNonNull(constants$23.const$1,"H5Inmembers");
     }
     /**
      * {@snippet :
@@ -5728,7 +6392,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Itype_exists$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$2,"H5Itype_exists");
+        return RuntimeHelper.requireNonNull(constants$23.const$2,"H5Itype_exists");
     }
     /**
      * {@snippet :
@@ -5744,7 +6408,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Iis_valid$MH() {
-        return RuntimeHelper.requireNonNull(constants$22.const$3,"H5Iis_valid");
+        return RuntimeHelper.requireNonNull(constants$23.const$3,"H5Iis_valid");
     }
     /**
      * {@snippet :
@@ -6467,10 +7131,10 @@ public class hdf5_h extends hdf5_h_2 {
         return JAVA_LONG;
     }
     public static VarHandle H5T_IEEE_F32BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_IEEE_F32BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$25.const$1,"H5T_IEEE_F32BE_g");
+        return RuntimeHelper.requireNonNull(constants$26.const$1,"H5T_IEEE_F32BE_g");
     }
     /**
      * Getter for variable:
@@ -6479,7 +7143,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_IEEE_F32BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$25.const$1, "H5T_IEEE_F32BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$1, "H5T_IEEE_F32BE_g"));
     }
     /**
      * Setter for variable:
@@ -6488,16 +7152,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_IEEE_F32BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$25.const$1, "H5T_IEEE_F32BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$1, "H5T_IEEE_F32BE_g"), x);
     }
     public static MemoryLayout H5T_IEEE_F32LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_IEEE_F32LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_IEEE_F32LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$25.const$2,"H5T_IEEE_F32LE_g");
+        return RuntimeHelper.requireNonNull(constants$26.const$2,"H5T_IEEE_F32LE_g");
     }
     /**
      * Getter for variable:
@@ -6506,7 +7170,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_IEEE_F32LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$25.const$2, "H5T_IEEE_F32LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$2, "H5T_IEEE_F32LE_g"));
     }
     /**
      * Setter for variable:
@@ -6515,16 +7179,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_IEEE_F32LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$25.const$2, "H5T_IEEE_F32LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$2, "H5T_IEEE_F32LE_g"), x);
     }
     public static MemoryLayout H5T_IEEE_F64BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_IEEE_F64BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_IEEE_F64BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$25.const$3,"H5T_IEEE_F64BE_g");
+        return RuntimeHelper.requireNonNull(constants$26.const$3,"H5T_IEEE_F64BE_g");
     }
     /**
      * Getter for variable:
@@ -6533,7 +7197,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_IEEE_F64BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$25.const$3, "H5T_IEEE_F64BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$3, "H5T_IEEE_F64BE_g"));
     }
     /**
      * Setter for variable:
@@ -6542,16 +7206,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_IEEE_F64BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$25.const$3, "H5T_IEEE_F64BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$3, "H5T_IEEE_F64BE_g"), x);
     }
     public static MemoryLayout H5T_IEEE_F64LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_IEEE_F64LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_IEEE_F64LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$25.const$4,"H5T_IEEE_F64LE_g");
+        return RuntimeHelper.requireNonNull(constants$26.const$4,"H5T_IEEE_F64LE_g");
     }
     /**
      * Getter for variable:
@@ -6560,7 +7224,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_IEEE_F64LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$25.const$4, "H5T_IEEE_F64LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$4, "H5T_IEEE_F64LE_g"));
     }
     /**
      * Setter for variable:
@@ -6569,16 +7233,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_IEEE_F64LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$25.const$4, "H5T_IEEE_F64LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$4, "H5T_IEEE_F64LE_g"), x);
     }
     public static MemoryLayout H5T_STD_I8BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I8BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I8BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$25.const$5,"H5T_STD_I8BE_g");
+        return RuntimeHelper.requireNonNull(constants$26.const$5,"H5T_STD_I8BE_g");
     }
     /**
      * Getter for variable:
@@ -6587,7 +7251,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I8BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$25.const$5, "H5T_STD_I8BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$5, "H5T_STD_I8BE_g"));
     }
     /**
      * Setter for variable:
@@ -6596,16 +7260,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I8BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$25.const$5, "H5T_STD_I8BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$5, "H5T_STD_I8BE_g"), x);
     }
     public static MemoryLayout H5T_STD_I8LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I8LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I8LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$0,"H5T_STD_I8LE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$0,"H5T_STD_I8LE_g");
     }
     /**
      * Getter for variable:
@@ -6614,7 +7278,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I8LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$0, "H5T_STD_I8LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$0, "H5T_STD_I8LE_g"));
     }
     /**
      * Setter for variable:
@@ -6623,16 +7287,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I8LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$0, "H5T_STD_I8LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$0, "H5T_STD_I8LE_g"), x);
     }
     public static MemoryLayout H5T_STD_I16BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I16BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I16BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$1,"H5T_STD_I16BE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$1,"H5T_STD_I16BE_g");
     }
     /**
      * Getter for variable:
@@ -6641,7 +7305,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I16BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$1, "H5T_STD_I16BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$1, "H5T_STD_I16BE_g"));
     }
     /**
      * Setter for variable:
@@ -6650,16 +7314,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I16BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$1, "H5T_STD_I16BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$1, "H5T_STD_I16BE_g"), x);
     }
     public static MemoryLayout H5T_STD_I16LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I16LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I16LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$2,"H5T_STD_I16LE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$2,"H5T_STD_I16LE_g");
     }
     /**
      * Getter for variable:
@@ -6668,7 +7332,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I16LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$2, "H5T_STD_I16LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$2, "H5T_STD_I16LE_g"));
     }
     /**
      * Setter for variable:
@@ -6677,16 +7341,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I16LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$2, "H5T_STD_I16LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$2, "H5T_STD_I16LE_g"), x);
     }
     public static MemoryLayout H5T_STD_I32BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I32BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I32BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$3,"H5T_STD_I32BE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$3,"H5T_STD_I32BE_g");
     }
     /**
      * Getter for variable:
@@ -6695,7 +7359,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I32BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$3, "H5T_STD_I32BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$3, "H5T_STD_I32BE_g"));
     }
     /**
      * Setter for variable:
@@ -6704,16 +7368,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I32BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$3, "H5T_STD_I32BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$3, "H5T_STD_I32BE_g"), x);
     }
     public static MemoryLayout H5T_STD_I32LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I32LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I32LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$4,"H5T_STD_I32LE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$4,"H5T_STD_I32LE_g");
     }
     /**
      * Getter for variable:
@@ -6722,7 +7386,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I32LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$4, "H5T_STD_I32LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$4, "H5T_STD_I32LE_g"));
     }
     /**
      * Setter for variable:
@@ -6731,16 +7395,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I32LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$4, "H5T_STD_I32LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$4, "H5T_STD_I32LE_g"), x);
     }
     public static MemoryLayout H5T_STD_I64BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I64BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I64BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$26.const$5,"H5T_STD_I64BE_g");
+        return RuntimeHelper.requireNonNull(constants$27.const$5,"H5T_STD_I64BE_g");
     }
     /**
      * Getter for variable:
@@ -6749,7 +7413,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I64BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$26.const$5, "H5T_STD_I64BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$5, "H5T_STD_I64BE_g"));
     }
     /**
      * Setter for variable:
@@ -6758,16 +7422,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I64BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$26.const$5, "H5T_STD_I64BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$5, "H5T_STD_I64BE_g"), x);
     }
     public static MemoryLayout H5T_STD_I64LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_I64LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_I64LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$0,"H5T_STD_I64LE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$0,"H5T_STD_I64LE_g");
     }
     /**
      * Getter for variable:
@@ -6776,7 +7440,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_I64LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$0, "H5T_STD_I64LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$0, "H5T_STD_I64LE_g"));
     }
     /**
      * Setter for variable:
@@ -6785,16 +7449,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_I64LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$0, "H5T_STD_I64LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$0, "H5T_STD_I64LE_g"), x);
     }
     public static MemoryLayout H5T_STD_U8BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U8BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U8BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$1,"H5T_STD_U8BE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$1,"H5T_STD_U8BE_g");
     }
     /**
      * Getter for variable:
@@ -6803,7 +7467,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U8BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$1, "H5T_STD_U8BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$1, "H5T_STD_U8BE_g"));
     }
     /**
      * Setter for variable:
@@ -6812,16 +7476,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U8BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$1, "H5T_STD_U8BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$1, "H5T_STD_U8BE_g"), x);
     }
     public static MemoryLayout H5T_STD_U8LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U8LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U8LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$2,"H5T_STD_U8LE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$2,"H5T_STD_U8LE_g");
     }
     /**
      * Getter for variable:
@@ -6830,7 +7494,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U8LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$2, "H5T_STD_U8LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$2, "H5T_STD_U8LE_g"));
     }
     /**
      * Setter for variable:
@@ -6839,16 +7503,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U8LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$2, "H5T_STD_U8LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$2, "H5T_STD_U8LE_g"), x);
     }
     public static MemoryLayout H5T_STD_U16BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U16BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U16BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$3,"H5T_STD_U16BE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$3,"H5T_STD_U16BE_g");
     }
     /**
      * Getter for variable:
@@ -6857,7 +7521,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U16BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$3, "H5T_STD_U16BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$3, "H5T_STD_U16BE_g"));
     }
     /**
      * Setter for variable:
@@ -6866,16 +7530,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U16BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$3, "H5T_STD_U16BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$3, "H5T_STD_U16BE_g"), x);
     }
     public static MemoryLayout H5T_STD_U16LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U16LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U16LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$4,"H5T_STD_U16LE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$4,"H5T_STD_U16LE_g");
     }
     /**
      * Getter for variable:
@@ -6884,7 +7548,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U16LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$4, "H5T_STD_U16LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$4, "H5T_STD_U16LE_g"));
     }
     /**
      * Setter for variable:
@@ -6893,16 +7557,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U16LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$4, "H5T_STD_U16LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$4, "H5T_STD_U16LE_g"), x);
     }
     public static MemoryLayout H5T_STD_U32BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U32BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U32BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$27.const$5,"H5T_STD_U32BE_g");
+        return RuntimeHelper.requireNonNull(constants$28.const$5,"H5T_STD_U32BE_g");
     }
     /**
      * Getter for variable:
@@ -6911,7 +7575,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U32BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$27.const$5, "H5T_STD_U32BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$5, "H5T_STD_U32BE_g"));
     }
     /**
      * Setter for variable:
@@ -6920,16 +7584,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U32BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$27.const$5, "H5T_STD_U32BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$5, "H5T_STD_U32BE_g"), x);
     }
     public static MemoryLayout H5T_STD_U32LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U32LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U32LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$0,"H5T_STD_U32LE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$0,"H5T_STD_U32LE_g");
     }
     /**
      * Getter for variable:
@@ -6938,7 +7602,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U32LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$0, "H5T_STD_U32LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$0, "H5T_STD_U32LE_g"));
     }
     /**
      * Setter for variable:
@@ -6947,16 +7611,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U32LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$0, "H5T_STD_U32LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$0, "H5T_STD_U32LE_g"), x);
     }
     public static MemoryLayout H5T_STD_U64BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U64BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U64BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$1,"H5T_STD_U64BE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$1,"H5T_STD_U64BE_g");
     }
     /**
      * Getter for variable:
@@ -6965,7 +7629,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U64BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$1, "H5T_STD_U64BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$1, "H5T_STD_U64BE_g"));
     }
     /**
      * Setter for variable:
@@ -6974,16 +7638,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U64BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$1, "H5T_STD_U64BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$1, "H5T_STD_U64BE_g"), x);
     }
     public static MemoryLayout H5T_STD_U64LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_U64LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_U64LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$2,"H5T_STD_U64LE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$2,"H5T_STD_U64LE_g");
     }
     /**
      * Getter for variable:
@@ -6992,7 +7656,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_U64LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$2, "H5T_STD_U64LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$2, "H5T_STD_U64LE_g"));
     }
     /**
      * Setter for variable:
@@ -7001,16 +7665,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_U64LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$2, "H5T_STD_U64LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$2, "H5T_STD_U64LE_g"), x);
     }
     public static MemoryLayout H5T_STD_B8BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B8BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B8BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$3,"H5T_STD_B8BE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$3,"H5T_STD_B8BE_g");
     }
     /**
      * Getter for variable:
@@ -7019,7 +7683,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B8BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$3, "H5T_STD_B8BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$3, "H5T_STD_B8BE_g"));
     }
     /**
      * Setter for variable:
@@ -7028,16 +7692,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B8BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$3, "H5T_STD_B8BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$3, "H5T_STD_B8BE_g"), x);
     }
     public static MemoryLayout H5T_STD_B8LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B8LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B8LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$4,"H5T_STD_B8LE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$4,"H5T_STD_B8LE_g");
     }
     /**
      * Getter for variable:
@@ -7046,7 +7710,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B8LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$4, "H5T_STD_B8LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$4, "H5T_STD_B8LE_g"));
     }
     /**
      * Setter for variable:
@@ -7055,16 +7719,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B8LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$4, "H5T_STD_B8LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$4, "H5T_STD_B8LE_g"), x);
     }
     public static MemoryLayout H5T_STD_B16BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B16BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B16BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$28.const$5,"H5T_STD_B16BE_g");
+        return RuntimeHelper.requireNonNull(constants$29.const$5,"H5T_STD_B16BE_g");
     }
     /**
      * Getter for variable:
@@ -7073,7 +7737,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B16BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$28.const$5, "H5T_STD_B16BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$5, "H5T_STD_B16BE_g"));
     }
     /**
      * Setter for variable:
@@ -7082,16 +7746,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B16BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$28.const$5, "H5T_STD_B16BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$5, "H5T_STD_B16BE_g"), x);
     }
     public static MemoryLayout H5T_STD_B16LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B16LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B16LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$0,"H5T_STD_B16LE_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$0,"H5T_STD_B16LE_g");
     }
     /**
      * Getter for variable:
@@ -7100,7 +7764,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B16LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$0, "H5T_STD_B16LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$0, "H5T_STD_B16LE_g"));
     }
     /**
      * Setter for variable:
@@ -7109,16 +7773,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B16LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$0, "H5T_STD_B16LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$0, "H5T_STD_B16LE_g"), x);
     }
     public static MemoryLayout H5T_STD_B32BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B32BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B32BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$1,"H5T_STD_B32BE_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$1,"H5T_STD_B32BE_g");
     }
     /**
      * Getter for variable:
@@ -7127,7 +7791,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B32BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$1, "H5T_STD_B32BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$1, "H5T_STD_B32BE_g"));
     }
     /**
      * Setter for variable:
@@ -7136,16 +7800,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B32BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$1, "H5T_STD_B32BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$1, "H5T_STD_B32BE_g"), x);
     }
     public static MemoryLayout H5T_STD_B32LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B32LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B32LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$2,"H5T_STD_B32LE_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$2,"H5T_STD_B32LE_g");
     }
     /**
      * Getter for variable:
@@ -7154,7 +7818,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B32LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$2, "H5T_STD_B32LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$2, "H5T_STD_B32LE_g"));
     }
     /**
      * Setter for variable:
@@ -7163,16 +7827,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B32LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$2, "H5T_STD_B32LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$2, "H5T_STD_B32LE_g"), x);
     }
     public static MemoryLayout H5T_STD_B64BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B64BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B64BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$3,"H5T_STD_B64BE_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$3,"H5T_STD_B64BE_g");
     }
     /**
      * Getter for variable:
@@ -7181,7 +7845,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B64BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$3, "H5T_STD_B64BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$3, "H5T_STD_B64BE_g"));
     }
     /**
      * Setter for variable:
@@ -7190,16 +7854,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B64BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$3, "H5T_STD_B64BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$3, "H5T_STD_B64BE_g"), x);
     }
     public static MemoryLayout H5T_STD_B64LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_B64LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_B64LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$4,"H5T_STD_B64LE_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$4,"H5T_STD_B64LE_g");
     }
     /**
      * Getter for variable:
@@ -7208,7 +7872,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_B64LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$4, "H5T_STD_B64LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$4, "H5T_STD_B64LE_g"));
     }
     /**
      * Setter for variable:
@@ -7217,16 +7881,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_B64LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$4, "H5T_STD_B64LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$4, "H5T_STD_B64LE_g"), x);
     }
     public static MemoryLayout H5T_STD_REF_OBJ_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_REF_OBJ_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_REF_OBJ_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$29.const$5,"H5T_STD_REF_OBJ_g");
+        return RuntimeHelper.requireNonNull(constants$30.const$5,"H5T_STD_REF_OBJ_g");
     }
     /**
      * Getter for variable:
@@ -7235,7 +7899,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_REF_OBJ_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$29.const$5, "H5T_STD_REF_OBJ_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$5, "H5T_STD_REF_OBJ_g"));
     }
     /**
      * Setter for variable:
@@ -7244,16 +7908,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_REF_OBJ_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$29.const$5, "H5T_STD_REF_OBJ_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$5, "H5T_STD_REF_OBJ_g"), x);
     }
     public static MemoryLayout H5T_STD_REF_DSETREG_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_STD_REF_DSETREG_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_STD_REF_DSETREG_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$0,"H5T_STD_REF_DSETREG_g");
+        return RuntimeHelper.requireNonNull(constants$31.const$0,"H5T_STD_REF_DSETREG_g");
     }
     /**
      * Getter for variable:
@@ -7262,7 +7926,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_STD_REF_DSETREG_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$0, "H5T_STD_REF_DSETREG_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$0, "H5T_STD_REF_DSETREG_g"));
     }
     /**
      * Setter for variable:
@@ -7271,16 +7935,43 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_STD_REF_DSETREG_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$0, "H5T_STD_REF_DSETREG_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$0, "H5T_STD_REF_DSETREG_g"), x);
+    }
+    public static MemoryLayout H5T_STD_REF_g$LAYOUT() {
+        return JAVA_LONG;
+    }
+    public static VarHandle H5T_STD_REF_g$VH() {
+        return constants$26.const$0;
+    }
+    public static MemorySegment H5T_STD_REF_g$SEGMENT() {
+        return RuntimeHelper.requireNonNull(constants$31.const$1,"H5T_STD_REF_g");
+    }
+    /**
+     * Getter for variable:
+     * {@snippet :
+     * hid_t H5T_STD_REF_g;
+     * }
+     */
+    public static long H5T_STD_REF_g$get() {
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$1, "H5T_STD_REF_g"));
+    }
+    /**
+     * Setter for variable:
+     * {@snippet :
+     * hid_t H5T_STD_REF_g;
+     * }
+     */
+    public static void H5T_STD_REF_g$set(long x) {
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$1, "H5T_STD_REF_g"), x);
     }
     public static MemoryLayout H5T_UNIX_D32BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_UNIX_D32BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_UNIX_D32BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$1,"H5T_UNIX_D32BE_g");
+        return RuntimeHelper.requireNonNull(constants$31.const$2,"H5T_UNIX_D32BE_g");
     }
     /**
      * Getter for variable:
@@ -7289,7 +7980,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_UNIX_D32BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$1, "H5T_UNIX_D32BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$2, "H5T_UNIX_D32BE_g"));
     }
     /**
      * Setter for variable:
@@ -7298,16 +7989,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_UNIX_D32BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$1, "H5T_UNIX_D32BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$2, "H5T_UNIX_D32BE_g"), x);
     }
     public static MemoryLayout H5T_UNIX_D32LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_UNIX_D32LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_UNIX_D32LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$2,"H5T_UNIX_D32LE_g");
+        return RuntimeHelper.requireNonNull(constants$31.const$3,"H5T_UNIX_D32LE_g");
     }
     /**
      * Getter for variable:
@@ -7316,7 +8007,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_UNIX_D32LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$2, "H5T_UNIX_D32LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$3, "H5T_UNIX_D32LE_g"));
     }
     /**
      * Setter for variable:
@@ -7325,16 +8016,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_UNIX_D32LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$2, "H5T_UNIX_D32LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$3, "H5T_UNIX_D32LE_g"), x);
     }
     public static MemoryLayout H5T_UNIX_D64BE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_UNIX_D64BE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_UNIX_D64BE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$3,"H5T_UNIX_D64BE_g");
+        return RuntimeHelper.requireNonNull(constants$31.const$4,"H5T_UNIX_D64BE_g");
     }
     /**
      * Getter for variable:
@@ -7343,7 +8034,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_UNIX_D64BE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$3, "H5T_UNIX_D64BE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$4, "H5T_UNIX_D64BE_g"));
     }
     /**
      * Setter for variable:
@@ -7352,16 +8043,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_UNIX_D64BE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$3, "H5T_UNIX_D64BE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$4, "H5T_UNIX_D64BE_g"), x);
     }
     public static MemoryLayout H5T_UNIX_D64LE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_UNIX_D64LE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_UNIX_D64LE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$4,"H5T_UNIX_D64LE_g");
+        return RuntimeHelper.requireNonNull(constants$31.const$5,"H5T_UNIX_D64LE_g");
     }
     /**
      * Getter for variable:
@@ -7370,7 +8061,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_UNIX_D64LE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$4, "H5T_UNIX_D64LE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$5, "H5T_UNIX_D64LE_g"));
     }
     /**
      * Setter for variable:
@@ -7379,16 +8070,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_UNIX_D64LE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$4, "H5T_UNIX_D64LE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$5, "H5T_UNIX_D64LE_g"), x);
     }
     public static MemoryLayout H5T_C_S1_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_C_S1_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_C_S1_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$30.const$5,"H5T_C_S1_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$0,"H5T_C_S1_g");
     }
     /**
      * Getter for variable:
@@ -7397,7 +8088,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_C_S1_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$30.const$5, "H5T_C_S1_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$0, "H5T_C_S1_g"));
     }
     /**
      * Setter for variable:
@@ -7406,16 +8097,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_C_S1_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$30.const$5, "H5T_C_S1_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$0, "H5T_C_S1_g"), x);
     }
     public static MemoryLayout H5T_FORTRAN_S1_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_FORTRAN_S1_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_FORTRAN_S1_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$0,"H5T_FORTRAN_S1_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$1,"H5T_FORTRAN_S1_g");
     }
     /**
      * Getter for variable:
@@ -7424,7 +8115,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_FORTRAN_S1_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$0, "H5T_FORTRAN_S1_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$1, "H5T_FORTRAN_S1_g"));
     }
     /**
      * Setter for variable:
@@ -7433,16 +8124,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_FORTRAN_S1_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$0, "H5T_FORTRAN_S1_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$1, "H5T_FORTRAN_S1_g"), x);
     }
     public static MemoryLayout H5T_VAX_F32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_VAX_F32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_VAX_F32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$1,"H5T_VAX_F32_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$2,"H5T_VAX_F32_g");
     }
     /**
      * Getter for variable:
@@ -7451,7 +8142,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_VAX_F32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$1, "H5T_VAX_F32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$2, "H5T_VAX_F32_g"));
     }
     /**
      * Setter for variable:
@@ -7460,16 +8151,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_VAX_F32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$1, "H5T_VAX_F32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$2, "H5T_VAX_F32_g"), x);
     }
     public static MemoryLayout H5T_VAX_F64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_VAX_F64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_VAX_F64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$2,"H5T_VAX_F64_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$3,"H5T_VAX_F64_g");
     }
     /**
      * Getter for variable:
@@ -7478,7 +8169,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_VAX_F64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$2, "H5T_VAX_F64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$3, "H5T_VAX_F64_g"));
     }
     /**
      * Setter for variable:
@@ -7487,16 +8178,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_VAX_F64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$2, "H5T_VAX_F64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$3, "H5T_VAX_F64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_SCHAR_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_SCHAR_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_SCHAR_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$3,"H5T_NATIVE_SCHAR_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$4,"H5T_NATIVE_SCHAR_g");
     }
     /**
      * Getter for variable:
@@ -7505,7 +8196,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_SCHAR_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$3, "H5T_NATIVE_SCHAR_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$4, "H5T_NATIVE_SCHAR_g"));
     }
     /**
      * Setter for variable:
@@ -7514,16 +8205,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_SCHAR_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$3, "H5T_NATIVE_SCHAR_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$4, "H5T_NATIVE_SCHAR_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UCHAR_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UCHAR_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UCHAR_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$4,"H5T_NATIVE_UCHAR_g");
+        return RuntimeHelper.requireNonNull(constants$32.const$5,"H5T_NATIVE_UCHAR_g");
     }
     /**
      * Getter for variable:
@@ -7532,7 +8223,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UCHAR_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$4, "H5T_NATIVE_UCHAR_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$5, "H5T_NATIVE_UCHAR_g"));
     }
     /**
      * Setter for variable:
@@ -7541,16 +8232,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UCHAR_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$4, "H5T_NATIVE_UCHAR_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$5, "H5T_NATIVE_UCHAR_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_SHORT_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_SHORT_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_SHORT_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$31.const$5,"H5T_NATIVE_SHORT_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$0,"H5T_NATIVE_SHORT_g");
     }
     /**
      * Getter for variable:
@@ -7559,7 +8250,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_SHORT_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$31.const$5, "H5T_NATIVE_SHORT_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$0, "H5T_NATIVE_SHORT_g"));
     }
     /**
      * Setter for variable:
@@ -7568,16 +8259,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_SHORT_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$31.const$5, "H5T_NATIVE_SHORT_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$0, "H5T_NATIVE_SHORT_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_USHORT_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_USHORT_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_USHORT_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$0,"H5T_NATIVE_USHORT_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$1,"H5T_NATIVE_USHORT_g");
     }
     /**
      * Getter for variable:
@@ -7586,7 +8277,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_USHORT_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$0, "H5T_NATIVE_USHORT_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$1, "H5T_NATIVE_USHORT_g"));
     }
     /**
      * Setter for variable:
@@ -7595,16 +8286,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_USHORT_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$0, "H5T_NATIVE_USHORT_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$1, "H5T_NATIVE_USHORT_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$1,"H5T_NATIVE_INT_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$2,"H5T_NATIVE_INT_g");
     }
     /**
      * Getter for variable:
@@ -7613,7 +8304,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$1, "H5T_NATIVE_INT_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$2, "H5T_NATIVE_INT_g"));
     }
     /**
      * Setter for variable:
@@ -7622,16 +8313,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$1, "H5T_NATIVE_INT_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$2, "H5T_NATIVE_INT_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$2,"H5T_NATIVE_UINT_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$3,"H5T_NATIVE_UINT_g");
     }
     /**
      * Getter for variable:
@@ -7640,7 +8331,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$2, "H5T_NATIVE_UINT_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$3, "H5T_NATIVE_UINT_g"));
     }
     /**
      * Setter for variable:
@@ -7649,16 +8340,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$2, "H5T_NATIVE_UINT_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$3, "H5T_NATIVE_UINT_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_LONG_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_LONG_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_LONG_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$3,"H5T_NATIVE_LONG_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$4,"H5T_NATIVE_LONG_g");
     }
     /**
      * Getter for variable:
@@ -7667,7 +8358,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_LONG_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$3, "H5T_NATIVE_LONG_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$4, "H5T_NATIVE_LONG_g"));
     }
     /**
      * Setter for variable:
@@ -7676,16 +8367,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_LONG_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$3, "H5T_NATIVE_LONG_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$4, "H5T_NATIVE_LONG_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_ULONG_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_ULONG_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_ULONG_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$4,"H5T_NATIVE_ULONG_g");
+        return RuntimeHelper.requireNonNull(constants$33.const$5,"H5T_NATIVE_ULONG_g");
     }
     /**
      * Getter for variable:
@@ -7694,7 +8385,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_ULONG_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$4, "H5T_NATIVE_ULONG_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$5, "H5T_NATIVE_ULONG_g"));
     }
     /**
      * Setter for variable:
@@ -7703,16 +8394,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_ULONG_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$4, "H5T_NATIVE_ULONG_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$5, "H5T_NATIVE_ULONG_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_LLONG_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_LLONG_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_LLONG_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$32.const$5,"H5T_NATIVE_LLONG_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$0,"H5T_NATIVE_LLONG_g");
     }
     /**
      * Getter for variable:
@@ -7721,7 +8412,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_LLONG_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$32.const$5, "H5T_NATIVE_LLONG_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$0, "H5T_NATIVE_LLONG_g"));
     }
     /**
      * Setter for variable:
@@ -7730,16 +8421,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_LLONG_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$32.const$5, "H5T_NATIVE_LLONG_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$0, "H5T_NATIVE_LLONG_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_ULLONG_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_ULLONG_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_ULLONG_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$0,"H5T_NATIVE_ULLONG_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$1,"H5T_NATIVE_ULLONG_g");
     }
     /**
      * Getter for variable:
@@ -7748,7 +8439,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_ULLONG_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$0, "H5T_NATIVE_ULLONG_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$1, "H5T_NATIVE_ULLONG_g"));
     }
     /**
      * Setter for variable:
@@ -7757,16 +8448,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_ULLONG_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$0, "H5T_NATIVE_ULLONG_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$1, "H5T_NATIVE_ULLONG_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_FLOAT_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_FLOAT_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_FLOAT_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$1,"H5T_NATIVE_FLOAT_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$2,"H5T_NATIVE_FLOAT_g");
     }
     /**
      * Getter for variable:
@@ -7775,7 +8466,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_FLOAT_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$1, "H5T_NATIVE_FLOAT_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$2, "H5T_NATIVE_FLOAT_g"));
     }
     /**
      * Setter for variable:
@@ -7784,16 +8475,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_FLOAT_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$1, "H5T_NATIVE_FLOAT_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$2, "H5T_NATIVE_FLOAT_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_DOUBLE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_DOUBLE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_DOUBLE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$2,"H5T_NATIVE_DOUBLE_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$3,"H5T_NATIVE_DOUBLE_g");
     }
     /**
      * Getter for variable:
@@ -7802,7 +8493,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_DOUBLE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$2, "H5T_NATIVE_DOUBLE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$3, "H5T_NATIVE_DOUBLE_g"));
     }
     /**
      * Setter for variable:
@@ -7811,16 +8502,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_DOUBLE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$2, "H5T_NATIVE_DOUBLE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$3, "H5T_NATIVE_DOUBLE_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_LDOUBLE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_LDOUBLE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_LDOUBLE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$3,"H5T_NATIVE_LDOUBLE_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$4,"H5T_NATIVE_LDOUBLE_g");
     }
     /**
      * Getter for variable:
@@ -7829,7 +8520,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_LDOUBLE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$3, "H5T_NATIVE_LDOUBLE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$4, "H5T_NATIVE_LDOUBLE_g"));
     }
     /**
      * Setter for variable:
@@ -7838,16 +8529,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_LDOUBLE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$3, "H5T_NATIVE_LDOUBLE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$4, "H5T_NATIVE_LDOUBLE_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_B8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_B8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_B8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$4,"H5T_NATIVE_B8_g");
+        return RuntimeHelper.requireNonNull(constants$34.const$5,"H5T_NATIVE_B8_g");
     }
     /**
      * Getter for variable:
@@ -7856,7 +8547,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_B8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$4, "H5T_NATIVE_B8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$5, "H5T_NATIVE_B8_g"));
     }
     /**
      * Setter for variable:
@@ -7865,16 +8556,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_B8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$4, "H5T_NATIVE_B8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$5, "H5T_NATIVE_B8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_B16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_B16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_B16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$33.const$5,"H5T_NATIVE_B16_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$0,"H5T_NATIVE_B16_g");
     }
     /**
      * Getter for variable:
@@ -7883,7 +8574,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_B16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$33.const$5, "H5T_NATIVE_B16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$0, "H5T_NATIVE_B16_g"));
     }
     /**
      * Setter for variable:
@@ -7892,16 +8583,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_B16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$33.const$5, "H5T_NATIVE_B16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$0, "H5T_NATIVE_B16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_B32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_B32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_B32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$0,"H5T_NATIVE_B32_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$1,"H5T_NATIVE_B32_g");
     }
     /**
      * Getter for variable:
@@ -7910,7 +8601,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_B32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$0, "H5T_NATIVE_B32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$1, "H5T_NATIVE_B32_g"));
     }
     /**
      * Setter for variable:
@@ -7919,16 +8610,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_B32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$0, "H5T_NATIVE_B32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$1, "H5T_NATIVE_B32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_B64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_B64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_B64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$1,"H5T_NATIVE_B64_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$2,"H5T_NATIVE_B64_g");
     }
     /**
      * Getter for variable:
@@ -7937,7 +8628,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_B64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$1, "H5T_NATIVE_B64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$2, "H5T_NATIVE_B64_g"));
     }
     /**
      * Setter for variable:
@@ -7946,16 +8637,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_B64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$1, "H5T_NATIVE_B64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$2, "H5T_NATIVE_B64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_OPAQUE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_OPAQUE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_OPAQUE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$2,"H5T_NATIVE_OPAQUE_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$3,"H5T_NATIVE_OPAQUE_g");
     }
     /**
      * Getter for variable:
@@ -7964,7 +8655,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_OPAQUE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$2, "H5T_NATIVE_OPAQUE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$3, "H5T_NATIVE_OPAQUE_g"));
     }
     /**
      * Setter for variable:
@@ -7973,16 +8664,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_OPAQUE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$2, "H5T_NATIVE_OPAQUE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$3, "H5T_NATIVE_OPAQUE_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_HADDR_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_HADDR_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_HADDR_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$3,"H5T_NATIVE_HADDR_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$4,"H5T_NATIVE_HADDR_g");
     }
     /**
      * Getter for variable:
@@ -7991,7 +8682,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_HADDR_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$3, "H5T_NATIVE_HADDR_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$4, "H5T_NATIVE_HADDR_g"));
     }
     /**
      * Setter for variable:
@@ -8000,16 +8691,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_HADDR_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$3, "H5T_NATIVE_HADDR_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$4, "H5T_NATIVE_HADDR_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_HSIZE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_HSIZE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_HSIZE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$4,"H5T_NATIVE_HSIZE_g");
+        return RuntimeHelper.requireNonNull(constants$35.const$5,"H5T_NATIVE_HSIZE_g");
     }
     /**
      * Getter for variable:
@@ -8018,7 +8709,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_HSIZE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$4, "H5T_NATIVE_HSIZE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$5, "H5T_NATIVE_HSIZE_g"));
     }
     /**
      * Setter for variable:
@@ -8027,16 +8718,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_HSIZE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$4, "H5T_NATIVE_HSIZE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$5, "H5T_NATIVE_HSIZE_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_HSSIZE_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_HSSIZE_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_HSSIZE_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$34.const$5,"H5T_NATIVE_HSSIZE_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$0,"H5T_NATIVE_HSSIZE_g");
     }
     /**
      * Getter for variable:
@@ -8045,7 +8736,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_HSSIZE_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$34.const$5, "H5T_NATIVE_HSSIZE_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$0, "H5T_NATIVE_HSSIZE_g"));
     }
     /**
      * Setter for variable:
@@ -8054,16 +8745,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_HSSIZE_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$34.const$5, "H5T_NATIVE_HSSIZE_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$0, "H5T_NATIVE_HSSIZE_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_HERR_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_HERR_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_HERR_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$0,"H5T_NATIVE_HERR_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$1,"H5T_NATIVE_HERR_g");
     }
     /**
      * Getter for variable:
@@ -8072,7 +8763,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_HERR_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$0, "H5T_NATIVE_HERR_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$1, "H5T_NATIVE_HERR_g"));
     }
     /**
      * Setter for variable:
@@ -8081,16 +8772,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_HERR_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$0, "H5T_NATIVE_HERR_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$1, "H5T_NATIVE_HERR_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_HBOOL_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_HBOOL_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_HBOOL_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$1,"H5T_NATIVE_HBOOL_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$2,"H5T_NATIVE_HBOOL_g");
     }
     /**
      * Getter for variable:
@@ -8099,7 +8790,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_HBOOL_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$1, "H5T_NATIVE_HBOOL_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$2, "H5T_NATIVE_HBOOL_g"));
     }
     /**
      * Setter for variable:
@@ -8108,16 +8799,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_HBOOL_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$1, "H5T_NATIVE_HBOOL_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$2, "H5T_NATIVE_HBOOL_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$2,"H5T_NATIVE_INT8_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$3,"H5T_NATIVE_INT8_g");
     }
     /**
      * Getter for variable:
@@ -8126,7 +8817,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$2, "H5T_NATIVE_INT8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$3, "H5T_NATIVE_INT8_g"));
     }
     /**
      * Setter for variable:
@@ -8135,16 +8826,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$2, "H5T_NATIVE_INT8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$3, "H5T_NATIVE_INT8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$3,"H5T_NATIVE_UINT8_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$4,"H5T_NATIVE_UINT8_g");
     }
     /**
      * Getter for variable:
@@ -8153,7 +8844,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$3, "H5T_NATIVE_UINT8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$4, "H5T_NATIVE_UINT8_g"));
     }
     /**
      * Setter for variable:
@@ -8162,16 +8853,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$3, "H5T_NATIVE_UINT8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$4, "H5T_NATIVE_UINT8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_LEAST8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_LEAST8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_LEAST8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$4,"H5T_NATIVE_INT_LEAST8_g");
+        return RuntimeHelper.requireNonNull(constants$36.const$5,"H5T_NATIVE_INT_LEAST8_g");
     }
     /**
      * Getter for variable:
@@ -8180,7 +8871,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_LEAST8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$4, "H5T_NATIVE_INT_LEAST8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$5, "H5T_NATIVE_INT_LEAST8_g"));
     }
     /**
      * Setter for variable:
@@ -8189,16 +8880,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_LEAST8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$4, "H5T_NATIVE_INT_LEAST8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$5, "H5T_NATIVE_INT_LEAST8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_LEAST8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_LEAST8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_LEAST8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$35.const$5,"H5T_NATIVE_UINT_LEAST8_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$0,"H5T_NATIVE_UINT_LEAST8_g");
     }
     /**
      * Getter for variable:
@@ -8207,7 +8898,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_LEAST8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$35.const$5, "H5T_NATIVE_UINT_LEAST8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$0, "H5T_NATIVE_UINT_LEAST8_g"));
     }
     /**
      * Setter for variable:
@@ -8216,16 +8907,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_LEAST8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$35.const$5, "H5T_NATIVE_UINT_LEAST8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$0, "H5T_NATIVE_UINT_LEAST8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_FAST8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_FAST8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_FAST8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$0,"H5T_NATIVE_INT_FAST8_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$1,"H5T_NATIVE_INT_FAST8_g");
     }
     /**
      * Getter for variable:
@@ -8234,7 +8925,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_FAST8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$0, "H5T_NATIVE_INT_FAST8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$1, "H5T_NATIVE_INT_FAST8_g"));
     }
     /**
      * Setter for variable:
@@ -8243,16 +8934,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_FAST8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$0, "H5T_NATIVE_INT_FAST8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$1, "H5T_NATIVE_INT_FAST8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_FAST8_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_FAST8_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_FAST8_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$1,"H5T_NATIVE_UINT_FAST8_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$2,"H5T_NATIVE_UINT_FAST8_g");
     }
     /**
      * Getter for variable:
@@ -8261,7 +8952,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_FAST8_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$1, "H5T_NATIVE_UINT_FAST8_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$2, "H5T_NATIVE_UINT_FAST8_g"));
     }
     /**
      * Setter for variable:
@@ -8270,16 +8961,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_FAST8_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$1, "H5T_NATIVE_UINT_FAST8_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$2, "H5T_NATIVE_UINT_FAST8_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$2,"H5T_NATIVE_INT16_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$3,"H5T_NATIVE_INT16_g");
     }
     /**
      * Getter for variable:
@@ -8288,7 +8979,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$2, "H5T_NATIVE_INT16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$3, "H5T_NATIVE_INT16_g"));
     }
     /**
      * Setter for variable:
@@ -8297,16 +8988,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$2, "H5T_NATIVE_INT16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$3, "H5T_NATIVE_INT16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$3,"H5T_NATIVE_UINT16_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$4,"H5T_NATIVE_UINT16_g");
     }
     /**
      * Getter for variable:
@@ -8315,7 +9006,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$3, "H5T_NATIVE_UINT16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$4, "H5T_NATIVE_UINT16_g"));
     }
     /**
      * Setter for variable:
@@ -8324,16 +9015,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$3, "H5T_NATIVE_UINT16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$4, "H5T_NATIVE_UINT16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_LEAST16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_LEAST16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_LEAST16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$4,"H5T_NATIVE_INT_LEAST16_g");
+        return RuntimeHelper.requireNonNull(constants$37.const$5,"H5T_NATIVE_INT_LEAST16_g");
     }
     /**
      * Getter for variable:
@@ -8342,7 +9033,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_LEAST16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$4, "H5T_NATIVE_INT_LEAST16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$5, "H5T_NATIVE_INT_LEAST16_g"));
     }
     /**
      * Setter for variable:
@@ -8351,16 +9042,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_LEAST16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$4, "H5T_NATIVE_INT_LEAST16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$5, "H5T_NATIVE_INT_LEAST16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_LEAST16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_LEAST16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_LEAST16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$36.const$5,"H5T_NATIVE_UINT_LEAST16_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$0,"H5T_NATIVE_UINT_LEAST16_g");
     }
     /**
      * Getter for variable:
@@ -8369,7 +9060,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_LEAST16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$36.const$5, "H5T_NATIVE_UINT_LEAST16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$0, "H5T_NATIVE_UINT_LEAST16_g"));
     }
     /**
      * Setter for variable:
@@ -8378,16 +9069,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_LEAST16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$36.const$5, "H5T_NATIVE_UINT_LEAST16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$0, "H5T_NATIVE_UINT_LEAST16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_FAST16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_FAST16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_FAST16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$0,"H5T_NATIVE_INT_FAST16_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$1,"H5T_NATIVE_INT_FAST16_g");
     }
     /**
      * Getter for variable:
@@ -8396,7 +9087,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_FAST16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$0, "H5T_NATIVE_INT_FAST16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$1, "H5T_NATIVE_INT_FAST16_g"));
     }
     /**
      * Setter for variable:
@@ -8405,16 +9096,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_FAST16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$0, "H5T_NATIVE_INT_FAST16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$1, "H5T_NATIVE_INT_FAST16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_FAST16_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_FAST16_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_FAST16_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$1,"H5T_NATIVE_UINT_FAST16_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$2,"H5T_NATIVE_UINT_FAST16_g");
     }
     /**
      * Getter for variable:
@@ -8423,7 +9114,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_FAST16_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$1, "H5T_NATIVE_UINT_FAST16_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$2, "H5T_NATIVE_UINT_FAST16_g"));
     }
     /**
      * Setter for variable:
@@ -8432,16 +9123,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_FAST16_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$1, "H5T_NATIVE_UINT_FAST16_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$2, "H5T_NATIVE_UINT_FAST16_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$2,"H5T_NATIVE_INT32_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$3,"H5T_NATIVE_INT32_g");
     }
     /**
      * Getter for variable:
@@ -8450,7 +9141,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$2, "H5T_NATIVE_INT32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$3, "H5T_NATIVE_INT32_g"));
     }
     /**
      * Setter for variable:
@@ -8459,16 +9150,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$2, "H5T_NATIVE_INT32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$3, "H5T_NATIVE_INT32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$3,"H5T_NATIVE_UINT32_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$4,"H5T_NATIVE_UINT32_g");
     }
     /**
      * Getter for variable:
@@ -8477,7 +9168,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$3, "H5T_NATIVE_UINT32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$4, "H5T_NATIVE_UINT32_g"));
     }
     /**
      * Setter for variable:
@@ -8486,16 +9177,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$3, "H5T_NATIVE_UINT32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$4, "H5T_NATIVE_UINT32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_LEAST32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_LEAST32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_LEAST32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$4,"H5T_NATIVE_INT_LEAST32_g");
+        return RuntimeHelper.requireNonNull(constants$38.const$5,"H5T_NATIVE_INT_LEAST32_g");
     }
     /**
      * Getter for variable:
@@ -8504,7 +9195,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_LEAST32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$4, "H5T_NATIVE_INT_LEAST32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$5, "H5T_NATIVE_INT_LEAST32_g"));
     }
     /**
      * Setter for variable:
@@ -8513,16 +9204,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_LEAST32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$4, "H5T_NATIVE_INT_LEAST32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$5, "H5T_NATIVE_INT_LEAST32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_LEAST32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_LEAST32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_LEAST32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$37.const$5,"H5T_NATIVE_UINT_LEAST32_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$0,"H5T_NATIVE_UINT_LEAST32_g");
     }
     /**
      * Getter for variable:
@@ -8531,7 +9222,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_LEAST32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$37.const$5, "H5T_NATIVE_UINT_LEAST32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$0, "H5T_NATIVE_UINT_LEAST32_g"));
     }
     /**
      * Setter for variable:
@@ -8540,16 +9231,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_LEAST32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$37.const$5, "H5T_NATIVE_UINT_LEAST32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$0, "H5T_NATIVE_UINT_LEAST32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_FAST32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_FAST32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_FAST32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$0,"H5T_NATIVE_INT_FAST32_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$1,"H5T_NATIVE_INT_FAST32_g");
     }
     /**
      * Getter for variable:
@@ -8558,7 +9249,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_FAST32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$0, "H5T_NATIVE_INT_FAST32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$1, "H5T_NATIVE_INT_FAST32_g"));
     }
     /**
      * Setter for variable:
@@ -8567,16 +9258,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_FAST32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$0, "H5T_NATIVE_INT_FAST32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$1, "H5T_NATIVE_INT_FAST32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_FAST32_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_FAST32_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_FAST32_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$1,"H5T_NATIVE_UINT_FAST32_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$2,"H5T_NATIVE_UINT_FAST32_g");
     }
     /**
      * Getter for variable:
@@ -8585,7 +9276,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_FAST32_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$1, "H5T_NATIVE_UINT_FAST32_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$2, "H5T_NATIVE_UINT_FAST32_g"));
     }
     /**
      * Setter for variable:
@@ -8594,16 +9285,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_FAST32_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$1, "H5T_NATIVE_UINT_FAST32_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$2, "H5T_NATIVE_UINT_FAST32_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$2,"H5T_NATIVE_INT64_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$3,"H5T_NATIVE_INT64_g");
     }
     /**
      * Getter for variable:
@@ -8612,7 +9303,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$2, "H5T_NATIVE_INT64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$3, "H5T_NATIVE_INT64_g"));
     }
     /**
      * Setter for variable:
@@ -8621,16 +9312,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$2, "H5T_NATIVE_INT64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$3, "H5T_NATIVE_INT64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$3,"H5T_NATIVE_UINT64_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$4,"H5T_NATIVE_UINT64_g");
     }
     /**
      * Getter for variable:
@@ -8639,7 +9330,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$3, "H5T_NATIVE_UINT64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$4, "H5T_NATIVE_UINT64_g"));
     }
     /**
      * Setter for variable:
@@ -8648,16 +9339,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$3, "H5T_NATIVE_UINT64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$4, "H5T_NATIVE_UINT64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_LEAST64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_LEAST64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_LEAST64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$4,"H5T_NATIVE_INT_LEAST64_g");
+        return RuntimeHelper.requireNonNull(constants$39.const$5,"H5T_NATIVE_INT_LEAST64_g");
     }
     /**
      * Getter for variable:
@@ -8666,7 +9357,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_LEAST64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$4, "H5T_NATIVE_INT_LEAST64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$5, "H5T_NATIVE_INT_LEAST64_g"));
     }
     /**
      * Setter for variable:
@@ -8675,16 +9366,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_LEAST64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$4, "H5T_NATIVE_INT_LEAST64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$5, "H5T_NATIVE_INT_LEAST64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_LEAST64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_LEAST64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_LEAST64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$38.const$5,"H5T_NATIVE_UINT_LEAST64_g");
+        return RuntimeHelper.requireNonNull(constants$40.const$0,"H5T_NATIVE_UINT_LEAST64_g");
     }
     /**
      * Getter for variable:
@@ -8693,7 +9384,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_LEAST64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$38.const$5, "H5T_NATIVE_UINT_LEAST64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$40.const$0, "H5T_NATIVE_UINT_LEAST64_g"));
     }
     /**
      * Setter for variable:
@@ -8702,16 +9393,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_LEAST64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$38.const$5, "H5T_NATIVE_UINT_LEAST64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$40.const$0, "H5T_NATIVE_UINT_LEAST64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_INT_FAST64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_INT_FAST64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_INT_FAST64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$39.const$0,"H5T_NATIVE_INT_FAST64_g");
+        return RuntimeHelper.requireNonNull(constants$40.const$1,"H5T_NATIVE_INT_FAST64_g");
     }
     /**
      * Getter for variable:
@@ -8720,7 +9411,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_INT_FAST64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$0, "H5T_NATIVE_INT_FAST64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$40.const$1, "H5T_NATIVE_INT_FAST64_g"));
     }
     /**
      * Setter for variable:
@@ -8729,16 +9420,16 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_INT_FAST64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$0, "H5T_NATIVE_INT_FAST64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$40.const$1, "H5T_NATIVE_INT_FAST64_g"), x);
     }
     public static MemoryLayout H5T_NATIVE_UINT_FAST64_g$LAYOUT() {
         return JAVA_LONG;
     }
     public static VarHandle H5T_NATIVE_UINT_FAST64_g$VH() {
-        return constants$25.const$0;
+        return constants$26.const$0;
     }
     public static MemorySegment H5T_NATIVE_UINT_FAST64_g$SEGMENT() {
-        return RuntimeHelper.requireNonNull(constants$39.const$1,"H5T_NATIVE_UINT_FAST64_g");
+        return RuntimeHelper.requireNonNull(constants$40.const$2,"H5T_NATIVE_UINT_FAST64_g");
     }
     /**
      * Getter for variable:
@@ -8747,7 +9438,7 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static long H5T_NATIVE_UINT_FAST64_g$get() {
-        return (long) constants$25.const$0.get(RuntimeHelper.requireNonNull(constants$39.const$1, "H5T_NATIVE_UINT_FAST64_g"));
+        return (long) constants$26.const$0.get(RuntimeHelper.requireNonNull(constants$40.const$2, "H5T_NATIVE_UINT_FAST64_g"));
     }
     /**
      * Setter for variable:
@@ -8756,10 +9447,10 @@ public class hdf5_h extends hdf5_h_2 {
      * }
      */
     public static void H5T_NATIVE_UINT_FAST64_g$set(long x) {
-        constants$25.const$0.set(RuntimeHelper.requireNonNull(constants$39.const$1, "H5T_NATIVE_UINT_FAST64_g"), x);
+        constants$26.const$0.set(RuntimeHelper.requireNonNull(constants$40.const$2, "H5T_NATIVE_UINT_FAST64_g"), x);
     }
     public static MethodHandle H5Tcreate$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$3,"H5Tcreate");
+        return RuntimeHelper.requireNonNull(constants$40.const$4,"H5Tcreate");
     }
     /**
      * {@snippet :
@@ -8775,7 +9466,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tcopy$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$4,"H5Tcopy");
+        return RuntimeHelper.requireNonNull(constants$40.const$5,"H5Tcopy");
     }
     /**
      * {@snippet :
@@ -8791,7 +9482,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tclose$MH() {
-        return RuntimeHelper.requireNonNull(constants$39.const$5,"H5Tclose");
+        return RuntimeHelper.requireNonNull(constants$41.const$0,"H5Tclose");
     }
     /**
      * {@snippet :
@@ -8807,7 +9498,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tequal$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$1,"H5Tequal");
+        return RuntimeHelper.requireNonNull(constants$41.const$2,"H5Tequal");
     }
     /**
      * {@snippet :
@@ -8823,7 +9514,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tlock$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$2,"H5Tlock");
+        return RuntimeHelper.requireNonNull(constants$41.const$3,"H5Tlock");
     }
     /**
      * {@snippet :
@@ -8839,7 +9530,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tcommit2$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$4,"H5Tcommit2");
+        return RuntimeHelper.requireNonNull(constants$41.const$5,"H5Tcommit2");
     }
     /**
      * {@snippet :
@@ -8855,7 +9546,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Topen2$MH() {
-        return RuntimeHelper.requireNonNull(constants$40.const$5,"H5Topen2");
+        return RuntimeHelper.requireNonNull(constants$42.const$0,"H5Topen2");
     }
     /**
      * {@snippet :
@@ -8871,7 +9562,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tcommit_anon$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$1,"H5Tcommit_anon");
+        return RuntimeHelper.requireNonNull(constants$42.const$2,"H5Tcommit_anon");
     }
     /**
      * {@snippet :
@@ -8887,7 +9578,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_create_plist$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$2,"H5Tget_create_plist");
+        return RuntimeHelper.requireNonNull(constants$42.const$3,"H5Tget_create_plist");
     }
     /**
      * {@snippet :
@@ -8903,7 +9594,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tcommitted$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$3,"H5Tcommitted");
+        return RuntimeHelper.requireNonNull(constants$42.const$4,"H5Tcommitted");
     }
     /**
      * {@snippet :
@@ -8919,7 +9610,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tencode$MH() {
-        return RuntimeHelper.requireNonNull(constants$41.const$5,"H5Tencode");
+        return RuntimeHelper.requireNonNull(constants$42.const$6,"H5Tencode");
     }
     /**
      * {@snippet :
@@ -8935,7 +9626,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tdecode$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$1,"H5Tdecode");
+        return RuntimeHelper.requireNonNull(constants$43.const$1,"H5Tdecode");
     }
     /**
      * {@snippet :
@@ -8951,7 +9642,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tflush$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$2,"H5Tflush");
+        return RuntimeHelper.requireNonNull(constants$43.const$2,"H5Tflush");
     }
     /**
      * {@snippet :
@@ -8967,7 +9658,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Trefresh$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$3,"H5Trefresh");
+        return RuntimeHelper.requireNonNull(constants$43.const$3,"H5Trefresh");
     }
     /**
      * {@snippet :
@@ -8983,7 +9674,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tinsert$MH() {
-        return RuntimeHelper.requireNonNull(constants$42.const$5,"H5Tinsert");
+        return RuntimeHelper.requireNonNull(constants$43.const$5,"H5Tinsert");
     }
     /**
      * {@snippet :
@@ -8999,7 +9690,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tpack$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$0,"H5Tpack");
+        return RuntimeHelper.requireNonNull(constants$44.const$0,"H5Tpack");
     }
     /**
      * {@snippet :
@@ -9015,7 +9706,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tenum_create$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$1,"H5Tenum_create");
+        return RuntimeHelper.requireNonNull(constants$44.const$1,"H5Tenum_create");
     }
     /**
      * {@snippet :
@@ -9031,7 +9722,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tenum_insert$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$2,"H5Tenum_insert");
+        return RuntimeHelper.requireNonNull(constants$44.const$2,"H5Tenum_insert");
     }
     /**
      * {@snippet :
@@ -9047,7 +9738,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tenum_nameof$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$4,"H5Tenum_nameof");
+        return RuntimeHelper.requireNonNull(constants$44.const$4,"H5Tenum_nameof");
     }
     /**
      * {@snippet :
@@ -9063,7 +9754,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tenum_valueof$MH() {
-        return RuntimeHelper.requireNonNull(constants$43.const$5,"H5Tenum_valueof");
+        return RuntimeHelper.requireNonNull(constants$44.const$5,"H5Tenum_valueof");
     }
     /**
      * {@snippet :
@@ -9079,7 +9770,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tvlen_create$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$0,"H5Tvlen_create");
+        return RuntimeHelper.requireNonNull(constants$45.const$0,"H5Tvlen_create");
     }
     /**
      * {@snippet :
@@ -9095,7 +9786,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tarray_create2$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$2,"H5Tarray_create2");
+        return RuntimeHelper.requireNonNull(constants$45.const$2,"H5Tarray_create2");
     }
     /**
      * {@snippet :
@@ -9111,7 +9802,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_array_ndims$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$3,"H5Tget_array_ndims");
+        return RuntimeHelper.requireNonNull(constants$45.const$3,"H5Tget_array_ndims");
     }
     /**
      * {@snippet :
@@ -9127,7 +9818,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_array_dims2$MH() {
-        return RuntimeHelper.requireNonNull(constants$44.const$5,"H5Tget_array_dims2");
+        return RuntimeHelper.requireNonNull(constants$45.const$4,"H5Tget_array_dims2");
     }
     /**
      * {@snippet :
@@ -9143,7 +9834,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tset_tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$0,"H5Tset_tag");
+        return RuntimeHelper.requireNonNull(constants$45.const$5,"H5Tset_tag");
     }
     /**
      * {@snippet :
@@ -9159,7 +9850,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_tag$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$2,"H5Tget_tag");
+        return RuntimeHelper.requireNonNull(constants$46.const$1,"H5Tget_tag");
     }
     /**
      * {@snippet :
@@ -9175,7 +9866,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_super$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$3,"H5Tget_super");
+        return RuntimeHelper.requireNonNull(constants$46.const$2,"H5Tget_super");
     }
     /**
      * {@snippet :
@@ -9191,7 +9882,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tget_class$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$4,"H5Tget_class");
+        return RuntimeHelper.requireNonNull(constants$46.const$3,"H5Tget_class");
     }
     /**
      * {@snippet :
@@ -9207,7 +9898,7 @@ public class hdf5_h extends hdf5_h_2 {
         }
     }
     public static MethodHandle H5Tdetect_class$MH() {
-        return RuntimeHelper.requireNonNull(constants$45.const$6,"H5Tdetect_class");
+        return RuntimeHelper.requireNonNull(constants$46.const$5,"H5Tdetect_class");
     }
     /**
      * {@snippet :
@@ -9218,1220 +9909,6 @@ public class hdf5_h extends hdf5_h_2 {
         var mh$ = H5Tdetect_class$MH();
         try {
             return (int)mh$.invokeExact(type_id, cls);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_size$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$0,"H5Tget_size");
-    }
-    /**
-     * {@snippet :
-     * size_t H5Tget_size(hid_t type_id);
-     * }
-     */
-    public static long H5Tget_size(long type_id) {
-        var mh$ = H5Tget_size$MH();
-        try {
-            return (long)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_order$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$1,"H5Tget_order");
-    }
-    /**
-     * {@snippet :
-     * H5T_order_t H5Tget_order(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_order(long type_id) {
-        var mh$ = H5Tget_order$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_precision$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$2,"H5Tget_precision");
-    }
-    /**
-     * {@snippet :
-     * size_t H5Tget_precision(hid_t type_id);
-     * }
-     */
-    public static long H5Tget_precision(long type_id) {
-        var mh$ = H5Tget_precision$MH();
-        try {
-            return (long)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_offset$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$3,"H5Tget_offset");
-    }
-    /**
-     * {@snippet :
-     * int H5Tget_offset(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_offset(long type_id) {
-        var mh$ = H5Tget_offset$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_pad$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$4,"H5Tget_pad");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tget_pad(hid_t type_id, H5T_pad_t* lsb, H5T_pad_t* msb);
-     * }
-     */
-    public static int H5Tget_pad(long type_id, MemorySegment lsb, MemorySegment msb) {
-        var mh$ = H5Tget_pad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, lsb, msb);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_sign$MH() {
-        return RuntimeHelper.requireNonNull(constants$46.const$5,"H5Tget_sign");
-    }
-    /**
-     * {@snippet :
-     * H5T_sign_t H5Tget_sign(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_sign(long type_id) {
-        var mh$ = H5Tget_sign$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_fields$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$1,"H5Tget_fields");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tget_fields(hid_t type_id, size_t* spos, size_t* epos, size_t* esize, size_t* mpos, size_t* msize);
-     * }
-     */
-    public static int H5Tget_fields(long type_id, MemorySegment spos, MemorySegment epos, MemorySegment esize, MemorySegment mpos, MemorySegment msize) {
-        var mh$ = H5Tget_fields$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, spos, epos, esize, mpos, msize);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_ebias$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$2,"H5Tget_ebias");
-    }
-    /**
-     * {@snippet :
-     * size_t H5Tget_ebias(hid_t type_id);
-     * }
-     */
-    public static long H5Tget_ebias(long type_id) {
-        var mh$ = H5Tget_ebias$MH();
-        try {
-            return (long)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_norm$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$3,"H5Tget_norm");
-    }
-    /**
-     * {@snippet :
-     * H5T_norm_t H5Tget_norm(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_norm(long type_id) {
-        var mh$ = H5Tget_norm$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_inpad$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$4,"H5Tget_inpad");
-    }
-    /**
-     * {@snippet :
-     * H5T_pad_t H5Tget_inpad(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_inpad(long type_id) {
-        var mh$ = H5Tget_inpad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_strpad$MH() {
-        return RuntimeHelper.requireNonNull(constants$47.const$5,"H5Tget_strpad");
-    }
-    /**
-     * {@snippet :
-     * H5T_str_t H5Tget_strpad(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_strpad(long type_id) {
-        var mh$ = H5Tget_strpad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_nmembers$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$0,"H5Tget_nmembers");
-    }
-    /**
-     * {@snippet :
-     * int H5Tget_nmembers(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_nmembers(long type_id) {
-        var mh$ = H5Tget_nmembers$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$1,"H5Tget_member_name");
-    }
-    /**
-     * {@snippet :
-     * char* H5Tget_member_name(hid_t type_id, unsigned int membno);
-     * }
-     */
-    public static MemorySegment H5Tget_member_name(long type_id, int membno) {
-        var mh$ = H5Tget_member_name$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(type_id, membno);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_index$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$2,"H5Tget_member_index");
-    }
-    /**
-     * {@snippet :
-     * int H5Tget_member_index(hid_t type_id, char* name);
-     * }
-     */
-    public static int H5Tget_member_index(long type_id, MemorySegment name) {
-        var mh$ = H5Tget_member_index$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_offset$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$4,"H5Tget_member_offset");
-    }
-    /**
-     * {@snippet :
-     * size_t H5Tget_member_offset(hid_t type_id, unsigned int membno);
-     * }
-     */
-    public static long H5Tget_member_offset(long type_id, int membno) {
-        var mh$ = H5Tget_member_offset$MH();
-        try {
-            return (long)mh$.invokeExact(type_id, membno);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_class$MH() {
-        return RuntimeHelper.requireNonNull(constants$48.const$5,"H5Tget_member_class");
-    }
-    /**
-     * {@snippet :
-     * H5T_class_t H5Tget_member_class(hid_t type_id, unsigned int membno);
-     * }
-     */
-    public static int H5Tget_member_class(long type_id, int membno) {
-        var mh$ = H5Tget_member_class$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, membno);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$0,"H5Tget_member_type");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Tget_member_type(hid_t type_id, unsigned int membno);
-     * }
-     */
-    public static long H5Tget_member_type(long type_id, int membno) {
-        var mh$ = H5Tget_member_type$MH();
-        try {
-            return (long)mh$.invokeExact(type_id, membno);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_member_value$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$1,"H5Tget_member_value");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tget_member_value(hid_t type_id, unsigned int membno, void* value);
-     * }
-     */
-    public static int H5Tget_member_value(long type_id, int membno, MemorySegment value) {
-        var mh$ = H5Tget_member_value$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, membno, value);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_cset$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$2,"H5Tget_cset");
-    }
-    /**
-     * {@snippet :
-     * H5T_cset_t H5Tget_cset(hid_t type_id);
-     * }
-     */
-    public static int H5Tget_cset(long type_id) {
-        var mh$ = H5Tget_cset$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tis_variable_str$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$3,"H5Tis_variable_str");
-    }
-    /**
-     * {@snippet :
-     * htri_t H5Tis_variable_str(hid_t type_id);
-     * }
-     */
-    public static int H5Tis_variable_str(long type_id) {
-        var mh$ = H5Tis_variable_str$MH();
-        try {
-            return (int)mh$.invokeExact(type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_native_type$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$4,"H5Tget_native_type");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Tget_native_type(hid_t type_id, H5T_direction_t direction);
-     * }
-     */
-    public static long H5Tget_native_type(long type_id, int direction) {
-        var mh$ = H5Tget_native_type$MH();
-        try {
-            return (long)mh$.invokeExact(type_id, direction);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_size$MH() {
-        return RuntimeHelper.requireNonNull(constants$49.const$5,"H5Tset_size");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_size(hid_t type_id, size_t size);
-     * }
-     */
-    public static int H5Tset_size(long type_id, long size) {
-        var mh$ = H5Tset_size$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, size);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_order$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$0,"H5Tset_order");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_order(hid_t type_id, H5T_order_t order);
-     * }
-     */
-    public static int H5Tset_order(long type_id, int order) {
-        var mh$ = H5Tset_order$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, order);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_precision$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$1,"H5Tset_precision");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_precision(hid_t type_id, size_t prec);
-     * }
-     */
-    public static int H5Tset_precision(long type_id, long prec) {
-        var mh$ = H5Tset_precision$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, prec);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_offset$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$2,"H5Tset_offset");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_offset(hid_t type_id, size_t offset);
-     * }
-     */
-    public static int H5Tset_offset(long type_id, long offset) {
-        var mh$ = H5Tset_offset$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, offset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_pad$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$4,"H5Tset_pad");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_pad(hid_t type_id, H5T_pad_t lsb, H5T_pad_t msb);
-     * }
-     */
-    public static int H5Tset_pad(long type_id, int lsb, int msb) {
-        var mh$ = H5Tset_pad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, lsb, msb);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_sign$MH() {
-        return RuntimeHelper.requireNonNull(constants$50.const$5,"H5Tset_sign");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_sign(hid_t type_id, H5T_sign_t sign);
-     * }
-     */
-    public static int H5Tset_sign(long type_id, int sign) {
-        var mh$ = H5Tset_sign$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, sign);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_fields$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$1,"H5Tset_fields");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_fields(hid_t type_id, size_t spos, size_t epos, size_t esize, size_t mpos, size_t msize);
-     * }
-     */
-    public static int H5Tset_fields(long type_id, long spos, long epos, long esize, long mpos, long msize) {
-        var mh$ = H5Tset_fields$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, spos, epos, esize, mpos, msize);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_ebias$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$2,"H5Tset_ebias");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_ebias(hid_t type_id, size_t ebias);
-     * }
-     */
-    public static int H5Tset_ebias(long type_id, long ebias) {
-        var mh$ = H5Tset_ebias$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, ebias);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_norm$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$3,"H5Tset_norm");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_norm(hid_t type_id, H5T_norm_t norm);
-     * }
-     */
-    public static int H5Tset_norm(long type_id, int norm) {
-        var mh$ = H5Tset_norm$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, norm);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_inpad$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$4,"H5Tset_inpad");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_inpad(hid_t type_id, H5T_pad_t pad);
-     * }
-     */
-    public static int H5Tset_inpad(long type_id, int pad) {
-        var mh$ = H5Tset_inpad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, pad);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_cset$MH() {
-        return RuntimeHelper.requireNonNull(constants$51.const$5,"H5Tset_cset");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_cset(hid_t type_id, H5T_cset_t cset);
-     * }
-     */
-    public static int H5Tset_cset(long type_id, int cset) {
-        var mh$ = H5Tset_cset$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, cset);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tset_strpad$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$0,"H5Tset_strpad");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tset_strpad(hid_t type_id, H5T_str_t strpad);
-     * }
-     */
-    public static int H5Tset_strpad(long type_id, int strpad) {
-        var mh$ = H5Tset_strpad$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, strpad);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tregister$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$2,"H5Tregister");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tregister(H5T_pers_t pers, char* name, hid_t src_id, hid_t dst_id, H5T_conv_t func);
-     * }
-     */
-    public static int H5Tregister(int pers, MemorySegment name, long src_id, long dst_id, MemorySegment func) {
-        var mh$ = H5Tregister$MH();
-        try {
-            return (int)mh$.invokeExact(pers, name, src_id, dst_id, func);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tunregister$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$3,"H5Tunregister");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tunregister(H5T_pers_t pers, char* name, hid_t src_id, hid_t dst_id, H5T_conv_t func);
-     * }
-     */
-    public static int H5Tunregister(int pers, MemorySegment name, long src_id, long dst_id, MemorySegment func) {
-        var mh$ = H5Tunregister$MH();
-        try {
-            return (int)mh$.invokeExact(pers, name, src_id, dst_id, func);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tfind$MH() {
-        return RuntimeHelper.requireNonNull(constants$52.const$5,"H5Tfind");
-    }
-    /**
-     * {@snippet :
-     * H5T_conv_t H5Tfind(hid_t src_id, hid_t dst_id, H5T_cdata_t** pcdata);
-     * }
-     */
-    public static MemorySegment H5Tfind(long src_id, long dst_id, MemorySegment pcdata) {
-        var mh$ = H5Tfind$MH();
-        try {
-            return (java.lang.foreign.MemorySegment)mh$.invokeExact(src_id, dst_id, pcdata);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tcompiler_conv$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$0,"H5Tcompiler_conv");
-    }
-    /**
-     * {@snippet :
-     * htri_t H5Tcompiler_conv(hid_t src_id, hid_t dst_id);
-     * }
-     */
-    public static int H5Tcompiler_conv(long src_id, long dst_id) {
-        var mh$ = H5Tcompiler_conv$MH();
-        try {
-            return (int)mh$.invokeExact(src_id, dst_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tconvert$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$2,"H5Tconvert");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tconvert(hid_t src_id, hid_t dst_id, size_t nelmts, void* buf, void* background, hid_t plist_id);
-     * }
-     */
-    public static int H5Tconvert(long src_id, long dst_id, long nelmts, MemorySegment buf, MemorySegment background, long plist_id) {
-        var mh$ = H5Tconvert$MH();
-        try {
-            return (int)mh$.invokeExact(src_id, dst_id, nelmts, buf, background, plist_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tcommit1$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$4,"H5Tcommit1");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Tcommit1(hid_t loc_id, char* name, hid_t type_id);
-     * }
-     */
-    public static int H5Tcommit1(long loc_id, MemorySegment name, long type_id) {
-        var mh$ = H5Tcommit1$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, type_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Topen1$MH() {
-        return RuntimeHelper.requireNonNull(constants$53.const$6,"H5Topen1");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Topen1(hid_t loc_id, char* name);
-     * }
-     */
-    public static long H5Topen1(long loc_id, MemorySegment name) {
-        var mh$ = H5Topen1$MH();
-        try {
-            return (long)mh$.invokeExact(loc_id, name);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tarray_create1$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.const$1,"H5Tarray_create1");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Tarray_create1(hid_t base_id, int ndims, const hsize_t dim[], int perm[]);
-     * }
-     */
-    public static long H5Tarray_create1(long base_id, int ndims, MemorySegment dim, MemorySegment perm) {
-        var mh$ = H5Tarray_create1$MH();
-        try {
-            return (long)mh$.invokeExact(base_id, ndims, dim, perm);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Tget_array_dims1$MH() {
-        return RuntimeHelper.requireNonNull(constants$54.const$2,"H5Tget_array_dims1");
-    }
-    /**
-     * {@snippet :
-     * int H5Tget_array_dims1(hid_t type_id, hsize_t dims[], int perm[]);
-     * }
-     */
-    public static int H5Tget_array_dims1(long type_id, MemorySegment dims, MemorySegment perm) {
-        var mh$ = H5Tget_array_dims1$MH();
-        try {
-            return (int)mh$.invokeExact(type_id, dims, perm);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum .H5L_TYPE_ERROR = -1;
-     * }
-     */
-    public static int H5L_TYPE_ERROR() {
-        return (int)-1L;
-    }
-    /**
-     * {@snippet :
-     * enum .H5L_TYPE_HARD = 0;
-     * }
-     */
-    public static int H5L_TYPE_HARD() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum .H5L_TYPE_SOFT = 1;
-     * }
-     */
-    public static int H5L_TYPE_SOFT() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum .H5L_TYPE_EXTERNAL = 64;
-     * }
-     */
-    public static int H5L_TYPE_EXTERNAL() {
-        return (int)64L;
-    }
-    /**
-     * {@snippet :
-     * enum .H5L_TYPE_MAX = 255;
-     * }
-     */
-    public static int H5L_TYPE_MAX() {
-        return (int)255L;
-    }
-    public static MethodHandle H5Lmove$MH() {
-        return RuntimeHelper.requireNonNull(constants$62.const$6,"H5Lmove");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lmove(hid_t src_loc, char* src_name, hid_t dst_loc, char* dst_name, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lmove(long src_loc, MemorySegment src_name, long dst_loc, MemorySegment dst_name, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lmove$MH();
-        try {
-            return (int)mh$.invokeExact(src_loc, src_name, dst_loc, dst_name, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lcopy$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.const$0,"H5Lcopy");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lcopy(hid_t src_loc, char* src_name, hid_t dst_loc, char* dst_name, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lcopy(long src_loc, MemorySegment src_name, long dst_loc, MemorySegment dst_name, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lcopy$MH();
-        try {
-            return (int)mh$.invokeExact(src_loc, src_name, dst_loc, dst_name, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lcreate_hard$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.const$1,"H5Lcreate_hard");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lcreate_hard(hid_t cur_loc, char* cur_name, hid_t dst_loc, char* dst_name, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lcreate_hard(long cur_loc, MemorySegment cur_name, long dst_loc, MemorySegment dst_name, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lcreate_hard$MH();
-        try {
-            return (int)mh$.invokeExact(cur_loc, cur_name, dst_loc, dst_name, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lcreate_soft$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.const$2,"H5Lcreate_soft");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lcreate_soft(char* link_target, hid_t link_loc_id, char* link_name, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lcreate_soft(MemorySegment link_target, long link_loc_id, MemorySegment link_name, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lcreate_soft$MH();
-        try {
-            return (int)mh$.invokeExact(link_target, link_loc_id, link_name, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Ldelete$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.const$3,"H5Ldelete");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Ldelete(hid_t loc_id, char* name, hid_t lapl_id);
-     * }
-     */
-    public static int H5Ldelete(long loc_id, MemorySegment name, long lapl_id) {
-        var mh$ = H5Ldelete$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Ldelete_by_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$63.const$5,"H5Ldelete_by_idx");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Ldelete_by_idx(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, hid_t lapl_id);
-     * }
-     */
-    public static int H5Ldelete_by_idx(long loc_id, MemorySegment group_name, int idx_type, int order, long n, long lapl_id) {
-        var mh$ = H5Ldelete_by_idx$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, group_name, idx_type, order, n, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lget_val$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.const$1,"H5Lget_val");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lget_val(hid_t loc_id, char* name, void* buf, size_t size, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lget_val(long loc_id, MemorySegment name, MemorySegment buf, long size, long lapl_id) {
-        var mh$ = H5Lget_val$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, buf, size, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lget_val_by_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.const$3,"H5Lget_val_by_idx");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lget_val_by_idx(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, void* buf, size_t size, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lget_val_by_idx(long loc_id, MemorySegment group_name, int idx_type, int order, long n, MemorySegment buf, long size, long lapl_id) {
-        var mh$ = H5Lget_val_by_idx$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, group_name, idx_type, order, n, buf, size, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lexists$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.const$4,"H5Lexists");
-    }
-    /**
-     * {@snippet :
-     * htri_t H5Lexists(hid_t loc_id, char* name, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lexists(long loc_id, MemorySegment name, long lapl_id) {
-        var mh$ = H5Lexists$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lget_info$MH() {
-        return RuntimeHelper.requireNonNull(constants$64.const$5,"H5Lget_info");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lget_info(hid_t loc_id, char* name, H5L_info_t* linfo, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lget_info(long loc_id, MemorySegment name, MemorySegment linfo, long lapl_id) {
-        var mh$ = H5Lget_info$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, linfo, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lget_info_by_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.const$1,"H5Lget_info_by_idx");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lget_info_by_idx(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, H5L_info_t* linfo, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lget_info_by_idx(long loc_id, MemorySegment group_name, int idx_type, int order, long n, MemorySegment linfo, long lapl_id) {
-        var mh$ = H5Lget_info_by_idx$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, group_name, idx_type, order, n, linfo, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lget_name_by_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.const$3,"H5Lget_name_by_idx");
-    }
-    /**
-     * {@snippet :
-     * ssize_t H5Lget_name_by_idx(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, char* name, size_t size, hid_t lapl_id);
-     * }
-     */
-    public static long H5Lget_name_by_idx(long loc_id, MemorySegment group_name, int idx_type, int order, long n, MemorySegment name, long size, long lapl_id) {
-        var mh$ = H5Lget_name_by_idx$MH();
-        try {
-            return (long)mh$.invokeExact(loc_id, group_name, idx_type, order, n, name, size, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Literate$MH() {
-        return RuntimeHelper.requireNonNull(constants$65.const$5,"H5Literate");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Literate(hid_t grp_id, H5_index_t idx_type, H5_iter_order_t order, hsize_t* idx, H5L_iterate_t op, void* op_data);
-     * }
-     */
-    public static int H5Literate(long grp_id, int idx_type, int order, MemorySegment idx, MemorySegment op, MemorySegment op_data) {
-        var mh$ = H5Literate$MH();
-        try {
-            return (int)mh$.invokeExact(grp_id, idx_type, order, idx, op, op_data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Literate_by_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.const$1,"H5Literate_by_name");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Literate_by_name(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t* idx, H5L_iterate_t op, void* op_data, hid_t lapl_id);
-     * }
-     */
-    public static int H5Literate_by_name(long loc_id, MemorySegment group_name, int idx_type, int order, MemorySegment idx, MemorySegment op, MemorySegment op_data, long lapl_id) {
-        var mh$ = H5Literate_by_name$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, group_name, idx_type, order, idx, op, op_data, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lvisit$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.const$3,"H5Lvisit");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lvisit(hid_t grp_id, H5_index_t idx_type, H5_iter_order_t order, H5L_iterate_t op, void* op_data);
-     * }
-     */
-    public static int H5Lvisit(long grp_id, int idx_type, int order, MemorySegment op, MemorySegment op_data) {
-        var mh$ = H5Lvisit$MH();
-        try {
-            return (int)mh$.invokeExact(grp_id, idx_type, order, op, op_data);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lvisit_by_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$66.const$5,"H5Lvisit_by_name");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lvisit_by_name(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, H5L_iterate_t op, void* op_data, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lvisit_by_name(long loc_id, MemorySegment group_name, int idx_type, int order, MemorySegment op, MemorySegment op_data, long lapl_id) {
-        var mh$ = H5Lvisit_by_name$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, group_name, idx_type, order, op, op_data, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lcreate_ud$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.const$1,"H5Lcreate_ud");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lcreate_ud(hid_t link_loc_id, char* link_name, H5L_type_t link_type, void* udata, size_t udata_size, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lcreate_ud(long link_loc_id, MemorySegment link_name, int link_type, MemorySegment udata, long udata_size, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lcreate_ud$MH();
-        try {
-            return (int)mh$.invokeExact(link_loc_id, link_name, link_type, udata, udata_size, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lregister$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.const$2,"H5Lregister");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lregister(const H5L_class_t* cls);
-     * }
-     */
-    public static int H5Lregister(MemorySegment cls) {
-        var mh$ = H5Lregister$MH();
-        try {
-            return (int)mh$.invokeExact(cls);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lunregister$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.const$3,"H5Lunregister");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lunregister(H5L_type_t id);
-     * }
-     */
-    public static int H5Lunregister(int id) {
-        var mh$ = H5Lunregister$MH();
-        try {
-            return (int)mh$.invokeExact(id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lis_registered$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.const$4,"H5Lis_registered");
-    }
-    /**
-     * {@snippet :
-     * htri_t H5Lis_registered(H5L_type_t id);
-     * }
-     */
-    public static int H5Lis_registered(int id) {
-        var mh$ = H5Lis_registered$MH();
-        try {
-            return (int)mh$.invokeExact(id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lunpack_elink_val$MH() {
-        return RuntimeHelper.requireNonNull(constants$67.const$6,"H5Lunpack_elink_val");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lunpack_elink_val(void* ext_linkval, size_t link_size, unsigned int* flags, char** filename, char** obj_path);
-     * }
-     */
-    public static int H5Lunpack_elink_val(MemorySegment ext_linkval, long link_size, MemorySegment flags, MemorySegment filename, MemorySegment obj_path) {
-        var mh$ = H5Lunpack_elink_val$MH();
-        try {
-            return (int)mh$.invokeExact(ext_linkval, link_size, flags, filename, obj_path);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Lcreate_external$MH() {
-        return RuntimeHelper.requireNonNull(constants$68.const$1,"H5Lcreate_external");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Lcreate_external(char* file_name, char* obj_name, hid_t link_loc_id, char* link_name, hid_t lcpl_id, hid_t lapl_id);
-     * }
-     */
-    public static int H5Lcreate_external(MemorySegment file_name, MemorySegment obj_name, long link_loc_id, MemorySegment link_name, long lcpl_id, long lapl_id) {
-        var mh$ = H5Lcreate_external$MH();
-        try {
-            return (int)mh$.invokeExact(file_name, obj_name, link_loc_id, link_name, lcpl_id, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    /**
-     * {@snippet :
-     * enum H5O_type_t.H5O_TYPE_UNKNOWN = -1;
-     * }
-     */
-    public static int H5O_TYPE_UNKNOWN() {
-        return (int)-1L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_type_t.H5O_TYPE_GROUP = 0;
-     * }
-     */
-    public static int H5O_TYPE_GROUP() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_type_t.H5O_TYPE_DATASET = 1;
-     * }
-     */
-    public static int H5O_TYPE_DATASET() {
-        return (int)1L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_type_t.H5O_TYPE_NAMED_DATATYPE = 2;
-     * }
-     */
-    public static int H5O_TYPE_NAMED_DATATYPE() {
-        return (int)2L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_type_t.H5O_TYPE_NTYPES = 3;
-     * }
-     */
-    public static int H5O_TYPE_NTYPES() {
-        return (int)3L;
-    }
-    /**
-     * {@snippet :
-     * typedef unsigned int H5O_msg_crt_idx_t;
-     * }
-     */
-    public static final OfInt H5O_msg_crt_idx_t = JAVA_INT;
-    /**
-     * {@snippet :
-     * enum H5O_mcdt_search_ret_t.H5O_MCDT_SEARCH_ERROR = -1;
-     * }
-     */
-    public static int H5O_MCDT_SEARCH_ERROR() {
-        return (int)-1L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_mcdt_search_ret_t.H5O_MCDT_SEARCH_CONT = 0;
-     * }
-     */
-    public static int H5O_MCDT_SEARCH_CONT() {
-        return (int)0L;
-    }
-    /**
-     * {@snippet :
-     * enum H5O_mcdt_search_ret_t.H5O_MCDT_SEARCH_STOP = 1;
-     * }
-     */
-    public static int H5O_MCDT_SEARCH_STOP() {
-        return (int)1L;
-    }
-    public static MethodHandle H5Oopen$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.const$4,"H5Oopen");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Oopen(hid_t loc_id, char* name, hid_t lapl_id);
-     * }
-     */
-    public static long H5Oopen(long loc_id, MemorySegment name, long lapl_id) {
-        var mh$ = H5Oopen$MH();
-        try {
-            return (long)mh$.invokeExact(loc_id, name, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Oopen_by_addr$MH() {
-        return RuntimeHelper.requireNonNull(constants$72.const$6,"H5Oopen_by_addr");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Oopen_by_addr(hid_t loc_id, haddr_t addr);
-     * }
-     */
-    public static long H5Oopen_by_addr(long loc_id, long addr) {
-        var mh$ = H5Oopen_by_addr$MH();
-        try {
-            return (long)mh$.invokeExact(loc_id, addr);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Oopen_by_idx$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.const$1,"H5Oopen_by_idx");
-    }
-    /**
-     * {@snippet :
-     * hid_t H5Oopen_by_idx(hid_t loc_id, char* group_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, hid_t lapl_id);
-     * }
-     */
-    public static long H5Oopen_by_idx(long loc_id, MemorySegment group_name, int idx_type, int order, long n, long lapl_id) {
-        var mh$ = H5Oopen_by_idx$MH();
-        try {
-            return (long)mh$.invokeExact(loc_id, group_name, idx_type, order, n, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Oexists_by_name$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.const$2,"H5Oexists_by_name");
-    }
-    /**
-     * {@snippet :
-     * htri_t H5Oexists_by_name(hid_t loc_id, char* name, hid_t lapl_id);
-     * }
-     */
-    public static int H5Oexists_by_name(long loc_id, MemorySegment name, long lapl_id) {
-        var mh$ = H5Oexists_by_name$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, name, lapl_id);
-        } catch (Throwable ex$) {
-            throw new AssertionError("should not reach here", ex$);
-        }
-    }
-    public static MethodHandle H5Oget_info2$MH() {
-        return RuntimeHelper.requireNonNull(constants$73.const$4,"H5Oget_info2");
-    }
-    /**
-     * {@snippet :
-     * herr_t H5Oget_info2(hid_t loc_id, H5O_info_t* oinfo, unsigned int fields);
-     * }
-     */
-    public static int H5Oget_info2(long loc_id, MemorySegment oinfo, int fields) {
-        var mh$ = H5Oget_info2$MH();
-        try {
-            return (int)mh$.invokeExact(loc_id, oinfo, fields);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

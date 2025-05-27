@@ -12,39 +12,19 @@ final class constants$213 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$213() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sselect_adjust",
-        constants$44.const$4
+        "H5Gget_objtype_by_idx",
+        constants$41.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sselect_all",
-        constants$19.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sselect_copy",
-        constants$40.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5M_iterate_t.class, "apply", constants$42.const$5);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER
     );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5MM_allocate_t.class, "apply", constants$213.const$2);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sselect_elements",
-        constants$213.const$3
+        constants$213.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Sselect_hyperslab",
-        constants$213.const$5
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5MM_free_t.class, "apply", constants$121.const$3);
 }
 
 

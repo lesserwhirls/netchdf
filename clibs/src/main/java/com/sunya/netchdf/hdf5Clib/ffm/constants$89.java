@@ -11,12 +11,30 @@ final class constants$89 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$89() {}
-    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
-    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
-    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
-    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
-    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
-    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Adelete",
+        constants$18.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_idx",
+        constants$63.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_name",
+        constants$44.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aexists",
+        constants$18.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name",
+        constants$44.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Aget_create_plist",
+        constants$10.const$2
+    );
 }
 
 

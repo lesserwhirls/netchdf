@@ -11,25 +11,21 @@ final class constants$194 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$194() {}
-    static final VarHandle const$0 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_malloc"));
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
         JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_memcpy.class, "apply", constants$194.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$194.const$1
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.read.class, "apply", constants$194.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$194.const$0
     );
-    static final VarHandle const$4 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_memcpy"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
+    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.write.class, "apply", constants$194.const$0);
+    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("write"));
 }
 
 

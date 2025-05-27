@@ -48,10 +48,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5FD_class_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$178.const$0;
+        return constants$184.const$1;
     }
     public static VarHandle name$VH() {
-        return constants$178.const$1;
+        return constants$184.const$2;
     }
     /**
      * Getter for field:
@@ -60,7 +60,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$178.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$184.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -69,16 +69,16 @@ public class H5FD_class_t {
      * }
      */
     public static void name$set(MemorySegment seg, MemorySegment x) {
-        constants$178.const$1.set(seg, x);
+        constants$184.const$2.set(seg, x);
     }
     public static MemorySegment name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$178.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$184.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$178.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$184.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle maxaddr$VH() {
-        return constants$178.const$2;
+        return constants$184.const$3;
     }
     /**
      * Getter for field:
@@ -87,7 +87,7 @@ public class H5FD_class_t {
      * }
      */
     public static long maxaddr$get(MemorySegment seg) {
-        return (long)constants$178.const$2.get(seg);
+        return (long)constants$184.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -96,16 +96,16 @@ public class H5FD_class_t {
      * }
      */
     public static void maxaddr$set(MemorySegment seg, long x) {
-        constants$178.const$2.set(seg, x);
+        constants$184.const$3.set(seg, x);
     }
     public static long maxaddr$get(MemorySegment seg, long index) {
-        return (long)constants$178.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$184.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void maxaddr$set(MemorySegment seg, long index, long x) {
-        constants$178.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$184.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle fc_degree$VH() {
-        return constants$178.const$3;
+        return constants$184.const$4;
     }
     /**
      * Getter for field:
@@ -114,7 +114,7 @@ public class H5FD_class_t {
      * }
      */
     public static int fc_degree$get(MemorySegment seg) {
-        return (int)constants$178.const$3.get(seg);
+        return (int)constants$184.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -123,13 +123,13 @@ public class H5FD_class_t {
      * }
      */
     public static void fc_degree$set(MemorySegment seg, int x) {
-        constants$178.const$3.set(seg, x);
+        constants$184.const$4.set(seg, x);
     }
     public static int fc_degree$get(MemorySegment seg, long index) {
-        return (int)constants$178.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$184.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void fc_degree$set(MemorySegment seg, long index, int x) {
-        constants$178.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$184.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -140,13 +140,13 @@ public class H5FD_class_t {
 
         int apply();
         static MemorySegment allocate(terminate fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$178.const$4, fi, constants$14.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$184.const$5, fi, constants$14.const$1, scope);
         }
         static terminate ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return () -> {
                 try {
-                    return (int)constants$178.const$5.invokeExact(symbol);
+                    return (int)constants$185.const$0.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -155,7 +155,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle terminate$VH() {
-        return constants$179.const$0;
+        return constants$185.const$1;
     }
     /**
      * Getter for field:
@@ -164,7 +164,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment terminate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$185.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -173,13 +173,13 @@ public class H5FD_class_t {
      * }
      */
     public static void terminate$set(MemorySegment seg, MemorySegment x) {
-        constants$179.const$0.set(seg, x);
+        constants$185.const$1.set(seg, x);
     }
     public static MemorySegment terminate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$185.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void terminate$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$179.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$185.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static terminate terminate(MemorySegment segment, Arena scope) {
         return terminate.ofAddress(terminate$get(segment), scope);
@@ -193,13 +193,13 @@ public class H5FD_class_t {
 
         long apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(sb_size fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$179.const$1, fi, constants$42.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$185.const$2, fi, constants$43.const$0, scope);
         }
         static sb_size ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (long)constants$179.const$2.invokeExact(symbol, __x0);
+                    return (long)constants$185.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -208,7 +208,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle sb_size$VH() {
-        return constants$179.const$3;
+        return constants$185.const$4;
     }
     /**
      * Getter for field:
@@ -217,7 +217,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment sb_size$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -226,13 +226,13 @@ public class H5FD_class_t {
      * }
      */
     public static void sb_size$set(MemorySegment seg, MemorySegment x) {
-        constants$179.const$3.set(seg, x);
+        constants$185.const$4.set(seg, x);
     }
     public static MemorySegment sb_size$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void sb_size$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$179.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$185.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static sb_size sb_size(MemorySegment segment, Arena scope) {
         return sb_size.ofAddress(sb_size$get(segment), scope);
@@ -246,13 +246,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2);
         static MemorySegment allocate(sb_encode fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$179.const$4, fi, constants$15.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$185.const$5, fi, constants$16.const$0, scope);
         }
         static sb_encode ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)constants$94.const$2.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$101.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -261,7 +261,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle sb_encode$VH() {
-        return constants$179.const$5;
+        return constants$186.const$0;
     }
     /**
      * Getter for field:
@@ -270,7 +270,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment sb_encode$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$186.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -279,13 +279,13 @@ public class H5FD_class_t {
      * }
      */
     public static void sb_encode$set(MemorySegment seg, MemorySegment x) {
-        constants$179.const$5.set(seg, x);
+        constants$186.const$0.set(seg, x);
     }
     public static MemorySegment sb_encode$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$179.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$186.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void sb_encode$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$179.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$186.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static sb_encode sb_encode(MemorySegment segment, Arena scope) {
         return sb_encode.ofAddress(sb_encode$get(segment), scope);
@@ -299,13 +299,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, java.lang.foreign.MemorySegment _x2);
         static MemorySegment allocate(sb_decode fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$180.const$0, fi, constants$15.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$186.const$1, fi, constants$16.const$0, scope);
         }
         static sb_decode ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)constants$94.const$2.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$101.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -314,7 +314,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle sb_decode$VH() {
-        return constants$180.const$1;
+        return constants$186.const$2;
     }
     /**
      * Getter for field:
@@ -323,7 +323,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment sb_decode$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$180.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -332,19 +332,19 @@ public class H5FD_class_t {
      * }
      */
     public static void sb_decode$set(MemorySegment seg, MemorySegment x) {
-        constants$180.const$1.set(seg, x);
+        constants$186.const$2.set(seg, x);
     }
     public static MemorySegment sb_decode$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$180.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void sb_decode$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$180.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$186.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static sb_decode sb_decode(MemorySegment segment, Arena scope) {
         return sb_decode.ofAddress(sb_decode$get(segment), scope);
     }
     public static VarHandle fapl_size$VH() {
-        return constants$180.const$2;
+        return constants$186.const$3;
     }
     /**
      * Getter for field:
@@ -353,7 +353,7 @@ public class H5FD_class_t {
      * }
      */
     public static long fapl_size$get(MemorySegment seg) {
-        return (long)constants$180.const$2.get(seg);
+        return (long)constants$186.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -362,13 +362,13 @@ public class H5FD_class_t {
      * }
      */
     public static void fapl_size$set(MemorySegment seg, long x) {
-        constants$180.const$2.set(seg, x);
+        constants$186.const$3.set(seg, x);
     }
     public static long fapl_size$get(MemorySegment seg, long index) {
-        return (long)constants$180.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$186.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void fapl_size$set(MemorySegment seg, long index, long x) {
-        constants$180.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$186.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -379,13 +379,13 @@ public class H5FD_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(fapl_get fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$180.const$3, fi, constants$113.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$186.const$4, fi, constants$118.const$5, scope);
         }
         static fapl_get ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$186.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -394,7 +394,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle fapl_get$VH() {
-        return constants$180.const$5;
+        return constants$187.const$0;
     }
     /**
      * Getter for field:
@@ -403,7 +403,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment fapl_get$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$180.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -412,13 +412,13 @@ public class H5FD_class_t {
      * }
      */
     public static void fapl_get$set(MemorySegment seg, MemorySegment x) {
-        constants$180.const$5.set(seg, x);
+        constants$187.const$0.set(seg, x);
     }
     public static MemorySegment fapl_get$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$180.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void fapl_get$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$180.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$187.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static fapl_get fapl_get(MemorySegment segment, Arena scope) {
         return fapl_get.ofAddress(fapl_get$get(segment), scope);
@@ -432,13 +432,13 @@ public class H5FD_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(fapl_copy fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$181.const$0, fi, constants$113.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$187.const$1, fi, constants$118.const$5, scope);
         }
         static fapl_copy ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$186.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -447,7 +447,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle fapl_copy$VH() {
-        return constants$181.const$1;
+        return constants$187.const$2;
     }
     /**
      * Getter for field:
@@ -456,7 +456,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment fapl_copy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$181.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -465,13 +465,13 @@ public class H5FD_class_t {
      * }
      */
     public static void fapl_copy$set(MemorySegment seg, MemorySegment x) {
-        constants$181.const$1.set(seg, x);
+        constants$187.const$2.set(seg, x);
     }
     public static MemorySegment fapl_copy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$181.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void fapl_copy$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$181.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$187.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static fapl_copy fapl_copy(MemorySegment segment, Arena scope) {
         return fapl_copy.ofAddress(fapl_copy$get(segment), scope);
@@ -485,13 +485,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(fapl_free fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$181.const$2, fi, constants$15.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$187.const$3, fi, constants$15.const$4, scope);
         }
         static fapl_free ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
+                    return (int)constants$17.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -500,7 +500,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle fapl_free$VH() {
-        return constants$181.const$3;
+        return constants$187.const$4;
     }
     /**
      * Getter for field:
@@ -509,7 +509,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment fapl_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$181.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -518,19 +518,19 @@ public class H5FD_class_t {
      * }
      */
     public static void fapl_free$set(MemorySegment seg, MemorySegment x) {
-        constants$181.const$3.set(seg, x);
+        constants$187.const$4.set(seg, x);
     }
     public static MemorySegment fapl_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$181.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void fapl_free$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$181.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$187.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static fapl_free fapl_free(MemorySegment segment, Arena scope) {
         return fapl_free.ofAddress(fapl_free$get(segment), scope);
     }
     public static VarHandle dxpl_size$VH() {
-        return constants$181.const$4;
+        return constants$187.const$5;
     }
     /**
      * Getter for field:
@@ -539,7 +539,7 @@ public class H5FD_class_t {
      * }
      */
     public static long dxpl_size$get(MemorySegment seg) {
-        return (long)constants$181.const$4.get(seg);
+        return (long)constants$187.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -548,13 +548,13 @@ public class H5FD_class_t {
      * }
      */
     public static void dxpl_size$set(MemorySegment seg, long x) {
-        constants$181.const$4.set(seg, x);
+        constants$187.const$5.set(seg, x);
     }
     public static long dxpl_size$get(MemorySegment seg, long index) {
-        return (long)constants$181.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$187.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void dxpl_size$set(MemorySegment seg, long index, long x) {
-        constants$181.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$187.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -565,13 +565,13 @@ public class H5FD_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(dxpl_copy fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$181.const$5, fi, constants$113.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$188.const$0, fi, constants$118.const$5, scope);
         }
         static dxpl_copy ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$180.const$4.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$186.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -580,7 +580,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle dxpl_copy$VH() {
-        return constants$182.const$0;
+        return constants$188.const$1;
     }
     /**
      * Getter for field:
@@ -589,7 +589,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment dxpl_copy$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$182.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$188.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -598,13 +598,13 @@ public class H5FD_class_t {
      * }
      */
     public static void dxpl_copy$set(MemorySegment seg, MemorySegment x) {
-        constants$182.const$0.set(seg, x);
+        constants$188.const$1.set(seg, x);
     }
     public static MemorySegment dxpl_copy$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$182.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$188.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void dxpl_copy$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$182.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$188.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static dxpl_copy dxpl_copy(MemorySegment segment, Arena scope) {
         return dxpl_copy.ofAddress(dxpl_copy$get(segment), scope);
@@ -618,13 +618,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(dxpl_free fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$182.const$1, fi, constants$15.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$188.const$2, fi, constants$15.const$4, scope);
         }
         static dxpl_free ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
+                    return (int)constants$17.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -633,7 +633,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle dxpl_free$VH() {
-        return constants$182.const$2;
+        return constants$188.const$3;
     }
     /**
      * Getter for field:
@@ -642,7 +642,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment dxpl_free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$182.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$188.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -651,13 +651,13 @@ public class H5FD_class_t {
      * }
      */
     public static void dxpl_free$set(MemorySegment seg, MemorySegment x) {
-        constants$182.const$2.set(seg, x);
+        constants$188.const$3.set(seg, x);
     }
     public static MemorySegment dxpl_free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$182.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$188.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void dxpl_free$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$182.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$188.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static dxpl_free dxpl_free(MemorySegment segment, Arena scope) {
         return dxpl_free.ofAddress(dxpl_free$get(segment), scope);
@@ -671,13 +671,13 @@ public class H5FD_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3);
         static MemorySegment allocate(open fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$182.const$4, fi, constants$182.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$188.const$5, fi, constants$188.const$4, scope);
         }
         static open ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$182.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    return (java.lang.foreign.MemorySegment)constants$189.const$0.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -686,7 +686,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle open$VH() {
-        return constants$183.const$0;
+        return constants$189.const$1;
     }
     /**
      * Getter for field:
@@ -695,7 +695,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment open$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$189.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -704,13 +704,13 @@ public class H5FD_class_t {
      * }
      */
     public static void open$set(MemorySegment seg, MemorySegment x) {
-        constants$183.const$0.set(seg, x);
+        constants$189.const$1.set(seg, x);
     }
     public static MemorySegment open$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$189.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void open$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$183.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$189.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static open open(MemorySegment segment, Arena scope) {
         return open.ofAddress(open$get(segment), scope);
@@ -724,13 +724,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(close fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$183.const$1, fi, constants$15.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$189.const$2, fi, constants$15.const$4, scope);
         }
         static close ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
+                    return (int)constants$17.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -739,7 +739,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle close$VH() {
-        return constants$183.const$2;
+        return constants$189.const$3;
     }
     /**
      * Getter for field:
@@ -748,7 +748,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment close$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$189.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -757,13 +757,13 @@ public class H5FD_class_t {
      * }
      */
     public static void close$set(MemorySegment seg, MemorySegment x) {
-        constants$183.const$2.set(seg, x);
+        constants$189.const$3.set(seg, x);
     }
     public static MemorySegment close$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$189.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void close$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$183.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$189.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static close close(MemorySegment segment, Arena scope) {
         return close.ofAddress(close$get(segment), scope);
@@ -775,15 +775,15 @@ public class H5FD_class_t {
      */
     public interface cmp {
 
-        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
+        int apply(java.lang.foreign.MemorySegment buf, java.lang.foreign.MemorySegment value);
         static MemorySegment allocate(cmp fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$183.const$3, fi, constants$112.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$189.const$4, fi, constants$117.const$4, scope);
         }
         static cmp ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
+            return (java.lang.foreign.MemorySegment _buf, java.lang.foreign.MemorySegment _value) -> {
                 try {
-                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$189.const$5.invokeExact(symbol, _buf, _value);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -792,7 +792,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle cmp$VH() {
-        return constants$183.const$5;
+        return constants$190.const$0;
     }
     /**
      * Getter for field:
@@ -801,7 +801,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment cmp$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$190.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -810,13 +810,13 @@ public class H5FD_class_t {
      * }
      */
     public static void cmp$set(MemorySegment seg, MemorySegment x) {
-        constants$183.const$5.set(seg, x);
+        constants$190.const$0.set(seg, x);
     }
     public static MemorySegment cmp$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$183.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$190.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void cmp$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$183.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$190.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static cmp cmp(MemorySegment segment, Arena scope) {
         return cmp.ofAddress(cmp$get(segment), scope);
@@ -830,13 +830,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(query fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$184.const$0, fi, constants$112.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$190.const$1, fi, constants$117.const$4, scope);
         }
         static query ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$189.const$5.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -845,7 +845,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle query$VH() {
-        return constants$184.const$1;
+        return constants$190.const$2;
     }
     /**
      * Getter for field:
@@ -854,7 +854,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment query$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$184.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -863,13 +863,13 @@ public class H5FD_class_t {
      * }
      */
     public static void query$set(MemorySegment seg, MemorySegment x) {
-        constants$184.const$1.set(seg, x);
+        constants$190.const$2.set(seg, x);
     }
     public static MemorySegment query$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$184.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void query$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$184.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$190.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static query query(MemorySegment segment, Arena scope) {
         return query.ofAddress(query$get(segment), scope);
@@ -883,13 +883,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(get_type_map fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$184.const$2, fi, constants$112.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$190.const$3, fi, constants$117.const$4, scope);
         }
         static get_type_map ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)constants$183.const$4.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$189.const$5.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -898,7 +898,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle get_type_map$VH() {
-        return constants$184.const$3;
+        return constants$190.const$4;
     }
     /**
      * Getter for field:
@@ -907,7 +907,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment get_type_map$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$184.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -916,13 +916,13 @@ public class H5FD_class_t {
      * }
      */
     public static void get_type_map$set(MemorySegment seg, MemorySegment x) {
-        constants$184.const$3.set(seg, x);
+        constants$190.const$4.set(seg, x);
     }
     public static MemorySegment get_type_map$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$184.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void get_type_map$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$184.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$190.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_type_map get_type_map(MemorySegment segment, Arena scope) {
         return get_type_map.ofAddress(get_type_map$get(segment), scope);
@@ -936,13 +936,13 @@ public class H5FD_class_t {
 
         long apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3);
         static MemorySegment allocate(alloc fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$184.const$4, fi, constants$170.const$0, scope);
+            return RuntimeHelper.upcallStub(constants$190.const$5, fi, constants$175.const$5, scope);
         }
         static alloc ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3) -> {
                 try {
-                    return (long)constants$184.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
+                    return (long)constants$191.const$0.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -951,7 +951,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle alloc$VH() {
-        return constants$185.const$0;
+        return constants$191.const$1;
     }
     /**
      * Getter for field:
@@ -960,7 +960,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment alloc$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$185.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$191.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -969,13 +969,13 @@ public class H5FD_class_t {
      * }
      */
     public static void alloc$set(MemorySegment seg, MemorySegment x) {
-        constants$185.const$0.set(seg, x);
+        constants$191.const$1.set(seg, x);
     }
     public static MemorySegment alloc$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$185.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$191.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void alloc$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$185.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$191.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static alloc alloc(MemorySegment segment, Arena scope) {
         return alloc.ofAddress(alloc$get(segment), scope);
@@ -989,13 +989,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4);
         static MemorySegment allocate(free fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$185.const$2, fi, constants$185.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$191.const$3, fi, constants$191.const$2, scope);
         }
         static free ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4) -> {
                 try {
-                    return (int)constants$185.const$3.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4);
+                    return (int)constants$191.const$4.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1004,7 +1004,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle free$VH() {
-        return constants$185.const$4;
+        return constants$191.const$5;
     }
     /**
      * Getter for field:
@@ -1013,7 +1013,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment free$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$191.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -1022,13 +1022,13 @@ public class H5FD_class_t {
      * }
      */
     public static void free$set(MemorySegment seg, MemorySegment x) {
-        constants$185.const$4.set(seg, x);
+        constants$191.const$5.set(seg, x);
     }
     public static MemorySegment free$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$185.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$191.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void free$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$185.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$191.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static free free(MemorySegment segment, Arena scope) {
         return free.ofAddress(free$get(segment), scope);
@@ -1042,13 +1042,13 @@ public class H5FD_class_t {
 
         long apply(java.lang.foreign.MemorySegment _x0, int _x1);
         static MemorySegment allocate(get_eoa fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$186.const$0, fi, constants$185.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$192.const$1, fi, constants$192.const$0, scope);
         }
         static get_eoa ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1) -> {
                 try {
-                    return (long)constants$186.const$1.invokeExact(symbol, __x0, __x1);
+                    return (long)constants$192.const$2.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1057,7 +1057,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle get_eoa$VH() {
-        return constants$186.const$2;
+        return constants$192.const$3;
     }
     /**
      * Getter for field:
@@ -1066,7 +1066,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment get_eoa$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$192.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -1075,13 +1075,13 @@ public class H5FD_class_t {
      * }
      */
     public static void get_eoa$set(MemorySegment seg, MemorySegment x) {
-        constants$186.const$2.set(seg, x);
+        constants$192.const$3.set(seg, x);
     }
     public static MemorySegment get_eoa$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$186.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$192.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void get_eoa$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$186.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$192.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_eoa get_eoa(MemorySegment segment, Arena scope) {
         return get_eoa.ofAddress(get_eoa$get(segment), scope);
@@ -1095,13 +1095,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2);
         static MemorySegment allocate(set_eoa fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$186.const$4, fi, constants$186.const$3, scope);
+            return RuntimeHelper.upcallStub(constants$192.const$5, fi, constants$192.const$4, scope);
         }
         static set_eoa ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2) -> {
                 try {
-                    return (int)constants$186.const$5.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$193.const$0.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1110,7 +1110,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle set_eoa$VH() {
-        return constants$187.const$0;
+        return constants$193.const$1;
     }
     /**
      * Getter for field:
@@ -1119,7 +1119,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment set_eoa$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$193.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -1128,13 +1128,13 @@ public class H5FD_class_t {
      * }
      */
     public static void set_eoa$set(MemorySegment seg, MemorySegment x) {
-        constants$187.const$0.set(seg, x);
+        constants$193.const$1.set(seg, x);
     }
     public static MemorySegment set_eoa$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$193.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void set_eoa$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$187.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$193.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static set_eoa set_eoa(MemorySegment segment, Arena scope) {
         return set_eoa.ofAddress(set_eoa$get(segment), scope);
@@ -1148,13 +1148,13 @@ public class H5FD_class_t {
 
         long apply(java.lang.foreign.MemorySegment _x0, int _x1);
         static MemorySegment allocate(get_eof fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$187.const$1, fi, constants$185.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$193.const$2, fi, constants$192.const$0, scope);
         }
         static get_eof ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1) -> {
                 try {
-                    return (long)constants$186.const$1.invokeExact(symbol, __x0, __x1);
+                    return (long)constants$192.const$2.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1163,7 +1163,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle get_eof$VH() {
-        return constants$187.const$2;
+        return constants$193.const$3;
     }
     /**
      * Getter for field:
@@ -1172,7 +1172,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment get_eof$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$193.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -1181,13 +1181,13 @@ public class H5FD_class_t {
      * }
      */
     public static void get_eof$set(MemorySegment seg, MemorySegment x) {
-        constants$187.const$2.set(seg, x);
+        constants$193.const$3.set(seg, x);
     }
     public static MemorySegment get_eof$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$193.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void get_eof$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$187.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$193.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_eof get_eof(MemorySegment segment, Arena scope) {
         return get_eof.ofAddress(get_eof$get(segment), scope);
@@ -1201,13 +1201,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, long _x1, java.lang.foreign.MemorySegment _x2);
         static MemorySegment allocate(get_handle fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$187.const$3, fi, constants$17.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$193.const$4, fi, constants$18.const$0, scope);
         }
         static get_handle ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, long __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (int)constants$18.const$0.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$18.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1216,7 +1216,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle get_handle$VH() {
-        return constants$187.const$4;
+        return constants$193.const$5;
     }
     /**
      * Getter for field:
@@ -1225,7 +1225,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment get_handle$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$193.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -1234,13 +1234,13 @@ public class H5FD_class_t {
      * }
      */
     public static void get_handle$set(MemorySegment seg, MemorySegment x) {
-        constants$187.const$4.set(seg, x);
+        constants$193.const$5.set(seg, x);
     }
     public static MemorySegment get_handle$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$187.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$193.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void get_handle$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$187.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$193.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_handle get_handle(MemorySegment segment, Arena scope) {
         return get_handle.ofAddress(get_handle$get(segment), scope);
@@ -1254,13 +1254,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemorySegment _x5);
         static MemorySegment allocate(read fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$188.const$0, fi, constants$187.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$194.const$1, fi, constants$194.const$0, scope);
         }
         static read ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemorySegment __x5) -> {
                 try {
-                    return (int)constants$188.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
+                    return (int)constants$194.const$2.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1269,7 +1269,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle read$VH() {
-        return constants$188.const$2;
+        return constants$194.const$3;
     }
     /**
      * Getter for field:
@@ -1278,7 +1278,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment read$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$188.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$194.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -1287,13 +1287,13 @@ public class H5FD_class_t {
      * }
      */
     public static void read$set(MemorySegment seg, MemorySegment x) {
-        constants$188.const$2.set(seg, x);
+        constants$194.const$3.set(seg, x);
     }
     public static MemorySegment read$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$188.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$194.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void read$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$188.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$194.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static read read(MemorySegment segment, Arena scope) {
         return read.ofAddress(read$get(segment), scope);
@@ -1307,13 +1307,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, long _x3, long _x4, java.lang.foreign.MemorySegment _x5);
         static MemorySegment allocate(write fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$188.const$3, fi, constants$187.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$194.const$4, fi, constants$194.const$0, scope);
         }
         static write ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, long __x3, long __x4, java.lang.foreign.MemorySegment __x5) -> {
                 try {
-                    return (int)constants$188.const$1.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
+                    return (int)constants$194.const$2.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4, __x5);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1322,7 +1322,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle write$VH() {
-        return constants$188.const$4;
+        return constants$194.const$5;
     }
     /**
      * Getter for field:
@@ -1331,7 +1331,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment write$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$188.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$194.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -1340,13 +1340,13 @@ public class H5FD_class_t {
      * }
      */
     public static void write$set(MemorySegment seg, MemorySegment x) {
-        constants$188.const$4.set(seg, x);
+        constants$194.const$5.set(seg, x);
     }
     public static MemorySegment write$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$188.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$194.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void write$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$188.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$194.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static write write(MemorySegment segment, Arena scope) {
         return write.ofAddress(write$get(segment), scope);
@@ -1360,13 +1360,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, long _x1, boolean _x2);
         static MemorySegment allocate(flush fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$189.const$0, fi, constants$188.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$195.const$1, fi, constants$195.const$0, scope);
         }
         static flush ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, long __x1, boolean __x2) -> {
                 try {
-                    return (int)constants$189.const$1.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$195.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1375,7 +1375,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle flush$VH() {
-        return constants$189.const$2;
+        return constants$195.const$3;
     }
     /**
      * Getter for field:
@@ -1384,7 +1384,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment flush$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$189.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$195.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -1393,13 +1393,13 @@ public class H5FD_class_t {
      * }
      */
     public static void flush$set(MemorySegment seg, MemorySegment x) {
-        constants$189.const$2.set(seg, x);
+        constants$195.const$3.set(seg, x);
     }
     public static MemorySegment flush$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$189.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$195.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void flush$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$189.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$195.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static flush flush(MemorySegment segment, Arena scope) {
         return flush.ofAddress(flush$get(segment), scope);
@@ -1413,13 +1413,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, long _x1, boolean _x2);
         static MemorySegment allocate(truncate fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$189.const$3, fi, constants$188.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$195.const$4, fi, constants$195.const$0, scope);
         }
         static truncate ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, long __x1, boolean __x2) -> {
                 try {
-                    return (int)constants$189.const$1.invokeExact(symbol, __x0, __x1, __x2);
+                    return (int)constants$195.const$2.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1428,7 +1428,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle truncate$VH() {
-        return constants$189.const$4;
+        return constants$195.const$5;
     }
     /**
      * Getter for field:
@@ -1437,7 +1437,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment truncate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$189.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$195.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -1446,13 +1446,13 @@ public class H5FD_class_t {
      * }
      */
     public static void truncate$set(MemorySegment seg, MemorySegment x) {
-        constants$189.const$4.set(seg, x);
+        constants$195.const$5.set(seg, x);
     }
     public static MemorySegment truncate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$189.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$195.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void truncate$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$189.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$195.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static truncate truncate(MemorySegment segment, Arena scope) {
         return truncate.ofAddress(truncate$get(segment), scope);
@@ -1466,13 +1466,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, boolean _x1);
         static MemorySegment allocate(lock fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$190.const$0, fi, constants$189.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$196.const$1, fi, constants$196.const$0, scope);
         }
         static lock ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, boolean __x1) -> {
                 try {
-                    return (int)constants$190.const$1.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$196.const$2.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1481,7 +1481,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle lock$VH() {
-        return constants$190.const$2;
+        return constants$196.const$3;
     }
     /**
      * Getter for field:
@@ -1490,7 +1490,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment lock$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$196.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -1499,13 +1499,13 @@ public class H5FD_class_t {
      * }
      */
     public static void lock$set(MemorySegment seg, MemorySegment x) {
-        constants$190.const$2.set(seg, x);
+        constants$196.const$3.set(seg, x);
     }
     public static MemorySegment lock$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$190.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$196.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void lock$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$190.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$196.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static lock lock(MemorySegment segment, Arena scope) {
         return lock.ofAddress(lock$get(segment), scope);
@@ -1519,13 +1519,13 @@ public class H5FD_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(unlock fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$190.const$3, fi, constants$15.const$2, scope);
+            return RuntimeHelper.upcallStub(constants$196.const$4, fi, constants$15.const$4, scope);
         }
         static unlock ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$17.const$3.invokeExact(symbol, __x0);
+                    return (int)constants$17.const$5.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -1534,7 +1534,7 @@ public class H5FD_class_t {
     }
 
     public static VarHandle unlock$VH() {
-        return constants$190.const$4;
+        return constants$196.const$5;
     }
     /**
      * Getter for field:
@@ -1543,7 +1543,7 @@ public class H5FD_class_t {
      * }
      */
     public static MemorySegment unlock$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$196.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -1552,13 +1552,13 @@ public class H5FD_class_t {
      * }
      */
     public static void unlock$set(MemorySegment seg, MemorySegment x) {
-        constants$190.const$4.set(seg, x);
+        constants$196.const$5.set(seg, x);
     }
     public static MemorySegment unlock$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$190.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$196.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void unlock$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$190.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$196.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static unlock unlock(MemorySegment segment, Arena scope) {
         return unlock.ofAddress(unlock$get(segment), scope);

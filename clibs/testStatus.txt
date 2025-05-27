@@ -1,4 +1,4 @@
-5/23/2025
+5/24/2025
 
 dir              failed    passed   time
 hdf4                6       4256    3 hr 13min
@@ -6,5 +6,17 @@ hdf5                8       12569    8 min 30 sec
 hdf5Clib            0       319     41 sec
 netcdf3             0       201     2 sec
 netcdf4             0       86      2 sec
-NetchdfClibExtra    0       2290    2 min 5 sec          Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
+NetchdfClibExtra    20      3122    3 min 3 sec          Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
 NetchdfClibTest     0       7251    16 min 30 sec        Compare Netchdf against NetcdfClibFile / Hdf5ClibFile / Hdf4ClibFile
+
+
+NetchdfClibExtra failures
+
+            if (excludeClibFails) {
+                builder.addNameFilter { name -> !name.lowercase().contains("_npp_") }          // 18 unimplemented type= reference
+                    .addNameFilter { name -> !name.endsWith("level2_MSG2_8bit_VISIR_STD_20091005_0700.H5") } // ok
+                    .addNameFilter { name -> !name.endsWith("I3A_VHR_22NOV2007_0902_L1B_STD.h5") }          // ok
+                    /home/all/testdata/netchdf/austin/H12007_1m_MLLW_1of6.bag                   // *** FAIL comparing data for variable = char /BAG_root/metadata []
+                    // .addNameFilter { name -> !name.endsWith("S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4") } // ok
+                    home/all/testdata/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5  *** FAIL comparing data for variable = ubyte Granule [Granule]
+            }

@@ -11,33 +11,12 @@ final class constants$112 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$112() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "rename",
-        constants$112.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "renameat",
-        constants$112.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fclose",
-        constants$15.const$2
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER);
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "tmpfile",
-        constants$112.const$5
-    );
+    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_end"));
+    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_markers"));
+    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_chain"));
+    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_fileno"));
+    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
+    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
 }
 
 

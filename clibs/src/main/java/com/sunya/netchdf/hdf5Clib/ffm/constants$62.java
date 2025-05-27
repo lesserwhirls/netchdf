@@ -11,24 +11,7 @@ final class constants$62 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$62() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_iterate_t.class, "apply", constants$61.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$61.const$5
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5L_elink_traverse_t.class, "apply", constants$62.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$62.const$2
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG,
@@ -36,9 +19,25 @@ final class constants$62 {
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "H5Lmove",
-        constants$62.const$5
+        constants$62.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lcopy",
+        constants$62.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_hard",
+        constants$62.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft",
+        constants$57.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ldelete",
+        constants$54.const$5
     );
 }
 

@@ -11,27 +11,19 @@ final class constants$165 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$165() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5E_walk1_t.class, "apply", constants$119.const$0);
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_auto1_t.class, "apply", constants$15.const$2);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_BADSIZE_g", JAVA_LONG);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_walk2_t.class, "apply", constants$22.const$5);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eclear1",
-        constants$14.const$0
+        constants$22.const$5
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eget_auto1",
-        constants$112.const$0
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5E_auto2_t.class, "apply", constants$18.const$3);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eregister_class",
+        constants$129.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Epush1",
-        constants$165.const$4
+        "H5Eunregister_class",
+        constants$19.const$5
     );
 }
 

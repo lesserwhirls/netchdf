@@ -11,12 +11,12 @@ final class constants$142 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$142() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSHRINK_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_LINKCOUNT_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_VERSION_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_ALIGNMENT_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_BADMESG_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTDELETE_g", JAVA_LONG);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_EARRAY_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_PLINE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_ERROR_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CACHE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_SEEKERROR_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_READERROR_g", JAVA_LONG);
 }
 
 

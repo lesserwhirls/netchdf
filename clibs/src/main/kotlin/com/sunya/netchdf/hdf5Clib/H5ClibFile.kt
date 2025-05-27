@@ -19,10 +19,10 @@ cd /home/stormy/install/jextract-21/bin
 ./jextract --source \
     --header-class-name hdf5_h \
     --target-package com.sunya.netchdf.hdf5Clib.ffm \
-    -I /usr/include/hdf5/serial/hdf5.h \
-    -l /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so \
+    -I /home/stormy/anaconda3/include/hdf5.h \
+    -l /home/stormy/anaconda3/lib/libhdf5.so \
     --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
-    /usr/include/hdf5/serial/hdf5.h
+    /home/stormy/anaconda3/include/hdf5.h
  */
 class Hdf5ClibFile(val filename: String) : Netchdf {
     private val header = H5Cbuilder(filename)
@@ -55,7 +55,11 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
             } else if (vinfo.h5ctype.datatype5 == Datatype5.Vlen) {
                 readVlens(session, vinfo.datasetId, vinfo.h5ctype, fillSection) as ArrayTyped<T>
             } else {
-                readRegularData(session, vinfo.datasetId, vinfo.h5ctype, vinfo.h5ctype.datatype(), fillSection) as ArrayTyped<T>
+                var result = readRegularData(session, vinfo.datasetId, vinfo.h5ctype, vinfo.h5ctype.datatype(), fillSection) as ArrayTyped<T>
+                if (vinfo.h5ctype.datatype() == Datatype.REFERENCE) {
+                    result = ArrayString(fillSection.shape.toIntArray(), header.convertReferencesToDataObjectName(result as ArrayLong)) as ArrayTyped<T>
+                }
+                result
             }
         }
     }

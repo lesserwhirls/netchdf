@@ -11,26 +11,24 @@ final class constants$57 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$57() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_traverse_0_func_t.class, "apply", constants$57.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_create_func_t.class, "apply", constants$57.const$0);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         constants$57.const$0
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_traverse_func_t.class, "apply", constants$57.const$3);
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_move_func_t.class, "apply", constants$57.const$3);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         constants$57.const$3
     );

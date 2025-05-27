@@ -4,7 +4,9 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.netchdf.compareCdlWithClib
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.compareSelectedDataWithClib
+import com.sunya.netchdf.hdf5Clib.Hdf5ClibFile
 import com.sunya.netchdf.netcdfClib.NClibFile
+import com.sunya.netchdf.readNetchdfData
 import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -32,6 +34,14 @@ class Hdf5Compare {
             return Stream.of( N4Files.params()).flatMap { i -> i };
            //  return Stream.of( N4Files.params(),  H5Files.params()).flatMap { i -> i };
         }
+    }
+
+
+    @Test
+    fun testNewLibrary() {
+        val filename = testData + "netchdf/haberman/iso.h5"
+        compareCdlWithClib(filename, showCdl = true)
+        compareDataWithClib(filename)
     }
 
     // We use HDFEOS_INFORMATION to modify the structure, Nclib does not.
@@ -66,6 +76,13 @@ class Hdf5Compare {
     fun problemChars() {
         val filename = testData + "cdmUnitTest/formats/netcdf4/files/c0_4.nc4"
         compareCdlWithClib(filename)
+        compareDataWithClib(filename)
+    }
+
+    @Test
+    fun problemLibraryVersion() {
+        val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
+        compareCdlWithClib(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 

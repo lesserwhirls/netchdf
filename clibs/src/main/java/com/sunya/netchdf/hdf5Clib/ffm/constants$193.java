@@ -11,26 +11,14 @@ final class constants$193 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$193() {}
-    static final VarHandle const$0 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("alignment"));
-    static final VarHandle const$1 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("paged_aggr"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("image_malloc"),
-        RuntimeHelper.POINTER.withName("image_memcpy"),
-        RuntimeHelper.POINTER.withName("image_realloc"),
-        RuntimeHelper.POINTER.withName("image_free"),
-        RuntimeHelper.POINTER.withName("udata_copy"),
-        RuntimeHelper.POINTER.withName("udata_free"),
-        RuntimeHelper.POINTER.withName("udata")
-    ).withName("");
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$192.const$4
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_malloc.class, "apply", constants$193.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$193.const$3
-    );
+    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("set_eoa"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eof.class, "apply", constants$192.const$0);
+    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_eof"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.get_handle.class, "apply", constants$18.const$0);
+    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_handle"));
 }
 
 

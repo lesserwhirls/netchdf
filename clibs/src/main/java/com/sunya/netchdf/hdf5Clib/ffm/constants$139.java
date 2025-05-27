@@ -11,12 +11,12 @@ final class constants$139 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$139() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGC_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGETSIZE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_OBJOPEN_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTRESTORE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOMPUTE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTEXTEND_g", JAVA_LONG);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_ATTR_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_IO_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_EFL_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_TST_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_LIB_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_PAGEBUF_g", JAVA_LONG);
 }
 
 

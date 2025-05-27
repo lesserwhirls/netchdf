@@ -11,19 +11,31 @@ final class constants$169 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$169() {}
-    static final VarHandle const$0 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$1 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("nbins"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(21, RuntimeHelper.POINTER).withName("retries")
-    ).withName("H5F_retry_info_t");
-    static final VarHandle const$3 = constants$169.const$2.varHandle(MemoryLayout.PathElement.groupElement("nbins"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5F_flush_cb_t.class, "apply", constants$44.const$4);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fis_hdf5",
-        constants$15.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eget_msg",
+        constants$169.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eget_num",
+        constants$10.const$2
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("maj_num"),
+        JAVA_LONG.withName("min_num"),
+        RuntimeHelper.POINTER.withName("func_name"),
+        RuntimeHelper.POINTER.withName("file_name"),
+        JAVA_INT.withName("line"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("desc")
+    ).withName("H5E_error1_t");
+    static final VarHandle const$4 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
+    static final VarHandle const$5 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
 }
 
 

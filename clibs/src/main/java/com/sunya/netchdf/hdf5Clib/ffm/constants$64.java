@@ -11,16 +11,13 @@ final class constants$64 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$64() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Lexists",
+        constants$54.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Lget_val",
-        constants$64.const$0
+        "H5Lget_info2",
+        constants$44.const$3
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
@@ -29,20 +26,25 @@ final class constants$64 {
         JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Lget_val_by_idx",
+        "H5Lget_info_by_idx2",
         constants$64.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Lexists",
-        constants$53.const$3
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Lget_info",
-        constants$43.const$3
+        "H5Lget_name_by_idx",
+        constants$64.const$4
     );
 }
 

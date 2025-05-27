@@ -11,32 +11,35 @@ final class constants$177 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$177() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("super_ext_size"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("index_size"),
-                JAVA_LONG.withName("heap_size")
-            ).withName("msgs_info")
-        ).withName("sohm")
-    ).withName("H5F_info1_t");
-    static final VarHandle const$1 = constants$177.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("hdr_size"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("index_size"),
-            JAVA_LONG.withName("heap_size")
-        ).withName("msgs_info")
-    ).withName("");
-    static final VarHandle const$3 = constants$177.const$2.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_info1",
-        constants$44.const$4
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fget_create_plist",
+        constants$10.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fset_latest_format",
-        constants$176.const$4
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_access_plist",
+        constants$10.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_intent",
+        constants$18.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_fileno",
+        constants$18.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_obj_count",
+        constants$49.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Fget_obj_ids",
+        constants$177.const$5
     );
 }
 

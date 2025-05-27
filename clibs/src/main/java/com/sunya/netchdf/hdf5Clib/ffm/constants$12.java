@@ -19,6 +19,9 @@ final class constants$12 {
     static final VarHandle const$2 = constants$12.const$1.varHandle(MemoryLayout.PathElement.groupElement("index_size"));
     static final VarHandle const$3 = constants$12.const$1.varHandle(MemoryLayout.PathElement.groupElement("heap_size"));
     static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+    ).withName("H5O_token_t");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
         JAVA_LONG.withName("total_alloc_bytes"),
         JAVA_LONG.withName("curr_alloc_bytes"),
         JAVA_LONG.withName("peak_alloc_bytes"),
@@ -27,7 +30,6 @@ final class constants$12 {
         JAVA_LONG.withName("curr_alloc_blocks_count"),
         JAVA_LONG.withName("peak_alloc_blocks_count")
     ).withName("H5_alloc_stats_t");
-    static final VarHandle const$5 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_bytes"));
 }
 
 

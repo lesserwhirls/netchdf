@@ -11,29 +11,31 @@ final class constants$211 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$211() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sget_regular_hyperslab",
-        constants$97.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_bounds",
-        constants$41.const$4
+        "H5Gmove2",
+        constants$211.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_elem_npoints",
-        constants$10.const$2
+        "H5Gunlink",
+        constants$18.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_elem_pointlist",
-        constants$100.const$0
+        "H5Gget_linkval",
+        constants$211.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_blocklist",
-        constants$100.const$0
+        "H5Gset_comment",
+        constants$42.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_nblocks",
-        constants$10.const$2
+        "H5Gget_comment",
+        constants$211.const$0
     );
 }
 

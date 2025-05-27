@@ -11,12 +11,31 @@ final class constants$277 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$277() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("X");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lX");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhd");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hd");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Smodify_select",
+        constants$265.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Soffset_simple",
+        constants$18.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_close",
+        constants$19.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_create",
+        constants$277.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_get_seq_list",
+        constants$104.const$0
+    );
 }
 
 

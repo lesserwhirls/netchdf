@@ -11,8 +11,32 @@ final class constants$282 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$282() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("::");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5VLget_connector_name",
+        constants$20.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5VLclose",
+        constants$19.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5VLunregister_connector",
+        constants$19.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5VLquery_optional",
+        constants$282.const$3
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_LONG.withName("lapl_id")
+    ).withName("H5VL_loc_by_name");
 }
 
 

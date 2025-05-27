@@ -11,12 +11,12 @@ final class constants$26 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$26() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8LE_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I16BE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I16LE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I32BE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I32LE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I64BE_g", JAVA_LONG);
+    static final VarHandle const$0 = JAVA_LONG.varHandle();
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8BE_g", JAVA_LONG);
 }
 
 

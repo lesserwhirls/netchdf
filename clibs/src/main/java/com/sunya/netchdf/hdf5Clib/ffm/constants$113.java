@@ -11,29 +11,12 @@ final class constants$113 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$113() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "tmpnam",
-        constants$113.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "tmpnam_r",
-        constants$113.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "tempnam",
-        constants$113.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fflush",
-        constants$15.const$2
-    );
+    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
+    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
+    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
+    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
+    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
+    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
 }
 
 

@@ -11,11 +11,18 @@ final class constants$232 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$232() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_nprops",
+        constants$18.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_size",
+        constants$42.const$5
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
@@ -24,25 +31,17 @@ final class constants$232 {
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pregister2",
-        constants$232.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Premove",
-        constants$44.const$4
-    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset",
-        constants$41.const$4
+        "H5Pinsert2",
+        constants$232.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Punregister",
-        constants$44.const$4
+        "H5Pisa_class",
+        constants$41.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pall_filters_avail",
-        constants$19.const$0
+        "H5Piterate",
+        constants$61.const$0
     );
 }
 

@@ -7,13 +7,13 @@ import com.sunya.netchdf.testdata.testData
 import kotlin.test.assertEquals
 
 // trying to compare output with ncdump - h; probably get rid of
-@Disabled
+// @Disabled
 class N4strictTest {
 
     @Test
     fun tst_dims() {
         readN4header(testData + "devcdm/netcdf4/tst_dims.nc",
-            """netcdf tst_dims {
+            """netcdf tst_dims.nc {
 dimensions:
 	latitude = 6 ;
 	longitude = 12 ;

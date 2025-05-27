@@ -11,12 +11,30 @@ final class constants$132 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$132() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_INTERNAL_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_BTREE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_REFERENCE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_DATASPACE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_RESOURCE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_RS_g", JAVA_LONG);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "feof",
+        constants$15.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "ferror",
+        constants$15.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "clearerr_unlocked",
+        constants$122.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "feof_unlocked",
+        constants$15.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ferror_unlocked",
+        constants$15.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "perror",
+        constants$122.const$2
+    );
 }
 
 

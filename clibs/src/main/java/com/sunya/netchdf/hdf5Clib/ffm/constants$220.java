@@ -11,14 +11,14 @@ final class constants$220 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$220() {}
-    static final VarHandle const$0 = constants$219.const$1.varHandle(MemoryLayout.PathElement.groupElement("filter"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_cls_create_func_t.class, "apply", constants$44.const$4);
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_cls_copy_func_t.class, "apply", constants$85.const$4);
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_cls_close_func_t.class, "apply", constants$18.const$3);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_prp_cb1_t.class, "apply", constants$18.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_cb2_t.class, "apply", constants$211.const$0);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$85.const$4
+        constants$211.const$0
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_cls_close_func_t.class, "apply", constants$44.const$4);
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5P_prp_cb1_t.class, "apply", constants$17.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_prp_create_func_t.class, "apply", constants$18.const$0);
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5P_prp_set_func_t.class, "apply", constants$211.const$0);
 }
 
 

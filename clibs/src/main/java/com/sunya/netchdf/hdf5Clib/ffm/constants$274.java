@@ -11,12 +11,30 @@ final class constants$274 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$274() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("16");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String(".libs/");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf5");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("help@hdfgroup.org");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 1.10.10");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Sdecode",
+        constants$43.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sencode2",
+        constants$44.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sextent_copy",
+        constants$41.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Sextent_equal",
+        constants$41.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sget_regular_hyperslab",
+        constants$103.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sget_select_bounds",
+        constants$42.const$5
+    );
 }
 
 

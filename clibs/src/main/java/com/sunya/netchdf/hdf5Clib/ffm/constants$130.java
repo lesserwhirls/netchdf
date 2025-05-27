@@ -11,12 +11,31 @@ final class constants$130 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$130() {}
-    static final VarHandle const$0 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
-    static final VarHandle const$1 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("line"));
-    static final VarHandle const$2 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
-    static final VarHandle const$3 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
-    static final VarHandle const$4 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("desc"));
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_ERR_CLS_g", JAVA_LONG);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fwrite",
+        constants$129.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fread_unlocked",
+        constants$129.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fwrite_unlocked",
+        constants$129.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fseek",
+        constants$130.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "ftell",
+        constants$43.const$0
+    );
 }
 
 

@@ -11,12 +11,12 @@ final class constants$13 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$13() {}
-    static final VarHandle const$0 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_bytes"));
-    static final VarHandle const$1 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_bytes"));
-    static final VarHandle const$2 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_block_size"));
-    static final VarHandle const$3 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_blocks_count"));
-    static final VarHandle const$4 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_blocks_count"));
-    static final VarHandle const$5 = constants$12.const$4.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_blocks_count"));
+    static final VarHandle const$0 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_bytes"));
+    static final VarHandle const$1 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_bytes"));
+    static final VarHandle const$2 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_bytes"));
+    static final VarHandle const$3 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_block_size"));
+    static final VarHandle const$4 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_blocks_count"));
+    static final VarHandle const$5 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_blocks_count"));
 }
 
 

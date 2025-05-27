@@ -11,39 +11,27 @@ final class constants$74 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$74() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx2",
-        constants$74.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Olink",
-        constants$74.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oincr_refcount",
-        constants$19.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Odecr_refcount",
-        constants$19.const$0
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("present"),
+        JAVA_LONG.withName("shared")
+    ).withName("");
+    static final VarHandle const$1 = constants$74.const$0.varHandle(MemoryLayout.PathElement.groupElement("present"));
+    static final VarHandle const$2 = constants$74.const$0.varHandle(MemoryLayout.PathElement.groupElement("shared"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fileno"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("token"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("rc"),
+        JAVA_LONG.withName("atime"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("ctime"),
+        JAVA_LONG.withName("btime"),
+        JAVA_LONG.withName("num_attrs")
+    ).withName("H5O_info2_t");
+    static final VarHandle const$4 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final VarHandle const$5 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
 }
 
 

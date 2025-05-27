@@ -12,29 +12,32 @@ final class constants$15 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$15() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5get_free_list_sizes",
+        "H5set_free_list_limits",
         constants$15.const$0
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5get_alloc_stats",
+        "H5get_free_list_sizes",
         constants$15.const$2
     );
     static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5get_libversion",
+        "H5get_alloc_stats",
         constants$15.const$4
     );
 }

@@ -11,12 +11,12 @@ final class constants$60 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$60() {}
-    static final VarHandle const$0 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("del_func"));
-    static final VarHandle const$1 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
-    static final VarHandle const$2 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$3 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$4 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("comment"));
-    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
+    static final VarHandle const$0 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
+    static final VarHandle const$1 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
+    static final VarHandle const$2 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
+    static final VarHandle const$3 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
+    static final VarHandle const$4 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("del_func"));
+    static final VarHandle const$5 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
 }
 
 

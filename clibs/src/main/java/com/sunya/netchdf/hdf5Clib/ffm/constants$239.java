@@ -12,28 +12,28 @@ final class constants$239 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$239() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_cache",
-        constants$97.const$2
+        "H5Pset_shared_mesg_nindexes",
+        constants$46.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_core_write_tracking",
-        constants$41.const$4
+        "H5Pset_shared_mesg_phase_change",
+        constants$51.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver",
-        constants$10.const$2
+        "H5Pset_sizes",
+        constants$215.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver_info",
-        constants$45.const$1
+        "H5Pset_sym_k",
+        constants$51.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_file_cache_size",
-        constants$44.const$4
+        "H5Pset_userblock",
+        constants$41.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_evict_on_close",
-        constants$44.const$4
+        "H5Pget_alignment",
+        constants$42.const$5
     );
 }
 

@@ -11,12 +11,33 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final VarHandle const$0 = JAVA_LONG.varHandle();
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64LE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8BE_g", JAVA_LONG);
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5T_conv_t.class, "apply", constants$25.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$25.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5T_conv_except_func_t.class, "apply", constants$25.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$25.const$3
+    );
 }
 
 

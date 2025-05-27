@@ -12,33 +12,29 @@ final class constants$265 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$265() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5PLsize",
-        constants$15.const$2
+        "H5Pget_version",
+        constants$103.const$5
     );
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_LONG
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Rcreate",
+        "H5Pset_file_space",
         constants$265.const$1
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_file_space",
+        constants$42.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Rdereference2",
-        constants$265.const$3
+        "H5PLset_loading_state",
+        constants$21.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Rget_region",
-        constants$44.const$1
+        "H5PLget_loading_state",
+        constants$15.const$4
     );
 }
 

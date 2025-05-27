@@ -21,10 +21,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5Z_class1_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$219.const$1;
+        return constants$218.const$3;
     }
     public static VarHandle id$VH() {
-        return constants$219.const$2;
+        return constants$218.const$4;
     }
     /**
      * Getter for field:
@@ -33,7 +33,7 @@ public class H5Z_class1_t {
      * }
      */
     public static int id$get(MemorySegment seg) {
-        return (int)constants$219.const$2.get(seg);
+        return (int)constants$218.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -42,16 +42,16 @@ public class H5Z_class1_t {
      * }
      */
     public static void id$set(MemorySegment seg, int x) {
-        constants$219.const$2.set(seg, x);
+        constants$218.const$4.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)constants$219.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$218.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        constants$219.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$218.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle name$VH() {
-        return constants$219.const$3;
+        return constants$218.const$5;
     }
     /**
      * Getter for field:
@@ -60,7 +60,7 @@ public class H5Z_class1_t {
      * }
      */
     public static MemorySegment name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$218.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -69,16 +69,16 @@ public class H5Z_class1_t {
      * }
      */
     public static void name$set(MemorySegment seg, MemorySegment x) {
-        constants$219.const$3.set(seg, x);
+        constants$218.const$5.set(seg, x);
     }
     public static MemorySegment name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$218.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$219.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$218.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle can_apply$VH() {
-        return constants$219.const$4;
+        return constants$219.const$0;
     }
     /**
      * Getter for field:
@@ -87,7 +87,7 @@ public class H5Z_class1_t {
      * }
      */
     public static MemorySegment can_apply$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$219.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -96,19 +96,19 @@ public class H5Z_class1_t {
      * }
      */
     public static void can_apply$set(MemorySegment seg, MemorySegment x) {
-        constants$219.const$4.set(seg, x);
+        constants$219.const$0.set(seg, x);
     }
     public static MemorySegment can_apply$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$219.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void can_apply$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$219.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$219.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5Z_can_apply_func_t can_apply(MemorySegment segment, Arena scope) {
         return H5Z_can_apply_func_t.ofAddress(can_apply$get(segment), scope);
     }
     public static VarHandle set_local$VH() {
-        return constants$219.const$5;
+        return constants$219.const$1;
     }
     /**
      * Getter for field:
@@ -117,7 +117,7 @@ public class H5Z_class1_t {
      * }
      */
     public static MemorySegment set_local$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$219.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -126,19 +126,19 @@ public class H5Z_class1_t {
      * }
      */
     public static void set_local$set(MemorySegment seg, MemorySegment x) {
-        constants$219.const$5.set(seg, x);
+        constants$219.const$1.set(seg, x);
     }
     public static MemorySegment set_local$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$219.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$219.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void set_local$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$219.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$219.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5Z_set_local_func_t set_local(MemorySegment segment, Arena scope) {
         return H5Z_set_local_func_t.ofAddress(set_local$get(segment), scope);
     }
     public static VarHandle filter$VH() {
-        return constants$220.const$0;
+        return constants$219.const$2;
     }
     /**
      * Getter for field:
@@ -147,7 +147,7 @@ public class H5Z_class1_t {
      * }
      */
     public static MemorySegment filter$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$220.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$219.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -156,13 +156,13 @@ public class H5Z_class1_t {
      * }
      */
     public static void filter$set(MemorySegment seg, MemorySegment x) {
-        constants$220.const$0.set(seg, x);
+        constants$219.const$2.set(seg, x);
     }
     public static MemorySegment filter$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$220.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$219.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void filter$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$220.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$219.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5Z_func_t filter(MemorySegment segment, Arena scope) {
         return H5Z_func_t.ofAddress(filter$get(segment), scope);

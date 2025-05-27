@@ -12,30 +12,38 @@ final class constants$253 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$253() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_prefix",
-        constants$19.const$3
+        "H5Pset_nbit",
+        constants$19.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_printf_gap",
-        constants$44.const$4
+        "H5Pset_scaleoffset",
+        constants$51.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_view",
-        constants$44.const$4
+        "H5Pset_szip",
+        constants$51.const$3
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_append_flush",
-        constants$252.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         JAVA_LONG,
-        JAVA_LONG,
-        JAVA_DOUBLE
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk_cache",
-        constants$253.const$4
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pset_virtual",
+        constants$253.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Pget_append_flush",
+        constants$253.const$5
     );
 }
 

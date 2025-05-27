@@ -11,36 +11,12 @@ final class constants$161 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$161() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eget_current_stack",
-        constants$160.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eclose_stack",
-        constants$19.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eget_class_name",
-        constants$19.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eset_current_stack",
-        constants$19.const$0
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
-        "H5Epush2",
-        constants$161.const$4
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOUNT_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSELECT_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTNEXT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_BADSELECT_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCOMPARE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_INCONSISTENTSTATE_g", JAVA_LONG);
 }
 
 

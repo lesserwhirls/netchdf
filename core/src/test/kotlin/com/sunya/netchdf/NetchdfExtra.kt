@@ -34,7 +34,7 @@ class NetchdfExtra {
 
         private val versions = mutableMapOf<String, MutableList<String>>()
 
-        const val topdir = testData + "netchdf/"
+        const val topdir = "$testData/netchdf/"
     }
 
     // npp filers: superblock at file offset; reference data type

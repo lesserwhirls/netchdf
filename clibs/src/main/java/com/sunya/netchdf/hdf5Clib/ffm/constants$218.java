@@ -11,21 +11,28 @@ final class constants$218 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$218() {}
-    static final VarHandle const$0 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("can_apply"));
-    static final VarHandle const$1 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("set_local"));
-    static final VarHandle const$2 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("filter"));
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Zregister",
-        constants$15.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "H5Zunregister",
-        constants$21.const$0
+        constants$21.const$4
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "H5Zfilter_avail",
-        constants$21.const$0
+        constants$21.const$4
     );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Zget_filter_info",
+        constants$23.const$0
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("id"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("can_apply"),
+        RuntimeHelper.POINTER.withName("set_local"),
+        RuntimeHelper.POINTER.withName("filter")
+    ).withName("H5Z_class1_t");
+    static final VarHandle const$4 = constants$218.const$3.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$218.const$3.varHandle(MemoryLayout.PathElement.groupElement("name"));
 }
 
 

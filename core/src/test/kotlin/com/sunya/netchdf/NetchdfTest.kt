@@ -113,7 +113,7 @@ class NetchdfTest {
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 
 fun showNetchdfHeader(filename: String) {
     println(filename)
@@ -138,8 +138,10 @@ fun readNetchdfData(filename: String, varname: String? = null, section: SectionP
     }
 }
 
+ */
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// just read data from myfile
+/* just read data from myfile
 
 fun readMyData(myfile: Netchdf, varname: String? = null, section: SectionPartial? = null, showCdl : Boolean = false, showData : Boolean = false) {
 
@@ -382,3 +384,4 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
     }
 }
 
+*/

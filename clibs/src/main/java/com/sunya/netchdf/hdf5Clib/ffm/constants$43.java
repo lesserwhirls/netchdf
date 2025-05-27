@@ -11,31 +11,30 @@ final class constants$43 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$43() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Tpack",
-        constants$19.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Tenum_create",
-        constants$10.const$2
+        "H5Tdecode",
+        constants$43.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tenum_insert",
-        constants$41.const$4
+        "H5Tflush",
+        constants$19.const$5
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Trefresh",
+        constants$19.const$5
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tenum_nameof",
-        constants$43.const$3
-    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tenum_valueof",
-        constants$41.const$4
+        "H5Tinsert",
+        constants$43.const$4
     );
 }
 

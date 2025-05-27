@@ -11,30 +11,17 @@ final class constants$173 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$173() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fincrement_filesize",
-        constants$40.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fget_file_image",
-        constants$19.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_config",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fset_mdc_config",
-        constants$44.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_hit_rate",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_size",
-        constants$97.const$2
-    );
+    static final VarHandle const$0 = constants$172.const$4.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
+    static final VarHandle const$1 = constants$172.const$4.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("meta_size"),
+        JAVA_LONG.withName("tot_space")
+    ).withName("");
+    static final VarHandle const$3 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$4 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("meta_size"));
+    static final VarHandle const$5 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("tot_space"));
 }
 
 

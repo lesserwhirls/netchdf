@@ -11,25 +11,22 @@ final class constants$191 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$191() {}
-    static final VarHandle const$0 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$1 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$2 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("next"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("driver_id"),
-        RuntimeHelper.POINTER.withName("cls"),
-        JAVA_LONG.withName("fileno"),
-        JAVA_INT.withName("access_flags"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("feature_flags"),
-        JAVA_LONG.withName("maxaddr"),
-        JAVA_LONG.withName("base_addr"),
-        JAVA_LONG.withName("threshold"),
-        JAVA_LONG.withName("alignment"),
-        JAVA_BOOLEAN.withName("paged_aggr"),
-        MemoryLayout.paddingLayout(7)
-    ).withName("H5FD_t");
-    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("driver_id"));
-    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("cls"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$175.const$5
+    );
+    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("alloc"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.free.class, "apply", constants$191.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$191.const$2
+    );
+    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("free"));
 }
 
 

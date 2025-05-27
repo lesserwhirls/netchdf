@@ -16,13 +16,13 @@ public interface H5D_operator_t {
 
     int apply(java.lang.foreign.MemorySegment elem, long type_id, int ndim, java.lang.foreign.MemorySegment point, java.lang.foreign.MemorySegment operator_data);
     static MemorySegment allocate(H5D_operator_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$93.const$5, fi, constants$93.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$100.const$5, fi, constants$100.const$4, scope);
     }
     static H5D_operator_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _elem, long _type_id, int _ndim, java.lang.foreign.MemorySegment _point, java.lang.foreign.MemorySegment _operator_data) -> {
             try {
-                return (int)constants$94.const$0.invokeExact(symbol, _elem, _type_id, _ndim, _point, _operator_data);
+                return (int)constants$101.const$0.invokeExact(symbol, _elem, _type_id, _ndim, _point, _operator_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

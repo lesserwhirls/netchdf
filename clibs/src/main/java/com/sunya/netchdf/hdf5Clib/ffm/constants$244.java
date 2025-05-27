@@ -12,33 +12,32 @@ final class constants$244 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$244() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_evict_on_close",
-        constants$176.const$4
+        "H5Pget_vol_info",
+        constants$18.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_family_offset",
-        constants$40.const$0
+        "H5Pset_alignment",
+        constants$215.const$1
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fclose_degree",
-        constants$45.const$5
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_DOUBLE
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image",
-        constants$53.const$3
+        "H5Pset_cache",
+        constants$244.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image_callbacks",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         JAVA_BOOLEAN,
-        JAVA_BOOLEAN
+        JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_locking",
-        constants$244.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pset_core_write_tracking",
+        constants$244.const$4
     );
 }
 

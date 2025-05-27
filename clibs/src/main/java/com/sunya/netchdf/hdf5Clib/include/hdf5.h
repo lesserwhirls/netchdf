@@ -1,5 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Copyright by The HDF Group.                                               *
+ * Copyright by the Board of Trustees of the University of Illinois.         *
  * All rights reserved.                                                      *
  *                                                                           *
  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
@@ -28,6 +29,7 @@
 #include "H5Gpublic.h"  /* Groups                                   */
 #include "H5Ipublic.h"  /* ID management                            */
 #include "H5Lpublic.h"  /* Links                                    */
+#include "H5Mpublic.h"  /* Maps                                     */
 #include "H5MMpublic.h" /* Memory management                        */
 #include "H5Opublic.h"  /* Object headers                           */
 #include "H5Ppublic.h"  /* Property lists                           */
@@ -35,6 +37,7 @@
 #include "H5Rpublic.h"  /* References                               */
 #include "H5Spublic.h"  /* Dataspaces                               */
 #include "H5Tpublic.h"  /* Datatypes                                */
+#include "H5VLpublic.h" /* Virtual Object Layer                     */
 #include "H5Zpublic.h"  /* Data filters                             */
 
 /* Predefined file drivers */
@@ -53,5 +56,9 @@
 #ifdef H5_HAVE_WINDOWS
 #include "H5FDwindows.h" /* Win32 I/O                                */
 #endif
+
+/* Virtual object layer (VOL) connectors */
+#include "H5VLnative.h"   /* Native VOL connector                     */
+#include "H5VLpassthru.h" /* Pass-through VOL connector               */
 
 #endif

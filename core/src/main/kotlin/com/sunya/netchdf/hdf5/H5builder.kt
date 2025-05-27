@@ -91,7 +91,7 @@ class H5builder(
             }
         }
 
-        // now look for symbolic links TODO this doesnt work??
+        // now look for symbolic links TODO does this work??
         replaceSymbolicLinks(rootGroupBuilder)
 
         // build tree of H5groups
@@ -100,7 +100,7 @@ class H5builder(
         // convert into CDM
         val rootBuilder = this.buildCdm(h5rootGroup)
         addTypesToGroups()
-        convertReferences(rootBuilder)
+        // convertReferences(rootBuilder)
 
         // hdf-eos5
         if (structMetadata.isNotEmpty()) {
@@ -217,19 +217,20 @@ class H5builder(
     // Internal organization of Data Objects
 
     @Throws(IOException::class)
+    fun convertReferencesToDataObjectName(refArray: Iterable<Long>): List<String> {
+        return refArray.map { convertReferenceToDataObjectName(it) }
+    }
+
+    @Throws(IOException::class)
     fun convertReferenceToDataObjectName(reference: Long): String {
-        val name = getDataObjectName(reference)
-        return name ?: reference.toString() // LOOK
-    }
-
-    @Throws(IOException::class)
-    fun convertReferencesToDataObjectName(refArray: Array<Long>): List<String> {
-        return refArray.map { convertReferenceToDataObjectName(it) }
-    }
-
-    @Throws(IOException::class)
-    fun convertReferencesToDataObjectName(refArray: ArrayLong): List<String> {
-        return refArray.map { convertReferenceToDataObjectName(it) }
+        val pair = datasetMap[reference]
+        if (pair == null)  {
+            println("H5 cant find dataset reference for $reference")
+            return "N/A"
+        }
+        println("**H5 found dataset reference for $reference")
+        val (gb, vb) = pair
+        return vb.fullname(gb)
     }
 
     /**
@@ -238,11 +239,11 @@ class H5builder(
      * @param objId address of the data object
      * @return String the data object's name, or null if not found
      * @throws IOException on read error
-     */
+     *
     @Throws(IOException::class)
     fun getDataObjectName(objId: Long): String {
         return getDataObject(objId, null)?.name ?: "unknown"
-    }
+    } */
 
     /**
      * All access to data objects come through here, so we can cache.
@@ -515,9 +516,9 @@ class H5builder(
 
     ////////////////////////////////////////////////////////////////////////////////
     fun convertReferences(gb : Group.Builder) {
-        val refAtts = gb.attributes.filter{ it.datatype == Datatype.REFERENCE}
+        val refAtts = gb.attributes.filter{ it.datatype == Datatype.REFERENCE }
         refAtts.forEach { att ->
-            val convertAtt = convertAttribute(att)
+            val convertAtt = convertReferenceAttribute(att)
             if (convertAtt != null) {
                 gb.addAttribute(convertAtt)
             }
@@ -527,7 +528,7 @@ class H5builder(
         gb.variables.forEach{ vb ->
             val refAtts = vb.attributes.filter{ it.datatype == Datatype.REFERENCE}
             refAtts.forEach { att ->
-                val convertAtt = convertAttribute(att)
+                val convertAtt = convertReferenceAttribute(att)
                 if (convertAtt != null) {
                     if (att.name == HDF5_DIMENSION_LIST) {
                         vb.dimNames = convertAtt.values as List<String>
@@ -538,11 +539,10 @@ class H5builder(
                 vb.attributes.remove(att)
             }
         }
-
         gb.groups.forEach{ convertReferences(it) }
     }
 
-    fun convertAttribute(att : Attribute<*>) : Attribute<*>? {
+    fun convertReferenceAttribute(att : Attribute<*>) : Attribute<*>? {
         val svalues = mutableListOf<String>()
         att.values.forEach {
             val dsetId = it as Long
@@ -557,4 +557,5 @@ class H5builder(
         }
         return Attribute(att.name, Datatype.STRING, svalues)
     }
+
 }

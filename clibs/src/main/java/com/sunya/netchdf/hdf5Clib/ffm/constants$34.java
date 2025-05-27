@@ -11,12 +11,12 @@ final class constants$34 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$34() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B32_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B64_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_OPAQUE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HADDR_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HSIZE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HSSIZE_g", JAVA_LONG);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_LLONG_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_ULLONG_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_FLOAT_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_DOUBLE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_LDOUBLE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_B8_g", JAVA_LONG);
 }
 
 

@@ -11,12 +11,34 @@ final class constants$279 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$279() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhx");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hx");
-    static final MemorySegment const$2 = MemorySegment.ofAddress(0L);
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 library version: 1.10.10");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lld");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lli");
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sselect_hyperslab",
+        constants$279.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sselect_intersect_block",
+        constants$42.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Sselect_none",
+        constants$19.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sselect_project_intersection",
+        constants$207.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sselect_shape_same",
+        constants$41.const$1
+    );
 }
 
 

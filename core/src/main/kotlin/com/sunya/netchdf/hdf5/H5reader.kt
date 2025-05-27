@@ -91,7 +91,7 @@ internal fun <T> H5builder.processDataIntoArray(bb: ByteBuffer, datatype: Dataty
         return result.makeStringsFromBytes() as ArrayTyped<T>
     }
 
-    val result = when (datatype) {
+    var result = when (datatype) {
         Datatype.BYTE -> ArrayByte(shape, bb)
         Datatype.STRING, Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
         Datatype.SHORT -> ArrayShort(shape, bb)
@@ -106,9 +106,9 @@ internal fun <T> H5builder.processDataIntoArray(bb: ByteBuffer, datatype: Dataty
         else -> throw IllegalStateException("unimplemented type= $datatype")
     }
 
-    /* if ((h5type.hdfType == Datatype5.Reference) and h5type.isRefObject) {
-        return ArrayString(shape, this.convertReferencesToDataObjectName(result as ArrayLong))
-    } */
+    if ((h5type.datatype5 == Datatype5.Reference) and h5type.isRefObject) {
+        result = ArrayString(shape, this.convertReferencesToDataObjectName(result as ArrayLong))
+    }
 
     return result as ArrayTyped<T>
 }
@@ -164,9 +164,9 @@ internal fun <T> H5builder.readVlenDataWithLayout(dc: DataContainer, layout : La
                 val chunk: Layout.Chunk = layout.next()
                 for (i in 0 until chunk.nelems()) {
                     val address: Long = chunk.srcPos() + layout.elemSize * i  // address of the heapId vs the heap id ??
-                    val vlenArray = h5heap.getHeapDataArray(address, Datatype.LONG, base.endian)
+                    val vlenArray = h5heap.getHeapDataArray(address, Datatype.LONG, base.endian) as Array<Long>
                     // so references are addresses; then use address to point to String
-                    val refsArray = this.convertReferencesToDataObjectName(vlenArray as Array<Long>)
+                    val refsArray = this.convertReferencesToDataObjectName(vlenArray.asIterable())
                     for (s in refsArray) {
                         refsList.add(s)
                     }

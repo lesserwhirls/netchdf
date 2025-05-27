@@ -11,12 +11,21 @@ final class constants$192 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$192() {}
-    static final VarHandle const$0 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
-    static final VarHandle const$1 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("access_flags"));
-    static final VarHandle const$2 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
-    static final VarHandle const$3 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
-    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("base_addr"));
-    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("threshold"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eoa.class, "apply", constants$192.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$192.const$0
+    );
+    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_eoa"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_class_t.set_eoa.class, "apply", constants$192.const$4);
 }
 
 

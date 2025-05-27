@@ -11,30 +11,27 @@ final class constants$267 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$267() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_BOOLEAN
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5PLsize",
+        constants$15.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_core",
-        constants$267.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_core",
-        constants$41.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FD_family_init",
-        constants$160.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_family",
-        constants$215.const$5
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(12, JAVA_BYTE).withName("__data")
+    ).withName("");
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        MemoryLayout.unionLayout(
+            MemoryLayout.sequenceLayout(64, JAVA_BYTE).withName("__data"),
+            JAVA_LONG.withName("align")
+        ).withName("u")
+    ).withName("");
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(64, JAVA_BYTE).withName("__data"),
+        JAVA_LONG.withName("align")
+    ).withName("");
+    static final VarHandle const$4 = constants$267.const$3.varHandle(MemoryLayout.PathElement.groupElement("align"));
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_family",
-        constants$41.const$4
+        "H5Rcreate_object",
+        constants$211.const$0
     );
 }
 

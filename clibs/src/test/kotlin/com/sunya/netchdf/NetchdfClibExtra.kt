@@ -18,7 +18,7 @@ class NetchdfClibExtra {
     companion object {
         @JvmStatic
         fun params(): Stream<Arguments> {
-            return NetchdfExtraFiles.params(true)
+            return NetchdfExtraFiles.params(false)
         }
 
         @JvmStatic
@@ -41,9 +41,11 @@ class NetchdfClibExtra {
       L,D_top,G_top,T_top,F,P,P,FD,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
      */
     @Test
-    @Disabled
     fun problemNPP() {
-        compareCdlWithClib(testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5")
+        val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
+        compareCdlWithClib(filename)
+        readNetchdfData(filename, null)
+        compareDataWithClib(filename)
     }
 
     @Test
@@ -55,7 +57,6 @@ class NetchdfClibExtra {
         compareCdlWithClib(filename)
         //readDataCompareNC(filename)
     }
-
 
     ///////////////////////////////////////////////////////
     @ParameterizedTest
@@ -75,7 +76,7 @@ class NetchdfClibExtra {
     @ParameterizedTest
     @MethodSource("params")
     fun testCompareCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
+        compareCdlWithClib(filename, showCdl = true)
     }
 
     @ParameterizedTest
@@ -83,7 +84,6 @@ class NetchdfClibExtra {
     fun readNetchdfData(filename: String) {
         readNetchdfData(filename, null)
     }
-
 
     @ParameterizedTest
     @MethodSource("params")

@@ -22,10 +22,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5FD_hdfs_fapl_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$268.const$0;
+        return constants$340.const$0;
     }
     public static VarHandle version$VH() {
-        return constants$268.const$1;
+        return constants$340.const$1;
     }
     /**
      * Getter for field:
@@ -34,7 +34,7 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$268.const$1.get(seg);
+        return (int)constants$340.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -43,19 +43,19 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$268.const$1.set(seg, x);
+        constants$340.const$1.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$268.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$268.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment namenode_name$slice(MemorySegment seg) {
         return seg.asSlice(4, 129);
     }
     public static VarHandle namenode_port$VH() {
-        return constants$268.const$2;
+        return constants$340.const$2;
     }
     /**
      * Getter for field:
@@ -64,7 +64,7 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static int namenode_port$get(MemorySegment seg) {
-        return (int)constants$268.const$2.get(seg);
+        return (int)constants$340.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -73,13 +73,13 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static void namenode_port$set(MemorySegment seg, int x) {
-        constants$268.const$2.set(seg, x);
+        constants$340.const$2.set(seg, x);
     }
     public static int namenode_port$get(MemorySegment seg, long index) {
-        return (int)constants$268.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void namenode_port$set(MemorySegment seg, long index, int x) {
-        constants$268.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment user_name$slice(MemorySegment seg) {
         return seg.asSlice(140, 129);
@@ -88,7 +88,7 @@ public class H5FD_hdfs_fapl_t {
         return seg.asSlice(269, 129);
     }
     public static VarHandle stream_buffer_size$VH() {
-        return constants$268.const$3;
+        return constants$340.const$3;
     }
     /**
      * Getter for field:
@@ -97,7 +97,7 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static int stream_buffer_size$get(MemorySegment seg) {
-        return (int)constants$268.const$3.get(seg);
+        return (int)constants$340.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -106,13 +106,13 @@ public class H5FD_hdfs_fapl_t {
      * }
      */
     public static void stream_buffer_size$set(MemorySegment seg, int x) {
-        constants$268.const$3.set(seg, x);
+        constants$340.const$3.set(seg, x);
     }
     public static int stream_buffer_size$get(MemorySegment seg, long index) {
-        return (int)constants$268.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$340.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void stream_buffer_size$set(MemorySegment seg, long index, int x) {
-        constants$268.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$340.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

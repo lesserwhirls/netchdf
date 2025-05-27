@@ -11,12 +11,35 @@ final class constants$107 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$107() {}
-    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
-    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
-    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
-    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
-    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
-    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dgather",
+        constants$107.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dclose",
+        constants$19.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ddebug",
+        constants$19.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dformat_convert",
+        constants$19.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_index_type",
+        constants$18.const$3
+    );
 }
 
 

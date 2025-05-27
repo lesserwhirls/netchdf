@@ -11,34 +11,25 @@ final class constants$206 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$206() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_BOOLEAN,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5FDunlock",
+        constants$15.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Gget_objinfo",
-        constants$206.const$0
+        "H5FDdriver_query",
+        constants$18.const$3
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Gget_objname_by_idx",
-        constants$206.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Gget_objtype_by_idx",
-        constants$40.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("storage_type"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("nlinks"),
+        JAVA_LONG.withName("max_corder"),
+        JAVA_BOOLEAN.withName("mounted"),
+        MemoryLayout.paddingLayout(7)
+    ).withName("H5G_info_t");
+    static final VarHandle const$3 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("storage_type"));
+    static final VarHandle const$4 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("nlinks"));
+    static final VarHandle const$5 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_corder"));
 }
 
 

@@ -11,12 +11,38 @@ final class constants$88 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$88() {}
-    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("rpt_fcn_enabled"));
-    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("open_trace_file"));
-    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("close_trace_file"));
-    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("evictions_enabled"));
-    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("set_initial_size"));
-    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_size"));
+    static final VarHandle const$0 = constants$87.const$2.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5A_operator2_t.class, "apply", constants$61.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Aclose",
+        constants$19.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Acreate2",
+        constants$88.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Acreate_by_name",
+        constants$88.const$5
+    );
 }
 
 

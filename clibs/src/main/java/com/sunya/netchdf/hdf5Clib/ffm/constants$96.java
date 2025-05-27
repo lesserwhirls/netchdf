@@ -11,30 +11,12 @@ final class constants$96 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$96() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Dget_space",
-        constants$10.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dget_space_status",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dget_type",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Dget_create_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dget_access_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dget_storage_size",
-        constants$10.const$2
-    );
+    static final VarHandle const$0 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
+    static final VarHandle const$1 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
+    static final VarHandle const$2 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
+    static final VarHandle const$3 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
+    static final VarHandle const$4 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
+    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
 }
 
 

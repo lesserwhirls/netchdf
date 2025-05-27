@@ -11,18 +11,12 @@ final class constants$190 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$190() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.lock.class, "apply", constants$189.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$189.const$5
-    );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("lock"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.unlock.class, "apply", constants$15.const$2);
-    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("unlock"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("addr"),
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("next")
-    ).withName("H5FD_free_t");
+    static final VarHandle const$0 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("cmp"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.query.class, "apply", constants$117.const$4);
+    static final VarHandle const$2 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("query"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.get_type_map.class, "apply", constants$117.const$4);
+    static final VarHandle const$4 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_type_map"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_class_t.alloc.class, "apply", constants$175.const$5);
 }
 
 

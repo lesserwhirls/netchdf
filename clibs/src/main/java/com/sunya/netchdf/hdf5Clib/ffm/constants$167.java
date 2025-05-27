@@ -11,22 +11,36 @@ final class constants$167 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$167() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("super_size"),
-        JAVA_LONG.withName("super_ext_size")
-    ).withName("");
-    static final VarHandle const$1 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
-    static final VarHandle const$3 = constants$167.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("meta_size"),
-        JAVA_LONG.withName("tot_space")
-    ).withName("");
-    static final VarHandle const$5 = constants$167.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eget_class_name",
+        constants$20.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eset_current_stack",
+        constants$19.const$5
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "H5Epush2",
+        constants$167.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Epop",
+        constants$41.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Eprint2",
+        constants$18.const$3
+    );
 }
 
 

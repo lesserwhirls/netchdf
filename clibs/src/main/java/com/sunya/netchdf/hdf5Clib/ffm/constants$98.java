@@ -11,39 +11,12 @@ final class constants$98 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$98() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_info",
-        constants$98.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dget_offset",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dread",
-        constants$98.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dwrite",
-        constants$98.const$3
-    );
+    static final VarHandle const$0 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("decr_mode"));
+    static final VarHandle const$1 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("upper_hr_threshold"));
+    static final VarHandle const$2 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("decrement"));
+    static final VarHandle const$3 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_decrement"));
+    static final VarHandle const$4 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_decrement"));
+    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("epochs_before_eviction"));
 }
 
 

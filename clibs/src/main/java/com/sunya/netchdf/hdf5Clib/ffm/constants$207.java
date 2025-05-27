@@ -11,20 +11,26 @@ final class constants$207 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$207() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5MM_allocate_t.class, "apply", constants$206.const$5);
+    static final VarHandle const$0 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("mounted"));
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$206.const$5
+        "H5Gcreate2",
+        constants$93.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5MM_free_t.class, "apply", constants$115.const$5);
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$115.const$5
+        "H5Gcreate_anon",
+        constants$207.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sclose",
-        constants$19.const$0
+        "H5Gopen2",
+        constants$20.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Scopy",
+        "H5Gget_create_plist",
         constants$10.const$2
     );
 }

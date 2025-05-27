@@ -11,30 +11,37 @@ final class constants$103 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$103() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__count"),
-        MemoryLayout.unionLayout(
-            JAVA_INT.withName("__wch"),
-            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-        ).withName("__value")
-    ).withName("");
-    static final VarHandle const$1 = constants$103.const$0.varHandle(MemoryLayout.PathElement.groupElement("__count"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        JAVA_INT.withName("__wch"),
-        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-    ).withName("");
-    static final VarHandle const$3 = constants$103.const$2.varHandle(MemoryLayout.PathElement.groupElement("__wch"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("__pos"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("__count"),
-            MemoryLayout.unionLayout(
-                JAVA_INT.withName("__wch"),
-                MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-            ).withName("__value")
-        ).withName("__state")
-    ).withName("_G_fpos_t");
-    static final VarHandle const$5 = constants$103.const$4.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dget_create_plist",
+        constants$10.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dget_access_plist",
+        constants$10.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dget_storage_size",
+        constants$10.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_storage_size",
+        constants$42.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dget_num_chunks",
+        constants$92.const$4
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_info_by_coord",
+        constants$103.const$5
+    );
 }
 
 

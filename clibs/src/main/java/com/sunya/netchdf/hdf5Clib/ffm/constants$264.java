@@ -11,34 +11,41 @@ final class constants$264 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$264() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5PLappend",
-        constants$15.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5PLprepend",
-        constants$15.const$2
+        "H5Pinsert1",
+        constants$264.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5PLreplace",
-        constants$129.const$1
+        "H5Pencode1",
+        constants$42.const$5
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5PLinsert",
-        constants$129.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5PLremove",
-        constants$21.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
         JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_LONG
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5PLget",
-        constants$264.const$5
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_filter1",
+        constants$264.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_filter_by_id1",
+        constants$264.const$3
     );
 }
 

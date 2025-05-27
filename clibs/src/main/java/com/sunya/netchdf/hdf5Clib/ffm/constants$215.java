@@ -11,20 +11,24 @@ final class constants$215 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$215() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5Z_filter_func_t.class, "apply", constants$214.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$214.const$5
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("func"),
-        RuntimeHelper.POINTER.withName("op_data")
-    ).withName("H5Z_cb_t");
-    static final VarHandle const$3 = constants$215.const$2.varHandle(MemoryLayout.PathElement.groupElement("func"));
-    static final VarHandle const$4 = constants$215.const$2.varHandle(MemoryLayout.PathElement.groupElement("op_data"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final VarHandle const$0 = constants$214.const$4.varHandle(MemoryLayout.PathElement.groupElement("op_data"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5Z_can_apply_func_t.class, "apply", constants$215.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$215.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5Z_set_local_func_t.class, "apply", constants$215.const$1);
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
 }
 
