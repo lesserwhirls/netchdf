@@ -11,12 +11,24 @@ final class constants$71 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$71() {}
-    static final VarHandle const$0 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$1 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
-    static final VarHandle const$2 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
-    static final VarHandle const$3 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$4 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
-    static final VarHandle const$5 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final VarHandle const$0 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_iterate1_t.class, "apply", constants$61.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lget_info1",
+        constants$44.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lget_info_by_idx1",
+        constants$64.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Literate1",
+        constants$65.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Literate_by_name1",
+        constants$65.const$2
+    );
 }
 
 

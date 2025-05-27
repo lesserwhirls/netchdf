@@ -11,29 +11,31 @@ final class constants$255 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$255() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_data_transform",
-        constants$19.const$3
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_DOUBLE
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_edc_check",
-        constants$19.const$0
+        "H5Pset_chunk_cache",
+        constants$255.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_hyper_vector_size",
-        constants$44.const$4
+        "H5Pset_efile_prefix",
+        constants$18.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_preserve",
-        constants$19.const$0
+        "H5Pset_virtual_prefix",
+        constants$18.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_type_conv_cb",
-        constants$41.const$4
+        "H5Pset_virtual_printf_gap",
+        constants$41.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_vlen_mem_manager",
-        constants$97.const$2
+        "H5Pset_virtual_view",
+        constants$46.const$4
     );
 }
 

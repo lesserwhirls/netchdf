@@ -12,28 +12,28 @@ final class constants$127 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$127() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clearerr_unlocked",
-        constants$116.const$4
+        "putc",
+        constants$23.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "feof_unlocked",
-        constants$15.const$2
+        "putchar",
+        constants$21.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "ferror_unlocked",
-        constants$15.const$2
+        "fputc_unlocked",
+        constants$23.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "perror",
-        constants$116.const$4
+        "putc_unlocked",
+        constants$23.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fileno",
-        constants$15.const$2
+        "putchar_unlocked",
+        constants$21.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fileno_unlocked",
-        constants$15.const$2
+        "getw",
+        constants$15.const$4
     );
 }
 

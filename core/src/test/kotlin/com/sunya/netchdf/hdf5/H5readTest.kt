@@ -13,7 +13,6 @@ import com.sunya.netchdf.testdata.testData
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -74,11 +73,45 @@ class H5readTest {
         testOpenH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
     }
 
-    // I think the npp put the structmetadata in the front of the file?
     @Test
-    @Disabled
     fun testNpp() {
-        testOpenH5(testData + "cdmUnitTest/formats/hdf5/npoess/ExampleFiles/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
+        testOpenH5(testData + "netchdf/npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
+    }
+
+    // ~/dev/github/netcdf/netchdf:$ h5dump /home/all/testdata/devcdm/netcdf4/tst_solar_cmp.nc
+    //HDF5 "/home/all/testdata/devcdm/netcdf4/tst_solar_cmp.nc" {
+    //GROUP "/" {
+    //   ATTRIBUTE "my_favorite_wind_speeds" {
+    //      DATATYPE  "/wind_vector"
+    //      DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
+    //      DATA {
+    //      (0): {
+    //            13.3,
+    //            12.2
+    //         },
+    //      (1): {
+    //            13.3,
+    //            12.2
+    //         },
+    //      (2): {
+    //            13.3,
+    //            12.2
+    //         }
+    //      }
+    //   }
+    //   DATATYPE "wind_vector" H5T_COMPOUND {
+    //      H5T_IEEE_F32LE "u";
+    //      H5T_IEEE_F32LE "v";
+    //   }
+    //}
+    //}
+    @Test
+    fun testIsNetcdf() { // why is this not isNetcdf? Because theres nothing it in to show that it is.
+        val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
+        Hdf5File(filename).use { h5file ->
+            println(h5file.type())
+            println(h5file.cdl())
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////

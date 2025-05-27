@@ -11,15 +11,12 @@ final class constants$111 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$111() {}
-    static final VarHandle const$0 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final VarHandle const$1 = RuntimeHelper.POINTER.varHandle();
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "remove",
-        constants$15.const$2
-    );
+    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_ptr"));
+    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
+    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
+    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
+    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_base"));
+    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_backup_base"));
 }
 
 

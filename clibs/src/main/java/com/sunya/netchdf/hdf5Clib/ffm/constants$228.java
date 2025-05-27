@@ -11,21 +11,12 @@ final class constants$228 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$228() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_OBJECT_COPY_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_ACCESS_ID_g", JAVA_LONG);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pclose",
-        constants$19.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pclose_class",
-        constants$19.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pcopy",
-        constants$10.const$2
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_MAP_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_MAP_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_LST_OBJECT_COPY_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_CREATE_ID_g", JAVA_LONG);
 }
 
 

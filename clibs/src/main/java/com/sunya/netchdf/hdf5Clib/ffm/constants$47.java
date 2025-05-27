@@ -11,33 +11,29 @@ final class constants$47 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$47() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tget_size",
+        constants$10.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Tget_fields",
-        constants$47.const$0
+        "H5Tget_order",
+        constants$19.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tget_ebias",
+        "H5Tget_precision",
         constants$10.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tget_norm",
-        constants$19.const$0
+        "H5Tget_offset",
+        constants$19.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tget_inpad",
-        constants$19.const$0
+        "H5Tget_pad",
+        constants$42.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tget_strpad",
-        constants$19.const$0
+        "H5Tget_sign",
+        constants$19.const$5
     );
 }
 

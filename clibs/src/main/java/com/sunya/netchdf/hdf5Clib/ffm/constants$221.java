@@ -11,14 +11,16 @@ final class constants$221 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$221() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_cb2_t.class, "apply", constants$204.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$204.const$5
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_get_func_t.class, "apply", constants$211.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_prp_encode_func_t.class, "apply", constants$16.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_decode_func_t.class, "apply", constants$117.const$4);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5P_prp_delete_func_t.class, "apply", constants$211.const$0);
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_prp_copy_func_t.class, "apply", constants$18.const$0);
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_create_func_t.class, "apply", constants$17.const$4);
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5P_prp_set_func_t.class, "apply", constants$204.const$5);
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_prp_get_func_t.class, "apply", constants$204.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5P_prp_delete_func_t.class, "apply", constants$204.const$5);
 }
 
 

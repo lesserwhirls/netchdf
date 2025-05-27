@@ -11,31 +11,30 @@ final class constants$256 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$256() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_btree_ratios",
+        constants$61.const$0
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_btree_ratios",
-        constants$256.const$0
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_buffer",
-        constants$97.const$4
+        "H5Pget_buffer",
+        constants$256.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_data_transform",
-        constants$44.const$4
+        "H5Pget_data_transform",
+        constants$20.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_edc_check",
-        constants$45.const$5
+        "H5Pget_edc_check",
+        constants$19.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_filter_callback",
-        constants$41.const$4
+        "H5Pget_hyper_vector_size",
+        constants$18.const$3
     );
 }
 

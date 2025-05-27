@@ -11,24 +11,35 @@ final class constants$273 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$273() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_splitter",
-        constants$44.const$4
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_splitter",
-        constants$44.const$4
+        "H5Scombine_select",
+        constants$273.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FD_stdio_init",
-        constants$160.const$4
+        "H5Scopy",
+        constants$10.const$2
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_stdio",
-        constants$19.const$0
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT
     );
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/usr/lib/x86_64-linux-gnu/hdf5/serial/plugins");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("${prefix}/share/hdf5_examples");
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Screate",
+        constants$273.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Screate_simple",
+        constants$273.const$5
+    );
 }
 
 

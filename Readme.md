@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 5/24/2025_
+_last updated: 5/26/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -12,7 +12,7 @@ Please contact me if you'd like to help out. Especially needed are test datasets
 
 * Download Java 21 JDK and set JAVA_HOME.
 * Download git and add to PATH.
-* 
+
 ````
 cd <your_build_dir>
 git clone https://github.com/JohnLCaron/netchdf.git
@@ -66,12 +66,10 @@ conversions, and arguably its impossible to process HDF-EOS without them. So the
 library for data access is less clear. For now, we will provide a "best-effort" to expose the internal 
 contents of the file.
 
-Currently, the Netcdf-4 and HDF4 libraries are not thread safe, even when operating on different files.
-The HDF5 library can be built with MPI-IO for parallel file systems. The serial HDF5 library is apparently thread safe 
-but does not support concurrent reading. These are serious limitations for high performance, scalable applications.
-
-Our library tries to ameliorate these problems for scientists and the interested public to access the data without
-having to become specialists in the file formats and legacy APIs.
+Currently, the Netcdf-4 and HDF4 libraries are apparently not thread safe, although the details are complex.
+See [Toward Multi-Threaded Concurrency in HDF5](https://www.hdfgroup.org/wp-content/uploads/2022/05/Toward-MT-HDF5.pdf),
+and [RFC:Multi-Thread HDF5](https://support.hdfgroup.org/releases/hdf5/documentation/rfc/RFC_multi_thread.pdf)
+for more information.
 
 ### Why Kotlin?
 
@@ -200,7 +198,7 @@ local to the variable they are referenced by.
 
 #### Compare with HDF5 data model
 * Creation order is ignored
-* We dont include symbolic links in a group, as these point to an existing dataset (variable)
+* We dont include soft (aka symbolic) links in a group, as these point to an existing dataset (variable).
 * Opaque: hdf5 makes arrays of Opaque all the same size, which gives up some of its usefulness. If there's a need,
   we will allow Opaque(*) indicating that the sizes can vary.
 * Attributes can be of type REFERENCE, with value the full path name of the referenced dataset.

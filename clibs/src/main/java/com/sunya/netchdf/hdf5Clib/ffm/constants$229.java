@@ -11,35 +11,20 @@ final class constants$229 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$229() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pcopy_prop",
-        constants$85.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pcreate",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_VOL_INITIALIZE_ID_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_REFERENCE_ACCESS_ID_g", JAVA_LONG);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pcreate_class",
-        constants$229.const$2
+        "H5Pclose",
+        constants$19.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pdecode",
-        constants$42.const$0
+        "H5Pclose_class",
+        constants$19.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pencode",
-        constants$41.const$4
+        "H5Pcopy",
+        constants$10.const$2
     );
 }
 

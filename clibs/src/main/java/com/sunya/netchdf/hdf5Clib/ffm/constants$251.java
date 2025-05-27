@@ -12,28 +12,28 @@ final class constants$251 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$251() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_fill_value",
-        constants$85.const$4
+        "H5Pget_virtual_filename",
+        constants$212.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_shuffle",
-        constants$19.const$0
+        "H5Pget_virtual_srcspace",
+        constants$85.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_layout",
-        constants$45.const$5
+        "H5Pget_virtual_vspace",
+        constants$85.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_nbit",
-        constants$19.const$0
+        "H5Pset_alloc_time",
+        constants$46.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_scaleoffset",
-        constants$50.const$3
+        "H5Pset_chunk",
+        constants$21.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_szip",
-        constants$50.const$3
+        "H5Pset_chunk_opts",
+        constants$46.const$4
     );
 }
 

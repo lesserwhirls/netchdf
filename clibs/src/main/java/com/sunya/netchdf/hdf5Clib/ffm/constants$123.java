@@ -11,32 +11,35 @@ final class constants$123 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$123() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "sprintf",
+        constants$117.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "__getdelim",
-        constants$123.const$0
+        "vfprintf",
+        constants$16.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "getdelim",
-        constants$123.const$0
+        "vprintf",
+        constants$117.const$4
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vsprintf",
+        constants$16.const$0
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "snprintf",
+        constants$18.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
+        JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$123.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fputs",
-        constants$112.const$0
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "vsnprintf",
+        constants$123.const$5
     );
 }
 

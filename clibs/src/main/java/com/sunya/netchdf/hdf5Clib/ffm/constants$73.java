@@ -11,42 +11,17 @@ final class constants$73 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$73() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_idx",
-        constants$73.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oexists_by_name",
-        constants$53.const$3
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info2",
-        constants$73.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name2",
-        constants$73.const$5
-    );
+    static final VarHandle const$0 = constants$72.const$2.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("total"),
+        JAVA_LONG.withName("meta"),
+        JAVA_LONG.withName("mesg"),
+        JAVA_LONG.withName("free")
+    ).withName("");
+    static final VarHandle const$2 = constants$73.const$1.varHandle(MemoryLayout.PathElement.groupElement("total"));
+    static final VarHandle const$3 = constants$73.const$1.varHandle(MemoryLayout.PathElement.groupElement("meta"));
+    static final VarHandle const$4 = constants$73.const$1.varHandle(MemoryLayout.PathElement.groupElement("mesg"));
+    static final VarHandle const$5 = constants$73.const$1.varHandle(MemoryLayout.PathElement.groupElement("free"));
 }
 
 

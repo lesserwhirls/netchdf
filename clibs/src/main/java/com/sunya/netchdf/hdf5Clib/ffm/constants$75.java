@@ -11,33 +11,12 @@ final class constants$75 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$75() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ocopy",
-        constants$62.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oset_comment",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oset_comment_by_name",
-        constants$43.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oget_comment",
-        constants$19.const$3
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oget_comment_by_name",
-        constants$75.const$4
-    );
+    static final VarHandle const$0 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
+    static final VarHandle const$1 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
+    static final VarHandle const$2 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
+    static final VarHandle const$3 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
+    static final VarHandle const$4 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final VarHandle const$5 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
 }
 
 

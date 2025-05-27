@@ -51,48 +51,63 @@ class NetchdfClibTest {
 
         private val versions = mutableMapOf<String, MutableList<String>>()
 
-        var compareMiddleSection = true
-        var showDataRead = true
+        var compareMiddleSection = false
+        var showDataRead = false
         var showData = false
-        var showFailedData = false
+        var showFailedData = true
         var showCdl = false
     }
 
     /* tst_grps
-        Relies on vlen-3 and vlen-4 mdt hash NOT matching v1-2 hash, so added again.
+        Maybe netcdf-4 skips opaque type?
 
-    netcdf tst_grps {
-        types:
-        opaque(10) opaque-1 ;
-        int(*) vlen-1 ;
+(Netcdf4)
+netcdf tst_grps.nc4 {
+  types:
+    int(*) vlen-1 ;
+    byte(*) vlen-2 ;
 
-        group: the_in_crowd {
-            types:
-            opaque(7) opaque-2 ;
-            byte(*) vlen-2 ;
-        }
+  group: the_in_crowd {
+  }
 
-        group: the_out_crowd {
-            types:
-            opaque(4) opaque-3 ;
-            byte(*) vlen-3 ;
+  group: the_out_crowd {
 
-            group: the_confused_crowd {
-            types:
-            opaque(13) opaque-4 ;
-            byte(*) vlen-4 ;
-        }
-        }
+    group: the_confused_crowd {
     }
+  }
+}
+
+(netchdf)
+netcdf tst_grps.nc4 {
+  types:
+    opaque(10) opaque-1 ;
+    int(*) vlen-1 ;
+    byte(*) vlen-2 ;
+
+  group: the_in_crowd {
+    types:
+      opaque(7) opaque-2 ;
+  }
+
+  group: the_out_crowd {
+    types:
+      opaque(4) opaque-3 ;
+
+    group: the_confused_crowd {
+      types:
+        opaque(13) opaque-4 ;
+    }
+  }
+}
      */
     @Test
-    @Disabled
+    // @Disabled
     fun tst_grps() {
         compareCdlWithClib(testData + "devcdm/netcdf4/tst_grps.nc4")
     }
 
     @Test
-    @Disabled
+    // @Disabled I think we are supressing user types that are not used.
     fun compoundAttributeTest() {
         compareCdlWithClib(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
     }
@@ -136,40 +151,80 @@ class NetchdfClibTest {
         compareDataWithClib(filename)
     }
 
+    // ncdump:
+    // group: SomaticMutation {
+    //  types:
+    //    compound _AnonymousCompound12 {
+    //      int ProbeSetName_\&size ;
+    //      char ProbeSetName ;
+    //      float QNSignal ;
+    //      float MutScore ;
+    //      int MutCall_\&size ;
+    //      char MutCall ;
+    //      float MutThreshPres ;
+    //      float MutThreshPoss ;
+    //    }; // _AnonymousCompound12
+    //  dimensions:
+    //  	phony_dim_17 = 70 ;
+    //  variables:
+    //  	_AnonymousCompound12 SomC
+    //
+    // netchdf cdl:
+    //   group: SomaticMutation {
+    //    types:
+    //      compound SomCall {
+    //        int ProbeSetName_&size ;
+    //        string ProbeSetName ;
+    //        float QNSignal ;
+    //        float MutScore ;
+    //        int MutCall_&size ;
+    //        string MutCall ;
+    //        float MutThreshPres ;
+    //        float MutThreshPoss ;
+    //      }; // SomCall
+    //    variables:
+    //      SomCall SomCall(70) ;
+    //  }
+    // TODO whats with the & ??
     @Test
-    fun compareOneData() {
+    fun testReadArrayOfCompound() {
         val filename = testData + "cdmUnitTest/formats/hdf5/20130212_CN021_P3_222k_B02_WD7195FBPAT10231Nat_Nat_Std_CHTNWD_OP3_14.mip222k.oschp"
+        println(filename)
         // val filename = testData + "cdmUnitTest/formats/hdf5/superblockIsOffsetNPP.h5"
         //val filename = testData + "cdmUnitTest/formats/hdf5/wrf/wrf_input_par.h5"
         // compareCdlWithClib(filename)
 
-        /* openNetchdfFile(filename).use { ncfile ->
-            val v = ncfile!!.rootGroup().allVariables().find { it.fullname() == "/DATASET=INPUT/TIME_STAMP_000001/MU" }
+        val sectionp = SectionPartial.fromSpec("6:13")
+
+        openNetchdfFile(filename).use { ncfile ->
+            println("NetchdfFile ${ncfile!!.type()}\n${ncfile.cdl()}")
+            val v = ncfile.rootGroup().allVariables().find { it.fullname() == "/SomaticMutation/SomCall" }
             val mydata = ncfile.readArrayData(v!!, null)
-            val section = Section("0:0, 6:13, 3:6)")
+            val section = SectionPartial.fill(sectionp, mydata.shape.toLongArray())
             val mysdata = mydata.section(section)
             println("netch section $section data=$mysdata")
 
             Hdf5ClibFile(filename).use { hcfile ->
-                val v = hcfile.rootGroup().allVariables().find { it.fullname() == "/DATASET=INPUT/TIME_STAMP_000001/MU" }
+                println("Hdf5ClibFile ${hcfile!!.type()}\n${hcfile.cdl()}")
+                val v = hcfile.rootGroup().allVariables().find { it.fullname() == "/SomaticMutation/SomCall" }
                 val ncdata = hcfile.readArrayData(v!!, null)
                 assertTrue (ncdata.equals(mydata))
 
-                val section = Section("0:0, 6:13, 3:6)")
+                val section = SectionPartial.fill(sectionp, v.shape)
                 val ncsdata = ncdata.section(section)
                 println("H5C section $section data=$ncsdata")
                 assertTrue (ncsdata.equals(mysdata))
             }
-        } */
+        }
 
         /* see if it can be read through N4C
-        NetcdfClibFile(filename).use { ncfile ->
+        NClibFile(filename).use { ncfile ->
             println("${ncfile.type()} $filename ")
             openNetchdfFile(filename).use { netch ->
                 compareNetcdfData(ncfile, netch!!, null, null)
             }
-        } */
-        compareDataWithClib(filename)
+        }
+        compareDataWithClib(filename) */
     }
 
     @Test
@@ -257,7 +312,7 @@ fun readNetchdfData(filename: String, varname: String? = null, section: SectionP
             return
         }
         println("--- ${myfile.type()} $filename ")
-        readMyData(myfile,varname, section, showCdl)
+        readMyData(myfile, varname, section, showCdl)
     }
 }
 
@@ -267,7 +322,7 @@ fun readNcData(filename: String, varname: String? = null, section: SectionPartia
     }
 }
 
-fun compareCdlWithClib(filename: String) {
+fun compareCdlWithClib(filename: String, showCdl: Boolean = false) {
     println("=================")
     openNetchdfFile(filename, false).use { netchdf ->
         if (netchdf == null) {
@@ -275,18 +330,21 @@ fun compareCdlWithClib(filename: String) {
             return
         }
         println("${netchdf.type()} $filename ")
-        println("\nnetchdf = ${netchdf.cdl()}")
+        if (showCdl) println("\nnetchdf = ${netchdf.cdl()}")
 
         if (netchdf.type().contains("hdf4") || netchdf.type().contains("hdf-eos2")) {
-            Hdf4ClibFile(filename).use { hcfile ->
-                assertEquals(hcfile.cdl(), netchdf.cdl())
+            Hdf4ClibFile(filename).use { ncfile ->
+                if (showCdl) println("\nHdf4ClibFile = ${ncfile.cdl()}")
+                assertEquals(ncfile.cdl(), netchdf.cdl())
             }
         } else if (netchdf.type().contains("netcdf")) {
             NClibFile(filename).use { ncfile ->
+                if (showCdl) println("\nNClibFile = ${ncfile.cdl()}")
                 assertEquals(ncfile.cdl(), netchdf.cdl())
             }
         }  else if (netchdf.type().contains("hdf5") || netchdf.type().contains("hdf-eos5")) {
             Hdf5ClibFile(filename).use { ncfile ->
+                if (showCdl) println("\nHdf5ClibFile = ${ncfile.cdl()}")
                 assertEquals(ncfile.cdl(), netchdf.cdl())
             }
         } else {
@@ -401,8 +459,8 @@ fun readOneVar(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?) {
         if (NetchdfClibTest.showDataRead) println(" * ${myvar.fullname()} read too big: ${nbytes} > $maxBytes")
     } else {
         val mydata = myfile.readArrayData(myvar, section)
-        if (NetchdfClibTest.showDataRead) println(" ${myvar.datatype} ${myvar.fullname()}${myvar.shape.contentToString()} = " +
-                    "${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems" )
+        if (NetchdfClibTest.showDataRead) println(" ${myvar.datatype} ${myvar.fullname()}${myvar.shape.contentToString()} has " +
+                    "data shape = ${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems" )
         if (myvar.datatype == Datatype.CHAR) {
             testCharShape(myvarshape, mydata.shape)
         } else {

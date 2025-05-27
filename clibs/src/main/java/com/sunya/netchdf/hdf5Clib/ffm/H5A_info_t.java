@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5A_info_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$80.const$1;
+        return constants$87.const$2;
     }
     public static VarHandle corder_valid$VH() {
-        return constants$80.const$2;
+        return constants$87.const$3;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class H5A_info_t {
      * }
      */
     public static boolean corder_valid$get(MemorySegment seg) {
-        return (boolean)constants$80.const$2.get(seg);
+        return (boolean)constants$87.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class H5A_info_t {
      * }
      */
     public static void corder_valid$set(MemorySegment seg, boolean x) {
-        constants$80.const$2.set(seg, x);
+        constants$87.const$3.set(seg, x);
     }
     public static boolean corder_valid$get(MemorySegment seg, long index) {
-        return (boolean)constants$80.const$2.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$87.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void corder_valid$set(MemorySegment seg, long index, boolean x) {
-        constants$80.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle corder$VH() {
-        return constants$80.const$3;
+        return constants$87.const$4;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class H5A_info_t {
      * }
      */
     public static int corder$get(MemorySegment seg) {
-        return (int)constants$80.const$3.get(seg);
+        return (int)constants$87.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class H5A_info_t {
      * }
      */
     public static void corder$set(MemorySegment seg, int x) {
-        constants$80.const$3.set(seg, x);
+        constants$87.const$4.set(seg, x);
     }
     public static int corder$get(MemorySegment seg, long index) {
-        return (int)constants$80.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$87.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void corder$set(MemorySegment seg, long index, int x) {
-        constants$80.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle cset$VH() {
-        return constants$80.const$4;
+        return constants$87.const$5;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class H5A_info_t {
      * }
      */
     public static int cset$get(MemorySegment seg) {
-        return (int)constants$80.const$4.get(seg);
+        return (int)constants$87.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -95,16 +95,16 @@ public class H5A_info_t {
      * }
      */
     public static void cset$set(MemorySegment seg, int x) {
-        constants$80.const$4.set(seg, x);
+        constants$87.const$5.set(seg, x);
     }
     public static int cset$get(MemorySegment seg, long index) {
-        return (int)constants$80.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$87.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void cset$set(MemorySegment seg, long index, int x) {
-        constants$80.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle data_size$VH() {
-        return constants$80.const$5;
+        return constants$88.const$0;
     }
     /**
      * Getter for field:
@@ -113,7 +113,7 @@ public class H5A_info_t {
      * }
      */
     public static long data_size$get(MemorySegment seg) {
-        return (long)constants$80.const$5.get(seg);
+        return (long)constants$88.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -122,13 +122,13 @@ public class H5A_info_t {
      * }
      */
     public static void data_size$set(MemorySegment seg, long x) {
-        constants$80.const$5.set(seg, x);
+        constants$88.const$0.set(seg, x);
     }
     public static long data_size$get(MemorySegment seg, long index) {
-        return (long)constants$80.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$88.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void data_size$set(MemorySegment seg, long index, long x) {
-        constants$80.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

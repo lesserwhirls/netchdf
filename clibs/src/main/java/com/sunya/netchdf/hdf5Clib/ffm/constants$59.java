@@ -11,12 +11,24 @@ final class constants$59 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$59() {}
-    static final VarHandle const$0 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$1 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("comment"));
-    static final VarHandle const$2 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
-    static final VarHandle const$3 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
-    static final VarHandle const$4 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
-    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_query_func_t.class, "apply", constants$58.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$58.const$5
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_INT.withName("id"),
+        RuntimeHelper.POINTER.withName("comment"),
+        RuntimeHelper.POINTER.withName("create_func"),
+        RuntimeHelper.POINTER.withName("move_func"),
+        RuntimeHelper.POINTER.withName("copy_func"),
+        RuntimeHelper.POINTER.withName("trav_func"),
+        RuntimeHelper.POINTER.withName("del_func"),
+        RuntimeHelper.POINTER.withName("query_func")
+    ).withName("");
+    static final VarHandle const$3 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$4 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
+    static final VarHandle const$5 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("comment"));
 }
 
 

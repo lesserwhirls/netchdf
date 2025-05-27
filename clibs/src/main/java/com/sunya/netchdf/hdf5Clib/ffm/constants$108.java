@@ -11,12 +11,30 @@ final class constants$108 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$108() {}
-    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
-    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
-    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_freeres_list"));
-    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_freeres_buf"));
-    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("__pad5"));
-    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_mode"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dcreate1",
+        constants$93.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dopen1",
+        constants$55.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dextend",
+        constants$18.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dvlen_reclaim",
+        constants$54.const$3
+    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__count"),
+        MemoryLayout.unionLayout(
+            JAVA_INT.withName("__wch"),
+            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+        ).withName("__value")
+    ).withName("");
+    static final VarHandle const$5 = constants$108.const$4.varHandle(MemoryLayout.PathElement.groupElement("__count"));
 }
 
 

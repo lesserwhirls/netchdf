@@ -11,18 +11,14 @@ final class constants$222 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$222() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_copy_func_t.class, "apply", constants$17.const$4);
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_compare_func_t.class, "apply", constants$221.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$221.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_compare_func_t.class, "apply", constants$222.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$222.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_prp_close_func_t.class, "apply", constants$17.const$4);
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5P_iterate_t.class, "apply", constants$41.const$4);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_close_func_t.class, "apply", constants$18.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5P_iterate_t.class, "apply", constants$42.const$5);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ROOT_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_OBJECT_CREATE_ID_g", JAVA_LONG);
 }
 
 

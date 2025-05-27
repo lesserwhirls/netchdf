@@ -12,31 +12,34 @@ final class constants$234 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$234() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_obj_track_times",
-        constants$44.const$4
+        "H5Pget_attr_creation_order",
+        constants$18.const$3
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_attr_phase_change",
+        constants$42.const$5
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         JAVA_INT,
-        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pmodify_filter",
-        constants$234.const$1
-    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Premove_filter",
-        constants$45.const$5
+        "H5Pget_filter2",
+        constants$234.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_attr_creation_order",
-        constants$45.const$5
+        "H5Pget_filter_by_id2",
+        constants$234.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_attr_phase_change",
-        constants$50.const$3
+        "H5Pget_nfilters",
+        constants$19.const$5
     );
 }
 

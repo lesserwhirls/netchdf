@@ -12,30 +12,28 @@ final class constants$124 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$124() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "puts",
-        constants$15.const$2
+        "vasprintf",
+        constants$16.const$0
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "ungetc",
-        constants$22.const$0
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "__asprintf",
+        constants$117.const$4
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandleVariadic(
+        "asprintf",
+        constants$117.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "fread",
-        constants$124.const$2
+        "vdprintf",
+        constants$22.const$5
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fwrite",
-        constants$124.const$2
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "dprintf",
+        constants$23.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fread_unlocked",
-        constants$124.const$2
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "fscanf",
+        constants$117.const$4
     );
 }
 

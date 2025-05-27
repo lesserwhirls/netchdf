@@ -12,28 +12,34 @@ final class constants$230 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$230() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pequal",
-        constants$40.const$0
+        "H5Pcopy_prop",
+        constants$92.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pexist",
-        constants$44.const$4
+        "H5Pcreate",
+        constants$10.const$2
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget",
-        constants$41.const$4
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_class",
-        constants$10.const$2
+        "H5Pcreate_class",
+        constants$230.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_name",
-        constants$45.const$1
+        "H5Pdecode",
+        constants$43.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_parent",
-        constants$10.const$2
+        "H5Pencode2",
+        constants$44.const$3
     );
 }
 

@@ -16,13 +16,13 @@ public interface H5I_free_t {
 
     int apply(java.lang.foreign.MemorySegment client_data);
     static MemorySegment allocate(H5I_free_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$17.const$2, fi, constants$15.const$2, scope);
+        return RuntimeHelper.upcallStub(constants$17.const$4, fi, constants$15.const$4, scope);
     }
     static H5I_free_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _client_data) -> {
             try {
-                return (int)constants$17.const$3.invokeExact(symbol, _client_data);
+                return (int)constants$17.const$5.invokeExact(symbol, _client_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

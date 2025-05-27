@@ -12,21 +12,62 @@ final class constants$94 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$94() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$93.const$4
+        "H5Aget_num_attrs",
+        constants$19.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5D_scatter_func_t.class, "apply", constants$15.const$4);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Aiterate1",
+        constants$61.const$0
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$15.const$4
+        "H5Aopen_idx",
+        constants$49.const$3
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_gather_func_t.class, "apply", constants$17.const$4);
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aopen_name",
+        constants$55.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_chunk_iter_op_t.class, "apply", constants$94.const$4);
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_BOOLEAN.withName("rpt_fcn_enabled"),
+        JAVA_BOOLEAN.withName("open_trace_file"),
+        JAVA_BOOLEAN.withName("close_trace_file"),
+        MemoryLayout.sequenceLayout(1025, JAVA_BYTE).withName("trace_file_name"),
+        JAVA_BOOLEAN.withName("evictions_enabled"),
+        JAVA_BOOLEAN.withName("set_initial_size"),
+        MemoryLayout.paddingLayout(6),
+        JAVA_LONG.withName("initial_size"),
+        JAVA_DOUBLE.withName("min_clean_fraction"),
+        JAVA_LONG.withName("max_size"),
+        JAVA_LONG.withName("min_size"),
+        JAVA_LONG.withName("epoch_length"),
+        JAVA_INT.withName("incr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("lower_hr_threshold"),
+        JAVA_DOUBLE.withName("increment"),
+        JAVA_BOOLEAN.withName("apply_max_increment"),
+        MemoryLayout.paddingLayout(7),
+        JAVA_LONG.withName("max_increment"),
+        JAVA_INT.withName("flash_incr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("flash_multiple"),
+        JAVA_DOUBLE.withName("flash_threshold"),
+        JAVA_INT.withName("decr_mode"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_DOUBLE.withName("upper_hr_threshold"),
+        JAVA_DOUBLE.withName("decrement"),
+        JAVA_BOOLEAN.withName("apply_max_decrement"),
+        MemoryLayout.paddingLayout(7),
+        JAVA_LONG.withName("max_decrement"),
+        JAVA_INT.withName("epochs_before_eviction"),
+        JAVA_BOOLEAN.withName("apply_empty_reserve"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_DOUBLE.withName("empty_reserve"),
+        JAVA_LONG.withName("dirty_bytes_threshold"),
+        JAVA_INT.withName("metadata_write_strategy"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("H5AC_cache_config_t");
+    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

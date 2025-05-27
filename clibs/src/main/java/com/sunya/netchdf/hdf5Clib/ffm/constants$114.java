@@ -11,31 +11,16 @@ final class constants$114 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$114() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "fflush_unlocked",
-        constants$15.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "fopen",
-        constants$113.const$3
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_freeres_list"));
+    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_freeres_buf"));
+    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("__pad5"));
+    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_mode"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_LONG
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "freopen",
-        constants$114.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fdopen",
-        constants$114.const$4
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(cookie_read_function_t.class, "apply", constants$114.const$4);
 }
 
 

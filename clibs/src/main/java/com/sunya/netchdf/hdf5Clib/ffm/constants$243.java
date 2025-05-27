@@ -11,33 +11,29 @@ final class constants$243 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$243() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_DOUBLE
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_multi_type",
+        constants$18.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_cache",
-        constants$243.const$0
+        "H5Pget_object_flush_cb",
+        constants$42.const$5
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_BOOLEAN,
-        JAVA_LONG
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_page_buffer_size",
+        constants$61.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_core_write_tracking",
-        constants$243.const$2
+        "H5Pget_sieve_buf_size",
+        constants$18.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_driver",
-        constants$85.const$4
+        "H5Pget_small_data_block_size",
+        constants$18.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_file_cache_size",
-        constants$45.const$5
+        "H5Pget_vol_id",
+        constants$18.const$3
     );
 }
 

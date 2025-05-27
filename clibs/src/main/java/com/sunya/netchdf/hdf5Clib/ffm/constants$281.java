@@ -11,12 +11,30 @@ final class constants$281 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$281() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_filters");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_offset");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_datasize");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_read_flag");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_read_offset");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_read_filters");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5VLregister_connector_by_value",
+        constants$40.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5VLis_connector_registered_by_name",
+        constants$15.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5VLis_connector_registered_by_value",
+        constants$21.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5VLget_connector_id",
+        constants$10.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5VLget_connector_id_by_name",
+        constants$43.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5VLget_connector_id_by_value",
+        constants$273.const$3
+    );
 }
 
 

@@ -11,15 +11,30 @@ final class constants$23 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$23() {}
-    static final VarHandle const$0 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("need_bkg"));
-    static final VarHandle const$1 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("recalc"));
-    static final VarHandle const$2 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("len"),
-        RuntimeHelper.POINTER.withName("p")
-    ).withName("");
-    static final VarHandle const$4 = constants$23.const$3.varHandle(MemoryLayout.PathElement.groupElement("len"));
-    static final VarHandle const$5 = constants$23.const$3.varHandle(MemoryLayout.PathElement.groupElement("p"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Inmembers",
+        constants$23.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Itype_exists",
+        constants$21.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Iis_valid",
+        constants$19.const$5
+    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("command"),
+        JAVA_INT.withName("need_bkg"),
+        JAVA_BOOLEAN.withName("recalc"),
+        MemoryLayout.paddingLayout(7),
+        RuntimeHelper.POINTER.withName("priv")
+    ).withName("H5T_cdata_t");
+    static final VarHandle const$5 = constants$23.const$4.varHandle(MemoryLayout.PathElement.groupElement("command"));
 }
 
 

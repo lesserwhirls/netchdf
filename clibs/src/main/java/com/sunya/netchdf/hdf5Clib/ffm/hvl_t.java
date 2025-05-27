@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class hvl_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$23.const$3;
+        return constants$24.const$3;
     }
     public static VarHandle len$VH() {
-        return constants$23.const$4;
+        return constants$24.const$4;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class hvl_t {
      * }
      */
     public static long len$get(MemorySegment seg) {
-        return (long)constants$23.const$4.get(seg);
+        return (long)constants$24.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class hvl_t {
      * }
      */
     public static void len$set(MemorySegment seg, long x) {
-        constants$23.const$4.set(seg, x);
+        constants$24.const$4.set(seg, x);
     }
     public static long len$get(MemorySegment seg, long index) {
-        return (long)constants$23.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$24.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void len$set(MemorySegment seg, long index, long x) {
-        constants$23.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$24.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle p$VH() {
-        return constants$23.const$5;
+        return constants$24.const$5;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class hvl_t {
      * }
      */
     public static MemorySegment p$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$23.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$24.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class hvl_t {
      * }
      */
     public static void p$set(MemorySegment seg, MemorySegment x) {
-        constants$23.const$5.set(seg, x);
+        constants$24.const$5.set(seg, x);
     }
     public static MemorySegment p$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$23.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$24.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void p$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$23.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$24.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

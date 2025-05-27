@@ -11,18 +11,29 @@ final class constants$182 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$182() {}
-    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_copy"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.dxpl_free.class, "apply", constants$15.const$2);
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_free"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Freset_page_buffering_stats",
+        constants$19.const$5
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.open.class, "apply", constants$182.const$3);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_page_buffering_stats",
+        constants$48.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_image_info",
+        constants$42.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_dset_no_attrs_hint",
+        constants$18.const$3
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_BOOLEAN
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$182.const$3
+        "H5Fset_dset_no_attrs_hint",
+        constants$182.const$4
     );
 }
 

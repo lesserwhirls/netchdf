@@ -12,37 +12,28 @@ final class constants$204 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$204() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Gopen1",
-        constants$53.const$5
+        "H5FDquery",
+        constants$117.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Glink",
-        constants$162.const$2
+        "H5FDalloc",
+        constants$175.const$5
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5FDfree",
+        constants$191.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Glink2",
-        constants$204.const$2
+        "H5FDget_eoa",
+        constants$192.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Gmove",
-        constants$41.const$4
+        "H5FDset_eoa",
+        constants$192.const$4
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Gmove2",
-        constants$204.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5FDget_eof",
+        constants$192.const$0
     );
 }
 

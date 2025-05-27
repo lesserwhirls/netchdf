@@ -11,29 +11,36 @@ final class constants$121 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$121() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "getc_unlocked",
-        constants$15.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "getchar_unlocked",
-        constants$14.const$0
+        "fmemopen",
+        constants$121.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fgetc_unlocked",
-        constants$15.const$2
+        "open_memstream",
+        constants$119.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "fputc",
-        constants$22.const$0
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "putc",
-        constants$22.const$0
+        "setbuf",
+        constants$121.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "putchar",
-        constants$21.const$0
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "setvbuf",
+        constants$121.const$5
     );
 }
 

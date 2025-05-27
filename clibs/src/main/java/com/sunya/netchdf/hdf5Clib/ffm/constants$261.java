@@ -12,28 +12,28 @@ final class constants$261 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$261() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_prefix",
-        constants$44.const$4
+        "H5Pset_char_encoding",
+        constants$46.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_nlinks",
-        constants$40.const$0
+        "H5Pget_elink_acc_flags",
+        constants$18.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Padd_merge_committed_dtype_path",
-        constants$44.const$4
+        "H5Pget_elink_cb",
+        constants$42.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pfree_merge_committed_dtype_paths",
-        constants$19.const$0
+        "H5Pget_elink_fapl",
+        constants$10.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_copy_object",
-        constants$44.const$4
+        "H5Pget_elink_prefix",
+        constants$20.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_mcdt_search_cb",
-        constants$41.const$4
+        "H5Pget_nlinks",
+        constants$18.const$3
     );
 }
 

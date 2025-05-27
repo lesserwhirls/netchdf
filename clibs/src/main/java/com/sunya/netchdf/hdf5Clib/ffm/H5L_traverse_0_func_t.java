@@ -16,13 +16,13 @@ public interface H5L_traverse_0_func_t {
 
     long apply(java.lang.foreign.MemorySegment link_name, long cur_group, java.lang.foreign.MemorySegment lnkdata, long lnkdata_size, long lapl_id);
     static MemorySegment allocate(H5L_traverse_0_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$57.const$1, fi, constants$57.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$69.const$2, fi, constants$69.const$1, scope);
     }
     static H5L_traverse_0_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _link_name, long _cur_group, java.lang.foreign.MemorySegment _lnkdata, long _lnkdata_size, long _lapl_id) -> {
             try {
-                return (long)constants$57.const$2.invokeExact(symbol, _link_name, _cur_group, _lnkdata, _lnkdata_size, _lapl_id);
+                return (long)constants$69.const$3.invokeExact(symbol, _link_name, _cur_group, _lnkdata, _lnkdata_size, _lapl_id);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -16,13 +16,13 @@ public interface H5Z_set_local_func_t {
 
     int apply(long dcpl_id, long type_id, long space_id);
     static MemorySegment allocate(H5Z_set_local_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$216.const$2, fi, constants$215.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$215.const$4, fi, constants$215.const$1, scope);
     }
     static H5Z_set_local_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _dcpl_id, long _type_id, long _space_id) -> {
             try {
-                return (int)constants$216.const$1.invokeExact(symbol, _dcpl_id, _type_id, _space_id);
+                return (int)constants$215.const$3.invokeExact(symbol, _dcpl_id, _type_id, _space_id);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

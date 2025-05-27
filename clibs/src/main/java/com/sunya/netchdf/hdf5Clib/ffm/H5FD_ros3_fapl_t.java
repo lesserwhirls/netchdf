@@ -21,10 +21,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5FD_ros3_fapl_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$270.const$3;
+        return constants$342.const$3;
     }
     public static VarHandle version$VH() {
-        return constants$270.const$4;
+        return constants$342.const$4;
     }
     /**
      * Getter for field:
@@ -33,7 +33,7 @@ public class H5FD_ros3_fapl_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$270.const$4.get(seg);
+        return (int)constants$342.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -42,16 +42,16 @@ public class H5FD_ros3_fapl_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$270.const$4.set(seg, x);
+        constants$342.const$4.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$270.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$342.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$270.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$342.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle authenticate$VH() {
-        return constants$270.const$5;
+        return constants$342.const$5;
     }
     /**
      * Getter for field:
@@ -60,7 +60,7 @@ public class H5FD_ros3_fapl_t {
      * }
      */
     public static boolean authenticate$get(MemorySegment seg) {
-        return (boolean)constants$270.const$5.get(seg);
+        return (boolean)constants$342.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -69,13 +69,13 @@ public class H5FD_ros3_fapl_t {
      * }
      */
     public static void authenticate$set(MemorySegment seg, boolean x) {
-        constants$270.const$5.set(seg, x);
+        constants$342.const$5.set(seg, x);
     }
     public static boolean authenticate$get(MemorySegment seg, long index) {
-        return (boolean)constants$270.const$5.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$342.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void authenticate$set(MemorySegment seg, long index, boolean x) {
-        constants$270.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$342.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment aws_region$slice(MemorySegment seg) {
         return seg.asSlice(5, 33);

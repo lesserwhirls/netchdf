@@ -11,30 +11,27 @@ final class constants$58 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$58() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_delete_func_t.class, "apply", constants$56.const$2);
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_copy_func_t.class, "apply", constants$57.const$3);
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_traverse_func_t.class, "apply", constants$58.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$58.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_delete_func_t.class, "apply", constants$57.const$3);
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_query_func_t.class, "apply", constants$58.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$58.const$1
-    );
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("id"),
-        RuntimeHelper.POINTER.withName("comment"),
-        RuntimeHelper.POINTER.withName("create_func"),
-        RuntimeHelper.POINTER.withName("move_func"),
-        RuntimeHelper.POINTER.withName("copy_func"),
-        RuntimeHelper.POINTER.withName("trav_func"),
-        RuntimeHelper.POINTER.withName("del_func"),
-        RuntimeHelper.POINTER.withName("query_func")
-    ).withName("");
-    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

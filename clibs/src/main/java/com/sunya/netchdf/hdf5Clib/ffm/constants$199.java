@@ -11,30 +11,24 @@ final class constants$199 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$199() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDread",
-        constants$187.const$5
+    static final VarHandle const$0 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("threshold"));
+    static final VarHandle const$1 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("alignment"));
+    static final VarHandle const$2 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("paged_aggr"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("image_malloc"),
+        RuntimeHelper.POINTER.withName("image_memcpy"),
+        RuntimeHelper.POINTER.withName("image_realloc"),
+        RuntimeHelper.POINTER.withName("image_free"),
+        RuntimeHelper.POINTER.withName("udata_copy"),
+        RuntimeHelper.POINTER.withName("udata_free"),
+        RuntimeHelper.POINTER.withName("udata")
+    ).withName("");
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDwrite",
-        constants$187.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDflush",
-        constants$188.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDtruncate",
-        constants$188.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDlock",
-        constants$189.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDunlock",
-        constants$15.const$2
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_malloc.class, "apply", constants$199.const$4);
 }
 
 

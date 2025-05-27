@@ -12,22 +12,29 @@ final class constants$79 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$79() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ovisit1",
-        constants$66.const$2
+        "H5Oincr_refcount",
+        constants$19.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name1",
-        constants$66.const$4
+        "H5Odecr_refcount",
+        constants$19.const$5
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("size"),
-        JAVA_LONG.withName("free"),
-        JAVA_INT.withName("nmesgs"),
-        JAVA_INT.withName("nchunks")
-    ).withName("H5O_stat_t");
-    static final VarHandle const$3 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$4 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final VarHandle const$5 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ocopy",
+        constants$62.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Oset_comment",
+        constants$18.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oset_comment_by_name",
+        constants$44.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oget_comment",
+        constants$20.const$1
+    );
 }
 
 

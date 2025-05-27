@@ -11,27 +11,12 @@ final class constants$160 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$160() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eregister_class",
-        constants$123.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eunregister_class",
-        constants$19.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eclose_msg",
-        constants$19.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_msg",
-        constants$44.const$1
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_stack",
-        constants$160.const$4
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_MPI_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_MPIERRSTR_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTRECV_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTGATHER_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_NO_INDEPENDENT_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCLIP_g", JAVA_LONG);
 }
 
 

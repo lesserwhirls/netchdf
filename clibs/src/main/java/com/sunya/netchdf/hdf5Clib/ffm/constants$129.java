@@ -11,30 +11,37 @@ final class constants$129 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$129() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$15.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getline",
+        constants$129.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "__overflow",
-        constants$129.const$1
+        "fputs",
+        constants$117.const$4
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("cls_id"),
-        JAVA_LONG.withName("maj_num"),
-        JAVA_LONG.withName("min_num"),
-        JAVA_INT.withName("line"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("func_name"),
-        RuntimeHelper.POINTER.withName("file_name"),
-        RuntimeHelper.POINTER.withName("desc")
-    ).withName("H5E_error2_t");
-    static final VarHandle const$4 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("cls_id"));
-    static final VarHandle const$5 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "puts",
+        constants$15.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "ungetc",
+        constants$23.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "fread",
+        constants$129.const$5
+    );
 }
 
 

@@ -11,21 +11,42 @@ final class constants$55 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$55() {}
-    static final VarHandle const$0 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("corder"));
-    static final VarHandle const$1 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("cset"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("address"),
-        JAVA_LONG.withName("val_size")
-    ).withName("");
-    static final VarHandle const$3 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("address"));
-    static final VarHandle const$4 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER
     );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Topen1",
+        constants$55.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tarray_create1",
+        constants$55.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tget_array_dims1",
+        constants$42.const$5
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_LONG.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+            ).withName("token"),
+            JAVA_LONG.withName("val_size")
+        ).withName("u")
+    ).withName("");
 }
 
 

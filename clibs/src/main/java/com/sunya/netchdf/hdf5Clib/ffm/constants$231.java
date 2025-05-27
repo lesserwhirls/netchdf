@@ -12,36 +12,28 @@ final class constants$231 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$231() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_nprops",
-        constants$44.const$4
+        "H5Pequal",
+        constants$41.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_size",
-        constants$41.const$4
+        "H5Pexist",
+        constants$18.const$3
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget",
+        constants$42.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pinsert2",
-        constants$231.const$2
+        "H5Pget_class",
+        constants$10.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pisa_class",
-        constants$40.const$0
+        "H5Pget_class_name",
+        constants$46.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Piterate",
-        constants$61.const$5
+        "H5Pget_class_parent",
+        constants$10.const$2
     );
 }
 

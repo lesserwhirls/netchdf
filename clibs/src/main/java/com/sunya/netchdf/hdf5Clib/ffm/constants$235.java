@@ -12,28 +12,31 @@ final class constants$235 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$235() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_deflate",
-        constants$45.const$5
+        "H5Pget_obj_track_times",
+        constants$18.const$3
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_filter",
-        constants$234.const$1
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fletcher32",
-        constants$19.const$0
+        "H5Pmodify_filter",
+        constants$235.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_obj_track_times",
-        constants$176.const$4
+        "H5Premove_filter",
+        constants$46.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space_page_size",
-        constants$44.const$4
+        "H5Pset_attr_creation_order",
+        constants$46.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space_strategy",
-        constants$61.const$5
+        "H5Pset_attr_phase_change",
+        constants$51.const$3
     );
 }
 

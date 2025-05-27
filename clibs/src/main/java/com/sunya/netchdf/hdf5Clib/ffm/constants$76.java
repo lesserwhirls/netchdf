@@ -11,39 +11,59 @@ final class constants$76 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$76() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ovisit2",
-        constants$76.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name2",
-        constants$76.const$2
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks"),
+            JAVA_INT.withName("flags"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("total"),
+                JAVA_LONG.withName("meta"),
+                JAVA_LONG.withName("mesg"),
+                JAVA_LONG.withName("free")
+            ).withName("space"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("present"),
+                JAVA_LONG.withName("shared")
+            ).withName("mesg")
+        ).withName("hdr"),
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("obj"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("attr")
+        ).withName("meta_size")
+    ).withName("H5O_native_info_t");
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("obj"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("attr")
+    ).withName("");
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5O_iterate2_t.class, "apply", constants$61.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5O_mcdt_search_cb_t.class, "apply", constants$15.const$4);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oclose",
-        constants$19.const$0
+        "H5Oopen",
+        constants$20.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oflush",
-        constants$19.const$0
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("H5O_token_t")
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Oopen_by_token",
+        constants$76.const$5
     );
 }
 

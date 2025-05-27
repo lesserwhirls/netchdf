@@ -12,28 +12,28 @@ final class constants$259 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$259() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_link_phase_change",
-        constants$50.const$3
+        "H5Pset_vlen_mem_manager",
+        constants$103.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_local_heap_size_hint",
-        constants$40.const$0
+        "H5Pget_create_intermediate_group",
+        constants$18.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_char_encoding",
-        constants$44.const$4
+        "H5Pset_create_intermediate_group",
+        constants$46.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_char_encoding",
-        constants$45.const$5
+        "H5Pget_est_link_info",
+        constants$42.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_acc_flags",
-        constants$44.const$4
+        "H5Pget_link_creation_order",
+        constants$18.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_cb",
-        constants$41.const$4
+        "H5Pget_link_phase_change",
+        constants$42.const$5
     );
 }
 

@@ -13,29 +13,28 @@ final class constants$65 {
     private constants$65() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Lget_info_by_idx",
+        "H5Literate2",
         constants$65.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Lget_name_by_idx",
+        "H5Literate_by_name2",
         constants$65.const$2
     );
     static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
@@ -43,11 +42,10 @@ final class constants$65 {
         JAVA_INT,
         JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Literate",
+        "H5Lvisit2",
         constants$65.const$4
     );
 }

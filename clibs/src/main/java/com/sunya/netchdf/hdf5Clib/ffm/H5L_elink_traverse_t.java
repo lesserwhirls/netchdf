@@ -16,13 +16,13 @@ public interface H5L_elink_traverse_t {
 
     int apply(java.lang.foreign.MemorySegment parent_file_name, java.lang.foreign.MemorySegment parent_group_name, java.lang.foreign.MemorySegment child_file_name, java.lang.foreign.MemorySegment child_object_name, java.lang.foreign.MemorySegment acc_flags, long fapl_id, java.lang.foreign.MemorySegment op_data);
     static MemorySegment allocate(H5L_elink_traverse_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$62.const$3, fi, constants$62.const$2, scope);
+        return RuntimeHelper.upcallStub(constants$61.const$4, fi, constants$61.const$3, scope);
     }
     static H5L_elink_traverse_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _parent_file_name, java.lang.foreign.MemorySegment _parent_group_name, java.lang.foreign.MemorySegment _child_file_name, java.lang.foreign.MemorySegment _child_object_name, java.lang.foreign.MemorySegment _acc_flags, long _fapl_id, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$62.const$4.invokeExact(symbol, _parent_file_name, _parent_group_name, _child_file_name, _child_object_name, _acc_flags, _fapl_id, _op_data);
+                return (int)constants$61.const$5.invokeExact(symbol, _parent_file_name, _parent_group_name, _child_file_name, _child_object_name, _acc_flags, _fapl_id, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

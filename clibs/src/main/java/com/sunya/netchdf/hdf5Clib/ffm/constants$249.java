@@ -12,28 +12,36 @@ final class constants$249 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$249() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_layout",
-        constants$19.const$0
+        "H5Pfill_value_defined",
+        constants$18.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_count",
-        constants$44.const$4
+        "H5Pget_alloc_time",
+        constants$18.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_dsetname",
-        constants$206.const$2
+        "H5Pget_chunk",
+        constants$21.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_filename",
-        constants$206.const$2
+        "H5Pget_chunk_opts",
+        constants$18.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_srcspace",
-        constants$72.const$5
+        "H5Pget_dset_no_attrs_hint",
+        constants$18.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_vspace",
-        constants$72.const$5
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Pget_external",
+        constants$249.const$5
     );
 }
 
