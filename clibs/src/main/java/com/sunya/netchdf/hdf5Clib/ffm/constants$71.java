@@ -11,23 +11,37 @@ final class constants$71 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$71() {}
-    static final VarHandle const$0 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("query_func"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_iterate1_t.class, "apply", constants$61.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Lget_info1",
-        constants$44.const$3
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Lget_info_by_idx1",
-        constants$64.const$2
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Treclaim",
+        constants$71.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tcommit1",
+        constants$29.const$2
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Literate1",
-        constants$65.const$0
+        "H5Topen1",
+        constants$71.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Literate_by_name1",
-        constants$65.const$2
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Tarray_create1",
+        constants$71.const$5
     );
 }
 

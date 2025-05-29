@@ -11,12 +11,12 @@ final class constants$38 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$38() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST16_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST16_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST16_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT32_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT32_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST32_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("addr"));
+    static final VarHandle const$1 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$2 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc"));
+    static final VarHandle const$3 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("atime"));
+    static final VarHandle const$4 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
+    static final VarHandle const$5 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
 }
 
 

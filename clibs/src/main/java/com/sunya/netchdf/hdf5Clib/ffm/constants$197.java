@@ -11,29 +11,42 @@ final class constants$197 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$197() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("addr"),
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("next")
-    ).withName("H5FD_free_t");
-    static final VarHandle const$1 = constants$197.const$0.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$2 = constants$197.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$3 = constants$197.const$0.varHandle(MemoryLayout.PathElement.groupElement("next"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lunpack_elink_val",
+        constants$197.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_external",
+        constants$197.const$2
+    );
     static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("driver_id"),
-        RuntimeHelper.POINTER.withName("cls"),
-        JAVA_LONG.withName("fileno"),
-        JAVA_INT.withName("access_flags"),
+        JAVA_INT.withName("type"),
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_LONG.withName("corder"),
+        JAVA_INT.withName("cset"),
         MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("feature_flags"),
-        JAVA_LONG.withName("maxaddr"),
-        JAVA_LONG.withName("base_addr"),
-        JAVA_LONG.withName("threshold"),
-        JAVA_LONG.withName("alignment"),
-        JAVA_BOOLEAN.withName("paged_aggr"),
-        MemoryLayout.paddingLayout(7)
-    ).withName("H5FD_t");
-    static final VarHandle const$5 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("driver_id"));
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("address"),
+            JAVA_LONG.withName("val_size")
+        ).withName("u")
+    ).withName("");
+    static final VarHandle const$5 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
 }
 
 

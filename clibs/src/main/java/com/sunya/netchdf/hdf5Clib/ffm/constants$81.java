@@ -12,28 +12,27 @@ final class constants$81 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$81() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Oclose",
-        constants$19.const$5
+        "H5Awrite_async",
+        constants$80.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oflush",
-        constants$19.const$5
+        "H5Arename_by_name",
+        constants$76.const$3
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Orefresh",
-        constants$19.const$5
-    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5A_operator1_t.class, "apply", constants$36.const$1);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Odisable_mdc_flushes",
-        constants$19.const$5
+        constants$36.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oenable_mdc_flushes",
-        constants$19.const$5
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oare_mdc_flushes_disabled",
-        constants$18.const$3
+        "H5Acreate1",
+        constants$81.const$4
     );
 }
 

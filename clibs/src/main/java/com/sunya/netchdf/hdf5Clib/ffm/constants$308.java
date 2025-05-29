@@ -11,24 +11,40 @@ final class constants$308 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$308() {}
-    static final VarHandle const$0 = constants$305.const$4.varHandle(MemoryLayout.PathElement.groupElement("specific"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_link_class_t.optional.class, "apply", constants$292.const$4);
-    static final VarHandle const$2 = constants$305.const$4.varHandle(MemoryLayout.PathElement.groupElement("optional"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("open"),
-        RuntimeHelper.POINTER.withName("copy"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional")
-    ).withName("H5VL_object_class_t");
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Sselect_adjust",
+        constants$17.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Sselect_all",
+        constants$19.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sselect_copy",
+        constants$58.const$5
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_object_class_t.open.class, "apply", constants$308.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sselect_elements",
+        constants$308.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Sselect_hyperslab",
+        constants$308.const$5
+    );
 }
 
 

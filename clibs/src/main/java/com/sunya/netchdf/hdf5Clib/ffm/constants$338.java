@@ -12,31 +12,29 @@ final class constants$338 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$338() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLoptional",
-        constants$326.const$3
+        "H5Pset_file_image_callbacks",
+        constants$17.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLnative_addr_to_token",
-        constants$92.const$4
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        MemoryLayout.structLayout(
-            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
-        ).withName("H5O_token_t"),
-        RuntimeHelper.POINTER
+        JAVA_BOOLEAN,
+        JAVA_BOOLEAN
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pset_file_locking",
+        constants$338.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLnative_token_to_addr",
-        constants$338.const$2
+        "H5Pset_gc_references",
+        constants$64.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VL_native_register",
-        constants$166.const$2
+        "H5Pset_libver_bounds",
+        constants$69.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FD_core_init",
-        constants$166.const$2
+        "H5Pset_mdc_config",
+        constants$17.const$5
     );
 }
 

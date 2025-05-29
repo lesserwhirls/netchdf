@@ -12,13 +12,42 @@ final class constants$193 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$193() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$192.const$4
+        "H5Ldelete",
+        constants$29.const$2
     );
-    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("set_eoa"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eof.class, "apply", constants$192.const$0);
-    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_eof"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.get_handle.class, "apply", constants$18.const$0);
-    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_handle"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_async",
+        constants$193.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_by_idx",
+        constants$74.const$5
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_by_idx_async",
+        constants$193.const$4
+    );
 }
 
 

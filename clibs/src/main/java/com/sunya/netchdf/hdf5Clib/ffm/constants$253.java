@@ -11,40 +11,28 @@ final class constants$253 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$253() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_nbit",
-        constants$19.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_scaleoffset",
-        constants$51.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_szip",
-        constants$51.const$3
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual",
-        constants$253.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pget_append_flush",
-        constants$253.const$5
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("token_ptr")
+    ).withName("");
+    static final VarHandle const$1 = constants$253.const$0.varHandle(MemoryLayout.PathElement.groupElement("token_ptr"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("obj_id")
+    ).withName("");
+    static final VarHandle const$3 = constants$253.const$2.varHandle(MemoryLayout.PathElement.groupElement("obj_id"));
+    static final VarHandle const$4 = constants$253.const$2.varHandle(MemoryLayout.PathElement.groupElement("obj_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("err_stack_id")
+            ).withName("get_err_stack"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("exec_ts"),
+                RuntimeHelper.POINTER.withName("exec_time")
+            ).withName("get_exec_time")
+        ).withName("args")
+    ).withName("H5VL_request_specific_args_t");
 }
 
 

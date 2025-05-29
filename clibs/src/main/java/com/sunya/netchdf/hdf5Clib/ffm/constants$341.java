@@ -12,32 +12,28 @@ final class constants$341 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$341() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_hdfs",
-        constants$18.const$3
+        "H5Pset_relax_file_integrity_checks",
+        constants$58.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FD_log_init",
-        constants$166.const$2
+        "H5Pget_relax_file_integrity_checks",
+        constants$17.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_log",
-        constants$43.const$4
+        "H5Pfill_value_defined",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FD_multi_init",
-        constants$166.const$2
+        "H5Pget_alloc_time",
+        constants$17.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_BOOLEAN
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_chunk",
+        constants$20.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_multi",
-        constants$341.const$4
+        "H5Pget_chunk_opts",
+        constants$17.const$5
     );
 }
 

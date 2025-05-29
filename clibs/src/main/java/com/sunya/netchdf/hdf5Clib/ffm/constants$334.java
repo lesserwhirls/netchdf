@@ -11,44 +11,29 @@ final class constants$334 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$334() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_mdc_image_config",
+        constants$17.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLobject_copy",
-        constants$334.const$0
+        "H5Pget_mdc_log_options",
+        constants$93.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLobject_get",
-        constants$326.const$5
+        "H5Pget_meta_block_size",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLobject_specific",
-        constants$326.const$5
+        "H5Pget_metadata_read_attempts",
+        constants$17.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLobject_optional",
-        constants$326.const$3
+        "H5Pget_multi_type",
+        constants$17.const$5
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5VLintrospect_get_conn_cls",
-        constants$334.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_object_flush_cb",
+        constants$36.const$1
     );
 }
 

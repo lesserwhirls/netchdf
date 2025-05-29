@@ -11,12 +11,37 @@ final class constants$97 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$97() {}
-    static final VarHandle const$0 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("increment"));
-    static final VarHandle const$1 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_increment"));
-    static final VarHandle const$2 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_increment"));
-    static final VarHandle const$3 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_incr_mode"));
-    static final VarHandle const$4 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_multiple"));
-    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_threshold"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dvlen_get_buf_size",
+        constants$71.const$0
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dfill",
+        constants$97.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dset_extent",
+        constants$17.const$5
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dset_extent_async",
+        constants$97.const$4
+    );
 }
 
 

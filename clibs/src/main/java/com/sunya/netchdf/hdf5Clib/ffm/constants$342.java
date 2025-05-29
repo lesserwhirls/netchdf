@@ -12,29 +12,33 @@ final class constants$342 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$342() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_multi",
-        constants$48.const$0
+        "H5Pget_dset_no_attrs_hint",
+        constants$17.const$5
     );
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_split",
+        "H5Pget_external",
         constants$342.const$1
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_BOOLEAN.withName("authenticate"),
-        MemoryLayout.sequenceLayout(33, JAVA_BYTE).withName("aws_region"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("secret_id"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("secret_key")
-    ).withName("H5FD_ros3_fapl_t");
-    static final VarHandle const$4 = constants$342.const$3.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$5 = constants$342.const$3.varHandle(MemoryLayout.PathElement.groupElement("authenticate"));
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_external_count",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_fill_time",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_fill_value",
+        constants$79.const$5
+    );
 }
 
 

@@ -23,7 +23,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5G_stat_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$209.const$1;
+        return constants$204.const$2;
     }
     public static MemorySegment fileno$slice(MemorySegment seg) {
         return seg.asSlice(0, 16);
@@ -32,7 +32,7 @@ public class H5G_stat_t {
         return seg.asSlice(16, 16);
     }
     public static VarHandle nlink$VH() {
-        return constants$209.const$2;
+        return constants$204.const$3;
     }
     /**
      * Getter for field:
@@ -41,7 +41,7 @@ public class H5G_stat_t {
      * }
      */
     public static int nlink$get(MemorySegment seg) {
-        return (int)constants$209.const$2.get(seg);
+        return (int)constants$204.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -50,16 +50,16 @@ public class H5G_stat_t {
      * }
      */
     public static void nlink$set(MemorySegment seg, int x) {
-        constants$209.const$2.set(seg, x);
+        constants$204.const$3.set(seg, x);
     }
     public static int nlink$get(MemorySegment seg, long index) {
-        return (int)constants$209.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$204.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void nlink$set(MemorySegment seg, long index, int x) {
-        constants$209.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$204.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle type$VH() {
-        return constants$209.const$3;
+        return constants$204.const$4;
     }
     /**
      * Getter for field:
@@ -68,7 +68,7 @@ public class H5G_stat_t {
      * }
      */
     public static int type$get(MemorySegment seg) {
-        return (int)constants$209.const$3.get(seg);
+        return (int)constants$204.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -77,16 +77,16 @@ public class H5G_stat_t {
      * }
      */
     public static void type$set(MemorySegment seg, int x) {
-        constants$209.const$3.set(seg, x);
+        constants$204.const$4.set(seg, x);
     }
     public static int type$get(MemorySegment seg, long index) {
-        return (int)constants$209.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$204.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void type$set(MemorySegment seg, long index, int x) {
-        constants$209.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$204.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle mtime$VH() {
-        return constants$209.const$4;
+        return constants$204.const$5;
     }
     /**
      * Getter for field:
@@ -95,7 +95,7 @@ public class H5G_stat_t {
      * }
      */
     public static long mtime$get(MemorySegment seg) {
-        return (long)constants$209.const$4.get(seg);
+        return (long)constants$204.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -104,16 +104,16 @@ public class H5G_stat_t {
      * }
      */
     public static void mtime$set(MemorySegment seg, long x) {
-        constants$209.const$4.set(seg, x);
+        constants$204.const$5.set(seg, x);
     }
     public static long mtime$get(MemorySegment seg, long index) {
-        return (long)constants$209.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$204.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void mtime$set(MemorySegment seg, long index, long x) {
-        constants$209.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$204.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle linklen$VH() {
-        return constants$209.const$5;
+        return constants$205.const$0;
     }
     /**
      * Getter for field:
@@ -122,7 +122,7 @@ public class H5G_stat_t {
      * }
      */
     public static long linklen$get(MemorySegment seg) {
-        return (long)constants$209.const$5.get(seg);
+        return (long)constants$205.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -131,13 +131,13 @@ public class H5G_stat_t {
      * }
      */
     public static void linklen$set(MemorySegment seg, long x) {
-        constants$209.const$5.set(seg, x);
+        constants$205.const$0.set(seg, x);
     }
     public static long linklen$get(MemorySegment seg, long index) {
-        return (long)constants$209.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$205.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void linklen$set(MemorySegment seg, long index, long x) {
-        constants$209.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$205.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment ohdr$slice(MemorySegment seg) {
         return seg.asSlice(56, 24);

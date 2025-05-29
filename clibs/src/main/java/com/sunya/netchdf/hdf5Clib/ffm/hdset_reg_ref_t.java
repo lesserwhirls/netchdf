@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class hdset_reg_ref_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$267.const$1;
+        return constants$210.const$4;
     }
     public static MemorySegment __data$slice(MemorySegment seg) {
         return seg.asSlice(0, 12);

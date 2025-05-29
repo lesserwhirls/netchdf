@@ -11,17 +11,20 @@ final class constants$173 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$173() {}
-    static final VarHandle const$0 = constants$172.const$4.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
-    static final VarHandle const$1 = constants$172.const$4.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
+    static final VarHandle const$0 = constants$172.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$1 = constants$172.const$5.varHandle(MemoryLayout.PathElement.groupElement("meta_size"));
+    static final VarHandle const$2 = constants$172.const$5.varHandle(MemoryLayout.PathElement.groupElement("tot_space"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
         JAVA_INT.withName("version"),
         MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("meta_size"),
-        JAVA_LONG.withName("tot_space")
+        JAVA_LONG.withName("hdr_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("msgs_info")
     ).withName("");
-    static final VarHandle const$3 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$4 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("meta_size"));
-    static final VarHandle const$5 = constants$173.const$2.varHandle(MemoryLayout.PathElement.groupElement("tot_space"));
+    static final VarHandle const$4 = constants$173.const$3.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$5 = constants$173.const$3.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
 }
 
 

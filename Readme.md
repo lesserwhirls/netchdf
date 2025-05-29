@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 5/26/2025_
+_last updated: 5/29/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -121,6 +121,10 @@ for example, to use HDF5 filters that link to native libraries.
 We use the Java [Foreign Function & Memory API](https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html)
 for testing against the Netcdf, HDF5, and HDF4 C libraries. 
 With these tools we can be confident that our library gives the same results as the reference libraries.
+
+Currently using 
+* HDF5 library version: 1.14.6.
+* netcdf-c library version 4.10.0-development of May 23 2025
 
 Currently we have this test coverage from core/test:
 

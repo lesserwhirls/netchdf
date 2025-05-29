@@ -11,32 +11,26 @@ final class constants$282 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$282() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLget_connector_name",
-        constants$20.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLclose",
-        constants$19.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLunregister_connector",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLquery_optional",
-        constants$282.const$3
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_introspect_class_t.opt_query.class, "apply", constants$282.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$282.const$0
     );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_LONG.withName("lapl_id")
-    ).withName("H5VL_loc_by_name");
+    static final VarHandle const$3 = constants$281.const$1.varHandle(MemoryLayout.PathElement.groupElement("opt_query"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("wait"),
+        RuntimeHelper.POINTER.withName("notify"),
+        RuntimeHelper.POINTER.withName("cancel"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("free")
+    ).withName("H5VL_request_class_t");
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_request_class_t.wait.class, "apply", constants$17.const$2);
 }
 
 

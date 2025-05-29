@@ -11,8 +11,30 @@ final class constants$355 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$355() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("native");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("pass_through");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_elink_acc_flags",
+        constants$17.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_elink_cb",
+        constants$36.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_elink_fapl",
+        constants$0.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_elink_prefix",
+        constants$19.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_nlinks",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pset_elink_acc_flags",
+        constants$64.const$2
+    );
 }
 
 

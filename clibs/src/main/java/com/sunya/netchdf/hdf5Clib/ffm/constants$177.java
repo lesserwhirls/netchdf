@@ -12,34 +12,32 @@ final class constants$177 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$177() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fget_create_plist",
-        constants$10.const$2
+        "H5Fflush",
+        constants$64.const$2
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fget_access_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fget_intent",
-        constants$18.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fget_fileno",
-        constants$18.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_obj_count",
-        constants$49.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER
+        JAVA_INT,
+        JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Fget_obj_ids",
-        constants$177.const$5
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fflush_async",
+        constants$177.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fclose",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fclose_async",
+        constants$34.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fdelete",
+        constants$175.const$0
     );
 }
 

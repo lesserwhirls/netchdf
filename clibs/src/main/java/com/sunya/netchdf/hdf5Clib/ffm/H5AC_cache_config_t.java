@@ -46,10 +46,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5AC_cache_config_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$94.const$4;
+        return constants$82.const$4;
     }
     public static VarHandle version$VH() {
-        return constants$94.const$5;
+        return constants$82.const$5;
     }
     /**
      * Getter for field:
@@ -58,7 +58,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$94.const$5.get(seg);
+        return (int)constants$82.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -67,16 +67,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$94.const$5.set(seg, x);
+        constants$82.const$5.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$94.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$82.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$94.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$82.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rpt_fcn_enabled$VH() {
-        return constants$95.const$0;
+        return constants$83.const$0;
     }
     /**
      * Getter for field:
@@ -85,7 +85,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean rpt_fcn_enabled$get(MemorySegment seg) {
-        return (boolean)constants$95.const$0.get(seg);
+        return (boolean)constants$83.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -94,16 +94,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void rpt_fcn_enabled$set(MemorySegment seg, boolean x) {
-        constants$95.const$0.set(seg, x);
+        constants$83.const$0.set(seg, x);
     }
     public static boolean rpt_fcn_enabled$get(MemorySegment seg, long index) {
-        return (boolean)constants$95.const$0.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$83.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void rpt_fcn_enabled$set(MemorySegment seg, long index, boolean x) {
-        constants$95.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle open_trace_file$VH() {
-        return constants$95.const$1;
+        return constants$83.const$1;
     }
     /**
      * Getter for field:
@@ -112,7 +112,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean open_trace_file$get(MemorySegment seg) {
-        return (boolean)constants$95.const$1.get(seg);
+        return (boolean)constants$83.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -121,16 +121,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void open_trace_file$set(MemorySegment seg, boolean x) {
-        constants$95.const$1.set(seg, x);
+        constants$83.const$1.set(seg, x);
     }
     public static boolean open_trace_file$get(MemorySegment seg, long index) {
-        return (boolean)constants$95.const$1.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$83.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void open_trace_file$set(MemorySegment seg, long index, boolean x) {
-        constants$95.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle close_trace_file$VH() {
-        return constants$95.const$2;
+        return constants$83.const$2;
     }
     /**
      * Getter for field:
@@ -139,7 +139,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean close_trace_file$get(MemorySegment seg) {
-        return (boolean)constants$95.const$2.get(seg);
+        return (boolean)constants$83.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -148,19 +148,19 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void close_trace_file$set(MemorySegment seg, boolean x) {
-        constants$95.const$2.set(seg, x);
+        constants$83.const$2.set(seg, x);
     }
     public static boolean close_trace_file$get(MemorySegment seg, long index) {
-        return (boolean)constants$95.const$2.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$83.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void close_trace_file$set(MemorySegment seg, long index, boolean x) {
-        constants$95.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment trace_file_name$slice(MemorySegment seg) {
         return seg.asSlice(7, 1025);
     }
     public static VarHandle evictions_enabled$VH() {
-        return constants$95.const$3;
+        return constants$83.const$3;
     }
     /**
      * Getter for field:
@@ -169,7 +169,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean evictions_enabled$get(MemorySegment seg) {
-        return (boolean)constants$95.const$3.get(seg);
+        return (boolean)constants$83.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -178,16 +178,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void evictions_enabled$set(MemorySegment seg, boolean x) {
-        constants$95.const$3.set(seg, x);
+        constants$83.const$3.set(seg, x);
     }
     public static boolean evictions_enabled$get(MemorySegment seg, long index) {
-        return (boolean)constants$95.const$3.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$83.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void evictions_enabled$set(MemorySegment seg, long index, boolean x) {
-        constants$95.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle set_initial_size$VH() {
-        return constants$95.const$4;
+        return constants$83.const$4;
     }
     /**
      * Getter for field:
@@ -196,7 +196,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean set_initial_size$get(MemorySegment seg) {
-        return (boolean)constants$95.const$4.get(seg);
+        return (boolean)constants$83.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -205,16 +205,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void set_initial_size$set(MemorySegment seg, boolean x) {
-        constants$95.const$4.set(seg, x);
+        constants$83.const$4.set(seg, x);
     }
     public static boolean set_initial_size$get(MemorySegment seg, long index) {
-        return (boolean)constants$95.const$4.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$83.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void set_initial_size$set(MemorySegment seg, long index, boolean x) {
-        constants$95.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle initial_size$VH() {
-        return constants$95.const$5;
+        return constants$83.const$5;
     }
     /**
      * Getter for field:
@@ -223,7 +223,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long initial_size$get(MemorySegment seg) {
-        return (long)constants$95.const$5.get(seg);
+        return (long)constants$83.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -232,16 +232,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void initial_size$set(MemorySegment seg, long x) {
-        constants$95.const$5.set(seg, x);
+        constants$83.const$5.set(seg, x);
     }
     public static long initial_size$get(MemorySegment seg, long index) {
-        return (long)constants$95.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$83.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void initial_size$set(MemorySegment seg, long index, long x) {
-        constants$95.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$83.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle min_clean_fraction$VH() {
-        return constants$96.const$0;
+        return constants$84.const$0;
     }
     /**
      * Getter for field:
@@ -250,7 +250,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double min_clean_fraction$get(MemorySegment seg) {
-        return (double)constants$96.const$0.get(seg);
+        return (double)constants$84.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -259,16 +259,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void min_clean_fraction$set(MemorySegment seg, double x) {
-        constants$96.const$0.set(seg, x);
+        constants$84.const$0.set(seg, x);
     }
     public static double min_clean_fraction$get(MemorySegment seg, long index) {
-        return (double)constants$96.const$0.get(seg.asSlice(index*sizeof()));
+        return (double)constants$84.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void min_clean_fraction$set(MemorySegment seg, long index, double x) {
-        constants$96.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle max_size$VH() {
-        return constants$96.const$1;
+        return constants$84.const$1;
     }
     /**
      * Getter for field:
@@ -277,7 +277,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long max_size$get(MemorySegment seg) {
-        return (long)constants$96.const$1.get(seg);
+        return (long)constants$84.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -286,16 +286,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void max_size$set(MemorySegment seg, long x) {
-        constants$96.const$1.set(seg, x);
+        constants$84.const$1.set(seg, x);
     }
     public static long max_size$get(MemorySegment seg, long index) {
-        return (long)constants$96.const$1.get(seg.asSlice(index*sizeof()));
+        return (long)constants$84.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void max_size$set(MemorySegment seg, long index, long x) {
-        constants$96.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle min_size$VH() {
-        return constants$96.const$2;
+        return constants$84.const$2;
     }
     /**
      * Getter for field:
@@ -304,7 +304,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long min_size$get(MemorySegment seg) {
-        return (long)constants$96.const$2.get(seg);
+        return (long)constants$84.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -313,16 +313,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void min_size$set(MemorySegment seg, long x) {
-        constants$96.const$2.set(seg, x);
+        constants$84.const$2.set(seg, x);
     }
     public static long min_size$get(MemorySegment seg, long index) {
-        return (long)constants$96.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$84.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void min_size$set(MemorySegment seg, long index, long x) {
-        constants$96.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle epoch_length$VH() {
-        return constants$96.const$3;
+        return constants$84.const$3;
     }
     /**
      * Getter for field:
@@ -331,7 +331,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long epoch_length$get(MemorySegment seg) {
-        return (long)constants$96.const$3.get(seg);
+        return (long)constants$84.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -340,16 +340,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void epoch_length$set(MemorySegment seg, long x) {
-        constants$96.const$3.set(seg, x);
+        constants$84.const$3.set(seg, x);
     }
     public static long epoch_length$get(MemorySegment seg, long index) {
-        return (long)constants$96.const$3.get(seg.asSlice(index*sizeof()));
+        return (long)constants$84.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void epoch_length$set(MemorySegment seg, long index, long x) {
-        constants$96.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle incr_mode$VH() {
-        return constants$96.const$4;
+        return constants$84.const$4;
     }
     /**
      * Getter for field:
@@ -358,7 +358,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int incr_mode$get(MemorySegment seg) {
-        return (int)constants$96.const$4.get(seg);
+        return (int)constants$84.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -367,16 +367,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void incr_mode$set(MemorySegment seg, int x) {
-        constants$96.const$4.set(seg, x);
+        constants$84.const$4.set(seg, x);
     }
     public static int incr_mode$get(MemorySegment seg, long index) {
-        return (int)constants$96.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$84.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void incr_mode$set(MemorySegment seg, long index, int x) {
-        constants$96.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle lower_hr_threshold$VH() {
-        return constants$96.const$5;
+        return constants$84.const$5;
     }
     /**
      * Getter for field:
@@ -385,7 +385,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double lower_hr_threshold$get(MemorySegment seg) {
-        return (double)constants$96.const$5.get(seg);
+        return (double)constants$84.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -394,16 +394,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void lower_hr_threshold$set(MemorySegment seg, double x) {
-        constants$96.const$5.set(seg, x);
+        constants$84.const$5.set(seg, x);
     }
     public static double lower_hr_threshold$get(MemorySegment seg, long index) {
-        return (double)constants$96.const$5.get(seg.asSlice(index*sizeof()));
+        return (double)constants$84.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void lower_hr_threshold$set(MemorySegment seg, long index, double x) {
-        constants$96.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$84.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle increment$VH() {
-        return constants$97.const$0;
+        return constants$85.const$0;
     }
     /**
      * Getter for field:
@@ -412,7 +412,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double increment$get(MemorySegment seg) {
-        return (double)constants$97.const$0.get(seg);
+        return (double)constants$85.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -421,16 +421,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void increment$set(MemorySegment seg, double x) {
-        constants$97.const$0.set(seg, x);
+        constants$85.const$0.set(seg, x);
     }
     public static double increment$get(MemorySegment seg, long index) {
-        return (double)constants$97.const$0.get(seg.asSlice(index*sizeof()));
+        return (double)constants$85.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void increment$set(MemorySegment seg, long index, double x) {
-        constants$97.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle apply_max_increment$VH() {
-        return constants$97.const$1;
+        return constants$85.const$1;
     }
     /**
      * Getter for field:
@@ -439,7 +439,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean apply_max_increment$get(MemorySegment seg) {
-        return (boolean)constants$97.const$1.get(seg);
+        return (boolean)constants$85.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -448,16 +448,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void apply_max_increment$set(MemorySegment seg, boolean x) {
-        constants$97.const$1.set(seg, x);
+        constants$85.const$1.set(seg, x);
     }
     public static boolean apply_max_increment$get(MemorySegment seg, long index) {
-        return (boolean)constants$97.const$1.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$85.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_max_increment$set(MemorySegment seg, long index, boolean x) {
-        constants$97.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle max_increment$VH() {
-        return constants$97.const$2;
+        return constants$85.const$2;
     }
     /**
      * Getter for field:
@@ -466,7 +466,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long max_increment$get(MemorySegment seg) {
-        return (long)constants$97.const$2.get(seg);
+        return (long)constants$85.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -475,16 +475,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void max_increment$set(MemorySegment seg, long x) {
-        constants$97.const$2.set(seg, x);
+        constants$85.const$2.set(seg, x);
     }
     public static long max_increment$get(MemorySegment seg, long index) {
-        return (long)constants$97.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$85.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void max_increment$set(MemorySegment seg, long index, long x) {
-        constants$97.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flash_incr_mode$VH() {
-        return constants$97.const$3;
+        return constants$85.const$3;
     }
     /**
      * Getter for field:
@@ -493,7 +493,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int flash_incr_mode$get(MemorySegment seg) {
-        return (int)constants$97.const$3.get(seg);
+        return (int)constants$85.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -502,16 +502,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void flash_incr_mode$set(MemorySegment seg, int x) {
-        constants$97.const$3.set(seg, x);
+        constants$85.const$3.set(seg, x);
     }
     public static int flash_incr_mode$get(MemorySegment seg, long index) {
-        return (int)constants$97.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$85.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_incr_mode$set(MemorySegment seg, long index, int x) {
-        constants$97.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flash_multiple$VH() {
-        return constants$97.const$4;
+        return constants$85.const$4;
     }
     /**
      * Getter for field:
@@ -520,7 +520,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double flash_multiple$get(MemorySegment seg) {
-        return (double)constants$97.const$4.get(seg);
+        return (double)constants$85.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -529,16 +529,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void flash_multiple$set(MemorySegment seg, double x) {
-        constants$97.const$4.set(seg, x);
+        constants$85.const$4.set(seg, x);
     }
     public static double flash_multiple$get(MemorySegment seg, long index) {
-        return (double)constants$97.const$4.get(seg.asSlice(index*sizeof()));
+        return (double)constants$85.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_multiple$set(MemorySegment seg, long index, double x) {
-        constants$97.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle flash_threshold$VH() {
-        return constants$97.const$5;
+        return constants$85.const$5;
     }
     /**
      * Getter for field:
@@ -547,7 +547,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double flash_threshold$get(MemorySegment seg) {
-        return (double)constants$97.const$5.get(seg);
+        return (double)constants$85.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -556,16 +556,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void flash_threshold$set(MemorySegment seg, double x) {
-        constants$97.const$5.set(seg, x);
+        constants$85.const$5.set(seg, x);
     }
     public static double flash_threshold$get(MemorySegment seg, long index) {
-        return (double)constants$97.const$5.get(seg.asSlice(index*sizeof()));
+        return (double)constants$85.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void flash_threshold$set(MemorySegment seg, long index, double x) {
-        constants$97.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$85.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle decr_mode$VH() {
-        return constants$98.const$0;
+        return constants$86.const$0;
     }
     /**
      * Getter for field:
@@ -574,7 +574,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int decr_mode$get(MemorySegment seg) {
-        return (int)constants$98.const$0.get(seg);
+        return (int)constants$86.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -583,16 +583,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void decr_mode$set(MemorySegment seg, int x) {
-        constants$98.const$0.set(seg, x);
+        constants$86.const$0.set(seg, x);
     }
     public static int decr_mode$get(MemorySegment seg, long index) {
-        return (int)constants$98.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$86.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void decr_mode$set(MemorySegment seg, long index, int x) {
-        constants$98.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle upper_hr_threshold$VH() {
-        return constants$98.const$1;
+        return constants$86.const$1;
     }
     /**
      * Getter for field:
@@ -601,7 +601,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double upper_hr_threshold$get(MemorySegment seg) {
-        return (double)constants$98.const$1.get(seg);
+        return (double)constants$86.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -610,16 +610,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void upper_hr_threshold$set(MemorySegment seg, double x) {
-        constants$98.const$1.set(seg, x);
+        constants$86.const$1.set(seg, x);
     }
     public static double upper_hr_threshold$get(MemorySegment seg, long index) {
-        return (double)constants$98.const$1.get(seg.asSlice(index*sizeof()));
+        return (double)constants$86.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void upper_hr_threshold$set(MemorySegment seg, long index, double x) {
-        constants$98.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle decrement$VH() {
-        return constants$98.const$2;
+        return constants$86.const$2;
     }
     /**
      * Getter for field:
@@ -628,7 +628,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double decrement$get(MemorySegment seg) {
-        return (double)constants$98.const$2.get(seg);
+        return (double)constants$86.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -637,16 +637,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void decrement$set(MemorySegment seg, double x) {
-        constants$98.const$2.set(seg, x);
+        constants$86.const$2.set(seg, x);
     }
     public static double decrement$get(MemorySegment seg, long index) {
-        return (double)constants$98.const$2.get(seg.asSlice(index*sizeof()));
+        return (double)constants$86.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void decrement$set(MemorySegment seg, long index, double x) {
-        constants$98.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle apply_max_decrement$VH() {
-        return constants$98.const$3;
+        return constants$86.const$3;
     }
     /**
      * Getter for field:
@@ -655,7 +655,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean apply_max_decrement$get(MemorySegment seg) {
-        return (boolean)constants$98.const$3.get(seg);
+        return (boolean)constants$86.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -664,16 +664,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void apply_max_decrement$set(MemorySegment seg, boolean x) {
-        constants$98.const$3.set(seg, x);
+        constants$86.const$3.set(seg, x);
     }
     public static boolean apply_max_decrement$get(MemorySegment seg, long index) {
-        return (boolean)constants$98.const$3.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$86.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_max_decrement$set(MemorySegment seg, long index, boolean x) {
-        constants$98.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle max_decrement$VH() {
-        return constants$98.const$4;
+        return constants$86.const$4;
     }
     /**
      * Getter for field:
@@ -682,7 +682,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long max_decrement$get(MemorySegment seg) {
-        return (long)constants$98.const$4.get(seg);
+        return (long)constants$86.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -691,16 +691,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void max_decrement$set(MemorySegment seg, long x) {
-        constants$98.const$4.set(seg, x);
+        constants$86.const$4.set(seg, x);
     }
     public static long max_decrement$get(MemorySegment seg, long index) {
-        return (long)constants$98.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$86.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void max_decrement$set(MemorySegment seg, long index, long x) {
-        constants$98.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle epochs_before_eviction$VH() {
-        return constants$98.const$5;
+        return constants$86.const$5;
     }
     /**
      * Getter for field:
@@ -709,7 +709,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int epochs_before_eviction$get(MemorySegment seg) {
-        return (int)constants$98.const$5.get(seg);
+        return (int)constants$86.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -718,16 +718,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void epochs_before_eviction$set(MemorySegment seg, int x) {
-        constants$98.const$5.set(seg, x);
+        constants$86.const$5.set(seg, x);
     }
     public static int epochs_before_eviction$get(MemorySegment seg, long index) {
-        return (int)constants$98.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$86.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void epochs_before_eviction$set(MemorySegment seg, long index, int x) {
-        constants$98.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$86.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle apply_empty_reserve$VH() {
-        return constants$99.const$0;
+        return constants$87.const$0;
     }
     /**
      * Getter for field:
@@ -736,7 +736,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static boolean apply_empty_reserve$get(MemorySegment seg) {
-        return (boolean)constants$99.const$0.get(seg);
+        return (boolean)constants$87.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -745,16 +745,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void apply_empty_reserve$set(MemorySegment seg, boolean x) {
-        constants$99.const$0.set(seg, x);
+        constants$87.const$0.set(seg, x);
     }
     public static boolean apply_empty_reserve$get(MemorySegment seg, long index) {
-        return (boolean)constants$99.const$0.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$87.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void apply_empty_reserve$set(MemorySegment seg, long index, boolean x) {
-        constants$99.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle empty_reserve$VH() {
-        return constants$99.const$1;
+        return constants$87.const$1;
     }
     /**
      * Getter for field:
@@ -763,7 +763,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static double empty_reserve$get(MemorySegment seg) {
-        return (double)constants$99.const$1.get(seg);
+        return (double)constants$87.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -772,16 +772,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void empty_reserve$set(MemorySegment seg, double x) {
-        constants$99.const$1.set(seg, x);
+        constants$87.const$1.set(seg, x);
     }
     public static double empty_reserve$get(MemorySegment seg, long index) {
-        return (double)constants$99.const$1.get(seg.asSlice(index*sizeof()));
+        return (double)constants$87.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void empty_reserve$set(MemorySegment seg, long index, double x) {
-        constants$99.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle dirty_bytes_threshold$VH() {
-        return constants$99.const$2;
+        return constants$87.const$2;
     }
     /**
      * Getter for field:
@@ -790,7 +790,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static long dirty_bytes_threshold$get(MemorySegment seg) {
-        return (long)constants$99.const$2.get(seg);
+        return (long)constants$87.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -799,16 +799,16 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void dirty_bytes_threshold$set(MemorySegment seg, long x) {
-        constants$99.const$2.set(seg, x);
+        constants$87.const$2.set(seg, x);
     }
     public static long dirty_bytes_threshold$get(MemorySegment seg, long index) {
-        return (long)constants$99.const$2.get(seg.asSlice(index*sizeof()));
+        return (long)constants$87.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void dirty_bytes_threshold$set(MemorySegment seg, long index, long x) {
-        constants$99.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle metadata_write_strategy$VH() {
-        return constants$99.const$3;
+        return constants$87.const$3;
     }
     /**
      * Getter for field:
@@ -817,7 +817,7 @@ public class H5AC_cache_config_t {
      * }
      */
     public static int metadata_write_strategy$get(MemorySegment seg) {
-        return (int)constants$99.const$3.get(seg);
+        return (int)constants$87.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -826,13 +826,13 @@ public class H5AC_cache_config_t {
      * }
      */
     public static void metadata_write_strategy$set(MemorySegment seg, int x) {
-        constants$99.const$3.set(seg, x);
+        constants$87.const$3.set(seg, x);
     }
     public static int metadata_write_strategy$get(MemorySegment seg, long index) {
-        return (int)constants$99.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$87.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void metadata_write_strategy$set(MemorySegment seg, long index, int x) {
-        constants$99.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

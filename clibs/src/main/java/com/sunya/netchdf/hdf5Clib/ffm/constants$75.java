@@ -11,12 +11,46 @@ final class constants$75 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$75() {}
-    static final VarHandle const$0 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
-    static final VarHandle const$1 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
-    static final VarHandle const$2 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$3 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
-    static final VarHandle const$4 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
-    static final VarHandle const$5 = constants$74.const$3.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_name",
+        constants$33.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Aexists",
+        constants$17.const$5
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aexists_async",
+        constants$75.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name",
+        constants$33.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name_async",
+        constants$75.const$5
+    );
 }
 
 

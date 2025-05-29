@@ -11,12 +11,30 @@ final class constants$349 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$349() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("o");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lo");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("u");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lu");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("x");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lx");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_data_transform",
+        constants$19.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_edc_check",
+        constants$19.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_hyper_vector_size",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_preserve",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_type_conv_cb",
+        constants$36.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_vlen_mem_manager",
+        constants$93.const$0
+    );
 }
 
 

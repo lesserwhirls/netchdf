@@ -11,12 +11,35 @@ final class constants$302 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$302() {}
-    static final VarHandle const$0 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("get"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_file_class_t.specific.class, "apply", constants$292.const$4);
-    static final VarHandle const$2 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("specific"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_file_class_t.optional.class, "apply", constants$292.const$4);
-    static final VarHandle const$4 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("optional"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_file_class_t.close.class, "apply", constants$18.const$0);
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5MM_free_t.class, "apply", constants$113.const$1);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$113.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Sclose",
+        constants$19.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Scombine_hyperslab",
+        constants$302.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Scombine_select",
+        constants$302.const$5
+    );
 }
 
 

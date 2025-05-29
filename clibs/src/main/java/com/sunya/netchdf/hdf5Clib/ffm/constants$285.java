@@ -11,33 +11,20 @@ final class constants$285 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$285() {}
-    static final VarHandle const$0 = constants$284.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final UnionLayout const$1 = MemoryLayout.unionLayout(
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("token")
-        ).withName("loc_by_token"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("name"),
-            JAVA_LONG.withName("lapl_id")
-        ).withName("loc_by_name"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("name"),
-            JAVA_INT.withName("idx_type"),
-            JAVA_INT.withName("order"),
-            JAVA_LONG.withName("n"),
-            JAVA_LONG.withName("lapl_id")
-        ).withName("loc_by_idx")
-    ).withName("");
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("feature_flags"),
-        JAVA_LONG.withName("token_size"),
-        JAVA_LONG.withName("blob_id_size")
-    ).withName("H5VL_file_cont_info_t");
-    static final VarHandle const$3 = constants$285.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$4 = constants$285.const$2.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
-    static final VarHandle const$5 = constants$285.const$2.varHandle(MemoryLayout.PathElement.groupElement("token_size"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.put.class, "apply", constants$285.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$285.const$0
+    );
+    static final VarHandle const$3 = constants$284.const$5.varHandle(MemoryLayout.PathElement.groupElement("put"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.get.class, "apply", constants$263.const$1);
+    static final VarHandle const$5 = constants$284.const$5.varHandle(MemoryLayout.PathElement.groupElement("get"));
 }
 
 

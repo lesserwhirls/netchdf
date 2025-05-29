@@ -9,20 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * int (*H5VL_request_notify_t)(void* ctx,enum H5ES_status_t status);
+ * int (*H5VL_request_notify_t)(void* ctx,enum H5VL_request_status_t status);
  * }
  */
 public interface H5VL_request_notify_t {
 
     int apply(java.lang.foreign.MemorySegment ctx, int status);
     static MemorySegment allocate(H5VL_request_notify_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$311.const$0, fi, constants$134.const$3, scope);
+        return RuntimeHelper.upcallStub(constants$280.const$5, fi, constants$126.const$1, scope);
     }
     static H5VL_request_notify_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _ctx, int _status) -> {
             try {
-                return (int)constants$311.const$1.invokeExact(symbol, _ctx, _status);
+                return (int)constants$281.const$0.invokeExact(symbol, _ctx, _status);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -16,13 +16,13 @@ public interface H5I_search_func_t {
 
     int apply(java.lang.foreign.MemorySegment obj, long id, java.lang.foreign.MemorySegment key);
     static MemorySegment allocate(H5I_search_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$18.const$1, fi, constants$18.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$17.const$3, fi, constants$17.const$2, scope);
     }
     static H5I_search_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _obj, long _id, java.lang.foreign.MemorySegment _key) -> {
             try {
-                return (int)constants$18.const$2.invokeExact(symbol, _obj, _id, _key);
+                return (int)constants$17.const$4.invokeExact(symbol, _obj, _id, _key);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -11,30 +11,36 @@ final class constants$231 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$231() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pequal",
-        constants$41.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pexist",
-        constants$18.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget",
-        constants$42.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_class",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_name",
-        constants$46.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_parent",
-        constants$10.const$2
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("type_id")
+            ).withName("flush"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("type_id")
+            ).withName("refresh")
+        ).withName("args")
+    ).withName("H5VL_datatype_specific_args_t");
+    static final VarHandle const$1 = constants$231.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("type_id")
+        ).withName("flush"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("type_id")
+        ).withName("refresh")
+    ).withName("");
+    static final VarHandle const$3 = constants$222.const$1.varHandle(MemoryLayout.PathElement.groupElement("type_id"));
+    static final VarHandle const$4 = constants$222.const$1.varHandle(MemoryLayout.PathElement.groupElement("type_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("feature_flags"),
+        JAVA_LONG.withName("token_size"),
+        JAVA_LONG.withName("blob_id_size")
+    ).withName("H5VL_file_cont_info_t");
 }
 
 

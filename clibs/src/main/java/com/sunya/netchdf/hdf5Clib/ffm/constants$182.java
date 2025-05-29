@@ -12,28 +12,28 @@ final class constants$182 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$182() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Freset_page_buffering_stats",
-        constants$19.const$5
+        "H5Fclear_elink_file_cache",
+        constants$19.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fget_page_buffering_stats",
-        constants$48.const$0
+        "H5Fset_libver_bounds",
+        constants$69.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_image_info",
-        constants$42.const$5
+        "H5Fstart_mdc_logging",
+        constants$19.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fget_dset_no_attrs_hint",
-        constants$18.const$3
+        "H5Fstop_mdc_logging",
+        constants$19.const$1
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_BOOLEAN
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_logging_status",
+        constants$36.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fset_dset_no_attrs_hint",
-        constants$182.const$4
+        "H5Freset_page_buffering_stats",
+        constants$19.const$1
     );
 }
 

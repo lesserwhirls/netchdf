@@ -11,35 +11,20 @@ final class constants$271 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$271() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Rdereference1",
-        constants$45.const$1
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Rcreate",
-        constants$271.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_type2",
-        constants$168.const$0
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG,
-        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Rdereference2",
-        constants$271.const$4
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_file_class_t.open.class, "apply", constants$271.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$271.const$0
     );
+    static final VarHandle const$3 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_file_class_t.get.class, "apply", constants$262.const$3);
+    static final VarHandle const$5 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("get"));
 }
 
 

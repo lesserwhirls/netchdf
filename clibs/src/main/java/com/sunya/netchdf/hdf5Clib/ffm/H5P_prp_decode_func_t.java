@@ -14,15 +14,15 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public interface H5P_prp_decode_func_t {
 
-    int apply(java.lang.foreign.MemorySegment buf, java.lang.foreign.MemorySegment value);
+    int apply(java.lang.foreign.MemorySegment future_object, java.lang.foreign.MemorySegment actual_object_id);
     static MemorySegment allocate(H5P_prp_decode_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$221.const$2, fi, constants$117.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$313.const$0, fi, constants$13.const$4, scope);
     }
     static H5P_prp_decode_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment _buf, java.lang.foreign.MemorySegment _value) -> {
+        return (java.lang.foreign.MemorySegment _future_object, java.lang.foreign.MemorySegment _actual_object_id) -> {
             try {
-                return (int)constants$189.const$5.invokeExact(symbol, _buf, _value);
+                return (int)constants$17.const$1.invokeExact(symbol, _future_object, _actual_object_id);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

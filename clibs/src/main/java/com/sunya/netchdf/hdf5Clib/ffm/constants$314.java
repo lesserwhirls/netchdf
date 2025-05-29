@@ -11,23 +11,12 @@ final class constants$314 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$314() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_request_class_t.optional.class, "apply", constants$201.const$4);
-    static final VarHandle const$1 = constants$312.const$3.varHandle(MemoryLayout.PathElement.groupElement("optional"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_request_class_t.free.class, "apply", constants$15.const$4);
-    static final VarHandle const$3 = constants$312.const$3.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("put"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional")
-    ).withName("H5VL_blob_class_t");
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_close_func_t.class, "apply", constants$17.const$2);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_iterate_t.class, "apply", constants$36.const$1);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ROOT_ID_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_OBJECT_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_FILE_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_FILE_ACCESS_ID_g", JAVA_LONG);
 }
 
 

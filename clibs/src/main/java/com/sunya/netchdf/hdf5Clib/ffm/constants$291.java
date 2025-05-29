@@ -11,27 +11,30 @@ final class constants$291 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$291() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5VLget_file_type",
+        constants$212.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.open.class, "apply", constants$291.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5VLpeek_connector_id_by_name",
+        constants$61.const$0
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$291.const$0
+        "H5VLpeek_connector_id_by_value",
+        constants$209.const$2
     );
-    static final VarHandle const$3 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("open"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5VLregister_opt_operation",
+        constants$22.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.read.class, "apply", constants$291.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5VLfind_opt_operation",
+        constants$22.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5VLunregister_opt_operation",
+        constants$22.const$2
+    );
 }
 
 

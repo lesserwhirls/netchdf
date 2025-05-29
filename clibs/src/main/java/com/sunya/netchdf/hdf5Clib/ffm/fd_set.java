@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class fd_set {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$1.const$2;
+        return constants$3.const$4;
     }
     public static MemorySegment __fds_bits$slice(MemorySegment seg) {
         return seg.asSlice(0, 128);

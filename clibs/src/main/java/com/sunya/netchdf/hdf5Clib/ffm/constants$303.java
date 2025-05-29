@@ -11,30 +11,31 @@ final class constants$303 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$303() {}
-    static final VarHandle const$0 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("create"),
-        RuntimeHelper.POINTER.withName("open"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("H5VL_group_class_t");
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Scopy",
+        constants$0.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Screate",
+        constants$209.const$2
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_group_class_t.create.class, "apply", constants$303.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Screate_simple",
         constants$303.const$2
     );
-    static final VarHandle const$5 = constants$303.const$1.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Sdecode",
+        constants$61.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Sencode2",
+        constants$33.const$0
+    );
 }
 
 

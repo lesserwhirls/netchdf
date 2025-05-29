@@ -11,12 +11,20 @@ final class constants$187 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$187() {}
-    static final VarHandle const$0 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("fapl_get"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_copy.class, "apply", constants$118.const$5);
-    static final VarHandle const$2 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("fapl_copy"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_free.class, "apply", constants$15.const$4);
-    static final VarHandle const$4 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("fapl_free"));
-    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("dxpl_size"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$186.const$4
+    );
+    static final VarHandle const$1 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("image_realloc"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_free.class, "apply", constants$187.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$187.const$2
+    );
+    static final VarHandle const$5 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("image_free"));
 }
 
 

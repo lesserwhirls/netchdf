@@ -11,12 +11,32 @@ final class constants$347 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$347() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf5");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("help@hdfgroup.org");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 1.12.1");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("1.12.1");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_virtual_prefix",
+        constants$19.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_virtual_printf_gap",
+        constants$17.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_virtual_view",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pset_append_flush",
+        constants$346.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_DOUBLE
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pset_chunk_cache",
+        constants$347.const$4
+    );
 }
 
 

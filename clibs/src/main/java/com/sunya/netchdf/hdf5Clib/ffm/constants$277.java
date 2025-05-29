@@ -11,31 +11,12 @@ final class constants$277 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$277() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Smodify_select",
-        constants$265.const$1
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Soffset_simple",
-        constants$18.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Ssel_iter_close",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Ssel_iter_create",
-        constants$277.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ssel_iter_get_seq_list",
-        constants$104.const$0
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_link_class_t.move.class, "apply", constants$276.const$2);
+    static final VarHandle const$1 = constants$275.const$3.varHandle(MemoryLayout.PathElement.groupElement("move"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_link_class_t.get.class, "apply", constants$263.const$1);
+    static final VarHandle const$3 = constants$275.const$3.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_link_class_t.specific.class, "apply", constants$263.const$1);
+    static final VarHandle const$5 = constants$275.const$3.varHandle(MemoryLayout.PathElement.groupElement("specific"));
 }
 
 

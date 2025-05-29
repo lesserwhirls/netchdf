@@ -11,32 +11,12 @@ final class constants$168 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$168() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ewalk2",
-        constants$168.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eget_auto2",
-        constants$42.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eset_auto2",
-        constants$42.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eclear2",
-        constants$19.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Eauto_is_v2",
-        constants$18.const$3
-    );
+    static final VarHandle const$0 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("app_file_name"));
+    static final VarHandle const$1 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("app_func_name"));
+    static final VarHandle const$2 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("app_line_num"));
+    static final VarHandle const$3 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_ins_count"));
+    static final VarHandle const$4 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_ins_ts"));
+    static final VarHandle const$5 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_exec_ts"));
 }
 
 

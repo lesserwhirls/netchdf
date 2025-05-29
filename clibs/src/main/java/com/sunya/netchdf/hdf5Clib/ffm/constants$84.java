@@ -11,12 +11,12 @@ final class constants$84 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$84() {}
-    static final VarHandle const$0 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$1 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
-    static final VarHandle const$2 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
-    static final VarHandle const$3 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$4 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
-    static final VarHandle const$5 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
+    static final VarHandle const$4 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
+    static final VarHandle const$5 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
 }
 
 

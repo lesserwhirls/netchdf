@@ -11,17 +11,30 @@ final class constants$116 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$116() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("read"),
-        RuntimeHelper.POINTER.withName("write"),
-        RuntimeHelper.POINTER.withName("seek"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("_IO_cookie_io_functions_t");
-    static final VarHandle const$1 = constants$116.const$0.varHandle(MemoryLayout.PathElement.groupElement("read"));
-    static final VarHandle const$2 = constants$116.const$0.varHandle(MemoryLayout.PathElement.groupElement("write"));
-    static final VarHandle const$3 = constants$116.const$0.varHandle(MemoryLayout.PathElement.groupElement("seek"));
-    static final VarHandle const$4 = constants$116.const$0.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final VarHandle const$5 = RuntimeHelper.POINTER.varHandle();
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
+        "asprintf",
+        constants$13.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "vdprintf",
+        constants$22.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandleVariadic(
+        "dprintf",
+        constants$22.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandleVariadic(
+        "fscanf",
+        constants$13.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
+        "scanf",
+        constants$15.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "sscanf",
+        constants$13.const$4
+    );
 }
 
 

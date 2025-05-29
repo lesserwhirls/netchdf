@@ -11,32 +11,29 @@ final class constants$19 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$19() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Iregister",
-        constants$19.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Iobject_verify",
-        constants$19.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "H5Iremove_verify",
-        constants$19.const$2
+        constants$18.const$4
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "H5Iget_type",
-        constants$19.const$5
+        constants$19.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Iget_file_id",
+        constants$0.const$4
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Iget_name",
+        constants$19.const$4
     );
 }
 

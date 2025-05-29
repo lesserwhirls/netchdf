@@ -11,12 +11,37 @@ final class constants$113 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$113() {}
-    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
-    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
-    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
-    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
-    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
-    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "open_memstream",
+        constants$111.const$0
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "setbuf",
+        constants$113.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "setvbuf",
+        constants$113.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "setbuffer",
+        constants$113.const$5
+    );
 }
 
 

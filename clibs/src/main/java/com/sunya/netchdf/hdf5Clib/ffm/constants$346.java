@@ -11,15 +11,36 @@ final class constants$346 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$346() {}
-    static final VarHandle const$0 = constants$345.const$4.varHandle(MemoryLayout.PathElement.groupElement("under_vol_info"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VL_pass_through_register",
-        constants$166.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/home/stormy/anaconda3/lib/hdf5/plugin");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("${prefix}/share/hdf5_examples");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("16");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String(".libs/");
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pset_virtual",
+        constants$346.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_append_flush",
+        constants$346.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_chunk_cache",
+        constants$27.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_efile_prefix",
+        constants$19.const$4
+    );
 }
 
 

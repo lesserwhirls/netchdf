@@ -11,20 +11,38 @@ final class constants$165 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$165() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_BADSIZE_g", JAVA_LONG);
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_walk2_t.class, "apply", constants$22.const$5);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eprint1",
+        constants$15.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eset_auto1",
+        constants$13.const$4
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$22.const$5
+        "H5Ewalk1",
+        constants$22.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5E_auto2_t.class, "apply", constants$18.const$3);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eget_major",
+        constants$63.const$5
+    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eregister_class",
-        constants$129.const$0
+        "H5Eget_minor",
+        constants$63.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Eunregister_class",
-        constants$19.const$5
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("api_name"),
+        RuntimeHelper.POINTER.withName("api_args"),
+        RuntimeHelper.POINTER.withName("app_file_name"),
+        RuntimeHelper.POINTER.withName("app_func_name"),
+        JAVA_INT.withName("app_line_num"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("op_ins_count"),
+        JAVA_LONG.withName("op_ins_ts"),
+        JAVA_LONG.withName("op_exec_ts"),
+        JAVA_LONG.withName("op_exec_time")
+    ).withName("H5ES_op_info_t");
 }
 
 

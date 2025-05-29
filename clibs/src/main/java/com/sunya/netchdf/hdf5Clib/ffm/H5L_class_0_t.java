@@ -25,10 +25,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5L_class_0_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$59.const$2;
+        return constants$388.const$0;
     }
     public static VarHandle version$VH() {
-        return constants$69.const$4;
+        return constants$390.const$3;
     }
     /**
      * Getter for field:
@@ -37,7 +37,7 @@ public class H5L_class_0_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$69.const$4.get(seg);
+        return (int)constants$390.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -46,16 +46,16 @@ public class H5L_class_0_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$69.const$4.set(seg, x);
+        constants$390.const$3.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$69.const$4.get(seg.asSlice(index*sizeof()));
+        return (int)constants$390.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$69.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$390.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle id$VH() {
-        return constants$69.const$5;
+        return constants$390.const$4;
     }
     /**
      * Getter for field:
@@ -64,7 +64,7 @@ public class H5L_class_0_t {
      * }
      */
     public static int id$get(MemorySegment seg) {
-        return (int)constants$69.const$5.get(seg);
+        return (int)constants$390.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -73,16 +73,16 @@ public class H5L_class_0_t {
      * }
      */
     public static void id$set(MemorySegment seg, int x) {
-        constants$69.const$5.set(seg, x);
+        constants$390.const$4.set(seg, x);
     }
     public static int id$get(MemorySegment seg, long index) {
-        return (int)constants$69.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$390.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void id$set(MemorySegment seg, long index, int x) {
-        constants$69.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$390.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle comment$VH() {
-        return constants$70.const$0;
+        return constants$390.const$5;
     }
     /**
      * Getter for field:
@@ -91,7 +91,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment comment$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$390.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -100,16 +100,16 @@ public class H5L_class_0_t {
      * }
      */
     public static void comment$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$0.set(seg, x);
+        constants$390.const$5.set(seg, x);
     }
     public static MemorySegment comment$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$390.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void comment$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$390.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle create_func$VH() {
-        return constants$70.const$1;
+        return constants$391.const$0;
     }
     /**
      * Getter for field:
@@ -118,7 +118,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment create_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$1.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -127,19 +127,19 @@ public class H5L_class_0_t {
      * }
      */
     public static void create_func$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$1.set(seg, x);
+        constants$391.const$0.set(seg, x);
     }
     public static MemorySegment create_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$1.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void create_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_create_func_t create_func(MemorySegment segment, Arena scope) {
         return H5L_create_func_t.ofAddress(create_func$get(segment), scope);
     }
     public static VarHandle move_func$VH() {
-        return constants$70.const$2;
+        return constants$391.const$1;
     }
     /**
      * Getter for field:
@@ -148,7 +148,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment move_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -157,19 +157,19 @@ public class H5L_class_0_t {
      * }
      */
     public static void move_func$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$2.set(seg, x);
+        constants$391.const$1.set(seg, x);
     }
     public static MemorySegment move_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void move_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_move_func_t move_func(MemorySegment segment, Arena scope) {
         return H5L_move_func_t.ofAddress(move_func$get(segment), scope);
     }
     public static VarHandle copy_func$VH() {
-        return constants$70.const$3;
+        return constants$391.const$2;
     }
     /**
      * Getter for field:
@@ -178,7 +178,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment copy_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -187,19 +187,19 @@ public class H5L_class_0_t {
      * }
      */
     public static void copy_func$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$3.set(seg, x);
+        constants$391.const$2.set(seg, x);
     }
     public static MemorySegment copy_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void copy_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_copy_func_t copy_func(MemorySegment segment, Arena scope) {
         return H5L_copy_func_t.ofAddress(copy_func$get(segment), scope);
     }
     public static VarHandle trav_func$VH() {
-        return constants$70.const$4;
+        return constants$391.const$3;
     }
     /**
      * Getter for field:
@@ -208,7 +208,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment trav_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -217,19 +217,19 @@ public class H5L_class_0_t {
      * }
      */
     public static void trav_func$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$4.set(seg, x);
+        constants$391.const$3.set(seg, x);
     }
     public static MemorySegment trav_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void trav_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_traverse_0_func_t trav_func(MemorySegment segment, Arena scope) {
         return H5L_traverse_0_func_t.ofAddress(trav_func$get(segment), scope);
     }
     public static VarHandle del_func$VH() {
-        return constants$70.const$5;
+        return constants$391.const$4;
     }
     /**
      * Getter for field:
@@ -238,7 +238,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment del_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -247,19 +247,19 @@ public class H5L_class_0_t {
      * }
      */
     public static void del_func$set(MemorySegment seg, MemorySegment x) {
-        constants$70.const$5.set(seg, x);
+        constants$391.const$4.set(seg, x);
     }
     public static MemorySegment del_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$70.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void del_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$70.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_delete_func_t del_func(MemorySegment segment, Arena scope) {
         return H5L_delete_func_t.ofAddress(del_func$get(segment), scope);
     }
     public static VarHandle query_func$VH() {
-        return constants$71.const$0;
+        return constants$391.const$5;
     }
     /**
      * Getter for field:
@@ -268,7 +268,7 @@ public class H5L_class_0_t {
      * }
      */
     public static MemorySegment query_func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$71.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$391.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -277,13 +277,13 @@ public class H5L_class_0_t {
      * }
      */
     public static void query_func$set(MemorySegment seg, MemorySegment x) {
-        constants$71.const$0.set(seg, x);
+        constants$391.const$5.set(seg, x);
     }
     public static MemorySegment query_func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$71.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$391.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void query_func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$71.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$391.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5L_query_func_t query_func(MemorySegment segment, Arena scope) {
         return H5L_query_func_t.ofAddress(query_func$get(segment), scope);

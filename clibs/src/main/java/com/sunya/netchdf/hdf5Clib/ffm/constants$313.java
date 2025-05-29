@@ -11,12 +11,18 @@ final class constants$313 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$313() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_request_class_t.notify.class, "apply", constants$16.const$0);
-    static final VarHandle const$1 = constants$312.const$3.varHandle(MemoryLayout.PathElement.groupElement("notify"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_request_class_t.cancel.class, "apply", constants$15.const$4);
-    static final VarHandle const$3 = constants$312.const$3.varHandle(MemoryLayout.PathElement.groupElement("cancel"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_request_class_t.specific.class, "apply", constants$201.const$4);
-    static final VarHandle const$5 = constants$312.const$3.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_decode_func_t.class, "apply", constants$13.const$4);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_prp_delete_func_t.class, "apply", constants$206.const$1);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_copy_func_t.class, "apply", constants$17.const$2);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_prp_compare_func_t.class, "apply", constants$313.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$313.const$3
+    );
 }
 
 

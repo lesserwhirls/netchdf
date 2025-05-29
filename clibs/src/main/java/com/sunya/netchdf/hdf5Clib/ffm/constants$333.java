@@ -12,32 +12,28 @@ final class constants$333 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$333() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLlink_move",
-        constants$332.const$4
+        "H5Pget_file_image",
+        constants$36.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLlink_get",
-        constants$326.const$5
+        "H5Pget_file_image_callbacks",
+        constants$17.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLlink_specific",
-        constants$326.const$5
+        "H5Pget_file_locking",
+        constants$36.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLlink_optional",
-        constants$326.const$3
+        "H5Pget_gc_references",
+        constants$17.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_libver_bounds",
+        constants$36.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLobject_open",
-        constants$333.const$4
+        "H5Pget_mdc_config",
+        constants$17.const$5
     );
 }
 

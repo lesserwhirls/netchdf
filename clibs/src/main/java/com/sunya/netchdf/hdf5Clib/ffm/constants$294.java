@@ -11,32 +11,12 @@ final class constants$294 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$294() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.optional.class, "apply", constants$292.const$4);
-    static final VarHandle const$1 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("optional"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.close.class, "apply", constants$18.const$0);
-    static final VarHandle const$3 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("create"),
-        RuntimeHelper.POINTER.withName("open"),
-        RuntimeHelper.POINTER.withName("read"),
-        RuntimeHelper.POINTER.withName("write"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("H5VL_dataset_class_t");
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
+    static final VarHandle const$0 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("lcpl_id"));
+    static final VarHandle const$1 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("key_type_id"));
+    static final VarHandle const$2 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("val_type_id"));
+    static final VarHandle const$3 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("mcpl_id"));
+    static final VarHandle const$4 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("mapl_id"));
+    static final VarHandle const$5 = constants$293.const$4.varHandle(MemoryLayout.PathElement.groupElement("map"));
 }
 
 

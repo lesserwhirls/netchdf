@@ -12,32 +12,32 @@ final class constants$210 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$210() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Gcreate1",
-        constants$20.const$1
+        "H5VLunregister_connector",
+        constants$19.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Gopen1",
-        constants$55.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Glink",
-        constants$168.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         JAVA_INT,
-        JAVA_LONG,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Glink2",
-        constants$210.const$3
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5VLquery_optional",
+        constants$210.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Gmove",
-        constants$42.const$5
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5VLobject_is_native",
+        constants$17.const$5
     );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(12, JAVA_BYTE).withName("__data")
+    ).withName("");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.unionLayout(
+            MemoryLayout.sequenceLayout(64, JAVA_BYTE).withName("__data"),
+            JAVA_LONG.withName("align")
+        ).withName("u")
+    ).withName("");
 }
 
 

@@ -12,24 +12,31 @@ final class constants$206 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$206() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDunlock",
-        constants$15.const$4
+        "H5Gmove",
+        constants$36.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDdriver_query",
-        constants$18.const$3
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("storage_type"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("nlinks"),
-        JAVA_LONG.withName("max_corder"),
-        JAVA_BOOLEAN.withName("mounted"),
-        MemoryLayout.paddingLayout(7)
-    ).withName("H5G_info_t");
-    static final VarHandle const$3 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("storage_type"));
-    static final VarHandle const$4 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("nlinks"));
-    static final VarHandle const$5 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("max_corder"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Gmove2",
+        constants$206.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Gunlink",
+        constants$17.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Gget_linkval",
+        constants$206.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Gset_comment",
+        constants$36.const$1
+    );
 }
 
 

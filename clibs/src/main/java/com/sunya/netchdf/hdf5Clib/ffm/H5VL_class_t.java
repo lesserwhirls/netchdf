@@ -13,7 +13,8 @@ import static java.lang.foreign.ValueLayout.*;
  *     unsigned int version;
  *     H5VL_class_value_t value;
  *     char* name;
- *     unsigned int cap_flags;
+ *     unsigned int conn_version;
+ *     uint64_t cap_flags;
  *     herr_t (*initialize)(hid_t);
  *     herr_t (*terminate)();
  *     H5VL_info_class_t info_cls;
@@ -29,17 +30,17 @@ import static java.lang.foreign.ValueLayout.*;
  *     H5VL_request_class_t request_cls;
  *     H5VL_blob_class_t blob_cls;
  *     H5VL_token_class_t token_cls;
- *     herr_t (*optional)(void*,int,hid_t,void**,struct __va_list_tag*);
+ *     herr_t (*optional)(void*,H5VL_optional_args_t*,hid_t,void**);
  * };
  * }
  */
 public class H5VL_class_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$318.const$5;
+        return constants$288.const$2;
     }
     public static VarHandle version$VH() {
-        return constants$319.const$0;
+        return constants$288.const$3;
     }
     /**
      * Getter for field:
@@ -48,7 +49,7 @@ public class H5VL_class_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$319.const$0.get(seg);
+        return (int)constants$288.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -57,16 +58,16 @@ public class H5VL_class_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$319.const$0.set(seg, x);
+        constants$288.const$3.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$319.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$288.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$319.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$288.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle value$VH() {
-        return constants$319.const$1;
+        return constants$288.const$4;
     }
     /**
      * Getter for field:
@@ -75,7 +76,7 @@ public class H5VL_class_t {
      * }
      */
     public static int value$get(MemorySegment seg) {
-        return (int)constants$319.const$1.get(seg);
+        return (int)constants$288.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -84,16 +85,16 @@ public class H5VL_class_t {
      * }
      */
     public static void value$set(MemorySegment seg, int x) {
-        constants$319.const$1.set(seg, x);
+        constants$288.const$4.set(seg, x);
     }
     public static int value$get(MemorySegment seg, long index) {
-        return (int)constants$319.const$1.get(seg.asSlice(index*sizeof()));
+        return (int)constants$288.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void value$set(MemorySegment seg, long index, int x) {
-        constants$319.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$288.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle name$VH() {
-        return constants$319.const$2;
+        return constants$288.const$5;
     }
     /**
      * Getter for field:
@@ -102,7 +103,7 @@ public class H5VL_class_t {
      * }
      */
     public static MemorySegment name$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$319.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$288.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -111,40 +112,67 @@ public class H5VL_class_t {
      * }
      */
     public static void name$set(MemorySegment seg, MemorySegment x) {
-        constants$319.const$2.set(seg, x);
+        constants$288.const$5.set(seg, x);
     }
     public static MemorySegment name$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$319.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$288.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void name$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$319.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$288.const$5.set(seg.asSlice(index*sizeof()), x);
     }
-    public static VarHandle cap_flags$VH() {
-        return constants$319.const$3;
+    public static VarHandle conn_version$VH() {
+        return constants$289.const$0;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * unsigned int cap_flags;
+     * unsigned int conn_version;
      * }
      */
-    public static int cap_flags$get(MemorySegment seg) {
-        return (int)constants$319.const$3.get(seg);
+    public static int conn_version$get(MemorySegment seg) {
+        return (int)constants$289.const$0.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * unsigned int cap_flags;
+     * unsigned int conn_version;
      * }
      */
-    public static void cap_flags$set(MemorySegment seg, int x) {
-        constants$319.const$3.set(seg, x);
+    public static void conn_version$set(MemorySegment seg, int x) {
+        constants$289.const$0.set(seg, x);
     }
-    public static int cap_flags$get(MemorySegment seg, long index) {
-        return (int)constants$319.const$3.get(seg.asSlice(index*sizeof()));
+    public static int conn_version$get(MemorySegment seg, long index) {
+        return (int)constants$289.const$0.get(seg.asSlice(index*sizeof()));
     }
-    public static void cap_flags$set(MemorySegment seg, long index, int x) {
-        constants$319.const$3.set(seg.asSlice(index*sizeof()), x);
+    public static void conn_version$set(MemorySegment seg, long index, int x) {
+        constants$289.const$0.set(seg.asSlice(index*sizeof()), x);
+    }
+    public static VarHandle cap_flags$VH() {
+        return constants$289.const$1;
+    }
+    /**
+     * Getter for field:
+     * {@snippet :
+     * uint64_t cap_flags;
+     * }
+     */
+    public static long cap_flags$get(MemorySegment seg) {
+        return (long)constants$289.const$1.get(seg);
+    }
+    /**
+     * Setter for field:
+     * {@snippet :
+     * uint64_t cap_flags;
+     * }
+     */
+    public static void cap_flags$set(MemorySegment seg, long x) {
+        constants$289.const$1.set(seg, x);
+    }
+    public static long cap_flags$get(MemorySegment seg, long index) {
+        return (long)constants$289.const$1.get(seg.asSlice(index*sizeof()));
+    }
+    public static void cap_flags$set(MemorySegment seg, long index, long x) {
+        constants$289.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -155,13 +183,13 @@ public class H5VL_class_t {
 
         int apply(long _x0);
         static MemorySegment allocate(initialize fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$319.const$4, fi, constants$19.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$289.const$2, fi, constants$19.const$1, scope);
         }
         static initialize ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (long __x0) -> {
                 try {
-                    return (int)constants$319.const$5.invokeExact(symbol, __x0);
+                    return (int)constants$289.const$3.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -170,7 +198,7 @@ public class H5VL_class_t {
     }
 
     public static VarHandle initialize$VH() {
-        return constants$320.const$0;
+        return constants$289.const$4;
     }
     /**
      * Getter for field:
@@ -179,7 +207,7 @@ public class H5VL_class_t {
      * }
      */
     public static MemorySegment initialize$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$289.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -188,13 +216,13 @@ public class H5VL_class_t {
      * }
      */
     public static void initialize$set(MemorySegment seg, MemorySegment x) {
-        constants$320.const$0.set(seg, x);
+        constants$289.const$4.set(seg, x);
     }
     public static MemorySegment initialize$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$289.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void initialize$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$320.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$289.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static initialize initialize(MemorySegment segment, Arena scope) {
         return initialize.ofAddress(initialize$get(segment), scope);
@@ -208,13 +236,13 @@ public class H5VL_class_t {
 
         int apply();
         static MemorySegment allocate(terminate fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$320.const$1, fi, constants$14.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$289.const$5, fi, constants$13.const$2, scope);
         }
         static terminate ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return () -> {
                 try {
-                    return (int)constants$185.const$0.invokeExact(symbol);
+                    return (int)constants$290.const$0.invokeExact(symbol);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -223,7 +251,7 @@ public class H5VL_class_t {
     }
 
     public static VarHandle terminate$VH() {
-        return constants$320.const$2;
+        return constants$290.const$1;
     }
     /**
      * Getter for field:
@@ -232,7 +260,7 @@ public class H5VL_class_t {
      * }
      */
     public static MemorySegment terminate$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$290.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -241,72 +269,72 @@ public class H5VL_class_t {
      * }
      */
     public static void terminate$set(MemorySegment seg, MemorySegment x) {
-        constants$320.const$2.set(seg, x);
+        constants$290.const$1.set(seg, x);
     }
     public static MemorySegment terminate$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$290.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void terminate$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$320.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$290.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static terminate terminate(MemorySegment segment, Arena scope) {
         return terminate.ofAddress(terminate$get(segment), scope);
     }
     public static MemorySegment info_cls$slice(MemorySegment seg) {
-        return seg.asSlice(40, 48);
+        return seg.asSlice(48, 48);
     }
     public static MemorySegment wrap_cls$slice(MemorySegment seg) {
-        return seg.asSlice(88, 40);
+        return seg.asSlice(96, 40);
     }
     public static MemorySegment attr_cls$slice(MemorySegment seg) {
-        return seg.asSlice(128, 64);
+        return seg.asSlice(136, 64);
     }
     public static MemorySegment dataset_cls$slice(MemorySegment seg) {
-        return seg.asSlice(192, 64);
+        return seg.asSlice(200, 64);
     }
     public static MemorySegment datatype_cls$slice(MemorySegment seg) {
-        return seg.asSlice(256, 48);
+        return seg.asSlice(264, 48);
     }
     public static MemorySegment file_cls$slice(MemorySegment seg) {
-        return seg.asSlice(304, 48);
+        return seg.asSlice(312, 48);
     }
     public static MemorySegment group_cls$slice(MemorySegment seg) {
-        return seg.asSlice(352, 48);
+        return seg.asSlice(360, 48);
     }
     public static MemorySegment link_cls$slice(MemorySegment seg) {
-        return seg.asSlice(400, 48);
+        return seg.asSlice(408, 48);
     }
     public static MemorySegment object_cls$slice(MemorySegment seg) {
-        return seg.asSlice(448, 40);
+        return seg.asSlice(456, 40);
     }
     public static MemorySegment introspect_cls$slice(MemorySegment seg) {
-        return seg.asSlice(488, 16);
+        return seg.asSlice(496, 24);
     }
     public static MemorySegment request_cls$slice(MemorySegment seg) {
-        return seg.asSlice(504, 48);
+        return seg.asSlice(520, 48);
     }
     public static MemorySegment blob_cls$slice(MemorySegment seg) {
-        return seg.asSlice(552, 32);
+        return seg.asSlice(568, 32);
     }
     public static MemorySegment token_cls$slice(MemorySegment seg) {
-        return seg.asSlice(584, 24);
+        return seg.asSlice(600, 24);
     }
     /**
      * {@snippet :
- * herr_t (*optional)(void*,int,hid_t,void**,struct __va_list_tag*);
+ * herr_t (*optional)(void*,H5VL_optional_args_t*,hid_t,void**);
      * }
      */
     public interface optional {
 
-        int apply(java.lang.foreign.MemorySegment _x0, int _x1, long _x2, java.lang.foreign.MemorySegment _x3, java.lang.foreign.MemorySegment _x4);
+        int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1, long _x2, java.lang.foreign.MemorySegment _x3);
         static MemorySegment allocate(optional fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$320.const$3, fi, constants$292.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$290.const$2, fi, constants$262.const$3, scope);
         }
         static optional ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
-            return (java.lang.foreign.MemorySegment __x0, int __x1, long __x2, java.lang.foreign.MemorySegment __x3, java.lang.foreign.MemorySegment __x4) -> {
+            return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1, long __x2, java.lang.foreign.MemorySegment __x3) -> {
                 try {
-                    return (int)constants$293.const$0.invokeExact(symbol, __x0, __x1, __x2, __x3, __x4);
+                    return (int)constants$262.const$5.invokeExact(symbol, __x0, __x1, __x2, __x3);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -315,31 +343,31 @@ public class H5VL_class_t {
     }
 
     public static VarHandle optional$VH() {
-        return constants$320.const$4;
+        return constants$290.const$3;
     }
     /**
      * Getter for field:
      * {@snippet :
-     * herr_t (*optional)(void*,int,hid_t,void**,struct __va_list_tag*);
+     * herr_t (*optional)(void*,H5VL_optional_args_t*,hid_t,void**);
      * }
      */
     public static MemorySegment optional$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$290.const$3.get(seg);
     }
     /**
      * Setter for field:
      * {@snippet :
-     * herr_t (*optional)(void*,int,hid_t,void**,struct __va_list_tag*);
+     * herr_t (*optional)(void*,H5VL_optional_args_t*,hid_t,void**);
      * }
      */
     public static void optional$set(MemorySegment seg, MemorySegment x) {
-        constants$320.const$4.set(seg, x);
+        constants$290.const$3.set(seg, x);
     }
     public static MemorySegment optional$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$320.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$290.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void optional$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$320.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$290.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static optional optional(MemorySegment segment, Arena scope) {
         return optional.ofAddress(optional$get(segment), scope);

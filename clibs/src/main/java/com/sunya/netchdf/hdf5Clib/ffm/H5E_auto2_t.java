@@ -16,13 +16,13 @@ public interface H5E_auto2_t {
 
     int apply(long prop_id, java.lang.foreign.MemorySegment close_data);
     static MemorySegment allocate(H5E_auto2_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$165.const$3, fi, constants$18.const$3, scope);
+        return RuntimeHelper.upcallStub(constants$158.const$1, fi, constants$17.const$5, scope);
     }
     static H5E_auto2_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _prop_id, java.lang.foreign.MemorySegment _close_data) -> {
             try {
-                return (int)constants$18.const$5.invokeExact(symbol, _prop_id, _close_data);
+                return (int)constants$18.const$1.invokeExact(symbol, _prop_id, _close_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

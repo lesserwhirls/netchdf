@@ -20,21 +20,26 @@ final class constants$176 {
         "H5Fopen",
         constants$176.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Freopen",
-        constants$10.const$2
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fflush",
-        constants$46.const$4
+        "H5Fopen_async",
+        constants$176.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fclose",
-        constants$19.const$5
+        "H5Freopen",
+        constants$0.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fdelete",
-        constants$175.const$3
+        "H5Freopen_async",
+        constants$91.const$3
     );
 }
 

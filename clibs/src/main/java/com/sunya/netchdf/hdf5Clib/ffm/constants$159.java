@@ -11,12 +11,28 @@ final class constants$159 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$159() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_CANTUNCORK_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_TRAVERSE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_NLINKS_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_NOTREGISTERED_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTMOVE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTSORT_g", JAVA_LONG);
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Ecreate_stack",
+        constants$159.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eget_current_stack",
+        constants$159.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_BOOLEAN
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eappend_stack",
+        constants$159.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Eis_paused",
+        constants$17.const$5
+    );
 }
 
 

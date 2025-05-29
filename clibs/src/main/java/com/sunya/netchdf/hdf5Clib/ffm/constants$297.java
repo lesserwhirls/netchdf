@@ -11,12 +11,32 @@ final class constants$297 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$297() {}
-    static final VarHandle const$0 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("get"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.specific.class, "apply", constants$292.const$4);
-    static final VarHandle const$2 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("specific"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.optional.class, "apply", constants$292.const$4);
-    static final VarHandle const$4 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("optional"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.close.class, "apply", constants$18.const$0);
+    static final VarHandle const$0 = constants$296.const$3.varHandle(MemoryLayout.PathElement.groupElement("exists"));
+    static final VarHandle const$1 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("key_mem_type_id"));
+    static final VarHandle const$2 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final VarHandle const$3 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("value_mem_type_id"));
+    static final VarHandle const$4 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("value"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("get_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("mapl_id")
+            ).withName("get_mapl"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("mcpl_id")
+            ).withName("get_mcpl"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("type_id")
+            ).withName("get_key_type"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("type_id")
+            ).withName("get_val_type"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("count")
+            ).withName("get_count")
+        ).withName("args")
+    ).withName("");
 }
 
 

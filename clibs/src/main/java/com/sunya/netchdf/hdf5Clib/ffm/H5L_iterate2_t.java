@@ -14,15 +14,15 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public interface H5L_iterate2_t {
 
-    int apply(long location_id, java.lang.foreign.MemorySegment attr_name, java.lang.foreign.MemorySegment ainfo, java.lang.foreign.MemorySegment op_data);
+    int apply(long group, java.lang.foreign.MemorySegment name, java.lang.foreign.MemorySegment info, java.lang.foreign.MemorySegment op_data);
     static MemorySegment allocate(H5L_iterate2_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$61.const$1, fi, constants$61.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$191.const$2, fi, constants$27.const$0, scope);
     }
     static H5L_iterate2_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
-        return (long _location_id, java.lang.foreign.MemorySegment _attr_name, java.lang.foreign.MemorySegment _ainfo, java.lang.foreign.MemorySegment _op_data) -> {
+        return (long _group, java.lang.foreign.MemorySegment _name, java.lang.foreign.MemorySegment _info, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$61.const$2.invokeExact(symbol, _location_id, _attr_name, _ainfo, _op_data);
+                return (int)constants$27.const$2.invokeExact(symbol, _group, _name, _info, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

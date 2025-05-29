@@ -12,15 +12,28 @@ final class constants$185 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$185() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$14.const$1
+        "H5Fis_hdf5",
+        constants$15.const$4
     );
-    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("terminate"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_size.class, "apply", constants$43.const$0);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$43.const$0
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("image_malloc"),
+        RuntimeHelper.POINTER.withName("image_memcpy"),
+        RuntimeHelper.POINTER.withName("image_realloc"),
+        RuntimeHelper.POINTER.withName("image_free"),
+        RuntimeHelper.POINTER.withName("udata_copy"),
+        RuntimeHelper.POINTER.withName("udata_free"),
+        RuntimeHelper.POINTER.withName("udata")
+    ).withName("");
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final VarHandle const$4 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("sb_size"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_encode.class, "apply", constants$16.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_malloc.class, "apply", constants$185.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$185.const$2
+    );
+    static final VarHandle const$5 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("image_malloc"));
 }
 
 

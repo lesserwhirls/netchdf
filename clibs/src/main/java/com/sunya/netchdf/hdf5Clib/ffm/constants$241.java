@@ -11,30 +11,35 @@ final class constants$241 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$241() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_family_offset",
-        constants$18.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_fclose_degree",
-        constants$18.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_image",
-        constants$42.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_image_callbacks",
-        constants$18.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_locking",
-        constants$42.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_gc_references",
-        constants$18.const$3
-    );
+    static final VarHandle const$0 = constants$240.const$5.varHandle(MemoryLayout.PathElement.groupElement("gcpl_id"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("child_file"),
+        JAVA_LONG.withName("fmpl_id")
+    ).withName("H5VL_group_spec_mount_args_t");
+    static final VarHandle const$2 = constants$241.const$1.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$3 = constants$241.const$1.varHandle(MemoryLayout.PathElement.groupElement("child_file"));
+    static final VarHandle const$4 = constants$241.const$1.varHandle(MemoryLayout.PathElement.groupElement("fmpl_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name"),
+                RuntimeHelper.POINTER.withName("child_file"),
+                JAVA_LONG.withName("fmpl_id")
+            ).withName("mount"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name")
+            ).withName("unmount"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("grp_id")
+            ).withName("flush"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("grp_id")
+            ).withName("refresh")
+        ).withName("args")
+    ).withName("H5VL_group_specific_args_t");
 }
 
 

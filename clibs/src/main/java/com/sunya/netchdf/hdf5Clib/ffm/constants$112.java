@@ -11,12 +11,37 @@ final class constants$112 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$112() {}
-    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_end"));
-    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_markers"));
-    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_chain"));
-    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_fileno"));
-    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
-    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "fdopen",
+        constants$112.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("read"),
+            RuntimeHelper.POINTER.withName("write"),
+            RuntimeHelper.POINTER.withName("seek"),
+            RuntimeHelper.POINTER.withName("close")
+        ).withName("_IO_cookie_io_functions_t")
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fopencookie",
+        constants$112.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fmemopen",
+        constants$112.const$4
+    );
 }
 
 

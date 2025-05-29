@@ -11,16 +11,18 @@ final class constants$189 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$189() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$188.const$4
-    );
-    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("open"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.close.class, "apply", constants$15.const$4);
-    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.cmp.class, "apply", constants$117.const$4);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$117.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("dstbuf"),
+        JAVA_LONG.withName("dst_off"),
+        RuntimeHelper.POINTER.withName("srcbuf"),
+        JAVA_LONG.withName("src_off"),
+        JAVA_LONG.withName("len")
+    ).withName("H5FD_ctl_memcpy_args_t");
+    static final VarHandle const$1 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("dstbuf"));
+    static final VarHandle const$2 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("dst_off"));
+    static final VarHandle const$3 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("srcbuf"));
+    static final VarHandle const$4 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("src_off"));
+    static final VarHandle const$5 = constants$189.const$0.varHandle(MemoryLayout.PathElement.groupElement("len"));
 }
 
 

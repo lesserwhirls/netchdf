@@ -11,30 +11,26 @@ final class constants$321 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$321() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLobject",
-        constants$46.const$0
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_REFERENCE_ACCESS_ID_g", JAVA_LONG);
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLget_file_type",
-        constants$269.const$2
+        "H5Pclose",
+        constants$19.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLpeek_connector_id_by_name",
-        constants$43.const$0
+        "H5Pclose_class",
+        constants$19.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLpeek_connector_id_by_value",
-        constants$273.const$3
+        "H5Pcopy",
+        constants$0.const$4
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pcopy_prop",
+        constants$79.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLcmp_connector_cls",
-        constants$321.const$4
+        "H5Pcreate",
+        constants$0.const$4
     );
 }
 

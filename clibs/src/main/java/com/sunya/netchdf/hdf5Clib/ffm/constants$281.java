@@ -12,29 +12,17 @@ final class constants$281 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$281() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLregister_connector_by_value",
-        constants$40.const$3
+        constants$126.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLis_connector_registered_by_name",
-        constants$15.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLis_connector_registered_by_value",
-        constants$21.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLget_connector_id",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLget_connector_id_by_name",
-        constants$43.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLget_connector_id_by_value",
-        constants$273.const$3
-    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("get_conn_cls"),
+        RuntimeHelper.POINTER.withName("get_cap_flags"),
+        RuntimeHelper.POINTER.withName("opt_query")
+    ).withName("H5VL_introspect_class_t");
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_introspect_class_t.get_conn_cls.class, "apply", constants$187.const$2);
+    static final VarHandle const$3 = constants$281.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_conn_cls"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_introspect_class_t.get_cap_flags.class, "apply", constants$13.const$4);
+    static final VarHandle const$5 = constants$281.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_cap_flags"));
 }
 
 

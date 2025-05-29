@@ -11,30 +11,12 @@ final class constants$86 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$86() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx1",
-        constants$64.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oget_info2",
-        constants$77.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name2",
-        constants$77.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx2",
-        constants$78.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Ovisit1",
-        constants$65.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name1",
-        constants$66.const$0
-    );
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("decr_mode"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("upper_hr_threshold"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("decrement"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_decrement"));
+    static final VarHandle const$4 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_decrement"));
+    static final VarHandle const$5 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("epochs_before_eviction"));
 }
 
 

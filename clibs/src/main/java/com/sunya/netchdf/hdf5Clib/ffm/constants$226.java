@@ -11,12 +11,58 @@ final class constants$226 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$226() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_VOL_INITIALIZE_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_REFERENCE_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_FILE_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_LST_FILE_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATASET_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATASET_ACCESS_ID_g", JAVA_LONG);
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("dapl_id")
+            ).withName("get_dapl"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("dcpl_id")
+            ).withName("get_dcpl"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("space_id")
+            ).withName("get_space"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("status")
+            ).withName("get_space_status"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("storage_size")
+            ).withName("get_storage_size"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("type_id")
+            ).withName("get_type")
+        ).withName("args")
+    ).withName("H5VL_dataset_get_args_t");
+    static final VarHandle const$1 = constants$226.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("dapl_id")
+        ).withName("get_dapl"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("dcpl_id")
+        ).withName("get_dcpl"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("space_id")
+        ).withName("get_space"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("status")
+        ).withName("get_space_status"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("storage_size")
+        ).withName("get_storage_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("type_id")
+        ).withName("get_type")
+    ).withName("");
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("dapl_id")
+    ).withName("");
+    static final VarHandle const$4 = constants$226.const$3.varHandle(MemoryLayout.PathElement.groupElement("dapl_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("dcpl_id")
+    ).withName("");
 }
 
 

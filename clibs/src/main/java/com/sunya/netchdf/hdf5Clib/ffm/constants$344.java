@@ -11,14 +11,29 @@ final class constants$344 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$344() {}
-    static final VarHandle const$0 = constants$343.const$5.varHandle(MemoryLayout.PathElement.groupElement("magic"));
-    static final VarHandle const$1 = constants$343.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$343.const$5.varHandle(MemoryLayout.PathElement.groupElement("rw_fapl_id"));
-    static final VarHandle const$3 = constants$343.const$5.varHandle(MemoryLayout.PathElement.groupElement("wo_fapl_id"));
-    static final VarHandle const$4 = constants$343.const$5.varHandle(MemoryLayout.PathElement.groupElement("ignore_wo_errs"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pset_alloc_time",
+        constants$64.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pset_chunk",
+        constants$20.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pset_chunk_opts",
+        constants$64.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pset_dset_no_attrs_hint",
+        constants$183.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pset_external",
+        constants$61.const$4
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FD_splitter_init",
-        constants$166.const$2
+        "H5Pset_fill_time",
+        constants$64.const$2
     );
 }
 

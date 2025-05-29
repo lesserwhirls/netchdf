@@ -11,33 +11,24 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5T_conv_t.class, "apply", constants$25.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$25.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5T_conv_except_func_t.class, "apply", constants$25.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$25.const$3
-    );
+    static final VarHandle const$0 = constants$24.const$4.varHandle(MemoryLayout.PathElement.groupElement("shared"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fileno"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("token"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("rc"),
+        JAVA_LONG.withName("atime"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("ctime"),
+        JAVA_LONG.withName("btime"),
+        JAVA_LONG.withName("num_attrs")
+    ).withName("H5O_info2_t");
+    static final VarHandle const$2 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final VarHandle const$3 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("rc"));
+    static final VarHandle const$5 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("atime"));
 }
 
 

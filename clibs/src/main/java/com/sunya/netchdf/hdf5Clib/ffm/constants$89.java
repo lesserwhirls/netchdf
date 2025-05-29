@@ -12,29 +12,21 @@ final class constants$89 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$89() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Adelete",
-        constants$18.const$3
+        constants$88.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Adelete_by_idx",
-        constants$63.const$0
-    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5D_scatter_func_t.class, "apply", constants$15.const$0);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Adelete_by_name",
-        constants$44.const$3
+        constants$15.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Aexists",
-        constants$18.const$3
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_gather_func_t.class, "apply", constants$17.const$2);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Aexists_by_name",
-        constants$44.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Aget_create_plist",
-        constants$10.const$2
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_chunk_iter_op_t.class, "apply", constants$89.const$4);
 }
 
 

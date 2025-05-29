@@ -11,20 +11,40 @@ final class constants$301 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$301() {}
-    static final VarHandle const$0 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("create"));
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("obj_type"),
+            JAVA_INT.withName("type"),
+            MemoryLayout.unionLayout(
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("token")
+                ).withName("loc_by_token"),
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("name"),
+                    JAVA_LONG.withName("lapl_id")
+                ).withName("loc_by_name"),
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("name"),
+                    JAVA_INT.withName("idx_type"),
+                    JAVA_INT.withName("order"),
+                    JAVA_LONG.withName("n"),
+                    JAVA_LONG.withName("lapl_id")
+                ).withName("loc_by_idx")
+            ).withName("loc_data")
+        ).withName("loc_params"),
+        JAVA_LONG.withName("key_mem_type_id"),
+        RuntimeHelper.POINTER.withName("key")
+    ).withName("");
+    static final VarHandle const$1 = constants$301.const$0.varHandle(MemoryLayout.PathElement.groupElement("key_mem_type_id"));
+    static final VarHandle const$2 = constants$301.const$0.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_file_class_t.open.class, "apply", constants$301.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$301.const$1
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5MM_allocate_t.class, "apply", constants$301.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$301.const$3
     );
-    static final VarHandle const$4 = constants$300.const$2.varHandle(MemoryLayout.PathElement.groupElement("open"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_file_class_t.get.class, "apply", constants$292.const$4);
 }
 
 

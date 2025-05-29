@@ -11,12 +11,40 @@ final class constants$96 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$96() {}
-    static final VarHandle const$0 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
-    static final VarHandle const$1 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
-    static final VarHandle const$2 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
-    static final VarHandle const$3 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
-    static final VarHandle const$4 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
-    static final VarHandle const$5 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dwrite_chunk",
+        constants$96.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dread_chunk",
+        constants$96.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Diterate",
+        constants$96.const$4
+    );
 }
 
 

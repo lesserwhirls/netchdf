@@ -11,21 +11,41 @@ final class constants$192 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$192() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Lmove",
+        constants$32.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eoa.class, "apply", constants$192.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lcopy",
+        constants$32.const$1
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$192.const$0
+        "H5Lcreate_hard",
+        constants$32.const$1
     );
-    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("get_eoa"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_hard_async",
+        constants$32.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft",
+        constants$97.const$1
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_class_t.set_eoa.class, "apply", constants$192.const$4);
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft_async",
+        constants$192.const$5
+    );
 }
 
 

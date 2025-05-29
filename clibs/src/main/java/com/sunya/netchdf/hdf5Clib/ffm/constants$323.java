@@ -12,30 +12,28 @@ final class constants$323 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$323() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLget_wrap_ctx",
-        constants$18.const$0
+        "H5Pget",
+        constants$36.const$1
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_class",
+        constants$0.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLwrap_object",
-        constants$323.const$1
+        "H5Pget_class_name",
+        constants$63.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLunwrap_object",
-        constants$17.const$2
+        "H5Pget_class_parent",
+        constants$0.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLfree_wrap_ctx",
-        constants$175.const$3
+        "H5Pget_nprops",
+        constants$17.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLinitialize",
-        constants$41.const$1
+        "H5Pget_size",
+        constants$36.const$1
     );
 }
 

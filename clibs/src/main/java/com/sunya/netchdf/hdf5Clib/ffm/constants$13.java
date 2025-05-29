@@ -11,12 +11,23 @@ final class constants$13 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$13() {}
-    static final VarHandle const$0 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_bytes"));
-    static final VarHandle const$1 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_bytes"));
-    static final VarHandle const$2 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("peak_alloc_bytes"));
-    static final VarHandle const$3 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_block_size"));
-    static final VarHandle const$4 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("total_alloc_blocks_count"));
-    static final VarHandle const$5 = constants$12.const$5.varHandle(MemoryLayout.PathElement.groupElement("curr_alloc_blocks_count"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5_atclose_func_t.class, "apply", constants$12.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$12.const$5
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5open",
+        constants$13.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5atclose",
+        constants$13.const$4
+    );
 }
 
 

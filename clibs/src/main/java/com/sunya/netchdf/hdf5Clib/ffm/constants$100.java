@@ -11,18 +11,30 @@ final class constants$100 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$100() {}
-    static final VarHandle const$0 = constants$99.const$4.varHandle(MemoryLayout.PathElement.groupElement("generate_image"));
-    static final VarHandle const$1 = constants$99.const$4.varHandle(MemoryLayout.PathElement.groupElement("save_resize_status"));
-    static final VarHandle const$2 = constants$99.const$4.varHandle(MemoryLayout.PathElement.groupElement("entry_ageout"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_append_cb_t.class, "apply", constants$42.const$5);
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dopen1",
+        constants$71.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_operator_t.class, "apply", constants$100.const$4);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dextend",
+        constants$17.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dvlen_reclaim",
+        constants$71.const$0
+    );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__count"),
+        MemoryLayout.unionLayout(
+            JAVA_INT.withName("__wch"),
+            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+        ).withName("__value")
+    ).withName("");
+    static final VarHandle const$4 = constants$100.const$3.varHandle(MemoryLayout.PathElement.groupElement("__count"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        JAVA_INT.withName("__wch"),
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+    ).withName("");
 }
 
 

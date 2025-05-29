@@ -12,22 +12,18 @@ final class constants$174 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$174() {}
     static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("hdr_size"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("index_size"),
-            JAVA_LONG.withName("heap_size")
-        ).withName("msgs_info")
-    ).withName("");
-    static final VarHandle const$1 = constants$174.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$174.const$0.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
         JAVA_LONG.withName("addr"),
         JAVA_LONG.withName("size")
     ).withName("H5F_sect_info_t");
-    static final VarHandle const$4 = constants$174.const$3.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$5 = constants$174.const$3.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$1 = constants$174.const$0.varHandle(MemoryLayout.PathElement.groupElement("addr"));
+    static final VarHandle const$2 = constants$174.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("nbins"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.sequenceLayout(21, RuntimeHelper.POINTER).withName("retries")
+    ).withName("H5F_retry_info_t");
+    static final VarHandle const$4 = constants$174.const$3.varHandle(MemoryLayout.PathElement.groupElement("nbins"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5F_flush_cb_t.class, "apply", constants$17.const$5);
 }
 
 

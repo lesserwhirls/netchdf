@@ -11,30 +11,18 @@ final class constants$250 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$250() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_external_count",
-        constants$19.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_fill_time",
-        constants$18.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_fill_value",
-        constants$92.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_layout",
-        constants$19.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_count",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_dsetname",
-        constants$212.const$4
-    );
+    static final VarHandle const$0 = constants$249.const$3.varHandle(MemoryLayout.PathElement.groupElement("name_len"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("obj_type")
+    ).withName("");
+    static final VarHandle const$2 = constants$250.const$1.varHandle(MemoryLayout.PathElement.groupElement("obj_type"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("fields"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("oinfo")
+    ).withName("");
+    static final VarHandle const$4 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("fields"));
+    static final VarHandle const$5 = constants$250.const$3.varHandle(MemoryLayout.PathElement.groupElement("oinfo"));
 }
 
 

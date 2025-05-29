@@ -11,35 +11,23 @@ final class constants$107 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$107() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$106.const$3);
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dgather",
-        constants$107.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dclose",
-        constants$19.const$5
-    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$107.const$1);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ddebug",
-        constants$19.const$5
+        constants$107.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dformat_convert",
-        constants$19.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_index_type",
-        constants$18.const$3
-    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$15.const$4);
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("seek"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("_IO_cookie_io_functions_t");
 }
 
 

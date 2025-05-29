@@ -11,22 +11,27 @@ final class constants$191 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$191() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$175.const$5
-    );
-    static final VarHandle const$1 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("alloc"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+    static final UnionLayout const$0 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("token"),
+        JAVA_LONG.withName("val_size")
+    ).withName("");
+    static final VarHandle const$1 = constants$191.const$0.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_iterate2_t.class, "apply", constants$27.const$0);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.free.class, "apply", constants$191.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$191.const$2
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_elink_traverse_t.class, "apply", constants$191.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$191.const$3
     );
-    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("free"));
 }
 
 

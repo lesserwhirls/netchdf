@@ -11,33 +11,17 @@ final class constants$284 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$284() {}
-    static final VarHandle const$0 = constants$283.const$2.varHandle(MemoryLayout.PathElement.groupElement("n"));
-    static final VarHandle const$1 = constants$283.const$2.varHandle(MemoryLayout.PathElement.groupElement("lapl_id"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("token")
-    ).withName("H5VL_loc_by_token");
-    static final VarHandle const$3 = constants$284.const$2.varHandle(MemoryLayout.PathElement.groupElement("token"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("obj_type"),
-        JAVA_INT.withName("type"),
-        MemoryLayout.unionLayout(
-            MemoryLayout.structLayout(
-                RuntimeHelper.POINTER.withName("token")
-            ).withName("loc_by_token"),
-            MemoryLayout.structLayout(
-                RuntimeHelper.POINTER.withName("name"),
-                JAVA_LONG.withName("lapl_id")
-            ).withName("loc_by_name"),
-            MemoryLayout.structLayout(
-                RuntimeHelper.POINTER.withName("name"),
-                JAVA_INT.withName("idx_type"),
-                JAVA_INT.withName("order"),
-                JAVA_LONG.withName("n"),
-                JAVA_LONG.withName("lapl_id")
-            ).withName("loc_by_idx")
-        ).withName("loc_data")
-    ).withName("H5VL_loc_params_t");
-    static final VarHandle const$5 = constants$284.const$4.varHandle(MemoryLayout.PathElement.groupElement("obj_type"));
+    static final VarHandle const$0 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_request_class_t.optional.class, "apply", constants$13.const$4);
+    static final VarHandle const$2 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_request_class_t.free.class, "apply", constants$15.const$4);
+    static final VarHandle const$4 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("put"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional")
+    ).withName("H5VL_blob_class_t");
 }
 
 

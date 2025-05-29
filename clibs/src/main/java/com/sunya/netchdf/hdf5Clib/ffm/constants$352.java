@@ -11,12 +11,30 @@ final class constants$352 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$352() {}
-    static final MemorySegment const$0 = MemorySegment.ofAddress(0L);
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 library version: 1.12.1");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lld");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lli");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llo");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llu");
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pset_selection_io",
+        constants$64.const$2
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pget_selection_io",
+        constants$17.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_no_selection_io_cause",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_actual_selection_io_mode",
+        constants$17.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pset_modify_write_buf",
+        constants$183.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_modify_write_buf",
+        constants$17.const$5
+    );
 }
 
 

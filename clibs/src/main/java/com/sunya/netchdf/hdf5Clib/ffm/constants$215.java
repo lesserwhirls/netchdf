@@ -11,24 +11,34 @@ final class constants$215 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$215() {}
-    static final VarHandle const$0 = constants$214.const$4.varHandle(MemoryLayout.PathElement.groupElement("op_data"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Rdereference1",
+        constants$63.const$0
+    );
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
-        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5Z_can_apply_func_t.class, "apply", constants$215.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Rcreate",
         constants$215.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5Z_set_local_func_t.class, "apply", constants$215.const$1);
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Rget_obj_type2",
+        constants$161.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Rdereference2",
+        constants$215.const$4
     );
 }
 

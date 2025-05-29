@@ -11,30 +11,25 @@ final class constants$254 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$254() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk_cache",
-        constants$61.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_efile_prefix",
-        constants$20.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_prefix",
-        constants$20.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_printf_gap",
-        constants$18.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_view",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_append_flush",
-        constants$253.const$5
-    );
+    static final VarHandle const$0 = constants$253.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("err_stack_id")
+        ).withName("get_err_stack"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("exec_ts"),
+            RuntimeHelper.POINTER.withName("exec_time")
+        ).withName("get_exec_time")
+    ).withName("");
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("err_stack_id")
+    ).withName("");
+    static final VarHandle const$3 = constants$254.const$2.varHandle(MemoryLayout.PathElement.groupElement("err_stack_id"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("exec_ts"),
+        RuntimeHelper.POINTER.withName("exec_time")
+    ).withName("");
+    static final VarHandle const$5 = constants$254.const$4.varHandle(MemoryLayout.PathElement.groupElement("exec_ts"));
 }
 
 

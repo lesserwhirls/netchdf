@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5Z_cb_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$214.const$4;
+        return constants$394.const$4;
     }
     public static VarHandle func$VH() {
-        return constants$214.const$5;
+        return constants$394.const$5;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class H5Z_cb_t {
      * }
      */
     public static MemorySegment func$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$214.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$394.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -39,19 +39,19 @@ public class H5Z_cb_t {
      * }
      */
     public static void func$set(MemorySegment seg, MemorySegment x) {
-        constants$214.const$5.set(seg, x);
+        constants$394.const$5.set(seg, x);
     }
     public static MemorySegment func$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$214.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$394.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void func$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$214.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$394.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static H5Z_filter_func_t func(MemorySegment segment, Arena scope) {
         return H5Z_filter_func_t.ofAddress(func$get(segment), scope);
     }
     public static VarHandle op_data$VH() {
-        return constants$215.const$0;
+        return constants$395.const$0;
     }
     /**
      * Getter for field:
@@ -60,7 +60,7 @@ public class H5Z_cb_t {
      * }
      */
     public static MemorySegment op_data$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$215.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$395.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -69,13 +69,13 @@ public class H5Z_cb_t {
      * }
      */
     public static void op_data$set(MemorySegment seg, MemorySegment x) {
-        constants$215.const$0.set(seg, x);
+        constants$395.const$0.set(seg, x);
     }
     public static MemorySegment op_data$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$215.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$395.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void op_data$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$215.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$395.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

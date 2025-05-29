@@ -11,12 +11,48 @@ final class constants$26 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$26() {}
-    static final VarHandle const$0 = JAVA_LONG.varHandle();
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64LE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8BE_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
+    static final VarHandle const$1 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
+    static final VarHandle const$2 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final VarHandle const$3 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks"),
+            JAVA_INT.withName("flags"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("total"),
+                JAVA_LONG.withName("meta"),
+                JAVA_LONG.withName("mesg"),
+                JAVA_LONG.withName("free")
+            ).withName("space"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("present"),
+                JAVA_LONG.withName("shared")
+            ).withName("mesg")
+        ).withName("hdr"),
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("obj"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("attr")
+        ).withName("meta_size")
+    ).withName("H5O_native_info_t");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("obj"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("attr")
+    ).withName("");
 }
 
 

@@ -11,27 +11,62 @@ final class constants$101 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$101() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$100.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5D_scatter_func_t.class, "apply", constants$16.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$16.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_gather_func_t.class, "apply", constants$18.const$0);
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dcreate2",
-        constants$101.const$4
-    );
+    static final VarHandle const$0 = constants$100.const$5.varHandle(MemoryLayout.PathElement.groupElement("__wch"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__pos"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__count"),
+            MemoryLayout.unionLayout(
+                JAVA_INT.withName("__wch"),
+                MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+            ).withName("__value")
+        ).withName("__state")
+    ).withName("_G_fpos_t");
+    static final VarHandle const$2 = constants$101.const$1.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("__pos"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__count"),
+            MemoryLayout.unionLayout(
+                JAVA_INT.withName("__wch"),
+                MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
+            ).withName("__value")
+        ).withName("__state")
+    ).withName("_G_fpos64_t");
+    static final VarHandle const$4 = constants$101.const$3.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("_flags"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("_IO_read_ptr"),
+        RuntimeHelper.POINTER.withName("_IO_read_end"),
+        RuntimeHelper.POINTER.withName("_IO_read_base"),
+        RuntimeHelper.POINTER.withName("_IO_write_base"),
+        RuntimeHelper.POINTER.withName("_IO_write_ptr"),
+        RuntimeHelper.POINTER.withName("_IO_write_end"),
+        RuntimeHelper.POINTER.withName("_IO_buf_base"),
+        RuntimeHelper.POINTER.withName("_IO_buf_end"),
+        RuntimeHelper.POINTER.withName("_IO_save_base"),
+        RuntimeHelper.POINTER.withName("_IO_backup_base"),
+        RuntimeHelper.POINTER.withName("_IO_save_end"),
+        RuntimeHelper.POINTER.withName("_markers"),
+        RuntimeHelper.POINTER.withName("_chain"),
+        JAVA_INT.withName("_fileno"),
+        JAVA_INT.withName("_flags2"),
+        JAVA_LONG.withName("_old_offset"),
+        JAVA_SHORT.withName("_cur_column"),
+        JAVA_BYTE.withName("_vtable_offset"),
+        MemoryLayout.sequenceLayout(1, JAVA_BYTE).withName("_shortbuf"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("_lock"),
+        JAVA_LONG.withName("_offset"),
+        RuntimeHelper.POINTER.withName("_codecvt"),
+        RuntimeHelper.POINTER.withName("_wide_data"),
+        RuntimeHelper.POINTER.withName("_freeres_list"),
+        RuntimeHelper.POINTER.withName("_freeres_buf"),
+        JAVA_LONG.withName("__pad5"),
+        JAVA_INT.withName("_mode"),
+        MemoryLayout.sequenceLayout(20, JAVA_BYTE).withName("_unused2")
+    ).withName("_IO_FILE");
 }
 
 

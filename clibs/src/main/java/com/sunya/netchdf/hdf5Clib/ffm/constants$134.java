@@ -11,36 +11,12 @@ final class constants$134 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$134() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "ftrylockfile",
-        constants$15.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "funlockfile",
-        constants$122.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$15.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "__overflow",
-        constants$134.const$3
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("cls_id"),
-        JAVA_LONG.withName("maj_num"),
-        JAVA_LONG.withName("min_num"),
-        JAVA_INT.withName("line"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("func_name"),
-        RuntimeHelper.POINTER.withName("file_name"),
-        RuntimeHelper.POINTER.withName("desc")
-    ).withName("H5E_error2_t");
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_TST_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_VFL_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_VOL_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_BADRANGE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_BADTYPE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_BADVALUE_g", JAVA_LONG);
 }
 
 

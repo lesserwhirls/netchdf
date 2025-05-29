@@ -11,38 +11,18 @@ final class constants$232 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$232() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_nprops",
-        constants$18.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_size",
-        constants$42.const$5
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pinsert2",
-        constants$232.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pisa_class",
-        constants$41.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Piterate",
-        constants$61.const$0
-    );
+    static final VarHandle const$0 = constants$231.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$1 = constants$231.const$5.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
+    static final VarHandle const$2 = constants$231.const$5.varHandle(MemoryLayout.PathElement.groupElement("token_size"));
+    static final VarHandle const$3 = constants$231.const$5.varHandle(MemoryLayout.PathElement.groupElement("blob_id_size"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("buf_size"),
+        RuntimeHelper.POINTER.withName("buf"),
+        RuntimeHelper.POINTER.withName("file_name_len")
+    ).withName("H5VL_file_get_name_args_t");
+    static final VarHandle const$5 = constants$232.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
 }
 
 

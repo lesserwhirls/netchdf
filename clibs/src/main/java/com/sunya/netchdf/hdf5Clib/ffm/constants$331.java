@@ -12,35 +12,28 @@ final class constants$331 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$331() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLfile_close",
-        constants$327.const$1
+        "H5Pset_sym_k",
+        constants$69.const$1
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pset_userblock",
+        constants$58.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_create",
-        constants$331.const$1
+        "H5Pget_alignment",
+        constants$36.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_open",
-        constants$325.const$4
+        "H5Pget_cache",
+        constants$93.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_get",
-        constants$326.const$3
+        "H5Pget_core_write_tracking",
+        constants$36.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_specific",
-        constants$326.const$3
+        "H5Pget_driver",
+        constants$0.const$4
     );
 }
 
