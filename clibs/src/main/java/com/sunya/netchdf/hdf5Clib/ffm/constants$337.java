@@ -11,32 +11,29 @@ final class constants$337 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$337() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pset_driver_by_value",
+        constants$20.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLblob_specific",
-        constants$337.const$0
+        "H5Pset_elink_file_cache_size",
+        constants$64.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLblob_optional",
-        constants$337.const$0
+        "H5Pset_evict_on_close",
+        constants$183.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLtoken_cmp",
-        constants$67.const$1
+        "H5Pset_family_offset",
+        constants$58.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLtoken_to_str",
-        constants$292.const$4
+        "H5Pset_fclose_degree",
+        constants$64.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLtoken_from_str",
-        constants$292.const$4
+        "H5Pset_file_image",
+        constants$29.const$2
     );
 }
 

@@ -11,27 +11,37 @@ final class constants$207 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$207() {}
-    static final VarHandle const$0 = constants$206.const$2.varHandle(MemoryLayout.PathElement.groupElement("mounted"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Gget_comment",
+        constants$206.const$1
+    );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Gcreate2",
-        constants$93.const$5
+        "H5Giterate",
+        constants$93.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Gget_num_objs",
+        constants$17.const$5
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Gcreate_anon",
-        constants$207.const$2
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_BOOLEAN,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Gopen2",
-        constants$20.const$1
+        "H5Gget_objinfo",
+        constants$207.const$3
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Gget_create_plist",
-        constants$10.const$2
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Gget_objname_by_idx",
+        constants$207.const$5
     );
 }
 

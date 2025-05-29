@@ -11,37 +11,12 @@ final class constants$103 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$103() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Dget_create_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dget_access_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dget_storage_size",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_storage_size",
-        constants$42.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dget_num_chunks",
-        constants$92.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_info_by_coord",
-        constants$103.const$5
-    );
+    static final VarHandle const$0 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
+    static final VarHandle const$1 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
+    static final VarHandle const$2 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
+    static final VarHandle const$3 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_base"));
+    static final VarHandle const$4 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_backup_base"));
+    static final VarHandle const$5 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_end"));
 }
 
 

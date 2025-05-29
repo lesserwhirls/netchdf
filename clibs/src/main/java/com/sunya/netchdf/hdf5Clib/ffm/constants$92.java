@@ -12,34 +12,28 @@ final class constants$92 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$92() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Aopen",
-        constants$20.const$1
+        "H5Dget_type",
+        constants$0.const$4
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dget_create_plist",
+        constants$0.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Aopen_by_idx",
-        constants$92.const$1
+        "H5Dget_access_plist",
+        constants$0.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Aopen_by_name",
-        constants$80.const$0
+        "H5Dget_storage_size",
+        constants$0.const$4
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_storage_size",
+        constants$36.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Aread",
-        constants$92.const$4
+        "H5Dget_num_chunks",
+        constants$79.const$5
     );
 }
 

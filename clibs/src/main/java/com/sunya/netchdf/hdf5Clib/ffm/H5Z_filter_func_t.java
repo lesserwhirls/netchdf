@@ -16,13 +16,13 @@ public interface H5Z_filter_func_t {
 
     int apply(int filter, java.lang.foreign.MemorySegment buf, long buf_size, java.lang.foreign.MemorySegment op_data);
     static MemorySegment allocate(H5Z_filter_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$214.const$2, fi, constants$214.const$1, scope);
+        return RuntimeHelper.upcallStub(constants$310.const$3, fi, constants$310.const$2, scope);
     }
     static H5Z_filter_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (int _filter, java.lang.foreign.MemorySegment _buf, long _buf_size, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$214.const$3.invokeExact(symbol, _filter, _buf, _buf_size, _op_data);
+                return (int)constants$310.const$4.invokeExact(symbol, _filter, _buf, _buf_size, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

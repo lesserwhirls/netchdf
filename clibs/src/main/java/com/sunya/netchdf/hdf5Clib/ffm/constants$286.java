@@ -11,19 +11,16 @@ final class constants$286 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$286() {}
-    static final VarHandle const$0 = constants$285.const$2.varHandle(MemoryLayout.PathElement.groupElement("blob_id_size"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("copy"),
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.specific.class, "apply", constants$15.const$0);
+    static final VarHandle const$1 = constants$284.const$5.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.optional.class, "apply", constants$15.const$0);
+    static final VarHandle const$3 = constants$284.const$5.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
         RuntimeHelper.POINTER.withName("cmp"),
-        RuntimeHelper.POINTER.withName("free"),
         RuntimeHelper.POINTER.withName("to_str"),
         RuntimeHelper.POINTER.withName("from_str")
-    ).withName("H5VL_info_class_t");
-    static final VarHandle const$2 = constants$286.const$1.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_info_class_t.copy.class, "apply", constants$118.const$5);
-    static final VarHandle const$4 = constants$286.const$1.varHandle(MemoryLayout.PathElement.groupElement("copy"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_info_class_t.cmp.class, "apply", constants$16.const$0);
+    ).withName("H5VL_token_class_t");
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_token_class_t.cmp.class, "apply", constants$14.const$5);
 }
 
 

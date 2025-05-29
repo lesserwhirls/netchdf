@@ -12,32 +12,21 @@ final class constants$72 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$72() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Lvisit1",
-        constants$65.const$4
+        "H5Tget_array_dims1",
+        constants$36.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Lvisit_by_name1",
-        constants$66.const$0
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("nmesgs"),
-        JAVA_INT.withName("nchunks"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("total"),
-            JAVA_LONG.withName("meta"),
-            JAVA_LONG.withName("mesg"),
-            JAVA_LONG.withName("free")
-        ).withName("space"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("present"),
-            JAVA_LONG.withName("shared")
-        ).withName("mesg")
-    ).withName("H5O_hdr_info_t");
-    static final VarHandle const$3 = constants$72.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$4 = constants$72.const$2.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
-    static final VarHandle const$5 = constants$72.const$2.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_INT.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("data_size")
+    ).withName("");
+    static final VarHandle const$2 = constants$72.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
+    static final VarHandle const$3 = constants$72.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$4 = constants$72.const$1.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final VarHandle const$5 = constants$72.const$1.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
 }
 
 

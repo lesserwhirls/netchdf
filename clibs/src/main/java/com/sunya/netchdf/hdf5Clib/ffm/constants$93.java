@@ -11,32 +11,39 @@ final class constants$93 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$93() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Arename",
-        constants$42.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Awrite",
-        constants$92.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Arename_by_name",
-        constants$90.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5A_operator1_t.class, "apply", constants$42.const$5);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$42.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Acreate1",
-        constants$93.const$5
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_info_by_coord",
+        constants$93.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dchunk_iter",
+        constants$93.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_info",
+        constants$93.const$4
     );
 }
 

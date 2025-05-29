@@ -11,28 +11,30 @@ final class constants$61 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$61() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5L_iterate2_t.class, "apply", constants$61.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tdecode",
         constants$61.const$0
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tflush",
+        constants$19.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Trefresh",
+        constants$19.const$1
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER
+        JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_elink_traverse_t.class, "apply", constants$61.const$3);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$61.const$3
+        "H5Tinsert",
+        constants$61.const$4
     );
 }
 

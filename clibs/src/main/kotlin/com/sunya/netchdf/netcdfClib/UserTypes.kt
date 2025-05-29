@@ -83,7 +83,7 @@ internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builde
                 val members : List<StructureMember<*>> = readCompoundFields(session, grpid, userTypeId, nfields.toInt())
                 CompoundTypedef(name, members)
             }
-            else -> throw RuntimeException()
+            else -> throw RuntimeException("Unsupported type class $typeClass")
         }
         if (NCheader.debug) println(" typedef $name $size $baseTypeId $nfields ${typedef.kind} ${typedef.baseType}")
 

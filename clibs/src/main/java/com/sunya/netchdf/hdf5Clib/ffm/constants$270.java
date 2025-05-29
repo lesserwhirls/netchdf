@@ -11,32 +11,28 @@ final class constants$270 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$270() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_type3",
-        constants$18.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Rget_file_name",
-        constants$114.const$4
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+    static final VarHandle const$0 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_file_class_t");
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_name",
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_file_class_t.create.class, "apply", constants$270.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         constants$270.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Rget_attr_name",
-        constants$114.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Rget_obj_type1",
-        constants$21.const$0
-    );
+    static final VarHandle const$5 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("create"));
 }
 
 

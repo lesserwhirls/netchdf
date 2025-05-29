@@ -11,38 +11,18 @@ final class constants$88 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$88() {}
-    static final VarHandle const$0 = constants$87.const$2.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5A_operator2_t.class, "apply", constants$61.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Aclose",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
+    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("generate_image"));
+    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("save_resize_status"));
+    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("entry_ageout"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_append_cb_t.class, "apply", constants$36.const$1);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Acreate2",
-        constants$88.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
+        JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Acreate_by_name",
-        constants$88.const$5
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_operator_t.class, "apply", constants$88.const$4);
 }
 
 

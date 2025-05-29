@@ -11,18 +11,30 @@ final class constants$99 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$99() {}
-    static final VarHandle const$0 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_empty_reserve"));
-    static final VarHandle const$1 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("empty_reserve"));
-    static final VarHandle const$2 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("dirty_bytes_threshold"));
-    static final VarHandle const$3 = constants$94.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata_write_strategy"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_BOOLEAN.withName("generate_image"),
-        JAVA_BOOLEAN.withName("save_resize_status"),
-        MemoryLayout.paddingLayout(2),
-        JAVA_INT.withName("entry_ageout")
-    ).withName("H5AC_cache_image_config_t");
-    static final VarHandle const$5 = constants$99.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Dclose",
+        constants$19.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Dclose_async",
+        constants$34.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ddebug",
+        constants$19.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Dformat_convert",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dget_chunk_index_type",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Dcreate1",
+        constants$81.const$4
+    );
 }
 
 

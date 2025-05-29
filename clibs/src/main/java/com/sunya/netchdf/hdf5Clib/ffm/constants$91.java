@@ -12,28 +12,31 @@ final class constants$91 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$91() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Aget_name_by_idx",
-        constants$64.const$4
+        "H5Dopen2",
+        constants$19.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Aget_space",
-        constants$10.const$2
+        "H5Dopen_async",
+        constants$28.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Aget_storage_size",
-        constants$10.const$2
+        "H5Dget_space",
+        constants$0.const$4
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Aget_type",
-        constants$10.const$2
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Aiterate2",
-        constants$65.const$0
+        "H5Dget_space_async",
+        constants$91.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Aiterate_by_name",
-        constants$65.const$2
+        "H5Dget_space_status",
+        constants$17.const$5
     );
 }
 

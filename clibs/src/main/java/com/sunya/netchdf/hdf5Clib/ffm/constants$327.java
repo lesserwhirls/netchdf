@@ -12,39 +12,28 @@ final class constants$327 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$327() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLattr_optional",
-        constants$326.const$3
+        "H5Premove_filter",
+        constants$64.const$2
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pset_attr_creation_order",
+        constants$64.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLattr_close",
-        constants$327.const$1
+        "H5Pset_attr_phase_change",
+        constants$69.const$1
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pset_deflate",
+        constants$64.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLdataset_create",
-        constants$327.const$3
+        "H5Pset_filter",
+        constants$326.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLdataset_open",
-        constants$325.const$4
+        "H5Pset_fletcher32",
+        constants$19.const$1
     );
 }
 

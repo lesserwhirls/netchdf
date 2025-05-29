@@ -11,24 +11,12 @@ final class constants$85 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$85() {}
-    static final VarHandle const$0 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5O_iterate1_t.class, "apply", constants$61.const$0);
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_addr",
-        constants$85.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info1",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name1",
-        constants$44.const$3
-    );
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("increment"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_increment"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_increment"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_incr_mode"));
+    static final VarHandle const$4 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_multiple"));
+    static final VarHandle const$5 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_threshold"));
 }
 
 

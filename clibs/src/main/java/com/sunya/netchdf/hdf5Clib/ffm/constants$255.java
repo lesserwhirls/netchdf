@@ -11,32 +11,26 @@ final class constants$255 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$255() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_DOUBLE
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk_cache",
-        constants$255.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_efile_prefix",
-        constants$18.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_prefix",
-        constants$18.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_printf_gap",
-        constants$41.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_view",
-        constants$46.const$4
-    );
+    static final VarHandle const$0 = constants$254.const$4.varHandle(MemoryLayout.PathElement.groupElement("exec_time"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("isnull")
+            ).withName("is_null")
+        ).withName("args")
+    ).withName("H5VL_blob_specific_args_t");
+    static final VarHandle const$2 = constants$255.const$1.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("isnull")
+        ).withName("is_null")
+    ).withName("");
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("isnull")
+    ).withName("");
+    static final VarHandle const$5 = constants$255.const$4.varHandle(MemoryLayout.PathElement.groupElement("isnull"));
 }
 
 

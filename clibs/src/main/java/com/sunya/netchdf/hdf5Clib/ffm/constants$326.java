@@ -12,44 +12,40 @@ final class constants$326 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$326() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLattr_read",
+        "H5Pget_filter2",
         constants$326.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLattr_write",
+        "H5Pget_filter_by_id2",
         constants$326.const$0
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_nfilters",
+        constants$19.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLattr_get",
-        constants$326.const$3
+        "H5Pget_obj_track_times",
+        constants$17.const$5
     );
     static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_INT,
+        JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5VLattr_specific",
+        "H5Pmodify_filter",
         constants$326.const$5
     );
 }

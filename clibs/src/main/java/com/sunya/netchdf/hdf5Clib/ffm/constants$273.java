@@ -11,35 +11,30 @@ final class constants$273 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$273() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Scombine_select",
-        constants$273.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Scopy",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Screate",
-        constants$273.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT,
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_group_class_t");
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Screate_simple",
-        constants$273.const$5
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_group_class_t.create.class, "apply", constants$273.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$273.const$1
     );
+    static final VarHandle const$4 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_group_class_t.open.class, "apply", constants$260.const$5);
 }
 
 

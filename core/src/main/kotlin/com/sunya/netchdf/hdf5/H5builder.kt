@@ -100,7 +100,7 @@ class H5builder(
         // convert into CDM
         val rootBuilder = this.buildCdm(h5rootGroup)
         addTypesToGroups()
-        // convertReferences(rootBuilder)
+        convertReferences(rootBuilder) // TODO
 
         // hdf-eos5
         if (structMetadata.isNotEmpty()) {
@@ -217,20 +217,26 @@ class H5builder(
     // Internal organization of Data Objects
 
     @Throws(IOException::class)
-    fun convertReferencesToDataObjectName(refArray: Iterable<Long>): List<String> {
-        return refArray.map { convertReferenceToDataObjectName(it) }
+    fun convertReferenceToDataObjectName(reference: Long): String {
+        val name = getDataObjectName(reference)
+        return name ?: reference.toString() // LOOK
     }
 
     @Throws(IOException::class)
-    fun convertReferenceToDataObjectName(reference: Long): String {
-        val pair = datasetMap[reference]
-        if (pair == null)  {
-            println("H5 cant find dataset reference for $reference")
-            return "N/A"
-        }
-        println("**H5 found dataset reference for $reference")
-        val (gb, vb) = pair
-        return vb.fullname(gb)
+    fun convertReferencesToDataObjectName(refArray: Array<Long>): List<String> {
+        return refArray.map { convertReferenceToDataObjectName(it) }
+    }
+
+    /**
+     * Get a data object's name, using the objectId you get from a reference (aka hard link).
+     *
+     * @param objId address of the data object
+     * @return String the data object's name, or null if not found
+     * @throws IOException on read error
+     */
+    @Throws(IOException::class)
+    fun getDataObjectName(objId: Long): String {
+        return getDataObject(objId, null)?.name ?: "unknown"
     }
 
     /**
@@ -548,7 +554,7 @@ class H5builder(
             val dsetId = it as Long
             val pair = datasetMap[dsetId]
             if (pair == null)  {
-                println("H5 cant find dataset reference for $att")
+                println("H5 cant find dataset reference for att $att")
                 return null
             }
             val (gb, vb) = pair

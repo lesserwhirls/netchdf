@@ -11,30 +11,12 @@ final class constants$274 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$274() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sdecode",
-        constants$43.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sencode2",
-        constants$44.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sextent_copy",
-        constants$41.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sextent_equal",
-        constants$41.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sget_regular_hyperslab",
-        constants$103.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_bounds",
-        constants$42.const$5
-    );
+    static final VarHandle const$0 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_group_class_t.get.class, "apply", constants$262.const$3);
+    static final VarHandle const$2 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_group_class_t.specific.class, "apply", constants$262.const$3);
+    static final VarHandle const$4 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_group_class_t.optional.class, "apply", constants$262.const$3);
 }
 
 

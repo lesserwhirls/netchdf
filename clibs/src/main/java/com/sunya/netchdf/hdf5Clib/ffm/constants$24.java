@@ -11,15 +11,15 @@ final class constants$24 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$24() {}
-    static final VarHandle const$0 = constants$23.const$4.varHandle(MemoryLayout.PathElement.groupElement("need_bkg"));
-    static final VarHandle const$1 = constants$23.const$4.varHandle(MemoryLayout.PathElement.groupElement("recalc"));
-    static final VarHandle const$2 = constants$23.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("len"),
-        RuntimeHelper.POINTER.withName("p")
+    static final VarHandle const$0 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("total"));
+    static final VarHandle const$1 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("meta"));
+    static final VarHandle const$2 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("mesg"));
+    static final VarHandle const$3 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("present"),
+        JAVA_LONG.withName("shared")
     ).withName("");
-    static final VarHandle const$4 = constants$24.const$3.varHandle(MemoryLayout.PathElement.groupElement("len"));
-    static final VarHandle const$5 = constants$24.const$3.varHandle(MemoryLayout.PathElement.groupElement("p"));
+    static final VarHandle const$5 = constants$24.const$4.varHandle(MemoryLayout.PathElement.groupElement("present"));
 }
 
 

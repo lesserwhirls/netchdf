@@ -16,13 +16,13 @@ public interface cookie_read_function_t {
 
     long apply(java.lang.foreign.MemorySegment __cookie, java.lang.foreign.MemorySegment __buf, long __nbytes);
     static MemorySegment allocate(cookie_read_function_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$114.const$5, fi, constants$114.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$106.const$4, fi, constants$106.const$3, scope);
     }
     static cookie_read_function_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment ___cookie, java.lang.foreign.MemorySegment ___buf, long ___nbytes) -> {
             try {
-                return (long)constants$115.const$0.invokeExact(symbol, ___cookie, ___buf, ___nbytes);
+                return (long)constants$106.const$5.invokeExact(symbol, ___cookie, ___buf, ___nbytes);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

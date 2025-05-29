@@ -11,30 +11,12 @@ final class constants$280 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$280() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sselect_valid",
-        constants$19.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sset_extent_none",
-        constants$19.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sset_extent_simple",
-        constants$168.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sencode1",
-        constants$42.const$5
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLregister_connector_by_name",
-        constants$280.const$4
-    );
+    static final VarHandle const$0 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_object_class_t.specific.class, "apply", constants$263.const$1);
+    static final VarHandle const$2 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_object_class_t.optional.class, "apply", constants$263.const$1);
+    static final VarHandle const$4 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_request_notify_t.class, "apply", constants$126.const$1);
 }
 
 

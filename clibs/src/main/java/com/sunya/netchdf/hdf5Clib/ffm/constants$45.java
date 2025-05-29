@@ -11,31 +11,12 @@ final class constants$45 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$45() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Tvlen_create",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tarray_create2",
-        constants$45.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tget_array_ndims",
-        constants$19.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tget_array_dims2",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tset_tag",
-        constants$18.const$3
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I32LE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I64BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I64LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U8BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U8LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U16BE_g", JAVA_LONG);
 }
 
 

@@ -11,27 +11,12 @@ final class constants$166 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$166() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eclose_msg",
-        constants$19.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_msg",
-        constants$45.const$1
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_stack",
-        constants$166.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eget_current_stack",
-        constants$166.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Eclose_stack",
-        constants$19.const$5
-    );
+    static final VarHandle const$0 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("api_name"));
+    static final VarHandle const$1 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("api_args"));
+    static final VarHandle const$2 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_file_name"));
+    static final VarHandle const$3 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_func_name"));
+    static final VarHandle const$4 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_line_num"));
+    static final VarHandle const$5 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_ins_count"));
 }
 
 

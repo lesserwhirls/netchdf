@@ -12,29 +12,24 @@ final class constants$276 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$276() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_dims",
-        constants$42.const$5
+        constants$275.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_ndims",
-        constants$19.const$5
+    static final VarHandle const$1 = constants$275.const$3.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_npoints",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sget_simple_extent_type",
-        constants$19.const$5
-    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_link_class_t.copy.class, "apply", constants$276.const$2);
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sis_regular_hyperslab",
-        constants$19.const$5
+        constants$276.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Sis_simple",
-        constants$19.const$5
-    );
+    static final VarHandle const$5 = constants$275.const$3.varHandle(MemoryLayout.PathElement.groupElement("copy"));
 }
 
 

@@ -11,39 +11,18 @@ final class constants$233 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$233() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pregister2",
-        constants$233.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Premove",
-        constants$18.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset",
-        constants$42.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Punregister",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pall_filters_avail",
-        constants$19.const$5
-    );
+    static final VarHandle const$0 = constants$232.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
+    static final VarHandle const$1 = constants$232.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$2 = constants$232.const$4.varHandle(MemoryLayout.PathElement.groupElement("file_name_len"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("types"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("max_objs"),
+        RuntimeHelper.POINTER.withName("oid_list"),
+        RuntimeHelper.POINTER.withName("count")
+    ).withName("H5VL_file_get_obj_ids_args_t");
+    static final VarHandle const$4 = constants$233.const$3.varHandle(MemoryLayout.PathElement.groupElement("types"));
+    static final VarHandle const$5 = constants$233.const$3.varHandle(MemoryLayout.PathElement.groupElement("max_objs"));
 }
 
 

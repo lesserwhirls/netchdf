@@ -11,12 +11,15 @@ final class constants$198 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$198() {}
-    static final VarHandle const$0 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("cls"));
-    static final VarHandle const$1 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
-    static final VarHandle const$2 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("access_flags"));
-    static final VarHandle const$3 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
-    static final VarHandle const$4 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
-    static final VarHandle const$5 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("base_addr"));
+    static final VarHandle const$0 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
+    static final VarHandle const$1 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$2 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("address"),
+        JAVA_LONG.withName("val_size")
+    ).withName("");
+    static final VarHandle const$4 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("address"));
+    static final VarHandle const$5 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
 }
 
 

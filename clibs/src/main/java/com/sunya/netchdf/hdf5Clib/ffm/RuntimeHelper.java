@@ -39,7 +39,7 @@ final class RuntimeHelper {
             (size, align) -> Arena.ofAuto().allocate(size, align);
 
     static {
-        System.load("/home/stormy/anaconda3/lib/libhdf5.so");
+        System.load("/home/stormy/install/HDF_Group/HDF5/1.14.6/lib/libhdf5.so");
         SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
         SYMBOL_LOOKUP = name -> loaderLookup.find(name).or(() -> LINKER.defaultLookup().find(name));
     }

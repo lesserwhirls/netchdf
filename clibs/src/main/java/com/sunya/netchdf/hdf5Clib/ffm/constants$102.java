@@ -11,33 +11,12 @@ final class constants$102 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$102() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dcreate_anon",
-        constants$102.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dopen2",
-        constants$20.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Dget_space",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dget_space_status",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dget_type",
-        constants$10.const$2
-    );
+    static final VarHandle const$0 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_flags"));
+    static final VarHandle const$1 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_ptr"));
+    static final VarHandle const$2 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_end"));
+    static final VarHandle const$3 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_base"));
+    static final VarHandle const$4 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_base"));
+    static final VarHandle const$5 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_ptr"));
 }
 
 

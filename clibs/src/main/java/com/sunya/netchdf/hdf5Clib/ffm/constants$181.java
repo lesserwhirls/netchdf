@@ -12,28 +12,28 @@ final class constants$181 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$181() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fclear_elink_file_cache",
-        constants$19.const$5
+        "H5Freset_mdc_hit_rate_stats",
+        constants$19.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fset_libver_bounds",
-        constants$51.const$3
+        "H5Fget_name",
+        constants$19.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fstart_mdc_logging",
-        constants$19.const$5
+        "H5Fget_info2",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fstop_mdc_logging",
-        constants$19.const$5
+        "H5Fget_metadata_read_retry_info",
+        constants$17.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_logging_status",
-        constants$42.const$5
+        "H5Fstart_swmr_write",
+        constants$19.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fformat_convert",
-        constants$19.const$5
+        "H5Fget_free_sections",
+        constants$178.const$5
     );
 }
 

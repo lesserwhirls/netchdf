@@ -12,32 +12,28 @@ final class constants$171 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$171() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eclear1",
-        constants$14.const$1
+        "H5ESget_err_count",
+        constants$17.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eget_auto1",
-        constants$117.const$4
+        "H5ESget_err_info",
+        constants$93.const$2
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5ESfree_err_info",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Epush1",
-        constants$171.const$2
+        "H5ESregister_insert_func",
+        constants$36.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eprint1",
-        constants$15.const$4
+        "H5ESregister_complete_func",
+        constants$36.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Eset_auto1",
-        constants$117.const$4
+        "H5ESclose",
+        constants$19.const$1
     );
 }
 

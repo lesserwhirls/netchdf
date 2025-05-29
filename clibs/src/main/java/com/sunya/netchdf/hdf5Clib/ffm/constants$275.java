@@ -11,30 +11,27 @@ final class constants$275 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$275() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_elem_npoints",
-        constants$10.const$2
+    static final VarHandle const$0 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_group_class_t.close.class, "apply", constants$17.const$2);
+    static final VarHandle const$2 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("copy"),
+        RuntimeHelper.POINTER.withName("move"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional")
+    ).withName("H5VL_link_class_t");
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_elem_pointlist",
-        constants$54.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_blocklist",
-        constants$54.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_hyper_nblocks",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_npoints",
-        constants$10.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Sget_select_type",
-        constants$19.const$5
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_link_class_t.create.class, "apply", constants$275.const$4);
 }
 
 

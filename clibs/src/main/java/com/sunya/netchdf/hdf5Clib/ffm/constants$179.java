@@ -12,28 +12,28 @@ final class constants$179 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$179() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fincrement_filesize",
-        constants$41.const$1
+        "H5Fget_vfd_handle",
+        constants$79.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fget_file_image",
-        constants$20.const$1
+        "H5Fmount",
+        constants$61.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_config",
-        constants$18.const$3
+        "H5Funmount",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fset_mdc_config",
-        constants$18.const$3
+        "H5Fget_freespace",
+        constants$0.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_hit_rate",
-        constants$18.const$3
+        "H5Fget_filesize",
+        constants$17.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_size",
-        constants$103.const$5
+        "H5Fget_eoa",
+        constants$17.const$5
     );
 }
 

@@ -11,33 +11,37 @@ final class constants$41 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$41() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Tclose",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        JAVA_LONG
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tequal",
-        constants$41.const$1
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Ovisit1",
+        constants$41.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tlock",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ovisit_by_name1",
+        constants$41.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Ovisit2",
+        constants$33.const$5
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tcommit2",
-        constants$41.const$4
+        "H5Ovisit_by_name2",
+        constants$34.const$0
     );
 }
 

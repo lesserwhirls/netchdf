@@ -11,48 +11,12 @@ final class constants$83 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$83() {}
-    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
-    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("fileno"),
-        JAVA_LONG.withName("addr"),
-        JAVA_INT.withName("type"),
-        JAVA_INT.withName("rc"),
-        JAVA_LONG.withName("atime"),
-        JAVA_LONG.withName("mtime"),
-        JAVA_LONG.withName("ctime"),
-        JAVA_LONG.withName("btime"),
-        JAVA_LONG.withName("num_attrs"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("version"),
-            JAVA_INT.withName("nmesgs"),
-            JAVA_INT.withName("nchunks"),
-            JAVA_INT.withName("flags"),
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("total"),
-                JAVA_LONG.withName("meta"),
-                JAVA_LONG.withName("mesg"),
-                JAVA_LONG.withName("free")
-            ).withName("space"),
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("present"),
-                JAVA_LONG.withName("shared")
-            ).withName("mesg")
-        ).withName("hdr"),
-        MemoryLayout.structLayout(
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("index_size"),
-                JAVA_LONG.withName("heap_size")
-            ).withName("obj"),
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("index_size"),
-                JAVA_LONG.withName("heap_size")
-            ).withName("attr")
-        ).withName("meta_size")
-    ).withName("H5O_info1_t");
-    static final VarHandle const$4 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
-    static final VarHandle const$5 = constants$83.const$3.varHandle(MemoryLayout.PathElement.groupElement("addr"));
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("rpt_fcn_enabled"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("open_trace_file"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("close_trace_file"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("evictions_enabled"));
+    static final VarHandle const$4 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("set_initial_size"));
+    static final VarHandle const$5 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_size"));
 }
 
 

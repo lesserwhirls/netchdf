@@ -11,12 +11,35 @@ final class constants$111 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$111() {}
-    static final VarHandle const$0 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_ptr"));
-    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
-    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
-    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
-    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_base"));
-    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_backup_base"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "tempnam",
+        constants$111.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fflush",
+        constants$15.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fflush_unlocked",
+        constants$15.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fopen",
+        constants$111.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "freopen",
+        constants$111.const$5
+    );
 }
 
 

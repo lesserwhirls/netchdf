@@ -12,34 +12,13 @@ final class constants$266 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$266() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5PLappend",
-        constants$15.const$4
+        constants$265.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5PLprepend",
-        constants$15.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5PLreplace",
-        constants$134.const$3
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5PLinsert",
-        constants$134.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5PLremove",
-        constants$21.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5PLget",
-        constants$266.const$5
-    );
+    static final VarHandle const$1 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.write.class, "apply", constants$265.const$4);
+    static final VarHandle const$3 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("write"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.get.class, "apply", constants$262.const$3);
+    static final VarHandle const$5 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("get"));
 }
 
 

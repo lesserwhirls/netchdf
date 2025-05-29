@@ -11,37 +11,33 @@ final class constants$336 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$336() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_optional",
-        constants$334.const$5
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_DOUBLE
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_free",
-        constants$175.const$3
+        "H5Pset_cache",
+        constants$336.const$0
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_BOOLEAN,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLblob_put",
+        "H5Pset_core_write_tracking",
         constants$336.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pset_driver",
+        constants$79.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLblob_get",
-        constants$336.const$4
+        "H5Pset_driver_by_name",
+        constants$36.const$1
     );
 }
 

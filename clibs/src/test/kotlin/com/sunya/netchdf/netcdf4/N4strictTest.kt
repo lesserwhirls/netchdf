@@ -7,7 +7,7 @@ import com.sunya.netchdf.testdata.testData
 import kotlin.test.assertEquals
 
 // trying to compare output with ncdump - h; probably get rid of
-// @Disabled
+@Disabled
 class N4strictTest {
 
     @Test
@@ -44,7 +44,7 @@ variables:
     @Test
     fun attstr() {
         readN4header(
-            testData + "devcdm/netcdf4/attstr.h5",
+            testData + "devcdm/hdf5/attstr.h5",
 """netcdf attstr {
 
 group: MyGroup {
@@ -106,7 +106,7 @@ group: g2 {
         )
     }
 
-    @Test
+    // @Test file not found
     fun tst_solar_1() {
         readN4header(
             testData + "devcdm/netcdf4/tst_solar_1.nc",

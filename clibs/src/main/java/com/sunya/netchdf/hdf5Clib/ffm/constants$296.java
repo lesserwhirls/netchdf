@@ -11,14 +11,17 @@ final class constants$296 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$296() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.read.class, "apply", constants$295.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$295.const$5
-    );
-    static final VarHandle const$2 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("read"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.write.class, "apply", constants$295.const$5);
-    static final VarHandle const$4 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("write"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.get.class, "apply", constants$292.const$4);
+    static final VarHandle const$0 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final VarHandle const$1 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("value_mem_type_id"));
+    static final VarHandle const$2 = constants$295.const$4.varHandle(MemoryLayout.PathElement.groupElement("value"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("key_mem_type_id"),
+        RuntimeHelper.POINTER.withName("key"),
+        JAVA_BOOLEAN.withName("exists"),
+        MemoryLayout.paddingLayout(7)
+    ).withName("");
+    static final VarHandle const$4 = constants$296.const$3.varHandle(MemoryLayout.PathElement.groupElement("key_mem_type_id"));
+    static final VarHandle const$5 = constants$296.const$3.varHandle(MemoryLayout.PathElement.groupElement("key"));
 }
 
 

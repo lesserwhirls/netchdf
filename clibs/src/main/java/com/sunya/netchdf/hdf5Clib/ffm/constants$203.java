@@ -11,26 +11,38 @@ final class constants$203 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$203() {}
-    static final VarHandle const$0 = constants$199.const$3.varHandle(MemoryLayout.PathElement.groupElement("udata"));
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDregister",
-        constants$43.const$0
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_idx",
+        constants$40.const$1
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDunregister",
-        constants$19.const$5
+        "H5Gget_info_by_idx_async",
+        constants$203.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDopen",
-        constants$188.const$4
+        "H5Gflush",
+        constants$19.const$1
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDclose",
-        constants$15.const$4
+        "H5Grefresh",
+        constants$19.const$1
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDcmp",
-        constants$117.const$4
+        "H5Gclose",
+        constants$19.const$1
     );
 }
 

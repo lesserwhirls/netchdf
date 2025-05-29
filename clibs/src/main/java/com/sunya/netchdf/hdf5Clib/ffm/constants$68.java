@@ -11,15 +11,30 @@ final class constants$68 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$68() {}
-    static final VarHandle const$0 = constants$67.const$5.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$1 = constants$67.const$5.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
-    static final VarHandle const$2 = constants$67.const$5.varHandle(MemoryLayout.PathElement.groupElement("corder"));
-    static final VarHandle const$3 = constants$67.const$5.varHandle(MemoryLayout.PathElement.groupElement("cset"));
-    static final UnionLayout const$4 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("address"),
-        JAVA_LONG.withName("val_size")
-    ).withName("");
-    static final VarHandle const$5 = constants$68.const$4.varHandle(MemoryLayout.PathElement.groupElement("address"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tget_cset",
+        constants$19.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tis_variable_str",
+        constants$19.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_native_type",
+        constants$67.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tset_size",
+        constants$58.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tset_order",
+        constants$64.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tset_precision",
+        constants$58.const$5
+    );
 }
 
 

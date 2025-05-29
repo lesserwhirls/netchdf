@@ -11,33 +11,20 @@ final class constants$290 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$290() {}
-    static final VarHandle const$0 = constants$288.const$1.varHandle(MemoryLayout.PathElement.groupElement("free_wrap_ctx"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("create"),
-        RuntimeHelper.POINTER.withName("open"),
-        RuntimeHelper.POINTER.withName("read"),
-        RuntimeHelper.POINTER.withName("write"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("H5VL_attr_class_t");
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$13.const$2
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.create.class, "apply", constants$290.const$2);
+    static final VarHandle const$1 = constants$288.const$2.varHandle(MemoryLayout.PathElement.groupElement("terminate"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_class_t.optional.class, "apply", constants$262.const$3);
+    static final VarHandle const$3 = constants$288.const$2.varHandle(MemoryLayout.PathElement.groupElement("optional"));
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$290.const$2
+        "H5VLregister_connector",
+        constants$208.const$1
     );
-    static final VarHandle const$5 = constants$290.const$1.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5VLobject",
+        constants$63.const$5
+    );
 }
 
 

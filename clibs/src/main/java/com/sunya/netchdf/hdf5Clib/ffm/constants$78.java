@@ -16,37 +16,35 @@ final class constants$78 {
         RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_INT,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx3",
+        "H5Aiterate_by_name",
         constants$78.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oget_native_info",
-        constants$77.const$3
+        "H5Aopen",
+        constants$19.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oget_native_info_by_name",
-        constants$77.const$5
+        "H5Aopen_async",
+        constants$28.const$0
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_native_info_by_idx",
-        constants$78.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
         RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Olink",
-        constants$78.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Aopen_by_idx",
+        constants$78.const$4
     );
 }
 

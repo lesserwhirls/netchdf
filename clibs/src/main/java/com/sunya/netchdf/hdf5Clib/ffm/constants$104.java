@@ -11,39 +11,12 @@ final class constants$104 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$104() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Dget_chunk_info",
-        constants$104.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Dget_offset",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Dread",
-        constants$104.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Dwrite",
-        constants$104.const$3
-    );
+    static final VarHandle const$0 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_markers"));
+    static final VarHandle const$1 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_chain"));
+    static final VarHandle const$2 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_fileno"));
+    static final VarHandle const$3 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
+    static final VarHandle const$4 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
+    static final VarHandle const$5 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
 }
 
 

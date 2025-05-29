@@ -11,36 +11,23 @@ final class constants$42 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$42() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Topen2",
-        constants$20.const$1
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("len"),
+        RuntimeHelper.POINTER.withName("p")
+    ).withName("");
+    static final VarHandle const$1 = constants$42.const$0.varHandle(MemoryLayout.PathElement.groupElement("len"));
+    static final VarHandle const$2 = constants$42.const$0.varHandle(MemoryLayout.PathElement.groupElement("p"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
         JAVA_LONG,
         JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tcommit_anon",
-        constants$42.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tget_create_plist",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tcommitted",
-        constants$19.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Tencode",
-        constants$42.const$5
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5T_conv_except_func_t.class, "apply", constants$42.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$42.const$3
     );
 }
 

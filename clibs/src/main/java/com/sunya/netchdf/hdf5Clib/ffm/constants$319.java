@@ -11,14 +11,12 @@ final class constants$319 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$319() {}
-    static final VarHandle const$0 = constants$318.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$1 = constants$318.const$5.varHandle(MemoryLayout.PathElement.groupElement("value"));
-    static final VarHandle const$2 = constants$318.const$5.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$3 = constants$318.const$5.varHandle(MemoryLayout.PathElement.groupElement("cap_flags"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_class_t.initialize.class, "apply", constants$19.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$19.const$5
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_GROUP_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_GROUP_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATATYPE_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATATYPE_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_LST_MAP_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_LST_MAP_ACCESS_ID_g", JAVA_LONG);
 }
 
 

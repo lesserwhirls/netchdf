@@ -11,30 +11,94 @@ final class constants$240 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$240() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_cache",
-        constants$103.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_core_write_tracking",
-        constants$42.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver_info",
-        constants$46.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_file_cache_size",
-        constants$18.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_evict_on_close",
-        constants$18.const$3
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("obj_type"),
+            JAVA_INT.withName("type"),
+            MemoryLayout.unionLayout(
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("token")
+                ).withName("loc_by_token"),
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("name"),
+                    JAVA_LONG.withName("lapl_id")
+                ).withName("loc_by_name"),
+                MemoryLayout.structLayout(
+                    RuntimeHelper.POINTER.withName("name"),
+                    JAVA_INT.withName("idx_type"),
+                    JAVA_INT.withName("order"),
+                    JAVA_LONG.withName("n"),
+                    JAVA_LONG.withName("lapl_id")
+                ).withName("loc_by_idx")
+            ).withName("loc_data")
+        ).withName("loc_params"),
+        RuntimeHelper.POINTER.withName("ginfo")
+    ).withName("H5VL_group_get_info_args_t");
+    static final VarHandle const$1 = constants$240.const$0.varHandle(MemoryLayout.PathElement.groupElement("ginfo"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("gcpl_id")
+            ).withName("get_gcpl"),
+            MemoryLayout.structLayout(
+                MemoryLayout.structLayout(
+                    JAVA_INT.withName("obj_type"),
+                    JAVA_INT.withName("type"),
+                    MemoryLayout.unionLayout(
+                        MemoryLayout.structLayout(
+                            RuntimeHelper.POINTER.withName("token")
+                        ).withName("loc_by_token"),
+                        MemoryLayout.structLayout(
+                            RuntimeHelper.POINTER.withName("name"),
+                            JAVA_LONG.withName("lapl_id")
+                        ).withName("loc_by_name"),
+                        MemoryLayout.structLayout(
+                            RuntimeHelper.POINTER.withName("name"),
+                            JAVA_INT.withName("idx_type"),
+                            JAVA_INT.withName("order"),
+                            JAVA_LONG.withName("n"),
+                            JAVA_LONG.withName("lapl_id")
+                        ).withName("loc_by_idx")
+                    ).withName("loc_data")
+                ).withName("loc_params"),
+                RuntimeHelper.POINTER.withName("ginfo")
+            ).withName("get_info")
+        ).withName("args")
+    ).withName("H5VL_group_get_args_t");
+    static final VarHandle const$3 = constants$240.const$2.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$4 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("gcpl_id")
+        ).withName("get_gcpl"),
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("obj_type"),
+                JAVA_INT.withName("type"),
+                MemoryLayout.unionLayout(
+                    MemoryLayout.structLayout(
+                        RuntimeHelper.POINTER.withName("token")
+                    ).withName("loc_by_token"),
+                    MemoryLayout.structLayout(
+                        RuntimeHelper.POINTER.withName("name"),
+                        JAVA_LONG.withName("lapl_id")
+                    ).withName("loc_by_name"),
+                    MemoryLayout.structLayout(
+                        RuntimeHelper.POINTER.withName("name"),
+                        JAVA_INT.withName("idx_type"),
+                        JAVA_INT.withName("order"),
+                        JAVA_LONG.withName("n"),
+                        JAVA_LONG.withName("lapl_id")
+                    ).withName("loc_by_idx")
+                ).withName("loc_data")
+            ).withName("loc_params"),
+            RuntimeHelper.POINTER.withName("ginfo")
+        ).withName("get_info")
+    ).withName("");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("gcpl_id")
+    ).withName("");
 }
 
 

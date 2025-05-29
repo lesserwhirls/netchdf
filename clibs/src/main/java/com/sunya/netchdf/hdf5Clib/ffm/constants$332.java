@@ -12,42 +12,28 @@ final class constants$332 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$332() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_optional",
-        constants$326.const$3
+        "H5Pget_driver_info",
+        constants$63.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLgroup_close",
-        constants$327.const$1
+        "H5Pget_driver_config_str",
+        constants$19.const$4
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pget_elink_file_cache_size",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLlink_create",
-        constants$332.const$2
+        "H5Pget_evict_on_close",
+        constants$17.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pget_family_offset",
+        constants$17.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLlink_copy",
-        constants$332.const$4
+        "H5Pget_fclose_degree",
+        constants$17.const$5
     );
 }
 

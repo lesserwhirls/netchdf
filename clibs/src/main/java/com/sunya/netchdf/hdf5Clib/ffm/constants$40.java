@@ -11,20 +11,34 @@ final class constants$40 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$40() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST64_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST64_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST64_g", JAVA_LONG);
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_name1",
+        constants$33.const$0
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
         JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
         JAVA_LONG
     );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Oget_info_by_idx1",
+        constants$40.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Oget_info2",
+        constants$29.const$4
+    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tcreate",
-        constants$40.const$3
+        "H5Oget_info_by_name2",
+        constants$30.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tcopy",
-        constants$10.const$2
+        "H5Oget_info_by_idx2",
+        constants$30.const$4
     );
 }
 

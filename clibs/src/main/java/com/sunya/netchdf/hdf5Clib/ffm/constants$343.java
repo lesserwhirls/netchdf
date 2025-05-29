@@ -12,35 +12,29 @@ final class constants$343 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$343() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FD_ros3_init",
-        constants$166.const$2
+        "H5Pget_layout",
+        constants$19.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_ros3",
-        constants$18.const$3
+        "H5Pget_virtual_count",
+        constants$17.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_ros3",
-        constants$18.const$3
+        "H5Pget_virtual_dsetname",
+        constants$207.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FD_sec2_init",
-        constants$166.const$2
+        "H5Pget_virtual_filename",
+        constants$207.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_sec2",
-        constants$19.const$5
+        "H5Pget_virtual_srcspace",
+        constants$39.const$3
     );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("magic"),
-        JAVA_INT.withName("version"),
-        JAVA_LONG.withName("rw_fapl_id"),
-        JAVA_LONG.withName("wo_fapl_id"),
-        MemoryLayout.sequenceLayout(4097, JAVA_BYTE).withName("wo_path"),
-        MemoryLayout.sequenceLayout(4097, JAVA_BYTE).withName("log_file_path"),
-        JAVA_BOOLEAN.withName("ignore_wo_errs"),
-        MemoryLayout.paddingLayout(5)
-    ).withName("H5FD_splitter_vfd_config_t");
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Pget_virtual_vspace",
+        constants$39.const$3
+    );
 }
 
 

@@ -11,120 +11,12 @@ final class constants$318 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$318() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_token_class_t.to_str.class, "apply", constants$317.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$317.const$5
-    );
-    static final VarHandle const$2 = constants$317.const$1.varHandle(MemoryLayout.PathElement.groupElement("to_str"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_token_class_t.from_str.class, "apply", constants$317.const$5);
-    static final VarHandle const$4 = constants$317.const$1.varHandle(MemoryLayout.PathElement.groupElement("from_str"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("value"),
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_INT.withName("cap_flags"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("initialize"),
-        RuntimeHelper.POINTER.withName("terminate"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("size"),
-            RuntimeHelper.POINTER.withName("copy"),
-            RuntimeHelper.POINTER.withName("cmp"),
-            RuntimeHelper.POINTER.withName("free"),
-            RuntimeHelper.POINTER.withName("to_str"),
-            RuntimeHelper.POINTER.withName("from_str")
-        ).withName("info_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("get_object"),
-            RuntimeHelper.POINTER.withName("get_wrap_ctx"),
-            RuntimeHelper.POINTER.withName("wrap_object"),
-            RuntimeHelper.POINTER.withName("unwrap_object"),
-            RuntimeHelper.POINTER.withName("free_wrap_ctx")
-        ).withName("wrap_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("create"),
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("read"),
-            RuntimeHelper.POINTER.withName("write"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("close")
-        ).withName("attr_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("create"),
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("read"),
-            RuntimeHelper.POINTER.withName("write"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("close")
-        ).withName("dataset_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("commit"),
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("close")
-        ).withName("datatype_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("create"),
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("close")
-        ).withName("file_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("create"),
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("close")
-        ).withName("group_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("create"),
-            RuntimeHelper.POINTER.withName("copy"),
-            RuntimeHelper.POINTER.withName("move"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional")
-        ).withName("link_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("open"),
-            RuntimeHelper.POINTER.withName("copy"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional")
-        ).withName("object_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("get_conn_cls"),
-            RuntimeHelper.POINTER.withName("opt_query")
-        ).withName("introspect_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("wait"),
-            RuntimeHelper.POINTER.withName("notify"),
-            RuntimeHelper.POINTER.withName("cancel"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional"),
-            RuntimeHelper.POINTER.withName("free")
-        ).withName("request_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("put"),
-            RuntimeHelper.POINTER.withName("get"),
-            RuntimeHelper.POINTER.withName("specific"),
-            RuntimeHelper.POINTER.withName("optional")
-        ).withName("blob_cls"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("cmp"),
-            RuntimeHelper.POINTER.withName("to_str"),
-            RuntimeHelper.POINTER.withName("from_str")
-        ).withName("token_cls"),
-        RuntimeHelper.POINTER.withName("optional")
-    ).withName("H5VL_class_t");
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_FILE_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_FILE_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATASET_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATASET_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATASET_XFER_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_LST_FILE_MOUNT_ID_g", JAVA_LONG);
 }
 
 

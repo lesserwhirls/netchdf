@@ -11,21 +11,40 @@ final class constants$229 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$229() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_VOL_INITIALIZE_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_REFERENCE_ACCESS_ID_g", JAVA_LONG);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pclose",
-        constants$19.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pclose_class",
-        constants$19.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pcopy",
-        constants$10.const$2
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("dset_id")
+    ).withName("");
+    static final VarHandle const$1 = constants$229.const$0.varHandle(MemoryLayout.PathElement.groupElement("dset_id"));
+    static final VarHandle const$2 = constants$229.const$0.varHandle(MemoryLayout.PathElement.groupElement("dset_id"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("size")
+            ).withName("get_binary_size"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("buf"),
+                JAVA_LONG.withName("buf_size")
+            ).withName("get_binary"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("tcpl_id")
+            ).withName("get_tcpl")
+        ).withName("args")
+    ).withName("H5VL_datatype_get_args_t");
+    static final VarHandle const$4 = constants$229.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("size")
+        ).withName("get_binary_size"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("buf"),
+            JAVA_LONG.withName("buf_size")
+        ).withName("get_binary"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tcpl_id")
+        ).withName("get_tcpl")
+    ).withName("");
 }
 
 

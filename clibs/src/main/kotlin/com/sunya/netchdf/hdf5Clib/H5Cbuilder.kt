@@ -20,11 +20,11 @@ import java.lang.foreign.*
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-
 const val MAX_NAME = 2048L
 const val MAX_DIMS = 255L
-
 const val H5P_DEFAULT_LONG = 0L
+
+const val debugGroup = false
 
 // Really a builder of the root Group.
 class H5Cbuilder(val filename: String) {
@@ -110,7 +110,7 @@ class H5Cbuilder(val filename: String) {
         checkErr("H5is_library_threadsafe", H5is_library_threadsafe(ts_p))
         val ts = ts_p[C_INT, 0]
 
-        println("isThreadsafe = $ts = ${if (ts == 0) "false" else "true"}") // currently true!!
+        println("isThreadsafe = $ts = ${if (ts == 0) "false" else "true"}")
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -281,7 +281,7 @@ class H5Cbuilder(val filename: String) {
             val num_attr = H5O_info2_t.`num_attrs$get`(oinfo_p)
 
             if (otype == H5O_TYPE_GROUP()) {
-                println("  Group name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
+                if (debugGroup) println("  Group name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
                 // TODO do we need token?
                 val nestedGroup = Group.Builder(linkname)
                 val nestedContext = context.copy(group = nestedGroup)
@@ -290,7 +290,7 @@ class H5Cbuilder(val filename: String) {
                 return 0
 
             } else if (otype == H5O_TYPE_DATASET()) {
-                println("  Dataset name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id " +
+                if (debugGroup) println("  Dataset name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id " +
                         " ltype=${if (ltype == H5L_TYPE_HARD()) "HARD" else "SOFT"}")
 
                 if (ltype == H5L_TYPE_HARD() || useSoftLinks) {
@@ -306,11 +306,11 @@ class H5Cbuilder(val filename: String) {
                     println("  *** only supporting hard, not soft or external links ")
                 }
             } else if (otype == H5O_TYPE_NAMED_DATATYPE()) {
-                println("  Datatype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
+                if (debugGroup) println("  Datatype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
                 val type_id = H5Topen2(context.group5id,  linkname_p, H5P_DEFAULT_LONG)
                 readH5CTypeInfo(context, type_id, linkname)
             } else {
-                println("  NONE otype == $otype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
+                if (debugGroup) println("  NONE otype == $otype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
             }
 
             return 0
@@ -754,7 +754,7 @@ internal fun makeSection(session : Arena, datasetId : Long, h5ctype : H5CTypeInf
     val size = want.totalElements * h5ctype.elemSize.toLong()
     if (debug) println("readRegularData want=$want nelems=${want.totalElements} $datatype size=$size")
     if (want.rank == 0) { // scalar
-        return Pair(H5S_ALL(), H5S_ALL())
+        return Pair(H5S_ALL().toLong(), H5S_ALL().toLong())
     }
 
     val rank = want.rank.toLong()

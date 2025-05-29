@@ -11,30 +11,37 @@ final class constants$175 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$175() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("nbins"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(21, RuntimeHelper.POINTER).withName("retries")
-    ).withName("H5F_retry_info_t");
-    static final VarHandle const$1 = constants$175.const$0.varHandle(MemoryLayout.PathElement.groupElement("nbins"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5F_flush_cb_t.class, "apply", constants$18.const$3);
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "H5Fis_accessible",
-        constants$175.const$3
+        constants$175.const$0
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_INT,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "H5Fcreate",
-        constants$175.const$5
+        constants$175.const$2
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fcreate_async",
+        constants$175.const$4
     );
 }
 

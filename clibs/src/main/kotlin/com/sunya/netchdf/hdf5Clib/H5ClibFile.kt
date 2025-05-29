@@ -14,15 +14,29 @@ import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 
 /*
+1. install hdf5 library
+
+https://support.hdfgroup.org/downloads/
+https://support.hdfgroup.org/downloads/hdf5/hdf5_1_14_6.html
+https://support.hdfgroup.org/releases/hdf5/v1_14/v1_14_6/downloads/hdf5-1.14.6-ubuntu-2404_gcc.deb
+
+double click on it, install into /home/install/HDF_GROUP (modify below as needed)
+
+2. make ffm classes
+
 cd /home/stormy/install/jextract-21/bin
 
 ./jextract --source \
     --header-class-name hdf5_h \
     --target-package com.sunya.netchdf.hdf5Clib.ffm \
-    -I /home/stormy/anaconda3/include/hdf5.h \
-    -l /home/stormy/anaconda3/lib/libhdf5.so \
+    -I /home/stormy/install/HDF_Group/HDF5/1.14.6/include/hdf5.h \
+    -l /home/stormy/install/HDF_Group/HDF5/1.14.6/lib/libhdf5.so \
     --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
-    /home/stormy/anaconda3/include/hdf5.h
+    /home/stormy/install/HDF_Group/HDF5/1.14.6/include/hdf5.h
+
+ You can search for this string in generated ffm file: "HDF5 library version: 1.14.6"
+ See if theres build errors
+ See if theres test errors.
  */
 class Hdf5ClibFile(val filename: String) : Netchdf {
     private val header = H5Cbuilder(filename)

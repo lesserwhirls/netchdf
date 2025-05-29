@@ -17,7 +17,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5R_ref_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$267.const$2;
+        return constants$210.const$5;
     }
     /**
      * {@snippet :
@@ -32,13 +32,13 @@ public class H5R_ref_t {
         // Suppresses default constructor, ensuring non-instantiability.
         private u() {}
         public static MemoryLayout $LAYOUT() {
-            return constants$267.const$3;
+            return constants$211.const$0;
         }
         public static MemorySegment __data$slice(MemorySegment seg) {
             return seg.asSlice(0, 64);
         }
         public static VarHandle align$VH() {
-            return constants$267.const$4;
+            return constants$211.const$1;
         }
         /**
          * Getter for field:
@@ -47,7 +47,7 @@ public class H5R_ref_t {
          * }
          */
         public static long align$get(MemorySegment seg) {
-            return (long)constants$267.const$4.get(seg);
+            return (long)constants$211.const$1.get(seg);
         }
         /**
          * Setter for field:
@@ -56,13 +56,13 @@ public class H5R_ref_t {
          * }
          */
         public static void align$set(MemorySegment seg, long x) {
-            constants$267.const$4.set(seg, x);
+            constants$211.const$1.set(seg, x);
         }
         public static long align$get(MemorySegment seg, long index) {
-            return (long)constants$267.const$4.get(seg.asSlice(index*sizeof()));
+            return (long)constants$211.const$1.get(seg.asSlice(index*sizeof()));
         }
         public static void align$set(MemorySegment seg, long index, long x) {
-            constants$267.const$4.set(seg.asSlice(index*sizeof()), x);
+            constants$211.const$1.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

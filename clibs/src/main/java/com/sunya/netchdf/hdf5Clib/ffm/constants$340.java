@@ -11,26 +11,35 @@ final class constants$340 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$340() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("namenode_name"),
-        MemoryLayout.paddingLayout(3),
-        JAVA_INT.withName("namenode_port"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("user_name"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("kerberos_ticket_cache"),
-        MemoryLayout.paddingLayout(2),
-        JAVA_INT.withName("stream_buffer_size")
-    ).withName("H5FD_hdfs_fapl_t");
-    static final VarHandle const$1 = constants$340.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$340.const$0.varHandle(MemoryLayout.PathElement.groupElement("namenode_port"));
-    static final VarHandle const$3 = constants$340.const$0.varHandle(MemoryLayout.PathElement.groupElement("stream_buffer_size"));
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FD_hdfs_init",
-        constants$166.const$2
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pset_sieve_buf_size",
+        constants$58.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_hdfs",
-        constants$18.const$3
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Pset_small_data_block_size",
+        constants$58.const$5
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Pset_vol",
+        constants$79.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Pget_vol_cap_flags",
+        constants$17.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Pset_mdc_image_config",
+        constants$17.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Pset_page_buffer_size",
+        constants$340.const$5
     );
 }
 

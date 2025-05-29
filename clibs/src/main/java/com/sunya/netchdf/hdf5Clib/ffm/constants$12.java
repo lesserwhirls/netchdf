@@ -11,7 +11,7 @@ final class constants$12 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$12() {}
-    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("__clang_max_align_nonce1"));
+    static final VarHandle const$0 = constants$11.const$5.varHandle(MemoryLayout.PathElement.groupElement("__align"));
     static final StructLayout const$1 = MemoryLayout.structLayout(
         JAVA_LONG.withName("index_size"),
         JAVA_LONG.withName("heap_size")
@@ -21,15 +21,9 @@ final class constants$12 {
     static final StructLayout const$4 = MemoryLayout.structLayout(
         MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
     ).withName("H5O_token_t");
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("total_alloc_bytes"),
-        JAVA_LONG.withName("curr_alloc_bytes"),
-        JAVA_LONG.withName("peak_alloc_bytes"),
-        JAVA_LONG.withName("max_block_size"),
-        JAVA_LONG.withName("total_alloc_blocks_count"),
-        JAVA_LONG.withName("curr_alloc_blocks_count"),
-        JAVA_LONG.withName("peak_alloc_blocks_count")
-    ).withName("H5_alloc_stats_t");
+    static final FunctionDescriptor const$5 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER
+    );
 }
 
 

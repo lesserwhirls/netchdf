@@ -17,34 +17,36 @@ final class constants$77 {
         JAVA_INT,
         JAVA_INT,
         JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_idx",
+        "H5Aget_name_by_idx",
         constants$77.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oexists_by_name",
-        constants$54.const$5
+        "H5Aget_space",
+        constants$0.const$4
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Aget_storage_size",
+        constants$0.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info3",
-        constants$77.const$3
+        "H5Aget_type",
+        constants$0.const$4
     );
     static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         JAVA_INT,
-        JAVA_LONG
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name3",
+        "H5Aiterate2",
         constants$77.const$5
     );
 }

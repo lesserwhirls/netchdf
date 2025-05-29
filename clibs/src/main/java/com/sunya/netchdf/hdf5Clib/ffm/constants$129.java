@@ -11,37 +11,12 @@ final class constants$129 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$129() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$129.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "fputs",
-        constants$117.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "puts",
-        constants$15.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "ungetc",
-        constants$23.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "fread",
-        constants$129.const$5
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_DATASPACE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_DATATYPE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_EARRAY_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_EFL_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_ERROR_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_EVENTSET_g", JAVA_LONG);
 }
 
 

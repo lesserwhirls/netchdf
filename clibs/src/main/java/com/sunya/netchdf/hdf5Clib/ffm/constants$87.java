@@ -11,25 +11,18 @@ final class constants$87 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$87() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ovisit2",
-        constants$80.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name2",
-        constants$80.const$4
-    );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_BOOLEAN.withName("corder_valid"),
-        MemoryLayout.paddingLayout(3),
-        JAVA_INT.withName("corder"),
-        JAVA_INT.withName("cset"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("data_size")
-    ).withName("");
-    static final VarHandle const$3 = constants$87.const$2.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
-    static final VarHandle const$4 = constants$87.const$2.varHandle(MemoryLayout.PathElement.groupElement("corder"));
-    static final VarHandle const$5 = constants$87.const$2.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_empty_reserve"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("empty_reserve"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("dirty_bytes_threshold"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata_write_strategy"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_BOOLEAN.withName("generate_image"),
+        JAVA_BOOLEAN.withName("save_resize_status"),
+        MemoryLayout.paddingLayout(2),
+        JAVA_INT.withName("entry_ageout")
+    ).withName("H5AC_cache_image_config_t");
+    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
 }
 
 

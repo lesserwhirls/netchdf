@@ -12,28 +12,35 @@ final class constants$330 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$330() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5VLdatatype_close",
-        constants$327.const$1
+        "H5Pset_istore_k",
+        constants$64.const$2
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLfile_create",
-        constants$300.const$3
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLfile_open",
-        constants$301.const$1
+        "H5Pset_shared_mesg_index",
+        constants$330.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLfile_get",
-        constants$326.const$3
+        "H5Pset_shared_mesg_nindexes",
+        constants$64.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLfile_specific",
-        constants$326.const$3
+        "H5Pset_shared_mesg_phase_change",
+        constants$69.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLfile_optional",
-        constants$326.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Pset_sizes",
+        constants$330.const$5
     );
 }
 

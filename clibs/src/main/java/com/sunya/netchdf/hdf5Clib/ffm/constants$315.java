@@ -11,22 +11,12 @@ final class constants$315 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$315() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.put.class, "apply", constants$314.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$314.const$5
-    );
-    static final VarHandle const$2 = constants$314.const$4.varHandle(MemoryLayout.PathElement.groupElement("put"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_blob_class_t.get.class, "apply", constants$315.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$315.const$3
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATASET_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATASET_ACCESS_ID_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATASET_XFER_ID_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_FILE_MOUNT_ID_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_GROUP_CREATE_ID_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_GROUP_ACCESS_ID_g", JAVA_LONG);
 }
 
 

@@ -11,30 +11,66 @@ final class constants$252 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$252() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_dset_no_attrs_hint",
-        constants$182.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_external",
-        constants$43.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fill_time",
-        constants$46.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_fill_value",
-        constants$92.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_shuffle",
-        constants$19.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_layout",
-        constants$46.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("delta")
+            ).withName("change_rc"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("exists")
+            ).withName("exists"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("token_ptr")
+            ).withName("lookup"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("idx_type"),
+                JAVA_INT.withName("order"),
+                JAVA_INT.withName("fields"),
+                MemoryLayout.paddingLayout(4),
+                RuntimeHelper.POINTER.withName("op"),
+                RuntimeHelper.POINTER.withName("op_data")
+            ).withName("visit"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("obj_id")
+            ).withName("flush"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("obj_id")
+            ).withName("refresh")
+        ).withName("args")
+    ).withName("H5VL_object_specific_args_t");
+    static final VarHandle const$1 = constants$252.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("delta")
+        ).withName("change_rc"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("exists")
+        ).withName("exists"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("token_ptr")
+        ).withName("lookup"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("idx_type"),
+            JAVA_INT.withName("order"),
+            JAVA_INT.withName("fields"),
+            MemoryLayout.paddingLayout(4),
+            RuntimeHelper.POINTER.withName("op"),
+            RuntimeHelper.POINTER.withName("op_data")
+        ).withName("visit"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("obj_id")
+        ).withName("flush"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("obj_id")
+        ).withName("refresh")
+    ).withName("");
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("delta")
+    ).withName("");
+    static final VarHandle const$4 = constants$252.const$3.varHandle(MemoryLayout.PathElement.groupElement("delta"));
+    static final VarHandle const$5 = constants$248.const$3.varHandle(MemoryLayout.PathElement.groupElement("exists"));
 }
 
 

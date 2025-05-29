@@ -11,35 +11,30 @@ final class constants$22 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$22() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Iinc_type_ref",
-        constants$21.const$4
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Idec_type_ref",
-        constants$21.const$4
+        "H5Iiterate",
+        constants$22.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Iget_type_ref",
-        constants$21.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Inmembers",
+        constants$22.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Isearch",
-        constants$22.const$3
+        "H5Itype_exists",
+        constants$21.const$0
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Iiterate",
-        constants$22.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Iis_valid",
+        constants$19.const$1
     );
 }
 

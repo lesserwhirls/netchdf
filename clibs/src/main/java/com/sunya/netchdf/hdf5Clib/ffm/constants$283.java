@@ -11,18 +11,12 @@ final class constants$283 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$283() {}
-    static final VarHandle const$0 = constants$282.const$5.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$1 = constants$282.const$5.varHandle(MemoryLayout.PathElement.groupElement("lapl_id"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("name"),
-        JAVA_INT.withName("idx_type"),
-        JAVA_INT.withName("order"),
-        JAVA_LONG.withName("n"),
-        JAVA_LONG.withName("lapl_id")
-    ).withName("H5VL_loc_by_idx");
-    static final VarHandle const$3 = constants$283.const$2.varHandle(MemoryLayout.PathElement.groupElement("name"));
-    static final VarHandle const$4 = constants$283.const$2.varHandle(MemoryLayout.PathElement.groupElement("idx_type"));
-    static final VarHandle const$5 = constants$283.const$2.varHandle(MemoryLayout.PathElement.groupElement("order"));
+    static final VarHandle const$0 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("wait"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_request_class_t.notify.class, "apply", constants$15.const$0);
+    static final VarHandle const$2 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("notify"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_request_class_t.cancel.class, "apply", constants$13.const$4);
+    static final VarHandle const$4 = constants$282.const$4.varHandle(MemoryLayout.PathElement.groupElement("cancel"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_request_class_t.specific.class, "apply", constants$13.const$4);
 }
 
 

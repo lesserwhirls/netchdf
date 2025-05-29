@@ -16,13 +16,13 @@ public interface H5D_scatter_func_t {
 
     int apply(java.lang.foreign.MemorySegment value, java.lang.foreign.MemorySegment buf, java.lang.foreign.MemorySegment size);
     static MemorySegment allocate(H5D_scatter_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$101.const$1, fi, constants$16.const$0, scope);
+        return RuntimeHelper.upcallStub(constants$89.const$1, fi, constants$15.const$0, scope);
     }
     static H5D_scatter_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _value, java.lang.foreign.MemorySegment _buf, java.lang.foreign.MemorySegment _size) -> {
             try {
-                return (int)constants$101.const$2.invokeExact(symbol, _value, _buf, _size);
+                return (int)constants$89.const$2.invokeExact(symbol, _value, _buf, _size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

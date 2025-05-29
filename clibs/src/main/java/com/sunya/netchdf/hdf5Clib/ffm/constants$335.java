@@ -11,32 +11,29 @@ final class constants$335 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$335() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Pget_page_buffer_size",
+        constants$27.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5VLintrospect_opt_query",
-        constants$335.const$0
+        "H5Pget_sieve_buf_size",
+        constants$17.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_wait",
-        constants$327.const$1
+        "H5Pget_small_data_block_size",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_notify",
-        constants$123.const$5
+        "H5Pget_vol_id",
+        constants$17.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_cancel",
-        constants$175.const$3
+        "H5Pget_vol_info",
+        constants$17.const$5
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5VLrequest_specific",
-        constants$334.const$5
+        "H5Pset_alignment",
+        constants$330.const$5
     );
 }
 

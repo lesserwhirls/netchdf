@@ -12,13 +12,29 @@ final class constants$202 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$202() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$201.const$4
+        "H5Gopen_async",
+        constants$28.const$0
     );
-    static final VarHandle const$1 = constants$199.const$3.varHandle(MemoryLayout.PathElement.groupElement("image_free"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_copy.class, "apply", constants$118.const$5);
-    static final VarHandle const$3 = constants$199.const$3.varHandle(MemoryLayout.PathElement.groupElement("udata_copy"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_free.class, "apply", constants$15.const$4);
-    static final VarHandle const$5 = constants$199.const$3.varHandle(MemoryLayout.PathElement.groupElement("udata_free"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Gget_create_plist",
+        constants$0.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Gget_info",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_async",
+        constants$97.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_name",
+        constants$33.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_name_async",
+        constants$194.const$5
+    );
 }
 
 

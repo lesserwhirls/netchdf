@@ -21,7 +21,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5VL_wrap_class_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$288.const$1;
+        return constants$258.const$0;
     }
     /**
      * {@snippet :
@@ -32,13 +32,13 @@ public class H5VL_wrap_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(get_object fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$288.const$2, fi, constants$118.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$258.const$1, fi, constants$110.const$3, scope);
         }
         static get_object ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$186.const$5.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$188.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -47,7 +47,7 @@ public class H5VL_wrap_class_t {
     }
 
     public static VarHandle get_object$VH() {
-        return constants$288.const$3;
+        return constants$258.const$2;
     }
     /**
      * Getter for field:
@@ -56,7 +56,7 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static MemorySegment get_object$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$288.const$3.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$258.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -65,13 +65,13 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static void get_object$set(MemorySegment seg, MemorySegment x) {
-        constants$288.const$3.set(seg, x);
+        constants$258.const$2.set(seg, x);
     }
     public static MemorySegment get_object$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$288.const$3.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$258.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void get_object$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$288.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$258.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_object get_object(MemorySegment segment, Arena scope) {
         return get_object.ofAddress(get_object$get(segment), scope);
@@ -85,13 +85,13 @@ public class H5VL_wrap_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0, java.lang.foreign.MemorySegment _x1);
         static MemorySegment allocate(get_wrap_ctx fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$288.const$4, fi, constants$117.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$258.const$3, fi, constants$13.const$4, scope);
         }
         static get_wrap_ctx ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, java.lang.foreign.MemorySegment __x1) -> {
                 try {
-                    return (int)constants$189.const$5.invokeExact(symbol, __x0, __x1);
+                    return (int)constants$17.const$1.invokeExact(symbol, __x0, __x1);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -100,7 +100,7 @@ public class H5VL_wrap_class_t {
     }
 
     public static VarHandle get_wrap_ctx$VH() {
-        return constants$288.const$5;
+        return constants$258.const$4;
     }
     /**
      * Getter for field:
@@ -109,7 +109,7 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static MemorySegment get_wrap_ctx$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$288.const$5.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$258.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -118,13 +118,13 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static void get_wrap_ctx$set(MemorySegment seg, MemorySegment x) {
-        constants$288.const$5.set(seg, x);
+        constants$258.const$4.set(seg, x);
     }
     public static MemorySegment get_wrap_ctx$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$288.const$5.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$258.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void get_wrap_ctx$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$288.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$258.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static get_wrap_ctx get_wrap_ctx(MemorySegment segment, Arena scope) {
         return get_wrap_ctx.ofAddress(get_wrap_ctx$get(segment), scope);
@@ -138,13 +138,13 @@ public class H5VL_wrap_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0, int _x1, java.lang.foreign.MemorySegment _x2);
         static MemorySegment allocate(wrap_object fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$289.const$0, fi, constants$128.const$1, scope);
+            return RuntimeHelper.upcallStub(constants$258.const$5, fi, constants$119.const$5, scope);
         }
         static wrap_object ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0, int __x1, java.lang.foreign.MemorySegment __x2) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$289.const$1.invokeExact(symbol, __x0, __x1, __x2);
+                    return (java.lang.foreign.MemorySegment)constants$259.const$0.invokeExact(symbol, __x0, __x1, __x2);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -153,7 +153,7 @@ public class H5VL_wrap_class_t {
     }
 
     public static VarHandle wrap_object$VH() {
-        return constants$289.const$2;
+        return constants$259.const$1;
     }
     /**
      * Getter for field:
@@ -162,7 +162,7 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static MemorySegment wrap_object$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$289.const$2.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$259.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -171,13 +171,13 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static void wrap_object$set(MemorySegment seg, MemorySegment x) {
-        constants$289.const$2.set(seg, x);
+        constants$259.const$1.set(seg, x);
     }
     public static MemorySegment wrap_object$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$289.const$2.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$259.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void wrap_object$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$289.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$259.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static wrap_object wrap_object(MemorySegment segment, Arena scope) {
         return wrap_object.ofAddress(wrap_object$get(segment), scope);
@@ -191,13 +191,13 @@ public class H5VL_wrap_class_t {
 
         java.lang.foreign.MemorySegment apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(unwrap_object fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$289.const$3, fi, constants$118.const$5, scope);
+            return RuntimeHelper.upcallStub(constants$259.const$2, fi, constants$110.const$3, scope);
         }
         static unwrap_object ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (java.lang.foreign.MemorySegment)constants$186.const$5.invokeExact(symbol, __x0);
+                    return (java.lang.foreign.MemorySegment)constants$188.const$1.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -206,7 +206,7 @@ public class H5VL_wrap_class_t {
     }
 
     public static VarHandle unwrap_object$VH() {
-        return constants$289.const$4;
+        return constants$259.const$3;
     }
     /**
      * Getter for field:
@@ -215,7 +215,7 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static MemorySegment unwrap_object$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$289.const$4.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$259.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -224,13 +224,13 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static void unwrap_object$set(MemorySegment seg, MemorySegment x) {
-        constants$289.const$4.set(seg, x);
+        constants$259.const$3.set(seg, x);
     }
     public static MemorySegment unwrap_object$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$289.const$4.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$259.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void unwrap_object$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$289.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$259.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static unwrap_object unwrap_object(MemorySegment segment, Arena scope) {
         return unwrap_object.ofAddress(unwrap_object$get(segment), scope);
@@ -244,13 +244,13 @@ public class H5VL_wrap_class_t {
 
         int apply(java.lang.foreign.MemorySegment _x0);
         static MemorySegment allocate(free_wrap_ctx fi, Arena scope) {
-            return RuntimeHelper.upcallStub(constants$289.const$5, fi, constants$15.const$4, scope);
+            return RuntimeHelper.upcallStub(constants$259.const$4, fi, constants$15.const$4, scope);
         }
         static free_wrap_ctx ofAddress(MemorySegment addr, Arena arena) {
             MemorySegment symbol = addr.reinterpret(arena, null);
             return (java.lang.foreign.MemorySegment __x0) -> {
                 try {
-                    return (int)constants$17.const$5.invokeExact(symbol, __x0);
+                    return (int)constants$27.const$4.invokeExact(symbol, __x0);
                 } catch (Throwable ex$) {
                     throw new AssertionError("should not reach here", ex$);
                 }
@@ -259,7 +259,7 @@ public class H5VL_wrap_class_t {
     }
 
     public static VarHandle free_wrap_ctx$VH() {
-        return constants$290.const$0;
+        return constants$259.const$5;
     }
     /**
      * Getter for field:
@@ -268,7 +268,7 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static MemorySegment free_wrap_ctx$get(MemorySegment seg) {
-        return (java.lang.foreign.MemorySegment)constants$290.const$0.get(seg);
+        return (java.lang.foreign.MemorySegment)constants$259.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -277,13 +277,13 @@ public class H5VL_wrap_class_t {
      * }
      */
     public static void free_wrap_ctx$set(MemorySegment seg, MemorySegment x) {
-        constants$290.const$0.set(seg, x);
+        constants$259.const$5.set(seg, x);
     }
     public static MemorySegment free_wrap_ctx$get(MemorySegment seg, long index) {
-        return (java.lang.foreign.MemorySegment)constants$290.const$0.get(seg.asSlice(index*sizeof()));
+        return (java.lang.foreign.MemorySegment)constants$259.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void free_wrap_ctx$set(MemorySegment seg, long index, MemorySegment x) {
-        constants$290.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$259.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static free_wrap_ctx free_wrap_ctx(MemorySegment segment, Arena scope) {
         return free_wrap_ctx.ofAddress(free_wrap_ctx$get(segment), scope);

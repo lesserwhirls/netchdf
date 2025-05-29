@@ -11,22 +11,17 @@ final class constants$311 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$311() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_request_notify_t.class, "apply", constants$134.const$3);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$134.const$3
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Zget_filter_info",
+        constants$22.const$2
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("get_conn_cls"),
-        RuntimeHelper.POINTER.withName("opt_query")
-    ).withName("H5VL_introspect_class_t");
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_introspect_class_t.get_conn_cls.class, "apply", constants$201.const$4);
-    static final VarHandle const$4 = constants$311.const$2.varHandle(MemoryLayout.PathElement.groupElement("get_conn_cls"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5P_cls_create_func_t.class, "apply", constants$17.const$5);
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_cls_copy_func_t.class, "apply", constants$79.const$5);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$79.const$5
     );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5P_cls_close_func_t.class, "apply", constants$17.const$5);
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5P_prp_cb1_t.class, "apply", constants$17.const$2);
 }
 
 

@@ -11,36 +11,19 @@ final class constants$268 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$268() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Rcreate_region",
-        constants$268.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Rcreate_attr",
-        constants$268.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Rdestroy",
-        constants$15.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Rget_type",
-        constants$15.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("commit"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_datatype_class_t");
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.commit.class, "apply", constants$260.const$1);
+    static final VarHandle const$2 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("commit"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.open.class, "apply", constants$260.const$5);
+    static final VarHandle const$4 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.get.class, "apply", constants$262.const$3);
 }
 
 

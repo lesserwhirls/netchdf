@@ -11,24 +11,42 @@ final class constants$59 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$59() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_query_func_t.class, "apply", constants$58.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$58.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tlock",
+        constants$19.const$1
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("id"),
-        RuntimeHelper.POINTER.withName("comment"),
-        RuntimeHelper.POINTER.withName("create_func"),
-        RuntimeHelper.POINTER.withName("move_func"),
-        RuntimeHelper.POINTER.withName("copy_func"),
-        RuntimeHelper.POINTER.withName("trav_func"),
-        RuntimeHelper.POINTER.withName("del_func"),
-        RuntimeHelper.POINTER.withName("query_func")
-    ).withName("");
-    static final VarHandle const$3 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$4 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$5 = constants$59.const$2.varHandle(MemoryLayout.PathElement.groupElement("comment"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tcommit2",
+        constants$59.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tcommit_async",
+        constants$59.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Topen2",
+        constants$19.const$4
+    );
 }
 
 

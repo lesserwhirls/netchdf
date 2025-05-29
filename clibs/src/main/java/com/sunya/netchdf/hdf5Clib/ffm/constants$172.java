@@ -11,19 +11,7 @@ final class constants$172 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$172() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ewalk1",
-        constants$22.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eget_major",
-        constants$46.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eget_minor",
-        constants$46.const$0
-    );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
+    static final StructLayout const$0 = MemoryLayout.structLayout(
         MemoryLayout.structLayout(
             JAVA_INT.withName("version"),
             MemoryLayout.paddingLayout(4),
@@ -46,13 +34,21 @@ final class constants$172 {
             ).withName("msgs_info")
         ).withName("sohm")
     ).withName("H5F_info2_t");
-    static final StructLayout const$4 = MemoryLayout.structLayout(
+    static final StructLayout const$1 = MemoryLayout.structLayout(
         JAVA_INT.withName("version"),
         MemoryLayout.paddingLayout(4),
         JAVA_LONG.withName("super_size"),
         JAVA_LONG.withName("super_ext_size")
     ).withName("");
-    static final VarHandle const$5 = constants$172.const$4.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$2 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$3 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
+    static final VarHandle const$4 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("meta_size"),
+        JAVA_LONG.withName("tot_space")
+    ).withName("");
 }
 
 

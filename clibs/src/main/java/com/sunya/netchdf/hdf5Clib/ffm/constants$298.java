@@ -11,19 +11,32 @@ final class constants$298 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$298() {}
-    static final VarHandle const$0 = constants$294.const$4.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("commit"),
-        RuntimeHelper.POINTER.withName("open"),
-        RuntimeHelper.POINTER.withName("get"),
-        RuntimeHelper.POINTER.withName("specific"),
-        RuntimeHelper.POINTER.withName("optional"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("H5VL_datatype_class_t");
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.commit.class, "apply", constants$290.const$2);
-    static final VarHandle const$3 = constants$298.const$1.varHandle(MemoryLayout.PathElement.groupElement("commit"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.open.class, "apply", constants$291.const$0);
-    static final VarHandle const$5 = constants$298.const$1.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final VarHandle const$0 = constants$297.const$5.varHandle(MemoryLayout.PathElement.groupElement("get_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("mapl_id")
+        ).withName("get_mapl"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("mcpl_id")
+        ).withName("get_mcpl"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("type_id")
+        ).withName("get_key_type"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("type_id")
+        ).withName("get_val_type"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("count")
+        ).withName("get_count")
+    ).withName("");
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("mapl_id")
+    ).withName("");
+    static final VarHandle const$3 = constants$298.const$2.varHandle(MemoryLayout.PathElement.groupElement("mapl_id"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("mcpl_id")
+    ).withName("");
+    static final VarHandle const$5 = constants$298.const$4.varHandle(MemoryLayout.PathElement.groupElement("mcpl_id"));
 }
 
 

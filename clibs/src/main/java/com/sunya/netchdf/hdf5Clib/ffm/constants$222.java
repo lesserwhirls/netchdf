@@ -11,14 +11,20 @@ final class constants$222 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$222() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5P_prp_compare_func_t.class, "apply", constants$221.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$221.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5P_prp_close_func_t.class, "apply", constants$18.const$0);
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5P_iterate_t.class, "apply", constants$42.const$5);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ROOT_ID_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_OBJECT_CREATE_ID_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$221.const$5.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("type_id")
+    ).withName("");
+    static final VarHandle const$2 = constants$222.const$1.varHandle(MemoryLayout.PathElement.groupElement("type_id"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("idx_type"),
+        JAVA_INT.withName("order"),
+        RuntimeHelper.POINTER.withName("idx"),
+        RuntimeHelper.POINTER.withName("op"),
+        RuntimeHelper.POINTER.withName("op_data")
+    ).withName("H5VL_attr_iterate_args_t");
+    static final VarHandle const$4 = constants$222.const$3.varHandle(MemoryLayout.PathElement.groupElement("idx_type"));
+    static final VarHandle const$5 = constants$222.const$3.varHandle(MemoryLayout.PathElement.groupElement("order"));
 }
 
 

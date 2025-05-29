@@ -11,14 +11,14 @@ final class constants$289 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$289() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.wrap_object.class, "apply", constants$128.const$1);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$128.const$1
+    static final VarHandle const$0 = constants$288.const$2.varHandle(MemoryLayout.PathElement.groupElement("conn_version"));
+    static final VarHandle const$1 = constants$288.const$2.varHandle(MemoryLayout.PathElement.groupElement("cap_flags"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_class_t.initialize.class, "apply", constants$19.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$19.const$1
     );
-    static final VarHandle const$2 = constants$288.const$1.varHandle(MemoryLayout.PathElement.groupElement("wrap_object"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.unwrap_object.class, "apply", constants$118.const$5);
-    static final VarHandle const$4 = constants$288.const$1.varHandle(MemoryLayout.PathElement.groupElement("unwrap_object"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.free_wrap_ctx.class, "apply", constants$15.const$4);
+    static final VarHandle const$4 = constants$288.const$2.varHandle(MemoryLayout.PathElement.groupElement("initialize"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_class_t.terminate.class, "apply", constants$13.const$2);
 }
 
 

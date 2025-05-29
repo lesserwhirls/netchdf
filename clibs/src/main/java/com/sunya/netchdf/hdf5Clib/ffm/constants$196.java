@@ -11,17 +11,35 @@ final class constants$196 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$196() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_BOOLEAN
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Literate_by_name2",
+        constants$78.const$0
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.lock.class, "apply", constants$196.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lvisit2",
+        constants$41.const$0
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$196.const$0
+        "H5Lvisit_by_name2",
+        constants$41.const$2
     );
-    static final VarHandle const$3 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("lock"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.unlock.class, "apply", constants$15.const$4);
-    static final VarHandle const$5 = constants$184.const$1.varHandle(MemoryLayout.PathElement.groupElement("unlock"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_ud",
+        constants$196.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Lis_registered",
+        constants$21.const$0
+    );
 }
 
 

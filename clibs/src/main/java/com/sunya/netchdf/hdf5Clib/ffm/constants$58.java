@@ -11,26 +11,33 @@ final class constants$58 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$58() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_copy_func_t.class, "apply", constants$57.const$3);
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_INT,
         JAVA_LONG
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_traverse_func_t.class, "apply", constants$58.const$1);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Tcreate",
+        constants$58.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tcopy",
+        constants$0.const$4
+    );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$58.const$1
+        "H5Tclose",
+        constants$19.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_delete_func_t.class, "apply", constants$57.const$3);
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tclose_async",
+        constants$34.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
         JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Tequal",
+        constants$58.const$5
     );
 }
 

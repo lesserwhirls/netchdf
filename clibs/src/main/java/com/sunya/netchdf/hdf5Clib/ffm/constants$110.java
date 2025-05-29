@@ -11,44 +11,26 @@ final class constants$110 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$110() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("_flags"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("_IO_read_ptr"),
-        RuntimeHelper.POINTER.withName("_IO_read_end"),
-        RuntimeHelper.POINTER.withName("_IO_read_base"),
-        RuntimeHelper.POINTER.withName("_IO_write_base"),
-        RuntimeHelper.POINTER.withName("_IO_write_ptr"),
-        RuntimeHelper.POINTER.withName("_IO_write_end"),
-        RuntimeHelper.POINTER.withName("_IO_buf_base"),
-        RuntimeHelper.POINTER.withName("_IO_buf_end"),
-        RuntimeHelper.POINTER.withName("_IO_save_base"),
-        RuntimeHelper.POINTER.withName("_IO_backup_base"),
-        RuntimeHelper.POINTER.withName("_IO_save_end"),
-        RuntimeHelper.POINTER.withName("_markers"),
-        RuntimeHelper.POINTER.withName("_chain"),
-        JAVA_INT.withName("_fileno"),
-        JAVA_INT.withName("_flags2"),
-        JAVA_LONG.withName("_old_offset"),
-        JAVA_SHORT.withName("_cur_column"),
-        JAVA_BYTE.withName("_vtable_offset"),
-        MemoryLayout.sequenceLayout(1, JAVA_BYTE).withName("_shortbuf"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("_lock"),
-        JAVA_LONG.withName("_offset"),
-        RuntimeHelper.POINTER.withName("_codecvt"),
-        RuntimeHelper.POINTER.withName("_wide_data"),
-        RuntimeHelper.POINTER.withName("_freeres_list"),
-        RuntimeHelper.POINTER.withName("_freeres_buf"),
-        JAVA_LONG.withName("__pad5"),
-        JAVA_INT.withName("_mode"),
-        MemoryLayout.sequenceLayout(20, JAVA_BYTE).withName("_unused2")
-    ).withName("_IO_FILE");
-    static final VarHandle const$1 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_flags"));
-    static final VarHandle const$2 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_ptr"));
-    static final VarHandle const$3 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_end"));
-    static final VarHandle const$4 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_base"));
-    static final VarHandle const$5 = constants$110.const$0.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_base"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "fclose",
+        constants$15.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "tmpfile",
+        constants$110.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "tmpnam",
+        constants$110.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "tmpnam_r",
+        constants$110.const$3
+    );
 }
 
 

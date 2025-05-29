@@ -11,12 +11,30 @@ final class constants$170 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$170() {}
-    static final VarHandle const$0 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
-    static final VarHandle const$1 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
-    static final VarHandle const$2 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("line"));
-    static final VarHandle const$3 = constants$169.const$3.varHandle(MemoryLayout.PathElement.groupElement("desc"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5E_walk1_t.class, "apply", constants$22.const$5);
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5E_auto1_t.class, "apply", constants$15.const$4);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5EScreate",
+        constants$159.const$0
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5ESwait",
+        constants$93.const$2
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5EScancel",
+        constants$36.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5ESget_count",
+        constants$17.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5ESget_op_counter",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5ESget_err_status",
+        constants$17.const$5
+    );
 }
 
 

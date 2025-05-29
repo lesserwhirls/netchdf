@@ -11,12 +11,12 @@ final class constants$135 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$135() {}
-    static final VarHandle const$0 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("cls_id"));
-    static final VarHandle const$1 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
-    static final VarHandle const$2 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
-    static final VarHandle const$3 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("line"));
-    static final VarHandle const$4 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
-    static final VarHandle const$5 = constants$134.const$5.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_UNINITIALIZED_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_UNSUPPORTED_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_CANTCANCEL_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CANTWAIT_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CANTDECODE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_CANTENCODE_g", JAVA_LONG);
 }
 
 

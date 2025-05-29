@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5VL_file_cont_info_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$285.const$2;
+        return constants$231.const$5;
     }
     public static VarHandle version$VH() {
-        return constants$285.const$3;
+        return constants$232.const$0;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$285.const$3.get(seg);
+        return (int)constants$232.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$285.const$3.set(seg, x);
+        constants$232.const$0.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$285.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$232.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$285.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$232.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle feature_flags$VH() {
-        return constants$285.const$4;
+        return constants$232.const$1;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static long feature_flags$get(MemorySegment seg) {
-        return (long)constants$285.const$4.get(seg);
+        return (long)constants$232.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static void feature_flags$set(MemorySegment seg, long x) {
-        constants$285.const$4.set(seg, x);
+        constants$232.const$1.set(seg, x);
     }
     public static long feature_flags$get(MemorySegment seg, long index) {
-        return (long)constants$285.const$4.get(seg.asSlice(index*sizeof()));
+        return (long)constants$232.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void feature_flags$set(MemorySegment seg, long index, long x) {
-        constants$285.const$4.set(seg.asSlice(index*sizeof()), x);
+        constants$232.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle token_size$VH() {
-        return constants$285.const$5;
+        return constants$232.const$2;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static long token_size$get(MemorySegment seg) {
-        return (long)constants$285.const$5.get(seg);
+        return (long)constants$232.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -95,16 +95,16 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static void token_size$set(MemorySegment seg, long x) {
-        constants$285.const$5.set(seg, x);
+        constants$232.const$2.set(seg, x);
     }
     public static long token_size$get(MemorySegment seg, long index) {
-        return (long)constants$285.const$5.get(seg.asSlice(index*sizeof()));
+        return (long)constants$232.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void token_size$set(MemorySegment seg, long index, long x) {
-        constants$285.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$232.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle blob_id_size$VH() {
-        return constants$286.const$0;
+        return constants$232.const$3;
     }
     /**
      * Getter for field:
@@ -113,7 +113,7 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static long blob_id_size$get(MemorySegment seg) {
-        return (long)constants$286.const$0.get(seg);
+        return (long)constants$232.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -122,13 +122,13 @@ public class H5VL_file_cont_info_t {
      * }
      */
     public static void blob_id_size$set(MemorySegment seg, long x) {
-        constants$286.const$0.set(seg, x);
+        constants$232.const$3.set(seg, x);
     }
     public static long blob_id_size$get(MemorySegment seg, long index) {
-        return (long)constants$286.const$0.get(seg.asSlice(index*sizeof()));
+        return (long)constants$232.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void blob_id_size$set(MemorySegment seg, long index, long x) {
-        constants$286.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$232.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

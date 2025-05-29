@@ -12,32 +12,48 @@ final class constants$90 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$90() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Aget_info",
-        constants$18.const$3
+        constants$89.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_idx",
-        constants$64.const$2
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_name",
-        constants$90.const$2
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dcreate2",
+        constants$90.const$1
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_LONG,
-        RuntimeHelper.POINTER
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Aget_name",
-        constants$90.const$4
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dcreate_async",
+        constants$90.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Dcreate_anon",
+        constants$90.const$5
     );
 }
 

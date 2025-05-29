@@ -18,7 +18,7 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5O_native_info_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$76.const$0;
+        return constants$26.const$4;
     }
     public static MemorySegment hdr$slice(MemorySegment seg) {
         return seg.asSlice(0, 64);
@@ -36,7 +36,7 @@ public class H5O_native_info_t {
         // Suppresses default constructor, ensuring non-instantiability.
         private meta_size() {}
         public static MemoryLayout $LAYOUT() {
-            return constants$76.const$1;
+            return constants$26.const$5;
         }
         public static MemorySegment obj$slice(MemorySegment seg) {
             return seg.asSlice(0, 16);

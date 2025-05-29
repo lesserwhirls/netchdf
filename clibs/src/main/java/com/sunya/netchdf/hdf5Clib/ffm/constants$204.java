@@ -12,29 +12,27 @@ final class constants$204 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$204() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDquery",
-        constants$117.const$4
+        "H5Gclose_async",
+        constants$34.const$3
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDalloc",
-        constants$175.const$5
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDfree",
-        constants$191.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDget_eoa",
-        constants$192.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDset_eoa",
-        constants$192.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDget_eof",
-        constants$192.const$0
-    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5G_iterate_t.class, "apply", constants$36.const$1);
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("fileno"),
+        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("objno"),
+        JAVA_INT.withName("nlink"),
+        JAVA_INT.withName("type"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("linklen"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("size"),
+            JAVA_LONG.withName("free"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks")
+        ).withName("ohdr")
+    ).withName("H5G_stat_t");
+    static final VarHandle const$3 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("nlink"));
+    static final VarHandle const$4 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$5 = constants$204.const$2.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
 }
 
 

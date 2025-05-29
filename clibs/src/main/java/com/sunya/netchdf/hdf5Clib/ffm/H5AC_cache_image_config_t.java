@@ -20,10 +20,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5AC_cache_image_config_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$99.const$4;
+        return constants$87.const$4;
     }
     public static VarHandle version$VH() {
-        return constants$99.const$5;
+        return constants$87.const$5;
     }
     /**
      * Getter for field:
@@ -32,7 +32,7 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static int version$get(MemorySegment seg) {
-        return (int)constants$99.const$5.get(seg);
+        return (int)constants$87.const$5.get(seg);
     }
     /**
      * Setter for field:
@@ -41,16 +41,16 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static void version$set(MemorySegment seg, int x) {
-        constants$99.const$5.set(seg, x);
+        constants$87.const$5.set(seg, x);
     }
     public static int version$get(MemorySegment seg, long index) {
-        return (int)constants$99.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$87.const$5.get(seg.asSlice(index*sizeof()));
     }
     public static void version$set(MemorySegment seg, long index, int x) {
-        constants$99.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$87.const$5.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle generate_image$VH() {
-        return constants$100.const$0;
+        return constants$88.const$0;
     }
     /**
      * Getter for field:
@@ -59,7 +59,7 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static boolean generate_image$get(MemorySegment seg) {
-        return (boolean)constants$100.const$0.get(seg);
+        return (boolean)constants$88.const$0.get(seg);
     }
     /**
      * Setter for field:
@@ -68,16 +68,16 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static void generate_image$set(MemorySegment seg, boolean x) {
-        constants$100.const$0.set(seg, x);
+        constants$88.const$0.set(seg, x);
     }
     public static boolean generate_image$get(MemorySegment seg, long index) {
-        return (boolean)constants$100.const$0.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$0.get(seg.asSlice(index*sizeof()));
     }
     public static void generate_image$set(MemorySegment seg, long index, boolean x) {
-        constants$100.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$0.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle save_resize_status$VH() {
-        return constants$100.const$1;
+        return constants$88.const$1;
     }
     /**
      * Getter for field:
@@ -86,7 +86,7 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static boolean save_resize_status$get(MemorySegment seg) {
-        return (boolean)constants$100.const$1.get(seg);
+        return (boolean)constants$88.const$1.get(seg);
     }
     /**
      * Setter for field:
@@ -95,16 +95,16 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static void save_resize_status$set(MemorySegment seg, boolean x) {
-        constants$100.const$1.set(seg, x);
+        constants$88.const$1.set(seg, x);
     }
     public static boolean save_resize_status$get(MemorySegment seg, long index) {
-        return (boolean)constants$100.const$1.get(seg.asSlice(index*sizeof()));
+        return (boolean)constants$88.const$1.get(seg.asSlice(index*sizeof()));
     }
     public static void save_resize_status$set(MemorySegment seg, long index, boolean x) {
-        constants$100.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$1.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle entry_ageout$VH() {
-        return constants$100.const$2;
+        return constants$88.const$2;
     }
     /**
      * Getter for field:
@@ -113,7 +113,7 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static int entry_ageout$get(MemorySegment seg) {
-        return (int)constants$100.const$2.get(seg);
+        return (int)constants$88.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -122,13 +122,13 @@ public class H5AC_cache_image_config_t {
      * }
      */
     public static void entry_ageout$set(MemorySegment seg, int x) {
-        constants$100.const$2.set(seg, x);
+        constants$88.const$2.set(seg, x);
     }
     public static int entry_ageout$get(MemorySegment seg, long index) {
-        return (int)constants$100.const$2.get(seg.asSlice(index*sizeof()));
+        return (int)constants$88.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void entry_ageout$set(MemorySegment seg, long index, int x) {
-        constants$100.const$2.set(seg.asSlice(index*sizeof()), x);
+        constants$88.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

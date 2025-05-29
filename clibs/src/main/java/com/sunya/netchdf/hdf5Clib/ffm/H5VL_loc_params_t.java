@@ -19,10 +19,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5VL_loc_params_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$284.const$4;
+        return constants$218.const$2;
     }
     public static VarHandle obj_type$VH() {
-        return constants$284.const$5;
+        return constants$218.const$3;
     }
     /**
      * Getter for field:
@@ -31,7 +31,7 @@ public class H5VL_loc_params_t {
      * }
      */
     public static int obj_type$get(MemorySegment seg) {
-        return (int)constants$284.const$5.get(seg);
+        return (int)constants$218.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -40,16 +40,16 @@ public class H5VL_loc_params_t {
      * }
      */
     public static void obj_type$set(MemorySegment seg, int x) {
-        constants$284.const$5.set(seg, x);
+        constants$218.const$3.set(seg, x);
     }
     public static int obj_type$get(MemorySegment seg, long index) {
-        return (int)constants$284.const$5.get(seg.asSlice(index*sizeof()));
+        return (int)constants$218.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void obj_type$set(MemorySegment seg, long index, int x) {
-        constants$284.const$5.set(seg.asSlice(index*sizeof()), x);
+        constants$218.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle type$VH() {
-        return constants$285.const$0;
+        return constants$218.const$4;
     }
     /**
      * Getter for field:
@@ -58,7 +58,7 @@ public class H5VL_loc_params_t {
      * }
      */
     public static int type$get(MemorySegment seg) {
-        return (int)constants$285.const$0.get(seg);
+        return (int)constants$218.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -67,13 +67,13 @@ public class H5VL_loc_params_t {
      * }
      */
     public static void type$set(MemorySegment seg, int x) {
-        constants$285.const$0.set(seg, x);
+        constants$218.const$4.set(seg, x);
     }
     public static int type$get(MemorySegment seg, long index) {
-        return (int)constants$285.const$0.get(seg.asSlice(index*sizeof()));
+        return (int)constants$218.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void type$set(MemorySegment seg, long index, int x) {
-        constants$285.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$218.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -89,7 +89,7 @@ public class H5VL_loc_params_t {
         // Suppresses default constructor, ensuring non-instantiability.
         private loc_data() {}
         public static MemoryLayout $LAYOUT() {
-            return constants$285.const$1;
+            return constants$218.const$5;
         }
         public static MemorySegment loc_by_token$slice(MemorySegment seg) {
             return seg.asSlice(0, 8);

@@ -11,30 +11,19 @@ final class constants$251 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$251() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_filename",
-        constants$212.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_srcspace",
-        constants$85.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_vspace",
-        constants$85.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_alloc_time",
-        constants$46.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk",
-        constants$21.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk_opts",
-        constants$46.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("idx_type"),
+        JAVA_INT.withName("order"),
+        JAVA_INT.withName("fields"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("op"),
+        RuntimeHelper.POINTER.withName("op_data")
+    ).withName("H5VL_object_visit_args_t");
+    static final VarHandle const$1 = constants$251.const$0.varHandle(MemoryLayout.PathElement.groupElement("idx_type"));
+    static final VarHandle const$2 = constants$251.const$0.varHandle(MemoryLayout.PathElement.groupElement("order"));
+    static final VarHandle const$3 = constants$251.const$0.varHandle(MemoryLayout.PathElement.groupElement("fields"));
+    static final VarHandle const$4 = constants$251.const$0.varHandle(MemoryLayout.PathElement.groupElement("op"));
+    static final VarHandle const$5 = constants$251.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_data"));
 }
 
 

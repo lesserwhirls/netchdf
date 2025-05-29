@@ -11,31 +11,12 @@ final class constants$269 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$269() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Requal",
-        constants$117.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Rcopy",
-        constants$117.const$4
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ropen_object",
-        constants$269.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Ropen_region",
-        constants$269.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ropen_attr",
-        constants$269.const$2
-    );
+    static final VarHandle const$0 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.specific.class, "apply", constants$262.const$3);
+    static final VarHandle const$2 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.optional.class, "apply", constants$262.const$3);
+    static final VarHandle const$4 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_datatype_class_t.close.class, "apply", constants$17.const$2);
 }
 
 

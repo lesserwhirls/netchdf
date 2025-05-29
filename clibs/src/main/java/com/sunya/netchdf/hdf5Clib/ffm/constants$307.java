@@ -11,12 +11,31 @@ final class constants$307 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$307() {}
-    static final VarHandle const$0 = constants$305.const$4.varHandle(MemoryLayout.PathElement.groupElement("copy"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_link_class_t.move.class, "apply", constants$306.const$3);
-    static final VarHandle const$2 = constants$305.const$4.varHandle(MemoryLayout.PathElement.groupElement("move"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_link_class_t.get.class, "apply", constants$293.const$2);
-    static final VarHandle const$4 = constants$305.const$4.varHandle(MemoryLayout.PathElement.groupElement("get"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_link_class_t.specific.class, "apply", constants$293.const$2);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Soffset_simple",
+        constants$17.const$5
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_close",
+        constants$19.const$1
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_create",
+        constants$307.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_get_seq_list",
+        constants$93.const$4
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ssel_iter_reset",
+        constants$58.const$5
+    );
 }
 
 

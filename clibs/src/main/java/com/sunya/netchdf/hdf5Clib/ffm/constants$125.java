@@ -11,29 +11,29 @@ final class constants$125 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$125() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
-        "scanf",
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "pclose",
         constants$15.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
-        "sscanf",
-        constants$117.const$4
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "popen",
+        constants$111.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "vfscanf",
-        constants$16.const$0
+        "ctermid",
+        constants$110.const$3
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "vscanf",
-        constants$117.const$4
+        "flockfile",
+        constants$12.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "vsscanf",
-        constants$16.const$0
+        "ftrylockfile",
+        constants$15.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fgetc",
-        constants$15.const$4
+        "funlockfile",
+        constants$12.const$5
     );
 }
 

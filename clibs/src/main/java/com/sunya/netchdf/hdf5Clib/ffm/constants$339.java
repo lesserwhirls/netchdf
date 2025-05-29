@@ -13,28 +13,29 @@ final class constants$339 {
     private constants$339() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
-        JAVA_LONG,
+        JAVA_BOOLEAN,
+        RuntimeHelper.POINTER,
         JAVA_BOOLEAN
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_core",
+        "H5Pset_mdc_log_options",
         constants$339.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_core",
-        constants$42.const$5
+        "H5Pset_meta_block_size",
+        constants$58.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FD_family_init",
-        constants$166.const$2
+        "H5Pset_metadata_read_attempts",
+        constants$64.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_family",
-        constants$215.const$1
+        "H5Pset_multi_type",
+        constants$64.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_family",
-        constants$42.const$5
+        "H5Pset_object_flush_cb",
+        constants$36.const$1
     );
 }
 

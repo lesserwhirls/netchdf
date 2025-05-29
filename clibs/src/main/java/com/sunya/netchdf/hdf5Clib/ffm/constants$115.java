@@ -12,19 +12,31 @@ final class constants$115 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$115() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$114.const$4
+        "vsprintf",
+        constants$15.const$0
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$114.const$4);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandleVariadic(
+        "snprintf",
+        constants$17.const$2
+    );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
+        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$115.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "vsnprintf",
         constants$115.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$15.const$4);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "vasprintf",
+        constants$15.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
+        "__asprintf",
+        constants$13.const$4
+    );
 }
 
 

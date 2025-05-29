@@ -12,28 +12,34 @@ final class constants$178 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$178() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fget_vfd_handle",
-        constants$92.const$4
+        "H5Fget_create_plist",
+        constants$0.const$4
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fmount",
-        constants$43.const$4
+        "H5Fget_access_plist",
+        constants$0.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Funmount",
-        constants$18.const$3
+        "H5Fget_intent",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fget_freespace",
-        constants$10.const$2
+        "H5Fget_fileno",
+        constants$17.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_filesize",
-        constants$18.const$3
+        "H5Fget_obj_count",
+        constants$67.const$1
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fget_eoa",
-        constants$18.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Fget_obj_ids",
+        constants$178.const$5
     );
 }
 
