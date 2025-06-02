@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization) apply false
 }
 
-group = "com.sunya"
+group = "com.sunya.netchdf"
 version = libs.versions.netchdf.get()
 
 subprojects {

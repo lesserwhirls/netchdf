@@ -22,8 +22,8 @@ interface Netchdf : Closeable {
 data class ArraySection<T>(val array : ArrayTyped<T>, val section : Section)
 
 // Experimental
-fun <T> Netchdf.chunkConcurrent(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null, lamda : (ArraySection<T>) -> Unit) {
+fun <T> Netchdf.chunkConcurrent(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null, nthreads: Int = 20, lamda : (ArraySection<T>) -> Unit) {
     val reader = ReadChunkConcurrent()
     val chunkIter = this.chunkIterator( v2, section, maxElements)
-    reader.readChunks(20, chunkIter, lamda) // TODO set nthreads
+    reader.readChunks(nthreads, chunkIter, lamda)
 }

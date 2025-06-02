@@ -3,7 +3,7 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.StructureMember
 
-internal class H5typedef(val dataObject: DataObject) {
+class H5typedef(val dataObject: DataObject) {
     var enumMessage : DatatypeEnum? = null
     var vlenMessage : DatatypeVlen? = null
     var opaqueMessage : DatatypeOpaque? = null

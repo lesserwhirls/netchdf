@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 5/29/2025_
+_last updated: 6/02/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -46,6 +46,7 @@ descriptions. The API is language and library specific, and is secondary to the 
 Having multiple implementations is a huge win for the reference library, in that bugs are more quickly found, and 
 ambiguities more quickly identified. 
 
+
 ### Whats wrong with the standard reference libraries?
 
 The reference libraries are well maintained but complex. They are coded in C, which is a difficult language to master
@@ -66,10 +67,11 @@ conversions, and arguably its impossible to process HDF-EOS without them. So the
 library for data access is less clear. For now, we will provide a "best-effort" to expose the internal 
 contents of the file.
 
-Currently, the Netcdf-4 and HDF4 libraries are apparently not thread safe, although the details are complex.
+Currently, the Netcdf-4 and HDF5 libraries are not thread safe, not even for read-only applications. 
+This is a serious limitation for high performance, scalable applications, and it is disappointing that it hasnt been fixed.
 See [Toward Multi-Threaded Concurrency in HDF5](https://www.hdfgroup.org/wp-content/uploads/2022/05/Toward-MT-HDF5.pdf),
-and [RFC:Multi-Thread HDF5](https://support.hdfgroup.org/releases/hdf5/documentation/rfc/RFC_multi_thread.pdf)
-for more information.
+and [RFC:Multi-Thread HDF5](https://support.hdfgroup.org/releases/hdf5/documentation/rfc/RFC_multi_thread.pdf) for more information.
+
 
 ### Why Kotlin?
 
@@ -77,6 +79,7 @@ Kotlin is a modern, statically typed, garbage-collected language suitable for la
 It has many new features for safer (like null-safety) and more concise (like functional idioms) code, and is an important 
 improvement over Java, without giving up any of Java's strengths. Kotlin will attract the next generation of serious 
 open-source developers, and hopefully some of them will be willing to keep this library working into the unforeseeable future.
+
 
 ### What about performance?
 
@@ -86,6 +89,7 @@ are about 2X slower than native code. Unless the deflate libraries get better, t
 other parts of the code faster.
 
 We will investigate using Kotlin coroutines to speed up performance bottlenecks.
+
 
 ### What version of the JVM, Kotlin, and Gradle?
 
@@ -100,7 +104,8 @@ Currently that is Gradle 8.14.
 For now, you must download and build the library yourself. Eventually we will publish it to Maven Central. 
 The IntelliJ IDE is highly recommended for all JVM development.
 
-### Scope
+
+### Goals and scope
 
 Our goal is to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files.
 
@@ -112,8 +117,18 @@ The core module will remain pure Kotlin with very minimal dependencies and no wr
 there will be no dependency on the reference C libraries (except for testing). 
 
 There will be no dependencies on native libraries in the core module, but other modules or
-projects that use the core are free to use dependencies as needed. We will add runtime discovery to facilitate this, 
+projects that use the core are free to use dependencies as needed. We will likely add runtime discovery to facilitate this, 
 for example, to use HDF5 filters that link to native libraries.
+
+
+### Non-goals
+
+Its not a goal to duplicate netcdf-java functionality.
+
+Its not a goal to duplicate Netcdf-C library functionality.
+
+Its not a goal to provide remote access to files.
+
 
 
 ### Testing
@@ -156,6 +171,7 @@ netcdf4   = 121 files
 total # files = 1470
 ````
 We need to get representative samples of recent files for improved testing and code coverage.
+
 
 ### Data Model notes
 

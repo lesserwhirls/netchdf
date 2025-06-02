@@ -14,7 +14,7 @@ data class Attribute<T>(val orgName : String, val datatype : Datatype<T>, val va
         var values : List<T> = emptyList()
 
         fun setValues(values : List<*>) : Builder<T> {
-            this.values = values as List<T> // TODO immutable ??
+            this.values = values as List<T>
             return this
         }
 

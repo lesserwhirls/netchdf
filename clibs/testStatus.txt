@@ -1,13 +1,13 @@
 5/29/2025
 
-dir              failed    passed   time
-hdf4                6       4256    3 hr 13min    *
+dir              failed    passed   time            wallclock
+hdf4                2       4260    3 hr 6 min
 hdf5                4       1258    8 min 30 sec
-hdf5Clib            0       319     41 sec
-netcdf3             0       201     2 sec
-netcdf4             0       87      2 sec
+hdf5Clib            0       319     33 sec
+netcdf3             0       201     1.633 sec
+netcdf4             0       87      1.737 sec
 NetchdfClibExtra    21      3121    5 min 13 sec
-NetchdfClibTest     2       7261    12 min 8 sec
+NetchdfClibTest     2       7261    10 min 34 sec    11:02
 
 if (excludeClibFails) {
     builder.addNameFilter { name -> !name.lowercase().contains("_npp_") }          // disagree with C library
@@ -21,7 +21,7 @@ if (excludeClibFails) {
 5/24/2025
 
 dir              failed    passed   time
-hdf4                6       4256    3 hr 13min
+hdf4                6       4256    3 hr 13 min
 hdf5                8       12569    8 min 30 sec
 hdf5Clib            0       319     41 sec
 netcdf3             0       201     2 sec

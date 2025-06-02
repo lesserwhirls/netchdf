@@ -60,7 +60,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
         return true
     }
 
-    // TODO problem with not useng values()
+    // TODO problem with not using values()
     override fun hashCode(): Int {
         var result = datatype.hashCode()
         result = 31 * result + shape.contentHashCode()

@@ -31,7 +31,7 @@ class NCheader(val filename: String) {
             val filenameSeg: MemorySegment = session.allocateUtf8String(filename)
             val fileHandle: MemorySegment = session.allocate(C_INT, 0)
 
-            checkErr("nc_open", nc_open(filenameSeg, 0, fileHandle))
+            checkErr("nc_open", nc_open(filenameSeg, NC_NOWRITE(), fileHandle))
             this.ncid = fileHandle[C_INT, 0]
             if (debug) println("nc_open $filename fileHandle ${this.ncid}")
 
