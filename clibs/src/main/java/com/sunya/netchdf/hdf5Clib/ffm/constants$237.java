@@ -11,38 +11,61 @@ final class constants$237 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$237() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_userblock",
-        constants$44.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_space_page_size",
-        constants$40.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_BOOLEAN,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_space_strategy",
-        constants$237.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_istore_k",
-        constants$45.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pset_shared_mesg_index",
-        constants$237.const$5
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("obj_type"),
+                JAVA_INT.withName("scope")
+            ).withName("flush"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("file")
+            ).withName("reopen"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("filename"),
+                JAVA_LONG.withName("fapl_id"),
+                RuntimeHelper.POINTER.withName("accessible")
+            ).withName("is_accessible"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("filename"),
+                JAVA_LONG.withName("fapl_id")
+            ).withName("del"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("obj2"),
+                RuntimeHelper.POINTER.withName("same_file")
+            ).withName("is_equal")
+        ).withName("args")
+    ).withName("H5VL_file_specific_args_t");
+    static final VarHandle const$1 = constants$237.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("obj_type"),
+            JAVA_INT.withName("scope")
+        ).withName("flush"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("file")
+        ).withName("reopen"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("filename"),
+            JAVA_LONG.withName("fapl_id"),
+            RuntimeHelper.POINTER.withName("accessible")
+        ).withName("is_accessible"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("filename"),
+            JAVA_LONG.withName("fapl_id")
+        ).withName("del"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("obj2"),
+            RuntimeHelper.POINTER.withName("same_file")
+        ).withName("is_equal")
+    ).withName("");
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("obj_type"),
+        JAVA_INT.withName("scope")
+    ).withName("");
+    static final VarHandle const$4 = constants$237.const$3.varHandle(MemoryLayout.PathElement.groupElement("obj_type"));
+    static final VarHandle const$5 = constants$237.const$3.varHandle(MemoryLayout.PathElement.groupElement("scope"));
 }
 
 

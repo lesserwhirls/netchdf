@@ -11,21 +11,48 @@ final class constants$218 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$218() {}
-    static final VarHandle const$0 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("can_apply"));
-    static final VarHandle const$1 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("set_local"));
-    static final VarHandle const$2 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("filter"));
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Zregister",
-        constants$15.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Zunregister",
-        constants$21.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Zfilter_avail",
-        constants$21.const$0
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("token")
+    ).withName("H5VL_loc_by_token");
+    static final VarHandle const$1 = constants$218.const$0.varHandle(MemoryLayout.PathElement.groupElement("token"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("obj_type"),
+        JAVA_INT.withName("type"),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("token")
+            ).withName("loc_by_token"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name"),
+                JAVA_LONG.withName("lapl_id")
+            ).withName("loc_by_name"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name"),
+                JAVA_INT.withName("idx_type"),
+                JAVA_INT.withName("order"),
+                JAVA_LONG.withName("n"),
+                JAVA_LONG.withName("lapl_id")
+            ).withName("loc_by_idx")
+        ).withName("loc_data")
+    ).withName("H5VL_loc_params_t");
+    static final VarHandle const$3 = constants$218.const$2.varHandle(MemoryLayout.PathElement.groupElement("obj_type"));
+    static final VarHandle const$4 = constants$218.const$2.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("token")
+        ).withName("loc_by_token"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name"),
+            JAVA_LONG.withName("lapl_id")
+        ).withName("loc_by_name"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name"),
+            JAVA_INT.withName("idx_type"),
+            JAVA_INT.withName("order"),
+            JAVA_LONG.withName("n"),
+            JAVA_LONG.withName("lapl_id")
+        ).withName("loc_by_idx")
+    ).withName("");
 }
 
 

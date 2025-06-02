@@ -12,30 +12,30 @@ final class constants$214 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$214() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sselect_intersect_block",
-        constants$41.const$4
+        "H5Rget_obj_type3",
+        constants$17.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sselect_none",
-        constants$19.const$0
+        "H5Rget_file_name",
+        constants$106.const$3
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sselect_project_intersection",
-        constants$201.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Sselect_shape_same",
-        constants$40.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sselect_valid",
-        constants$19.const$0
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Rget_obj_name",
+        constants$214.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Rget_attr_name",
+        constants$106.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Rget_obj_type1",
+        constants$20.const$3
     );
 }
 

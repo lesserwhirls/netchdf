@@ -11,30 +11,18 @@ final class constants$258 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$258() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_est_link_info",
-        constants$41.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_link_creation_order",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_link_phase_change",
-        constants$41.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_local_heap_size_hint",
-        constants$44.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_est_link_info",
-        constants$50.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_link_creation_order",
-        constants$45.const$5
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("get_object"),
+        RuntimeHelper.POINTER.withName("get_wrap_ctx"),
+        RuntimeHelper.POINTER.withName("wrap_object"),
+        RuntimeHelper.POINTER.withName("unwrap_object"),
+        RuntimeHelper.POINTER.withName("free_wrap_ctx")
+    ).withName("H5VL_wrap_class_t");
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.get_object.class, "apply", constants$110.const$3);
+    static final VarHandle const$2 = constants$258.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_object"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.get_wrap_ctx.class, "apply", constants$13.const$4);
+    static final VarHandle const$4 = constants$258.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_wrap_ctx"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.wrap_object.class, "apply", constants$119.const$5);
 }
 
 

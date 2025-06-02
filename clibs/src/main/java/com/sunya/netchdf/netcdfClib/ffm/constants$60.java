@@ -13,23 +13,23 @@ final class constants$60 {
     private constants$60() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "ncendef",
-        constants$20.const$3
+        constants$19.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "ncsync",
-        constants$20.const$3
+        constants$19.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "ncabort",
-        constants$20.const$3
+        constants$19.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "ncclose",
-        constants$20.const$3
+        constants$19.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "ncinquire",
-        constants$21.const$4
+        constants$21.const$0
     );
     static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,

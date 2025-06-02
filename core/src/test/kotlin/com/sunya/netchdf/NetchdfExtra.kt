@@ -1,17 +1,13 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.api.*
 import com.sunya.cdm.util.Stats
-import com.sunya.testdata.NetchdfExtraFiles
-import org.junit.jupiter.api.Disabled
+import com.sunya.netchdf.testdata.NetchdfExtraFiles
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
-import com.sunya.testdata.testFilesIn
+import com.sunya.netchdf.testdata.testData
 import org.junit.jupiter.api.AfterAll
-import java.util.*
 import java.util.stream.Stream
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
@@ -28,14 +24,17 @@ class NetchdfExtra {
         @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
-                versions.keys.forEach{ println("$it = ${versions[it]!!.size } files") }
+                val sversions = versions.toSortedMap()
+                sversions.keys.forEach{ println("$it = ${sversions[it]!!.size } files") }
+                val total = sversions.keys.map{ sversions[it]!!.size }.sum()
+                println("total # files = $total")
             }
             Stats.show()
         }
 
         private val versions = mutableMapOf<String, MutableList<String>>()
 
-        const val topdir = testData + "netchdf/"
+        const val topdir = "$testData/netchdf/"
     }
 
     // npp filers: superblock at file offset; reference data type

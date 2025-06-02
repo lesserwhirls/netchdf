@@ -11,14 +11,34 @@ final class constants$111 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$111() {}
-    static final VarHandle const$0 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("close"));
-    static final VarHandle const$1 = RuntimeHelper.POINTER.varHandle();
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "remove",
-        constants$15.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "tempnam",
+        constants$111.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fflush",
+        constants$15.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fflush_unlocked",
+        constants$15.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "fopen",
+        constants$111.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "freopen",
+        constants$111.const$5
     );
 }
 

@@ -82,9 +82,10 @@ internal fun <T> H5builder.processVlenIntoArray(h5type: H5TypeInfo, shape: IntAr
             val refsList = mutableListOf<String>()
             for (i in 0 until nelems) {
                 val heapId = h5heap.readHeapIdentifier(bb, i * elemSize)
-                val vlenArray = h5heap.getHeapDataArray(heapId, Datatype.LONG, base.endian)
+                val vlenArray = h5heap.getHeapDataArray(heapId, Datatype.LONG, base.endian) as Array<Long>
                 // LOOK require vlenArray is Array<Long>
-                val refsArray = this.convertReferencesToDataObjectName(vlenArray as Array<Long>)
+                // TODO val refsArray = this.convertReferencesToDataObjectName(vlenArray.asIterable())
+                val refsArray = this.convertReferencesToDataObjectName(vlenArray)
                 for (s in refsArray) {
                     refsList.add(s)
                 }

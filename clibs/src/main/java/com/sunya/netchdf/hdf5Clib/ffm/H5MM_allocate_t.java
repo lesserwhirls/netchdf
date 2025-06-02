@@ -16,13 +16,13 @@ public interface H5MM_allocate_t {
 
     java.lang.foreign.MemorySegment apply(long size, java.lang.foreign.MemorySegment alloc_info);
     static MemorySegment allocate(H5MM_allocate_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$207.const$0, fi, constants$206.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$301.const$4, fi, constants$301.const$3, scope);
     }
     static H5MM_allocate_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _size, java.lang.foreign.MemorySegment _alloc_info) -> {
             try {
-                return (java.lang.foreign.MemorySegment)constants$207.const$1.invokeExact(symbol, _size, _alloc_info);
+                return (java.lang.foreign.MemorySegment)constants$301.const$5.invokeExact(symbol, _size, _alloc_info);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

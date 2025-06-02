@@ -11,33 +11,33 @@ final class constants$1 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$1() {}
-    static final VarHandle const$0 = constants$0.const$5.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
-    static final VarHandle const$1 = constants$0.const$5.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__fds_bits")
-    ).withName("");
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(MemoryLayout.structLayout(
+        JAVA_LONG.withName("quot"),
+        JAVA_LONG.withName("rem")
+    ).withName(""),
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "imaxdiv",
+        constants$1.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "strtoimax",
+        constants$1.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "select",
-        constants$1.const$3
+        "strtoumax",
+        constants$1.const$2
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "pselect",
-        constants$1.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "wcstoimax",
+        constants$1.const$2
     );
 }
 

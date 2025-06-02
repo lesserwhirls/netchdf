@@ -11,23 +11,27 @@ final class constants$216 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$216() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5Z_can_apply_func_t.class, "apply", constants$215.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$215.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Rget_region",
+        constants$63.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5Z_set_local_func_t.class, "apply", constants$215.const$5);
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
         JAVA_INT,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5Z_func_t.class, "apply", constants$216.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$216.const$3
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Rget_name",
+        constants$216.const$1
     );
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        JAVA_LONG.withName("lapl_id")
+    ).withName("H5VL_loc_by_name");
+    static final VarHandle const$4 = constants$216.const$3.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$5 = constants$216.const$3.varHandle(MemoryLayout.PathElement.groupElement("lapl_id"));
 }
 
 

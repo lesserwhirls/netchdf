@@ -11,28 +11,38 @@ final class constants$165 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$165() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5E_walk1_t.class, "apply", constants$119.const$0);
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_auto1_t.class, "apply", constants$15.const$2);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Eprint1",
+        constants$15.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Eset_auto1",
+        constants$13.const$4
+    );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eclear1",
-        constants$14.const$0
+        "H5Ewalk1",
+        constants$22.const$0
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eget_auto1",
-        constants$112.const$0
+        "H5Eget_major",
+        constants$63.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eget_minor",
+        constants$63.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Epush1",
-        constants$165.const$4
-    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("api_name"),
+        RuntimeHelper.POINTER.withName("api_args"),
+        RuntimeHelper.POINTER.withName("app_file_name"),
+        RuntimeHelper.POINTER.withName("app_func_name"),
+        JAVA_INT.withName("app_line_num"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("op_ins_count"),
+        JAVA_LONG.withName("op_ins_ts"),
+        JAVA_LONG.withName("op_exec_ts"),
+        JAVA_LONG.withName("op_exec_time")
+    ).withName("H5ES_op_info_t");
 }
 
 

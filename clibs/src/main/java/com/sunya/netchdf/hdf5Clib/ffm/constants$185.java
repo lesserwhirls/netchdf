@@ -11,23 +11,29 @@ final class constants$185 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$185() {}
-    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("alloc"));
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fis_hdf5",
+        constants$15.const$4
+    );
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("image_malloc"),
+        RuntimeHelper.POINTER.withName("image_memcpy"),
+        RuntimeHelper.POINTER.withName("image_realloc"),
+        RuntimeHelper.POINTER.withName("image_free"),
+        RuntimeHelper.POINTER.withName("udata_copy"),
+        RuntimeHelper.POINTER.withName("udata_free"),
+        RuntimeHelper.POINTER.withName("udata")
+    ).withName("");
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.free.class, "apply", constants$185.const$1);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        constants$185.const$1
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_malloc.class, "apply", constants$185.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$185.const$2
     );
-    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
+    static final VarHandle const$5 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("image_malloc"));
 }
 
 

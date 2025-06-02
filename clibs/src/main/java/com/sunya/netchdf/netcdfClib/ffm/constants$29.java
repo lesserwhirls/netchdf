@@ -12,28 +12,32 @@ final class constants$29 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$29() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_get_att_ushort",
-        constants$7.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_put_att_uint",
-        constants$12.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_get_att_uint",
-        constants$7.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_put_att_longlong",
-        constants$12.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "nc_get_att_longlong",
         constants$7.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "nc_put_att_ulonglong",
-        constants$12.const$2
+        constants$11.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_get_att_ulonglong",
+        constants$7.const$0
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_def_var",
+        constants$29.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_inq_var",
+        constants$11.const$1
     );
 }
 

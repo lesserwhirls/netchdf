@@ -53,6 +53,7 @@ internal fun H5builder.buildGroup(group5 : H5Group) : Group.Builder {
         val vb = buildVariable( it )
         groupb.addVariable(vb)
         val address = it.dataObject.address
+        // println("**H5builder vb.name=${vb.name} address=${it.dataObject.address}") // maybe there a byte order problem ??
         if (address > 0) datasetMap[address] = Pair(groupb, vb)
     }
 

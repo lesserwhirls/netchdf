@@ -11,12 +11,31 @@ final class constants$4 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$4() {}
-    static final VarHandle const$0 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__count"));
-    static final VarHandle const$1 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__owner"));
-    static final VarHandle const$2 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__nusers"));
-    static final VarHandle const$3 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__kind"));
-    static final VarHandle const$4 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__spins"));
-    static final VarHandle const$5 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__elision"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "pselect",
+        constants$4.const$0
+    );
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("__value64"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__low"),
+            JAVA_INT.withName("__high")
+        ).withName("__value32")
+    ).withName("");
+    static final VarHandle const$3 = constants$4.const$2.varHandle(MemoryLayout.PathElement.groupElement("__value64"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("__low"),
+        JAVA_INT.withName("__high")
+    ).withName("");
+    static final VarHandle const$5 = constants$4.const$4.varHandle(MemoryLayout.PathElement.groupElement("__low"));
 }
 
 

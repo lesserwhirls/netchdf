@@ -3,6 +3,8 @@ package com.sunya.cdm.util
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 /**
  * copy all bytes from in to out, specify buffer size
@@ -25,4 +27,13 @@ fun IOcopyB(input: InputStream, out: OutputStream, bufferSize: Int): Long {
     }
     out.flush()
     return totalBytesRead
+}
+
+fun Long.reverseByteOrder(): Long {
+    return ByteBuffer.allocate(Long.SIZE_BYTES)
+        .order(ByteOrder.LITTLE_ENDIAN)
+        .putLong(this)
+        .rewind()
+        .order(ByteOrder.BIG_ENDIAN)
+        .long
 }

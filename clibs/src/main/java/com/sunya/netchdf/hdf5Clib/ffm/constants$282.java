@@ -11,8 +11,26 @@ final class constants$282 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$282() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/tmp");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("::");
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_introspect_class_t.opt_query.class, "apply", constants$282.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$282.const$0
+    );
+    static final VarHandle const$3 = constants$281.const$1.varHandle(MemoryLayout.PathElement.groupElement("opt_query"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("wait"),
+        RuntimeHelper.POINTER.withName("notify"),
+        RuntimeHelper.POINTER.withName("cancel"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("free")
+    ).withName("H5VL_request_class_t");
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_request_class_t.wait.class, "apply", constants$17.const$2);
 }
 
 

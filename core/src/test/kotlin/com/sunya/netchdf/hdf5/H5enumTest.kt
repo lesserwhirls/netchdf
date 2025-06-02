@@ -5,7 +5,7 @@ import com.sunya.cdm.array.ArrayStructureData
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.readNetchdfData
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.testData
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -45,8 +45,8 @@ class H5enumTest {
             assertContentEquals(listOf(0.toUByte(), 3.toUByte(), 8.toUByte()), att.values)
             assertEquals(listOf("Mike", "Marsha", "Alice"), att.convertEnums())
 
-            // TODO actual   :brady_attribute = Mike, Marsha, Alice ;
-            assertContains(myfile.cdl(), "brady_attribute = \"Mike\", \"Marsha\", \"Alice\"")
+            println("cdl= ${myfile.cdl()}")
+            assertContains(myfile.cdl(), "brady_attribute = Mike, Marsha, Alice")
         }
     }
 

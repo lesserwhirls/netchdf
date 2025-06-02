@@ -11,34 +11,67 @@ final class constants$248 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$248() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_dset_no_attrs_hint",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_external",
-        constants$248.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_external_count",
-        constants$19.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_fill_time",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_fill_value",
-        constants$85.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("exists")
+            ).withName("exists"),
+            MemoryLayout.structLayout(
+                JAVA_BOOLEAN.withName("recursive"),
+                MemoryLayout.paddingLayout(3),
+                JAVA_INT.withName("idx_type"),
+                JAVA_INT.withName("order"),
+                MemoryLayout.paddingLayout(4),
+                RuntimeHelper.POINTER.withName("idx_p"),
+                RuntimeHelper.POINTER.withName("op"),
+                RuntimeHelper.POINTER.withName("op_data")
+            ).withName("iterate")
+        ).withName("args")
+    ).withName("H5VL_link_specific_args_t");
+    static final VarHandle const$1 = constants$248.const$0.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$2 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("exists")
+        ).withName("exists"),
+        MemoryLayout.structLayout(
+            JAVA_BOOLEAN.withName("recursive"),
+            MemoryLayout.paddingLayout(3),
+            JAVA_INT.withName("idx_type"),
+            JAVA_INT.withName("order"),
+            MemoryLayout.paddingLayout(4),
+            RuntimeHelper.POINTER.withName("idx_p"),
+            RuntimeHelper.POINTER.withName("op"),
+            RuntimeHelper.POINTER.withName("op_data")
+        ).withName("iterate")
+    ).withName("");
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("exists")
+    ).withName("");
+    static final VarHandle const$4 = constants$248.const$3.varHandle(MemoryLayout.PathElement.groupElement("exists"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("file")
+            ).withName("get_file"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("buf_size"),
+                RuntimeHelper.POINTER.withName("buf"),
+                RuntimeHelper.POINTER.withName("name_len")
+            ).withName("get_name"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("obj_type")
+            ).withName("get_type"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("fields"),
+                MemoryLayout.paddingLayout(4),
+                RuntimeHelper.POINTER.withName("oinfo")
+            ).withName("get_info")
+        ).withName("args")
+    ).withName("H5VL_object_get_args_t");
 }
 
 

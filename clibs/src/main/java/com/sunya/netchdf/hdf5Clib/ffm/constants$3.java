@@ -11,26 +11,27 @@ final class constants$3 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$3() {}
-    static final VarHandle const$0 = constants$2.const$5.varHandle(MemoryLayout.PathElement.groupElement("__prev"));
-    static final VarHandle const$1 = constants$2.const$5.varHandle(MemoryLayout.PathElement.groupElement("__next"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("__next")
-    ).withName("__pthread_internal_slist");
-    static final VarHandle const$3 = constants$3.const$2.varHandle(MemoryLayout.PathElement.groupElement("__next"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("tv_sec"),
+        JAVA_LONG.withName("tv_nsec")
+    ).withName("timespec");
+    static final VarHandle const$2 = constants$3.const$1.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
+    static final VarHandle const$3 = constants$3.const$1.varHandle(MemoryLayout.PathElement.groupElement("tv_nsec"));
     static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__lock"),
-        JAVA_INT.withName("__count"),
-        JAVA_INT.withName("__owner"),
-        JAVA_INT.withName("__nusers"),
-        JAVA_INT.withName("__kind"),
-        JAVA_SHORT.withName("__spins"),
-        JAVA_SHORT.withName("__elision"),
-        MemoryLayout.structLayout(
-            RuntimeHelper.POINTER.withName("__prev"),
-            RuntimeHelper.POINTER.withName("__next")
-        ).withName("__list")
-    ).withName("__pthread_mutex_s");
-    static final VarHandle const$5 = constants$3.const$4.varHandle(MemoryLayout.PathElement.groupElement("__lock"));
+        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__fds_bits")
+    ).withName("");
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "select",
+        constants$3.const$5
+    );
 }
 
 

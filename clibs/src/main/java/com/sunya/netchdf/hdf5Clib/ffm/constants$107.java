@@ -11,12 +11,23 @@ final class constants$107 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$107() {}
-    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_flags2"));
-    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_old_offset"));
-    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_cur_column"));
-    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
-    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
-    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$106.const$3);
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$107.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$107.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$15.const$4);
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("seek"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("_IO_cookie_io_functions_t");
 }
 
 

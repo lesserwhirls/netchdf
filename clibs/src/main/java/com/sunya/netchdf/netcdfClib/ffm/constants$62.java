@@ -17,7 +17,7 @@ final class constants$62 {
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "ncattcopy",
-        constants$25.const$1
+        constants$24.const$3
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "ncattname",

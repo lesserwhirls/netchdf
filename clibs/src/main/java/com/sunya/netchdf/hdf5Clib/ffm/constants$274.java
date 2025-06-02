@@ -11,12 +11,12 @@ final class constants$274 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$274() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("16");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String(".libs/");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hdf5");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("help@hdfgroup.org");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 1.10.10");
+    static final VarHandle const$0 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_group_class_t.get.class, "apply", constants$262.const$3);
+    static final VarHandle const$2 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_group_class_t.specific.class, "apply", constants$262.const$3);
+    static final VarHandle const$4 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_group_class_t.optional.class, "apply", constants$262.const$3);
 }
 
 

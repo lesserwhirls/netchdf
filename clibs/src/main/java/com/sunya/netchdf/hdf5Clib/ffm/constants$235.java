@@ -11,30 +11,18 @@ final class constants$235 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$235() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_deflate",
-        constants$45.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_filter",
-        constants$234.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fletcher32",
-        constants$19.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_obj_track_times",
-        constants$176.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space_page_size",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_file_space_strategy",
-        constants$61.const$5
-    );
+    static final VarHandle const$0 = constants$234.const$5.varHandle(MemoryLayout.PathElement.groupElement("info"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fapl_id")
+    ).withName("");
+    static final VarHandle const$2 = constants$235.const$1.varHandle(MemoryLayout.PathElement.groupElement("fapl_id"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fcpl_id")
+    ).withName("");
+    static final VarHandle const$4 = constants$235.const$3.varHandle(MemoryLayout.PathElement.groupElement("fcpl_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("fileno")
+    ).withName("");
 }
 
 

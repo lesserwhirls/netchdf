@@ -11,33 +11,15 @@ final class constants$24 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$24() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5T_conv_t.class, "apply", constants$24.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$24.const$0
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5T_conv_except_func_t.class, "apply", constants$24.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$24.const$3
-    );
+    static final VarHandle const$0 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("total"));
+    static final VarHandle const$1 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("meta"));
+    static final VarHandle const$2 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("mesg"));
+    static final VarHandle const$3 = constants$23.const$5.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("present"),
+        JAVA_LONG.withName("shared")
+    ).withName("");
+    static final VarHandle const$5 = constants$24.const$4.varHandle(MemoryLayout.PathElement.groupElement("present"));
 }
 
 

@@ -11,14 +11,30 @@ final class constants$179 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$179() {}
-    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("terminate"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_size.class, "apply", constants$42.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$42.const$0
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fget_vfd_handle",
+        constants$79.const$5
     );
-    static final VarHandle const$3 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_size"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_encode.class, "apply", constants$15.const$4);
-    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_encode"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fmount",
+        constants$61.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Funmount",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fget_freespace",
+        constants$0.const$4
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_filesize",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fget_eoa",
+        constants$17.const$5
+    );
 }
 
 

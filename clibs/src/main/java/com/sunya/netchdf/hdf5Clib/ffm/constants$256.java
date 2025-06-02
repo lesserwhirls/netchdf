@@ -11,32 +11,19 @@ final class constants$256 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$256() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE,
-        JAVA_DOUBLE
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_btree_ratios",
-        constants$256.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_buffer",
-        constants$97.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_data_transform",
-        constants$44.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_edc_check",
-        constants$45.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_filter_callback",
-        constants$41.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("size"),
+        RuntimeHelper.POINTER.withName("copy"),
+        RuntimeHelper.POINTER.withName("cmp"),
+        RuntimeHelper.POINTER.withName("free"),
+        RuntimeHelper.POINTER.withName("to_str"),
+        RuntimeHelper.POINTER.withName("from_str")
+    ).withName("H5VL_info_class_t");
+    static final VarHandle const$1 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_info_class_t.copy.class, "apply", constants$110.const$3);
+    static final VarHandle const$3 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("copy"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_info_class_t.cmp.class, "apply", constants$15.const$0);
+    static final VarHandle const$5 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("cmp"));
 }
 
 

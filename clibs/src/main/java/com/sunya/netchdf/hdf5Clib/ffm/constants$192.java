@@ -11,12 +11,41 @@ final class constants$192 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$192() {}
-    static final VarHandle const$0 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
-    static final VarHandle const$1 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("access_flags"));
-    static final VarHandle const$2 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("feature_flags"));
-    static final VarHandle const$3 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("maxaddr"));
-    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("base_addr"));
-    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("threshold"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Lmove",
+        constants$32.const$1
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lcopy",
+        constants$32.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_hard",
+        constants$32.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_hard_async",
+        constants$32.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft",
+        constants$97.const$1
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Lcreate_soft_async",
+        constants$192.const$5
+    );
 }
 
 

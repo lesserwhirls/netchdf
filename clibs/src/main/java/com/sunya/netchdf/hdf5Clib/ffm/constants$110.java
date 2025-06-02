@@ -12,18 +12,25 @@ final class constants$110 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$110() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$109.const$4
+        "fclose",
+        constants$15.const$4
     );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_close_function_t.class, "apply", constants$15.const$2);
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("read"),
-        RuntimeHelper.POINTER.withName("write"),
-        RuntimeHelper.POINTER.withName("seek"),
-        RuntimeHelper.POINTER.withName("close")
-    ).withName("_IO_cookie_io_functions_t");
-    static final VarHandle const$3 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("read"));
-    static final VarHandle const$4 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("write"));
-    static final VarHandle const$5 = constants$110.const$2.varHandle(MemoryLayout.PathElement.groupElement("seek"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "tmpfile",
+        constants$110.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "tmpnam",
+        constants$110.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "tmpnam_r",
+        constants$110.const$3
+    );
 }
 
 

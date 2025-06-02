@@ -46,7 +46,7 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
                     if (datatype.isVlenString) {
                         sdata.getFromHeap(offset) ?: "unknown"
                     } else {
-                        makeStringZ(bb, offset, nelems)
+                        makeStringZ(bb, offset, nelems) // a regular string just has nelems bytes at this offset
                     }
                 }
                 Datatype.VLEN -> {

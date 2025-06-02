@@ -3,9 +3,9 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
-import com.sunya.testdata.propTestFastConfig
-import com.sunya.testdata.propTestSlowConfig
-import com.sunya.testdata.runTest
+import com.sunya.netchdf.testdata.propTestFastConfig
+import com.sunya.netchdf.testdata.propTestSlowConfig
+import com.sunya.netchdf.testdata.runTest
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.string

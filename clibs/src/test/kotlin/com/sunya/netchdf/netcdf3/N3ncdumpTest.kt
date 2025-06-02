@@ -10,15 +10,16 @@ import kotlin.test.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
-import com.sunya.testdata.testFilesIn
+import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testdata.testFilesIn
 import java.io.File
 
+// Cannot run program "ncdump": error=2, No such file or directory
 // doesnt work because of differences in the value printout.
 // need to compare the parsed cdl, or maybe the xml?
 @Disabled
 class N3ncdumpTest {
-
+    val ncdumpp = "/home/stormy/install/netcdf4/bin/ncdump"
     companion object {
         @JvmStatic
         fun params(): Stream<Arguments> {
@@ -49,7 +50,7 @@ class N3ncdumpTest {
 
     fun ncdump(filename : String) : String {
         val file = File("temp")
-        ProcessBuilder("ncdump", "-h", filename)
+        ProcessBuilder(ncdumpp, "-h", filename)
             .redirectOutput(ProcessBuilder.Redirect.to(file))
             .start()
             .waitFor()

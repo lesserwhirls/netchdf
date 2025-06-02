@@ -11,29 +11,21 @@ final class constants$261 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$261() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_prefix",
-        constants$44.const$4
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.open.class, "apply", constants$260.const$5);
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_nlinks",
-        constants$40.const$0
+        constants$260.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Padd_merge_committed_dtype_path",
-        constants$44.const$4
+    static final VarHandle const$2 = constants$260.const$0.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pfree_merge_committed_dtype_paths",
-        constants$19.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_copy_object",
-        constants$44.const$4
-    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.read.class, "apply", constants$261.const$3);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_mcdt_search_cb",
-        constants$41.const$4
+        constants$261.const$3
     );
 }
 

@@ -11,23 +11,51 @@ final class constants$79 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$79() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ovisit1",
-        constants$66.const$2
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name1",
-        constants$66.const$4
+        "H5Aopen_by_idx_async",
+        constants$79.const$0
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("size"),
-        JAVA_LONG.withName("free"),
-        JAVA_INT.withName("nmesgs"),
-        JAVA_INT.withName("nchunks")
-    ).withName("H5O_stat_t");
-    static final VarHandle const$3 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$4 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("free"));
-    static final VarHandle const$5 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Aopen_by_name",
+        constants$33.const$3
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Aopen_by_name_async",
+        constants$79.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Aread",
+        constants$79.const$5
+    );
 }
 
 

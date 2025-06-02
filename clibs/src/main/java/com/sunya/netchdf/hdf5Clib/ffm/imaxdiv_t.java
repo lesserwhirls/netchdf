@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class imaxdiv_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$9.const$5;
+        return constants$0.const$1;
     }
     public static VarHandle quot$VH() {
-        return constants$10.const$0;
+        return constants$0.const$2;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class imaxdiv_t {
      * }
      */
     public static long quot$get(MemorySegment seg) {
-        return (long)constants$10.const$0.get(seg);
+        return (long)constants$0.const$2.get(seg);
     }
     /**
      * Setter for field:
@@ -39,16 +39,16 @@ public class imaxdiv_t {
      * }
      */
     public static void quot$set(MemorySegment seg, long x) {
-        constants$10.const$0.set(seg, x);
+        constants$0.const$2.set(seg, x);
     }
     public static long quot$get(MemorySegment seg, long index) {
-        return (long)constants$10.const$0.get(seg.asSlice(index*sizeof()));
+        return (long)constants$0.const$2.get(seg.asSlice(index*sizeof()));
     }
     public static void quot$set(MemorySegment seg, long index, long x) {
-        constants$10.const$0.set(seg.asSlice(index*sizeof()), x);
+        constants$0.const$2.set(seg.asSlice(index*sizeof()), x);
     }
     public static VarHandle rem$VH() {
-        return constants$10.const$1;
+        return constants$0.const$3;
     }
     /**
      * Getter for field:
@@ -57,7 +57,7 @@ public class imaxdiv_t {
      * }
      */
     public static long rem$get(MemorySegment seg) {
-        return (long)constants$10.const$1.get(seg);
+        return (long)constants$0.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -66,13 +66,13 @@ public class imaxdiv_t {
      * }
      */
     public static void rem$set(MemorySegment seg, long x) {
-        constants$10.const$1.set(seg, x);
+        constants$0.const$3.set(seg, x);
     }
     public static long rem$get(MemorySegment seg, long index) {
-        return (long)constants$10.const$1.get(seg.asSlice(index*sizeof()));
+        return (long)constants$0.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void rem$set(MemorySegment seg, long index, long x) {
-        constants$10.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$0.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     public static long sizeof() { return $LAYOUT().byteSize(); }
     public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

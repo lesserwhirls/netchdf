@@ -11,37 +11,30 @@ final class constants$68 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$68() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tget_cset",
+        constants$19.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Lcreate_external",
-        constants$68.const$0
+        "H5Tis_variable_str",
+        constants$19.const$1
     );
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("nmesgs"),
-        JAVA_INT.withName("nchunks"),
-        JAVA_INT.withName("flags"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("total"),
-            JAVA_LONG.withName("meta"),
-            JAVA_LONG.withName("mesg"),
-            JAVA_LONG.withName("free")
-        ).withName("space"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("present"),
-            JAVA_LONG.withName("shared")
-        ).withName("mesg")
-    ).withName("H5O_hdr_info_t");
-    static final VarHandle const$3 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$4 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
-    static final VarHandle const$5 = constants$68.const$2.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tget_native_type",
+        constants$67.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Tset_size",
+        constants$58.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tset_order",
+        constants$64.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Tset_precision",
+        constants$58.const$5
+    );
 }
 
 

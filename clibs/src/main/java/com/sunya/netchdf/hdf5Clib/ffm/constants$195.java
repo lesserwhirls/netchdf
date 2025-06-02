@@ -11,19 +11,37 @@ final class constants$195 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$195() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_realloc.class, "apply", constants$194.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$194.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Lget_info2",
+        constants$33.const$0
     );
-    static final VarHandle const$2 = constants$193.const$2.varHandle(MemoryLayout.PathElement.groupElement("image_realloc"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Lget_info_by_idx2",
+        constants$40.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Lget_name_by_idx",
+        constants$77.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Literate2",
+        constants$77.const$5
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
-        RuntimeHelper.POINTER
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_free.class, "apply", constants$195.const$3);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$195.const$3
+        "H5Literate_async",
+        constants$195.const$4
     );
 }
 

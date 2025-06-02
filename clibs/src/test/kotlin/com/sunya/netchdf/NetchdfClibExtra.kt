@@ -1,16 +1,14 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.api.*
 import com.sunya.cdm.util.Stats
-import com.sunya.testdata.NetchdfExtraFiles
+import com.sunya.netchdf.testdata.NetchdfExtraFiles
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testdata.testData
 import org.junit.jupiter.api.AfterAll
-import java.util.*
 import java.util.stream.Stream
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
@@ -20,7 +18,7 @@ class NetchdfClibExtra {
     companion object {
         @JvmStatic
         fun params(): Stream<Arguments> {
-            return NetchdfExtraFiles.params(true)
+            return NetchdfExtraFiles.params(false)
         }
 
         @JvmStatic
@@ -43,14 +41,14 @@ class NetchdfClibExtra {
       L,D_top,G_top,T_top,F,P,P,FD,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
      */
     @Test
-    @Disabled
     fun problemNPP() {
-        compareCdlWithClib(testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5")
+        val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
+        compareCdlWithClib(filename)
+        readNetchdfData(filename, null)
+        compareDataWithClib(filename)
     }
 
-    // this one we could probably fix
     @Test
-    @Disabled
     fun unsolved2() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
         // showMyHeader(filename)
@@ -78,15 +76,14 @@ class NetchdfClibExtra {
     @ParameterizedTest
     @MethodSource("params")
     fun testCompareCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
+        compareCdlWithClib(filename, showCdl = true)
     }
 
-    // @ParameterizedTest
+    @ParameterizedTest
     @MethodSource("params")
     fun readNetchdfData(filename: String) {
         readNetchdfData(filename, null)
     }
-
 
     @ParameterizedTest
     @MethodSource("params")

@@ -11,30 +11,29 @@ final class constants$242 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$242() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_multi_type",
-        constants$44.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_object_flush_cb",
-        constants$41.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_page_buffer_size",
-        constants$61.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_sieve_buf_size",
-        constants$44.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_small_data_block_size",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_alignment",
-        constants$215.const$5
-    );
+    static final VarHandle const$0 = constants$241.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name"),
+            RuntimeHelper.POINTER.withName("child_file"),
+            JAVA_LONG.withName("fmpl_id")
+        ).withName("mount"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name")
+        ).withName("unmount"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("grp_id")
+        ).withName("flush"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("grp_id")
+        ).withName("refresh")
+    ).withName("");
+    static final VarHandle const$2 = constants$224.const$4.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("grp_id")
+    ).withName("");
+    static final VarHandle const$4 = constants$242.const$3.varHandle(MemoryLayout.PathElement.groupElement("grp_id"));
+    static final VarHandle const$5 = constants$242.const$3.varHandle(MemoryLayout.PathElement.groupElement("grp_id"));
 }
 
 

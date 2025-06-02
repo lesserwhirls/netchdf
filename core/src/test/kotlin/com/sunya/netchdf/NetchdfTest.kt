@@ -5,7 +5,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.util.Stats
 import com.sunya.cdm.util.nearlyEquals
-import com.sunya.testdata.*
+import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -39,8 +39,9 @@ class NetchdfTest {
         @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
-                versions.keys.forEach{ println(" $it = ${versions[it]!!.size } files") }
-                val total = versions.keys.map{ versions[it]!!.size }.sum()
+                val sversions = versions.toSortedMap()
+                sversions.keys.forEach{ println(" $it = ${sversions[it]!!.size } files") }
+                val total = sversions.keys.map{ sversions[it]!!.size }.sum()
                 println("total # files = $total")
             }
             Stats.show()
@@ -71,20 +72,9 @@ class NetchdfTest {
     }
 
     @Test
-    fun testNetchIterate() { // cant readArrayData too many bytes= 2_524_250_575
+    fun testNetchIterate() {
+        //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
         compareNetchIterate(testData + "cdmUnitTest/formats/netcdf4/UpperDeschutes_t4p10_swemelt.nc", "UpperDeschutes_t4p10_swemelt")
-        // readNetchIterate(testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc", "/xma/dialoop_back")
-    }
-
-    @Test
-    fun problem() {
-        showNetchdfHeader(testData + "netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni")
-        readNetchdfData(testData + "netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni")
-    }
-
-    @Test
-    fun problem2() {
-        readNetchdfData(testData + "devcdm/netcdf4/cdm_sea_soundings.nc4")
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -123,7 +113,7 @@ class NetchdfTest {
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 
 fun showNetchdfHeader(filename: String) {
     println(filename)
@@ -148,8 +138,10 @@ fun readNetchdfData(filename: String, varname: String? = null, section: SectionP
     }
 }
 
+ */
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-// just read data from myfile
+/* just read data from myfile
 
 fun readMyData(myfile: Netchdf, varname: String? = null, section: SectionPartial? = null, showCdl : Boolean = false, showData : Boolean = false) {
 
@@ -273,7 +265,7 @@ fun compareOneVarIterate(myFile: Netchdf, myvar: Variable<*>, compare : Boolean 
     val filename = myFile.location().substringAfterLast('/')
     val varBytes = myvar.nelems
     if (varBytes >= maxBytes) {
-        println(" *** ${myvar.nameAndShape()} cant readArrayData too many bytes= $varBytes")
+        println(" *** ${myvar.nameAndShape()} skip reading ArrayData too many bytes= $varBytes max = $maxBytes")
         return 0
     }
 
@@ -392,3 +384,4 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
     }
 }
 
+*/

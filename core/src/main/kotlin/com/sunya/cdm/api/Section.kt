@@ -39,8 +39,6 @@ data class Section(val ranges : List<LongProgression>, val varShape : LongArray)
         result = 31 * result + varShape.contentHashCode()
         return result
     }
-
-
 }
 
 /** A partially filled section of multidimensional array indices. */
@@ -88,6 +86,7 @@ data class SectionPartial(val ranges : List<LongProgression?>) {
             }
             val errs = s.checkInRange(varShape)
             if (errs != null) {
+                s.checkInRange(varShape)
                 throw InvalidRangeException(errs)
             }
             // where the range is missing, we want the entire variable's dimension length

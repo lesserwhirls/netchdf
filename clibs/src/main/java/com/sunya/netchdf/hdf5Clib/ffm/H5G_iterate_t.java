@@ -16,13 +16,13 @@ public interface H5G_iterate_t {
 
     int apply(long id, java.lang.foreign.MemorySegment name, java.lang.foreign.MemorySegment iter_data);
     static MemorySegment allocate(H5G_iterate_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$202.const$5, fi, constants$41.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$204.const$1, fi, constants$36.const$1, scope);
     }
     static H5G_iterate_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _id, java.lang.foreign.MemorySegment _name, java.lang.foreign.MemorySegment _iter_data) -> {
             try {
-                return (int)constants$86.const$4.invokeExact(symbol, _id, _name, _iter_data);
+                return (int)constants$81.const$3.invokeExact(symbol, _id, _name, _iter_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }
