@@ -1,21 +1,18 @@
 package com.sunya.netchdf.hdf4
 
-import com.sunya.cdm.util.Stats
+import com.sunya.netchdf.Stats
 import com.sunya.netchdf.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.testdata.H4Files
 import com.sunya.netchdf.testdata.testData
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import java.util.*
 import java.util.stream.Stream
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class H4readTest {
 

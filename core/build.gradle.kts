@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.okio)
 
     testFixturesImplementation(libs.bundles.jvmtest)
     testFixturesImplementation(libs.kotest.property)

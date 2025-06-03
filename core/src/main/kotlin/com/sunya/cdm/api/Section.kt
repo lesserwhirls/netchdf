@@ -1,7 +1,5 @@
 package com.sunya.cdm.api
 
-import java.util.*
-
 /** A filled section of multidimensional array indices, plus the variable shape. */
 data class Section(val ranges : List<LongProgression>, val varShape : LongArray) {
     val rank = ranges.size
@@ -128,9 +126,10 @@ data class SectionPartial(val ranges : List<LongProgression?>) {
         fun fromSpec(sectionSpec: String) : SectionPartial {
             val ranges = mutableListOf<LongProgression?>()
             var range: LongProgression?
-            val stoke = StringTokenizer(sectionSpec, "(),") // TODO deal with scatterRange {1,2,3}
-            while (stoke.hasMoreTokens()) {
-                val s = stoke.nextToken().trim { it <= ' ' }
+            // val stoke = StringTokenizer(sectionSpec, "(),") // TODO deal with scatterRange {1,2,3}
+            val tokens = sectionSpec.split("(", ")", ",") // TODO deal with scatterRange {1,2,3}
+            tokens.forEach {
+                val s = it.trim { it <= ' ' }
                 range = if (s == ":") {
                     null // all
                 } else if (s.indexOf(':') < 0) { // just a number : slice
@@ -141,10 +140,12 @@ data class SectionPartial(val ranges : List<LongProgression?>) {
                         throw IllegalArgumentException(" illegal selector: $s part of <$sectionSpec>")
                     }
                 } else { // gotta be "start : end" or "start : end : stride"
-                    val stoke2 = StringTokenizer(s, ":")
-                    val s1 = stoke2.nextToken()
-                    val s2 = stoke2.nextToken()
-                    val s3 = if (stoke2.hasMoreTokens()) stoke2.nextToken() else null
+                    // val stoke2 = StringTokenizer(s, ":")
+                    val tokens2 = s.split(":")
+                    require(tokens2.size in 2..3) { " illegal selector: $s part of <$sectionSpec>" }
+                    val s1 = tokens2[0]
+                    val s2 = tokens2[1]
+                    val s3 = if (tokens2.size > 2) tokens2[2] else null
                     try {
                         val index1 = s1.toLong()
                         val index2 = s2.toLong()

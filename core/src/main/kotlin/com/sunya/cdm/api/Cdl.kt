@@ -3,9 +3,6 @@ package com.sunya.cdm.api
 import com.sunya.cdm.util.Indent
 import com.sunya.cdm.util.escapeCdl
 import com.sunya.cdm.util.escapeName
-import java.nio.ByteBuffer
-import java.util.*
-
 
 // TODO dont show attributes ??
 const val strict = false
@@ -88,7 +85,7 @@ fun Attribute<*>.cdl(varname: String, indent : Indent = Indent(2)) : String {
             append("NIL")
         }
         if (datatype == Datatype.OPAQUE) {
-            append((values[0] as ByteBuffer).toHex())
+            append((values[0] as ByteArray).toHex())
         } else if (datatype.isEnum) {
             val converted = this@cdl.convertEnums()
             converted.forEachIndexed { idx, it ->
@@ -119,6 +116,28 @@ fun Attribute<*>.cdl(varname: String, indent : Indent = Indent(2)) : String {
     }
 }
 
-internal fun ByteBuffer.toHex() : String {
-    return "0X" + HexFormat.of().withUpperCase().formatHex(this.array())
+////////////////////////////////////////////////////////////////////////////////////////////////
+// from org.cryptobiotic.eg.core.Base16
+private val hexChars =
+    charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
+
+fun ByteArray.toHex(): String {
+    // Performance note: since we're doing lookups in an array of characters, this
+    // is going to run pretty quickly. This code is in the path for computing
+    // cryptographic hashes, so performance matters here.
+
+    if (isEmpty()) return "" // hopefully won't happen
+
+    val result =
+        CharArray(2 * this.size) {
+            val offset: Int = it / 2
+            val even: Boolean = (it and 1) == 0
+            val nibble =
+                if (even)
+                    (this[offset].toInt() and 0xf0) shr 4
+                else
+                    this[offset].toInt() and 0xf
+            hexChars[nibble]
+        }
+    return result.concatToString()
 }

@@ -1,8 +1,6 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.util.Stats
 import com.sunya.netchdf.testdata.NetchdfExtraFiles
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments

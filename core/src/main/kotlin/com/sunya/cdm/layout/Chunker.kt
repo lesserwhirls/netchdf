@@ -174,7 +174,7 @@ internal fun transferMissingNelems(fillValue: Any?, datatype: Datatype<*>, nelem
         Datatype.OPAQUE -> {
             val fill = fillValue as ByteBuffer
             repeat(nelems) {
-                fill.position(0)
+                fill.position(it)
                 dst.put(fill)
             }
         }
