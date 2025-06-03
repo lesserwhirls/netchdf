@@ -41,13 +41,13 @@ class H5builder(
 
     var isNetcdf4 = false
 
-    private val typeinfoMap = mutableMapOf<Typedef, MutableList<Group.Builder>>()
-    private val typedefMap = mutableMapOf<Long, Typedef>() // key = mdt address
-    private val typedefMdtHash = mutableMapOf<Int, Typedef>() // key = mdt hash
+    val typeinfoMap = mutableMapOf<Typedef, MutableList<Group.Builder>>()
+    val typedefMap = mutableMapOf<Long, Typedef>() // key = mdt address
+    val typedefMdtHash = mutableMapOf<Int, Typedef>() // key = mdt hash
 
-    internal val hashGroups = mutableMapOf<Long, H5GroupBuilder>() // key =  btreeAddress
-    internal val symlinkMap = mutableMapOf<String, DataObjectFacade>()
-    private val dataObjectMap = mutableMapOf<Long, DataObject>() // key = DataObject address
+    val hashGroups = mutableMapOf<Long, H5GroupBuilder>() // key =  btreeAddress
+    val symlinkMap = mutableMapOf<String, DataObjectFacade>()
+    val dataObjectMap = mutableMapOf<Long, DataObject>() // key = DataObject address
     val structMetadata = mutableListOf<String>()
     val datasetMap = mutableMapOf<Long, Pair<Group.Builder, Variable.Builder<*>>>()
 

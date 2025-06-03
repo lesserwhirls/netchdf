@@ -2,8 +2,6 @@ package com.sunya.netchdf
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.cdm.util.AtomicDouble
-import com.sunya.cdm.util.Stats
 import com.sunya.cdm.util.nearlyEquals
 import kotlin.system.measureNanoTime
 import kotlin.test.assertTrue

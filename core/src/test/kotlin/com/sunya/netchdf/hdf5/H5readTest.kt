@@ -1,11 +1,11 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.util.AtomicDouble
 import com.sunya.cdm.api.Netchdf
 import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
-import com.sunya.cdm.util.Stats
+import com.sunya.netchdf.Stats
+import com.sunya.netchdf.AtomicDouble
 import com.sunya.netchdf.compareNetchIterate
 import com.sunya.netchdf.readNetchdfData
 import com.sunya.netchdf.testdata.H5Files

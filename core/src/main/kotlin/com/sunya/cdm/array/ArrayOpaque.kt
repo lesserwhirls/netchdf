@@ -8,24 +8,23 @@ import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
 import java.nio.ByteBuffer
 
-class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int)
-        : ArrayTyped<ByteBuffer>(values, Datatype.OPAQUE, shape) {
+class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int) : ArrayTyped<ByteArray>(values, Datatype.OPAQUE, shape) {
     init {
         require(nelems * size <= values.capacity())
     }
 
     // src element is the 1D index
-    fun getElement(srcElem : Int) : ByteBuffer {
-        val elem = ByteBuffer.allocate(size)
+    fun getElement(srcElem : Int) : ByteArray {
+        val elem = ByteArray(size)
         copyElem(srcElem, elem, 0)
         return elem
     }
 
-    override fun iterator(): Iterator<ByteBuffer> = BufferIterator()
-    private inner class BufferIterator : AbstractIterator<ByteBuffer>() {
+    override fun iterator(): Iterator<ByteArray> = BufferIterator()
+    private inner class BufferIterator : AbstractIterator<ByteArray>() {
         private var idx = 0
         override fun computeNext() = if (idx >= nelems) done() else {
-            val elem = ByteBuffer.allocate(size)
+            val elem = ByteArray(size)
             copyElem(idx, elem, 0)
             idx++
             setNext(elem)
@@ -33,22 +32,22 @@ class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int)
     }
 
     // copy the src[srcIdx] element the dstIdx element in dest[dstIdx]
-    private fun copyElem(srcIdx : Int, dest : ByteBuffer, dstIdx : Int) {
-        repeat(size) { dest.put(dstIdx * size + it, values.get(srcIdx * size + it)) }
+    private fun copyElem(srcIdx : Int, dest : ByteArray, dstIdx : Int) {
+        repeat(size) { dest.set(dstIdx * size + it, values.get(srcIdx * size + it)) }
     }
 
     override fun showValues(): String {
         return buildString {
             val iter = this@ArrayOpaque.iterator()
-            for (bb in iter) {
-                append("'${bb.array().contentToString()}',")
+            for (ba in iter) {
+                append("'${ba.contentToString()}',")
             }
         }
     }
 
     override fun section(section : Section) : ArrayOpaque {
         val sectionNelems = section.totalElements.toInt()
-        val sectionBB = ByteBuffer.allocate(size * sectionNelems)
+        val sectionBB = ByteArray(size * sectionNelems)
 
         val odo = IndexND(IndexSpace(section), this.shape.toLongArray())
         // was         var dstIdx = 0
@@ -58,7 +57,7 @@ class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int)
         //        }
         for ((dstIdx, index) in odo.withIndex())
             copyElem(odo.element().toInt(), sectionBB, dstIdx)
-        return ArrayOpaque(section.shape.toIntArray(), sectionBB, size)
+        return ArrayOpaque(section.shape.toIntArray(), ByteBuffer.wrap(sectionBB), size)
     }
 
 }

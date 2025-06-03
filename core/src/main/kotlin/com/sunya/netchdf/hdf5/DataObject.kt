@@ -53,7 +53,7 @@ internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject
     }
 }
 
-internal class DataObject(
+data class DataObject(
     val address : Long, // aka object id : obviously unique
     var name: String?, // may be null, may not be unique
     val messages : List<MessageHeader>
@@ -84,4 +84,19 @@ internal class DataObject(
         }
         this.mdt = findMdt // at least its a val not a var
     }
+
+    fun show() = buildString {
+        appendLine("DataObject(address=$address, name=$name")
+        if (groupMessage != null) appendLine(" groupMessage= $groupMessage")
+        if (groupNewMessage != null) appendLine(" groupNewMessage= $groupNewMessage")
+        if (mds != null) appendLine(" mds= $mds")
+        if (mdl != null) appendLine(" mdl= $mdl")
+        if (mdt != null) appendLine(" mdt= $mdt")
+        if (mfp != null) appendLine(" mfp= $mfp")
+        if (attributes.isNotEmpty()) appendLine(" attributes")
+        attributes.forEach {
+            appendLine("   ${it.show()}")
+        }
+    }
+
 }

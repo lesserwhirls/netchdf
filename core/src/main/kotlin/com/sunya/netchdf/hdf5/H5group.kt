@@ -169,7 +169,7 @@ internal fun H5builder.replaceSymbolicLinks(groupb: H5GroupBuilder) {
     }
 }
 
-internal class DataObjectFacade(val parent : H5GroupBuilder?, val name: String) {
+class DataObjectFacade(val parent : H5GroupBuilder?, val name: String) {
     var address: Long? = null
     var dataObject: DataObject? = null
     var group: H5GroupBuilder? = null
@@ -227,7 +227,7 @@ internal class DataObjectFacade(val parent : H5GroupBuilder?, val name: String) 
     }
 }
 
-internal class H5GroupBuilder(
+class H5GroupBuilder(
     val header : H5builder,
     val parent : H5GroupBuilder?,
     val name: String,
@@ -297,7 +297,7 @@ internal class H5GroupBuilder(
     }
 }
 
-internal class H5Variable(val header : H5builder, val dataObject: DataObject) {
+class H5Variable(val header : H5builder, val dataObject: DataObject) {
     // these all have to be non-null for it to be a variable
     val name = dataObject.name!!
     val mdt : DatatypeMessage = dataObject.mdt!!
@@ -316,7 +316,7 @@ internal class H5Variable(val header : H5builder, val dataObject: DataObject) {
     fun removeAtt(att : AttributeMessage) = dataObject.attributes.remove(att)
 }
 
-internal class H5Group(
+class H5Group(
     val name: String,
     val dataObject: DataObject,
     val nestedGroups : List<H5Group>,

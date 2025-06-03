@@ -1,10 +1,6 @@
 package com.sunya.netchdf
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.*
-import com.sunya.cdm.util.AtomicDouble
-import com.sunya.cdm.util.Stats
-import com.sunya.cdm.util.nearlyEquals
 import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
@@ -13,8 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-import kotlin.system.measureNanoTime
-import kotlin.test.assertTrue
 
 // Test files opened and read through openNetchdfFile().
 class NetchdfTest {

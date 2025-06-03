@@ -1,8 +1,7 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.Datatype
-import com.sunya.cdm.array.ArrayUByte
-import com.sunya.cdm.util.Stats
+import com.sunya.netchdf.Stats
 import com.sunya.netchdf.*
 import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
 import com.sunya.netchdf.testdata.H4Files
@@ -12,8 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.testdata.testData
-import org.junit.jupiter.api.Assertions
-import java.util.*
 import java.util.stream.Stream
 import kotlin.test.*
 

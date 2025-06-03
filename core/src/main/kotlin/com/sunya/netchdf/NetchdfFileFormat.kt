@@ -2,9 +2,9 @@ package com.sunya.netchdf
 
 import com.sunya.cdm.iosp.OpenFile
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
+//import java.io.IOException
 import java.nio.ByteOrder
-import java.nio.charset.StandardCharsets
+//import java.nio.charset.StandardCharsets
 
 /*
     From netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
@@ -145,7 +145,7 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
             '\n'.code.toByte()
         )
         private val H4HEAD = byteArrayOf(0x0e.toByte(), 0x03.toByte(), 0x13.toByte(), 0x01.toByte())
-        private val H4HEAD_STRING = String(H4HEAD, StandardCharsets.UTF_8)
+        private val H4HEAD_STRING = String(H4HEAD, Charsets.UTF_8)
 
         // How can I tell which format a netCDF file uses?
         // The difference is indicated in the first four bytes of the file, which are
@@ -165,7 +165,6 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
          * @param raf to test type
          * @return NetcdfFileFormat that matches constants in netcdf-c/include/netcdf.h, or INVALID if not a netcdf file.
          */
-        @Throws(IOException::class)
         fun findNetcdfFormatType(raf: OpenFile): NetchdfFileFormat {
             val magic = ByteArray(MAGIC_NUMBER_LEN)
             if (raf.readBytesUnchecked(OpenFileState(0, ByteOrder.nativeOrder()), magic) != MAGIC_NUMBER_LEN) {

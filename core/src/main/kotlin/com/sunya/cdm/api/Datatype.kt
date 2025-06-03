@@ -1,7 +1,6 @@
 package com.sunya.cdm.api
 
 import com.sunya.cdm.array.ArrayStructureData
-import java.nio.ByteBuffer
 
 /**
  * The CDM API datatype.
@@ -34,7 +33,7 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
 
         //// these types have variable length storage; inside StructureData, they have 32 bit index onto a heap
         val STRING = Datatype<String>("string", 4)
-        val OPAQUE = Datatype<ByteBuffer>("opaque", 4)
+        val OPAQUE = Datatype<ByteArray>("opaque", 4)
         val COMPOUND = Datatype<ArrayStructureData.StructureData>("compound", 4)
         val VLEN = Datatype<Array<*>>("vlen", 4)
 

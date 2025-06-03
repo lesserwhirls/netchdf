@@ -24,7 +24,7 @@ class TestArrayOpaque {
         assertTrue(testArray.toString().startsWith("class ArrayOpaque shape=[4, 5] data='[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]','[10, 11, 12, 13, "))
 
         testArray.forEachIndexed { idx, nbb ->
-            assertEquals(osize, nbb.limit())
+            assertEquals(osize, nbb.size)
             repeat(osize) { pos ->
                 assertEquals( (idx * osize + pos).toByte(), nbb.get(pos),  "idx=$idx, pos=$pos")
             }
@@ -54,7 +54,7 @@ class TestArrayOpaque {
             println("$idx, ${index.contentToString()} ${full.element(index)}")
             val have = sectionArray.getElement(idx)
             val expect = testArray.getElement(full.element(index).toInt())
-            assertEquals(expect, have)
+            assertTrue(expect.contentEquals(have))
         }
     }
 }

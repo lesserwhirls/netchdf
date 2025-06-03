@@ -74,6 +74,11 @@ open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize
         result = 31 * result + (endian?.hashCode() ?: 0)
         return result
     }
+
+    override fun toString(): String {
+        return "DatatypeMessage(address=$address, type=$type, elemSize=$elemSize, endian=$endian, isShared=$isShared)"
+    }
+
 }
 
 open class DatatypeFixed(address : Long, elemSize: Int, endian: ByteOrder, val unsigned: Boolean) :

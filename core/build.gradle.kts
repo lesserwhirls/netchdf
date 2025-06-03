@@ -6,6 +6,7 @@ plugins {
 dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.okio)
 
     testFixturesImplementation(libs.bundles.jvmtest)
     testFixturesImplementation(libs.kotest.property)
@@ -29,6 +30,10 @@ tasks.test {
     systemProperties["junit.jupiter.execution.parallel.enabled"] = "true"
     systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
     systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+
+    systemProperty("kotest.framework.discovery.jar.scan.disable", "true")
+    systemProperty("kotest.framework.classpath.scanning.config.disable", "true")
+    systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
 }
 
 kotlin {

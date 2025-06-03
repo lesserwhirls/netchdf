@@ -1,6 +1,6 @@
 package com.sunya.cdm.util
 
-import java.math.BigInteger
+// import java.math.BigInteger
 import kotlin.math.max
 
 // Note that this method is closely related to the logarithm base 2. For all positive int values x:
@@ -21,6 +21,7 @@ fun log2(n: Long): Int {
     return 63 - java.lang.Long.numberOfLeadingZeros(n)
 }
 
+/*
 fun widenNumber(number: Number): Number {
     when (number) {
         is Byte -> {
@@ -45,12 +46,11 @@ fun widenNumber(number: Number): Number {
     }
 }
 
-/**
  * This method is similar to [.widenNumber], but only integral types *that are negative* are widened.
  *
  * @param number an integral number to treat as unsigned.
  * @return an equivalent value that Java will interpret as non-negative.
- */
+ *
 fun widenNumberIfNegative(number: Number): Number {
     if (number is Byte && number.toByte() < 0) {
         return unsignedByteToShort(number.toByte())
@@ -64,7 +64,6 @@ fun widenNumberIfNegative(number: Number): Number {
     return number
 }
 
-/**
  * Converts the argument to a [BigInteger] by an unsigned conversion. In an unsigned conversion to a
  * [BigInteger], zero and positive `long` values are mapped to a numerically equal [BigInteger]
  * value and negative `long` values are mapped to a [BigInteger] value equal to the input plus
@@ -72,7 +71,7 @@ fun widenNumberIfNegative(number: Number): Number {
  *
  * @param l a `long` to treat as unsigned.
  * @return the equivalent [BigInteger] value.
- */
+ *
 fun unsignedLongToBigInt(l: Long): BigInteger {
     // This is a copy of the implementation of Long.toUnsignedBigInteger(), which is private for some reason.
     if (l >= 0L) return BigInteger.valueOf(l) else {
@@ -84,6 +83,8 @@ fun unsignedLongToBigInt(l: Long): BigInteger {
             .add(BigInteger.valueOf(Integer.toUnsignedLong(lower)))
     }
 }
+
+ */
 
 /**
  * Converts the argument to a `long` by an unsigned conversion. In an unsigned conversion to a `long`,

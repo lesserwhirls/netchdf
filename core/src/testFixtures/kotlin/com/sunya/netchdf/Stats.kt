@@ -1,4 +1,6 @@
-package com.sunya.cdm.util
+package com.sunya.netchdf
+
+// TODO import kotlin.concurrent.atomics.AtomicReference // switch when ready
 
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicLong

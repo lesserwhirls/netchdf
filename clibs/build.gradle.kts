@@ -42,11 +42,13 @@ tasks {
         systemProperties["junit.jupiter.execution.parallel.enabled"] = "false"
         systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
         systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+
+        // https://kantis.github.io/posts/Faster-Kotest-startup/
+        systemProperty("kotest.framework.discovery.jar.scan.disable", "true")
+        systemProperty("kotest.framework.classpath.scanning.config.disable", "true")
+        systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
     }
     withType<JavaExec>().all {
         jvmArgs("--enable-preview")
     }
-    //withType<KotlinCompile> {
-    //    kotlinOptions.jvmTarget = "21"
-    //}
 }
