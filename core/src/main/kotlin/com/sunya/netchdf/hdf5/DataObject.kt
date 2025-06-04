@@ -31,7 +31,7 @@ internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject
         
     } else { // IV.A.1.b. Version 2 Data Object Header Prefix
         // first byte was already read
-        val testForMagic = raf.readByteBuffer(state, 3).array()
+        val testForMagic = raf.readByteArray(state, 3)
         if (!testForMagic.contentEquals("HDR".toByteArray())) {
             return null
         }

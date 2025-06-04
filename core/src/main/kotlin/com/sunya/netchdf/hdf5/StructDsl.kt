@@ -1,6 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
@@ -94,7 +95,7 @@ class StructDsl(val name : String, val bb : ByteBuffer, val flds : List<StructFl
     }
 }
 
-class StructDslBuilder(val name : String, val raf: OpenFile, val state: OpenFileState) {
+class StructDslBuilder(val name : String, val raf: OpenFileIF, val state: OpenFileState) {
     val flds = mutableListOf<StructFld>()
     val startPos = state.pos
     var pos = 0
@@ -160,7 +161,7 @@ data class StructFld(val fldName: String, val pos: Int, val elemSize: Int, val n
     }
 }
 
-fun structdsl(name : String, raf : OpenFile, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
+fun structdsl(name : String, raf : OpenFileIF, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
     val builder = StructDslBuilder(name, raf, state)
     builder.lambda()
     return builder.build()

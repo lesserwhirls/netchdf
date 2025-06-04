@@ -3,14 +3,14 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Group
 import com.sunya.cdm.array.*
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.TagEnum.Companion.obsolete
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-fun readTag(raf : OpenFile, state: OpenFileState): Tag {
+fun readTag(raf : OpenFileIF, state: OpenFileState): Tag {
     // read just the DD part of the tag. see p 11
     val xtag = raf.readShort(state).toUShort().toInt()
     val btag = xtag and 0x3FFF // 14 bits // basic tags are numbered 0x0001 through 0x3FFF,
@@ -285,7 +285,7 @@ class TagIP8(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, r
 
     override fun readTag(h4 : H4builder) {
         val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val raw = h4.raf.readBytes(state, 3 * 256)
+        val raw = h4.raf.readByteArray(state, 3 * 256)
         rgb =  ArrayUByte(intArrayOf(256, 3), ByteBuffer.wrap(raw))
     }
 
@@ -335,7 +335,7 @@ class TagLookupTable(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
     fun read(h4 : H4builder, tagID : TagImageDim, tagNT : TagNT) {
         val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
         val datatype = H4type.getDataType(tagNT.numberType)
-        val raw = h4.raf.readBytes(state, tagID.ydim * tagID.xdim * tagID.nelems)
+        val raw = h4.raf.readByteArray(state, tagID.ydim * tagID.xdim * tagID.nelems)
         val bb = ByteBuffer.wrap(raw)
         val shape = intArrayOf(tagID.ydim, tagID.xdim, tagID.nelems)
         table = when (datatype) {
@@ -367,7 +367,7 @@ class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
     fun read(h4 : H4builder, tagID : TagImageDim, tagNT : TagNT) {
         val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
         val datatype = H4type.getDataType(tagNT.numberType)
-        val raw = h4.raf.readBytes(state, tagID.ydim * tagID.xdim * tagID.nelems)
+        val raw = h4.raf.readByteArray(state, tagID.ydim * tagID.xdim * tagID.nelems)
         val bb = ByteBuffer.wrap(raw)
         val shape = intArrayOf(tagID.ydim, tagID.xdim, tagID.nelems)
         raster = when (datatype) {
@@ -462,7 +462,7 @@ class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode,
         if (wasRead) return
         wasRead = true
         val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val ba = h4.raf.readBytes(state, length)
+        val ba = h4.raf.readByteArray(state, length)
         var count = 0
         var start = 0
         for (pos in 0 until length) {
@@ -498,6 +498,7 @@ class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
         return get(dataType, 0)
     }
 
+    // dont know the datatype until now ??
     operator fun get(dataType: Datatype<*>?, index: Int): Number {
         if (dataType === Datatype.BYTE) return bb!![index]
         if (dataType === Datatype.SHORT) return bb!!.asShortBuffer()[index]
@@ -512,6 +513,50 @@ class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
     }
 }
 
+// should be
+class TagSDminmaxShouldBe(icode: Int, refno: Int, offset : Long, length : Int, val datatype: Datatype<*>) : Tag(icode, refno, offset, length) {
+    private var minmax: Array<*>? = null
+
+    override fun readTag(h4 : H4builder) {
+        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        minmax = when (datatype) {
+            Datatype.BYTE -> h4.raf.readArrayByte(state, 2)
+            Datatype.SHORT -> h4.raf.readArrayShort(state, 2)
+            Datatype.INT -> h4.raf.readArrayInt(state, 2)
+            Datatype.FLOAT -> h4.raf.readArrayFloat(state, 2)
+            Datatype.DOUBLE -> h4.raf.readArrayDouble(state, 2)
+            Datatype.LONG -> h4.raf.readArrayLong(state, 2)
+            else -> null
+        }
+    }
+
+    fun getMin(dataType: Datatype<*>): Number {
+        return get(dataType, 1)
+    }
+
+    fun getMax(dataType: Datatype<*>): Number {
+        return get(dataType, 0)
+    }
+
+    // dont know the datatype until now ?? "Cloud of Messages"
+    operator fun get(dataType: Datatype<*>?, index: Int): Number {
+        require (minmax != null)
+        return when (datatype) {
+            Datatype.BYTE -> minmax!![index] as Byte
+            Datatype.SHORT -> minmax!![index] as Short
+            Datatype.INT -> minmax!![index] as Int
+            Datatype.LONG -> minmax!![index] as Long
+            Datatype.FLOAT -> minmax!![index] as Float
+            Datatype.DOUBLE -> minmax!![index] as Double
+            else -> Double.NaN
+        }
+    }
+
+    fun toString(dt : Datatype<*>): String {
+        return "${super.toString()} min=${getMin(dt)} max=${getMax(dt)}"
+    }
+}
+
 
 // 732 fill value
 class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
@@ -519,18 +564,17 @@ class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
 
     fun readFillValue(h4 : H4builder, datatype : Datatype<*>): Any? {
         val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val fillValueBB = h4.raf.readByteBuffer(state, datatype.size)
         fillValue = when (datatype) {
-            Datatype.BYTE -> fillValueBB.get()
-            Datatype.CHAR, Datatype.UBYTE -> fillValueBB.get().toUByte()
-            Datatype.SHORT -> fillValueBB.getShort()
-            Datatype.USHORT -> fillValueBB.getShort().toUShort()
-            Datatype.INT -> fillValueBB.getInt()
-            Datatype.UINT -> fillValueBB.getInt().toUInt()
-            Datatype.FLOAT -> fillValueBB.getFloat()
-            Datatype.DOUBLE -> fillValueBB.getDouble()
-            Datatype.LONG -> fillValueBB.getLong()
-            Datatype.ULONG -> fillValueBB.getLong().toULong()
+            Datatype.BYTE -> h4.raf.readByte(state)
+            Datatype.CHAR, Datatype.UBYTE -> h4.raf.readByte(state).toUByte()
+            Datatype.SHORT -> h4.raf.readShort(state)
+            Datatype.USHORT -> h4.raf.readShort(state).toUShort()
+            Datatype.INT -> h4.raf.readInt(state)
+            Datatype.UINT -> h4.raf.readInt(state).toUInt()
+            Datatype.FLOAT -> h4.raf.readFloat(state)
+            Datatype.DOUBLE -> h4.raf.readDouble(state)
+            Datatype.LONG -> h4.raf.readLong(state)
+            Datatype.ULONG -> h4.raf.readLong(state).toULong()
             else -> null
         }
         return fillValue

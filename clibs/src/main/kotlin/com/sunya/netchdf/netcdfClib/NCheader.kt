@@ -459,8 +459,8 @@ class NCheader(val filename: String) {
     internal data class Vinfo(val g4: Group4, val varid: Int, val typeid: Int, val userType: UserType?)
 
     companion object {
-        val debug = true
-        val debugFormat = true
+        val debug = false
+        val debugFormat = false
     }
 
     fun convertType(type: Int): Datatype<*> {

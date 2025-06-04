@@ -37,6 +37,22 @@ class ArrayString(shape : IntArray, val values : List<String>)
     }
 }
 
+/**
+ * Create a String out of this ByteArray, collapsing all dimensions into one.
+ * If there is a null (zero) value in the array, the String will end there.
+ * The null is not returned as part of the String.
+ */
+fun ByteArray.makeStringFromBytes(): String {
+    var count = 0
+    for (c in this) {
+        if (c.toInt() == 0) {
+            break
+        }
+        count++
+    }
+    // String(bytes: ByteArray, offset: Int, length: Int)
+    return String(this, 0, count, StandardCharsets.UTF_8)
+}
 
 /**
  * Create a String out of this ArrayByte, collapsing all dimensions into one.

@@ -44,7 +44,7 @@ internal class H5chunkReader(val h5 : H5builder) {
             } else {
                 if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
                 state.pos = dataChunk.childAddress
-                val chunkData = h5.raf.readByteBufferDirect(state, dataChunk.key.chunkSize)
+                val chunkData = h5.raf.readByteBuffer(state, dataChunk.key.chunkSize)
                 val filteredData = filters.apply(chunkData, dataChunk)
                 chunker.transfer(filteredData, elemSize, bb)
                 transferChunks += chunker.transferChunks

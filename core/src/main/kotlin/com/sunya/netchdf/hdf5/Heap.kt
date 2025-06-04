@@ -1,6 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
+import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.iosp.*
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -124,8 +125,8 @@ internal class H5heap(val header: H5builder) {
 
         // address must be absolute, getFileOffset already added
         constructor(address: Long) {
-            if (address < 0 || address >= raf.size) {
-                throw IllegalStateException("$address out of bounds; eof=${raf.size} ")
+            if (address < 0 || address >= raf.size()) {
+                throw IllegalStateException("$address out of bounds; eof=${raf.size()} ")
             }
 
             // header information is in le byte order
@@ -174,8 +175,8 @@ class GlobalHeap(h5: H5builder, address: Long) {
 
     init {
         val filePos: Long = h5.getFileOffset(address)
-        if (filePos < 0 || filePos >= h5.raf.size) {
-            throw IllegalStateException("$filePos out of bounds; eof=${h5.raf.size} ")
+        if (filePos < 0 || filePos >= h5.raf.size()) {
+            throw IllegalStateException("$filePos out of bounds; eof=${h5.raf.size()} ")
         }
 
         // header information is in le byte order

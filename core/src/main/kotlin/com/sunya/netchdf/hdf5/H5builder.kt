@@ -3,6 +3,7 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayLong
 import com.sunya.cdm.iosp.*
+import com.sunya.cdm.okio.OpenFileBuffered
 import com.sunya.cdm.util.unsignedByteToShort
 import com.sunya.cdm.util.unsignedIntToLong
 import com.sunya.cdm.util.unsignedShortToInt
@@ -28,10 +29,12 @@ internal const val debugTypedefs = false
  * @see "https://support.hdfgroup.org/HDF5/doc/Specs.html"
  */
 class H5builder(
-    val raf: OpenFile,
+    rafOrg: OpenFileIF,
     val strict: Boolean,
     val valueCharset: Charset = StandardCharsets.UTF_8,
 ) {
+    val raf: OpenFileIF
+
     private val superblockStart: Long // may be offset for arbitrary metadata
     var sizeOffsets: Int = 0
     var sizeLengths: Int = 0
@@ -59,12 +62,12 @@ class H5builder(
     }
 
     init {
-        // search for the superblock
+         // search for the superblock
         val state = OpenFileState(0L, ByteOrder.LITTLE_ENDIAN)
         var start = 0L
         while (start < NetchdfFileFormat.MAXHEADERPOS) {
             state.pos = start
-            val testForMagic = raf.readByteBuffer(state, 8).array()
+            val testForMagic = rafOrg.readByteArray(state, 8)
             if (testForMagic.contentEquals(magicHeader)) {
                 break
             }
@@ -75,8 +78,11 @@ class H5builder(
         }
         this.superblockStart = start
         if (debugStart) {
-            println("H5builder opened file ${raf.location} at pos $superblockStart")
+            println("H5builder opened file ${rafOrg.location()} at pos $superblockStart")
         }
+
+        // buffer when reading in metadata. this probably doesnt work because header is not contiguous
+        raf = rafOrg // if (useOkio) OpenFileBuffered(rafOrg as com.sunya.cdm.okio.OpenFile, start) else rafOrg
 
         val superBlockVersion = raf.readByte(state).toInt()
         val rootGroupBuilder = when {
@@ -109,6 +115,8 @@ class H5builder(
         }
 
         this.cdmRoot =  rootBuilder.build(null)
+
+        // if (useOkio) raf.close()
     }
 
     private fun readSuperBlock01(superblockStart : Long, state : OpenFileState, version : Int) : H5GroupBuilder {
@@ -152,8 +160,8 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
+        if (raf.size() < eofAddress) throw IOException(
+            "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")
@@ -192,7 +200,7 @@ class H5builder(
             println(" superblockStart= 0x${java.lang.Long.toHexString(this.superblockStart)}")
             println(" extensionAddress= 0x${java.lang.Long.toHexString(extensionAddress)}")
             println(" eof Address=$eofAddress")
-            println(" raf length= ${raf.size}")
+            println(" raf length= ${raf.size()}")
             println(" rootObjectAddress= 0x${java.lang.Long.toHexString(rootObjectAddress)}")
             println("")
         }
@@ -201,8 +209,8 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
+        if (raf.size() < eofAddress) throw IOException(
+            "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")

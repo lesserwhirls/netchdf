@@ -469,7 +469,7 @@ fun H5builder.readLinkMessage(state: OpenFileState): LinkMessage {
 
         64 -> {
             val len = raf.readShort(state)
-            val ba = raf.readBytes(state, len.toInt())
+            val ba = raf.readByteArray(state, len.toInt())
             val version = ba[0]
             val fileName = makeStringZ(ba, 1)
             val objName = makeStringZ(ba, 2 + fileName.length)

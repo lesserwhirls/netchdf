@@ -2,8 +2,9 @@ package com.sunya.netchdf.netcdf3
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.okio.OpenFileBuffered
 import com.sunya.netchdf.NetchdfFileFormat
 import java.io.IOException
 import java.nio.ByteOrder
@@ -16,7 +17,7 @@ import kotlin.math.min
  * @see "https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html"
  * @see "http://cucis.ece.northwestern.edu/projects/PnetCDF/CDF-5.html"
  */
-class N3header(val raf: OpenFile, val root: Group.Builder) {
+class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
   private val filePos = OpenFileState(0L, ByteOrder.BIG_ENDIAN)
   private val valueCharset = StandardCharsets.UTF_8
   private val isPnetcdf : Boolean
@@ -39,29 +40,31 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
   }
 
   init {
-    val actualSize: Long = raf.size
+    val actualSize: Long = rafOrg.size()
 
     // netcdf magic number
-    val format = NetchdfFileFormat.findNetcdfFormatType(raf)
+    val format = NetchdfFileFormat.findNetcdfFormatType(rafOrg)
     if (!format.isNetdf3format) {
       throw RuntimeException("Not a Netcdf3 File")
     }
     filePos.pos = 4
+
+    val rafb = if (useOkio) OpenFileBuffered(rafOrg as com.sunya.cdm.okio.OpenFile, 4) else rafOrg
     isPnetcdf = (format == NetchdfFileFormat.NC_FORMAT_64BIT_DATA)
     useLongOffset = (format == NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET) || isPnetcdf
 
     // number of records
-    numrecs = if (isPnetcdf) raf.readLong(filePos) else raf.readInt(filePos).toLong()
+    numrecs = if (isPnetcdf) rafb.readLong(filePos) else rafb.readInt(filePos).toLong()
     isStreaming = (numrecs == -1L)
 
     // dimensions
-    readDimensions(raf, root)
+    readDimensions(rafb, root)
 
     // global attributes
-    readAttributes(root.attributes)
+    readAttributes(rafb, root.attributes)
 
     // variables
-    readVariables(raf, root)
+    readVariables(rafb, root)
 
     // count stuff
     val unlimitedVariables = mutableListOf<Variable.Builder<*>>()
@@ -102,7 +105,7 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
 
         if (calcVsize != vinfo.vsize) {
           if (debugHeaderSize) {
-            println(" *** Special padding (${raf.location}): vsize=  ${vinfo.vsize} != calcVsize=$calcVsize padding = $padding")
+            println(" *** Special padding (${rafOrg.location()}): vsize=  ${vinfo.vsize} != calcVsize=$calcVsize padding = $padding")
           }
           sumRecord = calcVsize
           uvar.spObject = vinfo.copy(vsize = calcVsize)
@@ -119,21 +122,23 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
       println("  numrecs= $numrecs")
       println("  actualSize= $actualSize")
     }
+
+    if (useOkio) rafb.close()
   }
 
-  private fun readDimensions(raf: OpenFile, root: Group.Builder) {
+  private fun readDimensions(raf: OpenFileIF, root: Group.Builder) {
     val magic = raf.readInt(filePos)
     val numdims = if (magic == 0) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_DIM) throw IOException("Malformed netCDF file - dim magic number wrong " + raf.location)
+      if (magic != MAGIC_DIM) throw IOException("Malformed netCDF file - dim magic number wrong " + raf.location())
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
     // Must keep dimensions in strict order
     for (i in 0 until numdims) {
-      val name = readString()!!
+      val name = readString(raf)!!
       val len = if (isPnetcdf) raf.readLong(filePos) else raf.readInt(filePos).toLong()
 
       var dim: Dimension
@@ -148,20 +153,20 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
     }
   }
 
-  private fun readVariables(raf: OpenFile, root: Group.Builder) {
+  private fun readVariables(raf: OpenFileIF, root: Group.Builder) {
     // variables
     val magic = raf.readInt(filePos)
     val nvars = if (magic == 0) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_VAR) throw IOException("Malformed netCDF file - var magic number wrong ${raf.location}")
+      if (magic != MAGIC_VAR) throw IOException("Malformed netCDF file - var magic number wrong ${raf.location()}")
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
     // loop over variables
     for (i in 0 until nvars) {
-      val name = readString()!!
+      val name = readString(raf)!!
       if (debug) println("  reading variable $name pos=${filePos.pos}")
 
       // get element count in non-record dimensions
@@ -187,7 +192,7 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
 
       // variable attributes
       val varAtts = mutableListOf<Attribute<*>>()
-      readAttributes(varAtts)
+      readAttributes(raf, varAtts)
 
       // data type
       val type: Int = raf.readInt(filePos)
@@ -213,21 +218,21 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
   }
 
   @Throws(IOException::class)
-  private fun readAttributes(atts: MutableList<Attribute<*>>): Int {
+  private fun readAttributes(raf: OpenFileIF, atts: MutableList<Attribute<*>>): Int {
     val magic: Int = raf.readInt(filePos)
     val natts = if (magic == 0) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_ATT) throw IOException("Malformed netCDF file  - att magic number wrong " + raf.location)
+      if (magic != MAGIC_ATT) throw IOException("Malformed netCDF file  - att magic number wrong " + raf.location())
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
     for (i in 0 until natts) {
-      val name = readString()!!
+      val name = readString(raf)!!
       val type: Int = raf.readInt(filePos)
       val att = if (type == 2) { // CHAR converted to String for Attributes
-        val value = readString(valueCharset)
+        val value = readString(raf, valueCharset)
         if (value == null) Attribute(name, Datatype.STRING, emptyList()) // nelems = 0
               else Attribute.from(name, value) // may be empty string
       } else {
@@ -235,19 +240,22 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
         val dtype = getDatatype(type)
         val builder = Attribute.Builder(name, dtype)
         if (nelems > 0) {
-          val nbytes = readAttributeArray(dtype, nelems, builder)
+          val nbytes = readAttributeArray(raf, dtype, nelems, builder)
           skipToBoundary(nbytes)
         }
         builder.build()
       }
       atts.add(att)
-      if (debug) println("    $att pos=${filePos.pos}")
+      if (debug) {
+        println("    $att pos=${filePos.pos}")
+        att.values.forEach { println("$it")}
+      }
     }
     return natts
   }
 
   @Throws(IOException::class)
-  fun readAttributeArray(type: Datatype<*>, nelems: Int, attBuilder: Attribute.Builder<*>): Int {
+  fun readAttributeArray(raf: OpenFileIF, type: Datatype<*>, nelems: Int, attBuilder: Attribute.Builder<*>): Int {
     return when (type) {
       Datatype.BYTE -> {
         attBuilder.setValues(raf.readArrayByte(filePos, nelems).toList())
@@ -258,8 +266,8 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
         nelems
       }
       Datatype.CHAR -> {
-        val wtf  = ArrayUByte(intArrayOf(1), Datatype.CHAR, raf.readByteBuffer(filePos, nelems))
-        attBuilder.setValues(wtf.makeStringFromBytes().toList())
+        val ba  = raf.readByteArray(filePos, nelems)
+        attBuilder.setValues(ba.makeStringFromBytes().toList())
         nelems
       }
       Datatype.SHORT -> {
@@ -300,27 +308,11 @@ class N3header(val raf: OpenFile, val root: Group.Builder) {
 
   // read a string = (nelems, byte array), then skip to 4 byte boundary
   @Throws(IOException::class)
-  fun readString(): String? {
-    return readString(StandardCharsets.UTF_8)
-  }
-
-  @Throws(IOException::class)
-  private fun readString(charset: Charset): String? {
+  private fun readString(raf: OpenFileIF, charset: Charset = Charsets.UTF_8): String? {
     val nelems: Int = if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
-    val b = raf.readBytes(filePos, nelems)
+    val s = raf.readString(filePos, nelems, charset)
     skipToBoundary(nelems) // pad to 4 byte boundary
-    if (nelems == 0) {
-      return null
-    }
-    // null terminates
-    var count = 0
-    while (count < nelems) {
-      if (b[count].toInt() == 0) {
-        break
-      }
-      count++
-    }
-    return String(b, 0, count, charset)
+    return if (nelems == 0) null else s // we need this to acree with C library
   }
 
   // skip to a 4 byte boundary in the file

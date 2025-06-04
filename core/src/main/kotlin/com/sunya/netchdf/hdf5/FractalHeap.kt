@@ -1,7 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.log2
 import java.io.IOException
@@ -56,7 +56,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
    * 
    */
     private val debugOut = System.out
-    private val raf: OpenFile
+    private val raf: OpenFileIF
     val version: Int
     val heapIdLen: Short
     val flags: Byte
@@ -126,7 +126,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         val hasFilters = ioFilterLen > 0
         sizeFilteredRootDirectBlock = if (hasFilters) h5.readLength(state) else -1
         ioFilterMask = if (hasFilters) raf.readInt(state) else -1
-        val ioFilterInfo = if (hasFilters) raf.readByteBuffer(state, ioFilterLen.toInt()).array() else null
+        val ioFilterInfo = if (hasFilters) raf.readByteArray(state, ioFilterLen.toInt()) else null
 
         val checksum: Int = raf.readInt(state)
         val hsize: Int = 8 + (2 * h5.sizeLengths) + h5.sizeOffsets

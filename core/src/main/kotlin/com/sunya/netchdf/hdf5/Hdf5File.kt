@@ -7,11 +7,14 @@ import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.iosp.*
 import java.io.IOException
 
+val useOkio = true
+
 /**
  * @param strict true = make it agree with nclib if possible
  */
 class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
-    private val raf : OpenFile = OpenFile(filename)
+    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
+        com.sunya.cdm.iosp.OpenFile(filename)
     val header : H5builder = H5builder(raf, strict)
 
     override fun close() {
@@ -22,7 +25,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     override fun location() = filename
     override fun cdl() = cdl(this)
     override fun type() = header.formatType()
-    override val size : Long get() = raf.size
+    override val size : Long get() = raf.size()
 
     @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {

@@ -66,7 +66,7 @@ internal class H4CompressedDataChunk(
             // compressed data stored in one place
             val input: InputStream = if (cdata.linked == null) {
                 val state = OpenFileState(cdata.offset, ByteOrder.BIG_ENDIAN)
-                val cbuffer = h4.raf.readBytes(state, cdata.length)
+                val cbuffer = h4.raf.readByteArray(state, cdata.length)
                 ByteArrayInputStream(cbuffer)
             } else { // or compressed data stored in linked storage
                 makeSpecialLinkedInputStream(h4, cdata.linked!!)

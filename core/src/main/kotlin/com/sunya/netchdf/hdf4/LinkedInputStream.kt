@@ -33,7 +33,7 @@ internal class LinkedInputStream(val h4 : H4builder,
         }
 
         state.pos = segPosA[segno]
-        buffer = h4.raf.readBytes(state, segSize)
+        buffer = h4.raf.readByteArray(state, segSize)
         segpos = 0
         return true
     }

@@ -13,8 +13,11 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.util.zip.InflaterInputStream
 
+val useOkio = true
+
 class Hdf4File(val filename : String) : Netchdf {
-    private val raf: OpenFile = OpenFile(filename)
+    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
+        com.sunya.cdm.iosp.OpenFile(filename)
     val header: H4builder
     private val rootGroup: Group
 
@@ -33,7 +36,7 @@ class Hdf4File(val filename : String) : Netchdf {
     override fun location() = filename
     override fun cdl() = cdl(this)
     override fun type() = header.type()
-    override val size : Long get() = raf.size
+    override val size : Long get() = raf.size()
 
     @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {
@@ -224,7 +227,7 @@ class Hdf4File(val filename : String) : Netchdf {
 @Throws(IOException::class)
 internal fun getCompressedInputStream(h4: H4builder, vinfo: Vinfo): InputStream {
     // probably could construct an input stream from a channel from a raf for now, just read it all in.
-    val buffer = h4.raf.readBytes(OpenFileState(vinfo.start, ByteOrder.BIG_ENDIAN), vinfo.length)
+    val buffer = h4.raf.readByteArray(OpenFileState(vinfo.start, ByteOrder.BIG_ENDIAN), vinfo.length)
     val input = ByteArrayInputStream(buffer)
     return InflaterInputStream(input)
 }

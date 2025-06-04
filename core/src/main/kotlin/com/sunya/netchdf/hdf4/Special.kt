@@ -2,11 +2,11 @@ package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.array.ArrayInt
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 
 // p 152: chunked element description record
-class SpecialChunked(raf : OpenFile, state : OpenFileState, val owner : TagData) {
+class SpecialChunked(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {
     // val sp_tag_head_len : Int
     val version: Byte
     val specialnessFlag: Byte
@@ -44,15 +44,15 @@ class SpecialChunked(raf : OpenFile, state : OpenFileState, val owner : TagData)
         dimLength = IntArray(ndims)
         chunkLength = IntArray(ndims)
         for (i in 0 until ndims) {
-            dimFlags.add(raf.readBytes(state, 4))
+            dimFlags.add(raf.readByteArray(state, 4))
             dimLength[i] = raf.readInt(state)
             chunkLength[i] = raf.readInt(state)
         }
         val fill_val_numtype: Int = raf.readInt(state)
-        fill_value = raf.readBytes(state, fill_val_numtype)
+        fill_value = raf.readByteArray(state, fill_val_numtype)
         sp_tag_desc = raf.readShort(state)
         val sp_header_len: Int = raf.readInt(state)
-        sp_tag_header = raf.readBytes(state, sp_header_len)
+        sp_tag_header = raf.readByteArray(state, sp_header_len)
     }
 
     internal fun getDataChunks(header: H4builder, readData : Boolean = true): List<SpecialDataChunk> {
@@ -145,7 +145,7 @@ internal class SpecialDataChunk(
 private const val warn = false
 
 // p 151
-internal class SpecialComp(raf : OpenFile, state : OpenFileState, val owner : TagData) {
+internal class SpecialComp(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {
     val version: Short
     val model_type: Short
     val compress_type: Int
@@ -233,7 +233,7 @@ internal class SpecialComp(raf : OpenFile, state : OpenFileState, val owner : Ta
 }
 
 // p 145
-internal class SpecialLinked(raf : OpenFile, state : OpenFileState, val owner : TagData) {
+internal class SpecialLinked(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {
     val length : Int
     val first_len : Int
     val blk_len: Short

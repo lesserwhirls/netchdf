@@ -232,6 +232,12 @@ netcdf tst_grps.nc4 {
         )
     }
 
+    @Test
+    fun testCompareOpaqueData() {
+        val filename = "/home/all/testdata/devcdm/hdf5/opaque.h5"
+        compareDataWithClib(filename, "Opaque")
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @ParameterizedTest
@@ -610,7 +616,7 @@ fun compareOneVar(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>, cfile
                 } else {
                     println("\n countDifferences = ${countArrayDiffs(ncdata, mydata)}")
                 }
-                assertTrue(false, "variable ${myvar.fullname()}")
+                assertEquals(ncdata, mydata, "variable ${myvar.fullname()}")
                 return
             } else {
                 if (NetchdfClibTest.showData) {

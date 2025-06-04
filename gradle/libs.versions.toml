@@ -2,7 +2,7 @@
 netchdf = "0.2.0"
 
 # main dependency versions
-kotlin = "2.1.10"
+kotlin = "2.1.21"
 kotlinx-cli = "0.3.6"
 kotlinx-coroutines = "1.8.1"
 okio-version = "3.12.0"

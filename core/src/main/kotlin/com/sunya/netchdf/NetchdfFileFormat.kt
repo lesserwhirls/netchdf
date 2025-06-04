@@ -1,6 +1,7 @@
 package com.sunya.netchdf
 
 import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 //import java.io.IOException
 import java.nio.ByteOrder
@@ -165,9 +166,9 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
          * @param raf to test type
          * @return NetcdfFileFormat that matches constants in netcdf-c/include/netcdf.h, or INVALID if not a netcdf file.
          */
-        fun findNetcdfFormatType(raf: OpenFile): NetchdfFileFormat {
+        fun findNetcdfFormatType(raf: OpenFileIF): NetchdfFileFormat {
             val magic = ByteArray(MAGIC_NUMBER_LEN)
-            if (raf.readBytesUnchecked(OpenFileState(0, ByteOrder.nativeOrder()), magic) != MAGIC_NUMBER_LEN) {
+            if (raf.readIntoByteArray(OpenFileState(0, ByteOrder.nativeOrder()), magic, 0, MAGIC_NUMBER_LEN) != MAGIC_NUMBER_LEN) {
                 return INVALID
             }
 
@@ -266,11 +267,11 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
             }
         }
 
-        private fun searchForwardHdf5(raf: OpenFile, magic: ByteArray): NetchdfFileFormat? {
+        private fun searchForwardHdf5(raf: OpenFileIF, magic: ByteArray): NetchdfFileFormat? {
             val filePos = OpenFileState(0L, ByteOrder.BIG_ENDIAN)
             var start = 0L
-            while (filePos.pos < raf.size - 8 && filePos.pos < MAXHEADERPOS) {
-                if (raf.readBytesUnchecked(filePos, magic) < MAGIC_NUMBER_LEN) {
+            while (filePos.pos < raf.size() - 8 && filePos.pos < MAXHEADERPOS) {
+                if (raf.readIntoByteArray(filePos, magic, 0, MAGIC_NUMBER_LEN) < MAGIC_NUMBER_LEN) {
                     return null
                 } else if (memequal(H5HEAD, magic, H5HEAD.size)) {
                     return NC_FORMAT_NETCDF4 // actually dont know here if its netcdf4 or just hdf5.
@@ -282,8 +283,8 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
             return null
         }
 
-        private fun searchForwardHdf4(raf: OpenFile, want: ByteArray): NetchdfFileFormat? {
-            val size: Long = raf.size
+        private fun searchForwardHdf4(raf: OpenFileIF, want: ByteArray): NetchdfFileFormat? {
+            val size: Long = raf.size()
             val state = OpenFileState(0L, ByteOrder.BIG_ENDIAN)
             var startPos = 0L
             while ((startPos < (size - H4HEAD.size)) && (startPos < MAXHEADERPOS)) {
@@ -298,8 +299,8 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
 }
 
 private fun memequal(b1: ByteArray?, b2: ByteArray?, len: Int): Boolean {
-    if (b1.contentEquals(b2)) return true
     if (b1 == null || b2 == null) return false
+    if (b1.contentEquals(b2)) return true
     if (b1.size < len || b2.size < len) return false
     for (i in 0 until len) {
         if (b1[i] != b2[i]) return false

@@ -8,8 +8,10 @@ import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
+val useOkio = true
 class Netcdf3File(val filename : String) : Netchdf {
-    private val raf : OpenFile = OpenFile(filename)
+    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
+                                                com.sunya.cdm.iosp.OpenFile(filename)
     private val header : N3header
     private val rootGroup : Group
 
@@ -27,7 +29,7 @@ class Netcdf3File(val filename : String) : Netchdf {
     override fun location() = filename
     override fun cdl() = cdl(this)
     override fun type() = header.formatType()
-    override val size : Long get() = raf.size
+    override val size : Long get() = raf.size()
 
     @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {
@@ -97,7 +99,7 @@ class Netcdf3File(val filename : String) : Netchdf {
             filePos.pos = chunk.srcPos()
             val dstPos = (vinfo.elemSize * chunk.destElem()).toInt()
             val chunkBytes = vinfo.elemSize * chunk.nelems()
-            bytesRead += raf.readIntoByteBufferDirect(filePos, values, dstPos, chunkBytes)
+            bytesRead += raf.readIntoByteBuffer(filePos, values, dstPos, chunkBytes)
         }
         require(bytesRead == totalNbytes.toInt())
 

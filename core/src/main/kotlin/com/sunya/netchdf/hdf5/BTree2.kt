@@ -1,6 +1,6 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import java.io.IOException
 import java.nio.ByteOrder
@@ -15,7 +15,7 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
     private val nodeSize: Int // size in bytes of btree nodes
     private val recordSize: Short// size in bytes of btree records
     private val owner: String
-    private val raf: OpenFile
+    private val raf: OpenFileIF
     val entryList: MutableList<Entry2> = ArrayList()
 
     init {
@@ -194,13 +194,13 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
     // Type 5 Record Layout - Link Name for Indexed Group
     inner class Record5(state: OpenFileState) {
         val nameHash = raf.readInt(state)
-        val heapId: ByteArray = raf.readByteBuffer(state, 7).array()
+        val heapId: ByteArray = raf.readByteArray(state, 7)
     }
 
     // Type 6 Record Layout - Creation Order for Indexed Group
     inner class Record6(state: OpenFileState) {
         val creationOrder = raf.readLong(state)
-        val heapId: ByteArray = raf.readByteBuffer(state, 7).array()
+        val heapId: ByteArray = raf.readByteArray(state, 7)
     }
 
     // Type 7 Record Layout - Shared Object Header Messages (Sub-type 0 - Message in Heap)
@@ -208,7 +208,7 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
         val location = raf.readByte(state)
         val hash = raf.readInt(state)
         val refCount = raf.readInt(state)
-        val id: ByteArray = raf.readByteBuffer(state, 8).array()
+        val id: ByteArray = raf.readByteArray(state, 8)
     }
 
     // Type 7 Record Layout - Shared Object Header Messages (Sub-type 1 - Message in Object Header)
@@ -223,7 +223,7 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
 
     // Type 8 Record Layout - Attribute Name for Indexed Attributes
     inner class Record8(state: OpenFileState) {
-        val heapId: ByteArray = raf.readByteBuffer(state, 8).array()
+        val heapId: ByteArray = raf.readByteArray(state, 8)
         val flags = raf.readByte(state)
         val creationOrder = raf.readInt(state)
         val nameHash = raf.readInt(state)
@@ -231,7 +231,7 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
 
     // Type 9 Record Layout - Creation Order for Indexed Attributes
     inner class Record9(state: OpenFileState) {
-        val heapId: ByteArray = raf.readByteBuffer(state, 8).array()
+        val heapId: ByteArray = raf.readByteArray(state, 8)
         val flags = raf.readByte(state)
         val creationOrder = raf.readInt(state)
     }

@@ -65,7 +65,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
         } else {
             if (debugChunking) println("  chunkIterator=${dataChunk.show(tiledData.tiling)}")
             state.pos = dataChunk.childAddress
-            val chunkData = h5.raf.readByteBufferDirect(state, dataChunk.key.chunkSize)
+            val chunkData = h5.raf.readByteBuffer(state, dataChunk.key.chunkSize)
             val filteredData = filters.apply(chunkData, dataChunk)
             if (useEntireChunk) {
                 filteredData

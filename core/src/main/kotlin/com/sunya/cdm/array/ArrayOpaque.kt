@@ -1,9 +1,6 @@
 package com.sunya.cdm.array
 
-import com.sunya.cdm.api.Datatype
-import com.sunya.cdm.api.Section
-import com.sunya.cdm.api.toIntArray
-import com.sunya.cdm.api.toLongArray
+import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
 import java.nio.ByteBuffer
@@ -59,5 +56,28 @@ class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int) : A
             copyElem(odo.element().toInt(), sectionBB, dstIdx)
         return ArrayOpaque(section.shape.toIntArray(), ByteBuffer.wrap(sectionBB), size)
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ArrayOpaque
+
+        if (datatype != other.datatype) return false
+        if (!shape.equivalent(other.shape)) return false
+        if (nelems != other.nelems) return false
+        if (size != other.size) return false
+        if (!values.array().contentEquals(other.values.array())) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + size
+        result = 31 * result + values.array().hashCode()
+        return result
+    }
+
 
 }

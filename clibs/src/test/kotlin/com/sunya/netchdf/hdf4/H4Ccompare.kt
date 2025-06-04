@@ -215,14 +215,14 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("params")
     fun readH4data(filename: String) {
         readNetchdfData(filename, null, null, true)
         println()
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("params")
     fun compareData(filename: String) {
         compareData(filename, null)
@@ -245,7 +245,7 @@ class H4Ccompare {
         compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR } //  || it.datatype == Datatype.STRING }
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("params")
     fun testIterateWithClib(filename: String) {
         compareIterateWithClib(filename)

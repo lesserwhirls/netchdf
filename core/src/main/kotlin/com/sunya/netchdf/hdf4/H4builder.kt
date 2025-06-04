@@ -2,6 +2,7 @@ package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
@@ -19,7 +20,7 @@ const val attLengthMaxPromote = 4000
 /* Implementation Notes
    1. Early version seem to use the refno as a groouping mechanism. Perhaps before Vgroup??
  */
-class H4builder(val raf: OpenFile, val valueCharset: Charset) {
+class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val alltags = mutableListOf<Tag>() // in order as they appear in the file
 
     var rootBuilder: Group.Builder = Group.Builder("")
@@ -1004,8 +1005,8 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         private val H4HEAD_STRING = String(H4HEAD, StandardCharsets.UTF_8)
         private const val maxHeaderPos: Long = 500000 // header's gotta be within this
 
-        fun isValidFile(raf: OpenFile, state: OpenFileState): Boolean {
-            val size: Long = raf.size
+        fun isValidFile(raf: OpenFileIF, state: OpenFileState): Boolean {
+            val size: Long = raf.size()
 
             // search forward for the header
             var startPos = 0L

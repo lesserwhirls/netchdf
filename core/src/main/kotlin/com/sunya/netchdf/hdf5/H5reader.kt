@@ -60,7 +60,7 @@ internal fun <T> H5builder.readDataWithLayout(state: OpenFileState, layout: Layo
     while (layout.hasNext()) {
         val chunk = layout.next()
         state.pos = chunk.srcPos()
-        raf.readIntoByteBufferDirect(
+        raf.readIntoByteBuffer(
             state,
             bb,
             layout.elemSize * chunk.destElem().toInt(),
