@@ -10,6 +10,7 @@ interface Netchdf : AutoCloseable {
     fun rootGroup() : Group
     fun cdl() : String
 
+    // TODO I think the output type is not always the input type
     fun <T> readArrayData(v2: Variable<T>, section: SectionPartial? = null) : ArrayTyped<T>
 
     fun <T> chunkIterator(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null) : Iterator<ArraySection<T>>

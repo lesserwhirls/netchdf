@@ -5,9 +5,8 @@ import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
 import java.nio.ByteBuffer
 
-// fake ByteBuffer
 class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType : Datatype<T>)
-    : ArrayTyped<Array<T>>(ByteBuffer.allocate(0), Datatype.VLEN as Datatype<Array<T>>, shape) {
+    : ArrayTyped<Array<T>>(Datatype.VLEN as Datatype<Array<T>>, shape) {
 
     override fun iterator(): Iterator<Array<T>> = ArrayIterator()
     private inner class ArrayIterator : AbstractIterator<Array<T>>() {

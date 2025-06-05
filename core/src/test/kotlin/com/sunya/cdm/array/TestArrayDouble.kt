@@ -19,11 +19,9 @@ class TestArrayDouble {
     fun TestArrayDouble() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size * 8)
-        val fb = bb.asDoubleBuffer()
-        repeat(size) { fb.put(it.toDouble())}
+        val fb = DoubleArray(size) { it.toDouble()  }
 
-        val testArray = ArrayDouble(shape, bb)
+        val testArray = ArrayDouble(shape, fb)
         assertEquals(Datatype.DOUBLE, testArray.datatype)
         assertEquals(size, testArray.nelems)
 
@@ -44,9 +42,7 @@ class TestArrayDouble {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size * 8)
-                val fb = bb.asDoubleBuffer()
-                repeat(size) { fb.put(it.toDouble())}
+                val bb = DoubleArray(size) { it.toDouble()  }
                 val testArray = ArrayDouble(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -56,6 +52,7 @@ class TestArrayDouble {
 
                 assertEquals(Datatype.DOUBLE, sectionArray.datatype)
                 assertEquals(sectionLength.computeSize(), sectionArray.nelems)
+                assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
                 val full = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
                 val odo = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())

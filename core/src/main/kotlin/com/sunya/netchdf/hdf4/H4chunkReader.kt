@@ -4,7 +4,6 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
 
 class H4chunkReader(val h4 : H4builder) {
 
@@ -22,8 +21,7 @@ class H4chunkReader(val h4 : H4builder) {
         if (sizeBytes <= 0 || sizeBytes >= Integer.MAX_VALUE) {
             throw java.lang.RuntimeException("Illegal nbytes to read = $sizeBytes")
         }
-        val bb = ByteBuffer.allocate(sizeBytes.toInt())
-        bb.order(vinfo.endian)
+        val ba = ByteArray(sizeBytes.toInt())
 
         val tiledData = H4tiledData(h4, v2.shape, vinfo.chunkLengths, vinfo.chunks!!)
         if (debugChunking) println(" ${tiledData.tiling}")
@@ -35,20 +33,21 @@ class H4chunkReader(val h4 : H4builder) {
             val chunker = Chunker(dataSection, wantSpace) // each dataChunk has its own Chunker iteration
             if (dataChunk.isMissing()) {
                 if (debugMissing) println(" ${dataChunk.show(tiledData.tiling)}")
-                chunker.transferMissing(vinfo.fillValue, datatype, elemSize, bb)
+                chunker.transferMissing(vinfo.fillValue, datatype, elemSize, ba)
             } else {
                 if (debugChunkingDetail and (count < 1)) println(" ${dataChunk.show(tiledData.tiling)}")
-                val filteredData = dataChunk.getByteBuffer() // filter already applied
-                chunker.transfer(filteredData, elemSize, bb)
+                val filteredData = dataChunk.getByteArray() // filter already applied
+                chunker.transferBA(filteredData, 0, elemSize, ba, 0)
                 transferChunks += chunker.transferChunks
             }
             count++
         }
 
-        bb.position(0)
-        bb.limit(bb.capacity())
-
         val shape = wantSpace.shape.toIntArray()
+        val tba = TypedByteArray(v2.datatype, ba, 0, isBE = vinfo.isBE)
+        return tba.convertToArrayTyped(shape)
+
+        /*
         val result = when (datatype) {
             Datatype.BYTE -> ArrayByte(shape, bb)
             Datatype.STRING, Datatype.CHAR, Datatype.UBYTE -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
@@ -62,7 +61,7 @@ class H4chunkReader(val h4 : H4builder) {
             Datatype.ULONG -> ArrayULong(shape, bb)
             else -> throw IllegalStateException("unimplemented type= $datatype")
         }
-        return result as ArrayTyped<T>
+        return result as ArrayTyped<T> */
     }
 
 }

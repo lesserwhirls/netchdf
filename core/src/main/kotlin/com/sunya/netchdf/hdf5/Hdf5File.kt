@@ -13,7 +13,7 @@ val useOkio = true
  * @param strict true = make it agree with nclib if possible
  */
 class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
-    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
+    private val raf : OpenFileIF = if (useOkio) OkioFile(filename) else
         com.sunya.cdm.iosp.OpenFile(filename)
     val header : H5builder = H5builder(raf, strict)
 
@@ -68,7 +68,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         val vinfo = v2.spObject as DataContainerVariable
 
         if (vinfo.onlyFillValue) { // fill value only, no data
-            val single = ArraySection(ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!), wantSection)
+            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!), wantSection)
             return listOf(single).iterator()
         }
 

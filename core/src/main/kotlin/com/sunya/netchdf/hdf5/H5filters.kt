@@ -4,8 +4,6 @@ import com.sunya.cdm.util.IOcopyB
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 import java.util.zip.Inflater
 import java.util.zip.InflaterInputStream
 import kotlin.math.min
@@ -14,18 +12,18 @@ import kotlin.math.min
 internal class H5filters(
     val varname : String,
     val mfp: FilterPipelineMessage?,
-    val byteOrder: ByteOrder
+    val isBE: Boolean
 ) {
     val inflateBufferSize = 80_000 // LOOK make this settable
     var first = true
 
-    fun apply(rawdata: ByteBuffer, entry: BTree1.DataChunkEntry): ByteBuffer {
+    fun apply(rawdata: ByteArray, entry: BTree1.DataChunkEntry): ByteArray {
         if (mfp == null) return rawdata
         // if (first) println("  ** Filtered $varname ${mfp.filters.map { it.name}}")
         first = false
 
         // LOOK can you hook the streams up rather than writing to bytearray at each step ??
-        var data = rawdata.array()
+        var data = rawdata
         try {
             // apply filters backwards
             for (i in mfp.filters.indices.reversed()) {
@@ -45,9 +43,7 @@ internal class H5filters(
                     else -> throw RuntimeException("Unknown filter type=" + filter.filterType)
                 }
             }
-            val result = ByteBuffer.wrap(data)
-            result.order(byteOrder)
-            return result
+            return data
 
         } catch (e: OutOfMemoryError) {
             val oom: Error = OutOfMemoryError(

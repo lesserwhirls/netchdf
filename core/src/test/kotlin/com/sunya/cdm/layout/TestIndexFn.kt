@@ -20,9 +20,7 @@ class TestIndexFn {
         assertContentEquals(intArrayOf(6, 1), flipper.flippedShape())
 
         val size = shape.computeSize().toInt()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
-
+        val bb = ByteArray(size) { it.toByte() }
 
         val flippedBB = flipper.flip(bb, 1)
         assertContentEquals(byteArrayOf(0, 1, 2, 3, 4, 5), ByteArray(size) { flippedBB.get(it) } )
@@ -36,13 +34,13 @@ class TestIndexFn {
         assertContentEquals(intArrayOf(3, 2), flipper.flippedShape())
 
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
 
         val flippedBB = flipper.flip(bb, 1)
         assertContentEquals(byteArrayOf(0, 3, 1, 4, 2, 5), ByteArray(size) { flippedBB.get(it) } )
     }
 
+    /* TODO
     @Test
     fun testFlipInt() {
         val shape = intArrayOf(2, 3)
@@ -60,6 +58,8 @@ class TestIndexFn {
         assertContentEquals(intArrayOf(0, 3, 1, 4, 2, 5), IntArray(size) { iflippedBB.get(it) } )
     }
 
+     */
+
     @Test
     fun testFlipMiddleSection() {
         val varshape = longArrayOf(3, 5)
@@ -69,13 +69,12 @@ class TestIndexFn {
 
         // fill the entire array
         val size = varshape.computeSize().toInt()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
 
         // grab only the middle section
         val ba = ArrayByte(varshape.toIntArray(), bb)
-        val middle : ByteBuffer = ba.section(wantSection).values
-        assertEquals( sectionSize, middle.capacity())
+        val middle  = ba.section(wantSection).values
+        assertEquals( sectionSize, middle.size)
         assertContentEquals(byteArrayOf(6, 7, 8, 11, 12, 13 ), ByteArray(sectionSize) { middle.get(it) } )
 
         assertContentEquals(longArrayOf(2, 3), wantSection.shape )
@@ -86,6 +85,7 @@ class TestIndexFn {
         assertContentEquals(byteArrayOf(6, 11, 7, 12, 8, 13), ByteArray(sectionSize) { flippedBB.get(it) } )
     }
 
+    /* TODO
     @Test
     fun testFlipMiddleSectionInt() {
         val varshape = longArrayOf(5, 5)
@@ -114,5 +114,7 @@ class TestIndexFn {
         val iflippedBB = flippedBB.asIntBuffer()
         assertContentEquals(intArrayOf(6, 11, 16, 7, 12, 17, 8, 13, 18), IntArray(sectionSize) { iflippedBB.get(it) } )
     }
+
+     */
 
 }

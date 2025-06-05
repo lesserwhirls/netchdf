@@ -1,8 +1,6 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
-import java.nio.ByteBuffer
 
 // Message Type 8 "Data Layout" : regular (contiguous), chunked, or compact (stored with the message)
 // The dimensions were specified in version 1 and 2. In version 3 and 4, dimensions are in the Dataspace message.
@@ -24,7 +22,6 @@ import java.nio.ByteBuffer
 //     associates the VDS to the source dataset elements that are stored across a collection of HDF5 files.
 
 
-@Throws(IOException::class)
 fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
     val tstate = state.copy()
     val version = raf.readByte(tstate).toInt()
@@ -52,7 +49,7 @@ fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
         if (debugMessage) rawdata.show()
 
         return when (layoutClass) {
-            0 -> DataLayoutCompact(rawdata.getIntArray("dims"), rawdata.getByteBuffer("compactData"))
+            0 -> DataLayoutCompact(rawdata.getIntArray("dims"), rawdata.getByteArray("compactData"))
             1 -> DataLayoutContiguous(rawdata.getIntArray("dims"), rawdata.getLong("dataAddress"))
             2 -> DataLayoutChunked(version, rawdata.getIntArray("dims"), rawdata.getLong("dataAddress"), rawdata.getInt("chunkedElementSize"))
             else -> throw RuntimeException()
@@ -87,7 +84,7 @@ fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
         if (debugMessage) rawdata.show()
 
         return when (layoutClass) {
-            0 -> DataLayoutCompact3(rawdata.getByteBuffer("compactData"))
+            0 -> DataLayoutCompact3(rawdata.getByteArray("compactData"))
             1 -> DataLayoutContiguous3(rawdata.getLong("dataAddress"), rawdata.getLong("dataSize"))
             2 -> DataLayoutChunked(version, rawdata.getIntArray("dims"), rawdata.getLong("btreeAddress"), rawdata.getInt("chunkedElementSize"))
             else -> throw RuntimeException()
@@ -115,7 +112,7 @@ open class DataLayoutMessage(layoutClassNum: Int)  : MessageHeader(MessageType.L
     val layoutClass = LayoutClass.of(layoutClassNum)
     override fun show() : String = "class=$layoutClass"
 }
-data class DataLayoutCompact(val dims : IntArray, val compactData: ByteBuffer) : DataLayoutMessage(0)
+data class DataLayoutCompact(val dims : IntArray, val compactData: ByteArray) : DataLayoutMessage(0)
 
 data class DataLayoutContiguous(val dims : IntArray, val dataAddress: Long) : DataLayoutMessage(1) {
     override fun show() : String = "class=$layoutClass dims=${dims.contentToString()} dataAddress=$dataAddress"
@@ -124,7 +121,7 @@ data class DataLayoutChunked(val version : Int, val chunkDims : IntArray, val bt
     override fun show(): String = "class=$layoutClass dims=${chunkDims.contentToString()} btreeAddress=$btreeAddress chunkedElementSize=$chunkedElementSize"
 }
 
-data class DataLayoutCompact3(val compactData: ByteBuffer) : DataLayoutMessage(0)
+data class DataLayoutCompact3(val compactData: ByteArray) : DataLayoutMessage(0)
 
 data class DataLayoutContiguous3(val dataAddress: Long, val dataSize: Long) : DataLayoutMessage(1) {
     override fun show(): String = "class=$layoutClass dataAddress=$dataAddress dataSize=$dataSize"

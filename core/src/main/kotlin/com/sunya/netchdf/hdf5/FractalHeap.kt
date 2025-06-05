@@ -5,8 +5,7 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.log2
 import java.io.IOException
-import java.nio.ByteOrder
-import java.util.*
+// import java.util.*
 
 /** Level 1G - Fractal Heap  */
 internal class FractalHeap(private val h5: H5builder, forWho: String, address: Long) {
@@ -91,7 +90,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
 
     init {
         raf = h5.raf
-        val state = OpenFileState(h5.getFileOffset(address), ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(h5.getFileOffset(address), false)
 
         // header
         val magic: String = raf.readString(state,4)

@@ -71,14 +71,13 @@ class TestArrayString {
     fun makeStringFromBytes() {
         val shape = intArrayOf(1, 2, 3)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put((65 + it).toByte())}
+        val bb = UByteArray(size) { (65 + it).toUByte() }
 
         val ubyteArray = ArrayUByte(shape, bb)
         val result = ubyteArray.makeStringFromBytes()
         assertEquals("ABCDEF", result)
 
-        bb.put( 3, 0)
+        bb[3] = 0.toUByte()
         val ubyteArray2 = ArrayUByte(shape, bb)
         val result2 = ubyteArray2.makeStringFromBytes()
         assertEquals("ABC", result2)
@@ -88,8 +87,7 @@ class TestArrayString {
     fun makeStringsFromBytesRank1() {
         val shape = intArrayOf(13)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put((65 + it).toByte())}
+        val bb = UByteArray(size) { (65 + it).toUByte() }
 
         val ubyteArray = ArrayUByte(shape, bb)
         val result = ubyteArray.makeStringsFromBytes()
@@ -103,8 +101,7 @@ class TestArrayString {
     fun makeStringsFromBytes() {
         val shape = intArrayOf(2, 2, 3)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put((65 + it).toByte())}
+        val bb = UByteArray(size) { (65 + it).toUByte() }
 
         val ubyteArray = ArrayUByte(shape, bb)
         val result : ArrayString = ubyteArray.makeStringsFromBytes()
@@ -122,10 +119,9 @@ class TestArrayString {
     fun makeStringsFromBytesWithZeroTerminators() {
         val shape = intArrayOf(3, 6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put((65 + it).toByte())}
-        bb.put( 3, 0)
-        bb.put( 17, 0)
+        val bb = UByteArray(size) { (65 + it).toUByte() }
+        bb[3] = 0.toUByte()
+        bb[17] = 0.toUByte()
 
         val ubyteArray = ArrayUByte(shape, bb)
         val result : ArrayString = ubyteArray.makeStringsFromBytes()

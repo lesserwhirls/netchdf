@@ -3,24 +3,19 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
 
 // fixed length data in the ByteBuffer, var length data goes on the heap
-class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, val members : List<StructureMember<*>>)
-        : ArrayTyped<ArrayStructureData.StructureData>(bb, Datatype.COMPOUND, shape) {
+class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+        : ArrayTyped<ArrayStructureData.StructureData>(Datatype.COMPOUND, shape) {
 
-    init {
-        require(bb.capacity() >= recsize * shape.computeSize())
-    }
-
-    fun get(idx: Int) = StructureData(bb, recsize * idx, members)
+    fun get(idx: Int) = StructureData(ba, recsize * idx, members, isBE)
 
     override fun iterator(): Iterator<StructureData> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<StructureData>() {
         private var idx = 0
         override fun computeNext() {
             if (idx >= nelems) done()
-            else setNext(StructureData(bb, recsize * idx, members))
+            else setNext(StructureData(ba, recsize * idx, members, isBE))
             idx++
         }
     }
@@ -29,7 +24,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
     private var heapIndex = 0
     fun putOnHeap(offset: Int, value: Any): Int {
         heap[heapIndex] = value
-        bb.putInt(offset, heapIndex)
+        // ba.putInt(offset, heapIndex) // TODO clobber the ByteArray ??
         val result = heapIndex
         heapIndex++
         return result
@@ -37,7 +32,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
 
     // TODO not a bad idea to start at 1, so that 0 == not set
     fun getFromHeap(offset: Int): Any? {
-        val index = bb.getInt(offset) // youve clobbered the byte buffer. is that ok ??
+        val index = convertInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
         return heap[index]
     }
 
@@ -62,18 +57,17 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
             return this
 
         // copy the requested records
-        val sectionBB = ByteBuffer.allocate(sectionNelems * recsize)
+        val sectionBA = ByteArray(sectionNelems * recsize)
         val chunker = Chunker(IndexSpace(this.shape), IndexSpace(section))
-        chunker.transfer(bb, recsize, sectionBB)
-        bb.position(0)
-        sectionBB.position(0)
+        chunker.transferBA(ba, 0, recsize, sectionBA, 0)
 
-        return ArrayStructureData(section.shape.toIntArray(), sectionBB, recsize, members)
+        return ArrayStructureData(section.shape.toIntArray(), sectionBA, isBE, recsize, members)
     }
 
     // structure data is packed into the ByteBuffer starting at the given offset
     // vlens and strings are on the "heap" stored in the parent ArrayStructureData
-    inner class StructureData(val bb: ByteBuffer, val offset: Int, val members: List<StructureMember<*>>) {
+    inner class StructureData(val ba: ByteArray, val offset: Int, val members: List<StructureMember<*>>, val isBE: Boolean) {
+
         override fun toString(): String {
             return buildString {
                 append("{")
@@ -127,7 +121,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
         }
 
         override fun hashCode(): Int {
-            var result = bb.hashCode()
+            var result = ba.hashCode()
             result = 31 * result + offset
             result = 31 * result + members.hashCode()
             members.forEach { result = 31 * result + it.value(this).hashCode() } // LOOK probably wrong

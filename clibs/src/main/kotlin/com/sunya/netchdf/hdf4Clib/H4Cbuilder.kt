@@ -679,7 +679,7 @@ class HCheader(val filename: String) {
                 val shape = intArrayOf(nentries, ncomps)
                 val lutData = when (pdatatype) {
                     Datatype.BYTE -> ArrayByte(shape, palData)
-                    Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, pdatatype as Datatype<UByte>, palData)
+                    Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, palData)
                     Datatype.SHORT -> ArrayShort(shape, palData)
                     Datatype.USHORT -> ArrayUShort(shape, palData)
                     Datatype.INT -> ArrayInt(shape, palData)

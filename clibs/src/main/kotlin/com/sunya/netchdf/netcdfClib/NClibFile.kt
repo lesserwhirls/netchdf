@@ -180,7 +180,7 @@ class NClibFile(val filename: String) : Netchdf {
                             val address = zaddress.reinterpret(Long.MAX_VALUE)
                             listOfVlen.add( readVlenArray(arraySize, address, member.datatype.typedef!!.baseType))
                         }
-                        ArrayVlen.fromArray(member.dims, listOfVlen, member.datatype.typedef!!.baseType)
+                        ArrayVlen.fromArray(member.shape, listOfVlen, member.datatype.typedef!!.baseType)
                     }
                     return sdataArray as ArrayTyped<T>
                 }

@@ -848,7 +848,7 @@ internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureDat
             val address = MemorySegment.ofAddress(longAddress)
             listOfVlen.add( readVlenArray(arraySize, address, member.datatype.typedef!!.baseType))
         }
-        ArrayVlen.fromArray(member.dims, listOfVlen, member.datatype.typedef!!.baseType)
+        ArrayVlen.fromArray(member.shape, listOfVlen, member.datatype.typedef!!.baseType)
     }
 
     return sdataArray

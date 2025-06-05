@@ -1,13 +1,11 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayTyped
+import com.sunya.cdm.array.convertInt
+import com.sunya.cdm.array.convertLong
 import com.sunya.cdm.iosp.*
 import java.io.IOException
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
-import java.nio.charset.StandardCharsets
-import java.util.*
+// import java.util.*
 
 private const val debugHeap = false
 
@@ -20,18 +18,18 @@ internal class H5heap(val header: H5builder) {
      *
      * @param globalHeapIdAddress address of the heapId, used to get the data array out of the heap
      * @param datatype type of data
-     * @param endian byteOrder of the data (0 = BE, 1 = LE)
+     * @param isBE byteOrder of the data (true = BE, false = LE)
      * @return the Array read from the heap
      * @throws IOException on read error
      */
     @Throws(IOException::class)
-    fun getHeapDataArray(globalHeapIdAddress: Long, datatype: Datatype<*>, endian: ByteOrder?): Array<*> {
+    fun getHeapDataArray(globalHeapIdAddress: Long, datatype: Datatype<*>, isBE: Boolean): Array<*> {
         val heapId: HeapIdentifier = readHeapIdentifier(globalHeapIdAddress)
-        return getHeapDataArray(heapId, datatype, endian)
+        return getHeapDataArray(heapId, datatype, isBE)
     }
 
     @Throws(IOException::class)
-    fun getHeapDataArray(heapId: HeapIdentifier, datatype: Datatype<*>, endian: ByteOrder?): Array<*> {
+    fun getHeapDataArray(heapId: HeapIdentifier, datatype: Datatype<*>, isBE: Boolean): Array<*> {
         val ho = heapId.getHeapObject() ?: return when (datatype) { // LOOK set nelems = 0 ??
             Datatype.FLOAT -> emptyArray<Float>()
             Datatype.DOUBLE -> emptyArray<Double>()
@@ -49,18 +47,18 @@ internal class H5heap(val header: H5builder) {
         val typedef = datatype.typedef
         val valueDatatype = typedef?.baseType ?: datatype
 
-        val state = OpenFileState(ho.dataPos, endian ?: ByteOrder.nativeOrder())
+        val state = OpenFileState(ho.dataPos, isBE)
         val result = when (valueDatatype) {
-            Datatype.FLOAT -> raf.readArrayFloat(state, heapId.nelems)
-            Datatype.DOUBLE -> raf.readArrayDouble(state, heapId.nelems)
-            Datatype.BYTE -> raf.readArrayByte(state, heapId.nelems)
-            Datatype.UBYTE, Datatype.ENUM1 -> raf.readArrayUByte(state, heapId.nelems)
-            Datatype.SHORT -> raf.readArrayShort(state, heapId.nelems)
-            Datatype.USHORT, Datatype.ENUM2 -> raf.readArrayUShort(state, heapId.nelems)
-            Datatype.INT -> raf.readArrayInt(state, heapId.nelems)
-            Datatype.UINT, Datatype.ENUM4 -> raf.readArrayUInt(state, heapId.nelems)
-            Datatype.LONG -> raf.readArrayLong(state, heapId.nelems)
-            Datatype.ULONG -> raf.readArrayULong(state, heapId.nelems)
+            Datatype.FLOAT -> raf.readArrayOfFloat(state, heapId.nelems)
+            Datatype.DOUBLE -> raf.readArrayOfDouble(state, heapId.nelems)
+            Datatype.BYTE -> raf.readArrayOfByte(state, heapId.nelems)
+            Datatype.UBYTE, Datatype.ENUM1 -> raf.readArrayOfUByte(state, heapId.nelems)
+            Datatype.SHORT -> raf.readArrayOfShort(state, heapId.nelems)
+            Datatype.USHORT, Datatype.ENUM2 -> raf.readArrayOfUShort(state, heapId.nelems)
+            Datatype.INT -> raf.readArrayOfInt(state, heapId.nelems)
+            Datatype.UINT, Datatype.ENUM4 -> raf.readArrayOfUInt(state, heapId.nelems)
+            Datatype.LONG -> raf.readArrayOfLong(state, heapId.nelems)
+            Datatype.ULONG -> raf.readArrayOfULong(state, heapId.nelems)
             else -> throw UnsupportedOperationException("getHeapDataAsArray datatype=$datatype")
         }
         return result
@@ -75,13 +73,13 @@ internal class H5heap(val header: H5builder) {
      * @throws IOException on read error
      */
     @Throws(IOException::class)
-    fun readHeapString(bb: ByteBuffer, pos: Int): String? {
+    fun readHeapString(bb: ByteArray, pos: Int): String? {
         val heapId = HeapIdentifier(bb, pos)
         if (heapId.isEmpty()) {
             return null
         }
         val ho = heapId.getHeapObject() ?: throw IllegalStateException("Cant find Heap Object,heapId=$heapId")
-        val state = OpenFileState(ho.dataPos, ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(ho.dataPos, false)
         return raf.readString(state, ho.dataSize.toInt())
     }
 
@@ -102,7 +100,7 @@ internal class H5heap(val header: H5builder) {
             ?: throw IllegalStateException("Cant find Heap Object,heapId=$heapId")
         if (ho.dataSize == 0L) return null
         if (ho.dataSize > 1000 * 1000) return java.lang.String.format("Bad HeapObject.dataSize=%s", ho)
-        val state = OpenFileState(ho.dataPos, ByteOrder.nativeOrder())
+        val state = OpenFileState(ho.dataPos, false)
         return raf.readString(state, ho.dataSize.toInt(), header.valueCharset)
     }
 
@@ -113,7 +111,7 @@ internal class H5heap(val header: H5builder) {
     }
 
     // the heap id is has already been read into a byte array at given pos
-    fun readHeapIdentifier(bb: ByteBuffer, pos: Int): HeapIdentifier {
+    fun readHeapIdentifier(bb: ByteArray, pos: Int): HeapIdentifier {
         return HeapIdentifier(bb, pos)
     }
 
@@ -128,23 +126,23 @@ internal class H5heap(val header: H5builder) {
             if (address < 0 || address >= raf.size()) {
                 throw IllegalStateException("$address out of bounds; eof=${raf.size()} ")
             }
-
             // header information is in le byte order
-            val state = OpenFileState(address, ByteOrder.LITTLE_ENDIAN)
+            val state = OpenFileState(address, false)
             nelems = raf.readInt(state)
             heapAddress = header.readOffset(state)
             index = raf.readInt(state)
         }
 
-        // the heap id is in ByteBuffer at given pos
-        constructor(bb: ByteBuffer, start: Int) {
-                var pos = start
-                bb.order(ByteOrder.LITTLE_ENDIAN) // header information is in LE byte order
-                nelems = bb.getInt(pos)
-                pos += 4
-                heapAddress = if (header.isOffsetLong) bb.getLong(pos) else bb.getInt(pos).toLong()
-                pos += header.sizeOffsets
-                index = bb.getInt(pos)
+        // the heap id is in ByteArray starting at given pos
+        constructor(bb: ByteArray, start: Int) {
+            var pos = start
+        // fun convertInt(ba: ByteArray, offset: Int, isBE: Boolean): Int {
+            nelems = convertInt(bb, pos, isBE = false)
+            pos += 4
+            heapAddress = if (header.isOffsetLong) convertLong(bb, pos, isBE = false)
+                          else convertInt(bb, pos, isBE = false).toLong()
+            pos += header.sizeOffsets
+            index = convertInt(bb, pos, isBE = false)
         }
 
         fun isEmpty(): Boolean {
@@ -180,7 +178,7 @@ class GlobalHeap(h5: H5builder, address: Long) {
         }
 
         // header information is in le byte order
-        val state = OpenFileState(filePos, ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(filePos, false)
 
         // header
         val magic: String = h5.raf.readString(state, 4)
@@ -234,11 +232,11 @@ internal class LocalHeap(header : H5builder, address: Long) {
     val size: Int
     val freelistOffset: Long
     val dataAddress: Long
-    val heap: ByteBuffer
+    val heap: ByteArray
     val version: Byte
 
     init {
-        val state = OpenFileState(header.getFileOffset(address), ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(header.getFileOffset(address), false)
         // header
         val magic: String = header.raf.readString(state,4)
         check(magic == "HEAP") {
@@ -252,7 +250,7 @@ internal class LocalHeap(header : H5builder, address: Long) {
 
         // data
         state.pos = header.getFileOffset(dataAddress)
-        heap = header.raf.readByteBuffer(state, size)
+        heap = header.raf.readByteArray(state, size)
         val hsize: Int = 8 + 2 * header.sizeLengths + header.sizeOffsets
         if (debugHeap) {
             println("LocalHeap hsize = $hsize")
@@ -262,6 +260,6 @@ internal class LocalHeap(header : H5builder, address: Long) {
     fun getStringAt(offset: Int): String {
         var count = 0
         while (heap[offset + count].toInt() != 0) count++
-        return String(heap.array(), offset, count, StandardCharsets.UTF_8)
+        return String(heap, offset, count, Charsets.UTF_8)
     }
 } // LocalHeap

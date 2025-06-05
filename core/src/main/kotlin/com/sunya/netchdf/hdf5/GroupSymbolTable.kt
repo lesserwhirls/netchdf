@@ -1,7 +1,6 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
-import java.nio.ByteOrder
 
 /** Wraps a BTree1New, when its used to store symbol table nodes for GroupOld. */
 internal class GroupSymbolTable(val btreeAddress : Long) {
@@ -17,7 +16,7 @@ internal class GroupSymbolTable(val btreeAddress : Long) {
 
     // level 1B Group Symbol Table Nodes
     internal fun readSymbolTableNode(h5: H5builder, address: Long, symbols: MutableList<SymbolTableEntry>) {
-        val state = OpenFileState(h5.getFileOffset(address), ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(h5.getFileOffset(address), false)
         val magic: String = h5.raf.readString(state, 4)
         check(magic == "SNOD") { "$magic should equal SNOD" }
         state.pos += 2

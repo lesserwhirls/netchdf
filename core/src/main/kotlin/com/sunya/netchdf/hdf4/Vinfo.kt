@@ -13,7 +13,6 @@ import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_USHORT
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_INT64
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_STRING
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_UINT64
-import java.nio.ByteOrder
 
 internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var vb: Variable.Builder<*>? = null
@@ -47,7 +46,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var svalue : String? = null
 
     // LOOK "always big-endian on disk"
-    var endian: ByteOrder = ByteOrder.BIG_ENDIAN // LOOK TABLE 2H Little-Endian Format Data Type Definitions
+    var isBE: Boolean = true// LOOK TABLE 2H Little-Endian Format Data Type Definitions
 
     fun setVariable(v: Variable.Builder<*>) {
         vb = v

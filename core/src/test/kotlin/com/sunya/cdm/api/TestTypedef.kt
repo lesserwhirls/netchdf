@@ -2,7 +2,6 @@ package com.sunya.cdm.api
 
 import com.sunya.cdm.array.*
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.test.*
 
 class TestTypedef {
@@ -54,22 +53,21 @@ class TestTypedef {
         val map3 = mapOf(1 to "name1", 2 to "name2", 3 to "namaste")
         assertNotEquals(tenum,  EnumTypedef("low", Datatype.ENUM1, map3))
 
-        val bb = ByteBuffer.wrap(byteArrayOf(1,1,0))
-        val enumVals = ArrayUByte(intArrayOf(3), bb)
+        val enumVals = ArrayUByte.fromByteArray(intArrayOf(3), byteArrayOf(1,1,0))
         val enumNames = tenum.convertEnums(enumVals)
         val expected = ArrayString(intArrayOf(3), listOf("name1", "name1", "Unknown enum number=0"))
         assertEquals(expected, enumNames)
 
         val tenum2 = EnumTypedef("low", Datatype.ENUM2, map)
         assertEquals("  ushort enum low {1 = name1, 2 = name2, 3 = name3};", tenum2.cdl())
-        val enumVals2 = ArrayUShort.fromArray(intArrayOf(3), shortArrayOf(1,1,0))
+        val enumVals2 = ArrayUShort.fromShortArray(intArrayOf(3), shortArrayOf(1,1,0))
         val enumNames2 = tenum2.convertEnums(enumVals2)
         val expected2 = ArrayString(intArrayOf(3), listOf("name1", "name1", "Unknown enum number=0"))
         assertEquals(expected2, enumNames2)
 
         val tenum4 = EnumTypedef("low", Datatype.ENUM4, map)
         assertEquals("  uint enum low {1 = name1, 2 = name2, 3 = name3};", tenum4.cdl())
-        val enumVals4 = ArrayUInt.fromArray(intArrayOf(3), intArrayOf(1,1,0))
+        val enumVals4 = ArrayUInt.fromIntArray(intArrayOf(3), intArrayOf(1,1,0))
         val enumNames4 = tenum4.convertEnums(enumVals4)
         val expected4 = ArrayString(intArrayOf(3), listOf("name1", "name1", "Unknown enum number=0"))
         assertEquals(expected4, enumNames4)
@@ -78,9 +76,9 @@ class TestTypedef {
     @Test
     fun testCompound() {
         val members = listOf(
-            StructureMember("member1", Datatype.INT, 0, intArrayOf(1,2,3)),
-            StructureMember("member2", Datatype.STRING, 43, intArrayOf()),
-            StructureMember("member3", Datatype.ENUM4, 32, intArrayOf()),
+            StructureMember("member1", Datatype.INT, 0, intArrayOf(1,2,3), false),
+            StructureMember("member2", Datatype.STRING, 43, intArrayOf(), false),
+            StructureMember("member3", Datatype.ENUM4, 32, intArrayOf(), false),
         )
         val tcomp = CompoundTypedef("fracture", members)
         assertEquals(TypedefKind.Compound, tcomp.kind)

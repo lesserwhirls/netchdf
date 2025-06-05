@@ -13,8 +13,7 @@ class TestArrayByte {
     fun testArrayByte() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
 
         val testArray = ArrayByte(shape, bb)
         assertEquals(Datatype.BYTE, testArray.datatype)
@@ -29,8 +28,7 @@ class TestArrayByte {
     fun testSection() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
         val testArray = ArrayByte(shape, bb)
 
         val sectionStart = intArrayOf(1,2,3)
@@ -40,6 +38,7 @@ class TestArrayByte {
 
         assertEquals(Datatype.BYTE, sectionArray.datatype)
         assertEquals(sectionLength.computeSize(), sectionArray.nelems)
+        assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
         val full = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
         val odo = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())

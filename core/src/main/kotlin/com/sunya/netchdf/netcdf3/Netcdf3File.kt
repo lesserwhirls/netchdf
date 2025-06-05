@@ -4,14 +4,10 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.layout.*
-import java.io.IOException
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
 val useOkio = true
 class Netcdf3File(val filename : String) : Netchdf {
-    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
-                                                com.sunya.cdm.iosp.OpenFile(filename)
+    private val raf : OpenFileIF = if (useOkio) OkioFile(filename) else OpenFile(filename)
     private val header : N3header
     private val rootGroup : Group
 
@@ -31,7 +27,6 @@ class Netcdf3File(val filename : String) : Netchdf {
     override fun type() = header.formatType()
     override val size : Long get() = raf.size()
 
-    @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {
         if (v2.nelems == 0L) {
             return ArrayEmpty(v2.shape.toIntArray(), v2.datatype)
@@ -84,42 +79,27 @@ class Netcdf3File(val filename : String) : Netchdf {
         }
     }
 
-    @Throws(IOException::class)
     private fun <T> readDataWithLayout(layout: Layout, v2: Variable<T>, wantSection : Section): ArrayTyped<T> {
         require(wantSection.totalElements == layout.totalNelems)
         val vinfo = v2.spObject as VinfoN3
         val totalNbytes = (vinfo.elemSize * layout.totalNelems)
         require(totalNbytes < Int.MAX_VALUE)
-        val values = ByteBuffer.allocate(totalNbytes.toInt())
+        val ba = ByteArray(totalNbytes.toInt())
 
         var bytesRead = 0
-        val filePos = OpenFileState(vinfo.begin, ByteOrder.BIG_ENDIAN)
+        val filePos = OpenFileState(vinfo.begin, true)
         while (layout.hasNext()) {
             val chunk = layout.next()
             filePos.pos = chunk.srcPos()
             val dstPos = (vinfo.elemSize * chunk.destElem()).toInt()
             val chunkBytes = vinfo.elemSize * chunk.nelems()
-            bytesRead += raf.readIntoByteBuffer(filePos, values, dstPos, chunkBytes)
+            bytesRead += raf.readIntoByteArray(filePos, ba, dstPos, chunkBytes)
         }
         require(bytesRead == totalNbytes.toInt())
 
         val shape = wantSection.shape.toIntArray()
-        val result = when (v2.datatype) {
-            Datatype.BYTE -> ArrayByte(shape, values)
-            Datatype.UBYTE -> ArrayUByte(shape, values)
-            Datatype.CHAR -> ArrayUByte(shape, Datatype.CHAR, values)
-            Datatype.STRING -> ArrayUByte(shape, values).makeStringsFromBytes()
-            Datatype.DOUBLE -> ArrayDouble(shape, values)
-            Datatype.FLOAT -> ArrayFloat(shape, values)
-            Datatype.INT -> ArrayInt(shape, values)
-            Datatype.UINT -> ArrayUInt(shape, values)
-            Datatype.LONG -> ArrayLong(shape, values)
-            Datatype.ULONG -> ArrayULong(shape, values)
-            Datatype.SHORT -> ArrayShort(shape, values)
-            Datatype.USHORT -> ArrayUShort(shape, values)
-            else -> throw IllegalArgumentException("datatype ${v2.datatype}")
-        }
-        return result as ArrayTyped<T>
+        val tba = TypedByteArray(v2.datatype, ba, 0, isBE = true)
+        return tba.convertToArrayTyped(shape)
     }
 
     override fun equals(other: Any?): Boolean {

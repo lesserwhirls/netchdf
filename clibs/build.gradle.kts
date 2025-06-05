@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     api(project(":core"))
-    // implementation(project(":testdata"))
+    implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 

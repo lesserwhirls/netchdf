@@ -2,32 +2,47 @@ package com.sunya.cdm.array
 
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Section
-import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.api.toIntArray
-import java.nio.ByteBuffer
-import java.nio.IntBuffer
+import com.sunya.cdm.layout.Chunker
+import com.sunya.cdm.layout.IndexSpace
+import com.sunya.cdm.layout.TransferChunk
 
-class ArrayUInt(shape : IntArray, datatype : Datatype<UInt>, bb : ByteBuffer) : ArrayTyped<UInt>(bb, datatype, shape) {
-    val values: IntBuffer = bb.asIntBuffer()
+@OptIn(ExperimentalUnsignedTypes::class)
+class ArrayUInt(shape : IntArray, datatype : Datatype<UInt>, val values: UIntArray) : ArrayTyped<UInt>(datatype, shape) {
 
-    constructor(shape : IntArray, bb : ByteBuffer) : this(shape, Datatype.UINT, bb)
+    constructor(shape : IntArray, values: UIntArray) : this(shape, Datatype.UINT, values)
 
     override fun iterator(): Iterator<UInt> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<UInt>() {
         private var idx = 0
-        override fun computeNext() = if (idx >= values.limit()) done() else setNext(values[idx++].toUInt())
+        override fun computeNext() = if (idx >= nelems) done() else setNext(values.get(idx++))
     }
 
-    override fun section(section : Section) : ArrayUInt {
-        return ArrayUInt(section.shape.toIntArray(), sectionFrom(section))
+    override fun section(section: Section): ArrayUInt {
+        return ArrayUInt(section.shape.toIntArray(), sectionOf(section))
+    }
+
+    private fun sectionOf(section: Section): UIntArray {
+        require(IndexSpace(shape).contains(IndexSpace(section))) { "Variable does not contain requested section" }
+        val sectionNelems = section.totalElements.toInt()
+        if (sectionNelems == nelems)
+            return values
+
+        val dst = UIntArray(sectionNelems)
+        val chunker = Chunker(IndexSpace(this.shape), IndexSpace(section))
+        for (chunk: TransferChunk in chunker) {
+            val dstIdx = chunk.destElem.toInt()
+            val srcIdx = chunk.srcElem.toInt()
+            repeat(chunk.nelems) {
+                dst[dstIdx + it] = values[srcIdx + it]
+            }
+        }
+        return dst
     }
 
     companion object {
-        fun fromArray(shape : IntArray, sa : IntArray) : ArrayUInt {
-            val bb = ByteBuffer.allocate(4 * shape.computeSize())
-            val ibb = bb.asIntBuffer()
-            sa.forEach { ibb.put(it) }
-            return ArrayUInt(shape, bb)
-        }
+        fun fromIntArray(shape : IntArray, values : IntArray): ArrayUInt =
+            ArrayUInt(shape, UIntArray(values.size) { values[it].toUInt() } )
     }
+
 }

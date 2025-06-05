@@ -3,7 +3,6 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.Dimension
 import com.sunya.cdm.iosp.OpenFileState
 import java.io.IOException
-import java.nio.ByteOrder
 
 internal const val debugGroup = false
 internal const val debugHardLink = false
@@ -72,7 +71,7 @@ internal fun H5builder.readGroupNew(
             val fractalHeapId: FractalHeap.DHeapId = fractalHeap.getFractalHeapId(heapId)
             val pos: Long = fractalHeapId.computePosition()
             if (pos < 0) continue
-            val state = OpenFileState(pos, ByteOrder.LITTLE_ENDIAN)
+            val state = OpenFileState(pos, false)
             val linkMessage = this.readLinkMessage(state)
 
             if (debugBtree2) {

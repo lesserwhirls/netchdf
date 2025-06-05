@@ -9,10 +9,7 @@ import com.sunya.netchdf.NetchdfFileFormat.Companion.netcdfMode
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.io.IOException
 import java.lang.foreign.*
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.util.*
-
+import com.fleeksoft.charset.Charset
 
 class NCheader(val filename: String) {
     val rootGroup = Group.Builder("")
@@ -433,7 +430,7 @@ class NCheader(val filename: String) {
     // ?? LOOK
     private fun transcodeString(systemString: String): String {
         val byteArray = systemString.toByteArray(Charset.defaultCharset())
-        return String(byteArray, StandardCharsets.UTF_8)
+        return String(byteArray, Charsets.UTF_8)
     }
 
     internal class Group4(val grpid: Int, val gb: Group.Builder, val parent: Group4?) {

@@ -7,21 +7,17 @@ import com.sunya.cdm.layout.*
 import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.io.InputStream
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
+import com.fleeksoft.charset.Charset
 import java.util.zip.InflaterInputStream
 
 val useOkio = true
 
 class Hdf4File(val filename : String) : Netchdf {
-    private val raf : OpenFileIF = if (useOkio) com.sunya.cdm.okio.OpenFile(filename) else
-        com.sunya.cdm.iosp.OpenFile(filename)
+    private val raf : OpenFileIF = OkioFile(filename)
     val header: H4builder
     private val rootGroup: Group
 
-    var valueCharset: Charset = StandardCharsets.UTF_8
+    var valueCharset: Charset = Charsets.UTF_8
 
     init {
         header = H4builder(raf, valueCharset)
@@ -143,20 +139,23 @@ class Hdf4File(val filename : String) : Netchdf {
         val vinfo = v2.spObject as Vinfo
         val totalNbytes = (vinfo.elemSize * layout.totalNelems)
         require(totalNbytes < Int.MAX_VALUE)
-        val values = ByteBuffer.allocate(totalNbytes.toInt())
+        val ba = ByteArray(totalNbytes.toInt())
 
         var bytesRead = 0
-        val filePos = OpenFileState(vinfo.start, vinfo.endian)
+        val filePos = OpenFileState(vinfo.start, vinfo.isBE)
         while (layout.hasNext()) {
             val chunk = layout.next()
             filePos.pos = chunk.srcPos()
             val dstPos = (vinfo.elemSize * chunk.destElem()).toInt()
             val chunkBytes = vinfo.elemSize * chunk.nelems()
-            bytesRead += reader.readIntoByteArray(filePos, values.array(), dstPos, chunkBytes)
+            bytesRead += reader.readIntoByteArray(filePos, ba, dstPos, chunkBytes)
         }
-        values.position(0)
 
         val shape = wantSection.shape.toIntArray()
+        val tba = TypedByteArray(v2.datatype, ba, 0, isBE = true)
+        return tba.convertToArrayTyped(shape)
+
+        /*
         val array = when (v2.datatype) {
             Datatype.BYTE -> ArrayByte(shape, values)
             Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, v2.datatype as Datatype<UByte>, values)
@@ -172,6 +171,8 @@ class Hdf4File(val filename : String) : Netchdf {
             else -> throw IllegalArgumentException("datatype ${v2.datatype}")
         }
         return array as ArrayTyped<T>
+
+         */
     }
 
     @Throws(IOException::class, InvalidRangeException::class)
@@ -191,11 +192,8 @@ class Hdf4File(val filename : String) : Netchdf {
         val shape = section.shape.toIntArray()
 
         val array = if (vinfo.hasNoData) {
-            // class ArrayStructureData(shape : IntArray, val bb : ByteBuffer, val recsize : Int, val members : List<StructureMember>)
-            // can you just use a zero bb ??
             val nbytes = (recsize * section.totalElements).toInt()
-            val bbz = ByteBuffer.allocate(nbytes)
-            ArrayStructureData(shape, bbz, recsize, members)
+            ArrayStructureData(shape, ByteArray(nbytes), isBE = true, recsize, members)
 
         } else if (!vinfo.isLinked && !vinfo.isCompressed) {
             val layout = LayoutRegular(vinfo.start, recsize, section)
@@ -227,7 +225,7 @@ class Hdf4File(val filename : String) : Netchdf {
 @Throws(IOException::class)
 internal fun getCompressedInputStream(h4: H4builder, vinfo: Vinfo): InputStream {
     // probably could construct an input stream from a channel from a raf for now, just read it all in.
-    val buffer = h4.raf.readByteArray(OpenFileState(vinfo.start, ByteOrder.BIG_ENDIAN), vinfo.length)
+    val buffer = h4.raf.readByteArray(OpenFileState(vinfo.start, true), vinfo.length)
     val input = ByteArrayInputStream(buffer)
     return InflaterInputStream(input)
 }
@@ -266,41 +264,36 @@ internal fun readStructureDataArray(h4: H4builder, vinfo: Vinfo, section: Sectio
 
 internal fun H4builder.readArrayStructureData(layout: Layout, shape: IntArray, members: List<StructureMember<*>>)
 : ArrayStructureData {
-    val state = OpenFileState(0, ByteOrder.BIG_ENDIAN)
+    val state = OpenFileState(0, true)
     val sizeBytes = shape.computeSize() * layout.elemSize
-    val bb = ByteBuffer.allocate(sizeBytes)
-    bb.order(state.byteOrder)
+    val ba = ByteArray(sizeBytes)
 
     while (layout.hasNext()) {
         val chunk: Layout.Chunk = layout.next()
         state.pos = chunk.srcPos()
-        raf.readIntoByteBuffer(
+        raf.readIntoByteArray(
             state,
-            bb,
+            ba,
             layout.elemSize * chunk.destElem().toInt(),
             layout.elemSize * chunk.nelems()
         )
     }
-    bb.position(0)
-    bb.limit(bb.capacity())
-    bb.order(state.byteOrder)
-    return ArrayStructureData(shape, bb, layout.elemSize, members)
+
+    // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+    return ArrayStructureData(shape, ba, isBE = true, layout.elemSize, members)
 }
 
 internal fun PositioningDataInputStream.readArrayStructureData(layout: Layout, shape : IntArray, members : List<StructureMember<*>>)
 : ArrayStructureData {
-    val state = OpenFileState(0, ByteOrder.BIG_ENDIAN)
+    val state = OpenFileState(0, true)
     val sizeBytes = shape.computeSize() * layout.elemSize
-    val bb = ByteBuffer.allocate(sizeBytes)
-    bb.order(state.byteOrder)
+    val ba = ByteArray(sizeBytes)
 
     while (layout.hasNext()) {
         val chunk: Layout.Chunk = layout.next()
         state.pos = chunk.srcPos()
-        this.readIntoByteArray(state, bb.array(), layout.elemSize * chunk.destElem().toInt(), layout.elemSize * chunk.nelems())
+        this.readIntoByteArray(state, ba, layout.elemSize * chunk.destElem().toInt(), layout.elemSize * chunk.nelems())
     }
-    bb.position(0)
-    bb.limit(bb.capacity())
-    bb.order(state.byteOrder)
-    return ArrayStructureData(shape, bb, layout.elemSize, members)
+
+    return ArrayStructureData(shape, ba, isBE = true, layout.elemSize, members)
 }

@@ -4,13 +4,11 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
-import com.sunya.cdm.okio.OpenFileBuffered
+import com.sunya.cdm.iosp.OkioFileBuffered
 import com.sunya.netchdf.NetchdfFileFormat
 import java.io.IOException
-import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.util.*
+import com.fleeksoft.charset.Charset
+import com.sunya.cdm.iosp.OkioFile
 import kotlin.math.min
 
 /**
@@ -18,8 +16,8 @@ import kotlin.math.min
  * @see "http://cucis.ece.northwestern.edu/projects/PnetCDF/CDF-5.html"
  */
 class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
-  private val filePos = OpenFileState(0L, ByteOrder.BIG_ENDIAN)
-  private val valueCharset = StandardCharsets.UTF_8
+  private val filePos = OpenFileState(0L, true)
+  private val valueCharset = Charsets.UTF_8
   private val isPnetcdf : Boolean
   private val useLongOffset : Boolean
   private val isStreaming : Boolean
@@ -49,7 +47,7 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
     }
     filePos.pos = 4
 
-    val rafb = if (useOkio) OpenFileBuffered(rafOrg as com.sunya.cdm.okio.OpenFile, 4) else rafOrg
+    val rafb = if (useOkio) OkioFileBuffered(rafOrg as OkioFile, 4) else rafOrg
     isPnetcdf = (format == NetchdfFileFormat.NC_FORMAT_64BIT_DATA)
     useLongOffset = (format == NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET) || isPnetcdf
 
@@ -258,11 +256,11 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
   fun readAttributeArray(raf: OpenFileIF, type: Datatype<*>, nelems: Int, attBuilder: Attribute.Builder<*>): Int {
     return when (type) {
       Datatype.BYTE -> {
-        attBuilder.setValues(raf.readArrayByte(filePos, nelems).toList())
+        attBuilder.setValues(raf.readArrayOfByte(filePos, nelems).toList())
         nelems
       }
       Datatype.UBYTE -> {
-        attBuilder.setValues(raf.readArrayByte(filePos, nelems).map { it.toUByte() })
+        attBuilder.setValues(raf.readArrayOfByte(filePos, nelems).map { it.toUByte() })
         nelems
       }
       Datatype.CHAR -> {
@@ -271,35 +269,35 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
         nelems
       }
       Datatype.SHORT -> {
-        attBuilder.setValues(raf.readArrayShort(filePos, nelems).asList())
+        attBuilder.setValues(raf.readArrayOfShort(filePos, nelems).asList())
         2 * nelems
       }
       Datatype.USHORT -> {
-        attBuilder.setValues(raf.readArrayShort(filePos, nelems).map { it.toUShort() })
+        attBuilder.setValues(raf.readArrayOfShort(filePos, nelems).map { it.toUShort() })
         2 * nelems
       }
       Datatype.INT -> {
-        attBuilder.setValues(raf.readArrayInt(filePos, nelems).asList())
+        attBuilder.setValues(raf.readArrayOfInt(filePos, nelems).asList())
         4 * nelems
       }
       Datatype.UINT -> {
-        attBuilder.setValues(raf.readArrayShort(filePos, nelems).map { it.toUInt() })
+        attBuilder.setValues(raf.readArrayOfShort(filePos, nelems).map { it.toUInt() })
         4 * nelems
       }
       Datatype.FLOAT -> {
-        attBuilder.setValues(raf.readArrayFloat(filePos, nelems).asList())
+        attBuilder.setValues(raf.readArrayOfFloat(filePos, nelems).asList())
         4 * nelems
       }
       Datatype.DOUBLE -> {
-        attBuilder.setValues(raf.readArrayDouble(filePos, nelems).asList())
+        attBuilder.setValues(raf.readArrayOfDouble(filePos, nelems).asList())
         8 * nelems
       }
       Datatype.LONG -> {
-        attBuilder.setValues(raf.readArrayLong(filePos, nelems).asList())
+        attBuilder.setValues(raf.readArrayOfLong(filePos, nelems).asList())
         8 * nelems
       }
       Datatype.ULONG -> {
-        attBuilder.setValues(raf.readArrayLong(filePos, nelems).map { it.toULong() })
+        attBuilder.setValues(raf.readArrayOfLong(filePos, nelems).map { it.toULong() })
         8 * nelems
       }
       else -> return 0

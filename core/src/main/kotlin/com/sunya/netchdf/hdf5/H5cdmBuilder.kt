@@ -1,9 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayString
-import com.sunya.cdm.array.ArrayUByte
-import com.sunya.cdm.array.makeStringsFromBytes
+import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_CLASS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LABELS
@@ -16,7 +14,6 @@ import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NON_COORD
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NOT_VARIABLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_SPECIAL_ATTS
 import java.io.IOException
-import java.nio.*
 
 const val attLengthMax = 4000
 
@@ -220,38 +217,37 @@ internal class DataContainerVariable(
 
 internal fun getFillValueNonDefault(h5 : H5builder, v5 : H5Variable, h5type: H5TypeInfo): Any {
     // look for fill value message
-    var fillValueBB : ByteBuffer? = null
+    var fillValue : ByteArray? = null
     for (mess in v5.dataObject.messages) {
         if (mess.mtype === MessageType.FillValue) {
             val fvm = mess as FillValueMessage
             if (fvm.hasFillValue) {
-                fillValueBB = fvm.value // val value: ByteBuffer?
+                fillValue = fvm.value // val value: ByteBuffer?
             }
         } else if (mess.mtype === MessageType.FillValueOld) {
             val fvm = mess as FillValueOldMessage
             if (fvm.size > 0) {
-                fillValueBB = fvm.value // val value: ByteBuffer?
+                fillValue = fvm.value // val value: ByteBuffer?
             }
         }
     }
     val datatype = h5type.datatype()
-    if (fillValueBB == null) return getFillValueDefault(datatype)
-    fillValueBB.position(0)
-    fillValueBB.order(h5type.endian)
+    if (fillValue == null) return getFillValueDefault(datatype)
+    // fillValueBB.order(h5type.endian)
 
     // a single data value, same datatype as the dataset
     return when (datatype) {
-        Datatype.BYTE -> fillValueBB.get()
-        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> fillValueBB.get().toUByte()
-        Datatype.SHORT -> fillValueBB.getShort()
-        Datatype.USHORT, Datatype.ENUM2 -> fillValueBB.getShort().toUShort()
-        Datatype.INT -> fillValueBB.getInt()
-        Datatype.UINT, Datatype.ENUM4 -> fillValueBB.getInt().toUInt()
-        Datatype.FLOAT -> fillValueBB.getFloat()
-        Datatype.DOUBLE -> fillValueBB.getDouble()
-        Datatype.LONG -> fillValueBB.getLong()
-        Datatype.ULONG -> fillValueBB.getLong().toULong()
-        Datatype.OPAQUE -> fillValueBB
+        Datatype.BYTE -> fillValue.get(0)
+        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> fillValue.get(0).toUByte()
+        Datatype.SHORT -> convertShort(fillValue, 0, h5type.isBE)
+        Datatype.USHORT, Datatype.ENUM2 -> convertShort(fillValue, 0, h5type.isBE).toUShort()
+        Datatype.INT -> convertInt(fillValue, 0, h5type.isBE)
+        Datatype.UINT, Datatype.ENUM4 -> convertInt(fillValue, 0, h5type.isBE).toUInt()
+        Datatype.FLOAT -> convertFloat(fillValue, 0, h5type.isBE)
+        Datatype.DOUBLE -> convertDouble(fillValue, 0, h5type.isBE)
+        Datatype.LONG -> convertLong(fillValue, 0, h5type.isBE)
+        Datatype.ULONG -> convertLong(fillValue, 0, h5type.isBE).toULong()
+        Datatype.OPAQUE -> fillValue
         else -> getFillValueDefault(datatype)
     }
 }
@@ -269,7 +265,7 @@ internal fun getFillValueDefault(datatype : Datatype<*>): Any {
         Datatype.DOUBLE -> 0.0
         Datatype.LONG -> 0L
         Datatype.ULONG -> 0.toULong()
-        Datatype.OPAQUE -> ByteBuffer.allocate(0)
+        Datatype.OPAQUE -> ByteArray(0)
         else -> 0
     }
 }

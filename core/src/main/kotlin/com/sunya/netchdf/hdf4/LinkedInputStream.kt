@@ -3,7 +3,6 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.iosp.OpenFileState
 import java.io.IOException
 import java.io.InputStream
-import java.nio.ByteOrder
 
 /** Make a linked list of data segments look like an InputStream. */
 internal class LinkedInputStream(val h4 : H4builder,
@@ -13,7 +12,7 @@ internal class LinkedInputStream(val h4 : H4builder,
 
     constructor(h4 : H4builder, vinfo: Vinfo) : this(h4, vinfo.segSize.size, vinfo.segPos, vinfo.segSize)
 
-    private val state = OpenFileState(0, ByteOrder.BIG_ENDIAN)
+    private val state = OpenFileState(0, true)
     private var segno = -1
     private var segpos = 0
     private var segSize = 0

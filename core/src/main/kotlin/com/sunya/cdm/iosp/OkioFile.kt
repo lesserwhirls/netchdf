@@ -1,21 +1,17 @@
-package com.sunya.cdm.okio
+package com.sunya.cdm.iosp
 
-import com.sunya.cdm.iosp.makeStringZ
-import com.sunya.cdm.iosp.OpenFileIF
-import com.sunya.cdm.iosp.OpenFileState
 import okio.Buffer
 import okio.FileSystem
 import okio.Path.Companion.toPath
 
-import java.nio.ByteBuffer
-import java.nio.charset.Charset
+import com.fleeksoft.charset.Charset
 
 /**
  * from okio.FileHandle://
  * An open file for reading and writing; using either streaming and random access.
  *
- * Use read] and write] to perform one-off random-access reads and writes. Use source], sink],
- * and appendingSink] for streaming reads and writes.
+ * Use read() and write() to perform one-off random-access reads and writes. Use source(), sink(),
+ * and appendingSink() for streaming reads and writes.
  *
  * File handles must be closed when they are no longer needed. It is an error to read, write, or
  * create streams after a file handle is closed. The operating system resources held by a file
@@ -28,7 +24,7 @@ import java.nio.charset.Charset
  * File handles may be used by multiple threads concurrently. But the individual sources and sinks
  * produced by a file handle are not safe for concurrent use.
  */
-open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
+open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
     var allowTruncation = true
     val raf : okio.FileHandle
     val size : Long
@@ -63,6 +59,7 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
         return readIntoByteArray(state, dst, 0, dst.size)
     }
 
+    /*
     override fun readByteBuffer(state : OpenFileState, nbytes : Int): ByteBuffer {
         val dst = readByteArray(state, nbytes)
         val bb = ByteBuffer.wrap(dst)
@@ -81,7 +78,7 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
             dst.put(pos++, element)
         }
         return bb.size
-    }
+    } */
 
     override fun readByteArray(state : OpenFileState, nbytes : Int): ByteArray {
         val dst = ByteArray(nbytes)
@@ -90,17 +87,18 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
     }
 
     ///////////////////////////////////////////////////////////////////////////
+    // read typed data, return as T or Array<T>. For attributess
 
     override fun readByte(state : OpenFileState): Byte {
         return readByteArray(state, 1)[0]
     }
 
-    override fun readArrayByte(state : OpenFileState, nelems : Int): Array<Byte> {
+    override fun readArrayOfByte(state : OpenFileState, nelems : Int): Array<Byte> {
         val dst = readByteArray(state, nelems)
         return Array(nelems) { dst[it] }
     }
 
-    override fun readArrayUByte(state : OpenFileState, nelems : Int): Array<UByte> {
+    override fun readArrayOfUByte(state : OpenFileState, nelems : Int): Array<UByte> {
         val dst = readByteArray(state, nelems)
         return Array(nelems) { dst[it].toUByte() }
     }
@@ -108,73 +106,73 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
     override fun readShort(state : OpenFileState): Short {
         val ba = readByteArray(state, 2)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE) buffer.readShortLe() else buffer.readShort()
+        return if (state.isBE) buffer.readShort() else buffer.readShortLe()
     }
 
-    override fun readArrayShort(state : OpenFileState, nelems : Int): Array<Short> {
+    override fun readArrayOfShort(state : OpenFileState, nelems : Int): Array<Short> {
         val ba = readByteArray(state, 2 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 2) {  buffer.readShortLe() }
-        else
+        return if (state.isBE)
             Array(ba.size / 2) {  buffer.readShort() }
+        else
+            Array(ba.size / 2) {  buffer.readShortLe() }
     }
 
-    override fun readArrayUShort(state : OpenFileState, nelems : Int): Array<UShort> {
+    override fun readArrayOfUShort(state : OpenFileState, nelems : Int): Array<UShort> {
         val ba = readByteArray(state, 2 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 2) {  buffer.readShortLe().toUShort() }
-        else
+        return if (state.isBE)
             Array(ba.size / 2) {  buffer.readShort().toUShort() }
+        else
+            Array(ba.size / 2) {  buffer.readShortLe().toUShort() }
     }
 
     override fun readInt(state : OpenFileState): Int {
         val ba = readByteArray(state, 4)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE) buffer.readIntLe() else buffer.readInt()
+        return if (state.isBE) buffer.readInt() else buffer.readIntLe()
     }
 
-    override fun readArrayInt(state : OpenFileState, nelems : Int): Array<Int> { // vs Array<Int>
+    override fun readArrayOfInt(state : OpenFileState, nelems : Int): Array<Int> { // vs Array<Int>
         val ba = readByteArray(state, 4 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 4) {  buffer.readIntLe() }
-        else
+        return if (state.isBE)
             Array(ba.size / 4) {  buffer.readInt() }
+        else
+            Array(ba.size / 4) {  buffer.readIntLe() }
     }
 
-    override fun readArrayUInt(state : OpenFileState, nelems : Int): Array<UInt> { // vs Array<Int>
+    override fun readArrayOfUInt(state : OpenFileState, nelems : Int): Array<UInt> { // vs Array<Int>
         val ba = readByteArray(state, 4 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 4) {  buffer.readIntLe().toUInt() }
-        else
+        return if (state.isBE)
             Array(ba.size / 4) {  buffer.readInt().toUInt() }
+        else
+            Array(ba.size / 4) {  buffer.readIntLe().toUInt() }
     }
 
     override fun readLong(state : OpenFileState): Long {
         val ba = readByteArray(state, 8)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE) buffer.readLongLe() else buffer.readLong()
+        return if (state.isBE) buffer.readLong() else buffer.readLongLe()
     }
 
-    override fun readArrayLong(state : OpenFileState, nelems : Int): Array<Long> {
+    override fun readArrayOfLong(state : OpenFileState, nelems : Int): Array<Long> {
         val ba = readByteArray(state, 8 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 8) {  buffer.readLongLe() }
-        else
+        return if (state.isBE)
             Array(ba.size / 8) {  buffer.readLong() }
+        else
+            Array(ba.size / 8) {  buffer.readLongLe() }
     }
 
-    override fun readArrayULong(state : OpenFileState, nelems : Int): Array<ULong> {
+    override fun readArrayOfULong(state : OpenFileState, nelems : Int): Array<ULong> {
         val ba = readByteArray(state, 8 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 8) {  buffer.readLongLe().toULong() }
-        else
+        return if (state.isBE)
             Array(ba.size / 8) {  buffer.readLong().toULong() }
+        else
+            Array(ba.size / 8) {  buffer.readLongLe().toULong() }
     }
 
     override fun readFloat(state : OpenFileState): Float {
@@ -182,13 +180,13 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
         return Float.fromBits(ival)
     }
 
-    override fun readArrayFloat(state : OpenFileState, nelems : Int): Array<Float>  {
+    override fun readArrayOfFloat(state : OpenFileState, nelems : Int): Array<Float>  {
         val ba = readByteArray(state, 4 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 4) {  Float.fromBits(buffer.readIntLe()) }
-        else
+        return if (state.isBE)
             Array(ba.size / 4) {  Float.fromBits(buffer.readInt()) }
+        else
+            Array(ba.size / 4) {  Float.fromBits(buffer.readIntLe()) }
     }
 
     override fun readDouble(state : OpenFileState): Double {
@@ -196,13 +194,13 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
         return Double.fromBits(lval)
     }
 
-    override fun readArrayDouble(state : OpenFileState, nelems : Int): Array<Double> {
+    override fun readArrayOfDouble(state : OpenFileState, nelems : Int): Array<Double> {
         val ba = readByteArray(state, 8 * nelems)
         val buffer = Buffer().write(ba) // Could return as a buffer ??
-        return if (state.isLE)
-            Array(ba.size / 8) {  Double.fromBits(buffer.readLongLe()) }
-        else
+        return if (state.isBE)
             Array(ba.size / 8) {  Double.fromBits(buffer.readLong()) }
+        else
+            Array(ba.size / 8) {  Double.fromBits(buffer.readLongLe()) }
     }
 
     override fun readString(state : OpenFileState, nbytes : Int, charset : Charset): String {
@@ -211,3 +209,19 @@ open class OpenFile(val location : String) : OpenFileIF, AutoCloseable {
         return makeStringZ(dst, 0, charset)
     }
 }
+
+
+data class OpenFileState(var pos : Long, var isBE: Boolean ) {
+    fun incr(addit : Long) : OpenFileState {
+        this.pos += addit
+        return this
+    }
+}
+
+// terminate at a zero
+fun makeStringZ(ba : ByteArray, start : Int, charset : Charset = Charsets.UTF_8): String {
+    var count = 0
+    while (start+count < ba.size && ba[start+count] != 0.toByte()) count++
+    return String(ba, start, count, charset)
+}
+

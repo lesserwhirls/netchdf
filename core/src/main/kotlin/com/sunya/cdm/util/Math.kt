@@ -1,6 +1,5 @@
 package com.sunya.cdm.util
 
-// import java.math.BigInteger
 import kotlin.math.max
 
 // Note that this method is closely related to the logarithm base 2. For all positive int values x:

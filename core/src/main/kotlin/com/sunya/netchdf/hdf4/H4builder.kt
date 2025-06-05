@@ -1,14 +1,11 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.iosp.OpenFile
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
-import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
+import com.fleeksoft.charset.Charset
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 
@@ -45,7 +42,7 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
 
     init {
         // header information is in big endian byte order
-        val state = OpenFileState(0, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(0, true)
 
         // this positions the file after the header
         if (!isValidFile(raf, state)) {
@@ -741,7 +738,7 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
 
         // find the corresponding VS message
         val data: Tag = tagidMap[tagid(vh.refno, TagEnum.VS.code)] ?: throw IllegalStateException()
-        val state = OpenFileState(data.offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(data.offset, true)
         val att = when (type) {
             3, 4 -> {
                 if (vh.name.startsWith("RIATTR0")) {
@@ -1002,7 +999,7 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     companion object {
         val log = KotlinLogging.logger("H4builder")
         private val H4HEAD = byteArrayOf(0x0e.toByte(), 0x03.toByte(), 0x13.toByte(), 0x01.toByte())
-        private val H4HEAD_STRING = String(H4HEAD, StandardCharsets.UTF_8)
+        private val H4HEAD_STRING = String(H4HEAD, Charsets.UTF_8)
         private const val maxHeaderPos: Long = 500000 // header's gotta be within this
 
         fun isValidFile(raf: OpenFileIF, state: OpenFileState): Boolean {

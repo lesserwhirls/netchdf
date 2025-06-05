@@ -11,7 +11,6 @@ import io.kotest.property.arbitrary.int
 import io.kotest.property.arbitrary.string
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -21,8 +20,7 @@ class TestArrayTyped {
     fun testToString() {
         val shape = intArrayOf(1,2,3)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
 
         val testArray = ArrayByte(shape, bb)
         assertEquals("0,1,2,3,4,5", testArray.showValues())
@@ -33,8 +31,8 @@ class TestArrayTyped {
     fun testEquals() {
         val shape = intArrayOf(3, 2, 1)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put((2*it).toByte())}
+        val bb = ByteArray(size) { it.toByte() }
+
         val testArray1 = ArrayByte(shape, bb)
 
         assertTrue(testArray1.equals(testArray1))
@@ -42,26 +40,24 @@ class TestArrayTyped {
         assertTrue(ArrayTyped.valuesEqual(testArray1, testArray1))
         assertEquals(0, ArrayTyped.countDiff(testArray1, testArray1))
 
-        val testArraySame = ArrayByte(shape, bb)
+        val testArraySame = ArrayByte(shape, bb) // same bb. should we copy ??
 
         assertTrue(testArray1.equals(testArraySame))
         assertEquals(testArray1.hashCode(), testArraySame.hashCode())
         assertTrue(ArrayTyped.valuesEqual(testArray1, testArraySame))
         assertEquals(0, ArrayTyped.countDiff(testArray1, testArraySame))
 
-        val bb2 = ByteBuffer.allocate(size)
-        repeat(size) { bb2.put((2*it).toByte())}
-        val testArrayDiff = ArrayByte(intArrayOf(2,3), bb2)
+        val bb2 = ByteArray(size) { (2*it).toByte() } // diferent bb.
+        val testArrayDiff = ArrayByte(intArrayOf(2,3), bb2) // different shape
 
         assertFalse(testArray1.equals(testArrayDiff))
         assertNotEquals(testArray1.hashCode(), testArrayDiff.hashCode())
-        assertTrue(ArrayTyped.valuesEqual(testArray1, testArrayDiff))
-        assertEquals(0, ArrayTyped.countDiff(testArray1, testArrayDiff))
-
-        bb2.put(3, 42.toByte())
-
         assertFalse(ArrayTyped.valuesEqual(testArray1, testArrayDiff))
-        assertEquals(1, ArrayTyped.countDiff(testArray1, testArrayDiff))
+        assertEquals(5, ArrayTyped.countDiff(testArray1, testArrayDiff))
+
+        bb2[3] = 42.toByte() // modify bb2 outside of testArrayDiff
+        assertFalse(ArrayTyped.valuesEqual(testArray1, testArrayDiff))
+        assertEquals(5, ArrayTyped.countDiff(testArray1, testArrayDiff))
     }
 
     // fuzz test that section() works
@@ -76,8 +72,7 @@ class TestArrayTyped {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size)
-                repeat(size) { bb.put(it.toByte())}
+                val bb = ByteArray(size) { it.toByte() }
                 val testArray = ArrayByte(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -108,8 +103,7 @@ class TestArrayTyped {
         val dim2 = 1
         val shape = intArrayOf(dim0, dim1, dim2)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
         val testArray = ArrayByte(shape, bb)
 
         val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -136,8 +130,7 @@ class TestArrayTyped {
     fun testSectionSame() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
         val testArray = ArrayByte(shape, bb)
 
         val sectionStart = intArrayOf(0, 0, 0)
@@ -150,8 +143,7 @@ class TestArrayTyped {
     fun testSectionBad() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = ByteArray(size) { it.toByte() }
         val testArray = ArrayByte(shape, bb)
 
         val ex = assertFails {

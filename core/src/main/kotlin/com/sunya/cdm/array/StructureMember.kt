@@ -2,45 +2,49 @@ package com.sunya.cdm.array
 
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.computeSize
+import com.sunya.cdm.api.toIntArray
 import com.sunya.cdm.util.makeValidCdmObjectName
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
 
 // dim lengths here are ints; Hdf4,5 only supports ints.
 /**
- * @param offset byte offset into the ByteBuffer
- * @param endian only needed if different from the ByteBuffer
+ * @param offset byte offset into the StructureData.ByteArray
+ * @param isBE is BIG_ENDIAN
  */
-open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset: Int, val dims : IntArray, val endian : ByteOrder? = null) {
+class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset: Int, val shape : IntArray, val isBE : Boolean) {
     val name = makeValidCdmObjectName(orgName)
-    val nelems = dims.computeSize()
+    val nelems = shape.computeSize()
 
     /**
      * Get the value of this member from the given StructureData.
      * return T for nelems = 1, ArrayTyped<T> for nelems > 1
      */
-    open fun value(sdata: ArrayStructureData.StructureData): Any {
-        val bb = sdata.bb
-        bb.order(this.endian ?: sdata.bb.order())
+    fun value(sdata: ArrayStructureData.StructureData): Any {
         val offset = sdata.offset + this.offset
 
         if (nelems > 1) {
+
+            /* TODO
             val memberBB = ByteBuffer.allocate(nelems * datatype.size) // why cant we use a view ??
             memberBB.order(this.endian ?: sdata.bb.order())
             repeat(nelems * datatype.size) { memberBB.put(it, sdata.bb.get(offset + it)) }
+
+             */
+
+            val tba = TypedByteArray(this.datatype, sdata.ba, offset, sdata.isBE)
+            return tba.convertToArrayTyped(shape)
+
+            /*
             return when (datatype) {
-                Datatype.BYTE -> ArrayByte(dims, memberBB)
-                Datatype.SHORT -> ArrayShort(dims, memberBB)
-                Datatype.INT -> ArrayInt(dims, memberBB)
-                Datatype.LONG -> ArrayLong(dims, memberBB)
-                Datatype.UBYTE, Datatype.ENUM1  -> ArrayUByte(dims, datatype as Datatype<UByte>, memberBB)
-                Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(dims, datatype as Datatype<UShort>, memberBB)
-                Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(dims, datatype as Datatype<UInt>, memberBB)
-                Datatype.ULONG -> ArrayULong(dims, memberBB)
-                Datatype.FLOAT -> ArrayFloat(dims, memberBB)
-                Datatype.DOUBLE -> ArrayDouble(dims, memberBB)
+                Datatype.BYTE -> ArrayByte(shape, memberBB)
+                Datatype.SHORT -> ArrayShort(shape, memberBB)
+                Datatype.INT -> ArrayInt(shape, memberBB)
+                Datatype.LONG -> ArrayLong(shape, memberBB)
+                Datatype.UBYTE, Datatype.ENUM1  -> ArrayUByte(shape, datatype as Datatype<UByte>, memberBB)
+                Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype as Datatype<UShort>, memberBB)
+                Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(shape, datatype as Datatype<UInt>, memberBB)
+                Datatype.ULONG -> ArrayULong(shape, memberBB)
+                Datatype.FLOAT -> ArrayFloat(shape, memberBB)
+                Datatype.DOUBLE -> ArrayDouble(shape, memberBB)
                 Datatype.CHAR -> makeStringZ(bb, offset, nelems)
                 Datatype.STRING -> {
                     if (datatype.isVlenString) {
@@ -57,25 +61,27 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
                 }
                 else -> throw RuntimeException("unimplemented datatype=$datatype")
             }
+
+             */
         }
 
         return when (datatype) {
-            Datatype.BYTE -> bb.get(offset)
-            Datatype.SHORT -> bb.getShort(offset)
-            Datatype.INT -> bb.getInt(offset)
-            Datatype.LONG -> bb.getLong(offset)
-            Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1 -> bb.get(offset).toUByte()
-            Datatype.USHORT, Datatype.ENUM2 -> bb.getShort(offset).toUShort()
-            Datatype.UINT, Datatype.ENUM4 -> bb.getInt(offset).toUInt()
-            Datatype.ULONG -> bb.getLong(offset).toULong()
-            Datatype.FLOAT -> bb.getFloat(offset)
-            Datatype.DOUBLE -> bb.getDouble(offset)
+            Datatype.BYTE -> sdata.ba.get(offset)
+            Datatype.SHORT -> convertShort(sdata.ba, offset, sdata.isBE)
+            Datatype.INT -> convertInt(sdata.ba, offset, sdata.isBE)
+            Datatype.LONG -> convertLong(sdata.ba, offset, sdata.isBE)
+            Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1 -> sdata.ba.get(offset).toUByte()
+            Datatype.USHORT, Datatype.ENUM2 -> convertShort(sdata.ba, offset, sdata.isBE).toUShort()
+            Datatype.UINT, Datatype.ENUM4 -> convertInt(sdata.ba, offset, sdata.isBE).toUInt()
+            Datatype.ULONG -> convertLong(sdata.ba, offset, sdata.isBE).toULong()
+            Datatype.FLOAT -> convertFloat(sdata.ba, offset, sdata.isBE)
+            Datatype.DOUBLE -> convertDouble(sdata.ba, offset, sdata.isBE)
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
                     val ret = sdata.getFromHeap(offset)
                     ret ?: "unknown"
                 } else {
-                    makeStringZ(bb, offset, nelems)
+                    makeStringZ(sdata.ba, offset, nelems) // nelems ??
                 }
             }
             Datatype.VLEN -> {
@@ -84,7 +90,7 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
                     throw RuntimeException("cant find ArrayVlen on heap at $offset")
                 }
             }
-            else -> String(bb.array(), offset, nelems, StandardCharsets.UTF_8) // wtf?
+            else -> String(sdata.ba, offset, nelems, Charsets.UTF_8) // wtf?
         }
     }
 
@@ -92,25 +98,31 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
      * Get the values of this member from the given StructureData as an ArrayTyped.
      * return T for nelems = 1, ArrayTyped<T> for nelems > 1
      */
-    open fun values(sdata: ArrayStructureData.StructureData): ArrayTyped<*> {
+    fun values(sdata: ArrayStructureData.StructureData): ArrayTyped<*> {
+        val offset = sdata.offset + this.offset
+
+        // class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset: Int, val isBE: Boolean) {
+        val tba = TypedByteArray(this.datatype as Datatype<T>, sdata.ba, offset, sdata.isBE)
+        return tba.convertToArrayTyped(shape)
+
+        /*
         val bb = sdata.bb
         bb.order(this.endian ?: sdata.bb.order())
-        val offset = sdata.offset + this.offset
 
         val memberBB = ByteBuffer.allocate(nelems * datatype.size) // why cant we use a view ??
         memberBB.order(this.endian ?: sdata.bb.order())
         repeat(nelems * datatype.size) { memberBB.put(it, sdata.bb.get(offset + it)) }
         return when (datatype) {
-            Datatype.BYTE -> ArrayByte(dims, memberBB)
-            Datatype.SHORT -> ArrayShort(dims, memberBB)
-            Datatype.INT -> ArrayInt(dims, memberBB)
-            Datatype.LONG -> ArrayLong(dims, memberBB)
-            Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1  -> ArrayUByte(dims, datatype as Datatype<UByte>, memberBB)
-            Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(dims, datatype as Datatype<UShort>, memberBB)
-            Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(dims, datatype as Datatype<UInt>, memberBB)
-            Datatype.ULONG -> ArrayULong(dims, memberBB)
-            Datatype.FLOAT -> ArrayFloat(dims, memberBB)
-            Datatype.DOUBLE -> ArrayDouble(dims, memberBB)
+            Datatype.BYTE -> ArrayByte(shape, memberBB)
+            Datatype.SHORT -> ArrayShort(shape, memberBB)
+            Datatype.INT -> ArrayInt(shape, memberBB)
+            Datatype.LONG -> ArrayLong(shape, memberBB)
+            Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1  -> ArrayUByte(shape, datatype as Datatype<UByte>, memberBB)
+            Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype as Datatype<UShort>, memberBB)
+            Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(shape, datatype as Datatype<UInt>, memberBB)
+            Datatype.ULONG -> ArrayULong(shape, memberBB)
+            Datatype.FLOAT -> ArrayFloat(shape, memberBB)
+            Datatype.DOUBLE -> ArrayDouble(shape, memberBB)
             /*
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
@@ -130,10 +142,12 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
             }
             else -> throw RuntimeException("unimplemented datatype=$datatype")
         }
+
+         */
     }
 
     override fun toString(): String {
-        return "\nStructureMember(name='$name', datatype=$datatype, offset=$offset, dims=${dims.contentToString()}, nelems=$nelems)"
+        return "\nStructureMember(name='$name', datatype=$datatype, offset=$offset, dims=${shape.contentToString()}, nelems=$nelems)"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -142,14 +156,14 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
 
         if (name != other.name) return false
         if (datatype != other.datatype) return false
-        if (!dims.contentEquals(other.dims)) return false
+        if (!shape.contentEquals(other.shape)) return false
         return nelems == other.nelems
     }
 
     override fun hashCode(): Int {
         var result = name.hashCode()
         result = 31 * result + datatype.hashCode()
-        result = 31 * result + dims.contentHashCode()
+        result = 31 * result + shape.contentHashCode()
         result = 31 * result + nelems
         return result
     }
@@ -161,11 +175,4 @@ open class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val o
            // Datatype.OPAQUE, Datatype.COMPOUND, Datatype.VLEN, Datatype.REFERENCE
         )
     }
-}
-
-/* read a String from ByteBuffer, starting from offset, up to maxBytes, terminate at a zero byte. */
-fun makeStringZ(bb : ByteBuffer, offset : Int, maxBytes : Int, charset : Charset = StandardCharsets.UTF_8): String {
-    var count = 0
-    while (count < maxBytes && bb[offset + count] != 0.toByte()) count++
-    return String(bb.array(), offset, count, charset)
 }

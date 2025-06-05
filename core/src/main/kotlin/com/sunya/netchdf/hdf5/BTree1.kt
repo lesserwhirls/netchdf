@@ -2,7 +2,6 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Tiling
-import java.nio.ByteOrder
 
 /**
  * This holds the chunked data storage.
@@ -65,7 +64,7 @@ internal class BTree1(
         val dataChunkEntries = mutableListOf<DataChunkEntry>()
 
         init {
-            val state = OpenFileState(h5.getFileOffset(address), ByteOrder.LITTLE_ENDIAN)
+            val state = OpenFileState(h5.getFileOffset(address), false)
             val magic: String = h5.raf.readString(state, 4)
             check(magic == "TREE") { "DataBTree doesnt start with TREE" }
 

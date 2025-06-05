@@ -116,16 +116,24 @@ class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merg
         }
     }
 
-    internal fun transferBB(src: ByteBuffer, elemSize : Int, totalElems: Int) : ByteBuffer {
-        val dst = ByteBuffer.allocate(elemSize * totalElems)
+    internal fun transferBA(src: ByteArray, srcOffset: Int, elemSize : Int, dst: ByteArray, dstOffset: Int) {
+        for (chunk in this) {
+            System.arraycopy(
+                src, srcOffset + elemSize * chunk.srcElem.toInt(),
+                dst, dstOffset + elemSize * chunk.destElem.toInt(),
+                elemSize * chunk.nelems,
+            )
+        }
+    }
+
+    internal fun copyOut(src: ByteArray, srcOffset: Int, elemSize : Int, totalElems: Int) : ByteArray {
+        val dst = ByteArray(elemSize * totalElems)
         var dstElem = 0 // ignore chunker dstPosition
         for (chunk in this) {
             // Object src,  int  srcPos, Object dest, int destPos, int length
             System.arraycopy(
-                src.array(),
-                src.arrayOffset() + elemSize * chunk.srcElem.toInt(),
-                dst.array(),
-                dst.arrayOffset() + elemSize * dstElem,
+                src, srcOffset + elemSize * chunk.srcElem.toInt(),
+                dst, elemSize * dstElem,
                 elemSize * chunk.nelems,
             )
             dstElem += chunk.nelems
@@ -134,35 +142,35 @@ class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merg
     }
 
     // transfer fillValue to dst buffer, using my computed chunks
-    internal fun transferMissing(fillValue: Any?, datatype: Datatype<*>, elemSize: Int, dst: ByteBuffer) {
+    internal fun transferMissing(fillValue: Any?, datatype: Datatype<*>, elemSize: Int, dst: ByteArray) {
         if (fillValue == null) {
             return
         }
         for (chunk in this) {
             if (debugChunking) println("  missing chunk $chunk fillValue=$fillValue")
-            dst.position(elemSize * chunk.destElem.toInt())
-            transferMissingNelems(fillValue, datatype, chunk.nelems, dst)
+            transferMissingNelems(fillValue, datatype, chunk.nelems, dst, elemSize * chunk.destElem.toInt())
         }
     }
 }
 
 private const val debugChunking = false
 
-internal fun transferMissingNelems(fillValue: Any?, datatype: Datatype<*>, nelems : Int, dst: ByteBuffer) {
+internal fun transferMissingNelems(fillValue: Any?, datatype: Datatype<*>, nelems : Int, dst: ByteArray, dstOffset: Int) {
     if (fillValue == null) {
         return
     }
     when (datatype) {
         Datatype.STRING, Datatype.CHAR, Datatype.BYTE -> {
             val fill = fillValue as Byte
-            repeat(nelems) { dst.put(fill) }
+            repeat(nelems) { dst[dstOffset + it] = fill }
         }
 
         Datatype.UBYTE, Datatype.ENUM1 -> {
             val fill = fillValue as UByte
-            repeat(nelems) { dst.put(fill.toByte()) }
+            repeat(nelems) { dst[dstOffset + it] = fill.toByte() }
         }
 
+        /* TODO
         Datatype.SHORT -> repeat(nelems) { dst.putShort(fillValue as Short) }
         Datatype.USHORT, Datatype.ENUM2 -> repeat(nelems) { dst.putShort((fillValue as UShort).toShort()) }
         Datatype.INT -> repeat(nelems) { dst.putInt(fillValue as Int) }
@@ -178,6 +186,8 @@ internal fun transferMissingNelems(fillValue: Any?, datatype: Datatype<*>, nelem
                 dst.put(fill)
             }
         }
+
+         */
 
         else -> throw IllegalStateException("unimplemented type= $datatype")
     }

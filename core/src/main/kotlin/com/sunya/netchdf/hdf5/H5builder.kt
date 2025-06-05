@@ -1,9 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayLong
 import com.sunya.cdm.iosp.*
-import com.sunya.cdm.okio.OpenFileBuffered
 import com.sunya.cdm.util.unsignedByteToShort
 import com.sunya.cdm.util.unsignedIntToLong
 import com.sunya.cdm.util.unsignedShortToInt
@@ -11,10 +9,7 @@ import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.NetchdfFileFormat
 import io.github.oshai.kotlinlogging.KotlinLogging
 import java.io.IOException
-import java.nio.*
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.util.*
+import com.fleeksoft.charset.Charset
 
 const val debugFlow = false
 private const val debugStart = false
@@ -31,7 +26,7 @@ internal const val debugTypedefs = false
 class H5builder(
     rafOrg: OpenFileIF,
     val strict: Boolean,
-    val valueCharset: Charset = StandardCharsets.UTF_8,
+    val valueCharset: Charset = Charsets.UTF_8,
 ) {
     val raf: OpenFileIF
 
@@ -63,7 +58,7 @@ class H5builder(
 
     init {
          // search for the superblock
-        val state = OpenFileState(0L, ByteOrder.LITTLE_ENDIAN)
+        val state = OpenFileState(0L, false)
         var start = 0L
         while (start < NetchdfFileFormat.MAXHEADERPOS) {
             state.pos = start
@@ -432,7 +427,7 @@ class H5builder(
             0x1a,
             '\n'.code.toByte()
         )
-        private val magicString = String(magicHeader, StandardCharsets.UTF_8)
+        private val magicString = String(magicHeader, Charsets.UTF_8)
         private const val transformReference = true
 
         ////////////////////////////////////////////////////////////////////////////////

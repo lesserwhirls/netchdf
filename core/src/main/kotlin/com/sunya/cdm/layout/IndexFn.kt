@@ -1,7 +1,6 @@
 package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.computeSize
-import java.nio.ByteBuffer
 
 class IndexFn(val shape : IntArray) {
     val nelems = shape.computeSize()
@@ -9,15 +8,14 @@ class IndexFn(val shape : IntArray) {
         require(shape.size == 2) // ??
     }
 
-    fun flip(orgBuffer : ByteBuffer, elemSize : Int) : ByteBuffer {
-        val flipBuffer = ByteBuffer.allocate(orgBuffer.capacity())
-        flipBuffer.order(orgBuffer.order())
+    fun flip(orgBuffer : ByteArray, elemSize : Int) : ByteArray {
+        val flipBuffer = ByteArray(orgBuffer.size)
 
         repeat (nelems) { elem ->
             val row = elem / shape[1]
             val col = elem % shape[1]
             val dstElem = col * shape[0] + row
-            repeat (elemSize) { flipBuffer.put(dstElem * elemSize + it, orgBuffer.get(elem * elemSize + it)) }
+            repeat (elemSize) { flipBuffer[dstElem * elemSize + it] = orgBuffer.get(elem * elemSize + it) }
         }
 
         return flipBuffer
