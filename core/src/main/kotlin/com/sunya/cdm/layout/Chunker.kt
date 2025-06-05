@@ -1,8 +1,6 @@
 package com.sunya.cdm.layout
 
-import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Section
-import java.nio.ByteBuffer
 
 enum class Merge { all, none, notFirst }
 
@@ -103,7 +101,7 @@ class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merg
         return "Chunker(nelems=$nelems, totalNelems=$totalNelems, dataChunk=$dataChunk, wantSpace=$wantSpace)"
     }
 
-    // transfer from src to dst buffer, using my computed chunks
+    /* transfer from src to dst buffer, using my computed chunks
     internal fun transfer(src: ByteBuffer, elemSize : Int, dst: ByteBuffer) {
         for (chunk in this) {
             System.arraycopy(
@@ -115,6 +113,8 @@ class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merg
             )
         }
     }
+
+     */
 
     internal fun transferBA(src: ByteArray, srcOffset: Int, elemSize : Int, dst: ByteArray, dstOffset: Int) {
         for (chunk in this) {
@@ -141,54 +141,22 @@ class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merg
         return dst
     }
 
-    // transfer fillValue to dst buffer, using my computed chunks
-    internal fun transferMissing(fillValue: Any?, datatype: Datatype<*>, elemSize: Int, dst: ByteArray) {
-        if (fillValue == null) {
-            return
-        }
+    // transfer fillValue to dst buffer, using computed chunks
+    internal fun transferMissing(fillValue: ByteArray, elemSize: Int, dst: ByteArray) {
         for (chunk in this) {
             if (debugChunking) println("  missing chunk $chunk fillValue=$fillValue")
-            transferMissingNelems(fillValue, datatype, chunk.nelems, dst, elemSize * chunk.destElem.toInt())
+            // TODO why multiply by elemSize?? seems wrong
+            transferMissingNelems(fillValue, chunk.nelems, dst, elemSize * chunk.destElem.toInt())
         }
     }
 }
 
 private const val debugChunking = false
 
-internal fun transferMissingNelems(fillValue: Any?, datatype: Datatype<*>, nelems : Int, dst: ByteArray, dstOffset: Int) {
-    if (fillValue == null) {
-        return
-    }
-    when (datatype) {
-        Datatype.STRING, Datatype.CHAR, Datatype.BYTE -> {
-            val fill = fillValue as Byte
-            repeat(nelems) { dst[dstOffset + it] = fill }
-        }
-
-        Datatype.UBYTE, Datatype.ENUM1 -> {
-            val fill = fillValue as UByte
-            repeat(nelems) { dst[dstOffset + it] = fill.toByte() }
-        }
-
-        /* TODO
-        Datatype.SHORT -> repeat(nelems) { dst.putShort(fillValue as Short) }
-        Datatype.USHORT, Datatype.ENUM2 -> repeat(nelems) { dst.putShort((fillValue as UShort).toShort()) }
-        Datatype.INT -> repeat(nelems) { dst.putInt(fillValue as Int) }
-        Datatype.UINT, Datatype.ENUM4 -> repeat(nelems) { dst.putInt((fillValue as UInt).toInt()) }
-        Datatype.FLOAT -> repeat(nelems) { dst.putFloat(fillValue as Float) }
-        Datatype.DOUBLE -> repeat(nelems) { dst.putDouble(fillValue as Double) }
-        Datatype.LONG -> repeat(nelems) { dst.putLong(fillValue as Long) }
-        Datatype.ULONG -> repeat(nelems) { dst.putLong((fillValue as ULong).toLong()) }
-        Datatype.OPAQUE -> {
-            val fill = fillValue as ByteBuffer
-            repeat(nelems) {
-                fill.position(it)
-                dst.put(fill)
-            }
-        }
-
-         */
-
-        else -> throw IllegalStateException("unimplemented type= $datatype")
+internal fun transferMissingNelems(fillValue: ByteArray, nelems : Int, dst: ByteArray, dstOffset: Int) {
+    var pos = dstOffset
+    repeat(nelems) {
+        fillValue.forEachIndexed {idx, fillByte -> dst[pos + idx] = fillByte }
+        pos += fillValue.size
     }
 }

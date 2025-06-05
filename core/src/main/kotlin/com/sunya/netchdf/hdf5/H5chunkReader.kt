@@ -38,7 +38,7 @@ internal class H5chunkReader(val h5 : H5builder) {
             val chunker = Chunker(dataSection, wantSpace) // each DataChunkEntry has its own Chunker iteration
             if (dataChunk.isMissing()) {
                 if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
-                chunker.transferMissing(vinfo.fillValue, datatype, elemSize, ba)
+                chunker.transferMissing(vinfo.fillValue, elemSize, ba)
             } else {
                 if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
                 state.pos = dataChunk.childAddress

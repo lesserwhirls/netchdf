@@ -6,6 +6,7 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
 import com.fleeksoft.charset.Charset
+import com.sunya.cdm.array.convertToBytes
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 
@@ -581,7 +582,8 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         // then look for this tag. Elsewhere we look for _FillValue attribute.
         val tagFV = tagidMap[tagid(dimSDD.data_nt_ref, TagEnum.FV.code)]
         if ((tagFV != null) and (tagFV is TagFV)) {
-            vinfo.fillValue = (tagFV as TagFV).readFillValue(this, dataType)
+            val fillValue = (tagFV as TagFV).readFillValue(this, dataType)
+            vinfo.fillValue = convertToBytes(fillValue) // TODO
         }
 
         // ok to have no data

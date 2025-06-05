@@ -56,7 +56,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
             if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
             val sizeBytes = intersectSpace.totalElements * elemSize
             val bbmissing = ByteArray(sizeBytes.toInt())
-            transferMissingNelems(vinfo.fillValue, datatype, intersectSpace.totalElements.toInt(), bbmissing, 0)
+            transferMissingNelems(vinfo.fillValue, intersectSpace.totalElements.toInt(), bbmissing, 0)
             if (debugChunking) println("   missing transfer ${intersectSpace.totalElements} fillValue=${vinfo.fillValue}")
             bbmissing
         } else {
@@ -76,7 +76,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
             // internal fun <T> H5builder.processVlenIntoArray(h5type: H5TypeInfo, shape: IntArray, ba: ByteArray, nelems: Int, elemSize : Int): ArrayTyped<T> {
             h5.processVlenIntoArray(h5type, intersectSpace.shape.toIntArray(), ba, intersectSpace.totalElements.toInt(), elemSize)
         } else {
-            h5.processDataIntoArray(ba, h5type.base!!.isBE, datatype, intersectSpace.shape.toIntArray(), h5type, elemSize) as ArrayTyped<T>
+            h5.processDataIntoArray(ba, h5type.isBE, datatype, intersectSpace.shape.toIntArray(), h5type, elemSize) as ArrayTyped<T>
         }
 
         return ArraySection(array, intersectSpace.section(v2.shape)) // LOOK use space instead of Section ??

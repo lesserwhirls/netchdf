@@ -8,7 +8,7 @@ import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.TransferChunk
 
 @OptIn(ExperimentalUnsignedTypes::class)
-class ArrayUInt(shape : IntArray, datatype : Datatype<UInt>, val values: UIntArray) : ArrayTyped<UInt>(datatype, shape) {
+class ArrayUInt(shape : IntArray, datatype : Datatype<*>, val values: UIntArray) : ArrayTyped<UInt>(datatype, shape) {
 
     constructor(shape : IntArray, values: UIntArray) : this(shape, Datatype.UINT, values)
 

@@ -1,10 +1,7 @@
 package com.sunya.cdm.array
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.layout.IndexND
-import com.sunya.cdm.layout.IndexSpace
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.test.*
 
 class TestArrayOpaque {

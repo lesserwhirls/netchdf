@@ -8,7 +8,6 @@ import com.sunya.cdm.util.unsignedShortToInt
 import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.NetchdfFileFormat
 import io.github.oshai.kotlinlogging.KotlinLogging
-import java.io.IOException
 import com.fleeksoft.charset.Charset
 
 const val debugFlow = false
@@ -88,7 +87,7 @@ class H5builder(
                 readSuperBlock23(superblockStart, state, superBlockVersion)
             }
             else -> {
-                throw IOException("Unknown superblock version= $superBlockVersion")
+                throw RuntimeException("Unknown superblock version= $superBlockVersion")
             }
         }
 
@@ -155,7 +154,7 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size() < eofAddress) throw IOException(
+        if (raf.size() < eofAddress) throw RuntimeException(
             "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
@@ -169,7 +168,6 @@ class H5builder(
         return this.readH5Group(DataObjectFacade(null, "").setDataObject(rootObject))!!
     }
 
-    @Throws(IOException::class)
     private fun readSuperBlock23(superblockStart: Long,  state : OpenFileState, version: Int) : H5GroupBuilder {
         if (debugStart) {
             println("readSuperBlock version = $version")
@@ -204,7 +202,7 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size() < eofAddress) throw IOException(
+        if (raf.size() < eofAddress) throw RuntimeException(
             "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
@@ -219,13 +217,11 @@ class H5builder(
     //////////////////////////////////////////////////////////////
     // Internal organization of Data Objects
 
-    @Throws(IOException::class)
     fun convertReferenceToDataObjectName(reference: Long): String {
         val name = getDataObjectName(reference)
         return name ?: reference.toString() // LOOK
     }
 
-    @Throws(IOException::class)
     fun convertReferencesToDataObjectName(refArray: Array<Long>): List<String> {
         return refArray.map { convertReferenceToDataObjectName(it) }
     }
@@ -237,7 +233,6 @@ class H5builder(
      * @return String the data object's name, or null if not found
      * @throws IOException on read error
      */
-    @Throws(IOException::class)
     fun getDataObjectName(objId: Long): String {
         return getDataObject(objId, null)?.name ?: "unknown"
     }
@@ -264,7 +259,6 @@ class H5builder(
      *   referencing a typedef before the typedef is found through a hardlink, which supplies the name. Because
      *   the DataObject doesnt know its name. Because its name is free to be something else. Cause thats how we roll.
      */
-    @Throws(IOException::class)
     internal fun getDataObject(address: Long, name: String?): DataObject? {
         // find it
         var dobj = dataObjectMap[address]
@@ -303,25 +297,21 @@ class H5builder(
         return this.superblockStart + address
     }
 
-    @Throws(IOException::class)
     fun readLength(state : OpenFileState): Long {
         return if (isLengthLong) raf.readLong(state) else raf.readInt(state).toLong()
     }
 
-    @Throws(IOException::class)
     fun readOffset(state : OpenFileState): Long {
         return if (isOffsetLong) raf.readLong(state) else raf.readInt(state).toLong()
     }
 
     // size of data depends on "maximum possible number"
-    @Throws(IOException::class)
     fun readVariableSizeMax(state : OpenFileState, maxNumber: Long): Long {
         val size: Int = this.getNumBytesFromMax(maxNumber)
         return this.readVariableSizeUnsigned(state, size)
     }
 
     // always skip 8 bytes
-    @Throws(IOException::class)
     fun readVariableSizeFactor(state : OpenFileState, sizeFactor: Int): Long {
         val size = variableSizeFactor (sizeFactor)
         return readVariableSizeUnsigned(state, size)
@@ -337,7 +327,6 @@ class H5builder(
         }
     }
 
-    @Throws(IOException::class)
     fun readVariableSizeUnsigned(state : OpenFileState, size: Int): Long {
         val vv: Long
         when (size) {
@@ -353,7 +342,6 @@ class H5builder(
         return vv
     }
 
-    @Throws(IOException::class)
     private fun readVariableSizeN(state : OpenFileState, nbytes : Int): Long {
         val ch = IntArray(nbytes)
         for (i in 0 until nbytes) ch[i] = raf.readByte(state).toInt()
@@ -365,7 +353,6 @@ class H5builder(
         return result
     }
 
-    @Throws(IOException::class)
     fun readAddress(state : OpenFileState): Long {
         return getFileOffset(readOffset(state))
     }

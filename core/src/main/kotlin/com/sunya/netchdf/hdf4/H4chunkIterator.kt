@@ -39,8 +39,9 @@ class H4chunkIterator<T>(h4 : H4builder, val v2: Variable<*>, val wantSection : 
             if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
             val sizeBytes = intersectSpace.totalElements * elemSize
             val bbmissing = ByteArray(sizeBytes.toInt())
-            transferMissingNelems(vinfo.fillValue, datatype, intersectSpace.totalElements.toInt(), bbmissing, 0)
-            if (debugChunking) println("   missing transfer ${intersectSpace.totalElements} fillValue=${vinfo.fillValue}")
+            val fillValue = vinfo.fillValue ?: ByteArray(vinfo.elemSize)
+            transferMissingNelems(fillValue, intersectSpace.totalElements.toInt(), bbmissing, 0)
+            if (debugChunking) println("   transferMissingNelems ${intersectSpace.totalElements} fillValue=${fillValue}")
             bbmissing
         } else {
             if (debugChunking) println("  chunkIterator=${dataChunk.show(tiledData.tiling)}")

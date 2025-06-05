@@ -1,6 +1,7 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
+import com.sunya.cdm.array.convertToBytes
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_BYTE
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_CHAR
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_DOUBLE
@@ -22,7 +23,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var tagDataRI: TagRasterImage? = null
     var tagData: TagData? = null
     var elemSize = 0 // for Structures, this is recsize
-    var fillValue: Any? = null
+    var fillValue: ByteArray? = null
 
     // below is not set until setLayoutInfo() is called
     var isLinked = false
@@ -64,7 +65,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     }
 
     fun setFillValue(att: Attribute<*>) {
-        fillValue = att.values[0]
+        fillValue = convertToBytes(att.values[0]) // TODO WRONG
     }
 
     fun setSValue(svalue : String) : Vinfo {
@@ -148,8 +149,8 @@ internal fun getNcDefaultFillValue(datatype: Datatype<*>): Any {
 //#define FILL_LONG    ((long)-2147483647)
 
 // the Hdf4 SD default fill values, uses different values for the unsigned types.
-internal fun getSDefaultFillValue(datatype: Datatype<*>): Any {
-    return when (datatype) {
+internal fun getSDefaultFillValue(datatype: Datatype<*>): ByteArray {
+    val fillValue = when (datatype) {
         Datatype.BYTE -> NC_FILL_BYTE
         Datatype.UBYTE -> NC_FILL_BYTE.toUByte()
         Datatype.CHAR -> NC_FILL_CHAR
@@ -164,4 +165,5 @@ internal fun getSDefaultFillValue(datatype: Datatype<*>): Any {
         Datatype.STRING -> NC_FILL_STRING
         else -> 0
     }
+    return convertToBytes(fillValue) // TODO
 }

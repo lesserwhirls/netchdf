@@ -1,10 +1,8 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
 
 // "Data Object Header" Level 2A
-@Throws(IOException::class)
 internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject? {
     if (debugFlow) println("readDataObject= $name")
     val startPos = this.getFileOffset(address)

@@ -4,8 +4,6 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.convertInt
 import com.sunya.cdm.array.convertLong
 import com.sunya.cdm.iosp.*
-import java.io.IOException
-// import java.util.*
 
 private const val debugHeap = false
 
@@ -22,13 +20,11 @@ internal class H5heap(val header: H5builder) {
      * @return the Array read from the heap
      * @throws IOException on read error
      */
-    @Throws(IOException::class)
     fun getHeapDataArray(globalHeapIdAddress: Long, datatype: Datatype<*>, isBE: Boolean): Array<*> {
         val heapId: HeapIdentifier = readHeapIdentifier(globalHeapIdAddress)
         return getHeapDataArray(heapId, datatype, isBE)
     }
 
-    @Throws(IOException::class)
     fun getHeapDataArray(heapId: HeapIdentifier, datatype: Datatype<*>, isBE: Boolean): Array<*> {
         val ho = heapId.getHeapObject() ?: return when (datatype) { // LOOK set nelems = 0 ??
             Datatype.FLOAT -> emptyArray<Float>()
@@ -72,7 +68,6 @@ internal class H5heap(val header: H5builder) {
      * @return String the String read from the heap
      * @throws IOException on read error
      */
-    @Throws(IOException::class)
     fun readHeapString(bb: ByteArray, pos: Int): String? {
         val heapId = HeapIdentifier(bb, pos)
         if (heapId.isEmpty()) {
@@ -90,7 +85,6 @@ internal class H5heap(val header: H5builder) {
      * @return String the String read from the heap
      * @throws IOException on read error
      */
-    @Throws(IOException::class)
     fun readHeapString(heapIdAddress: Long): String? {
         val heapId = this.readHeapIdentifier(heapIdAddress)
         if (heapId.isEmpty()) {
@@ -105,7 +99,6 @@ internal class H5heap(val header: H5builder) {
     }
 
     // see "Global Heap Id" in http://www.hdfgroup.org/HDF5/doc/H5.format.html
-    @Throws(IOException::class)
     fun readHeapIdentifier(globalHeapIdAddress: Long): HeapIdentifier {
         return HeapIdentifier(globalHeapIdAddress)
     }

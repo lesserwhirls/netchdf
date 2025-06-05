@@ -1,12 +1,7 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.iosp.OpenFile
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
-//import java.io.IOException
-// import java.nio.ByteOrder
-//import java.nio.charset.StandardCharsets
-
 /*
     From netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
 

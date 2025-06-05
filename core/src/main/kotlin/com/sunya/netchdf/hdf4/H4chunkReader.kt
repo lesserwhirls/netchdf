@@ -14,7 +14,6 @@ class H4chunkReader(val h4 : H4builder) {
     internal fun <T> readChunkedData(v2: Variable<T>, wantSection : Section) : ArrayTyped<T> {
         val vinfo = v2.spObject as Vinfo
         val elemSize = vinfo.elemSize
-        val datatype = v2.datatype
 
         val wantSpace = IndexSpace(wantSection)
         val sizeBytes = wantSpace.totalElements * elemSize
@@ -33,7 +32,8 @@ class H4chunkReader(val h4 : H4builder) {
             val chunker = Chunker(dataSection, wantSpace) // each dataChunk has its own Chunker iteration
             if (dataChunk.isMissing()) {
                 if (debugMissing) println(" ${dataChunk.show(tiledData.tiling)}")
-                chunker.transferMissing(vinfo.fillValue, datatype, elemSize, ba)
+                val fillValue = vinfo.fillValue ?: ByteArray(elemSize)
+                chunker.transferMissing(fillValue, elemSize, ba)
             } else {
                 if (debugChunkingDetail and (count < 1)) println(" ${dataChunk.show(tiledData.tiling)}")
                 val filteredData = dataChunk.getByteArray() // filter already applied
@@ -46,22 +46,6 @@ class H4chunkReader(val h4 : H4builder) {
         val shape = wantSpace.shape.toIntArray()
         val tba = TypedByteArray(v2.datatype, ba, 0, isBE = vinfo.isBE)
         return tba.convertToArrayTyped(shape)
-
-        /*
-        val result = when (datatype) {
-            Datatype.BYTE -> ArrayByte(shape, bb)
-            Datatype.STRING, Datatype.CHAR, Datatype.UBYTE -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
-            Datatype.SHORT -> ArrayShort(shape, bb)
-            Datatype.USHORT -> ArrayUShort(shape, bb)
-            Datatype.INT -> ArrayInt(shape, bb)
-            Datatype.UINT -> ArrayUInt(shape, bb)
-            Datatype.FLOAT -> ArrayFloat(shape, bb)
-            Datatype.DOUBLE -> ArrayDouble(shape, bb)
-            Datatype.LONG -> ArrayLong(shape, bb)
-            Datatype.ULONG -> ArrayULong(shape, bb)
-            else -> throw IllegalStateException("unimplemented type= $datatype")
-        }
-        return result as ArrayTyped<T> */
     }
 
 }

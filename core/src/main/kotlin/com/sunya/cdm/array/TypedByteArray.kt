@@ -10,8 +10,6 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
 
     fun get(idx: Int): Any {
         return when (datatype) {
-            //Datatype.BYTE -> ArrayByte(shape, bb)
-            // Datatype.STRING, Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
 
             Datatype.USHORT, Datatype.ENUM2, Datatype.SHORT -> {
                 convertShort(ba, offset + 2 * idx, isBE)
@@ -32,8 +30,10 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
             Datatype.DOUBLE -> {
                 convertDouble(ba, offset + 8 * idx, isBE)
             }
-            //    Datatype.REFERENCE, Datatype.LONG -> ArrayLong(shape, bb)
-            //     Datatype.OPAQUE -> ArrayOpaque(shape, bb, h5type.elemSize)
+
+            Datatype.REFERENCE -> { // TODO
+                convertLong(ba, offset + 8 * idx, isBE)
+            }
             else -> throw IllegalStateException("unimplemented type= $datatype")
         }
     }
@@ -42,18 +42,17 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
         val nelems = shape.computeSize()
         val result = when (datatype) {
             Datatype.BYTE -> ArrayByte(shape, ba)
-            Datatype.UBYTE -> ArrayUByte(shape, UByteArray(nelems) { ba.get(it).toUByte() })
-            Datatype.CHAR -> ArrayUByte(shape, Datatype.CHAR, UByteArray(nelems) { ba.get(it).toUByte() })
-            Datatype.STRING -> ArrayUByte(shape, UByteArray(nelems) { ba.get(it).toUByte() }).makeStringsFromBytes()
-            Datatype.DOUBLE -> ArrayDouble(shape, DoubleArray(nelems) { this.get(it) as Double })
-            Datatype.FLOAT -> ArrayFloat(shape, FloatArray(nelems) { this.get(it) as Float })
+            Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype, UByteArray(nelems) { ba.get(it).toUByte() })
+            Datatype.SHORT -> ArrayShort(shape, ShortArray(nelems) { this.get(it) as Short })
+            Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype, UShortArray(nelems) { (this.get(it) as Short).toUShort() })
             Datatype.INT -> ArrayInt(shape, IntArray(nelems) { this.get(it) as Int } )
-            Datatype.UINT -> ArrayUInt(shape, UIntArray(nelems) { (this.get(it) as Int).toUInt() })
+            Datatype.UINT, Datatype.ENUM4 -> ArrayUInt(shape, datatype, UIntArray(nelems) { (this.get(it) as Int).toUInt() })
             Datatype.LONG -> ArrayLong(shape, LongArray(nelems) { this.get(it) as Long })
             Datatype.ULONG -> ArrayULong(shape, ULongArray(nelems) { (this.get(it) as Long).toULong() })
-            Datatype.SHORT -> ArrayShort(shape, ShortArray(nelems) { this.get(it) as Short })
-            Datatype.USHORT -> ArrayUShort(shape, UShortArray(nelems) { (this.get(it) as Short).toUShort() })
-            // Datatype.OPAQUE -> ArrayOpaque(shape, ba)
+            Datatype.DOUBLE -> ArrayDouble(shape, DoubleArray(nelems) { this.get(it) as Double })
+            Datatype.FLOAT -> ArrayFloat(shape, FloatArray(nelems) { this.get(it) as Float })
+            Datatype.STRING -> ArrayUByte(shape, UByteArray(nelems) { ba.get(it).toUByte() }).makeStringsFromBytes()
+            Datatype.REFERENCE -> ArrayLong(shape, LongArray(nelems) { this.get(it) as Long }) // TODO
             else -> throw IllegalArgumentException("datatype ${datatype}")
         }
         return result as ArrayTyped<T>
@@ -62,20 +61,7 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
 
 fun <T> emptyTypeByteArray(datatype: Datatype<T>) = TypedByteArray(datatype, ByteArray(0), 0, true)
 
-/*
-fun ShortArray.toArrayUShort(shape : IntArray) : ArrayUShort {
-    val bb = ByteBuffer.allocate(2 * shape.computeSize())
-    val sbb = bb.asShortBuffer()
-    this.forEach { sbb.put(it) }
-    val ba =  TypedByteArray(Datatype.USHORT, bb)
-    return ArrayUShort(shape, ba)
+// TODO. needed by fillValue setting by Attribute value
+fun convertToBytes(value: Any?): ByteArray {
+    return ByteArray(0)
 }
-
-fun IntArray.toArrayUInt(shape : IntArray) : ArrayUInt {
-    val bb = ByteBuffer.allocate(4 * shape.computeSize())
-    val ibb = bb.asIntBuffer()
-    this.forEach { ibb.put(it) }
-    val ba =  TypedByteArray(Datatype.UINT, bb)
-    return ArrayUInt(shape, ba)
-}
-*/

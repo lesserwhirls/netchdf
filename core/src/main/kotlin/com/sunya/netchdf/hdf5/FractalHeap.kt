@@ -4,8 +4,6 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.log2
-import java.io.IOException
-// import java.util.*
 
 /** Level 1G - Fractal Heap  */
 internal class FractalHeap(private val h5: H5builder, forWho: String, address: Long) {
@@ -233,9 +231,8 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
             return "$type,$n,$m,$offset,$size"
         }
 
-        @Throws(IOException::class)
-        fun show(f: Formatter) {
-            f.format("   %2d %2d %2d %6d %4d %8d", type, n, m, offset, size, computePosition())
+        fun show() = buildString {
+            appendLine("   $type, $n, $m, $offset, $size, ${computePosition()}")
         }
     }
 
@@ -283,15 +280,12 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
             throw IllegalStateException("offset=$offset")
         }
 
-        fun showDetails(f: Formatter) {
-            f.format(
-                " DoublingTable: tableWidth= %d startingBlockSize = %d managedSpace=%d maxDirectBlockSize=%d%n",
-                tableWidth, startingBlockSize, managedSpace, maxDirectBlockSize
-            )
-            f.format(" DataBlocks:%n")
-            f.format("  address            dataPos            offset size%n")
+        fun showDetails() = buildString {
+            appendLine(" DoublingTable: tableWidth= $tableWidth startingBlockSize = $startingBlockSize managedSpace=$managedSpace maxDirectBlockSize=$maxDirectBlockSize")
+            appendLine(" DataBlocks:")
+            appendLine("  address            dataPos            offset size")
             for (dblock: DataBlock in blockList) {
-                f.format("  %#-18x %#-18x %5d  %4d%n", dblock.address, dblock.dataPos, dblock.offset, dblock.size)
+                appendLine("  ${dblock.address}, ${dblock.dataPos}, ${dblock.offset}, ${dblock.size}")
             }
         }
     }
@@ -339,7 +333,6 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         }
     }
 
-    @Throws(IOException::class)
     fun readIndirectBlock(iblock: IndirectBlock, state: OpenFileState, heapAddress: Long, hasFilter: Boolean) {
         // header
         val magic: String = raf.readString(state,4)
@@ -388,7 +381,6 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         }
     }
 
-    @Throws(IOException::class)
     fun readDirectBlock(state: OpenFileState, heapAddress: Long, dblock: DataBlock) {
         if (state.pos < 0) return  // means its empty
         val startPos = state.pos

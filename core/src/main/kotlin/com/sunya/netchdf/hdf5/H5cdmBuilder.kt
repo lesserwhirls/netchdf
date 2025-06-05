@@ -13,7 +13,6 @@ import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_SPECIAL_ATTS
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NON_COORD
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NOT_VARIABLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_SPECIAL_ATTS
-import java.io.IOException
 
 const val attLengthMax = 4000
 
@@ -168,7 +167,7 @@ internal class DataContainerVariable(
     val isCompact : Boolean
     val elementSize : Int // total length in bytes on disk of one element
     val onlyFillValue : Boolean // no data at all
-    val fillValue : Any?
+    val fillValue : ByteArray
 
     init {
         // TODO if compact, do not use fileOffset
@@ -182,7 +181,7 @@ internal class DataContainerVariable(
         }
 
         // deal with unallocated data
-        fillValue = getFillValueNonDefault(h5, v5, h5type)
+        fillValue = getFillValue(h5, v5, h5type)
         onlyFillValue = (dataPos == -1L)
 
         isCompact = (mdl.layoutClass == LayoutClass.Compact)
@@ -215,7 +214,7 @@ internal class DataContainerVariable(
     }
 }
 
-internal fun getFillValueNonDefault(h5 : H5builder, v5 : H5Variable, h5type: H5TypeInfo): Any {
+internal fun getFillValue(h5 : H5builder, v5 : H5Variable, h5type: H5TypeInfo): ByteArray {
     // look for fill value message
     var fillValue : ByteArray? = null
     for (mess in v5.dataObject.messages) {
@@ -231,43 +230,7 @@ internal fun getFillValueNonDefault(h5 : H5builder, v5 : H5Variable, h5type: H5T
             }
         }
     }
-    val datatype = h5type.datatype()
-    if (fillValue == null) return getFillValueDefault(datatype)
-    // fillValueBB.order(h5type.endian)
-
-    // a single data value, same datatype as the dataset
-    return when (datatype) {
-        Datatype.BYTE -> fillValue.get(0)
-        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> fillValue.get(0).toUByte()
-        Datatype.SHORT -> convertShort(fillValue, 0, h5type.isBE)
-        Datatype.USHORT, Datatype.ENUM2 -> convertShort(fillValue, 0, h5type.isBE).toUShort()
-        Datatype.INT -> convertInt(fillValue, 0, h5type.isBE)
-        Datatype.UINT, Datatype.ENUM4 -> convertInt(fillValue, 0, h5type.isBE).toUInt()
-        Datatype.FLOAT -> convertFloat(fillValue, 0, h5type.isBE)
-        Datatype.DOUBLE -> convertDouble(fillValue, 0, h5type.isBE)
-        Datatype.LONG -> convertLong(fillValue, 0, h5type.isBE)
-        Datatype.ULONG -> convertLong(fillValue, 0, h5type.isBE).toULong()
-        Datatype.OPAQUE -> fillValue
-        else -> getFillValueDefault(datatype)
-    }
-}
-
-internal fun getFillValueDefault(datatype : Datatype<*>): Any {
-    // a single data value, same datatype as the dataset
-    return when (datatype) {
-        Datatype.BYTE -> 0.toByte()
-        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> 0.toUByte()
-        Datatype.SHORT -> 0.toShort()
-        Datatype.USHORT, Datatype.ENUM2 -> 0.toUShort()
-        Datatype.INT -> 0
-        Datatype.UINT, Datatype.ENUM4 -> 0.toUInt()
-        Datatype.FLOAT -> 0.0f
-        Datatype.DOUBLE -> 0.0
-        Datatype.LONG -> 0L
-        Datatype.ULONG -> 0.toULong()
-        Datatype.OPAQUE -> ByteArray(0)
-        else -> 0
-    }
+    return fillValue ?: ByteArray(h5type.elemSize)
 }
 
 
@@ -355,7 +318,6 @@ internal fun H5builder.makeDimensions(parentGroup: Group.Builder, h5group: H5Gro
 // find the Dimension Scale objects, turn them into shared dimensions
 // always has attribute CLASS = "DIMENSION_SCALE"
 // note that we dont bother looking at REFERENCE_LIST
-@Throws(IOException::class)
 internal fun H5builder.findDimensionScales(g: Group.Builder, h5group: H5Group, h5variable: H5Variable) {
 
     val removeAtts = mutableListOf<AttributeMessage>()
@@ -474,7 +436,6 @@ internal fun findDimensionScales2D(h5group: H5Group, h5variable: H5Variable) {
 
 // look for references to dimension scales, ie the variables that use them
 // return true if this variable is compatible with netcdf4 data model
-@Throws(IOException::class)
 internal fun H5builder.findSharedDimensions(parentGroup: Group.Builder, h5group: H5Group, h5variable: H5Variable): Boolean {
 
     val removeAtts = mutableListOf<AttributeMessage>()

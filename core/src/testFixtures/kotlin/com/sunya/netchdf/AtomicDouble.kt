@@ -2,7 +2,7 @@ package com.sunya.netchdf
 
 import java.util.concurrent.atomic.AtomicReference
 
-// import kotlin.concurrent.atomics.AtomicReference // not quite ready
+// import kotlin.concurrent.atomics.AtomicReference // TODO kmm not quite ready
 
 class AtomicDouble(initialValue: Double) {
     private val atomicReference = AtomicReference(initialValue)

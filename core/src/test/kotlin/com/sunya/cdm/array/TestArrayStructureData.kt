@@ -15,7 +15,7 @@ import kotlin.test.*
 
 class TestArrayStructureData {
 
-    /* TODO
+    /* TODO kmm
     @Test
     fun TestStructureMember() {
         // open class StructureMember<T>(val orgName: String, val datatype : Datatype<T>, val offset: Int, val dims : IntArray, val endian : ByteOrder? = null) {

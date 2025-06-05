@@ -2,7 +2,6 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
 
 /**
  * Level 1A2
@@ -95,7 +94,6 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
             raf.readInt(state)
         }
 
-        @Throws(IOException::class)
         fun recurse() {
             for (e in entries) {
                 if (depth > 1) {
@@ -141,7 +139,6 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
         }
     }
 
-    @Throws(IOException::class)
     fun readRecord(state: OpenFileState, type: Int): Any {
         return when (type) {
             1 -> Record1(state)

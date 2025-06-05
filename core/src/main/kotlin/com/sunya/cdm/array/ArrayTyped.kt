@@ -1,9 +1,6 @@
 package com.sunya.cdm.array
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.layout.Chunker
-import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
 
 // here, shape must be integers, since size cant exceed 32 bits
 // TODO ArrayTyped<T> is Iterable<T>, but Datatype<T> doesnt have to be T

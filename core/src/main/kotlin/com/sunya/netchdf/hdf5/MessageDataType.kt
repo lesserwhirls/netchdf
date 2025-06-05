@@ -2,7 +2,6 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
 
 //// Message Type 3 : "Datatype"
 // The datatype message defines the datatype for each element of a dataset or a common datatype for sharing between
@@ -310,7 +309,6 @@ class DatatypeArray(address : Long, elemSize: Int, val base: DatatypeMessage, va
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@Throws(IOException::class)
 fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessage {
     val address = state.pos
     val tandv = raf.readByte(state).toInt()
@@ -446,7 +444,6 @@ fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessage {
     }
 }
 
-@Throws(IOException::class)
 fun H5builder.readStructureMember(state: OpenFileState, version: Int, structSize: Int): StructureMember5 {
     // dont know how long it is, read until 0 terminated and then (if version < 3) pad to 8 bytes
     val pad = if (version < 3) 8 else 0
@@ -483,7 +480,6 @@ fun H5builder.readStructureMember(state: OpenFileState, version: Int, structSize
 
 // read a zero terminated string
 // pad to next padByte boundary if needed
-@Throws(IOException::class)
 fun H5builder.readStringZ(state: OpenFileState, padByte: Int? = null): String {
     val filePos: Long = state.pos
     var count = 0

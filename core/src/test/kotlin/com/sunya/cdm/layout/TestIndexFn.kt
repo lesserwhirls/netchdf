@@ -4,9 +4,7 @@ import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.api.toIntArray
 import com.sunya.cdm.array.ArrayByte
-import com.sunya.cdm.array.ArrayInt
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 

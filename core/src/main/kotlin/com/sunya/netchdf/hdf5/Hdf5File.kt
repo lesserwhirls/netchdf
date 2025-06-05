@@ -5,7 +5,6 @@ import com.sunya.cdm.array.ArrayEmpty
 import com.sunya.cdm.array.ArraySingle
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.iosp.*
-import java.io.IOException
 
 val useOkio = true
 
@@ -27,7 +26,6 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     override fun type() = header.formatType()
     override val size : Long get() = raf.size()
 
-    @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {
         if (v2.nelems == 0L) {
             return ArrayEmpty(v2.shape.toIntArray(), v2.datatype)
@@ -59,7 +57,6 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         }
     }
 
-    @Throws(IOException::class)
     override fun <T> chunkIterator(v2: Variable<T>, section: SectionPartial?, maxElements : Int?) : Iterator<ArraySection<T>> {
         if (v2.nelems == 0L) {
             return listOf<ArraySection<T>>().iterator()
@@ -68,7 +65,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         val vinfo = v2.spObject as DataContainerVariable
 
         if (vinfo.onlyFillValue) { // fill value only, no data
-            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!), wantSection)
+            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue), wantSection)
             return listOf(single).iterator()
         }
 
