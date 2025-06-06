@@ -25,7 +25,7 @@ class NetchdfClibTest {
         @JvmStatic
         fun params(): Stream<Arguments> {
             // return NppFiles.params()
-            return Stream.of( N3Files.params(), N4Files.params(), H5Files.params(), H4Files.params(), NetchdfExtraFiles.params(true)).flatMap { i -> i };
+            return Stream.of( N3Files.params(), N4Files.params(), H5Files.params(), H4Files.params(), NetchdfExtraFiles.params(true)).flatMap { i -> i }
         }
 
         @JvmStatic
@@ -51,7 +51,7 @@ class NetchdfClibTest {
         var compareMiddleSection = false
         var showDataRead = false
         var showData = false
-        var showFailedData = true
+        var showFailedData = false
         var showCdl = false
     }
 
@@ -236,6 +236,63 @@ netcdf tst_grps.nc4 {
     fun testCompareOpaqueData() {
         val filename = "/home/all/testdata/devcdm/hdf5/opaque.h5"
         compareDataWithClib(filename, "Opaque")
+    }
+
+    @Test
+    fun testCharFillValue() {
+        val filename = "/home/all/testdata/netchdf/martaan/SEVIR_OPER_R___MSGCPP__L2__20120119T121500_20120119T123000_0001.nc"
+        readNetchdfData(filename)
+    }
+
+    @Test
+    fun testFailDataCompare() {
+        val filename = "/home/all/testdata/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
+        compareCdlWithClib(filename, true)
+        compareDataWithClib(filename, "Granule")
+    }
+/*
+hdf5      /home/all/testdata/devcdm/hdf5/bitop.h5 0.00 Mbytes
+majnum = 1, minnum = 14, relnum = 6
+ffiVersion = HDF5 library version: 1.14.6
+isThreadsafe = 0 = false
+ ubyte /typetests/bitfield_1[Section(ranges=[0..31 step 1], varShape=[32])] = 32 elems
+ ushort /typetests/bitfield_2[Section(ranges=[0..15 step 1], varShape=[16])] = 16 elems
+ *** FAIL cfile.readArrayData for variable = opaque /typetests/opaque_1 []
+    */
+
+    @Test
+    fun testHdf4Attribute() {
+        val filename = "/home/all/testdata/hdf4/eos/misr/MISR_AM1_GRP_TERR_GM_P040_AN"
+        compareCdlWithClib(filename)
+        compareDataWithClib(filename, )
+    }
+
+    @Test
+    fun testFillValue() {
+        val filename = "/home/all/testdata/hdf4/nsidc/LAADS/MOD/MOD07_L2.A2007001.0000.005.2007003012910.hdf"
+        // compareCdlWithClib(filename, true)
+        compareDataWithClib(filename, "/mod07/Data_Fields/Processing_Flag")
+    }
+
+    @Test
+    fun testFailDataCompare3() {
+        val filename = "/home/all/testdata/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
+        compareCdlWithClib(filename, true)
+        compareDataWithClib(filename, "/GeometricParameters/Data_Fields/SolarAzimuth")
+    }
+
+    @Test
+    fun testFailDataCompare4() {
+        val filename = "/home/all/testdata/devcdm/netcdf4/tst_opaque_data.nc4"
+        compareCdlWithClib(filename, true)
+        compareDataWithClib(filename)
+    }
+
+    @Test
+    fun testFailDataCompare5() {
+        val filename = "/home/all/testdata/hdf4/nsidc/GESC/Others/VI.CM1.200709.005.hdf"
+        compareCdlWithClib(filename, true)
+        compareDataWithClib(filename)
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -705,8 +762,9 @@ fun readDataIterate(myfile: Netchdf, varname: String? = null, section: SectionPa
 
 fun readOneVarIterate(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?) {
     val chunkIter = myfile.chunkIterator(myvar, section, maxBytes)
+    val sum = AtomicDouble(0.0)
     for (pair in chunkIter) {
-        sumValues(pair.array)
+        sumValues(pair.array, sum)
     }
 }
 
@@ -750,7 +808,7 @@ fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>
         val chunkIter = myfile.chunkIterator(myvar)
         for (pair in chunkIter) {
             if (debugIter) println(" compareOneVarIterate myvar=${myvar.name} ${pair.section} = ${pair.array.shape.contentToString()}")
-            sumValues(pair.array)
+            sumValues(pair.array, sum)
             countChunks++
         }
     }
@@ -763,7 +821,7 @@ fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>
         val chunkIter = cfile.chunkIterator(cvar)
         for (pair in chunkIter) {
             if (debugIter) println(" compareOneVarIterate cvar=${cvar.name} ${pair.section} = ${pair.array.shape.contentToString()}")
-            sumValues(pair.array)
+            sumValues(pair.array, sum)
             countChunks++
         }
     }
@@ -777,7 +835,7 @@ fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>
 }
 
 ///////////////////////////////////////////////////////////
-val sum = AtomicDouble(0.0)
+/*
 fun sumValues(array : ArrayTyped<*>) {
     if (array is ArraySingle || array is ArrayEmpty) {
         return // test fillValue the same ??
@@ -800,7 +858,7 @@ fun sumValues(array : ArrayTyped<*>) {
             }
         }
     }
-}
+} */
 
 fun countArrayDiffs(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>, showDiff : Boolean = false) : Int {
     val iter1 = array1.iterator()

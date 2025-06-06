@@ -35,7 +35,7 @@ class N3dataCompare {
     // Im going to remove it from the test files (placed in exclude)
     @Test
     fun calcRecordSize() {
-        compareDataWithClib(testData + "netchdf/csiro/sixCellsc.nc", null) // , "cellId")
+        compareDataWithClib(testData + "netchdf/csiro/sixCellsc.nc", "lat") // , "cellId")
     }
 
     @Test

@@ -16,7 +16,7 @@ const val attLengthMaxPromote = 4000
  * @see "https://support.hdfgroup.org/release4/doc/index.html"
  */
 /* Implementation Notes
-   1. Early version seem to use the refno as a groouping mechanism. Perhaps before Vgroup??
+   1. Early version seem to use the refno as a grouping mechanism. Perhaps before Vgroup existed??
  */
 class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val alltags = mutableListOf<Tag>() // in order as they appear in the file
@@ -578,12 +578,12 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         vinfo.setData(data, dataType.size)
 
         // Apparently SD uses defaults (but not VS). They are sort-of NC, except for unsigned.
-        vinfo.fillValue = getSDefaultFillValue(dataType)
+        vinfo.fillValue = getSDefaultFillValue(dataType, vinfo.isBE)
         // then look for this tag. Elsewhere we look for _FillValue attribute.
         val tagFV = tagidMap[tagid(dimSDD.data_nt_ref, TagEnum.FV.code)]
         if ((tagFV != null) and (tagFV is TagFV)) {
             val fillValue = (tagFV as TagFV).readFillValue(this, dataType)
-            vinfo.fillValue = convertToBytes(fillValue) // TODO
+            vinfo.fillValue = convertToBytes(dataType, fillValue, vinfo.isBE)
         }
 
         // ok to have no data
@@ -688,16 +688,25 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
 
         val vb = if (members.size == 1) { // one field - dont make it into a structure
             val member = members[0]
-            val vb1 = Variable.Builder(vsname, member.datatype)
-            vinfo.elemSize = member.datatype.size // look correct the size, not tagVH.ivsize
-            val totalNelems = nrecords * member.nelems
-            if (totalNelems > 1) {
-                if (nrecords != 1 && member.nelems != 1)
-                    vb1.setDimensionsAnonymous(intArrayOf(nrecords, member.nelems))
-                else
-                    vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
-            }
-            vb1
+
+            /* kludge
+            if (member.datatype == Datatype.CHAR && member.shape.size == 1) {
+                val vb0 = Variable.Builder(vsname, Datatype.STRING)
+                // vinfo.elemSize = member.datatype.size // look correct the size??
+                println("Change $vsname to String")
+                vb0
+            } else { */
+                val vb1 = Variable.Builder(vsname, member.datatype)
+                vinfo.elemSize = member.datatype.size // look correct the size, its not tagVH.ivsize
+                val totalNelems = nrecords * member.nelems
+                if (totalNelems > 1) {
+                    if (nrecords != 1 && member.nelems != 1)
+                        vb1.setDimensionsAnonymous(intArrayOf(nrecords, member.nelems))
+                    else
+                        vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
+                }
+                vb1
+           // }
         } else {
             val typedef = CompoundTypedef(vh.name, members)
             val vb2 = Variable.Builder(vsname, Datatype.COMPOUND.withTypedef(typedef))

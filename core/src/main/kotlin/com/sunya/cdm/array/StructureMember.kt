@@ -2,7 +2,6 @@ package com.sunya.cdm.array
 
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.computeSize
-import com.sunya.cdm.api.toIntArray
 import com.sunya.cdm.util.makeValidCdmObjectName
 
 // dim lengths here are ints; Hdf4,5 only supports ints.
@@ -22,15 +21,18 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         val offset = sdata.offset + this.offset
 
         if (nelems > 1) {
+            /*
+            if (datatype == Datatype.CHAR) { // TODO kludge ?? maybe should be done in caller ??
+                val shapeList = shape.toList()
+                val elemSize = shapeList.last()
+                val useShape = (shapeList.subList(0, shape.size-1)).toIntArray()
+                //return ArrayUByte.fromByteArray(useShape, sdata.ba, offset).makeStringsFromBytes()
+                val tba = TypedByteArray(Datatype.STRING, sdata.ba, offset, this.isBE)
+                val result =  tba.convertToArrayTyped(useShape, elemSize)
+                return result
+            } */
 
-            /* TODO
-            val memberBB = ByteBuffer.allocate(nelems * datatype.size) // why cant we use a view ??
-            memberBB.order(this.endian ?: sdata.bb.order())
-            repeat(nelems * datatype.size) { memberBB.put(it, sdata.bb.get(offset + it)) }
-
-             */
-
-            val tba = TypedByteArray(this.datatype, sdata.ba, offset, sdata.isBE)
+            val tba = TypedByteArray(this.datatype, sdata.ba, offset, this.isBE)
             return tba.convertToArrayTyped(shape)
 
             /*
@@ -67,15 +69,23 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
 
         return when (datatype) {
             Datatype.BYTE -> sdata.ba.get(offset)
-            Datatype.SHORT -> convertShort(sdata.ba, offset, sdata.isBE)
-            Datatype.INT -> convertInt(sdata.ba, offset, sdata.isBE)
-            Datatype.LONG -> convertLong(sdata.ba, offset, sdata.isBE)
+            Datatype.SHORT -> convertToShort(sdata.ba, offset, this.isBE)
+            Datatype.INT -> convertToInt(sdata.ba, offset, this.isBE)
+            Datatype.LONG -> convertToLong(sdata.ba, offset, this.isBE)
             Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1 -> sdata.ba.get(offset).toUByte()
-            Datatype.USHORT, Datatype.ENUM2 -> convertShort(sdata.ba, offset, sdata.isBE).toUShort()
-            Datatype.UINT, Datatype.ENUM4 -> convertInt(sdata.ba, offset, sdata.isBE).toUInt()
-            Datatype.ULONG -> convertLong(sdata.ba, offset, sdata.isBE).toULong()
-            Datatype.FLOAT -> convertFloat(sdata.ba, offset, sdata.isBE)
-            Datatype.DOUBLE -> convertDouble(sdata.ba, offset, sdata.isBE)
+            Datatype.USHORT, Datatype.ENUM2 -> convertToShort(sdata.ba, offset, this.isBE).toUShort()
+            Datatype.UINT, Datatype.ENUM4 -> convertToInt(sdata.ba, offset, this.isBE).toUInt()
+            Datatype.ULONG -> convertToLong(sdata.ba, offset, this.isBE).toULong()
+            Datatype.FLOAT -> convertToFloat(sdata.ba, offset, this.isBE)
+            Datatype.DOUBLE -> convertToDouble(sdata.ba, offset, this.isBE)
+            /* Datatype.CHAR -> {
+                if (datatype.isVlenString) {
+                    val ret = sdata.getFromHeap(offset)
+                    ret ?: "unknown"
+                } else {
+                    makeStringZ(sdata.ba, offset, nelems) // nelems ??
+                }
+            } */
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
                     val ret = sdata.getFromHeap(offset)
@@ -102,7 +112,7 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         val offset = sdata.offset + this.offset
 
         // class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset: Int, val isBE: Boolean) {
-        val tba = TypedByteArray(this.datatype as Datatype<T>, sdata.ba, offset, sdata.isBE)
+        val tba = TypedByteArray(this.datatype as Datatype<T>, sdata.ba, offset, this.isBE)
         return tba.convertToArrayTyped(shape)
 
         /*

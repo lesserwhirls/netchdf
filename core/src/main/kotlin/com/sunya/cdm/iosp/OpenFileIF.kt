@@ -44,4 +44,8 @@ interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
     fun readArrayULong(state: OpenFileState, nelems: Int): ArrayULong
     fun readArrayFloat(state: OpenFileState, nelems: Int): ArrayFloat
     fun readArrayDouble(state: OpenFileState, nelems: Int): ArrayDouble */
+
+    companion object {
+        val nativeByteOrder  = false // TODO fix this
+    }
 }

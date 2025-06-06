@@ -115,7 +115,7 @@ class ArraySingle<T>(shape : IntArray, datatype : Datatype<*>, fillValueAny : An
 
     override fun toString(): String {
         return buildString {
-            append("ArraySingle shape=${shape.contentToString()} data= $fillValue\n")
+            append("ArraySingle datatype=$datatype shape=${shape.contentToString()} data= $fillValue (${(fillValue as Any).javaClass.kotlin}) \n")
         }
     }
 

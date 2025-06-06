@@ -17,8 +17,6 @@ import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.*
 import com.sunya.netchdf.netcdf4.Netcdf4
 import java.io.IOException
 import java.lang.foreign.*
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
 const val MAX_NAME = 2048L
 const val MAX_DIMS = 255L
@@ -608,8 +606,6 @@ class H5Cbuilder(val filename: String) {
                 // herr_t H5Aread(hid_t attr_id, hid_t 	type_id, void * 	buf)
                 checkErr("H5Aread", H5Aread(attr_id, h5ctype.type_id, data_p))
                 val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-                val bb = ByteBuffer.wrap(raw)
-                bb.order(h5ctype.endian)
                 require(size == nelems * h5ctype.elemSize)
 
                 val datatype = h5ctype.datatype()
@@ -617,12 +613,13 @@ class H5Cbuilder(val filename: String) {
                     Attribute.Builder(aname, datatype).build()
                 } else if (datatype == Datatype.COMPOUND) {
                     val members = (datatype.typedef as CompoundTypedef).members
-                    val sdataArray =  ArrayStructureData(dims, bb, h5ctype.elemSize, members)
-                    processCompoundData(context.arena, sdataArray, bb)
+                    // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+                    val sdataArray =  ArrayStructureData(dims, raw, h5ctype.isBE, h5ctype.elemSize, members)
+                    processCompoundData(context.arena, sdataArray, raw, h5ctype.isBE)
                     Attribute.Builder(aname, datatype).setValues(sdataArray.toList()).build()
 
                 } else {
-                    val values = processDataIntoArray(bb, h5ctype.datatype5, h5ctype.datatype(), dims, h5ctype.elemSize)
+                    val values = processDataIntoArray(raw, h5ctype.isBE, h5ctype.datatype5, h5ctype.datatype(), dims, h5ctype.elemSize)
                     Attribute.Builder(aname, values.datatype).setValues(values.toList()).build()
                 }
                 results.add(att)
@@ -735,18 +732,18 @@ internal fun <T> readRegularData(session : Arena, datasetId : Long, h5ctype : H5
     val (memSpaceId, fileSpaceId) = makeSection(session, datasetId, h5ctype, want)
     checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT_LONG, data_p))
 
-    val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-    val bb = ByteBuffer.wrap(raw)
-    bb.order(h5ctype.endian)
+    val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
+    //val bb = ByteBuffer.wrap(raw)
+    //bb.order(h5ctype.endian)
 
     val dims = want.shape.toIntArray()
     if (datatype == Datatype.COMPOUND) {
         val members = (datatype.typedef as CompoundTypedef).members
-        val sdataArray = ArrayStructureData(dims, bb, h5ctype.elemSize, members)
-        return processCompoundData(session, sdataArray, bb) as ArrayTyped<T>
+        val sdataArray = ArrayStructureData(dims, raw, h5ctype.isBE, h5ctype.elemSize, members)
+        return processCompoundData(session, sdataArray, raw, h5ctype.isBE) as ArrayTyped<T>
     }
 
-    return processDataIntoArray(bb, h5ctype.datatype5, datatype, dims, h5ctype.elemSize) as ArrayTyped<T>
+    return processDataIntoArray(raw, h5ctype.isBE, h5ctype.datatype5, datatype, dims, h5ctype.elemSize) as ArrayTyped<T>
 }
 
 internal fun makeSection(session : Arena, datasetId : Long, h5ctype : H5CTypeInfo, want : Section) : Pair<Long, Long> {
@@ -791,15 +788,23 @@ internal fun makeSection(session : Arena, datasetId : Long, h5ctype : H5CTypeInf
     return Pair(memSpaceId, fileSpaceId)
 }
 
-internal fun <T> processDataIntoArray(bb: ByteBuffer, datatype5 : Datatype5, datatype: Datatype<T>, shape : IntArray, elemSize : Int): ArrayTyped<T> {
+internal fun <T> processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype5 : Datatype5, datatype: Datatype<T>, shape : IntArray, elemSize : Int): ArrayTyped<T> {
 
     // convert to array of Strings by reducing rank by 1, tricky shape shifting for non-scalars
     if (datatype5 == Datatype5.String) {
         val extshape = IntArray(shape.size + 1) { if (it == shape.size) elemSize else shape[it] }
-        val result = ArrayUByte(extshape, bb)
+        val result = ArrayUByte.fromByteArray(extshape, ba)
         return result.makeStringsFromBytes() as ArrayTyped<T>
     }
 
+    if (datatype == Datatype.OPAQUE) {
+        return ArrayOpaque.fromByteArray(shape, ba, elemSize) as ArrayTyped<T>
+    }
+
+    val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
+    val result = tba.convertToArrayTyped(shape)
+
+    /*
     var result = when (datatype) {
         Datatype.BYTE -> ArrayByte(shape, bb)
         Datatype.STRING, Datatype.CHAR, Datatype.UBYTE -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
@@ -822,16 +827,18 @@ internal fun <T> processDataIntoArray(bb: ByteBuffer, datatype5 : Datatype5, dat
             throw IllegalStateException("unimplemented type= $datatype")
         }
     }
-    return result as ArrayTyped<T>
+
+     */
+    return result
 }
 
 // Put the variable length members (vlen, string) on the heap
-internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureData, bb : ByteBuffer) : ArrayStructureData {
+internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureData, ba : ByteArray, isBE : Boolean) : ArrayStructureData {
     sdataArray.putStringsOnHeap {  member, moffset ->
         val values = mutableListOf<String>()
         repeat(member.nelems) { idx ->
             // MemorySegment get(ValueLayout.OfAddress layout, long offset) {
-            val longAddress = bb.getLong(moffset + idx * 8)
+            val longAddress = convertToLong(ba, moffset + idx * 8, isBE)
             val address = MemorySegment.ofAddress(longAddress)
             val cString = address.reinterpret(Long.MAX_VALUE)
             val sval = cString.getUtf8String(0)
@@ -843,8 +850,8 @@ internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureDat
     sdataArray.putVlensOnHeap { member, moffset ->
         val listOfVlen = mutableListOf<Array<*>>()
         repeat(member.nelems) { idx ->
-            val arraySize = bb.getLong(moffset + idx * 8).toInt()
-            val longAddress = bb.getLong(moffset + idx * 8 + 8)
+            val arraySize = convertToLong(ba, moffset + idx * 8, isBE).toInt()
+            val longAddress = convertToLong(ba, moffset + idx * 8 + 8, isBE)
             val address = MemorySegment.ofAddress(longAddress)
             listOfVlen.add( readVlenArray(arraySize, address, member.datatype.typedef!!.baseType))
         }

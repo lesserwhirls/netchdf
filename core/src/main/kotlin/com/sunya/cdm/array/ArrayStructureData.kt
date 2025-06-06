@@ -8,14 +8,14 @@ import com.sunya.cdm.layout.IndexSpace
 class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
         : ArrayTyped<ArrayStructureData.StructureData>(Datatype.COMPOUND, shape) {
 
-    fun get(idx: Int) = StructureData(ba, recsize * idx, members, isBE)
+    fun get(idx: Int) = StructureData(ba, recsize * idx, members)
 
     override fun iterator(): Iterator<StructureData> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<StructureData>() {
         private var idx = 0
         override fun computeNext() {
             if (idx >= nelems) done()
-            else setNext(StructureData(ba, recsize * idx, members, isBE))
+            else setNext(StructureData(ba, recsize * idx, members))
             idx++
         }
     }
@@ -32,7 +32,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
 
     // TODO not a bad idea to start at 1, so that 0 == not set
     fun getFromHeap(offset: Int): Any? {
-        val index = convertInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
+        val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
         return heap[index]
     }
 
@@ -66,7 +66,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
 
     // structure data is packed into the ByteBuffer starting at the given offset
     // vlens and strings are on the "heap" stored in the parent ArrayStructureData
-    inner class StructureData(val ba: ByteArray, val offset: Int, val members: List<StructureMember<*>>, val isBE: Boolean) {
+    inner class StructureData(val ba: ByteArray, val offset: Int, val members: List<StructureMember<*>>) {
 
         override fun toString(): String {
             return buildString {

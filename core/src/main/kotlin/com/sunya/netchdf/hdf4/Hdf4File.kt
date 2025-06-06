@@ -92,7 +92,7 @@ class Hdf4File(val filename : String) : Netchdf {
         }
 
         if (vinfo.hasNoData) {
-            return ArraySingle(section.shape.toIntArray(), v.datatype, vinfo.fillValue!!)
+            return ArraySingle(section.shape.toIntArray(), v.datatype, convertFromBytes(v.datatype, vinfo.fillValue!!, vinfo.isBE))
         }
 
         if (vinfo.svalue != null) {
@@ -153,7 +153,7 @@ class Hdf4File(val filename : String) : Netchdf {
 
         val shape = wantSection.shape.toIntArray()
         val tba = TypedByteArray(v2.datatype, ba, 0, isBE = true)
-        return tba.convertToArrayTyped(shape)
+        return tba.convertToArrayTyped(shape) // , vinfo.elemSize)
 
         /*
         val array = when (v2.datatype) {

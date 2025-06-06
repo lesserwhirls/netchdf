@@ -1,8 +1,8 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.convertInt
-import com.sunya.cdm.array.convertLong
+import com.sunya.cdm.array.convertToInt
+import com.sunya.cdm.array.convertToLong
 import com.sunya.cdm.iosp.*
 
 private const val debugHeap = false
@@ -130,12 +130,12 @@ internal class H5heap(val header: H5builder) {
         constructor(bb: ByteArray, start: Int) {
             var pos = start
         // fun convertInt(ba: ByteArray, offset: Int, isBE: Boolean): Int {
-            nelems = convertInt(bb, pos, isBE = false)
+            nelems = convertToInt(bb, pos, isBE = false)
             pos += 4
-            heapAddress = if (header.isOffsetLong) convertLong(bb, pos, isBE = false)
-                          else convertInt(bb, pos, isBE = false).toLong()
+            heapAddress = if (header.isOffsetLong) convertToLong(bb, pos, isBE = false)
+                          else convertToInt(bb, pos, isBE = false).toLong()
             pos += header.sizeOffsets
-            index = convertInt(bb, pos, isBE = false)
+            index = convertToInt(bb, pos, isBE = false)
         }
 
         fun isEmpty(): Boolean {

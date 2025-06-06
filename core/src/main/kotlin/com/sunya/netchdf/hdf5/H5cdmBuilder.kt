@@ -2,7 +2,6 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.cdm.iosp.*
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_CLASS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LABELS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LIST
@@ -179,7 +178,6 @@ internal class DataContainerVariable(
             is DataLayoutCompact3 -> -2L // data is in mdl.compactData
             else -> -1 // LOOK compact?
         }
-
         // deal with unallocated data
         fillValue = getFillValue(h5, v5, h5type)
         onlyFillValue = (dataPos == -1L)

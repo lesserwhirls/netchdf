@@ -47,7 +47,7 @@ internal fun <T> H5builder.readDataWithLayout(state: OpenFileState, layout: Layo
         throw java.lang.RuntimeException("Illegal nbytes to read = $sizeBytes")
     }
     val ba = ByteArray(sizeBytes.toInt())
-    val isBE = h5type.base?.isBE ?: h5type.isBE
+    state.isBE = h5type.base?.isBE ?: h5type.isBE
 
     var count = 0
     while (layout.hasNext()) {
@@ -63,7 +63,7 @@ internal fun <T> H5builder.readDataWithLayout(state: OpenFileState, layout: Layo
         if (debugLayout and (count < 20)) println("oldchunk = $chunk")
     }
 
-    return this.processDataIntoArray(ba, isBE, datatype, shape.toIntArray(), h5type, layout.elemSize)
+    return this.processDataIntoArray(ba, state.isBE, datatype, shape.toIntArray(), h5type, layout.elemSize)
 }
 
 internal fun <T> H5builder.processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype: Datatype<T>, shape : IntArray, h5type : H5TypeInfo, elemSize : Int): ArrayTyped<T> {
@@ -86,7 +86,7 @@ internal fun <T> H5builder.processDataIntoArray(ba: ByteArray, isBE: Boolean, da
         return ArrayOpaque.fromByteArray(shape, ba, h5type.elemSize) as ArrayTyped<T>
     }
 
-    val tba = TypedByteArray(datatype, ba, 0, isBE = true)
+    val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
     return tba.convertToArrayTyped(shape)
 
     /*

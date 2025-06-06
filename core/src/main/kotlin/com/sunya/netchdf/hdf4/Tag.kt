@@ -509,11 +509,11 @@ class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
         val useBB = bb!!
         return when (dataType) {
             Datatype.BYTE -> useBB[index]
-            Datatype.SHORT -> convertShort(useBB, index * 2, true)
-            Datatype.INT -> convertInt(useBB, index * 4, true)
-            Datatype.LONG -> convertLong(useBB, index * 8, true)
-            Datatype.FLOAT -> convertFloat(useBB, index * 4, true)
-            Datatype.DOUBLE -> convertDouble(useBB, index * 8, true)
+            Datatype.SHORT -> convertToShort(useBB, index * 2, true)
+            Datatype.INT -> convertToInt(useBB, index * 4, true)
+            Datatype.LONG -> convertToLong(useBB, index * 8, true)
+            Datatype.FLOAT -> convertToFloat(useBB, index * 4, true)
+            Datatype.DOUBLE -> convertToDouble(useBB, index * 8, true)
             else -> Double.NaN
         }
     }

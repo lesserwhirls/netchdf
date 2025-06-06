@@ -6,6 +6,11 @@ import okio.Path.Companion.toPath
 
 import com.fleeksoft.charset.Charset
 
+/*
+Also see https://github.com/Kotlin/kotlinx-io. currently in alpha.
+A multiplatform Kotlin library providing basic IO primitives. kotlinx-io is based on Okio but does not preserve backward compatibility with it.
+*/
+
 /**
  * from okio.FileHandle://
  * An open file for reading and writing; using either streaming and random access.

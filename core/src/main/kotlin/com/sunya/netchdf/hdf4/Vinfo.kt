@@ -23,7 +23,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var tagDataRI: TagRasterImage? = null
     var tagData: TagData? = null
     var elemSize = 0 // for Structures, this is recsize
-    var fillValue: ByteArray? = null
+    var fillValue: ByteArray? = null  // TODO should be Any, not ByteARray
 
     // below is not set until setLayoutInfo() is called
     var isLinked = false
@@ -65,7 +65,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     }
 
     fun setFillValue(att: Attribute<*>) {
-        fillValue = convertToBytes(att.values[0]) // TODO WRONG
+        fillValue = convertToBytes(att.datatype, att.values[0], isBE)
     }
 
     fun setSValue(svalue : String) : Vinfo {
@@ -148,8 +148,9 @@ internal fun getNcDefaultFillValue(datatype: Datatype<*>): Any {
 //#define FILL_SHORT    ((short)-32767)
 //#define FILL_LONG    ((long)-2147483647)
 
+// it would be convenient to turn into bytes
 // the Hdf4 SD default fill values, uses different values for the unsigned types.
-internal fun getSDefaultFillValue(datatype: Datatype<*>): ByteArray {
+internal fun getSDefaultFillValue(datatype: Datatype<*>, isBE: Boolean): ByteArray {
     val fillValue = when (datatype) {
         Datatype.BYTE -> NC_FILL_BYTE
         Datatype.UBYTE -> NC_FILL_BYTE.toUByte()
@@ -165,5 +166,5 @@ internal fun getSDefaultFillValue(datatype: Datatype<*>): ByteArray {
         Datatype.STRING -> NC_FILL_STRING
         else -> 0
     }
-    return convertToBytes(fillValue) // TODO
+    return convertToBytes(datatype, fillValue, isBE) // TODO
 }

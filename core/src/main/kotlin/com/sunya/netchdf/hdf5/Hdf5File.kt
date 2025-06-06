@@ -4,6 +4,7 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayEmpty
 import com.sunya.cdm.array.ArraySingle
 import com.sunya.cdm.array.ArrayTyped
+import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.iosp.*
 
 val useOkio = true
@@ -39,7 +40,8 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
 
         val vinfo = v2.spObject as DataContainerVariable
         if (vinfo.onlyFillValue) { // fill value only, no data
-            return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!)
+            val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
+            return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0))
         }
 
         return try {
@@ -65,7 +67,8 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         val vinfo = v2.spObject as DataContainerVariable
 
         if (vinfo.onlyFillValue) { // fill value only, no data
-            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue), wantSection)
+            val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
+            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0)), wantSection)
             return listOf(single).iterator()
         }
 

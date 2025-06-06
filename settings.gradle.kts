@@ -9,6 +9,6 @@ plugins {
 
 rootProject.name = "netchdf"
 
-//include("clibs")
+include("clibs")
 include("core")
-//include("cli")
+include("cli")
