@@ -34,7 +34,7 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
   fun formatType() : String {
     return if (isPnetcdf) "netcdf3.5" else
            if (useLongOffset) "netcdf3.2" else
-           "netcdf3  "
+           "netcdf3"
   }
 
   init {

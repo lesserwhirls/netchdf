@@ -38,7 +38,7 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private var imageCount = 0
 
     fun type(): String {
-        return if (structMetadata.isEmpty()) "hdf4     " else "hdf-eos2 "
+        return if (metadata.isEmpty()) "hdf4" else "hdf-eos2"
     }
 
     init {

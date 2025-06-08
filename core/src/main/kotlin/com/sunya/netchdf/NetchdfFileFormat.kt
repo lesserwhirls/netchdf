@@ -269,7 +269,7 @@ enum class NetchdfFileFormat(private val version: Int, private val formatName: S
                 if (raf.readIntoByteArray(filePos, magic, 0, MAGIC_NUMBER_LEN) < MAGIC_NUMBER_LEN) {
                     return null
                 } else if (memequal(H5HEAD, magic, H5HEAD.size)) {
-                    return NC_FORMAT_NETCDF4 // actually dont know here if its netcdf4 or just hdf5.
+                    return HDF5 // actually dont know here if its netcdf4 or just hdf5.
                 } else {
                     start = if (start == 0L) 512 else 2 * start
                     filePos.pos = start

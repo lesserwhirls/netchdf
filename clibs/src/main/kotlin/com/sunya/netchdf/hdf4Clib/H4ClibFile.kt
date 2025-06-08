@@ -37,7 +37,7 @@ class Hdf4ClibFile(val filename: String) : Netchdf {
 
     override fun location() = filename
     override fun cdl() = cdl(this)
-    override fun type() = "hdf4Clib"
+    override fun type() = if (header.isEos()) "hdf-eos2" else "hdf4"
 
     override fun close() {
         header.close()
@@ -142,12 +142,13 @@ fun <T> readSDdata(sdsStartId: Int, sdindex: Int, datatype: Datatype<T>, wantSec
 fun <T> readVSdata(fileOpenId: Int, vsInfo: VSInfo, datatype : Datatype<T>, startRecnum: Int, wantRecords: Int): ArrayTyped<T> {
     val startRecord = if (vsInfo.nrecords == 1) 0 else startRecnum // trick because we promote single field structures
     val numRecords = min(vsInfo.nrecords, wantRecords) // trick because we promote single field structures
-    val shape = intArrayOf(numRecords)
+    val nelt = numRecords * vsInfo.recsize
+    val shape = if (datatype.size == 1) intArrayOf(nelt) else intArrayOf(numRecords) // TODO seems wrong
 
     Arena.ofConfined().use { session ->
         val read_access_mode = session.allocateUtf8String("r")
         val fldnames_p = session.allocateUtf8String(vsInfo.fldNames)
-        val data_p = session.allocate(numRecords * vsInfo.recsize.toLong()) // LOOK memory clobber?
+        val data_p = session.allocate(nelt.toLong()) // LOOK memory clobber?
         val vdata_id = VSattach(fileOpenId, vsInfo.vs_ref, read_access_mode)
         try {
             checkErrNeg("VSsetfields", VSsetfields(vdata_id, fldnames_p))

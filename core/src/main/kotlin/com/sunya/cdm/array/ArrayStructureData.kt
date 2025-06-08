@@ -21,19 +21,19 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
     }
 
     private val heap = mutableMapOf<Int, Any>()
-    private var heapIndex = 0
-    fun putOnHeap(offset: Int, value: Any): Int {
-        heap[heapIndex] = value
-        // ba.putInt(offset, heapIndex) // TODO clobber the ByteArray ??
-        val result = heapIndex
-        heapIndex++
-        return result
+    // private var heapIndex = 0
+    fun putOnHeap(offset: Int, value: Any) {
+        heap[offset] = value
+        // ba.putInt(offset, heapIndex) // TODO clobber the ByteArray ?? Or just use the byte pos, which is unique
+        //val result = heapIndex
+        // heapIndex++
+        // return result
     }
 
     // TODO not a bad idea to start at 1, so that 0 == not set
     fun getFromHeap(offset: Int): Any? {
-        val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
-        return heap[index]
+        // val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
+        return heap[offset]
     }
 
     override fun toString(): String {
@@ -74,7 +74,8 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
                     append("${m.name} = ")
-                    when (val value = m.value(this@StructureData)) {
+                    val value = m.value(this@StructureData)
+                    when (value) {
                         is String -> append("\"$value\"")
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
                         else -> append("$value")
@@ -88,9 +89,10 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
             return buildString {
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
-                    when (val value = m.value(this@StructureData)) {
+                    val value = m.value(this@StructureData)
+                    when (value) { // TODO clean up formatting
+                        is String -> append("\"$value\"")
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
-                        is String -> append("\"${"%12s".format(value.toString())}\"")
                         else -> append("%12s".format(value.toString()))
                     }
                 }
@@ -129,7 +131,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         }
     }
 
-    fun putStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
+    fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
         members.filter { it.datatype.isVlenString }.forEach { member ->
             this.forEach { sdata ->
                 val sval = lamda(member, sdata.offset + member.offset)

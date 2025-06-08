@@ -1,13 +1,16 @@
 package com.sunya.netchdf.netcdfClib
 
+import com.fleeksoft.charset.Platform
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.netchdf.NetchdfFileFormat
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h
 import com.sunya.netchdf.netcdfClib.ffm.nc_vlen_t
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.lang.foreign.*
 import java.lang.foreign.ValueLayout.*
+import java.nio.ByteBuffer
 
 /*
 1. Run /home/stormy/dev/github/netcdf/netcdf-c/rebuild.sh:
@@ -96,7 +99,12 @@ class NClibFile(val filename: String) : Netchdf {
     override fun rootGroup() = rootGroup
     override fun location() = filename
     override fun cdl() = com.sunya.cdm.api.cdl(this)
-    override fun type() = header.formatType
+    override fun type() = when (header.formatType) {
+        NetchdfFileFormat.NC_FORMAT_CLASSIC -> "netcdf3"
+        NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET -> "netcdf3.2"
+        NetchdfFileFormat.NC_FORMAT_64BIT_DATA -> "netcdf3.5"
+        else -> "netcdf4"
+    }
 
     override fun close() {
         // NOOP
@@ -159,20 +167,35 @@ class NClibFile(val filename: String) : Netchdf {
                     val val_p = session.allocate(nbytes)
                     checkErr("compound nc_get_vars", nc_get_vars(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val raw = val_p.toArray(ValueLayout.JAVA_BYTE)!!
-                    //val bb = ByteBuffer.wrap(raw)
-                    //bb.order(ByteOrder.LITTLE_ENDIAN)
 
+                    val isBE = false // TODO im skeptical isBE shouldnt always be nativeByteOrder
                     val members = (datatype.typedef as CompoundTypedef).members
-                    // TODO im skeptical isBE shouldnt always be nativeByteOrder
-                    val sdataArray = ArrayStructureData(shape, raw, isBE = false, userType.size, members)
-                    // TODO strings vs array of strings
-                    sdataArray.putStringsOnHeap {  member, offset ->
-                        val address = val_p.get(ADDRESS, (offset).toLong())
+                    val sdataArray = ArrayStructureData(shape, raw, isBE = isBE, userType.size, members)
+
+                    /*
+                    sdataArray.putVlenStringsOnHeap { member, offset ->
+                        val zaddress = val_p.get(ValueLayout.ADDRESS, offset.toLong())
+                        val address = zaddress.reinterpret(Long.MAX_VALUE)
                         val cString = address.reinterpret(Long.MAX_VALUE)
+
+                        // TODO strings vs array of strings
                         val s = cString.getUtf8String(0)
                         if (debugUserTypes) println("OK CompoundAttribute read string offset=$offset value=$s")
                         listOf(s)
+                    } */
+
+                    sdataArray.putVlenStringsOnHeap { member, offset ->
+                        val result = mutableListOf<String>()
+                        repeat(member.nelems) {
+                            val zaddress = val_p.get(ValueLayout.ADDRESS, (offset + it * 16).toLong())
+                            val address = zaddress.reinterpret(Long.MAX_VALUE)
+                            val cString = address.reinterpret(Long.MAX_VALUE)
+                            val sval = cString.getUtf8String(0)
+                            result.add(sval!!)
+                        }
+                        result
                     }
+
                     sdataArray.putVlensOnHeap { member, offset ->
                         // look duplicate (maybe)
                         val listOfVlen = mutableListOf<Array<*>>()

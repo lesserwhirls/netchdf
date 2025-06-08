@@ -28,7 +28,7 @@ const val debugGroup = false
 class H5Cbuilder(val filename: String) {
     val rootBuilder = Group.Builder("")
     val file_id : Long
-    fun formatType() = if (structMetadata.isEmpty()) "hdf5    " else "hdf-eos5"
+    fun formatType() = if (structMetadata.isEmpty()) "hdf5" else "hdf-eos5"
 
     private val structMetadata = mutableListOf<String>()
     private val typeinfoMap = mutableMapOf<Typedef, MutableList<Group.Builder>>()
@@ -834,7 +834,7 @@ internal fun <T> processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype5 : 
 
 // Put the variable length members (vlen, string) on the heap
 internal fun processCompoundData(session : Arena, sdataArray : ArrayStructureData, ba : ByteArray, isBE : Boolean) : ArrayStructureData {
-    sdataArray.putStringsOnHeap {  member, moffset ->
+    sdataArray.putVlenStringsOnHeap { member, moffset ->
         val values = mutableListOf<String>()
         repeat(member.nelems) { idx ->
             // MemorySegment get(ValueLayout.OfAddress layout, long offset) {

@@ -262,7 +262,7 @@ internal fun NCheader.readCompoundAttValues(session: Arena,
     val members = (userType.typedef as CompoundTypedef).members
     // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
     val sdataArray = ArrayStructureData(intArrayOf(nelems.toInt()), raw, isBE = nativeByteOrder, userType.size, members)
-    sdataArray.putStringsOnHeap {  member, offset ->
+    sdataArray.putVlenStringsOnHeap { member, offset ->
         // this lamda is only called when datatype.isVlenString
         val address = val_p.get(ADDRESS, offset.toLong())
         // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p

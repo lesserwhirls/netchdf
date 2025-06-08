@@ -89,7 +89,14 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
                     val ret = sdata.getFromHeap(offset)
-                    ret ?: "unknown"
+                    if (ret == null)  {
+                        sdata.getFromHeap(offset)
+                        "unknown"
+                    } else if (ret is List<*>) {
+                       ret[0] as Any
+                    } else {
+                        ret
+                    }
                 } else {
                     makeStringZ(sdata.ba, offset, nelems) // nelems ??
                 }

@@ -54,6 +54,8 @@ class HCheader(val filename: String) {
         }
     }
 
+    fun isEos() = (metadata.isNotEmpty())
+
     @Throws(IOException::class)
     private fun build(session: Arena) : Group.Builder {
         val filenameSeg: MemorySegment = session.allocateUtf8String(filename)

@@ -74,7 +74,7 @@ internal class H5heap(val header: H5builder) {
             return null
         }
         val ho = heapId.getHeapObject() ?: throw IllegalStateException("Cant find Heap Object,heapId=$heapId")
-        val state = OpenFileState(ho.dataPos, false)
+        val state = OpenFileState(ho.dataPos, false) // TODO why false ??
         return raf.readString(state, ho.dataSize.toInt())
     }
 

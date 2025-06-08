@@ -116,11 +116,11 @@ internal fun <T> H5builder.processDataIntoArray(ba: ByteArray, isBE: Boolean, da
 // Put the variable length members (vlen, string) on the heap
 internal fun H5builder.processCompoundData(sdataArray : ArrayStructureData, isBE : Boolean) : ArrayStructureData {
     val h5heap = H5heap(this)
-    sdataArray.putStringsOnHeap {  member, offset ->
+    sdataArray.putVlenStringsOnHeap { member, offset ->
         val result = mutableListOf<String>()
         repeat(member.nelems) {
             val sval = h5heap.readHeapString(sdataArray.ba, offset + it * 16) // 16 byte "heap ids" are in the ByteBuffer
-            result.add(sval!!) // 16 byte "heap ids" are in the ByteBuffer
+            result.add(sval!!)
         }
         result
     }

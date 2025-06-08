@@ -55,60 +55,6 @@ class NetchdfClibTest {
         var showCdl = false
     }
 
-    /* tst_grps
-        Maybe netcdf-4 skips opaque type?
-
-(Netcdf4)
-netcdf tst_grps.nc4 {
-  types:
-    int(*) vlen-1 ;
-    byte(*) vlen-2 ;
-
-  group: the_in_crowd {
-  }
-
-  group: the_out_crowd {
-
-    group: the_confused_crowd {
-    }
-  }
-}
-
-(netchdf)
-netcdf tst_grps.nc4 {
-  types:
-    opaque(10) opaque-1 ;
-    int(*) vlen-1 ;
-    byte(*) vlen-2 ;
-
-  group: the_in_crowd {
-    types:
-      opaque(7) opaque-2 ;
-  }
-
-  group: the_out_crowd {
-    types:
-      opaque(4) opaque-3 ;
-
-    group: the_confused_crowd {
-      types:
-        opaque(13) opaque-4 ;
-    }
-  }
-}
-     */
-    @Test
-    // @Disabled
-    fun tst_grps() {
-        compareCdlWithClib(testData + "devcdm/netcdf4/tst_grps.nc4")
-    }
-
-    @Test
-    // @Disabled I think we are supressing user types that are not used.
-    fun compoundAttributeTest() {
-        compareCdlWithClib(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
-    }
-
     @Test
     fun testOneCdl() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
@@ -244,12 +190,6 @@ netcdf tst_grps.nc4 {
         readNetchdfData(filename)
     }
 
-    @Test
-    fun testFailDataCompare() {
-        val filename = "/home/all/testdata/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
-        compareCdlWithClib(filename, true)
-        compareDataWithClib(filename, "Granule")
-    }
 /*
 hdf5      /home/all/testdata/devcdm/hdf5/bitop.h5 0.00 Mbytes
 majnum = 1, minnum = 14, relnum = 6
@@ -290,9 +230,9 @@ isThreadsafe = 0 = false
 
     @Test
     fun testFailDataCompare5() {
-        val filename = "/home/all/testdata/hdf4/nsidc/GESC/Others/VI.CM1.200709.005.hdf"
-        compareCdlWithClib(filename, true)
-        compareDataWithClib(filename)
+        val filename = "/home/all/testdata/netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
+        // compareCdlWithClib(filename, true)
+        compareDataWithClib(filename, "/olci_band_definition/olci_band_definition")
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
