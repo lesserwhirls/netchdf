@@ -1,6 +1,7 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
+import com.sunya.cdm.array.convertToBytes
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_BYTE
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_CHAR
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_DOUBLE
@@ -13,7 +14,6 @@ import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_USHORT
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_INT64
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_STRING
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_UINT64
-import java.nio.ByteOrder
 
 internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var vb: Variable.Builder<*>? = null
@@ -23,7 +23,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var tagDataRI: TagRasterImage? = null
     var tagData: TagData? = null
     var elemSize = 0 // for Structures, this is recsize
-    var fillValue: Any? = null
+    var fillValue: ByteArray? = null  // TODO should be Any, not ByteARray
 
     // below is not set until setLayoutInfo() is called
     var isLinked = false
@@ -47,7 +47,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var svalue : String? = null
 
     // LOOK "always big-endian on disk"
-    var endian: ByteOrder = ByteOrder.BIG_ENDIAN // LOOK TABLE 2H Little-Endian Format Data Type Definitions
+    var isBE: Boolean = true// LOOK TABLE 2H Little-Endian Format Data Type Definitions
 
     fun setVariable(v: Variable.Builder<*>) {
         vb = v
@@ -65,7 +65,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     }
 
     fun setFillValue(att: Attribute<*>) {
-        fillValue = att.values[0]
+        fillValue = convertToBytes(att.datatype, att.values[0], isBE)
     }
 
     fun setSValue(svalue : String) : Vinfo {
@@ -148,9 +148,10 @@ internal fun getNcDefaultFillValue(datatype: Datatype<*>): Any {
 //#define FILL_SHORT    ((short)-32767)
 //#define FILL_LONG    ((long)-2147483647)
 
+// it would be convenient to turn into bytes
 // the Hdf4 SD default fill values, uses different values for the unsigned types.
-internal fun getSDefaultFillValue(datatype: Datatype<*>): Any {
-    return when (datatype) {
+internal fun getSDefaultFillValue(datatype: Datatype<*>, isBE: Boolean): ByteArray {
+    val fillValue = when (datatype) {
         Datatype.BYTE -> NC_FILL_BYTE
         Datatype.UBYTE -> NC_FILL_BYTE.toUByte()
         Datatype.CHAR -> NC_FILL_CHAR
@@ -165,4 +166,5 @@ internal fun getSDefaultFillValue(datatype: Datatype<*>): Any {
         Datatype.STRING -> NC_FILL_STRING
         else -> 0
     }
+    return convertToBytes(datatype, fillValue, isBE) // TODO
 }

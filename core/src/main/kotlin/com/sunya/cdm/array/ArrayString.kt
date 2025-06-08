@@ -1,14 +1,13 @@
+@file:OptIn(ExperimentalUnsignedTypes::class)
+
 package com.sunya.cdm.array
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
-import java.nio.charset.StandardCharsets
 
 // fake ByteBuffer
-class ArrayString(shape : IntArray, val values : List<String>)
-        : ArrayTyped<String>(ByteBuffer.allocate(0), Datatype.STRING, shape) {
+class ArrayString(shape : IntArray, val values : List<String>) : ArrayTyped<String>(Datatype.STRING, shape) {
 
     constructor(shape : IntArray, valueArray : Array<String>) : this (shape, valueArray.toList())
 
@@ -37,6 +36,21 @@ class ArrayString(shape : IntArray, val values : List<String>)
     }
 }
 
+/**
+ * Create a String out of this ByteArray, collapsing all dimensions into one.
+ * If there is a null (zero) value in the array, the String will end there.
+ * The null is not returned as part of the String.
+ */
+fun ByteArray.makeStringFromBytes(): String {
+    var count = 0
+    for (c in this) {
+        if (c.toInt() == 0) {
+            break
+        }
+        count++
+    }
+    return String(this, 0, count, Charsets.UTF_8)
+}
 
 /**
  * Create a String out of this ArrayByte, collapsing all dimensions into one.
@@ -59,12 +73,12 @@ fun ArrayUByte.makeStringFromBytes(): String {
         }
         carr[idx++] = c.toByte()
     }
-    return String(carr, StandardCharsets.UTF_8)
+    return String(carr, Charsets.UTF_8)
 }
 
 /**
- * Create an ArrayString out of this ArrayByte of any rank.
- * If there is a null (zero) value in the Array array, the String will end there.
+ * Create an ArrayString out of this ArrayUByte of any rank.
+ * If there is a null (zero) value in the array, the String will end there.
  * The null is not returned as part of the String.
  *
  * @return Array of Strings of rank - 1.
@@ -83,15 +97,15 @@ fun ArrayUByte.makeStringsFromBytes(): ArrayString {
     var sidx = 0
     while (sidx < outerLength) {
         val idx = sidx * innerLength + cidx
-        val c: Byte = values[idx]
+        val c: Byte = values[idx].toByte()
         if (c.toInt() == 0) {
-            result[sidx++] = String(carr, 0, cidx, StandardCharsets.UTF_8)
+            result[sidx++] = String(carr, 0, cidx, Charsets.UTF_8)
             cidx = 0
             continue
         }
         carr[cidx++] = c
         if (cidx == innerLength) {
-            result[sidx++] = String(carr, StandardCharsets.UTF_8)
+            result[sidx++] = String(carr, Charsets.UTF_8)
             cidx = 0
         }
     }

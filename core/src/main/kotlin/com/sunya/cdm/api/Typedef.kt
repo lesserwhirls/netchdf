@@ -41,7 +41,7 @@ class CompoundTypedef(name : String, val members : List<StructureMember<*>>) : T
             val nindent = indent.incr()
             members.forEach {
                 val typename = if (it.datatype.typedef != null) it.datatype.typedef.name  else it.datatype.cdlName
-                append("${nindent}${typename} ${it.name}${showDims(it.dims)} ;\n")
+                append("${nindent}${typename} ${it.name}${showDims(it.shape)} ;\n")
             }
             append("${indent}}; // $name")
         }

@@ -114,6 +114,11 @@ class H5readTest {
         }
     }
 
+    @Test
+    fun testReference() {
+        testOpenH5(testData + "cdmUnitTest/formats/hdf5/msg/test.h5")
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////
 
     @ParameterizedTest

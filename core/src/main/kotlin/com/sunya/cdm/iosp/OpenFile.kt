@@ -1,6 +1,5 @@
 package com.sunya.cdm.iosp
 
-import java.io.Closeable
 import java.io.EOFException
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -10,7 +9,7 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
 /** An abstraction over a Java FileChannel. */
-data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
+data class OpenFile(val location : String) : OpenFileIF {
     private var allowTruncation = true
     val raf : com.sunya.io.RandomAccessFile = com.sunya.io.RandomAccessFile(location, "r")
     private val fileChannel : FileChannel = raf.fileChannel
@@ -21,36 +20,15 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
         size = raf.length()
     }
 
+
+    override fun location() = location
+    override fun size() = size
+
     override fun close() {
         raf.close()
     }
 
-    fun readByteBufferDirect(state : OpenFileState, nbytes : Int): ByteBuffer {
-        if (nbytes < 8100) {
-            return readByteBuffer(state, nbytes)
-        }
-
-        val dst = ByteBuffer.allocate(nbytes)
-        if (state.pos >= size) {
-            throw EOFException("Tried to read past EOF ${fileChannel.size()} at pos ${state.pos} location $location")
-        }
-        try {
-            val nread = fileChannel.read(dst, state.pos)
-            if (nread != dst.capacity()) {
-                throw EOFException("Only read $nread bytes of wanted ${dst.capacity()} bytes; starting at pos ${state.pos} EOF=${fileChannel.size()}")
-            }
-            dst.flip()
-            dst.order(state.byteOrder)
-            state.pos += nread
-            return dst
-        } catch (ioe: IOException) {
-            println("Got error on $location")
-            ioe.printStackTrace()
-            throw ioe
-        }
-    }
-
-    fun readIntoByteBufferDirect(state : OpenFileState, dst : ByteBuffer, dstPos : Int, nbytes : Int) : Int {
+    private fun readIntoByteBufferDirect(state : OpenFileState, dst : ByteBuffer, dstPos : Int, nbytes : Int) : Int {
         if (nbytes < 4000) {
             return readIntoByteBuffer(state, dst, dstPos, nbytes)
         }
@@ -79,12 +57,12 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
         return readIntoByteBufferDirect(state, ByteBuffer.wrap(dest), destPos, nbytes)
     }
 
-    fun readIntoByteBuffer(state : OpenFileState, dst : ByteBuffer, dstPos : Int, nbytes : Int) : Int {
+    private fun readIntoByteBuffer(state : OpenFileState, dst : ByteBuffer, dstPos : Int, nbytes : Int) : Int {
         if (state.pos >= size) {
             if (allowTruncation) return 0
             throw EOFException("Tried to read past EOF $size at pos ${state.pos} location $location")
         }
-        val bb = readBytes(state, nbytes)
+        val bb = readByteArray(state, nbytes)
         var pos = dstPos
         for (element in bb) {
             dst.put(pos++, element)
@@ -92,25 +70,16 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
         return bb.size
     }
 
-    fun readByteBuffer(state : OpenFileState, nbytes : Int): ByteBuffer {
-        val dst = readBytes(state, nbytes)
+    private fun readByteBuffer(state : OpenFileState, nbytes : Int): ByteBuffer {
+        val dst = readByteArray(state, nbytes)
         val bb = ByteBuffer.wrap(dst)
-        bb.order(state.byteOrder)
+        bb.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         return bb
-    }
-
-    // doesnt check the number of bytes read into dst, just returns the number.
-    fun readBytesUnchecked(state : OpenFileState, dst : ByteArray) : Int {
-        raf.seek(state.pos)
-        raf.order(state.byteOrder)
-        val nread = raf.read(dst)
-        state.pos += nread
-        return nread
     }
 
     private fun readBytes(state : OpenFileState, dst : ByteArray) : Int {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         val nread = raf.read(dst)
         if (nread != dst.size && !allowTruncation) {
             throw EOFException("Only read $nread bytes of wanted ${dst.size} bytes; starting at pos ${state.pos} EOF=${size}")
@@ -119,125 +88,111 @@ data class OpenFile(val location : String) : ReaderIntoByteArray, Closeable {
         return nread
     }
 
-    fun readBytes(state : OpenFileState, nbytes : Int) : ByteArray {
+    override fun readByteArray(state : OpenFileState, nbytes : Int) : ByteArray {
         val dst = ByteArray(nbytes)
         readBytes(state, dst)
         return dst
     }
 
-    fun readByte(state : OpenFileState): Byte {
+    override fun readByte(state : OpenFileState): Byte {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos++
         return raf.readByte()
     }
 
-    fun readDouble(state : OpenFileState): Double {
+    override fun readDouble(state : OpenFileState): Double {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos += 8
         return raf.readDouble()
     }
 
-    fun readFloat(state : OpenFileState): Float {
+    override fun readFloat(state : OpenFileState): Float {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos += 4
         return raf.readFloat()
     }
 
-    fun readInt(state : OpenFileState): Int {
+    override fun readInt(state : OpenFileState): Int {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos += 4
         return raf.readInt()
     }
 
-    fun readLong(state : OpenFileState): Long {
+    override fun readLong(state : OpenFileState): Long {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos += 8
         return raf.readLong()
     }
 
-    fun readShort(state : OpenFileState): Short {
+    override fun readShort(state : OpenFileState): Short {
         raf.seek(state.pos)
-        raf.order(state.byteOrder)
+        raf.order(if (state.isBE) ByteOrder.BIG_ENDIAN else ByteOrder.LITTLE_ENDIAN)
         state.pos += 2
         return raf.readShort()
     }
 
     fun readString(state : OpenFileState, nbytes : Int): String {
-        return readString(state, nbytes, StandardCharsets.UTF_8)
+        return readString(state, nbytes, Charsets.UTF_8)
     }
 
-    fun readString(state : OpenFileState, nbytes : Int, charset : Charset): String {
+    override fun readString(state : OpenFileState, nbytes : Int, charset : Charset): String {
         val dst = ByteArray(nbytes)
-        readBytesUnchecked(state, dst)
+        readIntoByteArray(state, dst, 0, dst.size)
         return makeStringZ(dst, 0, charset)
     }
 
-    fun readArrayByte(state : OpenFileState, nelems : Int): Array<Byte> {
+    override fun readArrayOfByte(state : OpenFileState, nelems : Int): Array<Byte> {
         val dst = readByteBuffer(state, nelems)
         return Array(nelems) { dst[it] }
     }
 
-    fun readArrayUByte(state : OpenFileState, nelems : Int): Array<UByte> {
+    override fun readArrayOfUByte(state : OpenFileState, nelems : Int): Array<UByte> {
         val dst = readByteBuffer(state, nelems)
         return Array(nelems) { dst[it].toUByte() }
     }
 
-    fun readArrayShort(state : OpenFileState, nelems : Int): Array<Short> {
+    override fun readArrayOfShort(state : OpenFileState, nelems : Int): Array<Short> {
         val dst = readByteBuffer(state, 2 * nelems).asShortBuffer()
         return Array(nelems) { dst[it] }
     }
 
-    fun readArrayUShort(state : OpenFileState, nelems : Int): Array<UShort> {
+    override fun readArrayOfUShort(state : OpenFileState, nelems : Int): Array<UShort> {
         val dst = readByteBuffer(state, 2 * nelems).asShortBuffer()
         return Array(nelems) { dst[it].toUShort() }
     }
 
-    fun readArrayInt(state : OpenFileState, nelems : Int): Array<Int> {
+    override fun readArrayOfInt(state : OpenFileState, nelems : Int): Array<Int> {
         val dst = readByteBuffer(state, 4 * nelems).asIntBuffer()
         return Array(nelems) { dst[it] }
     }
 
-    fun readArrayUInt(state : OpenFileState, nelems : Int): Array<UInt> {
+    override fun readArrayOfUInt(state : OpenFileState, nelems : Int): Array<UInt> {
         val dst = readByteBuffer(state, 4 * nelems).asIntBuffer()
         return Array(nelems) { dst[it].toUInt() }
     }
 
-    fun readArrayLong(state : OpenFileState, nelems : Int): Array<Long> {
+    override fun readArrayOfLong(state : OpenFileState, nelems : Int): Array<Long> {
         val dst = readByteBuffer(state, 8 * nelems).asLongBuffer()
         return Array(nelems) { dst[it] }
     }
 
-    fun readArrayULong(state : OpenFileState, nelems : Int): Array<ULong> {
+    override fun readArrayOfULong(state : OpenFileState, nelems : Int): Array<ULong> {
         val dst = readByteBuffer(state, 8 * nelems).asLongBuffer()
         return Array(nelems) { dst[it].toULong() }
     }
 
-    fun readArrayFloat(state : OpenFileState, nelems : Int): Array<Float> {
+    override fun readArrayOfFloat(state : OpenFileState, nelems : Int): Array<Float> {
         val dst = readByteBuffer(state, 4 * nelems).asFloatBuffer()
         return Array(nelems) { dst[it] }
     }
 
-    fun readArrayDouble(state : OpenFileState, nelems : Int): Array<Double> {
+    override fun readArrayOfDouble(state : OpenFileState, nelems : Int): Array<Double> {
         val dst = readByteBuffer(state, 8 * nelems).asDoubleBuffer()
         return Array(nelems) { dst[it] }
     }
-}
-
-data class OpenFileState(var pos : Long, var byteOrder : ByteOrder = ByteOrder.LITTLE_ENDIAN) {
-    fun incr(addit : Long) : OpenFileState {
-        this.pos += addit
-        return this
-    }
-}
-
-// terminate at a zero
-fun makeStringZ(ba : ByteArray, start : Int, charset : Charset = StandardCharsets.UTF_8): String {
-    var count = 0
-    while (start+count < ba.size && ba[start+count] != 0.toByte()) count++
-    return String(ba, start, count, charset)
 }

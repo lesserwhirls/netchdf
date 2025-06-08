@@ -1,16 +1,12 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
-import java.nio.ByteOrder
-import java.util.*
 
 // "Data Object Header" Level 2A
-@Throws(IOException::class)
 internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject? {
     if (debugFlow) println("readDataObject= $name")
     val startPos = this.getFileOffset(address)
-    val state = OpenFileState( startPos, ByteOrder.LITTLE_ENDIAN)
+    val state = OpenFileState( startPos, false)
     val messages = mutableListOf<MessageHeader>()
 
     val version = raf.readByte(state)
@@ -31,7 +27,7 @@ internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject
         
     } else { // IV.A.1.b. Version 2 Data Object Header Prefix
         // first byte was already read
-        val testForMagic = raf.readByteBuffer(state, 3).array()
+        val testForMagic = raf.readByteArray(state, 3)
         if (!testForMagic.contentEquals("HDR".toByteArray())) {
             return null
         }

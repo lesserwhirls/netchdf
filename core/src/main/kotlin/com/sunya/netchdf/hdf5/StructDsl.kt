@@ -1,15 +1,16 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.array.convertToShort
+import com.sunya.cdm.array.convertToInt
+import com.sunya.cdm.array.convertToLong
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
-import java.nio.ByteBuffer
-import java.nio.charset.StandardCharsets
 
 /** Experimental DSL for reading structure data from file */
-class StructDsl(val name : String, val bb : ByteBuffer, val flds : List<StructFld>, val startPos : Long) {
+class StructDsl(val name : String, val ba : ByteArray, val isBE: Boolean, val flds : List<StructFld>, val startPos : Long) {
     val fldm = flds.associateBy { it.fldName }
 
-    fun dataSize() = bb.limit()
+    fun dataSize() = ba.size
 
     fun show() {
         println("$name startPos = $startPos")
@@ -26,75 +27,75 @@ class StructDsl(val name : String, val bb : ByteBuffer, val flds : List<StructFl
         if (fld.nelems > 1 && fld.elemSize != 1) {
             Array(fld.nelems) { idx ->
                 when (fld.elemSize) {
-                    2 -> bb.getShort(fld.pos + 2 * idx)
-                    4 -> bb.getInt(fld.pos + 4 * idx)
-                    8 -> bb.getLong(fld.pos + 8 * idx)
+                    2 -> convertToShort(ba, fld.pos + 2 * idx, isBE)
+                    4 -> convertToInt(ba, fld.pos + 4 * idx, isBE)
+                    8 -> convertToLong(ba, fld.pos + 8 * idx, isBE)
                     else -> getString(fld.fldName)
                 }
             }
         }
 
         return when(fld.elemSize) {
-            1 -> bb.get(fld.pos)
-            2 -> bb.getShort(fld.pos)
-            4 -> bb.getInt(fld.pos)
-            8 -> bb.getLong(fld.pos)
+            1 -> ba.get(fld.pos)
+            2 -> convertToShort(ba, fld.pos, isBE)
+            4 -> convertToInt(ba, fld.pos, isBE)
+            8 -> convertToLong(ba, fld.pos, isBE)
             else -> getString(fld.fldName)
         }
     }
 
     fun getLong(fldName : String) : Long {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
-        return if (fld.elemSize == 4) bb.getInt(fld.pos).toLong()
-        else bb.getLong(fld.pos)
+        return if (fld.elemSize == 4) convertToInt(ba, fld.pos, isBE).toLong()
+        else convertToLong(ba, fld.pos, isBE)
     }
     fun getInt(fldName : String) : Int {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
-        return if (fld.elemSize == 8) bb.getLong(fld.pos).toInt()
-        else bb.getInt(fld.pos)
+        return if (fld.elemSize == 8) convertToLong(ba, fld.pos, isBE).toInt()
+        else convertToInt(ba, fld.pos, isBE)
     }
     fun getByte(fldName : String) : Byte {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
         require(fld.elemSize == 1) { fldName }
-        return bb.get(fld.pos)
+        return ba.get(fld.pos)
     }
     fun getShort(fldName : String) : Short {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
         require(fld.elemSize == 2) { fldName }
-        return bb.getShort(fld.pos)
+        return convertToShort(ba, fld.pos, isBE)
     }
     fun getIntArray(fldName : String) : IntArray {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
         return when (fld.elemSize) {
-            4 -> IntArray(fld.nelems) { idx -> bb.getInt(fld.pos + fld.elemSize * idx) }
-            8 -> IntArray(fld.nelems) { idx -> bb.getLong(fld.pos + fld.elemSize * idx).toInt() }
+            4 -> IntArray(fld.nelems) { idx -> convertToInt(ba, fld.pos + fld.elemSize * idx, isBE) }
+            8 -> IntArray(fld.nelems) { idx -> convertToLong(ba, fld.pos + fld.elemSize * idx, isBE).toInt() }
             else -> throw RuntimeException("$fld must be 4 or 8")
         }
     }
     fun getLongArray(fldName : String) : LongArray {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
         return when (fld.elemSize) {
-            4 -> LongArray(fld.nelems) { idx -> bb.getInt(fld.pos + fld.elemSize * idx).toLong() }
-            8 -> LongArray(fld.nelems) { idx -> bb.getLong(fld.pos + fld.elemSize * idx) }
+            4 -> LongArray(fld.nelems) { idx -> convertToInt(ba,fld.pos + fld.elemSize * idx, isBE).toLong() }
+            8 -> LongArray(fld.nelems) { idx -> convertToLong(ba,fld.pos + fld.elemSize * idx, isBE) }
             else -> throw RuntimeException("$fld must be 4 or 8")
         }
     }
-    fun getByteBuffer(fldName : String) : ByteBuffer {
+    fun getByteArray(fldName : String) : ByteArray {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
-        return bb.slice(fld.pos, fld.nelems * fld.elemSize)
+        return ByteArray(fld.nelems * fld.elemSize) { ba[fld.pos + it] } // LOOK
     }
     fun getString(fldName : String) : String {
         val fld = fldm[fldName] ?: throw IllegalArgumentException("StructDsl $name has no fld '$fldName'")
         for (idx in 0 until fld.nelems * fld.elemSize) {
-            if (bb.get(fld.pos + idx).toInt() == 0) { // terminate at 0 byte
-                return String(bb.array(), fld.pos, idx, StandardCharsets.UTF_8)
+            if (ba.get(fld.pos + idx).toInt() == 0) { // terminate at 0 byte
+                return String(ba, fld.pos, idx, Charsets.UTF_8)
             }
         }
-        return String(bb.array(), fld.pos, fld.nelems * fld.elemSize, StandardCharsets.UTF_8)
+        return String(ba, fld.pos, fld.nelems * fld.elemSize, Charsets.UTF_8)
     }
 }
 
-class StructDslBuilder(val name : String, val raf: OpenFile, val state: OpenFileState) {
+class StructDslBuilder(val name : String, val raf: OpenFileIF, val state: OpenFileState) {
     val flds = mutableListOf<StructFld>()
     val startPos = state.pos
     var pos = 0
@@ -132,11 +133,11 @@ class StructDslBuilder(val name : String, val raf: OpenFile, val state: OpenFile
 
     fun eagerRead(from: StructFld) : Int {
         val tstate = state.copy(pos = startPos + from.pos)
-        val bb = raf.readByteBuffer(tstate, from.elemSize)
+        val ba = raf.readByteArray(tstate, from.elemSize)
         return when (from.elemSize) {
-            1 -> bb.get().toInt()
-            2 -> bb.getShort().toInt()
-            4 -> bb.getInt()
+            1 -> ba.get(0).toInt()
+            2 -> convertToShort(ba, 0, state.isBE).toInt()
+            4 -> convertToInt(ba, 0, state.isBE)
             else -> throw IllegalArgumentException("StructDsl $name illegal eager read length=${from.elemSize}")
         }
     }
@@ -147,8 +148,8 @@ class StructDslBuilder(val name : String, val raf: OpenFile, val state: OpenFile
 
     fun build(): StructDsl {
         val total = flds.sumOf { it.elemSize * it.nelems }
-        val bb = raf.readByteBuffer(state, total)
-        return StructDsl(name, bb, flds, startPos)
+        val bb = raf.readByteArray(state, total)
+        return StructDsl(name, bb, state.isBE, flds, startPos)
     }
 }
 
@@ -160,7 +161,7 @@ data class StructFld(val fldName: String, val pos: Int, val elemSize: Int, val n
     }
 }
 
-fun structdsl(name : String, raf : OpenFile, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
+fun structdsl(name : String, raf : OpenFileIF, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
     val builder = StructDslBuilder(name, raf, state)
     builder.lambda()
     return builder.build()

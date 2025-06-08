@@ -10,7 +10,7 @@ const val strict = false
 fun cdl(netcdf : Netchdf) : String {
     val filename = netcdf.location().substringAfterLast('/')
     return buildString{
-        append("netcdf $filename {\n")
+        append("${netcdf.type()} $filename {\n")
         append(netcdf.rootGroup().cdl(true, Indent(2, 1)))
         append("}")
     }
@@ -140,4 +140,8 @@ fun ByteArray.toHex(): String {
             hexChars[nibble]
         }
     return result.concatToString()
+}
+
+fun cdlFileType() {
+
 }

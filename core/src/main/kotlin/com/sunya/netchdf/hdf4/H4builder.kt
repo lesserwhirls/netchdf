@@ -1,13 +1,12 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
-import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
+import com.fleeksoft.charset.Charset
+import com.sunya.cdm.array.convertToBytes
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 
@@ -17,9 +16,9 @@ const val attLengthMaxPromote = 4000
  * @see "https://support.hdfgroup.org/release4/doc/index.html"
  */
 /* Implementation Notes
-   1. Early version seem to use the refno as a groouping mechanism. Perhaps before Vgroup??
+   1. Early version seem to use the refno as a grouping mechanism. Perhaps before Vgroup existed??
  */
-class H4builder(val raf: OpenFile, val valueCharset: Charset) {
+class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val alltags = mutableListOf<Tag>() // in order as they appear in the file
 
     var rootBuilder: Group.Builder = Group.Builder("")
@@ -39,12 +38,12 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
     private var imageCount = 0
 
     fun type(): String {
-        return if (structMetadata.isEmpty()) "hdf4     " else "hdf-eos2 "
+        return if (metadata.isEmpty()) "hdf4" else "hdf-eos2"
     }
 
     init {
         // header information is in big endian byte order
-        val state = OpenFileState(0, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(0, true)
 
         // this positions the file after the header
         if (!isValidFile(raf, state)) {
@@ -579,11 +578,12 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
         vinfo.setData(data, dataType.size)
 
         // Apparently SD uses defaults (but not VS). They are sort-of NC, except for unsigned.
-        vinfo.fillValue = getSDefaultFillValue(dataType)
+        vinfo.fillValue = getSDefaultFillValue(dataType, vinfo.isBE)
         // then look for this tag. Elsewhere we look for _FillValue attribute.
         val tagFV = tagidMap[tagid(dimSDD.data_nt_ref, TagEnum.FV.code)]
         if ((tagFV != null) and (tagFV is TagFV)) {
-            vinfo.fillValue = (tagFV as TagFV).readFillValue(this, dataType)
+            val fillValue = (tagFV as TagFV).readFillValue(this, dataType)
+            vinfo.fillValue = convertToBytes(dataType, fillValue, vinfo.isBE)
         }
 
         // ok to have no data
@@ -688,16 +688,25 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
 
         val vb = if (members.size == 1) { // one field - dont make it into a structure
             val member = members[0]
-            val vb1 = Variable.Builder(vsname, member.datatype)
-            vinfo.elemSize = member.datatype.size // look correct the size, not tagVH.ivsize
-            val totalNelems = nrecords * member.nelems
-            if (totalNelems > 1) {
-                if (nrecords != 1 && member.nelems != 1)
-                    vb1.setDimensionsAnonymous(intArrayOf(nrecords, member.nelems))
-                else
-                    vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
-            }
-            vb1
+
+            /* kludge
+            if (member.datatype == Datatype.CHAR && member.shape.size == 1) {
+                val vb0 = Variable.Builder(vsname, Datatype.STRING)
+                // vinfo.elemSize = member.datatype.size // look correct the size??
+                println("Change $vsname to String")
+                vb0
+            } else { */
+                val vb1 = Variable.Builder(vsname, member.datatype)
+                vinfo.elemSize = member.datatype.size // look correct the size, its not tagVH.ivsize
+                val totalNelems = nrecords * member.nelems
+                if (totalNelems > 1) {
+                    if (nrecords != 1 && member.nelems != 1)
+                        vb1.setDimensionsAnonymous(intArrayOf(nrecords, member.nelems))
+                    else
+                        vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
+                }
+                vb1
+           // }
         } else {
             val typedef = CompoundTypedef(vh.name, members)
             val vb2 = Variable.Builder(vsname, Datatype.COMPOUND.withTypedef(typedef))
@@ -740,7 +749,7 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
 
         // find the corresponding VS message
         val data: Tag = tagidMap[tagid(vh.refno, TagEnum.VS.code)] ?: throw IllegalStateException()
-        val state = OpenFileState(data.offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(data.offset, true)
         val att = when (type) {
             3, 4 -> {
                 if (vh.name.startsWith("RIATTR0")) {
@@ -1001,11 +1010,11 @@ class H4builder(val raf: OpenFile, val valueCharset: Charset) {
     companion object {
         val log = KotlinLogging.logger("H4builder")
         private val H4HEAD = byteArrayOf(0x0e.toByte(), 0x03.toByte(), 0x13.toByte(), 0x01.toByte())
-        private val H4HEAD_STRING = String(H4HEAD, StandardCharsets.UTF_8)
+        private val H4HEAD_STRING = String(H4HEAD, Charsets.UTF_8)
         private const val maxHeaderPos: Long = 500000 // header's gotta be within this
 
-        fun isValidFile(raf: OpenFile, state: OpenFileState): Boolean {
-            val size: Long = raf.size
+        fun isValidFile(raf: OpenFileIF, state: OpenFileState): Boolean {
+            val size: Long = raf.size()
 
             // search forward for the header
             var startPos = 0L

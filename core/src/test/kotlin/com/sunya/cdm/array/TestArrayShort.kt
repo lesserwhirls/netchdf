@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -19,9 +18,7 @@ class TestArrayShort {
     fun testArrayShort() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size*2)
-        val lb = bb.asShortBuffer()
-        repeat(size) { lb.put(it.toShort())}
+        val bb = ShortArray(size) { it.toShort()  }
 
         val testArray = ArrayShort(shape, bb)
         assertEquals(Datatype.SHORT, testArray.datatype)
@@ -44,15 +41,14 @@ class TestArrayShort {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size*2)
-                val lb = bb.asShortBuffer()
-                repeat(size) { lb.put(it.toShort())}
+                val bb = ShortArray(size) { it.toShort()  }
                 val testArray = ArrayShort(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
                 val sectionLength = intArrayOf(max(1, dim0/2), max(1,dim1/3), max(1,dim2/2))
                 val section = Section(sectionStart, sectionLength, shape.toLongArray())
                 val sectionArray = testArray.section(section)
+                assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
                 assertEquals(Datatype.SHORT, sectionArray.datatype)
                 assertEquals(sectionLength.computeSize(), sectionArray.nelems)

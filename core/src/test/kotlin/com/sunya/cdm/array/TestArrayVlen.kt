@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -126,7 +125,7 @@ class TestArrayVlen {
                 Datatype.DOUBLE -> Array(2 * it + 1) { it.toDouble() }
                 Datatype.LONG -> Array(2 * it + 1) { it.toLong() }
                 Datatype.ULONG -> Array(2 * it + 1) { it.toULong() }
-                Datatype.OPAQUE -> Array(2 * it + 1) { ByteBuffer.allocate(it) }
+                Datatype.OPAQUE -> Array(2 * it + 1) { ByteArray(it) } // ??
                 else -> {
                     test = false
                     Array(0) {}

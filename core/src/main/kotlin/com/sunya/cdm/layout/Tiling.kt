@@ -50,8 +50,7 @@ class Tiling(varshape: LongArray, val chunk: LongArray) {
             // eg cdmUnitTest/formats/netcdf4/UpperDeschutes_t4p10_swemelt.nc
             // Presumably to have even chunks. Could try to calculate the last even chunk.
             // For now im removing this consistency check.
-            // assert shape[i] >= pt[i] : String.format("shape[%s]=(%s) should not be less than pt[%s]=(%s)", i, shape[i], i,
-            // pt[i]);
+            // assert shape[i] >= pt[i] : String.format("shape[%s]=(%s) should not be less than pt[%s]=(%s)", i, shape[i], i, pt[i]);
             tile[i] = index[i] / chunk[i] // LOOK seems wrong, rounding down ??
         }
         return tile

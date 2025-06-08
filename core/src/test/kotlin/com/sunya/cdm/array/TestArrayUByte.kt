@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -19,8 +18,7 @@ class TestArrayUByte {
     fun testArrayUByte() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size)
-        repeat(size) { bb.put(it.toByte())}
+        val bb = UByteArray(size) { it.toUByte()  }
 
         val testArray = ArrayUByte(shape, bb)
         assertEquals(Datatype.UBYTE, testArray.datatype)
@@ -43,8 +41,7 @@ class TestArrayUByte {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size)
-                repeat(size) { bb.put(it.toByte())}
+                val bb = UByteArray(size) { it.toUByte()  }
                 val testArray = ArrayUByte(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -54,6 +51,7 @@ class TestArrayUByte {
 
                 assertEquals(Datatype.UBYTE, sectionArray.datatype)
                 assertEquals(sectionLength.computeSize(), sectionArray.nelems)
+                assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
                 val full = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
                 val odo = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())

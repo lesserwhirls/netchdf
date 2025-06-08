@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -19,11 +18,9 @@ class TestArrayFloat {
     fun TestArrayFloat() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size * 4)
-        val fb = bb.asFloatBuffer()
-        repeat(size) { fb.put(it.toFloat())}
+        val fb = FloatArray(size) { it.toFloat()  }
 
-        val testArray = ArrayFloat(shape, bb)
+        val testArray = ArrayFloat(shape, fb)
         assertEquals(Datatype.FLOAT, testArray.datatype)
         assertEquals(size, testArray.nelems)
 
@@ -44,9 +41,7 @@ class TestArrayFloat {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size * 4)
-                val fb = bb.asFloatBuffer()
-                repeat(size) { fb.put(it.toFloat())}
+                val bb = FloatArray(size) { it.toFloat()  }
                 val testArray = ArrayFloat(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -56,6 +51,7 @@ class TestArrayFloat {
 
                 assertEquals(Datatype.FLOAT, sectionArray.datatype)
                 assertEquals(sectionLength.computeSize(), sectionArray.nelems)
+                assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
                 val full = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
                 val odo = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())

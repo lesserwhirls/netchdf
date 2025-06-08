@@ -8,7 +8,7 @@ import com.sunya.netchdf.netcdf3.Netcdf3File
 
 fun openNetchdfFile(filename : String, strict : Boolean = false) : Netchdf? {
     val useFilename = filename.trim()
-    OpenFile(useFilename).use { raf ->
+    OkioFile(useFilename).use { raf ->
         val format = NetchdfFileFormat.findNetcdfFormatType(raf)
         return when (format) {
             NetchdfFileFormat.NC_FORMAT_CLASSIC,

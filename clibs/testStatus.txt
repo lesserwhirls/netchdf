@@ -1,3 +1,7 @@
+7/7/2025
+dir              failed    passed       time                wallclock
+all                17       15,199    53 min, 38 sec
+
 5/29/2025
 
 dir              failed    passed   time            wallclock

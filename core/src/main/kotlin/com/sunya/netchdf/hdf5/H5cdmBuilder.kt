@@ -1,10 +1,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayString
-import com.sunya.cdm.array.ArrayUByte
-import com.sunya.cdm.array.makeStringsFromBytes
-import com.sunya.cdm.iosp.*
+import com.sunya.cdm.array.*
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_CLASS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LABELS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LIST
@@ -15,8 +12,6 @@ import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_SPECIAL_ATTS
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NON_COORD
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NOT_VARIABLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_SPECIAL_ATTS
-import java.io.IOException
-import java.nio.*
 
 const val attLengthMax = 4000
 
@@ -171,7 +166,7 @@ internal class DataContainerVariable(
     val isCompact : Boolean
     val elementSize : Int // total length in bytes on disk of one element
     val onlyFillValue : Boolean // no data at all
-    val fillValue : Any?
+    val fillValue : ByteArray
 
     init {
         // TODO if compact, do not use fileOffset
@@ -183,9 +178,8 @@ internal class DataContainerVariable(
             is DataLayoutCompact3 -> -2L // data is in mdl.compactData
             else -> -1 // LOOK compact?
         }
-
         // deal with unallocated data
-        fillValue = getFillValueNonDefault(h5, v5, h5type)
+        fillValue = getFillValue(h5, v5, h5type)
         onlyFillValue = (dataPos == -1L)
 
         isCompact = (mdl.layoutClass == LayoutClass.Compact)
@@ -218,60 +212,23 @@ internal class DataContainerVariable(
     }
 }
 
-internal fun getFillValueNonDefault(h5 : H5builder, v5 : H5Variable, h5type: H5TypeInfo): Any {
+internal fun getFillValue(h5 : H5builder, v5 : H5Variable, h5type: H5TypeInfo): ByteArray {
     // look for fill value message
-    var fillValueBB : ByteBuffer? = null
+    var fillValue : ByteArray? = null
     for (mess in v5.dataObject.messages) {
         if (mess.mtype === MessageType.FillValue) {
             val fvm = mess as FillValueMessage
             if (fvm.hasFillValue) {
-                fillValueBB = fvm.value // val value: ByteBuffer?
+                fillValue = fvm.value // val value: ByteBuffer?
             }
         } else if (mess.mtype === MessageType.FillValueOld) {
             val fvm = mess as FillValueOldMessage
             if (fvm.size > 0) {
-                fillValueBB = fvm.value // val value: ByteBuffer?
+                fillValue = fvm.value // val value: ByteBuffer?
             }
         }
     }
-    val datatype = h5type.datatype()
-    if (fillValueBB == null) return getFillValueDefault(datatype)
-    fillValueBB.position(0)
-    fillValueBB.order(h5type.endian)
-
-    // a single data value, same datatype as the dataset
-    return when (datatype) {
-        Datatype.BYTE -> fillValueBB.get()
-        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> fillValueBB.get().toUByte()
-        Datatype.SHORT -> fillValueBB.getShort()
-        Datatype.USHORT, Datatype.ENUM2 -> fillValueBB.getShort().toUShort()
-        Datatype.INT -> fillValueBB.getInt()
-        Datatype.UINT, Datatype.ENUM4 -> fillValueBB.getInt().toUInt()
-        Datatype.FLOAT -> fillValueBB.getFloat()
-        Datatype.DOUBLE -> fillValueBB.getDouble()
-        Datatype.LONG -> fillValueBB.getLong()
-        Datatype.ULONG -> fillValueBB.getLong().toULong()
-        Datatype.OPAQUE -> fillValueBB
-        else -> getFillValueDefault(datatype)
-    }
-}
-
-internal fun getFillValueDefault(datatype : Datatype<*>): Any {
-    // a single data value, same datatype as the dataset
-    return when (datatype) {
-        Datatype.BYTE -> 0.toByte()
-        Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> 0.toUByte()
-        Datatype.SHORT -> 0.toShort()
-        Datatype.USHORT, Datatype.ENUM2 -> 0.toUShort()
-        Datatype.INT -> 0
-        Datatype.UINT, Datatype.ENUM4 -> 0.toUInt()
-        Datatype.FLOAT -> 0.0f
-        Datatype.DOUBLE -> 0.0
-        Datatype.LONG -> 0L
-        Datatype.ULONG -> 0.toULong()
-        Datatype.OPAQUE -> ByteBuffer.allocate(0)
-        else -> 0
-    }
+    return fillValue ?: ByteArray(h5type.elemSize)
 }
 
 
@@ -359,7 +316,6 @@ internal fun H5builder.makeDimensions(parentGroup: Group.Builder, h5group: H5Gro
 // find the Dimension Scale objects, turn them into shared dimensions
 // always has attribute CLASS = "DIMENSION_SCALE"
 // note that we dont bother looking at REFERENCE_LIST
-@Throws(IOException::class)
 internal fun H5builder.findDimensionScales(g: Group.Builder, h5group: H5Group, h5variable: H5Variable) {
 
     val removeAtts = mutableListOf<AttributeMessage>()
@@ -478,7 +434,6 @@ internal fun findDimensionScales2D(h5group: H5Group, h5variable: H5Variable) {
 
 // look for references to dimension scales, ie the variables that use them
 // return true if this variable is compatible with netcdf4 data model
-@Throws(IOException::class)
 internal fun H5builder.findSharedDimensions(parentGroup: Group.Builder, h5group: H5Group, h5variable: H5Variable): Boolean {
 
     val removeAtts = mutableListOf<AttributeMessage>()

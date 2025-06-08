@@ -1,7 +1,6 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayLong
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.util.unsignedByteToShort
 import com.sunya.cdm.util.unsignedIntToLong
@@ -9,11 +8,7 @@ import com.sunya.cdm.util.unsignedShortToInt
 import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.NetchdfFileFormat
 import io.github.oshai.kotlinlogging.KotlinLogging
-import java.io.IOException
-import java.nio.*
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.util.*
+import com.fleeksoft.charset.Charset
 
 const val debugFlow = false
 private const val debugStart = false
@@ -28,10 +23,12 @@ internal const val debugTypedefs = false
  * @see "https://support.hdfgroup.org/HDF5/doc/Specs.html"
  */
 class H5builder(
-    val raf: OpenFile,
+    rafOrg: OpenFileIF,
     val strict: Boolean,
-    val valueCharset: Charset = StandardCharsets.UTF_8,
+    val valueCharset: Charset = Charsets.UTF_8,
 ) {
+    val raf: OpenFileIF
+
     private val superblockStart: Long // may be offset for arbitrary metadata
     var sizeOffsets: Int = 0
     var sizeLengths: Int = 0
@@ -53,18 +50,18 @@ class H5builder(
 
     val cdmRoot : Group
     fun formatType() : String {
-        return if (isNetcdf4) "netcdf4  " else {
-            if (structMetadata.isEmpty()) "hdf5     " else "hdf-eos5 "
+        return if (isNetcdf4) "netcdf4" else {
+            if (structMetadata.isEmpty()) "hdf5" else "hdf-eos5"
         }
     }
 
     init {
-        // search for the superblock
-        val state = OpenFileState(0L, ByteOrder.LITTLE_ENDIAN)
+         // search for the superblock
+        val state = OpenFileState(0L, false)
         var start = 0L
         while (start < NetchdfFileFormat.MAXHEADERPOS) {
             state.pos = start
-            val testForMagic = raf.readByteBuffer(state, 8).array()
+            val testForMagic = rafOrg.readByteArray(state, 8)
             if (testForMagic.contentEquals(magicHeader)) {
                 break
             }
@@ -75,8 +72,11 @@ class H5builder(
         }
         this.superblockStart = start
         if (debugStart) {
-            println("H5builder opened file ${raf.location} at pos $superblockStart")
+            println("H5builder opened file ${rafOrg.location()} at pos $superblockStart")
         }
+
+        // buffer when reading in metadata. this probably doesnt work because header is not contiguous
+        raf = rafOrg // if (useOkio) OpenFileBuffered(rafOrg as com.sunya.cdm.okio.OpenFile, start) else rafOrg
 
         val superBlockVersion = raf.readByte(state).toInt()
         val rootGroupBuilder = when {
@@ -87,7 +87,7 @@ class H5builder(
                 readSuperBlock23(superblockStart, state, superBlockVersion)
             }
             else -> {
-                throw IOException("Unknown superblock version= $superBlockVersion")
+                throw RuntimeException("Unknown superblock version= $superBlockVersion")
             }
         }
 
@@ -109,6 +109,8 @@ class H5builder(
         }
 
         this.cdmRoot =  rootBuilder.build(null)
+
+        // if (useOkio) raf.close()
     }
 
     private fun readSuperBlock01(superblockStart : Long, state : OpenFileState, version : Int) : H5GroupBuilder {
@@ -152,8 +154,8 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
+        if (raf.size() < eofAddress) throw RuntimeException(
+            "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")
@@ -166,7 +168,6 @@ class H5builder(
         return this.readH5Group(DataObjectFacade(null, "").setDataObject(rootObject))!!
     }
 
-    @Throws(IOException::class)
     private fun readSuperBlock23(superblockStart: Long,  state : OpenFileState, version: Int) : H5GroupBuilder {
         if (debugStart) {
             println("readSuperBlock version = $version")
@@ -192,7 +193,7 @@ class H5builder(
             println(" superblockStart= 0x${java.lang.Long.toHexString(this.superblockStart)}")
             println(" extensionAddress= 0x${java.lang.Long.toHexString(extensionAddress)}")
             println(" eof Address=$eofAddress")
-            println(" raf length= ${raf.size}")
+            println(" raf length= ${raf.size()}")
             println(" rootObjectAddress= 0x${java.lang.Long.toHexString(rootObjectAddress)}")
             println("")
         }
@@ -201,8 +202,8 @@ class H5builder(
         if (baseAddress != this.superblockStart) {
             eofAddress += superblockStart
         }
-        if (raf.size < eofAddress) throw IOException(
-            "File is truncated should be= $eofAddress actual ${raf.size} baseAddress= $baseAddress superblockStart= $superblockStart")
+        if (raf.size() < eofAddress) throw RuntimeException(
+            "File is truncated should be= $eofAddress actual ${raf.size()} baseAddress= $baseAddress superblockStart= $superblockStart")
 
         if (debugFlow) {
             println("superBlockVersion $version sizeOffsets = $sizeOffsets sizeLengths = $sizeLengths")
@@ -216,13 +217,11 @@ class H5builder(
     //////////////////////////////////////////////////////////////
     // Internal organization of Data Objects
 
-    @Throws(IOException::class)
     fun convertReferenceToDataObjectName(reference: Long): String {
         val name = getDataObjectName(reference)
         return name ?: reference.toString() // LOOK
     }
 
-    @Throws(IOException::class)
     fun convertReferencesToDataObjectName(refArray: Array<Long>): List<String> {
         return refArray.map { convertReferenceToDataObjectName(it) }
     }
@@ -234,7 +233,6 @@ class H5builder(
      * @return String the data object's name, or null if not found
      * @throws IOException on read error
      */
-    @Throws(IOException::class)
     fun getDataObjectName(objId: Long): String {
         return getDataObject(objId, null)?.name ?: "unknown"
     }
@@ -261,7 +259,6 @@ class H5builder(
      *   referencing a typedef before the typedef is found through a hardlink, which supplies the name. Because
      *   the DataObject doesnt know its name. Because its name is free to be something else. Cause thats how we roll.
      */
-    @Throws(IOException::class)
     internal fun getDataObject(address: Long, name: String?): DataObject? {
         // find it
         var dobj = dataObjectMap[address]
@@ -300,25 +297,21 @@ class H5builder(
         return this.superblockStart + address
     }
 
-    @Throws(IOException::class)
     fun readLength(state : OpenFileState): Long {
         return if (isLengthLong) raf.readLong(state) else raf.readInt(state).toLong()
     }
 
-    @Throws(IOException::class)
     fun readOffset(state : OpenFileState): Long {
         return if (isOffsetLong) raf.readLong(state) else raf.readInt(state).toLong()
     }
 
     // size of data depends on "maximum possible number"
-    @Throws(IOException::class)
     fun readVariableSizeMax(state : OpenFileState, maxNumber: Long): Long {
         val size: Int = this.getNumBytesFromMax(maxNumber)
         return this.readVariableSizeUnsigned(state, size)
     }
 
     // always skip 8 bytes
-    @Throws(IOException::class)
     fun readVariableSizeFactor(state : OpenFileState, sizeFactor: Int): Long {
         val size = variableSizeFactor (sizeFactor)
         return readVariableSizeUnsigned(state, size)
@@ -334,7 +327,6 @@ class H5builder(
         }
     }
 
-    @Throws(IOException::class)
     fun readVariableSizeUnsigned(state : OpenFileState, size: Int): Long {
         val vv: Long
         when (size) {
@@ -350,7 +342,6 @@ class H5builder(
         return vv
     }
 
-    @Throws(IOException::class)
     private fun readVariableSizeN(state : OpenFileState, nbytes : Int): Long {
         val ch = IntArray(nbytes)
         for (i in 0 until nbytes) ch[i] = raf.readByte(state).toInt()
@@ -362,7 +353,6 @@ class H5builder(
         return result
     }
 
-    @Throws(IOException::class)
     fun readAddress(state : OpenFileState): Long {
         return getFileOffset(readOffset(state))
     }
@@ -424,7 +414,7 @@ class H5builder(
             0x1a,
             '\n'.code.toByte()
         )
-        private val magicString = String(magicHeader, StandardCharsets.UTF_8)
+        private val magicString = String(magicHeader, Charsets.UTF_8)
         private const val transformReference = true
 
         ////////////////////////////////////////////////////////////////////////////////

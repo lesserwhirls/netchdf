@@ -1,12 +1,10 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import java.nio.ByteOrder
 
 internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? = null) : H5TypeInfo {
     val datatype5: Datatype5 = mdt.type
     val elemSize: Int = mdt.elemSize
-    val endian: ByteOrder = mdt.endian()
     val isVlenString = if (mdt is DatatypeVlen) mdt.isVString else false
     val isRefObject = if (mdt is DatatypeReference) mdt.referenceType == 0 else false
 
@@ -32,12 +30,12 @@ internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? =
 
     val useTypedef = typedef ?: findTypedef(mdtAddress, mdtHash)
 
-    return H5TypeInfo(isVlenString, isRefObject, datatype5, elemSize, !unsigned, endian,
+    return H5TypeInfo(isVlenString, isRefObject, datatype5, elemSize, !unsigned, mdt.isBE,
         mdtAddress, mdtHash, base, useTypedef)
 }
 
 internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Boolean, val datatype5 : Datatype5, val elemSize : Int,
-                               val signed : Boolean, val endian : ByteOrder, val mdtAddress : Long, val mdtHash : Int,
+                               val signed : Boolean, val isBE : Boolean, val mdtAddress : Long, val mdtHash : Int,
                                val base : H5TypeInfo? = null, val typedef : Typedef? = null, val dims : IntArray? = null) {
 
     fun datatype(): Datatype<*> {

@@ -7,6 +7,7 @@ dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.okio)
+    implementation(libs.fleeksoft)
 
     testFixturesImplementation(libs.bundles.jvmtest)
     testFixturesImplementation(libs.kotest.property)

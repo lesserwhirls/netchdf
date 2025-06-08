@@ -3,42 +3,37 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
 
 // fixed length data in the ByteBuffer, var length data goes on the heap
-class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, val members : List<StructureMember<*>>)
-        : ArrayTyped<ArrayStructureData.StructureData>(bb, Datatype.COMPOUND, shape) {
+class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+        : ArrayTyped<ArrayStructureData.StructureData>(Datatype.COMPOUND, shape) {
 
-    init {
-        require(bb.capacity() >= recsize * shape.computeSize())
-    }
-
-    fun get(idx: Int) = StructureData(bb, recsize * idx, members)
+    fun get(idx: Int) = StructureData(ba, recsize * idx, members)
 
     override fun iterator(): Iterator<StructureData> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<StructureData>() {
         private var idx = 0
         override fun computeNext() {
             if (idx >= nelems) done()
-            else setNext(StructureData(bb, recsize * idx, members))
+            else setNext(StructureData(ba, recsize * idx, members))
             idx++
         }
     }
 
     private val heap = mutableMapOf<Int, Any>()
-    private var heapIndex = 0
-    fun putOnHeap(offset: Int, value: Any): Int {
-        heap[heapIndex] = value
-        bb.putInt(offset, heapIndex)
-        val result = heapIndex
-        heapIndex++
-        return result
+    // private var heapIndex = 0
+    fun putOnHeap(offset: Int, value: Any) {
+        heap[offset] = value
+        // ba.putInt(offset, heapIndex) // TODO clobber the ByteArray ?? Or just use the byte pos, which is unique
+        //val result = heapIndex
+        // heapIndex++
+        // return result
     }
 
     // TODO not a bad idea to start at 1, so that 0 == not set
     fun getFromHeap(offset: Int): Any? {
-        val index = bb.getInt(offset) // youve clobbered the byte buffer. is that ok ??
-        return heap[index]
+        // val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
+        return heap[offset]
     }
 
     override fun toString(): String {
@@ -62,25 +57,25 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
             return this
 
         // copy the requested records
-        val sectionBB = ByteBuffer.allocate(sectionNelems * recsize)
+        val sectionBA = ByteArray(sectionNelems * recsize)
         val chunker = Chunker(IndexSpace(this.shape), IndexSpace(section))
-        chunker.transfer(bb, recsize, sectionBB)
-        bb.position(0)
-        sectionBB.position(0)
+        chunker.transferBA(ba, 0, recsize, sectionBA, 0)
 
-        return ArrayStructureData(section.shape.toIntArray(), sectionBB, recsize, members)
+        return ArrayStructureData(section.shape.toIntArray(), sectionBA, isBE, recsize, members)
     }
 
     // structure data is packed into the ByteBuffer starting at the given offset
     // vlens and strings are on the "heap" stored in the parent ArrayStructureData
-    inner class StructureData(val bb: ByteBuffer, val offset: Int, val members: List<StructureMember<*>>) {
+    inner class StructureData(val ba: ByteArray, val offset: Int, val members: List<StructureMember<*>>) {
+
         override fun toString(): String {
             return buildString {
                 append("{")
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
                     append("${m.name} = ")
-                    when (val value = m.value(this@StructureData)) {
+                    val value = m.value(this@StructureData)
+                    when (value) {
                         is String -> append("\"$value\"")
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
                         else -> append("$value")
@@ -94,9 +89,10 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
             return buildString {
                 members.forEachIndexed { idx, m ->
                     if (idx > 0) append(", ")
-                    when (val value = m.value(this@StructureData)) {
+                    val value = m.value(this@StructureData)
+                    when (value) { // TODO clean up formatting
+                        is String -> append("\"$value\"")
                         is ArrayTyped<*> -> append("[${value.showValues()}]")
-                        is String -> append("\"${"%12s".format(value.toString())}\"")
                         else -> append("%12s".format(value.toString()))
                     }
                 }
@@ -127,7 +123,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
         }
 
         override fun hashCode(): Int {
-            var result = bb.hashCode()
+            var result = ba.hashCode()
             result = 31 * result + offset
             result = 31 * result + members.hashCode()
             members.forEach { result = 31 * result + it.value(this).hashCode() } // LOOK probably wrong
@@ -135,7 +131,7 @@ class ArrayStructureData(shape : IntArray, bb : ByteBuffer, val recsize : Int, v
         }
     }
 
-    fun putStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
+    fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
         members.filter { it.datatype.isVlenString }.forEach { member ->
             this.forEach { sdata ->
                 val sval = lamda(member, sdata.offset + member.offset)

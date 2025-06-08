@@ -4,14 +4,17 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayEmpty
 import com.sunya.cdm.array.ArraySingle
 import com.sunya.cdm.array.ArrayTyped
+import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.iosp.*
-import java.io.IOException
+
+val useOkio = true
 
 /**
  * @param strict true = make it agree with nclib if possible
  */
 class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
-    private val raf : OpenFile = OpenFile(filename)
+    private val raf : OpenFileIF = if (useOkio) OkioFile(filename) else
+        com.sunya.cdm.iosp.OpenFile(filename)
     val header : H5builder = H5builder(raf, strict)
 
     override fun close() {
@@ -22,9 +25,8 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     override fun location() = filename
     override fun cdl() = cdl(this)
     override fun type() = header.formatType()
-    override val size : Long get() = raf.size
+    override val size : Long get() = raf.size()
 
-    @Throws(IOException::class)
     override fun <T> readArrayData(v2: Variable<T>, section: SectionPartial?): ArrayTyped<T> {
         if (v2.nelems == 0L) {
             return ArrayEmpty(v2.shape.toIntArray(), v2.datatype)
@@ -38,7 +40,8 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
 
         val vinfo = v2.spObject as DataContainerVariable
         if (vinfo.onlyFillValue) { // fill value only, no data
-            return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!)
+            val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
+            return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0))
         }
 
         return try {
@@ -56,7 +59,6 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         }
     }
 
-    @Throws(IOException::class)
     override fun <T> chunkIterator(v2: Variable<T>, section: SectionPartial?, maxElements : Int?) : Iterator<ArraySection<T>> {
         if (v2.nelems == 0L) {
             return listOf<ArraySection<T>>().iterator()
@@ -65,7 +67,8 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
         val vinfo = v2.spObject as DataContainerVariable
 
         if (vinfo.onlyFillValue) { // fill value only, no data
-            val single = ArraySection(ArraySingle(wantSection.shape.toIntArray(), v2.datatype, vinfo.fillValue!!), wantSection)
+            val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
+            val single = ArraySection<T>( ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0)), wantSection)
             return listOf(single).iterator()
         }
 

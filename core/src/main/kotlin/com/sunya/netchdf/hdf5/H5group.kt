@@ -2,15 +2,12 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.Dimension
 import com.sunya.cdm.iosp.OpenFileState
-import java.io.IOException
-import java.nio.ByteOrder
 
 internal const val debugGroup = false
 internal const val debugHardLink = false
 internal const val debugSoftLink = false
 internal const val debugBtree2 = false
 
-@Throws(IOException::class)
 internal fun H5builder.readH5Group(facade: DataObjectFacade): H5GroupBuilder? {
     val nestedObjects = mutableListOf<DataObjectFacade>()
     val dataObject = facade.dataObject!!
@@ -47,7 +44,6 @@ internal fun H5builder.readH5Group(facade: DataObjectFacade): H5GroupBuilder? {
     return result
 }
 
-@Throws(IOException::class)
 internal fun H5builder.readGroupNew(
     parent: H5GroupBuilder,
     groupNewMessage: LinkInfoMessage,
@@ -72,7 +68,7 @@ internal fun H5builder.readGroupNew(
             val fractalHeapId: FractalHeap.DHeapId = fractalHeap.getFractalHeapId(heapId)
             val pos: Long = fractalHeapId.computePosition()
             if (pos < 0) continue
-            val state = OpenFileState(pos, ByteOrder.LITTLE_ENDIAN)
+            val state = OpenFileState(pos, false)
             val linkMessage = this.readLinkMessage(state)
 
             if (debugBtree2) {
@@ -94,7 +90,6 @@ internal fun H5builder.readGroupNew(
     }
 }
 
-@Throws(IOException::class)
 internal fun H5builder.readGroupOld(groupb: H5GroupBuilder, btreeAddress: Long, nameHeapAddress: Long) {
     // track by address for hard links
     hashGroups[btreeAddress] = groupb

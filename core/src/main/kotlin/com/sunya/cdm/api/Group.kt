@@ -148,6 +148,10 @@ class Group(orgName : String,
 
         // add if vb name not already added
         fun addVariable(vb: Variable.Builder<*>) : Builder {
+            if (vb.datatype == Datatype.REFERENCE) {
+                println("skip REFERENCE variable $vb")
+                return this
+            }
             if (variables.find {it.name == vb.name } == null) {
                 variables.add(vb)
             } else {

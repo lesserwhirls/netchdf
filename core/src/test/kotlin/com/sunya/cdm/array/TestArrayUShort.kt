@@ -9,7 +9,6 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.test.*
 
@@ -19,9 +18,7 @@ class TestArrayUShort {
     fun testArrayUShort() {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
-        val bb = ByteBuffer.allocate(size*2)
-        val lb = bb.asShortBuffer()
-        repeat(size) { lb.put(it.toShort())}
+        val bb = UShortArray(size) { it.toUShort()  }
 
         val testArray = ArrayUShort(shape, bb)
         assertEquals(Datatype.USHORT, testArray.datatype)
@@ -44,9 +41,8 @@ class TestArrayUShort {
             ) { dim0, dim1, dim2 ->
                 val shape = intArrayOf(dim0, dim1, dim2)
                 val size = shape.computeSize()
-                val bb = ByteBuffer.allocate(size*2)
-                val lb = bb.asShortBuffer()
-                repeat(size) { lb.put(it.toShort())}
+                val bb = UShortArray(size) { it.toUShort()  }
+
                 val testArray = ArrayUShort(shape, bb)
 
                 val sectionStart = intArrayOf(dim0/2, dim1/3, dim2/2)
@@ -56,6 +52,7 @@ class TestArrayUShort {
 
                 assertEquals(Datatype.USHORT, sectionArray.datatype)
                 assertEquals(sectionLength.computeSize(), sectionArray.nelems)
+                assertEquals(sectionLength.computeSize(), sectionArray.values.size)
 
                 val full = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
                 val odo = IndexND(IndexSpace(sectionStart.toLongArray(), sectionLength.toLongArray()), shape.toLongArray())
@@ -74,7 +71,7 @@ class TestArrayUShort {
         val size = shape.computeSize()
         val sarray = ShortArray(size) { (10 - it).toShort() }
 
-        val testArray = ArrayUShort.fromArray(shape, sarray)
+        val testArray = ArrayUShort.fromShortArray(shape, sarray)
         assertEquals(Datatype.USHORT, testArray.datatype)
         assertEquals(size, testArray.nelems)
 

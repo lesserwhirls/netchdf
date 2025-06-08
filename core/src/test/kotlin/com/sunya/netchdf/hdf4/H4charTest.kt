@@ -4,7 +4,6 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.readNetchdfData
-import com.sunya.netchdf.showNetchdfHeader
 import com.sunya.netchdf.testdata.N3Files
 import com.sunya.netchdf.testdata.testData
 
@@ -14,8 +13,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-import kotlin.test.assertContains
-import kotlin.test.assertContentEquals
 import kotlin.test.assertIs
 
 class H4charTest {

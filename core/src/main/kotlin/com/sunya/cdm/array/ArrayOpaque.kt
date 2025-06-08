@@ -1,40 +1,33 @@
 package com.sunya.cdm.array
 
-import com.sunya.cdm.api.Datatype
-import com.sunya.cdm.api.Section
-import com.sunya.cdm.api.toIntArray
-import com.sunya.cdm.api.toLongArray
-import com.sunya.cdm.layout.IndexND
+import com.sunya.cdm.api.*
+import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
+import com.sunya.cdm.layout.TransferChunk
 
-class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int) : ArrayTyped<ByteArray>(values, Datatype.OPAQUE, shape) {
-    init {
-        require(nelems * size <= values.capacity())
+// TODO I dont think you need size anymore.
+class ArrayOpaque(shape : IntArray, val values : List<ByteArray>, val size : Int) : ArrayTyped<ByteArray>(Datatype.OPAQUE, shape) {
+
+    override fun iterator(): Iterator<ByteArray> = BufferIterator()
+    private inner class BufferIterator : AbstractIterator<ByteArray>() {
+        private var idx = 0
+        override fun computeNext() = if (idx >= nelems) done() else {
+            setNext(values.get(idx++))
+        }
     }
 
-    // src element is the 1D index
+    /*
     fun getElement(srcElem : Int) : ByteArray {
         val elem = ByteArray(size)
         copyElem(srcElem, elem, 0)
         return elem
     }
 
-    override fun iterator(): Iterator<ByteArray> = BufferIterator()
-    private inner class BufferIterator : AbstractIterator<ByteArray>() {
-        private var idx = 0
-        override fun computeNext() = if (idx >= nelems) done() else {
-            val elem = ByteArray(size)
-            copyElem(idx, elem, 0)
-            idx++
-            setNext(elem)
-        }
-    }
-
     // copy the src[srcIdx] element the dstIdx element in dest[dstIdx]
     private fun copyElem(srcIdx : Int, dest : ByteArray, dstIdx : Int) {
         repeat(size) { dest.set(dstIdx * size + it, values.get(srcIdx * size + it)) }
     }
+     */
 
     override fun showValues(): String {
         return buildString {
@@ -46,18 +39,41 @@ class ArrayOpaque(shape : IntArray, val values : ByteBuffer, val size : Int) : A
     }
 
     override fun section(section : Section) : ArrayOpaque {
-        val sectionNelems = section.totalElements.toInt()
-        val sectionBB = ByteArray(size * sectionNelems)
-
-        val odo = IndexND(IndexSpace(section), this.shape.toLongArray())
-        // was         var dstIdx = 0
-        //        for (index in odo) {
-        //            copyElem(odo.element().toInt(), sectionBB, dstIdx)
-        //            dstIdx++
-        //        }
-        for ((dstIdx, index) in odo.withIndex())
-            copyElem(odo.element().toInt(), sectionBB, dstIdx)
-        return ArrayOpaque(section.shape.toIntArray(), ByteBuffer.wrap(sectionBB), size)
+        return ArrayOpaque(section.shape.toIntArray(), sectionOf(section), this.size)
     }
+
+    private fun sectionOf(section: Section):  List<ByteArray> {
+        require(IndexSpace(shape).contains(IndexSpace(section))) { "Variable does not contain requested section" }
+        val sectionNelems = section.totalElements.toInt()
+        if (sectionNelems == nelems)
+            return values
+
+        val holder = ByteArray(0)
+        val dst = MutableList<ByteArray>(sectionNelems) { holder }
+        val chunker = Chunker(IndexSpace(this.shape), IndexSpace(section))
+        for (chunk : TransferChunk in chunker) {
+            val dstIdx = chunk.destElem.toInt()
+            val srcIdx = chunk.srcElem.toInt()
+            repeat(chunk.nelems) {
+                dst[dstIdx + it] = values.get(srcIdx + it)
+            }
+        }
+        return dst
+    }
+
+    companion object {
+        fun fromByteArray(shape : IntArray, ba : ByteArray, elemSize: Int): ArrayOpaque {
+            val nelems = shape.computeSize()
+            require(nelems * elemSize == ba.size)
+            val values = mutableListOf<ByteArray>()
+            var start = 0
+            repeat(nelems) {
+                values.add( ByteArray(elemSize) { ba[start + it] } )
+                start += elemSize
+            }
+            return ArrayOpaque(shape, values, elemSize)
+        }
+    }
+
 
 }

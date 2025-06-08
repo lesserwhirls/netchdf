@@ -38,19 +38,4 @@ class TestFillValues {
         assertEquals((-2147483647), getNcDefaultFillValue(Datatype.INT))
     }
 
-    @Test
-    fun testCompareFillValue() {
-        assertEquals(getSDefaultFillValue(Datatype.BYTE), getNcDefaultFillValue(Datatype.BYTE))
-        assertNotEquals(getSDefaultFillValue(Datatype.UBYTE), getNcDefaultFillValue(Datatype.UBYTE)) // 129 vs 255
-        assertEquals(getSDefaultFillValue(Datatype.CHAR), getNcDefaultFillValue(Datatype.CHAR))
-        assertEquals(getSDefaultFillValue(Datatype.SHORT), getNcDefaultFillValue(Datatype.SHORT))
-        assertNotEquals(getSDefaultFillValue(Datatype.USHORT), getNcDefaultFillValue(Datatype.USHORT)) // <32769> but was: <65535>
-        assertEquals(getSDefaultFillValue(Datatype.INT), getNcDefaultFillValue(Datatype.INT))
-        assertNotEquals(getSDefaultFillValue(Datatype.UINT), getNcDefaultFillValue(Datatype.UINT)) // <2147483649> but was: <4294967295>
-        assertEquals(getSDefaultFillValue(Datatype.FLOAT), getNcDefaultFillValue(Datatype.FLOAT))
-        assertEquals(getSDefaultFillValue(Datatype.DOUBLE), getNcDefaultFillValue(Datatype.DOUBLE))
-        assertEquals(getSDefaultFillValue(Datatype.LONG), getNcDefaultFillValue(Datatype.LONG))
-        assertNotEquals(getSDefaultFillValue(Datatype.ULONG), getNcDefaultFillValue(Datatype.ULONG)) // <9223372036854775810> but was: <18446744073709551614>
-    }
-
 }

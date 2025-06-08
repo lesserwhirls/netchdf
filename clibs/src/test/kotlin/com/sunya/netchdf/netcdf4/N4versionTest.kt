@@ -23,7 +23,7 @@ class N4versionTest {
     fun checkVersion(filename: String) {
         NClibFile(filename).use { ncfile ->
             println("${ncfile.type()} $filename ")
-            assertTrue((ncfile.type() == "NC_FORMAT_NETCDF4") or (ncfile.type() == "NC_FORMAT_NETCDF4_CLASSIC"))
+            assertTrue((ncfile.type() == "netcdf3") or (ncfile.type() == "netcdf4"), "${ncfile.type()}")
         }
     }
 
@@ -32,7 +32,7 @@ class N4versionTest {
         val filename = "/home/all/testdata/devcdm/netcdf4/attributeStruct.nc"
         NClibFile(filename).use { ncfile ->
             println("${ncfile.type()} $filename ")
-            assertTrue((ncfile.type() == "NC_FORMAT_NETCDF4") or (ncfile.type() == "NC_FORMAT_NETCDF4_CLASSIC"))
+            assertTrue((ncfile.type() == "netcdf4") or (ncfile.type() == "netcdf3"), "${ncfile.type()}")
         }
     }
 

@@ -3,14 +3,12 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.Group
 import com.sunya.cdm.array.*
-import com.sunya.cdm.iosp.OpenFile
+import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.TagEnum.Companion.obsolete
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
-fun readTag(raf : OpenFile, state: OpenFileState): Tag {
+fun readTag(raf : OpenFileIF, state: OpenFileState): Tag {
     // read just the DD part of the tag. see p 11
     val xtag = raf.readShort(state).toUShort().toInt()
     val btag = xtag and 0x3FFF // 14 bits // basic tags are numbered 0x0001 through 0x3FFF,
@@ -113,7 +111,7 @@ class TagData(icode: Int, refno : Int, offset : Long, length : Int) : Tag(icode,
 
     override fun readTag(h4 : H4builder) {
         if (isExtended) {
-            val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+            val state = OpenFileState(offset, true)
             extendedTag = h4.raf.readShort(state).toInt()
             when (extendedTag) {
                 TagEnum.SPECIAL_LINKED -> linked = SpecialLinked(h4.raf, state, this) // TagEnum.VS
@@ -148,7 +146,7 @@ class TagLinkedBlock(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
     var n = 0
 
     fun read2(h4 : H4builder, nb: Int, dataBlocks: MutableList<TagLinkedBlock>, owner : Tag? = null) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         next_ref = h4.raf.readShort(state).toUShort().toInt()
         block_ref = IntArray(nb)
         for (i in 0 until nb) {
@@ -188,7 +186,7 @@ class TagVersion(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icod
     var name: String? = null
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         major = h4.raf.readInt(state)
         minor = h4.raf.readInt(state)
         release = h4.raf.readInt(state)
@@ -209,7 +207,7 @@ class TagText(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, 
     var text: String = "null"
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         text = h4.raf.readString(state, length, h4.valueCharset).trim()
     }
 
@@ -226,7 +224,7 @@ class TagAnnotate(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
     var obj_refno: Int = 0
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         obj_tagno = h4.raf.readShort(state).toUShort().toInt()
         obj_refno = h4.raf.readShort(state).toUShort().toInt()
         text = h4.raf.readString(state, length - 4, h4.valueCharset).trim()
@@ -246,7 +244,7 @@ class TagNT(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
     var type_class: Byte = 0 // meaning depends on type: floating point, integer, or character
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         version = h4.raf.readByte(state)
         numberType = h4.raf.readByte(state).toInt()
         nbits = h4.raf.readByte(state)
@@ -269,7 +267,7 @@ class TagRI8Dimension(icode: Int, refno: Int, offset : Long, length : Int) : Tag
 
     // this i think can be read as data(256, 3) - so make into a variable?
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         xdim = h4.raf.readShort(state).toUShort().toInt()
         ydim = h4.raf.readShort(state).toUShort().toInt()
     }
@@ -281,12 +279,12 @@ class TagRI8Dimension(icode: Int, refno: Int, offset : Long, length : Int) : Tag
 
 // DFTAG_IP8 Image dimension-8 (201) p.144
 class TagIP8(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
-    var rgb : ArrayUByte? = null
+    var rgb : ArrayByte? = null
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val raw = h4.raf.readBytes(state, 3 * 256)
-        rgb =  ArrayUByte(intArrayOf(256, 3), ByteBuffer.wrap(raw))
+        val state = OpenFileState(offset, true)
+        val raw = h4.raf.readByteArray(state, 3 * 256)
+        rgb =  ArrayByte(intArrayOf(256, 3), raw )
     }
 
     override fun detail(): String {
@@ -307,7 +305,7 @@ class TagImageDim(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
     var compress_ref: Short = 0 // Reference number of compression tag
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         // For GRreadimage, those parameters are expressed in (x,y) or [column,row] order. p 321
         xdim = h4.raf.readInt(state)
         ydim = h4.raf.readInt(state)
@@ -333,20 +331,24 @@ class TagLookupTable(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
 
     // not needed - regular data reading will do the right thing.
     fun read(h4 : H4builder, tagID : TagImageDim, tagNT : TagNT) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         val datatype = H4type.getDataType(tagNT.numberType)
-        val raw = h4.raf.readBytes(state, tagID.ydim * tagID.xdim * tagID.nelems)
-        val bb = ByteBuffer.wrap(raw)
+        val raw = h4.raf.readByteArray(state, tagID.ydim * tagID.xdim * tagID.nelems)
         val shape = intArrayOf(tagID.ydim, tagID.xdim, tagID.nelems)
+
+        val tba = TypedByteArray(datatype, raw, 0, isBE = true)
+        table = tba.convertToArrayTyped(shape)
+
+        /*
         table = when (datatype) {
-            Datatype.BYTE -> ArrayByte(shape, bb)
+            Datatype.BYTE -> ArrayByte(shape, raw)
             Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
             Datatype.SHORT -> ArrayShort(shape, bb)
             Datatype.USHORT -> ArrayUShort(shape, bb)
             Datatype.INT -> ArrayInt(shape, bb)
             Datatype.UINT -> ArrayUInt(shape, bb)
             else -> throw RuntimeException("not supporting $datatype for TagRasterImage")
-        }
+        } */
     }
 
     override fun detail(): String {
@@ -365,11 +367,15 @@ class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
 
     // not needed - regular data reading will do the right thing.
     fun read(h4 : H4builder, tagID : TagImageDim, tagNT : TagNT) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         val datatype = H4type.getDataType(tagNT.numberType)
-        val raw = h4.raf.readBytes(state, tagID.ydim * tagID.xdim * tagID.nelems)
-        val bb = ByteBuffer.wrap(raw)
+        val raw = h4.raf.readByteArray(state, tagID.ydim * tagID.xdim * tagID.nelems)
+
         val shape = intArrayOf(tagID.ydim, tagID.xdim, tagID.nelems)
+        val tba = TypedByteArray(datatype, raw, 0, isBE = true)
+        raster = tba.convertToArrayTyped(shape)
+
+        /*
         raster = when (datatype) {
             Datatype.BYTE -> ArrayByte(shape, bb)
             Datatype.UBYTE -> ArrayUByte(shape, bb)
@@ -378,7 +384,7 @@ class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
             Datatype.INT -> ArrayInt(shape, bb)
             Datatype.UINT -> ArrayUInt(shape, bb)
             else -> throw RuntimeException("not supporting $datatype for TagRasterImage")
-        }
+        } */
     }
 }
 
@@ -389,7 +395,7 @@ class TagDataGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ic
     var elem_ref = IntArray(0)
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         elem_code = IntArray(nelems)
         elem_ref = IntArray(nelems)
         for (i in 0 until nelems) {
@@ -420,7 +426,7 @@ class TagSDD(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, r
     // LOOK maybe means DFTAG_SDS ??
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         rank = h4.raf.readShort(state)
         shape = IntArray(rank.toInt()) { h4.raf.readInt(state) }
         h4.raf.readShort(state)
@@ -449,7 +455,7 @@ class TagSDS(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, r
     var scale = ShortArray(0) // Reference number for DFTAG_NT for the scale for the nth dimension
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
     }
 } */
 
@@ -461,8 +467,8 @@ class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode,
     override fun readTag(h4 : H4builder) { // not Idempotent
         if (wasRead) return
         wasRead = true
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val ba = h4.raf.readBytes(state, length)
+        val state = OpenFileState(offset, true)
+        val ba = h4.raf.readByteArray(state, length)
         var count = 0
         var start = 0
         for (pos in 0 until length) {
@@ -483,11 +489,11 @@ class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode,
 
 // Scientific data max/min 707, p132
 class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
-    var bb: ByteBuffer? = null
+    var bb: ByteArray? = null
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        bb = h4.raf.readByteBuffer(state, length)
+        val state = OpenFileState(offset, true)
+        bb = h4.raf.readByteArray(state, length)
     }
 
     fun getMin(dataType: Datatype<*>): Number {
@@ -498,13 +504,62 @@ class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
         return get(dataType, 0)
     }
 
+    // dont know the datatype until now ??
     operator fun get(dataType: Datatype<*>?, index: Int): Number {
-        if (dataType === Datatype.BYTE) return bb!![index]
-        if (dataType === Datatype.SHORT) return bb!!.asShortBuffer()[index]
-        if (dataType === Datatype.INT) return bb!!.asIntBuffer()[index]
-        if (dataType === Datatype.LONG) return bb!!.asLongBuffer()[index]
-        if (dataType === Datatype.FLOAT) return bb!!.asFloatBuffer()[index]
-        return if (dataType === Datatype.DOUBLE) bb!!.asDoubleBuffer().get(index) else Double.NaN
+        val useBB = bb!!
+        return when (dataType) {
+            Datatype.BYTE -> useBB[index]
+            Datatype.SHORT -> convertToShort(useBB, index * 2, true)
+            Datatype.INT -> convertToInt(useBB, index * 4, true)
+            Datatype.LONG -> convertToLong(useBB, index * 8, true)
+            Datatype.FLOAT -> convertToFloat(useBB, index * 4, true)
+            Datatype.DOUBLE -> convertToDouble(useBB, index * 8, true)
+            else -> Double.NaN
+        }
+    }
+
+    fun toString(dt : Datatype<*>): String {
+        return "${super.toString()} min=${getMin(dt)} max=${getMax(dt)}"
+    }
+}
+
+// should be
+class TagSDminmaxShouldBe(icode: Int, refno: Int, offset : Long, length : Int, val datatype: Datatype<*>) : Tag(icode, refno, offset, length) {
+    private var minmax: Array<*>? = null
+
+    override fun readTag(h4 : H4builder) {
+        val state = OpenFileState(offset, true)
+        minmax = when (datatype) {
+            Datatype.BYTE -> h4.raf.readArrayOfByte(state, 2)
+            Datatype.SHORT -> h4.raf.readArrayOfShort(state, 2)
+            Datatype.INT -> h4.raf.readArrayOfInt(state, 2)
+            Datatype.FLOAT -> h4.raf.readArrayOfFloat(state, 2)
+            Datatype.DOUBLE -> h4.raf.readArrayOfDouble(state, 2)
+            Datatype.LONG -> h4.raf.readArrayOfLong(state, 2)
+            else -> null
+        }
+    }
+
+    fun getMin(dataType: Datatype<*>): Number {
+        return get(dataType, 1)
+    }
+
+    fun getMax(dataType: Datatype<*>): Number {
+        return get(dataType, 0)
+    }
+
+    // dont know the datatype until now ?? "Cloud of Messages"
+    operator fun get(dataType: Datatype<*>?, index: Int): Number {
+        require (minmax != null)
+        return when (datatype) {
+            Datatype.BYTE -> minmax!![index] as Byte
+            Datatype.SHORT -> minmax!![index] as Short
+            Datatype.INT -> minmax!![index] as Int
+            Datatype.LONG -> minmax!![index] as Long
+            Datatype.FLOAT -> minmax!![index] as Float
+            Datatype.DOUBLE -> minmax!![index] as Double
+            else -> Double.NaN
+        }
     }
 
     fun toString(dt : Datatype<*>): String {
@@ -518,19 +573,18 @@ class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
     var fillValue : Any? = null
 
     fun readFillValue(h4 : H4builder, datatype : Datatype<*>): Any? {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
-        val fillValueBB = h4.raf.readByteBuffer(state, datatype.size)
+        val state = OpenFileState(offset, true)
         fillValue = when (datatype) {
-            Datatype.BYTE -> fillValueBB.get()
-            Datatype.CHAR, Datatype.UBYTE -> fillValueBB.get().toUByte()
-            Datatype.SHORT -> fillValueBB.getShort()
-            Datatype.USHORT -> fillValueBB.getShort().toUShort()
-            Datatype.INT -> fillValueBB.getInt()
-            Datatype.UINT -> fillValueBB.getInt().toUInt()
-            Datatype.FLOAT -> fillValueBB.getFloat()
-            Datatype.DOUBLE -> fillValueBB.getDouble()
-            Datatype.LONG -> fillValueBB.getLong()
-            Datatype.ULONG -> fillValueBB.getLong().toULong()
+            Datatype.BYTE -> h4.raf.readByte(state)
+            Datatype.CHAR, Datatype.UBYTE -> h4.raf.readByte(state).toUByte()
+            Datatype.SHORT -> h4.raf.readShort(state)
+            Datatype.USHORT -> h4.raf.readShort(state).toUShort()
+            Datatype.INT -> h4.raf.readInt(state)
+            Datatype.UINT -> h4.raf.readInt(state).toUInt()
+            Datatype.FLOAT -> h4.raf.readFloat(state)
+            Datatype.DOUBLE -> h4.raf.readDouble(state)
+            Datatype.LONG -> h4.raf.readLong(state)
+            Datatype.ULONG -> h4.raf.readLong(state).toULong()
             else -> null
         }
         return fillValue
@@ -557,7 +611,7 @@ class TagVGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode
     var group: Group.Builder? = null
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         nelems = h4.raf.readShort(state).toUShort().toInt()
         elem_code = IntArray(nelems) { h4.raf.readShort(state).toUShort().toInt() }
         elem_ref = IntArray(nelems) { h4.raf.readShort(state).toUShort().toInt() }
@@ -611,7 +665,7 @@ class TagVH(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
     var version: Short = 0 // Version number of DFTAG_VH information
 
     override fun readTag(h4 : H4builder) {
-        val state = OpenFileState(offset, ByteOrder.BIG_ENDIAN)
+        val state = OpenFileState(offset, true)
         interlace = h4.raf.readShort(state)
         nelems = h4.raf.readInt(state)
         ivsize = h4.raf.readShort(state).toUShort().toInt()
@@ -670,7 +724,7 @@ class TagVH(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
             val fdatatype = H4type.getDataType(type)
             val nelems = this.fld_nelems[fld]
             // val name: String, val datatype : Datatype, val offset: Int, val dims : IntArray
-            val m = StructureMember(this.fld_name[fld], fdatatype, this.fld_offset[fld], intArrayOf(nelems))
+            val m = StructureMember(this.fld_name[fld], fdatatype, this.fld_offset[fld], intArrayOf(nelems), true)
             members.add(m)
         }
         return members

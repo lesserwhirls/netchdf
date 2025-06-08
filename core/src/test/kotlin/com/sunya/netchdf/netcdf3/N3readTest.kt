@@ -1,8 +1,6 @@
 package com.sunya.netchdf.netcdf3
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.ArrayStructureData
-import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.array.ArrayUByte
 import com.sunya.cdm.array.makeStringsFromBytes
 import com.sunya.netchdf.openNetchdfFile
@@ -16,16 +14,23 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-import kotlin.test.assertContains
-import kotlin.test.assertContentEquals
 import kotlin.test.assertIs
 
-class N3charTest {
+class N3readTest {
 
     companion object {
         @JvmStatic
         fun params(): Stream<Arguments> {
             return N3Files.params()
+        }
+    }
+
+    @Test
+    fun problem() {
+        val filename = testData + "devcdm/netcdf3/WrfNoTimeVar.nc"
+        println(filename)
+        openNetchdfFile(filename).use { myfile ->
+            println(myfile!!.cdl())
         }
     }
 
@@ -81,8 +86,20 @@ class N3charTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    fun testReadNetchdfData(filename: String) {
+    fun testReadN3data(filename: String) {
         readNetchdfData(filename, null, null, false, false)
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    fun testReadN3cdl(filename: String) {
+        println(filename)
+        openNetchdfFile(filename).use { myfile ->
+            if (myfile == null) {
+                println("*** not a netchdf file = $filename")
+                return
+            }
+        }
     }
 
 }

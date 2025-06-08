@@ -255,18 +255,25 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
     if (array is ArraySingle || array is ArrayEmpty) {
         return // test fillValue the same ??
     }
-    // cant cast unsigned to Numbers
-    val useArray = when (array.datatype) {
-        Datatype.UBYTE -> ArrayByte(array.shape, (array as ArrayUByte).bb)
-        Datatype.USHORT -> ArrayShort(array.shape, (array as ArrayUShort).bb)
-        Datatype.UINT -> ArrayInt(array.shape, (array as ArrayUInt).bb)
-        Datatype.ULONG -> ArrayLong(array.shape, (array as ArrayULong).bb)
-        else -> array
-    }
 
-    if (useArray.datatype.isNumber) {
-        for (value in useArray) {
+    if (array.datatype.isNumber) {
+        for (value in array) {
             val number = (value as Number)
+            val numberd: Double = number.toDouble()
+            if (numberd.isFinite()) {
+                sum.getAndAdd(numberd)
+            }
+        }
+    } else if (array.datatype.isIntegral) {
+        for (value in array) {
+            val useValue = when (value) {
+                is UByte -> value.toByte()
+                is UShort -> value.toShort()
+                is UInt -> value.toInt()
+                is ULong -> value.toLong()
+                else -> value
+            }
+            val number = (useValue as Number)
             val numberd: Double = number.toDouble()
             if (numberd.isFinite()) {
                 sum.getAndAdd(numberd)

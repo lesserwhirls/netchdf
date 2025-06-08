@@ -3,11 +3,9 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
-import java.nio.ByteBuffer
 
-// fake ByteBuffer
 class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType : Datatype<T>)
-    : ArrayTyped<Array<T>>(ByteBuffer.allocate(0), Datatype.VLEN as Datatype<Array<T>>, shape) {
+    : ArrayTyped<Array<T>>(Datatype.VLEN as Datatype<Array<T>>, shape) {
 
     override fun iterator(): Iterator<Array<T>> = ArrayIterator()
     private inner class ArrayIterator : AbstractIterator<Array<T>>() {
@@ -84,7 +82,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
                 Datatype.FLOAT -> ArrayVlen(shape, arrays.map { it as Array<Float> }, baseType as Datatype<Float>)
                 Datatype.DOUBLE -> ArrayVlen(shape, arrays.map { it as Array<Double> }, baseType as Datatype<Double>)
                 Datatype.STRING -> ArrayVlen(shape, arrays.map { it as Array<String> }, baseType as Datatype<String>)
-                Datatype.OPAQUE -> ArrayVlen(shape, arrays.map { it as Array<ByteBuffer> }, baseType as Datatype<ByteBuffer>)
+                Datatype.OPAQUE -> ArrayVlen(shape, arrays.map { it as Array<ByteArray> }, baseType as Datatype<ByteArray>)
                 Datatype.COMPOUND -> ArrayVlen(shape, arrays.map { it as Array<ArrayStructureData.StructureData> }, baseType as Datatype<ArrayStructureData.StructureData>)
                 else -> throw IllegalArgumentException("unsupported datatype $baseType")
             }

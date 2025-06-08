@@ -2,7 +2,6 @@ package com.sunya.cdm.array
 
 import com.sunya.cdm.api.*
 import org.junit.jupiter.api.Test
-import java.nio.ByteBuffer
 import kotlin.test.*
 
 class TestArraySingle {
@@ -11,10 +10,11 @@ class TestArraySingle {
     fun testArraySingle() {
         val shape = intArrayOf(1,2,3)
         val size = shape.computeSize()
-        val single = ArraySingle(shape, Datatype.LONG, 123L)
+        // class ArraySingle<T>(shape : IntArray, datatype : Datatype<*>, fillValueAny : Any) :
+        val single = ArraySingle<Long>(shape, Datatype.LONG, 123L)
         assertEquals(Datatype.LONG, single.datatype)
         assertEquals(size, single.nelems)
-        assertEquals("ArraySingle shape=[1, 2, 3] data= 123\n", single.toString())
+        assertEquals("ArraySingle datatype=int64 shape=[1, 2, 3] data= 123 (class kotlin.Long) \n", single.toString())
 
         var count = 0
         single.forEach {

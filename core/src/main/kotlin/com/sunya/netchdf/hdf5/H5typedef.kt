@@ -88,7 +88,7 @@ internal fun H5builder.buildCompoundTypedef(groupb : Group.Builder, name : Strin
     val members = mess.members.map {
         val h5type = makeH5TypeInfo(it.mdt)
         val datatype = h5type.datatype()
-        StructureMember(it.name, datatype, it.offset, it.dims, it.mdt.endian)
+        StructureMember(it.name, datatype, it.offset, it.dims, it.mdt.isBE)
     }
     return CompoundTypedef(name, members)
 }
