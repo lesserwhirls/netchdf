@@ -13,7 +13,9 @@ class NetchdfExtraFiles {
                 .withPathFilter { p ->
                     !(p.toString().contains("exclude") or
                             p.toString().contains("gilmore/data.nc") or
-                            p.toString().contains("barrodale/test.h5"))
+                            p.toString().contains("austin/H12007_1m_MLLW_1of6.bag") or
+                            p.toString().contains("SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5")
+                    )
                 }
                 .addNameFilter { name -> !name.endsWith(".cdl") }
                 .addNameFilter { name -> !name.endsWith(".jpg") }

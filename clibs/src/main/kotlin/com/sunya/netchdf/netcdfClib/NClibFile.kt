@@ -98,7 +98,7 @@ class NClibFile(val filename: String) : Netchdf {
 
     override fun rootGroup() = rootGroup
     override fun location() = filename
-    override fun cdl() = com.sunya.cdm.api.cdl(this)
+    override fun cdl() : String = cdl(this)
     override fun type() = when (header.formatType) {
         NetchdfFileFormat.NC_FORMAT_CLASSIC -> "netcdf3"
         NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET -> "netcdf3.2"

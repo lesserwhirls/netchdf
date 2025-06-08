@@ -14,7 +14,7 @@ class TestArraySingle {
         val single = ArraySingle<Long>(shape, Datatype.LONG, 123L)
         assertEquals(Datatype.LONG, single.datatype)
         assertEquals(size, single.nelems)
-        assertEquals("ArraySingle shape=[1, 2, 3] data= 123\n", single.toString())
+        assertEquals("ArraySingle datatype=int64 shape=[1, 2, 3] data= 123 (class kotlin.Long) \n", single.toString())
 
         var count = 0
         single.forEach {

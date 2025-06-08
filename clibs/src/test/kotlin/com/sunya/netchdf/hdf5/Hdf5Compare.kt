@@ -89,14 +89,14 @@ class Hdf5Compare {
     @ParameterizedTest
     @MethodSource("params")
     fun compareH5andNclib(filename: String) {
-        println("=================")
+        println("===================================================")
         Hdf5File(filename, true).use { h5file ->
             println("${h5file.type()} $filename ")
             println("\n${h5file.cdl()}")
 
             NClibFile(filename).use { nclibfile ->
                 println("ncfile = ${nclibfile.cdl()}")
-                assertEquals(nclibfile.cdl(), h5file.cdl())
+                compareCdlWithoutFileType(nclibfile.cdl(), h5file.cdl())
             }
         }
     }
@@ -107,4 +107,10 @@ class Hdf5Compare {
         compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR }
     }
 
+}
+
+fun compareCdlWithoutFileType(cdl1: String, cdl2: String) {
+    val pos1 = cdl1.indexOf(' ')
+    val pos2 = cdl2.indexOf(' ')
+    assertEquals(cdl1.substring(pos1), cdl2.substring(pos2))
 }
