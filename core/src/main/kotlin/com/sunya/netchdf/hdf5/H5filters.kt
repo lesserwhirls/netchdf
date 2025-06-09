@@ -1,6 +1,8 @@
 package com.sunya.netchdf.hdf5
 
+import com.sunya.cdm.iosp.decode
 import com.sunya.cdm.util.IOcopyB
+
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -32,7 +34,11 @@ internal class H5filters(
                     continue
                 }
                 data = when (filter.filterType) {
-                    FilterType.deflate -> inflate(data)
+                    FilterType.deflate -> {
+                        val olway = inflate(data)
+                        val neway = decode(data)
+                        olway
+                    }
                     FilterType.shuffle -> shuffle(data, filter.clientValues[0])
                     FilterType.fletcher32 -> checkfletcher32(data)
                     /* FilterType.zstandard -> {
@@ -79,7 +85,7 @@ internal class H5filters(
 
      */
 
-    @Throws(IOException::class)
+
     private fun inflate(compressed: ByteArray): ByteArray {
         // run it through the Inflator
         val input = ByteArrayInputStream(compressed)

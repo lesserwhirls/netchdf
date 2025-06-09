@@ -5,6 +5,7 @@ import com.sunya.cdm.api.Group
 import com.sunya.cdm.util.Indent
 import com.sunya.cdm.util.makeValidCdmObjectName
 import java.util.*
+import kotlin.math.min
 
 /*
  * http://newsroom.gsfc.nasa.gov/sdptoolkit/hdfeosfaq.html
@@ -208,10 +209,16 @@ fun ODLparseFromString(text: String): ODLgroup {
     val root = ODLgroup("root", null)
     var currentStruct = root
     var currentObject: ODLobject? = null
-    val lineFinder = StringTokenizer(text, "\t\n\r\u000c")
-    while (lineFinder.hasMoreTokens()) {
-        var line = lineFinder.nextToken() ?: continue
-        line = line.trim()
+    val t1 = text.split("\t","\n","\r","\u000c").map { it.trim()}.filter { it.isNotEmpty() }
+    /* val t2 = StringTokenizer(text, "\t\n\r\u000c").toList()
+    val nt = min(t1.size, t2.size)
+    repeat(nt) {
+        println(" ${t1[it]}, ${t2[it]}")
+        require(t1[it] == t2[it])
+    }
+    val lineFinder = StringTokenizer(text, "\t\n\r\u000c") */
+
+    t1.forEach { line ->
         if (line.startsWith("GROUP")) {
             currentStruct = startGroup(currentStruct, line)
         } else if (line.startsWith("OBJECT")) {
@@ -225,7 +232,7 @@ fun ODLparseFromString(text: String): ODLgroup {
         } else if (line.startsWith("END")) {
             // noop
         } else if (currentObject != null) {
-            addFieldToObject(currentObject, line)
+            addFieldToObject(currentObject as ODLobject, line)
         } else {
             addFieldToGroup(currentStruct, line)
         }
@@ -262,18 +269,18 @@ private fun startObject(current: ODLgroup, line: String): ODLobject {
 }
 
 private fun endObject(current: ODLobject, line: String) {
-    val stoke = StringTokenizer(line, "=")
-    val toke = stoke.nextToken()
+    val stoke = line.split("=").iterator()
+    val toke = stoke.next()
     require(toke == "END_OBJECT")
-    val name = stoke.nextToken()
+    val name = stoke.next()
     require(name == current.name)
 }
 
 private fun addFieldToGroup(current: ODLgroup, line: String) {
-    val stoke = StringTokenizer(line, "=")
-    val name = stoke.nextToken()
-    if (stoke.hasMoreTokens()) {
-        var value = stoke.nextToken()
+    val stoke = line.split("=").iterator()
+    val name = stoke.next()
+    if (stoke.hasNext()) {
+        var value = stoke.next()
         if (value.startsWith("(")) {
             current.attributes.add(Pair(name, parseValueCollection(value)))
             return
@@ -284,10 +291,10 @@ private fun addFieldToGroup(current: ODLgroup, line: String) {
 }
 
 private fun addFieldToObject(current: ODLobject, line: String) {
-    val stoke = StringTokenizer(line, "=")
-    val name = stoke.nextToken()
-    if (stoke.hasMoreTokens()) {
-        var value = stoke.nextToken()
+    val stoke = line.split("=").iterator()
+    val name = stoke.next()
+    if (stoke.hasNext()) {
+        var value = stoke.next()
         if (value.startsWith("(")) {
             current.attributes.add(Pair(name, parseValueCollection(value)))
             return

@@ -7,14 +7,11 @@ import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.iosp.*
 
-val useOkio = true
-
 /**
  * @param strict true = make it agree with nclib if possible
  */
 class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
-    private val raf : OpenFileIF = if (useOkio) OkioFile(filename) else
-        com.sunya.cdm.iosp.OpenFile(filename)
+    private val raf : OpenFileIF = OkioFile(filename)
     val header : H5builder = H5builder(raf, strict)
 
     override fun close() {

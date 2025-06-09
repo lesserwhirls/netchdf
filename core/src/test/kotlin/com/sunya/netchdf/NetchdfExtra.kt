@@ -44,6 +44,13 @@ class NetchdfExtra {
         readNetchdfData(topdir + "npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
     }
 
+    @Test
+    fun problem() {
+        val filename = topdir + "new/gdas.t12z.sfcf006.nc"
+        readNetchdfData(filename, null)
+    }
+
+
     ///////////////////////////////////////////////////////
     @ParameterizedTest
     @MethodSource("params")

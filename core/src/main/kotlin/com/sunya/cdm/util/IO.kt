@@ -1,19 +1,23 @@
 package com.sunya.cdm.util
 
-import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
+import com.fleeksoft.io.InputStream
+import com.fleeksoft.io.OutputStream
+import okio.*
 
-/**
- * copy all bytes from in to out, specify buffer size
- *
- * @param input InputStream
- * @param out OutputStream
- * @param bufferSize : internal buffer size.
- * @return number of bytes copied
- * @throws java.io.IOException on io error
- */
-@Throws(IOException::class)
+fun IOcopy(input: Source, output: Sink, nbytes: Long): Long {
+    var bufferedSource : BufferedSource = input.buffer()
+    var totalRead = 0L
+    var leftToRead = nbytes
+    while (leftToRead > 0) {
+        val okioBuffer = Buffer()
+        val nread = bufferedSource.read(okioBuffer, leftToRead)
+        output.write(okioBuffer, nread)
+        totalRead += nread
+        leftToRead -= nread
+    }
+    return totalRead
+}
+
 fun IOcopyB(input: InputStream, out: OutputStream, bufferSize: Int): Long {
     var totalBytesRead: Long = 0
     val buffer = ByteArray(bufferSize)

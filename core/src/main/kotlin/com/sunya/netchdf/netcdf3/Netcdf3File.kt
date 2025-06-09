@@ -5,9 +5,8 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.layout.*
 
-val useOkio = true
 class Netcdf3File(val filename : String) : Netchdf {
-    private val raf : OpenFileIF = if (useOkio) OkioFile(filename) else OpenFile(filename)
+    private val raf : OpenFileIF = OkioFile(filename)
     private val header : N3header
     private val rootGroup : Group
 
