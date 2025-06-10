@@ -1,10 +1,6 @@
 package com.sunya.cdm.array
 
 import com.sunya.cdm.api.Datatype
-import com.sunya.netchdf.hdf4.getNcDefaultFillValue
-import com.sunya.netchdf.hdf4.getSDefaultFillValue
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -54,7 +50,6 @@ class TestTypeConverter {
         }
     }
 }
-
 
 fun convertLongBB(ba: ByteBuffer, elem: Int): Long {
     val baLong = ba.asLongBuffer()

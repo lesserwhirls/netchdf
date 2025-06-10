@@ -3,17 +3,10 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.api.toIntArray
 import com.sunya.cdm.api.toLongArray
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.iosp.decode
 import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.Tiling
-import com.sunya.cdm.util.IOcopyB
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
-import java.util.zip.InflaterInputStream
-
-private const val defaultBufferSize = 50_000
 
 // replace H4ChunkIterator, LayoutBB
 internal class H4tiledData(val h4 : H4builder, varShape : LongArray, chunk : IntArray, val chunks: List<SpecialDataChunk>) {
@@ -54,40 +47,25 @@ internal class H4CompressedDataChunk(
 
     private var bb: ByteArray? = null // the data is placed into here
 
-    @Throws(IOException::class)
     fun getByteArray(): ByteArray {
         if (bb != null) return bb!!
+
         if (compress != null) {
-            // read compressed data in
-            val cdata = compress.getDataTag(h4)
+            val cdataTag = compress.getDataTag(h4)
 
             // compressed data stored in one place
-            val input: InputStream = if (cdata.linked == null) {
-                val state = OpenFileState(cdata.offset, true)
-                val cbuffer = h4.raf.readByteArray(state, cdata.length)
-                ByteArrayInputStream(cbuffer)
+            val cbuffer = if (cdataTag.linked == null) {
+                val state = OpenFileState(cdataTag.offset, true)
+                h4.raf.readByteArray(state, cdataTag.length)
             } else { // or compressed data stored in linked storage
-                makeSpecialLinkedInputStream(h4, cdata.linked!!)
+                readSpecialLinkedInputSource(h4, cdataTag.linked!!)
             }
 
             // uncompress it
             bb = when (compress.compress_type) {
-                TagEnum.COMP_CODE_DEFLATE -> {
-                    // read the stream in and uncompress
-                    val zin: InputStream = InflaterInputStream(input)
-                    val out = ByteArrayOutputStream(compress.uncomp_length)
-                    IOcopyB(zin, out, defaultBufferSize)
-                    out.toByteArray()
-                }
-                TagEnum.COMP_CODE_NONE -> {
-                    // just read the stream in
-                    val out = ByteArrayOutputStream(compress.uncomp_length)
-                    IOcopyB(input, out, defaultBufferSize)
-                    out.toByteArray()
-                }
-                else -> {
-                    throw IllegalStateException("unknown compression type =" + compress.compress_type)
-                }
+                TagEnum.COMP_CODE_DEFLATE -> decode(cbuffer)
+                TagEnum.COMP_CODE_NONE -> cbuffer
+                else -> throw IllegalStateException("unknown compression type =" + compress.compress_type)
             }
             // println("uncompress offset ${cdata.offset} length ${cdata.length} uncomp_length=${compress.uncomp_length} outSize=${outSize}")
         }

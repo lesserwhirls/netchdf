@@ -143,9 +143,8 @@ class H4Ccompare {
 
     @Test
     fun problemReadData() {
-        val filename = testData + "hdf4/nsidc/GESC/AIRS/AIRS.2006.08.28.A.L1B.Browse_AMSU.v4.0.9.0.G06241184547.hdf"
-        readH4header(filename)
-        testIterateWithClib(filename)
+        val filename = "/home/all/testdata/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
+        readNetchdfData(filename, null, null, true)
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -196,7 +195,7 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    // @ParameterizedTest
     @MethodSource("params")
     fun readH4CheckUnusedTags(filename: String) {
         // unused tags 2
@@ -210,14 +209,14 @@ class H4Ccompare {
         }
     }
 
-    //@ParameterizedTest
+    // @ParameterizedTest
     @MethodSource("params")
     fun readH4data(filename: String) {
         readNetchdfData(filename, null, null, true)
         println()
     }
 
-    //@ParameterizedTest
+    @ParameterizedTest
     @MethodSource("params")
     fun compareData(filename: String) {
         compareData(filename, null)

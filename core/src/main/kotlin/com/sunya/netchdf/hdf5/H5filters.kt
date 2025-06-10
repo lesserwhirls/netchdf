@@ -1,12 +1,6 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.util.IOcopyB
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.util.zip.Inflater
-import java.util.zip.InflaterInputStream
-import kotlin.math.min
+import com.sunya.cdm.iosp.decode
 
 /** Apply filters, if any. */
 internal class H5filters(
@@ -14,7 +8,6 @@ internal class H5filters(
     val mfp: FilterPipelineMessage?,
     val isBE: Boolean
 ) {
-    val inflateBufferSize = 80_000 // LOOK make this settable
     var first = true
 
     fun apply(rawdata: ByteArray, entry: BTree1.DataChunkEntry): ByteArray {
@@ -32,7 +25,10 @@ internal class H5filters(
                     continue
                 }
                 data = when (filter.filterType) {
-                    FilterType.deflate -> inflate(data)
+                    FilterType.deflate -> {
+                        // val olway = inflate(data)
+                        decode(data)
+                    }
                     FilterType.shuffle -> shuffle(data, filter.clientValues[0])
                     FilterType.fletcher32 -> checkfletcher32(data)
                     /* FilterType.zstandard -> {
@@ -79,7 +75,7 @@ internal class H5filters(
 
      */
 
-    @Throws(IOException::class)
+/*
     private fun inflate(compressed: ByteArray): ByteArray {
         // run it through the Inflator
         val input = ByteArrayInputStream(compressed)
@@ -92,6 +88,8 @@ internal class H5filters(
         if (debug || debugFilter) println(" inflate bytes in= " + compressed.size + " bytes out= " + uncomp.size)
         return uncomp
     }
+
+ */
 
     // just strip off the 4-byte fletcher32 checksum at the end
     private fun checkfletcher32(org: ByteArray): ByteArray {

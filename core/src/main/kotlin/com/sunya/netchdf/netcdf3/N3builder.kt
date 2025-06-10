@@ -6,7 +6,6 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.iosp.OkioFileBuffered
 import com.sunya.netchdf.NetchdfFileFormat
-import java.io.IOException
 import com.fleeksoft.charset.Charset
 import com.sunya.cdm.iosp.OkioFile
 import kotlin.math.min
@@ -15,7 +14,7 @@ import kotlin.math.min
  * @see "https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html"
  * @see "http://cucis.ece.northwestern.edu/projects/PnetCDF/CDF-5.html"
  */
-class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
+class N3header(rafOrg: OpenFileIF, val root: Group.Builder) {
   private val filePos = OpenFileState(0L, true)
   private val valueCharset = Charsets.UTF_8
   private val isPnetcdf : Boolean
@@ -47,7 +46,8 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
     }
     filePos.pos = 4
 
-    val rafb = if (useOkio) OkioFileBuffered(rafOrg as OkioFile, 4) else rafOrg
+    // use buffered io for efficiency
+    val rafb = OkioFileBuffered(rafOrg as OkioFile, 4)
     isPnetcdf = (format == NetchdfFileFormat.NC_FORMAT_64BIT_DATA)
     useLongOffset = (format == NetchdfFileFormat.NC_FORMAT_64BIT_OFFSET) || isPnetcdf
 
@@ -121,7 +121,7 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
       println("  actualSize= $actualSize")
     }
 
-    if (useOkio) rafb.close()
+    rafb.close()
   }
 
   private fun readDimensions(raf: OpenFileIF, root: Group.Builder) {
@@ -130,7 +130,7 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_DIM) throw IOException("Malformed netCDF file - dim magic number wrong " + raf.location())
+      if (magic != MAGIC_DIM) throw RuntimeException("Malformed netCDF file - dim magic number wrong " + raf.location())
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
@@ -158,7 +158,7 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_VAR) throw IOException("Malformed netCDF file - var magic number wrong ${raf.location()}")
+      if (magic != MAGIC_VAR) throw RuntimeException("Malformed netCDF file - var magic number wrong ${raf.location()}")
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
@@ -215,14 +215,13 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
     }
   }
 
-  @Throws(IOException::class)
   private fun readAttributes(raf: OpenFileIF, atts: MutableList<Attribute<*>>): Int {
     val magic: Int = raf.readInt(filePos)
     val natts = if (magic == 0) {
       if (isPnetcdf) filePos.pos += 8 else filePos.pos += 4
       0
     } else {
-      if (magic != MAGIC_ATT) throw IOException("Malformed netCDF file  - att magic number wrong " + raf.location())
+      if (magic != MAGIC_ATT) throw RuntimeException("Malformed netCDF file  - att magic number wrong " + raf.location())
       if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     }
 
@@ -252,7 +251,6 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
     return natts
   }
 
-  @Throws(IOException::class)
   fun readAttributeArray(raf: OpenFileIF, type: Datatype<*>, nelems: Int, attBuilder: Attribute.Builder<*>): Int {
     return when (type) {
       Datatype.BYTE -> {
@@ -305,7 +303,6 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
   }
 
   // read a string = (nelems, byte array), then skip to 4 byte boundary
-  @Throws(IOException::class)
   private fun readString(raf: OpenFileIF, charset: Charset = Charsets.UTF_8): String? {
     val nelems: Int = if (isPnetcdf) raf.readLong(filePos).toInt() else raf.readInt(filePos)
     val s = raf.readString(filePos, nelems, charset)
@@ -314,7 +311,6 @@ class N3header(val rafOrg: OpenFileIF, val root: Group.Builder) {
   }
 
   // skip to a 4 byte boundary in the file
-  @Throws(IOException::class)
   fun skipToBoundary(nbytes: Int) {
     filePos.pos += padding(nbytes)
   }

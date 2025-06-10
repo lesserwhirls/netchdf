@@ -1,9 +1,25 @@
+6/10/2025
+dir             failed    passed    time
+all                 11      13076   37 min 51 sec
+hdf4                 0       2845   9 min 39 sec
+hdf5                 0       1252   9 min 16 sec
+hdf5Clib             0        320   43 sec
+netcdf3              0        201   2.469
+netcdf4              0         85   1.454 sec
+NetchdfClibExtra     0       3138   4 min 44 sec
+NetchdfClibTest      0       7267   27 min 24 sec
+
+6/08/2025
+dir              failed    passed   time
+hdf5Clib            2       322     46 sec
+netcdf3             0       201     2.516 sec
+netcdf4             0       86      1.543 sec
+
 7/7/2025
-dir              failed    passed       time                wallclock
+dir              failed    passed       time
 all                17       15,199    53 min, 38 sec
 
 5/29/2025
-
 dir              failed    passed   time            wallclock
 hdf4                2       4260    3 hr 6 min
 hdf5                4       1258    8 min 30 sec

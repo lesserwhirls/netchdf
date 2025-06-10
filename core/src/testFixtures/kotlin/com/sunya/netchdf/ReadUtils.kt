@@ -57,8 +57,7 @@ fun readMyData(myfile: Netchdf, varname: String? = null, section: SectionPartial
 const val maxBytes = 10_000_000
 
 fun readOneVar(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?, showData : Boolean = false) {
-    if (myvar.name.contains("mbReflectivity"))
-        println()
+    println("   read ${myvar.name}")
 
     val sectionF = SectionPartial.fill(section, myvar.shape)
     val nbytes = sectionF.totalElements * myvar.datatype.size

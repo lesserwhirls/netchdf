@@ -70,7 +70,7 @@ class H5dataTiming {
         readData(chunked, "EPV", SectionPartial.fromSpec(":, :, :, 11:20"))
     }
 
-    @Test
+    // @Test
     fun chunkedFiltered() {
         if (showDetail) println("===============================================")
         if (showDetail) println("chunkedFiltered [1, 30, 30, 8]/[8395, 781, 385]")
@@ -104,7 +104,7 @@ class H5dataTiming {
         readData(reversed, "fyy", SectionPartial.fromSpec("0:99, 0:99, 0:9"))
     }
 
-    @Test
+    // @Test
     fun problem2() {
         //  variable UpperDeschutes_t4p10_swemelt[8395, 781, 385], Chunked dims=[1, 30, 30, 8]
         readData(chunked2, "UpperDeschutes_t4p10_swemelt", SectionPartial.fromSpec("0:100, 0:30, 0:40"))

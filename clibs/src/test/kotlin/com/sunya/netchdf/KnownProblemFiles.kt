@@ -298,4 +298,19 @@ group: the_out_crowd {
         compareDataWithClib(filename)
     }
 
+
+    // not picking up missing value ??
+    //  *** FAIL comparing data for variable = ubyte Granule [Granule]
+    //255 != 0 at idx = 1
+    //255 != 0 at idx = 2
+    //255 != 0 at idx = 3
+    //255 != 0 at idx = 4
+    //255 != 0 at idx = 5
+    //255 != 0 at idx = 6
+    // *** count values differ = 6 same = 1
+    @Test
+    fun superblockIsOffsetNPP() {
+        compareDataWithClib(testData + "exclude/superblockIsOffsetNPP.h5")
+    }
+
 }
