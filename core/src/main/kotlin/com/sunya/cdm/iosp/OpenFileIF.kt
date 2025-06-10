@@ -33,18 +33,6 @@ interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
     fun readArrayOfFloat(state: OpenFileState, nelems: Int): Array<Float>
     fun readArrayOfDouble(state: OpenFileState, nelems: Int): Array<Double>
 
-    /* generally, this is for reading Variable data
-    fun readArrayByte(state: OpenFileState, nelems: Int): ArrayByte
-    fun readArrayUByte(state: OpenFileState, nelems: Int): ArrayUByte
-    fun readArrayShort(state: OpenFileState, nelems: Int): ArrayShort
-    fun readArrayUShort(state: OpenFileState, nelems: Int): ArrayUShort
-    fun readArrayInt(state: OpenFileState, nelems: Int): ArrayInt
-    fun readArrayUInt(state: OpenFileState, nelems: Int): ArrayUInt
-    fun readArrayLong(state: OpenFileState, nelems: Int): ArrayLong
-    fun readArrayULong(state: OpenFileState, nelems: Int): ArrayULong
-    fun readArrayFloat(state: OpenFileState, nelems: Int): ArrayFloat
-    fun readArrayDouble(state: OpenFileState, nelems: Int): ArrayDouble */
-
     companion object {
         val nativeByteOrder  = false // TODO fix this
     }

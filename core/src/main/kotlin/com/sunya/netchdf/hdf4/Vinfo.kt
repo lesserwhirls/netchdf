@@ -23,7 +23,7 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
     var tagDataRI: TagRasterImage? = null
     var tagData: TagData? = null
     var elemSize = 0 // for Structures, this is recsize
-    var fillValue: ByteArray? = null  // TODO should be Any, not ByteARray
+    var fillValue: ByteArray? = null
 
     // below is not set until setLayoutInfo() is called
     var isLinked = false

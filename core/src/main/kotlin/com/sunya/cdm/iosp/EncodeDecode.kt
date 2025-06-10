@@ -12,6 +12,7 @@ fun encode(sb: ByteArray): ByteArray {
     val sink = Buffer()
     val deflatorSink = sink.deflate()
     deflatorSink.write(source, source.size)
+    deflatorSink.flush()
     deflatorSink.close()
 
     return sink.readByteArray()

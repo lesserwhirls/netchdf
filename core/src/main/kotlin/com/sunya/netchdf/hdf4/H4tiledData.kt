@@ -52,6 +52,7 @@ internal class H4CompressedDataChunk(
 
         if (compress != null) {
             val cdataTag = compress.getDataTag(h4)
+
             // compressed data stored in one place
             val cbuffer = if (cdataTag.linked == null) {
                 val state = OpenFileState(cdataTag.offset, true)

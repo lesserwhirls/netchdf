@@ -80,10 +80,10 @@ class NetchdfClibTest {
 
     @Test
     fun problemHdf4() {
-        val filename = testData + "hdf4/nsidc/GESC/GV/1C51.070101.1.HSTN.4.HDF"
+        val filename = testData + "hdf4/nsidc/LAADS/MOD/MOD10A1.A2008001.h23v15.005.2008003161138.hdf"
         // compareN4withH5cdl(filename)
-        compareCdlWithClib(filename)
-        compareDataWithClib(filename)
+        // compareCdlWithClib(filename, true)
+        compareDataWithClib(filename, "/MOD_Grid_Snow_500m/Data_Fields/Snow_Cover_Daily_Tile")
     }
 
     @Test
@@ -230,8 +230,8 @@ isThreadsafe = 0 = false
 
     @Test
     fun testFailDataCompare5() {
-        val filename = "/home/all/testdata/netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
-        // compareCdlWithClib(filename, true)
+        val filename = "/home/all/testdata/hdf4/eos/modis/MOD13Q1.A2012321.h00v08.005.2012339011757.hdf"
+        compareCdlWithClib(filename, true)
         compareDataWithClib(filename, "/olci_band_definition/olci_band_definition")
     }
 
@@ -600,7 +600,8 @@ fun compareOneVar(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>, cfile
             println(" *** FAIL cfile.readArrayData for variable = ${cvar.datatype} ${cvar.fullname()} ${cvar.dimensions.map { it.name }}")
             throw e
         }
-        println(" ${myvar.datatype} ${myvar.fullname()}[${filledSection}] = ${mydata.shape.computeSize()} elems" )
+        val totalElems = mydata.shape.computeSize()
+        println(" ${myvar.datatype} ${myvar.fullname()}[${filledSection}] = $totalElems elems" )
 
         //if (myvar.datatype == Datatype.CHAR) {
         //    compareCharData(myvar.fullname(), mydata, ncdata)
@@ -610,10 +611,11 @@ fun compareOneVar(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>, cfile
                 if (NetchdfClibTest.showFailedData) {
                     println("\n mydata = $mydata")
                     println(" cdata = $ncdata")
-                } else {
-                    println("\n countDifferences = ${countArrayDiffs(ncdata, mydata)}")
                 }
-                assertEquals(ncdata, mydata, "variable ${myvar.fullname()}")
+                val countDiffs = countArrayDiffs(ncdata, mydata, 10)
+                println(" *** count values differ = $countDiffs same = ${totalElems - countDiffs}")
+                assertEquals(0, countDiffs)
+                // assertEquals(ncdata, mydata, "variable ${myvar.fullname()}")
                 return
             } else {
                 if (NetchdfClibTest.showData) {
@@ -662,7 +664,7 @@ fun compareMiddleSection(myfile: Netchdf, myvar: Variable<*>, cfile: Netchdf, cv
                 println(" mydata = $mydata")
                 println(" cdata = $ncdata")
             } else {
-                println("\n countDifferences = ${countArrayDiffs(ncdata, mydata)}")
+                println("\n countDifferences = ${countArrayDiffs(ncdata, mydata, 10)}")
             }
             assertTrue(false, "variable ${myvar.name}")
             return
@@ -800,19 +802,19 @@ fun sumValues(array : ArrayTyped<*>) {
     }
 } */
 
-fun countArrayDiffs(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>, showDiff : Boolean = false) : Int {
+fun countArrayDiffs(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>, showDiff : Int = 0) : Int {
     val iter1 = array1.iterator()
     val iter2 = array2.iterator()
-    var allcount = 0
-    var count = 0
+    var idx = 0
+    var countDiff = 0
     while (iter1.hasNext() && iter2.hasNext()) {
         val v1 = iter1.next()
         val v2 = iter2.next()
         if (v1 != v2) {
-            if (showDiff) println("$allcount $v1 != $v2")
-            count++
+            if (countDiff < showDiff) println("$v1 != $v2 at idx = $idx")
+            countDiff++
         }
-        allcount++
+        idx++
     }
-    return count
+    return countDiff
 }

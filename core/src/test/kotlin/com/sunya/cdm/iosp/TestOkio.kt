@@ -10,6 +10,7 @@ import java.util.zip.InflaterInputStream
 import kotlin.math.min
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class TestOkio {
 
@@ -55,6 +56,42 @@ class TestOkio {
 
     @Test
     fun testEncodeDecode() {
+        println("encodeJ, decodeJ")
+        testEncodeDecode({ sb -> encodeJ(sb) }, { sb -> decodeJ(sb) })
+        println()
+
+        println("encodeJ, decode")
+        testEncodeDecode({ sb -> encodeJ(sb) }, { sb -> decode(sb) })
+        println()
+
+        println("encode, decodeJ")
+        testEncodeDecode({ sb -> encode(sb) }, { sb -> decodeJ(sb) })
+        println()
+
+        println("encode, decode")
+        testEncodeDecode({ sb -> encode(sb) }, { sb -> decode(sb) })
+        println()
+    }
+
+    fun testEncodeDecode(encoder: (sb: ByteArray) -> ByteArray, decoder: (sb: ByteArray) -> ByteArray) {
+        val s = "secretDecoderMessage."
+        val sb = s.encodeToByteArray()
+
+        val n = 1000 // make sure its > 8192
+        val bigs = ByteArray(n * sb.size) { sb[it % sb.size] }
+        val encoded = encoder(bigs)
+
+        println("     org size = ${bigs.size}")
+        println(" encoded size = ${encoded.size}")
+
+        val decoded = decoder(encoded)
+        println(" decoded size = ${decoded.size}")
+        assertEquals(n * sb.size, decoded.size)
+        assertTrue(bigs.contentEquals(decoded))
+    }
+
+    @Test
+    fun compareEncodeDecode() {
         val s = "secretDecoderMessage."
         val sb = s.encodeToByteArray()
 
@@ -69,16 +106,17 @@ class TestOkio {
         }
         println("encoded last = ${encoded.last()} ")
 
-
         println("    org size = ${bigs.size}")
         println("encoded size = ${encoded.size}")
 
-        val decoded = decode(encodedJ)
+        val decoded = decode(encoded)
         println("decodedJ size = ${decoded.size}")
         // println(String(decoded))
         assertEquals(n * sb.size, decoded.size)
+        assertTrue(bigs.contentEquals(decoded))
     }
 
+    /*
     fun encode(sb: ByteArray): ByteArray {
         val source = Buffer()
         source.write(sb)
@@ -90,7 +128,7 @@ class TestOkio {
         deflatorSink.close()
 
         return sink.readByteArray()
-    }
+    } */
 
 
     val clevel = 5
@@ -104,11 +142,10 @@ class TestOkio {
         return out.toByteArray()
     }
 
-    fun decode(encoded: ByteArray): ByteArray {
+    /* fun decode(encoded: ByteArray): ByteArray {
         val source = Buffer()
         source.write(encoded)
 
-        //Returns an InflaterSource that DEFLATE-decompresses this Source while reading.
         val inflaterSource: InflaterSource = source.inflate()
 
         val sink = Buffer()
@@ -122,7 +159,7 @@ class TestOkio {
         println("total bytes = $totalBytes")
 
         return sink.readByteArray()
-    }
+    } */
 
     val inflateBufferSize = 80_000
     val MAX_ARRAY_LEN = Int.MAX_VALUE - 8
