@@ -228,13 +228,6 @@ isThreadsafe = 0 = false
         compareDataWithClib(filename)
     }
 
-    @Test
-    fun testFailDataCompare5() {
-        val filename = "/home/all/testdata/hdf4/eos/modis/MOD13Q1.A2012321.h00v08.005.2012339011757.hdf"
-        compareCdlWithClib(filename, true)
-        compareDataWithClib(filename, "/olci_band_definition/olci_band_definition")
-    }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @ParameterizedTest

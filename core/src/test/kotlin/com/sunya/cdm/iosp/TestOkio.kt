@@ -91,6 +91,25 @@ class TestOkio {
     }
 
     @Test
+    fun testEncodeDecodeForSO() {
+        val s = "secretDecoderMessage."
+        val sb = s.encodeToByteArray()
+
+        val n = 1000 // make sure its > 8192
+        val bigs = ByteArray(n * sb.size) { sb[it % sb.size] }
+        val encoded = encode(bigs)
+
+        println("    org size = ${bigs.size}")
+        println("encoded size = ${encoded.size}")
+
+        val decoded = decode(encoded)
+        println("decoded size = ${decoded.size}")
+
+        assertEquals(n * sb.size, decoded.size)
+        assertTrue(bigs.contentEquals(decoded))
+    }
+
+    @Test
     fun compareEncodeDecode() {
         val s = "secretDecoderMessage."
         val sb = s.encodeToByteArray()
