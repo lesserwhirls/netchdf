@@ -1,5 +1,5 @@
 [versions]
-netchdf = "0.3.0"
+netchdf = "0.4.0"
 
 # main dependency versions
 kotlin = "2.1.21"
@@ -49,3 +49,4 @@ jvmtest = ["junit-jupiter-params", "kotlin-test-junit5", "logback-classic", "moc
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

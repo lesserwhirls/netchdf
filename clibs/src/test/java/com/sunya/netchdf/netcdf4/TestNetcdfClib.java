@@ -5,7 +5,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h;
-import org.junit.jupiter.api.Test;
+import kotlin.test.*;
 import com.sunya.netchdf.testdata.TestFilesKt;
 
 public class TestNetcdfClib {
