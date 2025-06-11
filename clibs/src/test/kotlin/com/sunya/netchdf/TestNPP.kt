@@ -1,7 +1,7 @@
 package com.sunya.netchdf
 
 
-import org.junit.jupiter.api.Test
+import kotlin.test.*
 import com.sunya.netchdf.testdata.testData
 
 // Special test for NPP data.

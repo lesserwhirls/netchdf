@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    id ("java-test-fixtures")
+    // id ("java-test-fixtures")
 }
 
 dependencies {
@@ -9,10 +9,10 @@ dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 
+    implementation(project(":testFixtures"))
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)
-    testImplementation(testFixtures(project(":core")))
 }
 
 kotlin {

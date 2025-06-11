@@ -3,7 +3,7 @@ package com.sunya.netchdf
 import com.sunya.netchdf.hdf4.Hdf4File
 import com.sunya.netchdf.hdf5Clib.compareDataWithHdf5Clib
 import com.sunya.netchdf.testdata.testData
-import org.junit.jupiter.api.Test
+import kotlin.test.*
 import kotlin.test.assertTrue
 
 val problemDir = "/home/all/testdata/exclude/"

@@ -1,7 +1,7 @@
 package com.sunya.netchdf.netcdf3
 
 import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
+import kotlin.test.*
 import java.util.*
 import java.util.stream.Stream
 import kotlin.test.assertEquals

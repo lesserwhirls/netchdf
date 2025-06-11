@@ -3,7 +3,7 @@ package com.sunya.netchdf.hdf4Clib
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
-import com.sunya.cdm.iosp.makeStringZ
+import com.sunya.cdm.array.makeStringZ
 import com.sunya.netchdf.hdf4.*
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagidName
@@ -1027,7 +1027,7 @@ private fun processAttribute(name : String, nelems : Int, datatype : Datatype<*>
     val shape = intArrayOf(useNelems)
 
     if (datatype == Datatype.CHAR) {
-        val svalue = makeStringZ(ba, 0, Hdf4ClibFile.valueCharset)
+        val svalue = makeStringZ(ba, charset = Hdf4ClibFile.valueCharset)
         return Attribute.from(name, svalue)
     }
 

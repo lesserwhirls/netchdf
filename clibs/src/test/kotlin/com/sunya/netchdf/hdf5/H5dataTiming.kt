@@ -4,7 +4,7 @@ import com.sunya.cdm.api.*
 import com.sunya.netchdf.netcdf3.Netcdf3File
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import org.junit.jupiter.api.Test
+import kotlin.test.*
 import com.sunya.netchdf.testdata.testData
 import kotlin.system.measureNanoTime
 import kotlin.test.assertTrue

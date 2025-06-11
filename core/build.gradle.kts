@@ -1,40 +1,57 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    id ("java-test-fixtures")
+    alias(libs.plugins.kotlin.multiplatform)
+    // id ("java-test-fixtures")
 }
 
-dependencies {
-    implementation(libs.oshai.logging)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.okio)
-    implementation(libs.fleeksoft)
+kotlin {
+    jvm()
+    linuxX64("native") {
+        binaries {
+            // executable()
+            sharedLib {
+                baseName = "native"
+            }
+        }
+    }
 
-    testFixturesImplementation(libs.bundles.jvmtest)
-    testFixturesImplementation(libs.kotest.property)
-    testFixturesImplementation(libs.kotlinx.coroutines.core)
-    // runTest() for running suspend functions in tests
-    testFixturesImplementation(libs.kotlinx.coroutines.test)
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.oshai.logging)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.okio)
+                implementation(libs.fleeksoft)
+            }
+        }
+        val jvmMain by
+        getting {
+            dependencies {
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(project(":testFixtures"))
+                implementation(kotlin("test"))
+                implementation(kotlin("test-junit"))
+                // implementation(libs.bundles.jvmtest)
+                implementation(libs.kotest.property)
+            }
+        }
+        /*
+        val jvmTest by
+        getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+            }
+        }
 
-    testImplementation(kotlin("test"))
-    testImplementation(libs.bundles.jvmtest)
-    testImplementation(libs.kotest.property)
+         */
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
-    minHeapSize = "512m"
-    maxHeapSize = "8g"
-    jvmArgs = listOf("-Xss128m")
-
-    // Make tests run in parallel
-    // More info: https://www.jvt.me/posts/2021/03/11/gradle-speed-parallel/
-    systemProperties["junit.jupiter.execution.parallel.enabled"] = "true"
-    systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
-    systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
-
-    systemProperty("kotest.framework.discovery.jar.scan.disable", "true")
-    systemProperty("kotest.framework.classpath.scanning.config.disable", "true")
-    systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
+tasks.withType<Wrapper> {
+    // gradleVersion = "8.10"
+    distributionType = Wrapper.DistributionType.BIN
 }
 
 kotlin {
