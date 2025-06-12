@@ -14,5 +14,15 @@ int main(int argc, char** argv) {
   printf("file %s\n", filename);
   printf("%s\n", cdl);
 
+  libnetchdf_kref_com_sunya_cdm_api_Variable variable = lib->kotlin.root.com.sunya.cdm.api.Netchdf.findVariable(netchdf, "data");
+
+  libnetchdf_kref_com_sunya_cdm_array_ArrayInt arrayint =
+    (libnetchdf_kref_com_sunya_cdm_array_ArrayInt) lib->kotlin.root.com.sunya.cdm.api.Netchdf.readArrayDataAll(netchdf, variable);
+
+  libnetchdf_kref_kotlin_IntArray intarray = lib->kotlin.root.com.sunya.cdm.array.ArrayInt.get_values(arrayint);
+  int *data = (int *) intarray.pinned;
+
+  printf("%d\n", *data);
+
   return 0;
 }

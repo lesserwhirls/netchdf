@@ -2,6 +2,7 @@ package com.sunya.cdm.api
 
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.iosp.ReadChunkConcurrent
+import com.sunya.cdm.util.CdmFullNames
 
 interface Netchdf : AutoCloseable {
     fun location() : String
@@ -9,6 +10,18 @@ interface Netchdf : AutoCloseable {
     val size : Long get() = 0L
     fun rootGroup() : Group
     fun cdl() : String
+
+    fun findVariable(fullName: String): Variable<*>? {
+        return CdmFullNames(rootGroup()).findVariable(fullName)
+    }
+
+    fun readArrayDataAll(v2: Variable<*>) : ArrayTyped<*> {
+        return  readArrayData(v2, null)
+    }
+
+    fun readArrayDataIF(v2: Variable<*>, section: SectionPartial? = null) : ArrayTyped<*> {
+        return  readArrayData(v2, section)
+    }
 
     // TODO I think the output type is not always the input type
     fun <T> readArrayData(v2: Variable<T>, section: SectionPartial? = null) : ArrayTyped<T>
