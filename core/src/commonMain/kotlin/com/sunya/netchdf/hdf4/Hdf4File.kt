@@ -7,7 +7,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.layout.*
 
-class Hdf4File(val filename : String) : Netchdf {
+internal class Hdf4File(val filename : String) : Netchdf {
     private val raf : OpenFileIF = OkioFile(filename)
     val header: H4builder
     private val rootGroup: Group
@@ -244,7 +244,7 @@ internal fun readStructureDataArray(h4: H4builder, vinfo: Vinfo, section: Sectio
 }
 
 
-fun ReaderIntoByteArray.readArrayStructureData(layout: Layout, shape : IntArray, members : List<StructureMember<*>>): ArrayStructureData {
+internal  fun ReaderIntoByteArray.readArrayStructureData(layout: Layout, shape : IntArray, members : List<StructureMember<*>>): ArrayStructureData {
     val state = OpenFileState(0, true)
     val sizeBytes = shape.computeSize() * layout.elemSize
     val ba = ByteArray(sizeBytes)

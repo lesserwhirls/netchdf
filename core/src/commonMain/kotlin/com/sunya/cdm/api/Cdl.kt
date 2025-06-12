@@ -16,7 +16,7 @@ fun cdl(netcdf : Netchdf) : String {
     }
 }
 
-fun Group.cdl(isRoot : Boolean, indent : Indent = Indent(2)) : String {
+internal fun Group.cdl(isRoot : Boolean, indent : Indent = Indent(2)) : String {
     return buildString{
         if (typedefs.isNotEmpty()) {
             append("${indent}types:\n")
@@ -46,12 +46,12 @@ fun Group.cdl(isRoot : Boolean, indent : Indent = Indent(2)) : String {
     }
 }
 
-fun Dimension.cdl(indent : Indent = Indent(2)) : String {
+internal fun Dimension.cdl(indent : Indent = Indent(2)) : String {
     return if (!isShared) "${indent}$length"
            else "${indent}$name = $length ;"
 }
 
-fun Variable<*>.cdl(indent : Indent = Indent(2)) : String {
+internal fun Variable<*>.cdl(indent : Indent = Indent(2)) : String {
     val typedef = datatype.typedef
     val typename = typedef?.name ?: datatype.cdlName
     return buildString {
@@ -74,7 +74,7 @@ fun Variable<*>.cdl(indent : Indent = Indent(2)) : String {
     }
 }
 
-fun Attribute<*>.cdl(varname: String, indent : Indent = Indent(2)) : String {
+internal fun Attribute<*>.cdl(varname: String, indent : Indent = Indent(2)) : String {
     val typedef = datatype.typedef
     val typename = typedef?.name ?: "" // datatype.cdlName
     val valueDatatype = typedef?.baseType ?: datatype
@@ -140,8 +140,4 @@ fun ByteArray.toHex(): String {
             hexChars[nibble]
         }
     return result.concatToString()
-}
-
-fun cdlFileType() {
-
 }

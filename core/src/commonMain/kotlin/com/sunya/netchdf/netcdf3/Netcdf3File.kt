@@ -5,7 +5,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.layout.*
 
-class Netcdf3File(val filename : String) : Netchdf {
+internal class Netcdf3File(val filename : String) : Netchdf {
     private val raf : OpenFileIF = OkioFile(filename)
     private val header : N3header
     private val rootGroup : Group

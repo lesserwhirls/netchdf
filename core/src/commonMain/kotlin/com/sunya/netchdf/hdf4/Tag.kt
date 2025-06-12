@@ -8,7 +8,7 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.TagEnum.Companion.obsolete
 
-fun readTag(raf : OpenFileIF, state: OpenFileState): Tag {
+internal fun readTag(raf : OpenFileIF, state: OpenFileState): Tag {
     // read just the DD part of the tag. see p 11
     val xtag = raf.readShort(state).toUShort().toInt()
     val btag = xtag and 0x3FFF // 14 bits // basic tags are numbered 0x0001 through 0x3FFF,
@@ -47,7 +47,7 @@ fun readTag(raf : OpenFileIF, state: OpenFileState): Tag {
 }
 
 // Tag == "Data Descriptor" (DD) and (usually) a "Data Element" that the offset/length points to
-open class Tag(xtag: Int, val refno : Int, val offset : Long, val length : Int) {
+internal open class Tag(xtag: Int, val refno : Int, val offset : Long, val length : Int) {
     val isExtended: Boolean = (xtag and 0x4000) != 0
     val code = (xtag and 0x3FFF) // basic tag
 
@@ -103,7 +103,7 @@ open class Tag(xtag: Int, val refno : Int, val offset : Long, val length : Int) 
 
 // TagEnum.COMPRESSED (40), TagEnum.CHUNK (61), TagEnum.SD (702), TagEnum.VS (1963)
 // Combining so we just have one data object
-class TagData(icode: Int, refno : Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagData(icode: Int, refno : Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     private var extendedTag: Int = 0
     internal var linked: SpecialLinked? = null
     internal var compress: SpecialComp? = null
@@ -141,7 +141,7 @@ class TagData(icode: Int, refno : Int, offset : Long, length : Int) : Tag(icode,
 }
 
 // 20 p 146 Also used for data blocks, which has no next_ref! (!)
-class TagLinkedBlock(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagLinkedBlock(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var next_ref: Int = 0
     var block_ref = IntArray(0)
     var n = 0
@@ -180,7 +180,7 @@ class TagLinkedBlock(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
 }
 
 // 30
-class TagVersion(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagVersion(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var major = 0
     var minor = 0
     var release = 0
@@ -204,7 +204,7 @@ class TagVersion(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icod
 }
 
 // 100, 101
-class TagText(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagText(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var text: String = "null"
 
     override fun readTag(h4 : H4builder) {
@@ -219,7 +219,7 @@ class TagText(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, 
 }
 
 // 104, 105
-class TagAnnotate(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagAnnotate(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var text: String = "null"
     var obj_tagno: Int = 0
     var obj_refno: Int = 0
@@ -238,7 +238,7 @@ class TagAnnotate(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
 }
 
 // 106 p.114 DFTAG_NT
-class TagNT(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagNT(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var version: Byte = 0
     var numberType: Int = 0 // see H4type.getDataType()
     var nbits: Byte = 0 // Number of bits, all of which are assumed to be significant
@@ -262,7 +262,7 @@ class TagNT(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
 }
 
 // Image palette-8 (200) p.144 DS
-class TagRI8Dimension(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagRI8Dimension(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var xdim = 0
     var ydim = 0
 
@@ -279,7 +279,7 @@ class TagRI8Dimension(icode: Int, refno: Int, offset : Long, length : Int) : Tag
 }
 
 // DFTAG_IP8 Image dimension-8 (201) p.144
-class TagIP8(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagIP8(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var rgb : ArrayByte? = null
 
     override fun readTag(h4 : H4builder) {
@@ -294,7 +294,7 @@ class TagIP8(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, r
 }
 
 // DFTAG_ID 300, DFTAG_LD 307, DFTAG_MD 308, p.123
-class TagImageDim(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagImageDim(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var xdim = 0 // Length of x (horizontal) dimension
     var ydim = 0 // Length of y (vertical) dimension
     var nt_ref: Int = 0 // Reference number for number type information
@@ -327,7 +327,7 @@ class TagImageDim(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
 // DFTAG_LUT 301 p.125
 // xdim*ydim*elements*NTsize bytes (xdim, ydim, elements, and NTsize are specified in the corresponding DFTAG_ID)
 // LOOK should be DFTAG_LD not DFTAG_ID ?
-class TagLookupTable(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagLookupTable(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var table : ArrayTyped<*>? = null
 
     // not needed - regular data reading will do the right thing.
@@ -363,7 +363,7 @@ class TagLookupTable(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
 // DFTAG_RI 302 p.124
 // xdim*ydim*elements*NTsize bytes (xdim, ydim, elements, and NTsize are specified in the corresponding DFTAG_ID)
 // LOOK should be xdim*ydim*NTsize bytes ??
-class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var raster : ArrayTyped<*>? = null
 
     // not needed - regular data reading will do the right thing.
@@ -390,7 +390,7 @@ class TagRasterImage(icode: Int, refno: Int, offset : Long, length : Int) : Tag(
 }
 
 // DFTAG_RIG (306), DFTAG_NDG (720) lists of other tags
-class TagDataGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagDataGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     val nelems = length / 4
     var elem_code = IntArray(0)
     var elem_ref = IntArray(0)
@@ -419,7 +419,7 @@ class TagDataGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ic
 }
 
 // Scientific data dimension record 701 p.133
-class TagSDD(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagSDD(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var rank: Short = 0
     var shape = IntArray(0)
     var data_nt_ref: Int = 0 // Reference number of DFTAG_NT for data
@@ -461,7 +461,7 @@ class TagSDS(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, r
 } */
 
 // SDL, SDU, SDF (704, 705, 706) p 130
-class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var texts = mutableListOf<String>()
     var wasRead : Boolean = false
 
@@ -490,7 +490,7 @@ class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode,
 }
 
 // Scientific data max/min 707, p132
-class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var bb: ByteArray? = null
 
     override fun readTag(h4 : H4builder) {
@@ -526,7 +526,7 @@ class TagSDminmax(icode: Int, refno: Int, offset : Long, length : Int) : Tag(ico
 }
 
 // should be
-class TagSDminmaxShouldBe(icode: Int, refno: Int, offset : Long, length : Int, val datatype: Datatype<*>) : Tag(icode, refno, offset, length) {
+internal class TagSDminmaxShouldBe(icode: Int, refno: Int, offset : Long, length : Int, val datatype: Datatype<*>) : Tag(icode, refno, offset, length) {
     private var minmax: Array<*>? = null
 
     override fun readTag(h4 : H4builder) {
@@ -571,7 +571,7 @@ class TagSDminmaxShouldBe(icode: Int, refno: Int, offset : Long, length : Int, v
 
 
 // 732 fill value
-class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var fillValue : Any? = null
 
     fun readFillValue(h4 : H4builder, datatype : Datatype<*>): Any? {
@@ -600,7 +600,7 @@ class TagFV(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, re
 // DFTAG_VG 1965 p 140
 // Group tags together to create "user definded objects" such as Variables.
 // A Vset is identified by a Vgroup, an object that contains information about the members of the Vset.
-class TagVGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagVGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var nelems : Int = 0
     var elem_code = IntArray(0)
     var elem_ref = IntArray(0)
@@ -650,7 +650,7 @@ class TagVGroup(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode
 }
 
 // DFTAG_VH 1962 Vdata header p 141. Describes a Structure.
-class TagVH(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
+internal class TagVH(icode: Int, refno: Int, offset : Long, length : Int) : Tag(icode, refno, offset, length) {
     var interlace: Short = 0 // Constant indicating interlace scheme used
     var nelems = 0 // number of entries in Vdata
     var ivsize = 0 // Size of one Vdata record

@@ -69,7 +69,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
     }
 
     companion object {
-        fun fromArray(shape : IntArray, arrays: List<Array<*>>, baseType : Datatype<*>) : ArrayVlen<*> {
+        internal fun fromArray(shape : IntArray, arrays: List<Array<*>>, baseType : Datatype<*>) : ArrayVlen<*> {
             return when (baseType) {
                 Datatype.BYTE -> ArrayVlen(shape, arrays.map { it as Array<Byte> }, baseType as Datatype<Byte>)
                 Datatype.UBYTE, Datatype.ENUM1 -> ArrayVlen(shape, arrays.map { it as Array<UByte> }, baseType as Datatype<UByte>)

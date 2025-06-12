@@ -2,7 +2,7 @@ package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.computeSize
 
-class IndexFn(val shape : IntArray) {
+internal class IndexFn(val shape : IntArray) {
     val nelems = shape.computeSize()
     init {
         require(shape.size == 2) // ??
@@ -24,7 +24,7 @@ class IndexFn(val shape : IntArray) {
     fun flippedShape() = shape.flip()
 }
 
-fun IntArray.flip() : IntArray {
+internal fun IntArray.flip() : IntArray {
     val rank = this.size
     return IntArray(rank) { this[rank - it - 1] }
 }

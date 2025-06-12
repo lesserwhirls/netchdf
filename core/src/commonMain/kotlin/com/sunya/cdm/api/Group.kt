@@ -2,7 +2,7 @@ package com.sunya.cdm.api
 
 import com.sunya.cdm.util.makeValidCdmObjectName
 
-class Group(orgName : String,
+class Group internal constructor(orgName : String,
             val typedefs : List<Typedef>,
             val dimensions : List<Dimension>,
             val attributes : List<Attribute<*>>,
@@ -100,7 +100,7 @@ class Group(orgName : String,
         return if (parent == null) "root" else name
     }
 
-    class Builder(val name : String) {
+    internal class Builder(val name : String) {
         val dimensions = mutableListOf<Dimension>()
         val attributes = mutableListOf<Attribute<*>>()
         val typedefs = mutableListOf<Typedef>()

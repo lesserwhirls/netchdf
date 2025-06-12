@@ -8,7 +8,7 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 
 /** Experimental DSL for reading structure data from file */
-class StructDsl(val name : String, val ba : ByteArray, val isBE: Boolean, val flds : List<StructFld>, val startPos : Long) {
+internal class StructDsl(val name : String, val ba : ByteArray, val isBE: Boolean, val flds : List<StructFld>, val startPos : Long) {
     val fldm = flds.associateBy { it.fldName }
 
     fun dataSize() = ba.size
@@ -91,7 +91,7 @@ class StructDsl(val name : String, val ba : ByteArray, val isBE: Boolean, val fl
     }
 }
 
-class StructDslBuilder(val name : String, val raf: OpenFileIF, val state: OpenFileState) {
+internal class StructDslBuilder(val name : String, val raf: OpenFileIF, val state: OpenFileState) {
     val flds = mutableListOf<StructFld>()
     val startPos = state.pos
     var pos = 0
@@ -149,7 +149,7 @@ class StructDslBuilder(val name : String, val raf: OpenFileIF, val state: OpenFi
     }
 }
 
-data class StructFld(val fldName: String, val pos: Int, val elemSize: Int, val nelems : Int) {
+internal data class StructFld(val fldName: String, val pos: Int, val elemSize: Int, val nelems : Int) {
     constructor(fldName: String, pos: Int, length: Int) : this(fldName, pos, length, 1)
 
     override fun toString(): String {
@@ -157,7 +157,7 @@ data class StructFld(val fldName: String, val pos: Int, val elemSize: Int, val n
     }
 }
 
-fun structdsl(name : String, raf : OpenFileIF, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
+internal fun structdsl(name : String, raf : OpenFileIF, state : OpenFileState, lambda: StructDslBuilder.() -> Unit): StructDsl {
     val builder = StructDslBuilder(name, raf, state)
     builder.lambda()
     return builder.build()

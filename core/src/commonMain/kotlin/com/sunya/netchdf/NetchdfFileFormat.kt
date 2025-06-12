@@ -97,7 +97,7 @@ import com.sunya.cdm.iosp.OpenFileState
  */
 
 /** Enumeration of the kinds of NetCDF file formats. NC_FORMAT_64BIT_DATA is not currently supported in this library.  */
-enum class NetchdfFileFormat(private val version: Int, private val formatName: String) {
+internal enum class NetchdfFileFormat(private val version: Int, private val formatName: String) {
     INVALID(0, "Invalid"),  //
     NC_FORMAT_CLASSIC(1, "NetCDF-3"),  //
     NC_FORMAT_64BIT_OFFSET(2, "netcdf-3 64bit-offset"),

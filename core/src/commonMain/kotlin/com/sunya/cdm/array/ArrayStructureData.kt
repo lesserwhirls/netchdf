@@ -22,7 +22,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
 
     private val heap = mutableMapOf<Int, Any>()
     // private var heapIndex = 0
-    fun putOnHeap(offset: Int, value: Any) {
+    internal fun putOnHeap(offset: Int, value: Any) {
         heap[offset] = value
         // ba.putInt(offset, heapIndex) // TODO clobber the ByteArray ?? Or just use the byte pos, which is unique
         //val result = heapIndex
@@ -31,7 +31,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
     }
 
     // TODO not a bad idea to start at 1, so that 0 == not set
-    fun getFromHeap(offset: Int): Any? {
+    internal fun getFromHeap(offset: Int): Any? {
         // val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
         return heap[offset]
     }
@@ -99,8 +99,8 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
             }
         }
 
-        fun getFromHeap(offset: Int) = this@ArrayStructureData.getFromHeap(offset)
-        fun putOnHeap(member: StructureMember<*>, value: Any) =
+        internal fun getFromHeap(offset: Int) = this@ArrayStructureData.getFromHeap(offset)
+        internal fun putOnHeap(member: StructureMember<*>, value: Any) =
             this@ArrayStructureData.putOnHeap(member.offset + this.offset, value)
 
         override fun equals(other: Any?): Boolean {
@@ -131,7 +131,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         }
     }
 
-    fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
+    internal fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
         members.filter { it.datatype.isVlenString }.forEach { member ->
             this.forEach { sdata ->
                 val sval = lamda(member, sdata.offset + member.offset)
@@ -140,7 +140,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         }
     }
 
-    fun putVlensOnHeap(lamda: (StructureMember<*>, Int) -> ArrayVlen<*>) {
+    internal fun putVlensOnHeap(lamda: (StructureMember<*>, Int) -> ArrayVlen<*>) {
         members.filter { it.datatype == Datatype.VLEN }.forEach { member ->
             // println("member ${member.name}")
             this.forEachIndexed { idx, sdata ->

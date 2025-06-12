@@ -84,7 +84,7 @@ internal fun H5builder.readSymbolTable(state : OpenFileState) : SymbolTableEntry
 }
 
 // III.C. Disk Format: Level 1C - Symbol Table Entry (aka Group Entry)
-data class SymbolTableEntry(
+internal data class SymbolTableEntry(
     val nameOffset: Long,
     val objectHeaderAddress: Long,
     val cacheType : Int,

@@ -22,7 +22,7 @@ import com.sunya.cdm.iosp.OpenFileState
 //     associates the VDS to the source dataset elements that are stored across a collection of HDF5 files.
 
 
-fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
+internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
     val tstate = state.copy()
     val version = raf.readByte(tstate).toInt()
     val layoutClass = if (version == 3) raf.readByte(tstate).toInt() else raf.readByte(tstate.incr(1)).toInt()
@@ -93,7 +93,7 @@ fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayoutMessage {
 
 }
 
-enum class LayoutClass(val num : Int) {
+internal enum class LayoutClass(val num : Int) {
     Compact(0), Contiguous(1), Chunked(2);
 
     companion object {
@@ -108,21 +108,21 @@ enum class LayoutClass(val num : Int) {
     }
 }
 
-open class DataLayoutMessage(layoutClassNum: Int)  : MessageHeader(MessageType.Layout) {
+internal open class DataLayoutMessage(layoutClassNum: Int)  : MessageHeader(MessageType.Layout) {
     val layoutClass = LayoutClass.of(layoutClassNum)
     override fun show() : String = "class=$layoutClass"
 }
-data class DataLayoutCompact(val dims : IntArray, val compactData: ByteArray) : DataLayoutMessage(0)
+internal data class DataLayoutCompact(val dims : IntArray, val compactData: ByteArray) : DataLayoutMessage(0)
 
-data class DataLayoutContiguous(val dims : IntArray, val dataAddress: Long) : DataLayoutMessage(1) {
+internal data class DataLayoutContiguous(val dims : IntArray, val dataAddress: Long) : DataLayoutMessage(1) {
     override fun show() : String = "class=$layoutClass dims=${dims.contentToString()} dataAddress=$dataAddress"
 }
-data class DataLayoutChunked(val version : Int, val chunkDims : IntArray, val btreeAddress: Long, val chunkedElementSize : Int) : DataLayoutMessage(2) {
+internal data class DataLayoutChunked(val version : Int, val chunkDims : IntArray, val btreeAddress: Long, val chunkedElementSize : Int) : DataLayoutMessage(2) {
     override fun show(): String = "class=$layoutClass dims=${chunkDims.contentToString()} btreeAddress=$btreeAddress chunkedElementSize=$chunkedElementSize"
 }
 
-data class DataLayoutCompact3(val compactData: ByteArray) : DataLayoutMessage(0)
+internal data class DataLayoutCompact3(val compactData: ByteArray) : DataLayoutMessage(0)
 
-data class DataLayoutContiguous3(val dataAddress: Long, val dataSize: Long) : DataLayoutMessage(1) {
+internal data class DataLayoutContiguous3(val dataAddress: Long, val dataSize: Long) : DataLayoutMessage(1) {
     override fun show(): String = "class=$layoutClass dataAddress=$dataAddress dataSize=$dataSize"
 }

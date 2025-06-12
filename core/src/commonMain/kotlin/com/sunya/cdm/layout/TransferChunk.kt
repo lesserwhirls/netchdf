@@ -5,7 +5,7 @@ package com.sunya.cdm.layout
  * Everything here is in elements, not bytes.
  * Read nelems from src at srcElem, store in destination at destElem.
  */
-data class TransferChunk(
+internal data class TransferChunk(
     val srcElem : Long, // start reading here in the source
     val nelems: Int,    // read these many contiguous elements
     val destElem: Long  // start transferring to here in destination
@@ -14,7 +14,7 @@ data class TransferChunk(
 /**
  * Adds the srcPos to the TransferChunk.
  */
-data class LayoutChunk(
+internal data class LayoutChunk(
     val srcPos: Long,   // byte position in source where to read from
     val srcElem : Long, // start reading here in the source
     val nelems: Int,    // read these many contiguous elements

@@ -12,7 +12,7 @@ import kotlin.math.min
  * @param maxElems the approx size of the dataChunks to make
  * @param wantSection the requested section of data.
  */
-class MaxChunker(val maxElems: Int, val wantSection: Section) : AbstractIterator<IndexSpace>() {
+internal class MaxChunker(val maxElems: Int, val wantSection: Section) : AbstractIterator<IndexSpace>() {
     val totalNelems = wantSection.totalElements
     val rank = wantSection.rank
     val strider = LongArray(rank)

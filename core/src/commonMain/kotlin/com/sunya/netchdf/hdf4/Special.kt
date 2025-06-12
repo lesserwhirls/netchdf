@@ -6,7 +6,7 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 
 // p 152: chunked element description record
-class SpecialChunked(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {
+internal class SpecialChunked(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {
     // val sp_tag_head_len : Int
     val version: Byte
     val specialnessFlag: Byte

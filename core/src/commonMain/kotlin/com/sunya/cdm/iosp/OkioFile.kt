@@ -32,7 +32,7 @@ A multiplatform Kotlin library providing basic IO primitives. kotlinx-io is base
  * File handles may be used by multiple threads concurrently. But the individual sources and sinks
  * produced by a file handle are not safe for concurrent use.
  */
-open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
+internal open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
     var allowTruncation = true
     val raf : okio.FileHandle
     val size : Long
@@ -219,7 +219,7 @@ open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
 }
 
 
-data class OpenFileState(var pos : Long, var isBE: Boolean ) {
+internal data class OpenFileState(var pos : Long, var isBE: Boolean ) {
     fun incr(addit : Long) : OpenFileState {
         this.pos += addit
         return this
@@ -227,7 +227,7 @@ data class OpenFileState(var pos : Long, var isBE: Boolean ) {
 }
 
 // terminate at a zero, or end of array
-fun makeString(ba : ByteArray, start : Int, charset : Charset = Charsets.UTF8): String {
+internal fun makeString(ba : ByteArray, start : Int, charset : Charset = Charsets.UTF8): String {
     val maxBytes =  ba.size - start
     return makeStringZ(ba, start, maxBytes, charset)
 }

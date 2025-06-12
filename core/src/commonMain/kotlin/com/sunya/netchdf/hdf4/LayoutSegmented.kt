@@ -18,7 +18,7 @@ import kotlin.math.min
  * @param elemSize size of an element in bytes.
  * @param wantSection the wanted section of data (in elements)
  */
-class LayoutSegmented(segPos: LongArray, segSize: IntArray, override val elemSize: Int, wantSection: Section) : Layout {
+internal class LayoutSegmented(segPos: LongArray, segSize: IntArray, override val elemSize: Int, wantSection: Section) : Layout {
     val srcShape = wantSection.varShape.toIntArray()
 
     override val totalNelems: Long

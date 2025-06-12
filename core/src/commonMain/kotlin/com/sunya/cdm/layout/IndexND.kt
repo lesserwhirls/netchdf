@@ -9,7 +9,7 @@ import com.sunya.cdm.api.Section
  * @param section : a section of the entire datashape.
  * @param datashape : The datashape. May have an extra dimension, which is ignored.
  */
-class IndexND(val section : IndexSpace, val datashape : LongArray) : Iterable<LongArray> {
+internal class IndexND(val section : IndexSpace, val datashape : LongArray) : Iterable<LongArray> {
     val rank = section.rank
     val current : LongArray = section.start.copyOf()
     val totalElements = section.totalElements

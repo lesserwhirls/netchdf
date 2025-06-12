@@ -41,7 +41,7 @@ class ArrayUShort(shape : IntArray, datatype : Datatype<*>, val values: UShortAr
     }
 
     companion object {
-        fun fromShortArray(shape : IntArray, values : ShortArray): ArrayUShort =
+        internal fun fromShortArray(shape : IntArray, values : ShortArray): ArrayUShort =
             ArrayUShort(shape, UShortArray(values.size) { values[it].toUShort() } )
     }
 

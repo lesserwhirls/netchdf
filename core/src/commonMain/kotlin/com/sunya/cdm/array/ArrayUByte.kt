@@ -42,9 +42,9 @@ class ArrayUByte(shape: IntArray, datatype: Datatype<*>, val values: UByteArray)
     }
 
     companion object {
-        fun fromByteArray(shape: IntArray, values: ByteArray): ArrayUByte =
+        internal fun fromByteArray(shape: IntArray, values: ByteArray): ArrayUByte =
             ArrayUByte(shape, UByteArray(values.size) { values[it].toUByte() })
-        fun fromByteArray(shape: IntArray, datatype: Datatype<*>, values: ByteArray): ArrayUByte =
+        internal fun fromByteArray(shape: IntArray, datatype: Datatype<*>, values: ByteArray): ArrayUByte =
             ArrayUByte(shape, datatype, UByteArray(values.size) { values[it].toUByte() })
     }
 }

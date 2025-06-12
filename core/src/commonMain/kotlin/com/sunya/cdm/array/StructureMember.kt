@@ -21,50 +21,8 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         val offset = sdata.offset + this.offset
 
         if (nelems > 1) {
-            /*
-            if (datatype == Datatype.CHAR) { // TODO kludge ?? maybe should be done in caller ??
-                val shapeList = shape.toList()
-                val elemSize = shapeList.last()
-                val useShape = (shapeList.subList(0, shape.size-1)).toIntArray()
-                //return ArrayUByte.fromByteArray(useShape, sdata.ba, offset).makeStringsFromBytes()
-                val tba = TypedByteArray(Datatype.STRING, sdata.ba, offset, this.isBE)
-                val result =  tba.convertToArrayTyped(useShape, elemSize)
-                return result
-            } */
-
             val tba = TypedByteArray(this.datatype, sdata.ba, offset, this.isBE)
             return tba.convertToArrayTyped(shape)
-
-            /*
-            return when (datatype) {
-                Datatype.BYTE -> ArrayByte(shape, memberBB)
-                Datatype.SHORT -> ArrayShort(shape, memberBB)
-                Datatype.INT -> ArrayInt(shape, memberBB)
-                Datatype.LONG -> ArrayLong(shape, memberBB)
-                Datatype.UBYTE, Datatype.ENUM1  -> ArrayUByte(shape, datatype as Datatype<UByte>, memberBB)
-                Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype as Datatype<UShort>, memberBB)
-                Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(shape, datatype as Datatype<UInt>, memberBB)
-                Datatype.ULONG -> ArrayULong(shape, memberBB)
-                Datatype.FLOAT -> ArrayFloat(shape, memberBB)
-                Datatype.DOUBLE -> ArrayDouble(shape, memberBB)
-                Datatype.CHAR -> makeStringZ(bb, offset, nelems)
-                Datatype.STRING -> {
-                    if (datatype.isVlenString) {
-                        sdata.getFromHeap(offset) ?: "unknown"
-                    } else {
-                        makeStringZ(bb, offset, nelems) // a regular string just has nelems bytes at this offset
-                    }
-                }
-                Datatype.VLEN -> {
-                    val ret = sdata.getFromHeap(offset)
-                    if (ret != null) (ret as ArrayVlen<*>) else {
-                        throw RuntimeException("cant find ArrayVlen on heap at $offset")
-                    }
-                }
-                else -> throw RuntimeException("unimplemented datatype=$datatype")
-            }
-
-             */
         }
 
         return when (datatype) {
@@ -78,14 +36,6 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
             Datatype.ULONG -> convertToLong(sdata.ba, offset, this.isBE).toULong()
             Datatype.FLOAT -> convertToFloat(sdata.ba, offset, this.isBE)
             Datatype.DOUBLE -> convertToDouble(sdata.ba, offset, this.isBE)
-            /* Datatype.CHAR -> {
-                if (datatype.isVlenString) {
-                    val ret = sdata.getFromHeap(offset)
-                    ret ?: "unknown"
-                } else {
-                    makeStringZ(sdata.ba, offset, nelems) // nelems ??
-                }
-            } */
             Datatype.STRING -> {
                 if (datatype.isVlenString) {
                     val ret = sdata.getFromHeap(offset)
@@ -122,45 +72,6 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         val tba = TypedByteArray(this.datatype, sdata.ba, offset, this.isBE)
         return tba.convertToArrayTyped(shape)
 
-        /*
-        val bb = sdata.bb
-        bb.order(this.endian ?: sdata.bb.order())
-
-        val memberBB = ByteBuffer.allocate(nelems * datatype.size) // why cant we use a view ??
-        memberBB.order(this.endian ?: sdata.bb.order())
-        repeat(nelems * datatype.size) { memberBB.put(it, sdata.bb.get(offset + it)) }
-        return when (datatype) {
-            Datatype.BYTE -> ArrayByte(shape, memberBB)
-            Datatype.SHORT -> ArrayShort(shape, memberBB)
-            Datatype.INT -> ArrayInt(shape, memberBB)
-            Datatype.LONG -> ArrayLong(shape, memberBB)
-            Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1  -> ArrayUByte(shape, datatype as Datatype<UByte>, memberBB)
-            Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype as Datatype<UShort>, memberBB)
-            Datatype.UINT, Datatype.ENUM4  -> ArrayUInt(shape, datatype as Datatype<UInt>, memberBB)
-            Datatype.ULONG -> ArrayULong(shape, memberBB)
-            Datatype.FLOAT -> ArrayFloat(shape, memberBB)
-            Datatype.DOUBLE -> ArrayDouble(shape, memberBB)
-            /*
-            Datatype.STRING -> {
-                if (datatype.isVlenString) {
-                    val ret = sdata.getFromHeap(offset)
-                    if (ret == null) "unknown" else ret
-                } else {
-                    makeStringZ(bb, offset, nelems)
-                }
-            }
-
-             */
-            Datatype.VLEN -> {
-                val ret = sdata.getFromHeap(offset)
-                if (ret != null) (ret as ArrayVlen<*>) else {
-                    throw RuntimeException("cant find ArrayVlen on heap at $offset")
-                }
-            }
-            else -> throw RuntimeException("unimplemented datatype=$datatype")
-        }
-
-         */
     }
 
     override fun toString(): String {

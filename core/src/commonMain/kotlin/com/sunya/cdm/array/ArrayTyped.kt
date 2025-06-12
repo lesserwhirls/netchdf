@@ -83,7 +83,7 @@ abstract class ArrayTyped<T>(val datatype: Datatype<*>, val shape: IntArray) : I
             return true
         }
 
-        fun countDiff(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>) : Int {
+        internal fun countDiff(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>) : Int {
             val iter1 = array1.iterator()
             val iter2 = array2.iterator()
             var idx = 0

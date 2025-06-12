@@ -11,7 +11,7 @@ private const val show = false
 /** Test [com.sunya.cdm.layout.Chunker]  */
 class TestChunker {
 
-    fun runChunkerTest(dataChunk: IndexSpace,
+    internal fun runChunkerTest(dataChunk: IndexSpace,
                        wantSection: Section,
                        expectElems : Int?,
                        expectNchunks : Int,
