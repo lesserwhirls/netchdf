@@ -20,6 +20,15 @@ class N3readTest {
     }
 
     @Test
+    fun simple() {
+        val filename = "/home/all/testdata/devcdm/netcdf3/simple_xy.nc"
+        println(filename)
+        openNetchdfFile(filename).use { myfile ->
+            println(myfile!!.cdl())
+        }
+    }
+
+    @Test
     fun problem() {
         val filename = testData + "devcdm/netcdf3/WrfNoTimeVar.nc"
         println(filename)
@@ -79,14 +88,14 @@ class N3readTest {
     }
 
     @Test
-    fun testReadN3data(filename: String) {
+    fun testReadN3data() {
         files().forEach { filename ->
             readNetchdfData(filename, null, null, false, false)
         }
     }
 
     @Test
-    fun testReadN3cdl(filename: String) {
+    fun testReadN3cdl() {
         files().forEach { filename ->
             println(filename)
             openNetchdfFile(filename).use { myfile ->

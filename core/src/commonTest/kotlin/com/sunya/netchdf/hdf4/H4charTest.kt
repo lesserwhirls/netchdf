@@ -2,6 +2,7 @@ package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
+import com.sunya.netchdf.hdf4.H4readTest.Companion
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.readNetchdfData
 import com.sunya.netchdf.testdata.N3Files
@@ -124,8 +125,10 @@ class H4charTest {
     }
 
     @Test
-    fun testReadNetchdfData(filename: String) {
-        readNetchdfData(filename, null, null, false, false)
+    fun testReadNetchdfData() {
+        H4readTest.files().forEach { filename ->
+            readNetchdfData(filename, null, null, false, false)
+        }
     }
 
 }

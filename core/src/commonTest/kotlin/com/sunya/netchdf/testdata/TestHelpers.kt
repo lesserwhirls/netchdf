@@ -1,7 +1,8 @@
-@file:OptIn(ExperimentalCoroutinesApi::class)
+@file:OptIn(ExperimentalCoroutinesApi::class, ExperimentalKotest::class)
 
 package com.sunya.netchdf.testdata
 
+import io.kotest.common.ExperimentalKotest
 import io.kotest.property.PropTestConfig
 import io.kotest.property.ShrinkingMode
 import kotlinx.coroutines.ExperimentalCoroutinesApi

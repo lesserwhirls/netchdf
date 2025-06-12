@@ -1,6 +1,9 @@
 package com.sunya.netchdf.testdata
 
+import okio.FileSystem
 import okio.Path
+import okio.Path.Companion.toPath
+import okio.SYSTEM
 
 const val testData = "/home/all/testdata/"
 
@@ -95,22 +98,23 @@ class TestFiles {
         }
 
         fun one(dirName : String): Sequence<String> {
-            return Files.list(Paths.get(dirName))
-                .filter { file: Path -> !Files.isDirectory(file) }
+            return FileSystem.SYSTEM.list(dirName.toPath())
+                .filter { file: Path -> !FileSystem.SYSTEM.metadata(file).isDirectory }
                 .filter { this.pathFilter(it) }
-                .filter { NameFilterAnd(nameFilters).invoke(it.fileName.toString()) }
-                .map { obj: Path -> obj.toString() }
-                .map { arguments: String? -> Arguments.of(arguments) }
+                .filter { NameFilterAnd(nameFilters).invoke(it.toString()) }
+                .map { it.toString() }
+                .asSequence()
         }
 
         fun all(dirName : String): Sequence<String> {
-            return Sequence.concat(one(dirName), subdirs(dirName))
+            return one(dirName) + subdirs(dirName)
         }
 
         fun subdirs(dirName : String): Sequence<String> {
-            return Files.list(Paths.get(dirName))
-                .filter { file: Path -> Files.isDirectory(file) }
-                .flatMap { obj: Path -> all(obj.toString()) }
+            return FileSystem.SYSTEM.list(dirName.toPath())
+                .filter { file: Path -> FileSystem.SYSTEM.metadata(file).isDirectory }
+                .map { it.toString() }
+                .asSequence()
         }
     }
 }

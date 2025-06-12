@@ -97,7 +97,6 @@ fun removeLast(org: IntArray): IntArray {
 fun readMiddleSection(myfile: Netchdf, myvar: Variable<*>, shape: LongArray, showData : Boolean = false) {
     val orgSection = Section(shape)
     val middleRanges = orgSection.ranges.mapIndexed { idx, range ->
-        if (range == null) throw RuntimeException("Range is null")
         val length = orgSection.shape[idx]
         if (length < 9) range
         else LongProgression.fromClosedRange(range.first + length / 3, range.last - length / 3, range.step)

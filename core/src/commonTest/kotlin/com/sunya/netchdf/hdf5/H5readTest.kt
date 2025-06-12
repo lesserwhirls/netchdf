@@ -4,17 +4,11 @@ import com.sunya.cdm.api.Netchdf
 import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
-import com.sunya.netchdf.Stats
-import com.sunya.netchdf.AtomicDouble
-import com.sunya.netchdf.compareNetchIterate
-import com.sunya.netchdf.hdf4.H4readTest
-import com.sunya.netchdf.hdf4.H4readTest.Companion
-import com.sunya.netchdf.readNetchdfData
+import com.sunya.netchdf.*
 import com.sunya.netchdf.testdata.H5Files
 import com.sunya.netchdf.testdata.testData
 
 import kotlin.test.*
-import kotlin.system.measureNanoTime
 
 // Sanity check read Hdf5File header, for non-netcdf4 files
 class H5readTest {
@@ -37,17 +31,17 @@ class H5readTest {
 
     @Test
     fun hasLinkName() {
-        testOpenH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
+        openH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
     }
 
     @Test
     fun opaqueAttribute() {
-        testOpenH5(testData + "devcdm/netcdf4/tst_opaque_data.nc4")
+        openH5(testData + "devcdm/netcdf4/tst_opaque_data.nc4")
     }
 
     @Test
     fun groupHasCycle() {
-        testOpenH5(testData + "cdmUnitTest/formats/hdf5/groupHasCycle.h5")
+        openH5(testData + "cdmUnitTest/formats/hdf5/groupHasCycle.h5")
     }
 
     @Test
@@ -63,12 +57,12 @@ class H5readTest {
 
     @Test
     fun testEos() {
-        testOpenH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
+        openH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
     }
 
     @Test
     fun testNpp() {
-        testOpenH5(testData + "netchdf/npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
+        openH5(testData + "netchdf/npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
     }
 
     // ~/dev/github/netcdf/netchdf:$ h5dump /home/all/testdata/devcdm/netcdf4/tst_solar_cmp.nc
@@ -109,7 +103,7 @@ class H5readTest {
 
     @Test
     fun testReference() {
-        testOpenH5(testData + "cdmUnitTest/formats/hdf5/msg/test.h5")
+        openH5(testData + "cdmUnitTest/formats/hdf5/msg/test.h5")
     }
 
     ///////////////////////////////////////////////////////////////////////////////////

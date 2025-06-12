@@ -46,7 +46,7 @@ class SortFiles {
     }
 
     @Test
-    fun sortFilenames(filename: String) {
+    fun sortFilenames() {
         files().forEach { filename ->
             val path = filename.substringBeforeLast("/")
             val name = filename.substringAfterLast("/")
