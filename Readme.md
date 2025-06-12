@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 6/02/2025_
+_last updated: 6/12/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -21,6 +21,7 @@ cd netchdf
 ````
 
 Also see:
+  * [Building and Running native library](docs/Building.md)
   * [Building and Running ncdump](cli/Readme.md)
 
 ### Why this library? 

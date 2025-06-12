@@ -138,7 +138,7 @@ fun convertToBytes(datatype : Datatype<*>, value: Any?, isBE: Boolean, charset :
     if ( value == null) return ByteArray(datatype.size)
     return when (value) {
         is Byte -> byteArrayOf(value)
-        is Char -> byteArrayOf(value.toByte())
+        // is Char -> byteArrayOf(value.toByte()) // avoid CHAR altogether
         is UByte -> byteArrayOf(value.toByte())
         is Short -> convertFromShort(value, isBE)
         is UShort -> convertFromShort(value.toShort(), isBE)

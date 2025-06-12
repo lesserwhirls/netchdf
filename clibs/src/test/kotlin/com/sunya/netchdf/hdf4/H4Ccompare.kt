@@ -7,7 +7,7 @@ import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
 import com.sunya.netchdf.testdata.H4Files
 import org.junit.jupiter.api.AfterAll
 import kotlin.test.*
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.testdata.testData
@@ -149,7 +149,7 @@ class H4Ccompare {
 
     //////////////////////////////////////////////////////////////////////
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun checkVersion(filename: String) {
         openNetchdfFile(filename).use { ncfile ->
@@ -163,7 +163,7 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readH4header(filename : String) {
         println("=================")
@@ -173,7 +173,7 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readHCheader(filename : String) {
         println("=================")
@@ -183,7 +183,7 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun compareH4header(filename : String) {
         println("================= compareH4header $filename")
@@ -195,7 +195,7 @@ class H4Ccompare {
         }
     }
 
-    // @ParameterizedTest
+    // @Test
     @MethodSource("params")
     fun readH4CheckUnusedTags(filename: String) {
         // unused tags 2
@@ -209,14 +209,14 @@ class H4Ccompare {
         }
     }
 
-    // @ParameterizedTest
+    // @Test
     @MethodSource("params")
     fun readH4data(filename: String) {
         readNetchdfData(filename, null, null, true)
         println()
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun compareData(filename: String) {
         compareData(filename, null)
@@ -233,13 +233,13 @@ class H4Ccompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readCharDataCompare(filename : String) {
         compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR } //  || it.datatype == Datatype.STRING }
     }
 
-    //@ParameterizedTest
+    //@Test
     @MethodSource("params")
     fun testIterateWithClib(filename: String) {
         compareIterateWithClib(filename)

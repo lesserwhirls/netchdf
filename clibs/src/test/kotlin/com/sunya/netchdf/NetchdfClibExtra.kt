@@ -2,7 +2,7 @@ package com.sunya.netchdf
 
 import com.sunya.netchdf.testdata.NetchdfExtraFiles
 import kotlin.test.*
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.testdata.testData
@@ -57,7 +57,7 @@ class NetchdfClibExtra {
     }
 
     ///////////////////////////////////////////////////////
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun checkVersion(filename: String) {
         openNetchdfFile(filename).use { ncfile ->
@@ -71,19 +71,19 @@ class NetchdfClibExtra {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCompareCdlWithClib(filename: String) {
         compareCdlWithClib(filename, showCdl = true)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readNetchdfData(filename: String) {
         readNetchdfData(filename, null)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCompareDataWithClib(filename: String) {
         compareDataWithClib(filename)

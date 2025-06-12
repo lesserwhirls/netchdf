@@ -7,7 +7,7 @@ import java.util.stream.Stream
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.testdata.testData
@@ -35,7 +35,7 @@ class N3ncdumpTest {
         compareN3header(testData + "devcdm/netcdf3/testWriteFill.nc")
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun compareN3header(filename : String) {
         println("=================")
