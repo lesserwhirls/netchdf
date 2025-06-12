@@ -4,7 +4,7 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.compareSelectedDataWithClib
 import kotlin.test.*
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.testdata.N3Files
@@ -53,13 +53,13 @@ class N3dataCompare {
         compareDataWithClib(testData + "devcdm/netcdf3/tst_small_classic.nc", null)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readN3dataCompareNC(filename : String) {
         compareDataWithClib(filename, null)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readCharDataCompareNC(filename : String) {
         compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR || it.datatype == Datatype.STRING }

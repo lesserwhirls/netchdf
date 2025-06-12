@@ -5,35 +5,31 @@ import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.netchdf.Stats
-import com.sunya.netchdf.*
-import com.sunya.netchdf.testdata.*
+import com.sunya.netchdf.AtomicDouble
+import com.sunya.netchdf.compareNetchIterate
+import com.sunya.netchdf.hdf4.H4readTest
+import com.sunya.netchdf.hdf4.H4readTest.Companion
+import com.sunya.netchdf.readNetchdfData
+import com.sunya.netchdf.testdata.H5Files
+import com.sunya.netchdf.testdata.testData
 
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.BeforeAll
 import kotlin.test.*
-import org.junit.jupiter.params.Test
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import java.util.stream.Stream
 import kotlin.system.measureNanoTime
 
 // Sanity check read Hdf5File header, for non-netcdf4 files
-class Hdf5openTest {
+class H5readTest {
 
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
-            return Stream.of( N4Files.params(),  H5Files.params()).flatMap { i -> i };
+        fun files(): Sequence<String> {
+            return H5Files.params()
         }
 
-        @JvmStatic
-        @BeforeAll
+        @BeforeTest
         fun beforeAll() {
             Stats.clear()
         }
 
-        @JvmStatic
-        @AfterAll
+        @AfterTest
         fun afterAll() {
             Stats.show()
         }
@@ -45,97 +41,105 @@ class Hdf5openTest {
     }
 
     @Test
-    fun problemWrf() {
-        readH5concurrent(testData + "cdmUnitTest/formats/hdf5/wrf/wrf_out_par.h5")
-    }
-
-    // a compound with a member thats a type thats not a seperate typedef.
-    // the obvious thing to do is to be able to add a typedef when processing the member.
-    // or look for it when building H5group
-    @Test
-    fun compoundEnumTypedef() {
-        testOpenH5(testData + "devcdm/hdf5/enumcmpnd.h5")
-    }
-
-    @Test
-    fun vlenData() {
-        readNetchdfData(testData + "devcdm/netcdf4/tst_vlen_data.nc4")
-        compareDataWithClib(testData + "devcdm/netcdf4/tst_vlen_data.nc4")
-    }
-
-    @Test
-    fun compoundData() {
-        readNetchdfData(testData + "devcdm/netcdf4/tst_compounds.nc4")
-        compareDataWithClib(testData + "devcdm/netcdf4/tst_compounds.nc4")
-    }
-
-    @Test
-    fun stringData() {
-        readNetchdfData(testData + "devcdm/netcdf4/tst_strings.nc")
-        compareDataWithClib(testData + "devcdm/netcdf4/tst_strings.nc")
-    }
-
-    @Test
     fun opaqueAttribute() {
         testOpenH5(testData + "devcdm/netcdf4/tst_opaque_data.nc4")
     }
 
     @Test
-    fun testIterateDataSumInfinite() {
+    fun groupHasCycle() {
+        testOpenH5(testData + "cdmUnitTest/formats/hdf5/groupHasCycle.h5")
+    }
+
+    @Test
+    fun timeIterateConcurrent() {
         // readH5(testData + "devcdm/hdf5/zip.h5", "/Data/Compressed_Data")
-        compareDataWithClib(testData + "cdmUnitTest/formats/hdf5/StringsWFilter.h5", "/observation/matrix/data")
         readH5concurrent(testData + "cdmUnitTest/formats/hdf5/StringsWFilter.h5", "/observation/matrix/data")
     }
 
     @Test
-    fun vlstra() {
-        testCdlWithClib(testData + "devcdm/hdf5/vlstra.h5")
+    fun timeIterateProblem() {
+        compareNetchIterate(testData + "cdmUnitTest/formats/hdf5/xmdf/mesh_datasets.h5", "/2DMeshModule/mesh/Datasets/velocity_(64)/Mins")
     }
 
-    //// the following wont work opening as netcdf
     @Test
-    fun notNetcdf() {
-        compareCdlWithClib(testData + "devcdm/hdf5/compound_complex.h5", showCdl = true)
-        compareCdlWithClib(testData + "devcdm/hdf5/bitop.h5", showCdl = true)
-        compareCdlWithClib(testData + "devcdm/hdf5/bitfield.h5", showCdl = true)
-        compareCdlWithClib(testData + "devcdm/hdf5/SDS_array_type.h5", showCdl = true)
+    fun testEos() {
+        testOpenH5(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
+    }
+
+    @Test
+    fun testNpp() {
+        testOpenH5(testData + "netchdf/npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
+    }
+
+    // ~/dev/github/netcdf/netchdf:$ h5dump /home/all/testdata/devcdm/netcdf4/tst_solar_cmp.nc
+    //HDF5 "/home/all/testdata/devcdm/netcdf4/tst_solar_cmp.nc" {
+    //GROUP "/" {
+    //   ATTRIBUTE "my_favorite_wind_speeds" {
+    //      DATATYPE  "/wind_vector"
+    //      DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
+    //      DATA {
+    //      (0): {
+    //            13.3,
+    //            12.2
+    //         },
+    //      (1): {
+    //            13.3,
+    //            12.2
+    //         },
+    //      (2): {
+    //            13.3,
+    //            12.2
+    //         }
+    //      }
+    //   }
+    //   DATATYPE "wind_vector" H5T_COMPOUND {
+    //      H5T_IEEE_F32LE "u";
+    //      H5T_IEEE_F32LE "v";
+    //   }
+    //}
+    //}
+    @Test
+    fun testIsNetcdf() { // why is this not isNetcdf? Because theres nothing it in to show that it is.
+        val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
+        Hdf5File(filename).use { h5file ->
+            println(h5file.type())
+            println(h5file.cdl())
+        }
+    }
+
+    @Test
+    fun testReference() {
+        testOpenH5(testData + "cdmUnitTest/formats/hdf5/msg/test.h5")
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    @MethodSource("params")
-    fun testOpenH5(filename: String) {
-        openH5(filename, null)
+    fun testOpenH5() {
+        files().forEach { filename ->
+            openH5(filename, null)
+        }
     }
 
     @Test
-    @MethodSource("params")
-    fun testShowNcHeader(filename: String) {
-        if (filename.endsWith("compound_complex.h5") ||
-            filename.endsWith("bitop.h5") ||
-            filename.endsWith("bitfield.h5") ||
-            filename.endsWith("SDS_array_type.h5")) return
-
-        showNcHeader(filename)
+    fun testReadNetchdfData() {
+        files().forEach { filename ->
+            readNetchdfData(filename)
+        }
     }
 
-    @Test
-    @MethodSource("params")
-    fun testCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
+    //@Test
+    fun testReadIterate() {
+        files().forEach { filename ->
+            compareNetchIterate(filename, null)
+        }
     }
 
-    @Test
-    @MethodSource("params")
-    fun testReadNetchdfData(filename: String) {
-        readNetchdfData(filename)
-    }
-
-    @Test
-    @MethodSource("params")
-    fun testReadConcurrent(filename: String) {
-        readH5concurrent(filename, null)
+    //@Test
+    fun testReadConcurrent() {
+        files().forEach { filename ->
+            readH5concurrent(filename, null)
+        }
     }
 
     /////////////////////////////////////////////////////////
@@ -157,7 +161,7 @@ class Hdf5openTest {
 
     fun readH5concurrent(filename: String, varname : String? = null) {
         Hdf5File(filename).use { myfile ->
-            println("${myfile.type()} $filename ${"%.2f".format(myfile.size / 1000.0 / 1000.0)} Mbytes")
+            println("${myfile.type()} $filename ${myfile.size / 1000.0 / 1000.0} Mbytes")
             var countChunks = 0
             if (varname != null) {
                 val myvar = myfile.rootGroup().allVariables().find { it.fullname() == varname } ?: throw RuntimeException("cant find $varname")
@@ -170,7 +174,7 @@ class Hdf5openTest {
                 }
             }
             if (countChunks > 0) {
-                println("${myfile.type()} $filename ${"%.2f".format(myfile.size / 1000.0 / 1000.0)} Mbytes chunks = $countChunks")
+                println("${myfile.type()} $filename ${myfile.size / 1000.0 / 1000.0} Mbytes chunks = $countChunks")
             }
         }
     }
@@ -181,9 +185,6 @@ class Hdf5openTest {
         var countChunks = 0
         val time1 = measureNanoTime {
             val chunkIter = myFile.chunkIterator(myvar)
-            if (chunkIter == null) {
-                return 0
-            }
             for (pair in chunkIter) {
                 // println(" ${pair.section} = ${pair.array.shape.contentToString()}")
                     sumValues(pair.array)

@@ -1,6 +1,6 @@
 package com.sunya.netchdf.netcdf3
 
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.netcdfClib.NClibFile
@@ -20,7 +20,7 @@ class N3headerCompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun checkVersion(filename: String) {
         Netcdf3File(filename).use { ncfile ->
@@ -29,7 +29,7 @@ class N3headerCompare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readN3header(filename : String) {
         println(filename)

@@ -21,5 +21,5 @@ rootProject.name = "netchdf"
 
 include("core")
 // include("clibs")
-include("cli")
-include("testFixtures")
+// include("cli")
+// include("testFixtures")

@@ -9,7 +9,7 @@ import com.sunya.netchdf.netcdfClib.NClibFile
 import com.sunya.netchdf.readNetchdfData
 import com.sunya.netchdf.testdata.*
 import kotlin.test.*
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.*
@@ -64,7 +64,7 @@ class Hdf5Compare {
         compareDataWithClib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun checkVersion(filename: String) {
         Hdf5File(filename).use { ncfile ->
@@ -74,19 +74,19 @@ class Hdf5Compare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCdlWithClib(filename: String) {
         compareCdlWithClib(filename)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCompareDataWithClib(filename: String) {
         compareDataWithClib(filename)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun compareH5andNclib(filename: String) {
         println("===================================================")
@@ -101,7 +101,7 @@ class Hdf5Compare {
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun readCharDataCompareNC(filename : String) {
         compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR }

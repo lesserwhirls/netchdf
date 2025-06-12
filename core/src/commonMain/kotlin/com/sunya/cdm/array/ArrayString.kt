@@ -73,6 +73,18 @@ fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     return this.values.decodeToString(charset, 0, count)
 }
 
+fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
+    var count = 0
+    for (c in this) {
+        if (c.toInt() == 0) {
+            break
+        }
+        count++
+    }
+    val ba = this.map { it.toByte()  }.toByteArray()
+    return ba.decodeToString(charset, 0, count)
+}
+
 /**
  * Create an ArrayString out of this ArrayUByte of any rank.
  * If there is a null (zero) value in the array, the String will end there.

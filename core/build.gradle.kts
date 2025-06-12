@@ -28,13 +28,14 @@ kotlin {
             dependencies {
             }
         }
-        val jvmTest by getting {
+        val commonTest by getting {
             dependencies {
-                implementation(project(":testFixtures"))
+                // implementation(project(":testFixtures"))
                 implementation(kotlin("test"))
-                implementation(kotlin("test-junit"))
+                // implementation(kotlin("test-junit"))
                 // implementation(libs.bundles.jvmtest)
                 implementation(libs.kotest.property)
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
         /*

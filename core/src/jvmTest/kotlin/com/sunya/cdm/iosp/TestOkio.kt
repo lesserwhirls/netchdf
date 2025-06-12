@@ -2,7 +2,6 @@ package com.sunya.cdm.iosp
 
 import com.sunya.cdm.util.IOcopyB
 import okio.*
-import okio.Path.Companion.toPath
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.util.zip.Inflater
@@ -13,46 +12,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class TestOkio {
-
-    @Test
-    fun testPeek() {
-        val buffer = Buffer()
-        buffer.writeUtf8("abcdefghi")
-        assertEquals("abc", buffer.readUtf8(3)) // returns "abc", buffer contains "defghi"
-        val peek = buffer.peek()
-        assertEquals("def", peek.readUtf8(3)) // returns "def", buffer contains "defghi"
-        assertEquals("ghi", peek.readUtf8(3)) // returns "ghi", buffer contains "defghi"
-        assertEquals("def", buffer.readUtf8(3)) // returns "def", buffer contains "ghi"
-    }
-
-    @Test
-    fun testZipFile() {
-        val filename = "/home/stormy/Downloads/p256.zip"
-        val path = filename.toPath()
-        val fileSystem = FileSystem.SYSTEM
-        val zipFile = fileSystem.openZip(path)
-
-        println("zipFile: $filename")
-        val paths = zipFile.listRecursively("/".toPath()).toList()
-        paths.forEach {
-            println("  $it")
-        }
-
-        // ZipFileSystem
-        //         val inflaterSource = InflaterSource(
-        //          FixedLengthSource(source, entry.compressedSize, truncate = true),
-        //          Inflater(true),
-        //        )
-        //        FixedLengthSource(inflaterSource, entry.size, truncate = false)
-
-        val bs = zipFile.source(paths[1]).buffer()
-        while (true) {
-            val line = bs.readUtf8Line() ?: break
-            println(line)
-        }
-
-        zipFile.close()
-    }
 
     @Test
     fun testEncodeDecode() {

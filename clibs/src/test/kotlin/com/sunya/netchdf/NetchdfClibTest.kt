@@ -10,7 +10,7 @@ import com.sunya.netchdf.testdata.*
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import kotlin.test.*
-import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.Test
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
@@ -230,7 +230,7 @@ isThreadsafe = 0 = false
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun checkVersion(filename: String) {
         openNetchdfFile(filename).use { ncfile ->
@@ -244,32 +244,32 @@ isThreadsafe = 0 = false
         }
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testShowNetchdfHeader(filename: String) {
         showNetchdfHeader(filename)
     }
 
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCdlWithClib(filename: String) {
         compareCdlWithClib(filename)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testReadNetchdfData(filename: String) {
         readNetchdfData(filename)
     }
 
-    @ParameterizedTest
+    @Test
     @MethodSource("params")
     fun testCompareDataWithClib(filename: String) {
         compareDataWithClib(filename)
     }
 
-    //@ParameterizedTest
+    //@Test
     //@MethodSource("params")
     fun testIterateWithClib(filename: String) {
         compareIterateWithClib(filename)
