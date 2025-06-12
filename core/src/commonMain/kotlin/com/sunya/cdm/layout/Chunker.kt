@@ -2,7 +2,7 @@ package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.Section
 
-enum class Merge { all, none, notFirst }
+internal enum class Merge { all, none, notFirst }
 
 /**
  * Copies the intersection of a dataChunk and wantSpace to the destination buffer.
@@ -15,7 +15,7 @@ enum class Merge { all, none, notFirst }
  * @param wantSpace the requested section of data.
  * @param merge merge strategy for dimensions that can be merged and still keep contiguous transfer
  */
-class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merge = Merge.all) : AbstractIterator<TransferChunk>() {
+internal class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, merge : Merge = Merge.all) : AbstractIterator<TransferChunk>() {
 
     val nelems: Int // number of elements to read at one time
     val totalNelems: Long // total number of elements in wantSection

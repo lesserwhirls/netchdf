@@ -10,10 +10,10 @@ import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.array.makeString
 
-const val debugFlow = false
 private const val debugStart = false
 private const val debugSuperblock = false
 internal const val debugTypedefs = false
+internal const val debugFlow = false
 
 /**
  * Build the rootGroup for an HDF5 file.
@@ -22,7 +22,7 @@ internal const val debugTypedefs = false
  *
  * @see "https://support.hdfgroup.org/HDF5/doc/Specs.html"
  */
-class H5builder(
+internal class H5builder(
     rafOrg: OpenFileIF,
     val strict: Boolean,
     val valueCharset: Charset = Charsets.UTF8,

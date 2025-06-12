@@ -10,7 +10,7 @@ data class Attribute<T>(val orgName : String, val datatype : Datatype<T>, val va
         fun from(name : String, value : String) = Attribute(name, Datatype.STRING, listOf(value))
     }
 
-    class Builder<T>(val name : String, var datatype : Datatype<T>) {
+    internal class Builder<T>(val name : String, var datatype : Datatype<T>) {
         var values : List<T> = emptyList()
 
         fun setValues(values : List<*>) : Builder<T> {

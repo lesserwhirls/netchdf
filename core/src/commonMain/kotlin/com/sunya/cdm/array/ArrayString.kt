@@ -61,7 +61,7 @@ fun ByteArray.makeStringFromBytes(): String {
  * If there is a null (zero) value in the array, the String will end there.
  * The null is not returned as part of the String.
  */
-fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
+internal fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     var count = 0
     for (c in this) {
         if (c.toInt() == 0) {
@@ -73,7 +73,7 @@ fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     return this.values.decodeToString(charset, 0, count)
 }
 
-fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
+internal fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     var count = 0
     for (c in this) {
         if (c.toInt() == 0) {
@@ -92,7 +92,7 @@ fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
  *
  * @return Array of Strings of rank - 1.
  */
-fun ArrayUByte.makeStringsFromBytes(charset : Charset = Charsets.UTF8): ArrayString {
+internal fun ArrayUByte.makeStringsFromBytes(charset : Charset = Charsets.UTF8): ArrayString {
     val ba = this.values.map { it.toByte() }.toByteArray()
 
     val rank = shape.size

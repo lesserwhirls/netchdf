@@ -4,7 +4,6 @@ import com.sunya.cdm.api.Dimension
 import com.sunya.cdm.api.Group
 import com.sunya.cdm.util.Indent
 import com.sunya.cdm.util.makeValidCdmObjectName
-import kotlin.math.min
 
 /*
  * http://newsroom.gsfc.nasa.gov/sdptoolkit/hdfeosfaq.html
@@ -32,7 +31,7 @@ import kotlin.math.min
 private val EOSprefix = listOf("archivemetadata",  "coremetadata", "productmetadata", "structmetadata", "oldstructmetadata",
     "gridstructure", "pointstructure", "swathstructure")
 
-class EOS {
+internal class EOS {
     companion object {
         fun isMetadata(name : String) : Boolean {
             val lowername = name.lowercase()
@@ -46,7 +45,7 @@ private val renameGroups = listOf("SwathName", "GridName", "PointName")
 private val wantGroup = listOf("GeoField", "DataField")
 private val wantGroupNewName = listOf("Geolocation Fields", "Data Fields")
 
-data class ODLobject(var name: String) {
+internal data class ODLobject(var name: String) {
     val attributes = mutableListOf<Pair<String, String>>()
     fun toString(indent: Indent): String {
         return buildString {
@@ -57,7 +56,7 @@ data class ODLobject(var name: String) {
     }
 }
 
-class ODLgroup(var name: String, val parent: ODLgroup?) {
+internal class ODLgroup(var name: String, val parent: ODLgroup?) {
     val nested = mutableListOf<ODLgroup>()
     val variables = mutableListOf<ODLobject>()
     val attributes = mutableListOf<Pair<String, String>>()
@@ -85,7 +84,7 @@ class ODLgroup(var name: String, val parent: ODLgroup?) {
     }
 }
 
-fun ODLtransform(org: ODLgroup): ODLgroup {
+internal fun ODLtransform(org: ODLgroup): ODLgroup {
     val root = ODLgroup("root", null)
     org.nested.forEach { transform(it, root) }
 
@@ -172,7 +171,7 @@ private fun transformVariables(fldGroup: ODLgroup): ODLobject {
     return result
 }
 
-fun findReqDimensions(group: ODLgroup, dims: MutableSet<String>) {
+internal fun findReqDimensions(group: ODLgroup, dims: MutableSet<String>) {
     val v = group.variables.find { it.name == "Variables" }
     v?.attributes?.forEach { att ->
         att.component2().split(",").forEach { dims.add(it) }
@@ -180,13 +179,13 @@ fun findReqDimensions(group: ODLgroup, dims: MutableSet<String>) {
     group.nested.forEach { findReqDimensions(it, dims) }
 }
 
-fun removeFoundDimensions(group: ODLgroup, dims: MutableSet<String>) {
+internal fun removeFoundDimensions(group: ODLgroup, dims: MutableSet<String>) {
     val v = group.variables.find { it.name == "Dimensions" }
     v?.attributes?.forEach { att -> dims.remove(att.component1()) }
     group.nested.forEach { removeFoundDimensions(it, dims) }
 }
 
-fun addMissingDimensions(group: ODLgroup, dims: MutableSet<String>) {
+internal fun addMissingDimensions(group: ODLgroup, dims: MutableSet<String>) {
     val addDimsFromAtt = mutableListOf<Pair<String, String>>()
     group.attributes.forEach { att ->
         if (dims.contains(att.component1())) {
@@ -204,7 +203,7 @@ fun addMissingDimensions(group: ODLgroup, dims: MutableSet<String>) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // parses the original ODL
-fun ODLparseFromString(text: String): ODLgroup {
+internal fun ODLparseFromString(text: String): ODLgroup {
     val root = ODLgroup("root", null)
     var currentStruct = root
     var currentObject: ODLobject? = null
@@ -334,7 +333,7 @@ private const val showDetail = false
 private const val showProblems = false
 private const val showValidationFailures = false
 
-class ODLparser(val rootGroup: Group.Builder, val show : Boolean = false) {
+internal class ODLparser(val rootGroup: Group.Builder, val show : Boolean = false) {
 
     fun applyStructMetadata(structMetadata: String) : Boolean {
        if (showDetail) println("structMetadata = \n$structMetadata")

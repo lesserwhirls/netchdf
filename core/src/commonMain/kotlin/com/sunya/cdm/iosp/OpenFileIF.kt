@@ -3,7 +3,7 @@ package com.sunya.cdm.iosp
 import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
 
-interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
+internal interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
     override fun close()
     fun location(): String
     fun size(): Long

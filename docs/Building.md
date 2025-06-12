@@ -4,7 +4,7 @@
 
 ## Building
 
-./gradlew clean assemble
+`./gradlew clean assemble`
 
 ## JVM
 
@@ -15,19 +15,22 @@ Artifacts are at
 ## linuxX64
 
 Artifacts are at
-* 'core/build/bin/linuxX64/releaseShared/libnetchdf_api.h'
-* 'core/build/bin/linuxX64/releaseShared/libnetchdf.so'
+* `core/build/bin/linuxX64/releaseShared/libnetchdf_api.h`
+* `core/build/bin/linuxX64/releaseShared/libnetchdf.so`
 
 ### add library to LD_LIBRARY_PATH (or copy to existing) (or use current directory)
 
+````
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/dev/core/build/bin/linuxX64/releaseShared
 
 cp core/build/bin/linuxX64/releaseShared/libnetchdf.so /usr/local/lib
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
+````
 
 ### create test c program
 
+````
 cd core/ctest
 gcc main.c \
   -I/home/stormy/dev/github/netcdf/netchdf/core/build/bin/linuxX64/debugShared \
@@ -38,9 +41,11 @@ gcc main.c \
 ./a.out \
   -L/home/stormy/dev/github/netcdf/netchdf/core/build/bin/linuxX64/debugShared \
   -lnetchdf
+````
 
 ### Example
 
+````
 ~:$ echo $LD_LIBRARY_PATH
 /usr/local/lib:/home/stormy/install/HDF_Group/HDF5/1.14.6/lib:.
 
@@ -59,3 +64,4 @@ netcdf3 simple_xy.nc {
   variables:
     int data(x, y) ;
 }
+````

@@ -50,7 +50,7 @@ data class Variable<T>(
         return "$datatype ${fullname()}${shape.contentToString()}"
     }
 
-    class Builder<T>(val name : String, val datatype : Datatype<T>) {
+    internal class Builder<T>(val name : String, val datatype : Datatype<T>) {
         val dimensions = mutableListOf<Dimension>()
         val attributes = mutableListOf<Attribute<*>>()
         var spObject: Any? = null

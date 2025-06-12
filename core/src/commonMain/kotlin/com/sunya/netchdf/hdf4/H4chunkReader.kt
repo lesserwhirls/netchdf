@@ -5,7 +5,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
 
-class H4chunkReader(val h4 : H4builder) {
+internal class H4chunkReader(val h4 : H4builder) {
 
     private val debugChunkingDetail = false
     private val debugChunking = false

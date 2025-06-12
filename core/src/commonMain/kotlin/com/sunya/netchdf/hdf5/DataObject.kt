@@ -51,7 +51,7 @@ internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject
     }
 }
 
-data class DataObject(
+internal data class DataObject(
     val address : Long, // aka object id : obviously unique
     var name: String?, // may be null, may not be unique
     val messages : List<MessageHeader>

@@ -14,7 +14,7 @@ import com.sunya.cdm.array.convertToBytes
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 
-const val attLengthMaxPromote = 4000
+private const val attLengthMaxPromote = 4000
 
 /**
  * @see "https://support.hdfgroup.org/release4/doc/index.html"
@@ -22,7 +22,7 @@ const val attLengthMaxPromote = 4000
 /* Implementation Notes
    1. Early version seem to use the refno as a grouping mechanism. Perhaps before Vgroup existed??
  */
-class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
+internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val alltags = mutableListOf<Tag>() // in order as they appear in the file
 
     var rootBuilder: Group.Builder = Group.Builder("")
@@ -1095,6 +1095,6 @@ private class Group4(val vgroup: TagVGroup) {
     }
 }
 
-fun isDimClass(className: String): Boolean {
+private fun isDimClass(className: String): Boolean {
     return (className == "Dim0.0") or (className == "UDim0.0")
 }

@@ -14,7 +14,7 @@ import kotlin.math.min
  * @see "https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html"
  * @see "http://cucis.ece.northwestern.edu/projects/PnetCDF/CDF-5.html"
  */
-class N3header(rafOrg: OpenFileIF, val root: Group.Builder) {
+internal class N3header(rafOrg: OpenFileIF, val root: Group.Builder) {
   private val filePos = OpenFileState(0L, true)
   private val valueCharset = Charsets.UTF8
   private val isPnetcdf : Boolean
@@ -364,7 +364,7 @@ class N3header(rafOrg: OpenFileIF, val root: Group.Builder) {
  * @param isRecordVariable  is it a record variable?
  * @param elemSize  size in bytes of one element
  */
-data class VinfoN3(
+internal data class VinfoN3(
   val name: String,
   val vsize: Long, // number of bytes. if record, per record else total.
   val begin: Long,

@@ -5,7 +5,7 @@ import okio.InflaterSource
 import okio.deflate
 import okio.inflate
 
-fun encode(sb: ByteArray): ByteArray {
+internal fun encode(sb: ByteArray): ByteArray {
     val source = Buffer()
     source.write(sb)
 
@@ -18,7 +18,7 @@ fun encode(sb: ByteArray): ByteArray {
     return sink.readByteArray()
 }
 
-fun decode(encoded: ByteArray): ByteArray {
+internal fun decode(encoded: ByteArray): ByteArray {
     val source = Buffer()
     source.write(encoded)
 

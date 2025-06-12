@@ -4,7 +4,7 @@ package com.sunya.netchdf.hdf4
   hdf/src/htags.h
   java/src/hdf/hdflib/HDFConstants.java
  */
-enum class TagEnum(val desc: String, val code: Int) {
+internal enum class TagEnum(val desc: String, val code: Int) {
     NONE("", 0),
     NULL("", 1),
     RLE("Run length encoding", 11),

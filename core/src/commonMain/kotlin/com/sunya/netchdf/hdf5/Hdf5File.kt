@@ -10,7 +10,7 @@ import com.sunya.cdm.iosp.*
 /**
  * @param strict true = make it agree with nclib if possible
  */
-class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
+internal class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     private val raf : OpenFileIF = OkioFile(filename)
     val header : H5builder = H5builder(raf, strict)
 

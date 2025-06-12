@@ -16,7 +16,7 @@ package com.sunya.netchdf.netcdf4
 // For files with the _NCProperties attribute, this attribute is redundant. For files created prior to the
 // introduction of the _NCProperties attribute, this may be a useful indicator of the provenance of the file.
 
-object Netcdf4 {
+internal object Netcdf4 {
 
     // Default fill values, used when _FillValue variable attribute is not set.
     const val  NC_FILL_BYTE: Byte = -127

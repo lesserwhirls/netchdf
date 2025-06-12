@@ -12,7 +12,7 @@ import com.sunya.cdm.iosp.OpenFileState
 // the dataspace message is used for that purpose. Datatype messages that are part of a committed datatype (formerly
 // named datatype) message describe a common datatype that can be shared by multiple datasets in the file.
 
-enum class Datatype5(val num : Int) {
+internal enum class Datatype5(val num : Int) {
     Fixed(0), Floating(1), Time(2), String(3), BitField(4), Opaque(5),
     Compound(6), Reference(7), Enumerated(8), Vlen(9), Array(10);
 
@@ -43,7 +43,7 @@ enum class Datatype5(val num : Int) {
 /**
  * @param elemSize The size of a datatype element in bytes.
  */
-open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize: Int, val isBE: Boolean = false) :
+internal open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize: Int, val isBE: Boolean = false) :
     MessageHeader(MessageType.Datatype) {
     var isShared : Boolean = false
 
@@ -78,7 +78,7 @@ open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize
 
 }
 
-open class DatatypeFixed(address : Long, elemSize: Int, isBT: Boolean, val unsigned: Boolean) :
+internal open class DatatypeFixed(address : Long, elemSize: Int, isBT: Boolean, val unsigned: Boolean) :
     DatatypeMessage(address, Datatype5.Fixed, elemSize, isBT) {
     override fun unsigned() = unsigned
     override fun show() : String {
@@ -103,13 +103,13 @@ open class DatatypeFixed(address : Long, elemSize: Int, isBT: Boolean, val unsig
 
 }
 
-class DatatypeFloating(address : Long, elemSize: Int, isBT: Boolean) : DatatypeMessage(address, Datatype5.Floating, elemSize, isBT)
+internal class DatatypeFloating(address : Long, elemSize: Int, isBT: Boolean) : DatatypeMessage(address, Datatype5.Floating, elemSize, isBT)
 
-class DatatypeTime(address : Long, elemSize: Int, isBT: Boolean) : DatatypeMessage(address, Datatype5.Time, elemSize, isBT)
+internal class DatatypeTime(address : Long, elemSize: Int, isBT: Boolean) : DatatypeMessage(address, Datatype5.Time, elemSize, isBT)
 
-class DatatypeString(address : Long, elemSize: Int) : DatatypeMessage(address, Datatype5.String, elemSize)
+internal class DatatypeString(address : Long, elemSize: Int) : DatatypeMessage(address, Datatype5.String, elemSize)
 
-class DatatypeBitField(address : Long, elemSize: Int, isBT: Boolean, unsigned: Boolean, val bitOffset : Short,
+internal class DatatypeBitField(address : Long, elemSize: Int, isBT: Boolean, unsigned: Boolean, val bitOffset : Short,
                        val bitPrecision : Short) : DatatypeFixed(address, elemSize, isBT, unsigned) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -130,7 +130,7 @@ class DatatypeBitField(address : Long, elemSize: Int, isBT: Boolean, unsigned: B
     }
 }
 
-class DatatypeOpaque(address : Long, elemSize: Int, val desc: String) : DatatypeMessage(address, Datatype5.Opaque, elemSize) {
+internal class DatatypeOpaque(address : Long, elemSize: Int, val desc: String) : DatatypeMessage(address, Datatype5.Opaque, elemSize) {
     override fun show() : String {
         return "${type}@${address} elemSize=$elemSize"
     }
@@ -151,7 +151,7 @@ class DatatypeOpaque(address : Long, elemSize: Int, val desc: String) : Datatype
 
 }
 
-class DatatypeCompound(address : Long, elemSize: Int, val members: List<StructureMember5>) :
+internal class DatatypeCompound(address : Long, elemSize: Int, val members: List<StructureMember5>) :
     DatatypeMessage(address, Datatype5.Compound, elemSize) {
 
     override fun show() : String {
@@ -174,7 +174,7 @@ class DatatypeCompound(address : Long, elemSize: Int, val members: List<Structur
 
 }
 
-class StructureMember5(val name: String, val offset: Int, val dims : IntArray, val mdt: DatatypeMessage) {
+internal class StructureMember5(val name: String, val offset: Int, val dims : IntArray, val mdt: DatatypeMessage) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -199,7 +199,7 @@ class StructureMember5(val name: String, val offset: Int, val dims : IntArray, v
  *  0) Object Reference: A reference to another object in this HDF5 file.
  *  1) Dataset Region Reference: A reference to a region within a dataset in this HDF5 file.
  */
-class DatatypeReference(address : Long, elemSize: Int, val referenceType: Int)
+internal class DatatypeReference(address : Long, elemSize: Int, val referenceType: Int)
     : DatatypeMessage(address, Datatype5.Reference, elemSize) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -216,7 +216,7 @@ class DatatypeReference(address : Long, elemSize: Int, val referenceType: Int)
     }
 }
 
-class DatatypeEnum(
+internal class DatatypeEnum(
     address : Long,
     elemSize: Int,
     isBT: Boolean,
@@ -259,7 +259,7 @@ class DatatypeEnum(
     }
 }
 
-class DatatypeVlen(address : Long, elemSize: Int, val base: DatatypeMessage, val isVString: Boolean) :
+internal class DatatypeVlen(address : Long, elemSize: Int, val base: DatatypeMessage, val isVString: Boolean) :
     DatatypeMessage(address, Datatype5.Vlen, elemSize) {
     override fun show() : String {
         return "${type}@${address} elemSize=$elemSize base=(${base.show()}) isVString=$isVString"
@@ -282,7 +282,7 @@ class DatatypeVlen(address : Long, elemSize: Int, val base: DatatypeMessage, val
     }
 }
 
-class DatatypeArray(address : Long, elemSize: Int, val base: DatatypeMessage, val dims: IntArray) :
+internal class DatatypeArray(address : Long, elemSize: Int, val base: DatatypeMessage, val dims: IntArray) :
     DatatypeMessage(address, Datatype5.Array, elemSize) {
 
     override fun show() : String {
@@ -309,7 +309,7 @@ class DatatypeArray(address : Long, elemSize: Int, val base: DatatypeMessage, va
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessage {
+internal fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessage {
     val address = state.pos
     val tandv = raf.readByte(state).toInt()
     val type = tandv and 0xf // lower 4 bits
@@ -444,7 +444,7 @@ fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessage {
     }
 }
 
-fun H5builder.readStructureMember(state: OpenFileState, version: Int, structSize: Int): StructureMember5 {
+internal fun H5builder.readStructureMember(state: OpenFileState, version: Int, structSize: Int): StructureMember5 {
     // dont know how long it is, read until 0 terminated and then (if version < 3) pad to 8 bytes
     val pad = if (version < 3) 8 else 0
     val name = this.readStringZ(state, pad)
@@ -480,7 +480,7 @@ fun H5builder.readStructureMember(state: OpenFileState, version: Int, structSize
 
 // read a zero terminated string
 // pad to next padByte boundary if needed
-fun H5builder.readStringZ(state: OpenFileState, padByte: Int? = null): String {
+internal fun H5builder.readStringZ(state: OpenFileState, padByte: Int? = null): String {
     val filePos: Long = state.pos
     var count = 0
     // have to include the terminating zero in the count
@@ -496,13 +496,13 @@ fun H5builder.readStringZ(state: OpenFileState, padByte: Int? = null): String {
     return result
 }
 
-fun padding(nbytes: Int, multipleOf: Int): Int {
+internal fun padding(nbytes: Int, multipleOf: Int): Int {
     var pad = nbytes % multipleOf
     if (pad != 0) pad = multipleOf - pad
     return pad
 }
 
-fun makeUnsignedIntFromBytes(upper: Int, lower: Int): Int {
+internal fun makeUnsignedIntFromBytes(upper: Int, lower: Int): Int {
     return upper * 256 + lower
 }
 

@@ -157,7 +157,7 @@ internal class H5heap(val header: H5builder) {
 } // H5heap
 
 // level 1E Global Heap
-class GlobalHeap(h5: H5builder, address: Long) {
+internal class GlobalHeap(h5: H5builder, address: Long) {
     private val version: Byte
     private val sizeBytes: Int
     private val hos: MutableMap<Short, HeapObject> = HashMap()

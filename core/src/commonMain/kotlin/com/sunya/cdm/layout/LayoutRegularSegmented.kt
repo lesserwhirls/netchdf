@@ -12,7 +12,7 @@ import com.sunya.cdm.api.computeSize
  * @param recSize size of outer stride in bytes
  * @param wantSection the wanted section of data
 */
-class LayoutRegularSegmented(val startPos: Long, override val elemSize: Int, val recSize: Long, wantSection: Section)
+internal class LayoutRegularSegmented(val startPos: Long, override val elemSize: Int, val recSize: Long, wantSection: Section)
     : Layout {
 
     override val totalNelems: Long

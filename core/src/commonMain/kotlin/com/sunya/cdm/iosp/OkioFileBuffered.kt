@@ -6,7 +6,7 @@ import okio.Buffer
 import okio.buffer
 
 
-class OkioFileBuffered(val openFile : OkioFile, var fileOffset: Long) : OpenFileIF {
+internal class OkioFileBuffered(val openFile : OkioFile, var fileOffset: Long) : OpenFileIF {
     var bufferedSource = openFile.raf.source(fileOffset).buffer()
 
     override fun location() = openFile.location()
