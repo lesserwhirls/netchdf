@@ -5,7 +5,7 @@ package com.sunya.cdm.util
     remove control characters (< 0x20)
     transform "/", ",", embedded space to "_"
 */
-fun makeValidCdmObjectName(orgName: String): String {
+internal fun makeValidCdmObjectName(orgName: String): String {
     val name = orgName.trim { it <= ' ' }
     // common case no change
     var ok = true
@@ -104,15 +104,15 @@ fun backslashUnescape(x: String): String {
 private val org = charArrayOf('\b', '\n', '\r', '\t', '\\', '\'', '\"')
 private val replace = arrayOf("\\b", "\\n", "\\r", "\\t", "\\\\", "\\'", "\\\"")
 
-fun escapeName(s: String): String {
+internal fun escapeName(s: String): String {
     return replace(s, org, replace).replace(" ", "_")
 }
 
-fun escapeCdl(s: String): String {
+internal fun escapeCdl(s: String): String {
     return replace(s, org, replace)
 }
 
-fun replace(x: String, replaceChar: CharArray, replaceWith: Array<String>): String {
+internal fun replace(x: String, replaceChar: CharArray, replaceWith: Array<String>): String {
     // common case no replacement
     var ok = true
     for (aReplaceChar in replaceChar) {
@@ -133,7 +133,7 @@ fun replace(x: String, replaceChar: CharArray, replaceWith: Array<String>): Stri
     return sb.toString()
 }
 
-fun replace(sb: StringBuilder, remove: Char, replaceWith: String) {
+internal fun replace(sb: StringBuilder, remove: Char, replaceWith: String) {
     var i = 0
     while (i < sb.length) {
         if (sb[i] == remove) {

@@ -15,14 +15,6 @@ interface Netchdf : AutoCloseable {
         return CdmFullNames(rootGroup()).findVariable(fullName)
     }
 
-    fun readArrayDataAll(v2: Variable<*>) : ArrayTyped<*> {
-        return  readArrayData(v2, null)
-    }
-
-    fun readArrayDataIF(v2: Variable<*>, section: SectionPartial? = null) : ArrayTyped<*> {
-        return  readArrayData(v2, section)
-    }
-
     // TODO I think the output type is not always the input type
     fun <T> readArrayData(v2: Variable<T>, section: SectionPartial? = null) : ArrayTyped<T>
 

@@ -4,7 +4,7 @@ import com.fleeksoft.io.InputStream
 import com.fleeksoft.io.OutputStream
 import okio.*
 
-fun IOcopy(input: Source, output: Sink, nbytes: Long): Long {
+internal fun IOcopy(input: Source, output: Sink, nbytes: Long): Long {
     var bufferedSource : BufferedSource = input.buffer()
     var totalRead = 0L
     var leftToRead = nbytes
@@ -18,7 +18,7 @@ fun IOcopy(input: Source, output: Sink, nbytes: Long): Long {
     return totalRead
 }
 
-fun IOcopyB(input: InputStream, out: OutputStream, bufferSize: Int): Long {
+internal fun IOcopyB(input: InputStream, out: OutputStream, bufferSize: Int): Long {
     var totalBytesRead: Long = 0
     val buffer = ByteArray(bufferSize)
     while (true) {
