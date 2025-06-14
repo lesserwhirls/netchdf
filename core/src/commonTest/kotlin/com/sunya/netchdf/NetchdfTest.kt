@@ -7,6 +7,10 @@ import kotlin.test.*
 // Test files opened and read through openNetchdfFile().
 class NetchdfTest {
 
+    init {
+        Stats.clear() // problem with concurrent tests
+    }
+
     companion object {
 
         fun files(): Sequence<String> {
@@ -14,12 +18,6 @@ class NetchdfTest {
                     NetchdfExtraFiles.params(false)
         }
 
-        @BeforeTest
-        fun beforeAll() {
-            Stats.clear() // problem with concurrent tests
-        }
-
-        @AfterTest
         fun afterAll() {
             if (versions.size > 0) {
                 val sversions = versions.entries.sortedBy { it.key }.toList()

@@ -7,6 +7,7 @@ import okio.Path.Companion.toPath
 import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.array.makeStringZ
+import com.sunya.cdm.util.InternalLibraryApi
 import okio.SYSTEM
 
 /*
@@ -32,7 +33,8 @@ A multiplatform Kotlin library providing basic IO primitives. kotlinx-io is base
  * File handles may be used by multiple threads concurrently. But the individual sources and sinks
  * produced by a file handle are not safe for concurrent use.
  */
-internal open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
+@InternalLibraryApi
+open class OkioFile(val location : String) : OpenFileIF, AutoCloseable {
     var allowTruncation = true
     val raf : okio.FileHandle
     val size : Long
@@ -218,8 +220,7 @@ internal open class OkioFile(val location : String) : OpenFileIF, AutoCloseable 
     }
 }
 
-
-internal data class OpenFileState(var pos : Long, var isBE: Boolean ) {
+data class OpenFileState(var pos : Long, var isBE: Boolean ) {
     fun incr(addit : Long) : OpenFileState {
         this.pos += addit
         return this

@@ -1,9 +1,13 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf
 
 import com.fleeksoft.charset.Charsets
 import com.fleeksoft.charset.decodeToString
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
+
 /*
     From netcdf library version 4.9.2-development of Mar 19 2023 10:42:31
 

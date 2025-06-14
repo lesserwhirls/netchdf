@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
@@ -5,6 +7,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.transferMissingNelems
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal class H4chunkIterator<T>(h4 : H4builder, val v2: Variable<*>, val wantSection : Section) : AbstractIterator<ArraySection<T>>() {
     private val debugChunking = false

@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.toIntArray
@@ -7,6 +9,7 @@ import com.sunya.cdm.iosp.decode
 import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.Tiling
+import com.sunya.cdm.util.InternalLibraryApi
 
 // replace H4ChunkIterator, LayoutBB
 internal class H4tiledData(val h4 : H4builder, varShape : LongArray, chunk : IntArray, val chunks: List<SpecialDataChunk>) {

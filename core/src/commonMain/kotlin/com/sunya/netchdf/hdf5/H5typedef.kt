@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.StructureMember
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal class H5typedef(val dataObject: DataObject) {
     var enumMessage : DatatypeEnum? = null

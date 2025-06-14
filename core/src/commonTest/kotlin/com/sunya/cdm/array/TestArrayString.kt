@@ -11,6 +11,7 @@ import io.kotest.property.checkAll
 import kotlin.test.*
 import kotlin.math.max
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class TestArrayString {
 
     @Test

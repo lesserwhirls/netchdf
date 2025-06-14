@@ -1,5 +1,6 @@
 package com.sunya.cdm.api
 
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.cdm.util.makeValidCdmObjectName
 
 data class Variable<T>(
@@ -50,7 +51,8 @@ data class Variable<T>(
         return "$datatype ${fullname()}${shape.contentToString()}"
     }
 
-    internal class Builder<T>(val name : String, val datatype : Datatype<T>) {
+    @InternalLibraryApi
+    class Builder<T>(val name : String, val datatype : Datatype<T>) {
         val dimensions = mutableListOf<Dimension>()
         val attributes = mutableListOf<Attribute<*>>()
         var spObject: Any? = null

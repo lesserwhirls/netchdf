@@ -1,9 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.netcdf3
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.layout.*
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal class Netcdf3File(val filename : String) : Netchdf {
     private val raf : OpenFileIF = OkioFile(filename)

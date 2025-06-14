@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.cdm.api
 
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.cdm.util.makeValidCdmObjectName
 
-class Group internal constructor(orgName : String,
+class Group(orgName : String,
             val typedefs : List<Typedef>,
             val dimensions : List<Dimension>,
             val attributes : List<Attribute<*>>,
@@ -100,7 +103,8 @@ class Group internal constructor(orgName : String,
         return if (parent == null) "root" else name
     }
 
-    internal class Builder(val name : String) {
+    @InternalLibraryApi
+    class Builder(val name : String) {
         val dimensions = mutableListOf<Dimension>()
         val attributes = mutableListOf<Attribute<*>>()
         val typedefs = mutableListOf<Typedef>()

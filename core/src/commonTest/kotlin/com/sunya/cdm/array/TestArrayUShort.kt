@@ -12,6 +12,7 @@ import kotlin.test.*
 import kotlin.math.max
 import kotlin.test.*
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class TestArrayUShort {
 
     @Test

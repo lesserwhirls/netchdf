@@ -8,21 +8,22 @@ import com.sunya.netchdf.testdata.testData
 // mostly fails in handling of types. nclib doesnt pass over all the types.
 class NetchdfExtra {
 
+    fun afterAll() {
+        if (versions.size > 0) {
+            val sversions = versions.entries.sortedBy { it.key }.toList()
+            sversions.forEach{ (key, values) -> println("$key = ${values.size} files") }
+            val total = sversions.map{ it.value.size }.sum()
+            println("total # files = $total")
+        }
+        Stats.show()
+    }
+
     companion object {
         fun files(): Sequence<String> {
             return NetchdfExtraFiles.params(false)
         }
 
-        @AfterTest
-        fun afterAll() {
-            if (versions.size > 0) {
-                val sversions = versions.entries.sortedBy { it.key }.toList()
-                sversions.forEach{ (key, values) -> println("$key = ${values.size} files") }
-                val total = sversions.map{ it.value.size }.sum()
-                println("total # files = $total")
-            }
-            Stats.show()
-        }
+
 
         private val versions = mutableMapOf<String, MutableList<String>>()
 

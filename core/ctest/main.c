@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
     const char* cdl = lib->kotlin.root.com.sunya.cdm.api.cdl(netchdf);
     printf("file %s\n", filename);
     printf("%s\n", cdl);
+    lib->DisposeString(cdl);
 
     libnetchdf_kref_com_sunya_cdm_api_Variable variable = lib->kotlin.root.com.sunya.cdm.api.Netchdf.findVariable(netchdf, "data");
     libnetchdf_kref_com_sunya_netchdfc_ArrayIntSection arrayIntSection = lib->kotlin.root.com.sunya.netchdfc.readArrayInt(netchdf, variable);
@@ -39,6 +40,7 @@ int main(int argc, char** argv) {
     }
 
     lib->DisposeStablePointer(intarray.pinned);
+    lib->DisposeStablePointer(shapeIntArray.pinned);
     lib->DisposeStablePointer(arrayIntSection.pinned);
     lib->DisposeStablePointer(variable.pinned);
     lib->DisposeStablePointer(netchdf.pinned);

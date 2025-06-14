@@ -1,6 +1,9 @@
 package com.sunya.cdm.iosp
 
-internal interface ReaderIntoByteArray {
+import com.sunya.cdm.util.InternalLibraryApi
+
+@InternalLibraryApi
+interface ReaderIntoByteArray {
     fun readIntoByteArray(state : OpenFileState, dest : ByteArray, destPos : Int, nbytes : Int) : Int
 }
 

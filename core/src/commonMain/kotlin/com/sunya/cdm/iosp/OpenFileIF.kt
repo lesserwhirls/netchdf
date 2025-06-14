@@ -2,8 +2,10 @@ package com.sunya.cdm.iosp
 
 import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
+import com.sunya.cdm.util.InternalLibraryApi
 
-internal interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
+@OptIn(InternalLibraryApi::class)
+interface OpenFileIF : ReaderIntoByteArray, AutoCloseable {
     override fun close()
     fun location(): String
     fun size(): Long

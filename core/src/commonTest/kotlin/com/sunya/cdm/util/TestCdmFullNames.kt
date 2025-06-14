@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.cdm.util
 
 import com.sunya.cdm.api.*
