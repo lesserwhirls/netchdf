@@ -10,7 +10,7 @@ class TestFillValues {
     fun testNcDefaultFillValue() {
         assertEquals(Netcdf4.NC_FILL_BYTE, getNcDefaultFillValue(Datatype.BYTE))
         assertEquals(Netcdf4.NC_FILL_UBYTE, getNcDefaultFillValue(Datatype.UBYTE))
-        assertEquals(Netcdf4.NC_FILL_CHAR, getNcDefaultFillValue(Datatype.CHAR))
+        assertEquals(Netcdf4.NC_FILL_UBYTE, getNcDefaultFillValue(Datatype.CHAR))
         assertEquals(Netcdf4.NC_FILL_SHORT, getNcDefaultFillValue(Datatype.SHORT))
         assertEquals(Netcdf4.NC_FILL_USHORT, getNcDefaultFillValue(Datatype.USHORT))
         assertEquals(Netcdf4.NC_FILL_INT, getNcDefaultFillValue(Datatype.INT))

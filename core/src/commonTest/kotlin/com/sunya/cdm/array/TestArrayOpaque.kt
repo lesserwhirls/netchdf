@@ -7,7 +7,7 @@ import kotlin.test.*
 class TestArrayOpaque {
 
     @Test
-    fun TestArrayOpaque() {
+    fun testArrayOpaque() {
         val osize = 10
         val shape = intArrayOf(4,5)
         val size = shape.computeSize()
@@ -23,7 +23,7 @@ class TestArrayOpaque {
         assertEquals(size, testArray.nelems)
         assertEquals(osize, testArray.size)
         println(testArray)
-        assertTrue(testArray.toString().startsWith("class ArrayOpaque shape=[4, 5] data='[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]','[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"))
+        assertTrue(testArray.toString().startsWith("class com.sunya.cdm.array.ArrayOpaque shape=[4, 5] data='[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]','[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"))
 
         testArray.forEachIndexed { idx, nbb ->
             assertEquals(osize, nbb.size)

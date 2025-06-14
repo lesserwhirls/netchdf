@@ -15,6 +15,7 @@ junit-jupiter-params = "5.13.1"
 logback = "1.5.18"
 mockk = "1.14.2"
 kotest = "5.9.1"
+slf4j = "1.7.36"
 
 [libraries]
 
@@ -32,6 +33,7 @@ kotlinx-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "kot
 # Logging
 oshai-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "oshai-version" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+slf4j-jvm = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
 
 ########################
 # Testing dependencies #

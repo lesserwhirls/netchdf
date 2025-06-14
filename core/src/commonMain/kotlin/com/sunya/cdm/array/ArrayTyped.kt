@@ -10,7 +10,7 @@ abstract class ArrayTyped<T>(val datatype: Datatype<*>, val shape: IntArray) : I
 
     override fun toString(): String {
         return buildString {
-            append("class ${this@ArrayTyped::class} shape=${shape.contentToString()} data=")
+            append("${this@ArrayTyped::class} shape=${shape.contentToString()} data=")
             append(showValues())
             append("\n")
         }

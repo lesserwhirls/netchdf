@@ -6,7 +6,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.test.assertEquals
 
-class TestTypeConverter {
+class TestTypeConverterJvm {
 
     @Test
     fun testConvertLong() {

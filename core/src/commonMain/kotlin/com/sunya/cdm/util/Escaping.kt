@@ -137,7 +137,7 @@ internal fun replace(sb: StringBuilder, remove: Char, replaceWith: String) {
     var i = 0
     while (i < sb.length) {
         if (sb[i] == remove) {
-            sb.insert(i, replaceWith) // TODO this is wrong
+            sb.setRange(i, i + 1, replaceWith)
             i += replaceWith.length - 1
         }
         i++

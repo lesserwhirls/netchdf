@@ -62,8 +62,7 @@ class NetchdfTest {
 
     @Test
     fun testProblem() {
-        //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
-        readNetchdfData(testData + "hdf4/chlora/MODSCW_P2009168_C4_1805_1810_1940_1945_GM03_closest_chlora.hdf", "graphics")
+        readNetchdfData(testData + "hdf4/96108_08.hdf", "graphics")
     }
 
     @Test

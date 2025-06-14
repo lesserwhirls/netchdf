@@ -9,7 +9,7 @@ dependencies {
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 
-    implementation(project(":testFixtures"))
+//    implementation(project(":testFixtures"))
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)

@@ -113,7 +113,7 @@ class TestFiles {
         fun subdirs(dirName : String): Sequence<String> {
             return FileSystem.SYSTEM.list(dirName.toPath())
                 .filter { file: Path -> FileSystem.SYSTEM.metadata(file).isDirectory }
-                .map { it.toString() }
+                .flatMap { all(it.toString()) }
                 .asSequence()
         }
     }

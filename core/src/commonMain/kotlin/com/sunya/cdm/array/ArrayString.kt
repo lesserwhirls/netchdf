@@ -93,25 +93,30 @@ internal fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): 
  * @return Array of Strings of rank - 1.
  */
 internal fun ArrayUByte.makeStringsFromBytes(charset : Charset = Charsets.UTF8): ArrayString {
-    val ba = this.values.map { it.toByte() }.toByteArray()
-
     val rank = shape.size
     if (rank < 2) {
-        val s= makeStringZ(ba, charset = charset)
-        return ArrayString(intArrayOf(), listOf(s))
+        return ArrayString(intArrayOf(), listOf(makeStringFromBytes()))
     }
-
     val (outerShape, innerLength) = shape.breakoutInner()
     val outerLength = outerShape.computeSize()
-    val result = mutableListOf<String>()
+
+    val result = arrayOfNulls<String>(outerLength)
+    val carr = ByteArray(innerLength)
     var cidx = 0
     var sidx = 0
-
     while (sidx < outerLength) {
-        result.add(makeStringZ(ba, start = cidx, maxBytes = innerLength, charset = charset))
-        cidx += innerLength
-        sidx++
+        val idx = sidx * innerLength + cidx
+        val c: Byte = values[idx].toByte()
+        if (c.toInt() == 0) {
+            result[sidx++] = makeStringZ(carr, 0, maxBytes = cidx, charset = charset) // String(carr, 0, cidx, Charsets.UTF_8)
+            cidx = 0
+            continue
+        }
+        carr[cidx++] = c
+        if (cidx == innerLength) {
+            result[sidx++] = makeStringZ(carr, charset = charset) // String(carr, Charsets.UTF_8)
+            cidx = 0
+        }
     }
-
     return ArrayString(outerShape, Array(outerLength) { result[it]!!} )
 }

@@ -20,6 +20,5 @@ plugins {
 rootProject.name = "netchdf"
 
 include("core")
+include("cli")
 // include("clibs")
-// include("cli")
-// include("testFixtures")

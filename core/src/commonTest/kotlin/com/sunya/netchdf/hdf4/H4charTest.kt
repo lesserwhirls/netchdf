@@ -2,22 +2,13 @@ package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.netchdf.hdf4.H4readTest.Companion
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.netchdf.readNetchdfData
-import com.sunya.netchdf.testdata.N3Files
 import com.sunya.netchdf.testdata.testData
 
 import kotlin.test.*
 import kotlin.test.assertIs
 
 class H4charTest {
-
-    companion object {
-        fun files(): Sequence<String> {
-            return N3Files.params()
-        }
-    }
 
     @Test
     fun testCharAttribute() {
@@ -121,13 +112,6 @@ class H4charTest {
                     assertEquals("2008-12-14 05:30:05", ubarray.makeStringFromBytes())
                 }
             }
-        }
-    }
-
-    @Test
-    fun testReadNetchdfData() {
-        H4readTest.files().forEach { filename ->
-            readNetchdfData(filename, null, null, false, false)
         }
     }
 

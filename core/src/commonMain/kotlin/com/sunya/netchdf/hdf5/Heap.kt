@@ -249,8 +249,6 @@ internal class LocalHeap(header : H5builder, address: Long) {
     }
 
     fun getStringAt(offset: Int): String {
-        var count = 0
-        while (heap[offset + count].toInt() != 0) count++
-        return makeStringZ(heap, offset, count)
+        return makeStringZ(heap, start=offset)
     }
 } // LocalHeap

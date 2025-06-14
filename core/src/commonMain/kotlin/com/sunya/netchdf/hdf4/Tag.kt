@@ -470,18 +470,7 @@ internal class TagTextN(icode: Int, refno: Int, offset : Long, length : Int) : T
         wasRead = true
         val state = OpenFileState(offset, true)
         val ba = h4.raf.readByteArray(state, length)
-        var count = 0
-        var start = 0
-        for (pos in 0 until length) {
-            if (ba[pos].toInt() == 0) {
-                if (pos - start > 0) {
-                    // fun makeStringZ(ba : ByteArray, start : Int = 0, maxBytes : Int = ba.size, charset : Charset = Charsets.UTF8): String {
-                    texts.add( makeStringZ(ba, start, pos - start, h4.valueCharset))
-                    count++
-                }
-                start = pos + 1
-            }
-        }
+        texts.add( makeStringZ(ba, charset = h4.valueCharset))
     }
 
     override fun toString(): String {
