@@ -3,7 +3,6 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.convertToBytes
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_BYTE
-import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_CHAR
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_DOUBLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_FLOAT
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_INT
@@ -128,8 +127,8 @@ internal class Vinfo(val refno: Int) : Comparable<Vinfo?> {
 internal fun getNcDefaultFillValue(datatype: Datatype<*>): Any {
     return when (datatype) {
         Datatype.BYTE -> NC_FILL_BYTE
+        Datatype.CHAR,
         Datatype.UBYTE -> NC_FILL_UBYTE
-        Datatype.CHAR -> NC_FILL_CHAR
         Datatype.SHORT -> NC_FILL_SHORT
         Datatype.USHORT -> NC_FILL_USHORT
         Datatype.INT -> NC_FILL_INT
@@ -153,8 +152,8 @@ internal fun getNcDefaultFillValue(datatype: Datatype<*>): Any {
 internal fun getSDefaultFillValue(datatype: Datatype<*>, isBE: Boolean): ByteArray {
     val fillValue = when (datatype) {
         Datatype.BYTE -> NC_FILL_BYTE
+        Datatype.CHAR,
         Datatype.UBYTE -> NC_FILL_BYTE.toUByte()
-        Datatype.CHAR -> NC_FILL_CHAR
         Datatype.SHORT -> NC_FILL_SHORT
         Datatype.USHORT -> NC_FILL_SHORT.toUShort()
         Datatype.INT -> NC_FILL_INT

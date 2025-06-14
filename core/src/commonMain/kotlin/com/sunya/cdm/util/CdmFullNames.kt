@@ -12,7 +12,7 @@ import com.sunya.cdm.api.*
  * If the name actually has a ".", you must escape it (call Escaping.backslashEscape(name)).
  * Any other chars may also be escaped, as the backslash is removed before matching.
  */
-class CdmFullNames(val root: Group) {
+internal class CdmFullNames(val root: Group) {
 
     /** Find a Group, with the specified (escaped full) name. */
     fun findGroup(fullName: String): Group? {

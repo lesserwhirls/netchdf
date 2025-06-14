@@ -18,12 +18,12 @@ kotlin {
         hostOs == "Mac OS X"-> macosX64("macosX64")
 
         hostOs == "Linux" -> linuxX64("linuxX64") {
-            binaries {
+         /*   binaries {
                 // executable()
                 sharedLib {
                     baseName = "netchdf"
                 }
-            }
+            } */
         }
 
         isMingwX64 -> mingwX64("mingwX64")
@@ -42,15 +42,14 @@ kotlin {
         }
         val jvmMain by
         getting {
-            dependencies {
-            }
+                dependencies {
+                    implementation(libs.slf4j.jvm)
+                }
         }
         val commonTest by getting {
             dependencies {
                 // implementation(project(":testFixtures"))
                 implementation(kotlin("test"))
-                // implementation(kotlin("test-junit"))
-                // implementation(libs.bundles.jvmtest)
                 implementation(libs.kotest.property)
                 implementation(libs.kotlinx.coroutines.test)
             }

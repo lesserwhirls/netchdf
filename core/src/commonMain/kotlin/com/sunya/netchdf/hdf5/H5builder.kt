@@ -393,8 +393,6 @@ internal class H5builder(
      */
 
     companion object {
-        private val logger = KotlinLogging.logger("H5builder")
-
         // special attribute names in HDF5
         const val HDF5_CLASS = "CLASS"
         const val HDF5_DIMENSION_LIST = "DIMENSION_LIST"

@@ -24,7 +24,8 @@ class TestArrayTyped {
 
         val testArray = ArrayByte(shape, bb)
         assertEquals("0,1,2,3,4,5", testArray.showValues())
-        assertEquals("class ArrayByte shape=[1, 2, 3] data=0,1,2,3,4,5\n", testArray.toString())
+        println(testArray)
+        assertEquals("class com.sunya.cdm.array.ArrayByte shape=[1, 2, 3] data=0,1,2,3,4,5\n", testArray.toString())
     }
 
     @Test

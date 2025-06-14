@@ -228,7 +228,6 @@ internal data class OpenFileState(var pos : Long, var isBE: Boolean ) {
 
 // terminate at a zero, or end of array
 internal fun makeString(ba : ByteArray, start : Int, charset : Charset = Charsets.UTF8): String {
-    val maxBytes =  ba.size - start
-    return makeStringZ(ba, start, maxBytes, charset)
+    return makeStringZ(ba, start = start, charset = charset)
 }
 

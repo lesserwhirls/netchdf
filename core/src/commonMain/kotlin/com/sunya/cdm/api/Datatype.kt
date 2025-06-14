@@ -102,19 +102,15 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
 
         other as Datatype<*>
 
-        if (size != other.size) return false
-        if (isVlen != other.isVlen) return false
         if (cdlName != other.cdlName) return false
-        // if (typedef != other.typedef) return false
+        if (size != other.size) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = size
-        result = 31 * result + (isVlen?.hashCode() ?: 0)
-        result = 31 * result + cdlName.hashCode()
-        // result = 31 * result + (typedef?.hashCode() ?: 0)
+        var result = cdlName.hashCode()
+        result = 31 * result + size
         return result
     }
 

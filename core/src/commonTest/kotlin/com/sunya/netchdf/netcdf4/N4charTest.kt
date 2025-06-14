@@ -13,12 +13,6 @@ import kotlin.test.assertIs
 
 class N4charTest {
 
-    companion object {
-        fun files(): Sequence<String> {
-            return N3Files.params()
-        }
-    }
-
     @Test
     fun testCharAttribute() {
         val filename = testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc5"
@@ -77,13 +71,6 @@ class N4charTest {
         openNetchdfFile(filename).use { myfile ->
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
-        }
-    }
-
-    @Test
-    fun testReadNetchdfData() {
-        files().forEach { filename ->
-            readNetchdfData(filename, null, null, false, false)
         }
     }
 

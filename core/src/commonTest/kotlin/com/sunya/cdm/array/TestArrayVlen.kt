@@ -10,7 +10,6 @@ import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import kotlin.test.*
 import kotlin.math.max
-import kotlin.test.*
 
 class TestArrayVlen {
 
@@ -27,7 +26,8 @@ class TestArrayVlen {
         val testArray = ArrayVlen(shape, listOfVlen, Datatype.INT)
         assertTrue(Datatype.VLEN == testArray.datatype)
         assertEquals(size, testArray.nelems)
-        assertTrue(testArray.toString().startsWith("class ArrayVlen shape=[4, 2] data=[0],[0, 1, 4],[0, 1, 4, 9, 16],[0, 1, 4, 9,"))
+        println(testArray)
+        assertTrue(testArray.toString().startsWith("class com.sunya.cdm.array.ArrayVlen shape=[4, 2] data=[0],[0, 1, 4],[0, 1, 4, 9, 16],[0, 1, 4, 9,"))
 
         testArray.forEachIndexed { idx, vlen ->
             val expected = Array(2 * idx + 1) { it * it }

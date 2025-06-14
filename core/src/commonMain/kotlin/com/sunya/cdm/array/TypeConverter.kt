@@ -126,9 +126,9 @@ fun convertFromDouble(dval: Double, isBE: Boolean): ByteArray {
 /** read a String from ByteArray, starting from offset, up to maxBytes, terminate at a zero byte. */
 fun makeStringZ(ba : ByteArray, start : Int = 0, maxBytes : Int = ba.size, charset : Charset = Charsets.UTF8): String {
     var count = 0
-    while (start+count < maxBytes && ba[start+count] != 0.toByte()) count++
+    while (start+count < ba.size && count < maxBytes && ba[start+count] != 0.toByte()) count++
     // fun ByteArray.decodeToString(charset: Charset, off: Int = 0, len: Int = this.size): String {
-    return ba.decodeToString(charset, 0, count) // String(ba, start, count, charset)
+    return ba.decodeToString(charset, start, count) // String(ba, start, count, charset)
 }
 
 fun makeString(ba: ByteArray) = ba.decodeToString(charset = Charsets.UTF8)

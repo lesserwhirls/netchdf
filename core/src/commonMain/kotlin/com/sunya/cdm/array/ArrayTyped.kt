@@ -10,7 +10,7 @@ abstract class ArrayTyped<T>(val datatype: Datatype<*>, val shape: IntArray) : I
 
     override fun toString(): String {
         return buildString {
-            append("class ${this@ArrayTyped::class} shape=${shape.contentToString()} data=")
+            append("${this@ArrayTyped::class} shape=${shape.contentToString()} data=")
             append(showValues())
             append("\n")
         }
@@ -83,7 +83,7 @@ abstract class ArrayTyped<T>(val datatype: Datatype<*>, val shape: IntArray) : I
             return true
         }
 
-        internal fun countDiff(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>) : Int {
+        fun countDiff(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>) : Int {
             val iter1 = array1.iterator()
             val iter2 = array2.iterator()
             var idx = 0

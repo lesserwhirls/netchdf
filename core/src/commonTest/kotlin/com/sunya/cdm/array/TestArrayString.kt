@@ -10,7 +10,6 @@ import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import kotlin.test.*
 import kotlin.math.max
-import kotlin.test.*
 
 class TestArrayString {
 
@@ -24,7 +23,7 @@ class TestArrayString {
         val testArray = ArrayString(shape, values)
         assertEquals(Datatype.STRING, testArray.datatype)
         assertEquals(size, testArray.nelems)
-        assertTrue(testArray.toString().startsWith("class ArrayString shape=[4, 5, 6] data='s0','s1','s2','s3',"))
+        assertTrue(testArray.toString().startsWith("class com.sunya.cdm.array.ArrayString shape=[4, 5, 6] data='s0','s1','s2','s3',"))
 
         testArray.forEachIndexed { idx, it ->
             assertEquals("s$idx", it)

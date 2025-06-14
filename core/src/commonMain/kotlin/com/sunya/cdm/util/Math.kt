@@ -7,7 +7,7 @@ import kotlin.math.max
 //  floor(log2(x)) = 31 - numberOfLeadingZeros(x)
 //  ceil(log2(x)) = 32 - numberOfLeadingZeros(x - 1)
 // LOOK maybe want ceil ??
-fun log2(n: Int): Int {
+internal fun log2(n: Int): Int {
     require(n > 0)
     return 31 - n.countLeadingZeroBits()
 }
@@ -16,11 +16,10 @@ fun log2(n: Int): Int {
 //  floor(log2(x)) = 63 - numberOfLeadingZeros(x)
 //  ceil(log2(x)) = 64 - numberOfLeadingZeros(x - 1)
 // LOOK maybe want ceil ??
-fun log2(n: Long): Int {
+internal fun log2(n: Long): Int {
     require(n > 0)
     return 63 - n.countLeadingZeroBits()
 }
-
 
 /*
 fun widenNumber(number: Number): Number {
@@ -177,7 +176,7 @@ fun absoluteDifference(a: Double, b: Double): Double {
  * @see [
  * Comparing Floating Point Numbers, 2012 Edition](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/)
  */
-fun relativeDifference(a: Float, b: Float): Float {
+internal fun relativeDifference(a: Float, b: Float): Float {
     val absDiff: Float = absoluteDifference(a, b)
     return if (a == b) {
         0f
@@ -187,7 +186,7 @@ fun relativeDifference(a: Float, b: Float): Float {
     }
 }
 
-fun relativeDifference(a: Double, b: Double): Double {
+internal fun relativeDifference(a: Double, b: Double): Double {
     val absDiff: Double = absoluteDifference(a, b)
     return if (a == b) { // Shortcut: handles infinities and NaNs.
         0.0
@@ -198,11 +197,11 @@ fun relativeDifference(a: Double, b: Double): Double {
 }
 
 /** RelativeDifference is less than maxRelDiff.  */
-fun nearlyEquals(a: Float, b: Float, maxRelDiff: Float = defaultMaxRelativeDiffFloat): Boolean {
+internal fun nearlyEquals(a: Float, b: Float, maxRelDiff: Float = defaultMaxRelativeDiffFloat): Boolean {
     return relativeDifference(a, b) < maxRelDiff
 }
 
 /** RelativeDifference is less than maxRelDiff.  */
-fun nearlyEquals(a: Double, b: Double, maxRelDiff: Double = defaultMaxRelativeDiffDouble): Boolean {
+internal fun nearlyEquals(a: Double, b: Double, maxRelDiff: Double = defaultMaxRelativeDiffDouble): Boolean {
     return relativeDifference(a, b) < maxRelDiff
 }
