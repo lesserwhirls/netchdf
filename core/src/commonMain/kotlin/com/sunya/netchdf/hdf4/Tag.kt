@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.Datatype
@@ -5,6 +7,7 @@ import com.sunya.cdm.api.Group
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.TagEnum.Companion.obsolete
 

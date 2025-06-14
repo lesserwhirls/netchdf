@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
@@ -6,6 +8,7 @@ import com.sunya.cdm.array.ArraySingle
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.iosp.*
+import com.sunya.cdm.util.InternalLibraryApi
 
 /**
  * @param strict true = make it agree with nclib if possible

@@ -1,14 +1,13 @@
 package com.sunya.cdm.iosp
 
 import com.sunya.cdm.api.ArraySection
+import com.sunya.cdm.util.InternalLibraryApi
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
 
-
-@OptIn(ExperimentalCoroutinesApi::class)
 internal class ReadChunkConcurrent {
 
     fun <T> readChunks(nthreads : Int, chunkIter : Iterator<ArraySection<T>>, lamda : (ArraySection<T>) -> Unit) {

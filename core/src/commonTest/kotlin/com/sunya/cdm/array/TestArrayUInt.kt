@@ -12,6 +12,7 @@ import kotlin.test.*
 import kotlin.math.max
 import kotlin.test.*
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class TestArrayUInt {
 
     @Test
@@ -19,7 +20,6 @@ class TestArrayUInt {
         val shape = intArrayOf(4,5,6)
         val size = shape.computeSize()
         val bb = UIntArray(size) { it.toUInt()  }
-
 
         val testArray = ArrayUInt(shape, bb)
         assertEquals(Datatype.UINT, testArray.datatype)

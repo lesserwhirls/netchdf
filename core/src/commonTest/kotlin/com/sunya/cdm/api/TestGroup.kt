@@ -1,5 +1,8 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.cdm.api
 
+import com.sunya.cdm.util.InternalLibraryApi
 import kotlin.test.*
 
 /** Test [com.sunya.cdm.api.Group]  */

@@ -1,9 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.iosp.ByteSource
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.iosp.ReaderIntoByteArray
 import com.sunya.cdm.iosp.decode
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal class ByteSourceReader(byteSource: ByteSource, isCompressed: Boolean): ReaderIntoByteArray {
     val bytes : ByteArray

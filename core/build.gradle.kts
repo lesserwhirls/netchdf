@@ -1,6 +1,6 @@
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    // id ("java-test-fixtures")
 }
 
 group = "com.sunya.netchdf"
@@ -18,12 +18,12 @@ kotlin {
         hostOs == "Mac OS X"-> macosX64("macosX64")
 
         hostOs == "Linux" -> linuxX64("linuxX64") {
-         /*   binaries {
+            binaries {
                 // executable()
                 sharedLib {
                     baseName = "netchdf"
                 }
-            } */
+            }
         }
 
         isMingwX64 -> mingwX64("mingwX64")
@@ -54,11 +54,25 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.test)
             }
         }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.junit.jupiter.params)
+            }
+        }
+    }
+
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
     }
 }
 
+tasks.withType<Test> {
+    systemProperties["junit.jupiter.execution.parallel.enabled"] = "true"
+    systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
+    systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+}
+
 tasks.withType<Wrapper> {
-    // gradleVersion = "8.10"
     distributionType = Wrapper.DistributionType.BIN
 }
 

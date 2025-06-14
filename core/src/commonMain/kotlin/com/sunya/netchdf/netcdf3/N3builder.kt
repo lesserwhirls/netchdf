@@ -8,12 +8,14 @@ import com.sunya.netchdf.NetchdfFileFormat
 import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.iosp.OkioFile
+import com.sunya.cdm.util.InternalLibraryApi
 import kotlin.math.min
 
 /**
  * @see "https://docs.unidata.ucar.edu/netcdf-c/current/file_format_specifications.html"
  * @see "http://cucis.ece.northwestern.edu/projects/PnetCDF/CDF-5.html"
  */
+@InternalLibraryApi
 internal class N3header(rafOrg: OpenFileIF, val root: Group.Builder) {
   private val filePos = OpenFileState(0L, true)
   private val valueCharset = Charsets.UTF8

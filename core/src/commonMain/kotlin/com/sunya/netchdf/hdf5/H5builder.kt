@@ -1,14 +1,16 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.iosp.*
 import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.NetchdfFileFormat
-import io.github.oshai.kotlinlogging.KotlinLogging
 
 import com.fleeksoft.charset.Charset
 import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.array.makeString
+import com.sunya.cdm.util.InternalLibraryApi
 
 private const val debugStart = false
 private const val debugSuperblock = false

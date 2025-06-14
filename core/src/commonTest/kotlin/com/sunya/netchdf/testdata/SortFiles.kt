@@ -1,7 +1,6 @@
 package com.sunya.netchdf.testdata
 
 import com.sunya.netchdf.NetchdfExtra.Companion.files
-import kotlin.test.AfterTest
 import kotlin.test.Test
 
 
@@ -21,7 +20,6 @@ class SortFiles {
         val filenames = mutableMapOf<String, MutableList<String>>()
         val showAllFiles = true
 
-        @AfterTest
         fun afterAll() {
             println("*** nfiles = ${filenames.size}")
             var dups = 0

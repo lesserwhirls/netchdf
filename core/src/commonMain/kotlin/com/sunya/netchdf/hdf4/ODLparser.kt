@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.Dimension
 import com.sunya.cdm.api.Group
 import com.sunya.cdm.util.Indent
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.cdm.util.makeValidCdmObjectName
 
 /*

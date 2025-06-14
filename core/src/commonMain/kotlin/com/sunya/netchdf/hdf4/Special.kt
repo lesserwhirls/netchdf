@@ -1,9 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.array.ArrayInt
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 
 // p 152: chunked element description record
 internal class SpecialChunked(raf : OpenFileIF, state : OpenFileState, val owner : TagData) {

@@ -2,11 +2,13 @@ package com.sunya.cdm.iosp
 
 import com.fleeksoft.charset.Charset
 import com.sunya.cdm.array.makeStringZ
+import com.sunya.cdm.util.InternalLibraryApi
 import okio.Buffer
 import okio.buffer
 
 
-internal class OkioFileBuffered(val openFile : OkioFile, var fileOffset: Long) : OpenFileIF {
+@InternalLibraryApi
+class OkioFileBuffered(val openFile : OkioFile, var fileOffset: Long) : OpenFileIF {
     var bufferedSource = openFile.raf.source(fileOffset).buffer()
 
     override fun location() = openFile.location()

@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.convertToBytes
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_BYTE
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_DOUBLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NC_FILL_FLOAT

@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf
 
 import com.sunya.cdm.api.Netchdf
 import com.sunya.cdm.iosp.*
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.Hdf4File
 import com.sunya.netchdf.hdf5.Hdf5File
 import com.sunya.netchdf.netcdf3.Netcdf3File

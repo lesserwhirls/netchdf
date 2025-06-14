@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_CLASS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LABELS
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_DIMENSION_LIST

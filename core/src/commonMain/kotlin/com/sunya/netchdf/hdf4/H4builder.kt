@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4
 
 import com.fleeksoft.charset.Charset
@@ -10,6 +12,7 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.netcdf4.NUG
 import com.sunya.cdm.array.convertToBytes
+import com.sunya.cdm.util.InternalLibraryApi
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 
@@ -22,7 +25,8 @@ private const val attLengthMaxPromote = 4000
 /* Implementation Notes
    1. Early version seem to use the refno as a grouping mechanism. Perhaps before Vgroup existed??
  */
-internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
+@InternalLibraryApi
+class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val alltags = mutableListOf<Tag>() // in order as they appear in the file
 
     var rootBuilder: Group.Builder = Group.Builder("")
@@ -33,11 +37,11 @@ internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
     private val unparentedGroups = mutableMapOf<Int, Group4>() // vg refno, vg group4
     private val parentedGroups = mutableMapOf<Int, TagVGroup>() // vg refno, vg
 
-    val grVGaliasMap = mutableMapOf<Int, TagVGroup>() // ri refno, VG
-    val grRIGaliasMap = mutableMapOf<Int, TagDataGroup>() // ri refno, RIG
+    internal val grVGaliasMap = mutableMapOf<Int, TagVGroup>() // ri refno, VG
+    internal val grRIGaliasMap = mutableMapOf<Int, TagDataGroup>() // ri refno, RIG
 
-    val sdAliasMap = mutableMapOf<Int, TagVGroup>() // sd refno, sd parent group
-    val vhAliasMap = mutableMapOf<Int, TagVGroup>()    // vh refno, vh group
+    internal val sdAliasMap = mutableMapOf<Int, TagVGroup>() // sd refno, sd parent group
+    internal val vhAliasMap = mutableMapOf<Int, TagVGroup>()    // vh refno, vh group
     internal val tagidMap = mutableMapOf<Int, Tag>()
     private var imageCount = 0
 
@@ -195,7 +199,7 @@ internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         return unused
     }
 
-    fun TagVGroup.nestedTags(): List<Tag> {
+    internal fun TagVGroup.nestedTags(): List<Tag> {
         val result = mutableListOf<Tag>()
         elem_code.forEachIndexed { idx, code ->
             val tag = tagidMap[tagid(elem_ref[idx], code)]
@@ -208,7 +212,7 @@ internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         return result
     }
 
-    fun TagDataGroup.nestedTags(): List<Tag> {
+    internal fun TagDataGroup.nestedTags(): List<Tag> {
         val result = mutableListOf<Tag>()
         elem_code.forEachIndexed { idx, code ->
             val tag = tagidMap[tagid(elem_ref[idx], code)]
@@ -1065,7 +1069,7 @@ internal class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         }
     }
 
-    fun isNestedGroup(vgroup: TagVGroup): Boolean {
+    internal fun isNestedGroup(vgroup: TagVGroup): Boolean {
         if (vgroup.name.contains("RIG0")) { // ignoring to agree with the C library
             vgroup.isUsed = true
             return false

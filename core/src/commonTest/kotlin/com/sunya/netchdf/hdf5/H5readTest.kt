@@ -13,17 +13,15 @@ import kotlin.test.*
 // Sanity check read Hdf5File header, for non-netcdf4 files
 class H5readTest {
 
+    init {
+        Stats.clear() // problem with concurrent tests
+    }
+
     companion object {
         fun files(): Sequence<String> {
             return H5Files.params()
         }
 
-        @BeforeTest
-        fun beforeAll() {
-            Stats.clear()
-        }
-
-        @AfterTest
         fun afterAll() {
             Stats.show()
         }

@@ -230,7 +230,37 @@ typedef struct {
 } libnetchdf_kref_com_sunya_cdm_array_ArrayUShort_Companion;
 typedef struct {
   libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
 } libnetchdf_kref_com_sunya_netchdf_netcdf4_NUG;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_INVALID;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_NC_FORMAT_CLASSIC;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_NC_FORMAT_64BIT_OFFSET;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_NC_FORMAT_NETCDF4;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_NC_FORMAT_NETCDF4_CLASSIC;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_NC_FORMAT_64BIT_DATA;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_HDF5;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_HDF4;
+typedef struct {
+  libnetchdf_KNativePtr pinned;
+} libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion;
 typedef struct {
   libnetchdf_KNativePtr pinned;
 } libnetchdf_kref_com_sunya_netchdfc_ArrayIntSection;
@@ -458,7 +488,6 @@ typedef struct {
               struct {
                 libnetchdf_KType* (*_type)(void);
                 libnetchdf_kref_com_sunya_cdm_array_ArrayInt (*ArrayInt)(libnetchdf_kref_kotlin_IntArray shape, libnetchdf_kref_kotlin_IntArray values);
-                libnetchdf_KInt (*get_totalElems)(libnetchdf_kref_com_sunya_cdm_array_ArrayInt thiz);
                 libnetchdf_kref_kotlin_IntArray (*get_values)(libnetchdf_kref_com_sunya_cdm_array_ArrayInt thiz);
                 libnetchdf_kref_kotlin_collections_Iterator (*iterator)(libnetchdf_kref_com_sunya_cdm_array_ArrayInt thiz);
                 libnetchdf_kref_com_sunya_cdm_array_ArrayInt (*section)(libnetchdf_kref_com_sunya_cdm_array_ArrayInt thiz, libnetchdf_kref_com_sunya_cdm_api_Section section);
@@ -640,7 +669,52 @@ typedef struct {
                 const char* (*get_VALID_RANGE)(libnetchdf_kref_com_sunya_netchdf_netcdf4_NUG thiz);
               } NUG;
             } netcdf4;
+            struct {
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for INVALID. */
+              } INVALID;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for NC_FORMAT_CLASSIC. */
+              } NC_FORMAT_CLASSIC;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for NC_FORMAT_64BIT_OFFSET. */
+              } NC_FORMAT_64BIT_OFFSET;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for NC_FORMAT_NETCDF4. */
+              } NC_FORMAT_NETCDF4;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for NC_FORMAT_NETCDF4_CLASSIC. */
+              } NC_FORMAT_NETCDF4_CLASSIC;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for NC_FORMAT_64BIT_DATA. */
+              } NC_FORMAT_64BIT_DATA;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for HDF5. */
+              } HDF5;
+              struct {
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*get)(); /* enum entry for HDF4. */
+              } HDF4;
+              struct {
+                libnetchdf_KType* (*_type)(void);
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion (*_instance)();
+                libnetchdf_kref_kotlin_ByteArray (*get_H5HEAD)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz);
+                libnetchdf_KInt (*get_MAGIC_NUMBER_LEN)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz);
+                libnetchdf_KLong (*get_MAXHEADERPOS)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz);
+                libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat (*netcdfFormat)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz, libnetchdf_KInt format);
+                const char* (*netcdfFormatExtended)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz, libnetchdf_KInt formatx);
+                const char* (*netcdfMode)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat_Companion thiz, libnetchdf_KInt mode);
+              } Companion;
+              libnetchdf_KType* (*_type)(void);
+              libnetchdf_KBoolean (*get_isClassicModel)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              libnetchdf_KBoolean (*get_isExtendedModel)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              libnetchdf_KBoolean (*get_isLargeFile)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              libnetchdf_KBoolean (*get_isNetdf3format)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              libnetchdf_KBoolean (*get_isNetdf4format)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              const char* (*formatName)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+              libnetchdf_KInt (*version)(libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat thiz);
+            } NetchdfFileFormat;
             libnetchdf_kref_com_sunya_cdm_api_Netchdf (*openNetchdfFile)(const char* filename, libnetchdf_KBoolean strict);
+            libnetchdf_kref_com_sunya_cdm_api_Netchdf (*openNetchdfFile_)(const char* filename, libnetchdf_kref_com_sunya_netchdf_NetchdfFileFormat format);
           } netchdf;
           struct {
             struct {
@@ -656,7 +730,6 @@ typedef struct {
             const char* (*version)();
             libnetchdf_kref_com_sunya_netchdfc_ArrayIntSection (*readArrayInt)(libnetchdf_kref_com_sunya_cdm_api_Netchdf thiz, libnetchdf_kref_com_sunya_cdm_api_Variable v2);
             libnetchdf_kref_com_sunya_netchdfc_ArrayIntSection (*readArrayIntSection)(libnetchdf_kref_com_sunya_cdm_api_Netchdf thiz, libnetchdf_kref_com_sunya_cdm_api_Variable v2, libnetchdf_kref_kotlin_IntArray start, libnetchdf_kref_kotlin_IntArray length);
-            libnetchdf_kref_com_sunya_cdm_api_SectionPartial (*toSectionPartial)(libnetchdf_kref_com_sunya_cdm_api_Section thiz);
           } netchdfc;
         } sunya;
       } com;
