@@ -1,4 +1,4 @@
-package com.sunya.netchdf.testdata
+package com.sunya.netchdf.testfiles
 
 import okio.FileSystem
 import okio.Path

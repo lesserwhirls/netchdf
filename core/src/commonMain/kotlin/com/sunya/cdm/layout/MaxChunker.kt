@@ -2,6 +2,7 @@ package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
+import com.sunya.cdm.util.InternalLibraryApi
 import kotlin.math.min
 
 /**
@@ -12,11 +13,12 @@ import kotlin.math.min
  * @param maxElems the approx size of the dataChunks to make
  * @param wantSection the requested section of data.
  */
-internal class MaxChunker(val maxElems: Int, val wantSection: Section) : AbstractIterator<IndexSpace>() {
-    val totalNelems = wantSection.totalElements
-    val rank = wantSection.rank
-    val strider = LongArray(rank)
-    val odo = IndexND(wantSection)
+@InternalLibraryApi
+class MaxChunker(val maxElems: Int, val wantSection: Section) : AbstractIterator<IndexSpace>() {
+    private val totalNelems = wantSection.totalElements
+    private val rank = wantSection.rank
+    private val strider = LongArray(rank)
+    private val odo = IndexND(wantSection)
 
     init {
         var accumStride = 1L

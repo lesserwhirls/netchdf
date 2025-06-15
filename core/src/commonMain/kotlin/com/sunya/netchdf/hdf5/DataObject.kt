@@ -3,8 +3,10 @@ package com.sunya.netchdf.hdf5
 import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.iosp.OpenFileState
 import com.fleeksoft.charset.toByteArray
+import com.sunya.cdm.util.InternalLibraryApi
 
 // "Data Object Header" Level 2A
+@OptIn(InternalLibraryApi::class)
 internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject? {
     if (debugFlow) println("readDataObject= $name")
     val startPos = this.getFileOffset(address)

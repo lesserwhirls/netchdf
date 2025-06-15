@@ -41,7 +41,7 @@ class ArrayUInt(shape : IntArray, datatype : Datatype<*>, val values: UIntArray)
     }
 
     companion object {
-        internal fun fromIntArray(shape : IntArray, values : IntArray): ArrayUInt =
+        fun fromIntArray(shape : IntArray, values : IntArray): ArrayUInt =
             ArrayUInt(shape, UIntArray(values.size) { values[it].toUInt() } )
     }
 

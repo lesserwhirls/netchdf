@@ -24,7 +24,8 @@ internal const val debugFlow = false
  *
  * @see "https://support.hdfgroup.org/HDF5/doc/Specs.html"
  */
-internal class H5builder(
+@InternalLibraryApi
+class H5builder(
     rafOrg: OpenFileIF,
     val strict: Boolean,
     val valueCharset: Charset = Charsets.UTF8,
@@ -44,9 +45,9 @@ internal class H5builder(
     val typedefMap = mutableMapOf<Long, Typedef>() // key = mdt address
     val typedefMdtHash = mutableMapOf<Int, Typedef>() // key = mdt hash
 
-    val hashGroups = mutableMapOf<Long, H5GroupBuilder>() // key =  btreeAddress
-    val symlinkMap = mutableMapOf<String, DataObjectFacade>()
-    val dataObjectMap = mutableMapOf<Long, DataObject>() // key = DataObject address
+    internal val hashGroups = mutableMapOf<Long, H5GroupBuilder>() // key =  btreeAddress
+    internal val symlinkMap = mutableMapOf<String, DataObjectFacade>()
+    internal val dataObjectMap = mutableMapOf<Long, DataObject>() // key = DataObject address
     val structMetadata = mutableListOf<String>()
     val datasetMap = mutableMapOf<Long, Pair<Group.Builder, Variable.Builder<*>>>()
 

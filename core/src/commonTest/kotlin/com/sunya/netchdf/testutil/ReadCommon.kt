@@ -1,9 +1,9 @@
-package com.sunya.netchdf
+package com.sunya.netchdf.testutil
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.util.nearlyEquals
-// import kotlin.system.measureNanoTime
+import com.sunya.netchdf.openNetchdfFile
 import kotlin.test.assertTrue
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////

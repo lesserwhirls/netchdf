@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.iosp.makeString
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.FilterType.Companion.fromId
 
 private const val debugContinuation = false

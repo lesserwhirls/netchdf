@@ -1,9 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.netcdfClib
 
 import com.fleeksoft.charset.Platform
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.NetchdfFileFormat
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h
 import com.sunya.netchdf.netcdfClib.ffm.nc_vlen_t

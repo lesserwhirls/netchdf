@@ -1,8 +1,8 @@
-package com.sunya.netchdf.testdata
+package com.sunya.netchdf.testutil
 
 import kotlin.test.*
 
-class TestStuff {
+class TestMisc {
 
     @Test
     fun wtfAreSequences() {

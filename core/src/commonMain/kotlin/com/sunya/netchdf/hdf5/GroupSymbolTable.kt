@@ -1,8 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 
 /** Wraps a BTree1New, when its used to store symbol table nodes for GroupOld. */
+@OptIn(InternalLibraryApi::class)
 internal class GroupSymbolTable(val btreeAddress : Long) {
 
     fun symbolTableEntries(h5: H5builder): Iterable<SymbolTableEntry> {

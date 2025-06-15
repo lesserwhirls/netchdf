@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.Dimension
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal const val debugGroup = false
 internal const val debugHardLink = false

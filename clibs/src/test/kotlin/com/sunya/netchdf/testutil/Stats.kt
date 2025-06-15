@@ -1,4 +1,4 @@
-package com.sunya.netchdf
+package com.sunya.netchdf.testutil
 
 import kotlin.concurrent.atomics.AtomicLong
 import kotlin.concurrent.atomics.AtomicInt

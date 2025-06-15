@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
@@ -5,6 +7,7 @@ import com.sunya.cdm.array.convertToInt
 import com.sunya.cdm.array.convertToLong
 import com.sunya.cdm.array.makeStringZ
 import com.sunya.cdm.iosp.*
+import com.sunya.cdm.util.InternalLibraryApi
 
 private const val debugHeap = false
 

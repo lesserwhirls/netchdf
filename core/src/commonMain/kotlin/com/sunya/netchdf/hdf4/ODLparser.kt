@@ -34,7 +34,7 @@ import com.sunya.cdm.util.makeValidCdmObjectName
 private val EOSprefix = listOf("archivemetadata",  "coremetadata", "productmetadata", "structmetadata", "oldstructmetadata",
     "gridstructure", "pointstructure", "swathstructure")
 
-internal class EOS {
+class EOS {
     companion object {
         fun isMetadata(name : String) : Boolean {
             val lowername = name.lowercase()
@@ -336,7 +336,8 @@ private const val showDetail = false
 private const val showProblems = false
 private const val showValidationFailures = false
 
-internal class ODLparser(val rootGroup: Group.Builder, val show : Boolean = false) {
+@InternalLibraryApi
+class ODLparser(val rootGroup: Group.Builder, val show : Boolean = false) {
 
     fun applyStructMetadata(structMetadata: String) : Boolean {
        if (showDetail) println("structMetadata = \n$structMetadata")
@@ -355,7 +356,7 @@ internal class ODLparser(val rootGroup: Group.Builder, val show : Boolean = fals
     }
 
     // assumes that the existing variables are already in groups; adjust dimensions and add attributes
-    fun ODLgroup.applyStructMetadata(parent: Group.Builder) {
+    private fun ODLgroup.applyStructMetadata(parent: Group.Builder) {
         this.variables.forEach { v ->
             if (v.name == "Dimensions") {
                 parent.dimensions.clear() // LOOK should only delete dimensions that are replaced ??
@@ -390,7 +391,7 @@ internal class ODLparser(val rootGroup: Group.Builder, val show : Boolean = fals
     }
 
     // assumes that the existing variables are already in groups; adjust dimensions and add attributes
-    fun ODLgroup.validateStructMetadata(parent: Group.Builder) : Boolean {
+    private fun ODLgroup.validateStructMetadata(parent: Group.Builder) : Boolean {
         this.variables.forEach { v ->
             if (v.name == "Dimensions") {
                 v.attributes.forEach { att ->

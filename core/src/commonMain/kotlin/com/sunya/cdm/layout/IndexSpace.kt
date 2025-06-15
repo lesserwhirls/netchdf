@@ -7,7 +7,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 /** A rectangular subsection of indices, going from start to start + shape */
-internal data class IndexSpace(val start : LongArray, val shape : LongArray) {
+data class IndexSpace(val start : LongArray, val shape : LongArray) {
     val rank = start.size
     val totalElements = shape.computeSize()
     val last by lazy { LongArray(rank) { idx -> start[idx] + shape[idx] - 1 } } // inclusive

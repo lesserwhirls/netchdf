@@ -48,7 +48,7 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
-                // implementation(project(":testFixtures"))
+                // implementation(project(":testFiles"))
                 implementation(kotlin("test"))
                 implementation(libs.kotest.property)
                 implementation(libs.kotlinx.coroutines.test)

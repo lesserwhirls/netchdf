@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.Datatype5
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.C_DOUBLE

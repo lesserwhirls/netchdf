@@ -2,11 +2,13 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 
 /**
  * Level 1A2
  * Used in readGroupNew( type 5 and 6), readAttributesFromInfoMessage(), FractalHeap, and DHeapId(type 1,2,3,4)
  */
+@OptIn(InternalLibraryApi::class)
 internal class BTree2(private val h5: H5builder, owner: String, address: Long) {
     val btreeType: Int
     private val nodeSize: Int // size in bytes of btree nodes

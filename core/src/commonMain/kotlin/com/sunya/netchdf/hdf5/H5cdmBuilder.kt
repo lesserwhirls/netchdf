@@ -16,7 +16,7 @@ import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NON_COORD
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_NOT_VARIABLE
 import com.sunya.netchdf.netcdf4.Netcdf4.NETCDF4_SPECIAL_ATTS
 
-internal const val attLengthMax = 4000
+const val attLengthMax = 4000
 
 internal const val includeOriginalAttributes = false
 internal const val debugDimensionScales = false

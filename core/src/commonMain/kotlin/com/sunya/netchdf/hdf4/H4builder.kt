@@ -17,7 +17,7 @@ import com.sunya.cdm.util.InternalLibraryApi
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 
-private const val attLengthMaxPromote = 4000
+const val attLengthMaxPromote = 4000
 
 /**
  * @see "https://support.hdfgroup.org/release4/doc/index.html"
@@ -170,8 +170,7 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         }
 
         if (showUnused) {
-            alltags.filterIsInstance<TagData>().forEach {
-                val data = (it as TagData)
+            alltags.filterIsInstance<TagData>().forEach { data ->
                 data.markDataTags(this)
             }
         }
@@ -1099,6 +1098,6 @@ private class Group4(val vgroup: TagVGroup) {
     }
 }
 
-private fun isDimClass(className: String): Boolean {
+fun isDimClass(className: String): Boolean {
     return (className == "Dim0.0") or (className == "UDim0.0")
 }

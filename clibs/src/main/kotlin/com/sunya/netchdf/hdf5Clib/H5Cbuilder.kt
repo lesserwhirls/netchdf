@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.util.Indent
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.ODLparser
 import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.hdf5.H5builder.Companion.HDF5_CLASS

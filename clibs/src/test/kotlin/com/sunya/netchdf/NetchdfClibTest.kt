@@ -6,14 +6,9 @@ import com.sunya.cdm.util.nearlyEquals
 import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
 import com.sunya.netchdf.hdf5Clib.Hdf5ClibFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.netchdf.testdata.*
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.BeforeAll
+import com.sunya.netchdf.testfiles.*
+import com.sunya.netchdf.testutil.*
 import kotlin.test.*
-import org.junit.jupiter.params.Test
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import java.util.stream.Stream
 import kotlin.system.measureNanoTime
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -22,20 +17,15 @@ import kotlin.test.assertTrue
 class NetchdfClibTest {
 
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             // return NppFiles.params()
-            return Stream.of( N3Files.params(), N4Files.params(), H5Files.params(), H4Files.params(), NetchdfExtraFiles.params(true)).flatMap { i -> i }
+            return N3Files.params() + N4Files.params() + H5Files.params() + H4Files.params() + NetchdfExtraFiles.params(true)
         }
 
-        @JvmStatic
-        @BeforeAll
         fun beforeAll() {
             Stats.clear() // problem with concurrent tests
         }
 
-        @JvmStatic
-        @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
                 val sversions = versions.toSortedMap()
@@ -231,48 +221,55 @@ isThreadsafe = 0 = false
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
-        openNetchdfFile(filename).use { ncfile ->
-            if (ncfile == null) {
-                println("Not a netchdf file=$filename ")
-                return
+    fun checkVersion() {
+        files().forEach { filename ->
+            openNetchdfFile(filename).use { ncfile ->
+                if (ncfile == null) {
+                    println("Not a netchdf file=$filename ")
+                    return
+                }
+                println("${ncfile.type()} $filename ")
+                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
+                paths.add(filename)
             }
-            println("${ncfile.type()} $filename ")
-            val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-            paths.add(filename)
         }
     }
 
     @Test
-    @MethodSource("params")
-    fun testShowNetchdfHeader(filename: String) {
-        showNetchdfHeader(filename)
+    fun testShowNetchdfHeader() {
+        files().forEach { filename ->
+            showNetchdfHeader(filename)
+        }
     }
 
 
     @Test
-    @MethodSource("params")
-    fun testCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
+    fun testCdlWithClib() {
+        files().forEach { filename ->
+            compareCdlWithClib(filename)
+        }
     }
 
     @Test
-    @MethodSource("params")
-    fun testReadNetchdfData(filename: String) {
-        readNetchdfData(filename)
+    fun testReadNetchdfData() {
+        files().forEach { filename ->
+            readNetchdfData(filename)
+        }
     }
 
     @Test
-    @MethodSource("params")
-    fun testCompareDataWithClib(filename: String) {
-        compareDataWithClib(filename)
+    fun testCompareDataWithClib() {
+        files().forEach { filename ->
+            compareDataWithClib(filename)
+        }
     }
 
     //@Test
     //@MethodSource("params")
-    fun testIterateWithClib(filename: String) {
-        compareIterateWithClib(filename)
+    fun testIterateWithClib() {
+        files().forEach { filename ->
+            compareIterateWithClib(filename)
+        }
     }
 
 }
@@ -676,6 +673,7 @@ fun compareCharDataOld(name : String, mydata: ArrayTyped<*>, ncdata: ArrayTyped<
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 // just read data from myfile with iterator
 
+/*
 fun readDataIterate(myfile: Netchdf, varname: String? = null, section: SectionPartial? = null, showCdl : Boolean = false) {
 
     if (showCdl) {
@@ -702,6 +700,8 @@ fun readOneVarIterate(myvar: Variable<*>, myfile: Netchdf, section: SectionParti
         sumValues(pair.array, sum)
     }
 }
+
+ */
 
 //////////////////////////////////////////////////////////////////////////////////////
 // compare reading data chunkIterate API with two Netchdf

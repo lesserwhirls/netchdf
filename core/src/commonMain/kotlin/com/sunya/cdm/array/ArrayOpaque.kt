@@ -62,7 +62,7 @@ class ArrayOpaque(shape : IntArray, val values : List<ByteArray>, val size : Int
     }
 
     companion object {
-        internal fun fromByteArray(shape : IntArray, ba : ByteArray, elemSize: Int): ArrayOpaque {
+        fun fromByteArray(shape : IntArray, ba : ByteArray, elemSize: Int): ArrayOpaque {
             val nelems = shape.computeSize()
             require(nelems * elemSize == ba.size)
             val values = mutableListOf<ByteArray>()

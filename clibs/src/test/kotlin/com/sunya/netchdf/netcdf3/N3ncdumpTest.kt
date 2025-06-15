@@ -1,17 +1,12 @@
 package com.sunya.netchdf.netcdf3
 
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testfiles.testFilesIn
+import com.sunya.netchdf.openNetchdfFile
 import org.junit.jupiter.api.Disabled
 import kotlin.test.*
-import java.util.*
-import java.util.stream.Stream
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
-import org.junit.jupiter.params.Test
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.netchdf.testdata.testData
-import com.sunya.netchdf.testdata.testFilesIn
 import java.io.File
 
 // Cannot run program "ncdump": error=2, No such file or directory
@@ -21,12 +16,8 @@ import java.io.File
 class N3ncdumpTest {
     val ncdumpp = "/home/stormy/install/netcdf4/bin/ncdump"
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
-            val stream3 =
-                testFilesIn(testData + "devcdm/netcdf3")
-                    .build()
-            return stream3
+        fun files(): Sequence<String> {
+            return testFilesIn(testData + "devcdm/netcdf3").build()
         }
     }
 
@@ -35,15 +26,14 @@ class N3ncdumpTest {
         compareN3header(testData + "devcdm/netcdf3/testWriteFill.nc")
     }
 
-    @Test
-    @MethodSource("params")
+    // @Test
     fun compareN3header(filename : String) {
         println("=================")
         println(filename)
         val ncdumpOutput = ncdump(filename)
         println("expect = \"$ncdumpOutput\"")
-        Netcdf3File(filename).use { ncfile ->
-            println("actual = \"${ncfile.cdl()}\"")
+        openNetchdfFile(filename).use { ncfile ->
+            println("actual = \"${ncfile!!.cdl()}\"")
             assertEquals(normalize(ncdumpOutput), normalize(ncfile.cdl()))
         }
     }

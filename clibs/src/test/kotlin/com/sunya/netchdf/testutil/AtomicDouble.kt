@@ -1,4 +1,4 @@
-package com.sunya.netchdf
+package com.sunya.netchdf.testutil
 
 import kotlin.concurrent.atomics.AtomicReference // TODO kmm not quite ready? Not sure I have semantics right.
 import kotlin.concurrent.atomics.ExperimentalAtomicApi

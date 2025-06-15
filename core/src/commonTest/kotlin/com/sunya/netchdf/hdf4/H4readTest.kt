@@ -3,11 +3,13 @@
 package com.sunya.netchdf.hdf4
 
 import com.sunya.cdm.util.InternalLibraryApi
-import com.sunya.netchdf.Stats
 import com.sunya.netchdf.*
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.netchdf.testdata.H4Files
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testfiles.H4Files
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutil.Stats
+import com.sunya.netchdf.testutil.compareNetchIterate
+import com.sunya.netchdf.testutil.readNetchdfData
 import kotlin.test.*
 import kotlin.test.assertEquals
 

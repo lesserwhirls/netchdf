@@ -1,5 +1,6 @@
 package com.sunya.cdm.api
 
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.cdm.util.makeValidCdmObjectName
 
 data class Attribute<T>(val orgName : String, val datatype : Datatype<T>, val values : List<T>) {
@@ -10,7 +11,8 @@ data class Attribute<T>(val orgName : String, val datatype : Datatype<T>, val va
         fun from(name : String, value : String) = Attribute(name, Datatype.STRING, listOf(value))
     }
 
-    internal class Builder<T>(val name : String, var datatype : Datatype<T>) {
+    @InternalLibraryApi
+    class Builder<T>(val name : String, var datatype : Datatype<T>) {
         var values : List<T> = emptyList()
 
         fun setValues(values : List<*>) : Builder<T> {

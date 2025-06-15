@@ -39,7 +39,7 @@ class ArrayULong(shape : IntArray, val values: ULongArray) : ArrayTyped<ULong>(D
     }
 
     companion object {
-        internal fun fromLongArray(shape : IntArray, values : LongArray): ArrayULong =
+        fun fromLongArray(shape : IntArray, values : LongArray): ArrayULong =
             ArrayULong(shape, ULongArray(values.size) { values[it].toULong() } )
     }
 }

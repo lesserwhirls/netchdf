@@ -1,6 +1,9 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? = null) : H5TypeInfo {
     val datatype5: Datatype5 = mdt.type
