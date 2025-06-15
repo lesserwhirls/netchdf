@@ -1,8 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
-import com.sunya.cdm.iosp.makeStringZ
+import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
+import com.sunya.cdm.array.makeStringZ
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.*
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagidName
@@ -11,8 +15,6 @@ import com.sunya.netchdf.mfhdfClib.ffm.mfhdf_h.*
 import java.io.IOException
 import java.lang.foreign.*
 import java.lang.foreign.ValueLayout.JAVA_BYTE
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 import java.util.*
 
 private val debugVGroup = false
@@ -54,6 +56,8 @@ class HCheader(val filename: String) {
             this.rootGroup = rootBuilder.build(null)
         }
     }
+
+    fun isEos() = (metadata.isNotEmpty())
 
     @Throws(IOException::class)
     private fun build(session: Arena) : Group.Builder {
@@ -422,13 +426,9 @@ class HCheader(val filename: String) {
         val data_p: MemorySegment = session.allocate(nelems * datatype.size.toLong())
         // checkErr("Vgetattr2", Vgetattr2(vgroup_id, idx, data_p)) // LOOK malloc(): corrupted top size
         checkErr("Vgetattr", Vgetattr(vgroup_id, idx, data_p)) // Vgetattr return -1
-        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-        val bb = ByteBuffer.wrap(raw)
-        bb.order(ByteOrder.LITTLE_ENDIAN) // ??
-        bb.position(0)
-        bb.limit(bb.capacity())
+        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
 
-        return processAttribute(aname, nelems, datatype, bb)
+        return processAttribute(aname, nelems, datatype, raw, isBE = false)
     }
 
     // read attributes with Vgetattr2()
@@ -587,13 +587,9 @@ class HCheader(val filename: String) {
 
         val data_p: MemorySegment = session.allocate(nelems * datatype.size.toLong())
         checkErr("SDreadattr", SDreadattr(sd_id, idx, data_p)) // MEMORY
-        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-        val bb = ByteBuffer.wrap(raw)
-        bb.order(ByteOrder.LITTLE_ENDIAN) // ??
-        bb.position(0)
-        bb.limit(bb.capacity())
+        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
 
-        return processAttribute(aname, nelems, datatype, bb)
+        return processAttribute(aname, nelems, datatype, raw, isBE = false)
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -675,17 +671,21 @@ class HCheader(val filename: String) {
                 // intn GRreadlut(int32 pal_id, VOIDP pal_data)
                 val pal_data_p = session.allocate((pdatatype.size * ncomps * nentries).toLong())
                 checkErr("GRreadlut", GRreadlut(palId, pal_data_p))
-                val palData : ByteBuffer = ByteBuffer.wrap(pal_data_p.toArray(JAVA_BYTE))
+                val palData = pal_data_p.toArray(JAVA_BYTE)!!
                 val shape = intArrayOf(nentries, ncomps)
+
+                val tba = TypedByteArray(pdatatype, palData, 0, isBE = true)
+                val lutData = tba.convertToArrayTyped(shape)
+                /*
                 val lutData = when (pdatatype) {
                     Datatype.BYTE -> ArrayByte(shape, palData)
-                    Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, pdatatype as Datatype<UByte>, palData)
+                    Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, palData)
                     Datatype.SHORT -> ArrayShort(shape, palData)
                     Datatype.USHORT -> ArrayUShort(shape, palData)
                     Datatype.INT -> ArrayInt(shape, palData)
                     Datatype.UINT -> ArrayUInt(shape, palData)
                     else -> throw RuntimeException("not supporting $pdatatype for GR lookup table")
-                }
+                } */
                 if (debugGR) println("  lutData=${lutData}")
 
                 val lutv_name = "${name}_lookup"
@@ -715,13 +715,9 @@ class HCheader(val filename: String) {
 
         val data_p: MemorySegment = session.allocate(nelems * datatype.size.toLong())
         checkErr("GRgetattr", GRgetattr(gr_id, idx, data_p)) // MEMORY
-        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-        val bb = ByteBuffer.wrap(raw)
-        bb.order(ByteOrder.LITTLE_ENDIAN) // ??
-        bb.position(0)
-        bb.limit(bb.capacity())
+        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
 
-        return processAttribute(aname, nelems, datatype, bb)
+        return processAttribute(aname, nelems, datatype, raw, isBE = false)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -804,23 +800,31 @@ class HCheader(val filename: String) {
                 val isize = VFfieldisize(vdata_id, idx) // native machine size of the field.
                 val nelems = VFfieldorder(vdata_id, idx) // field "order" ??
                 if (debugVSdetails) println("    VSfield name='$name' fdatatype=$fdatatype offset='$offset' nelems=$nelems esize =$esize isize = $isize")
-                val m = StructureMember(name, fdatatype, offset, intArrayOf(nelems))
+
+                // class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset: Int, val shape : IntArray, val isBE : Boolean) {
+                val m = StructureMember(name, fdatatype, offset, intArrayOf(nelems), isBE = nativeByteOrder)
                 members.add(m)
                 offset += isize
             }
 
             val vb = if (members.size == 1) {
                 val member = members[0]
-                val vb1 = Variable.Builder(vhname, member.datatype)
-                // vinfo.elemSize = member.datatype.size // look correct the size, not tagVH.ivsize
-                val totalNelems = nrecords * member.nelems
-                if (totalNelems > 1) {
-                    if (nrecords != 1 && member.nelems != 1)
-                        vb1.setDimensionsAnonymous(intArrayOf(nrecords,  member.nelems))
-                    else
-                        vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
-                }
-                vb1
+                /* kludge
+                if (member.datatype == Datatype.CHAR && member.shape.size == 1) {
+                    val vb0 = Variable.Builder(vsname, Datatype.STRING)
+                    println("Change $vsname to String")
+                    vb0
+                } else { */
+                    val vb1 = Variable.Builder(vhname, member.datatype)
+                    val totalNelems = nrecords * member.nelems
+                    if (totalNelems > 1) {
+                        if (nrecords != 1 && member.nelems != 1)
+                            vb1.setDimensionsAnonymous(intArrayOf(nrecords, member.nelems))
+                        else
+                            vb1.setDimensionsAnonymous(intArrayOf(totalNelems))
+                    }
+                    vb1
+                // }
             } else {
                 val typedef = CompoundTypedef(vsname, members)
                 val vb2 = Variable.Builder(vhname, Datatype.COMPOUND.withTypedef(typedef))
@@ -867,13 +871,8 @@ class HCheader(val filename: String) {
         checkErrNeg("VSsetfields", VSsetfields(vdata_id, fldNames))
         checkErrNeg("VSread", VSread(vdata_id, data_p, vsInfo.nrecords, FULL_INTERLACE())) // MEMORY
 
-        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-        val bb = ByteBuffer.wrap(raw)
-        bb.order(ByteOrder.LITTLE_ENDIAN) // ??
-        bb.position(0)
-        bb.limit(bb.capacity())
-
-        return processAttribute(aname, vsInfo.nrecords, datatype, bb)
+        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
+        return processAttribute(aname, vsInfo.nrecords, datatype, raw, isBE = nativeByteOrder)
     }
 
     // LOOK structure members can have attributes (!) with fld_idx
@@ -893,13 +892,9 @@ class HCheader(val filename: String) {
 
         val data_p: MemorySegment = session.allocate(nelems * datatype.size.toLong())
         checkErr("VSgetattr", VSgetattr(vdata_id, fld_idx, idx, data_p)) // MEMORY
-        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-        val bb = ByteBuffer.wrap(raw)
-        bb.order(ByteOrder.LITTLE_ENDIAN) // ??
-        bb.position(0)
-        bb.limit(bb.capacity())
+        val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
 
-        return processAttribute(aname, nelems, datatype, bb)
+        return processAttribute(aname, nelems, datatype, raw, isBE = nativeByteOrder)
     }
 
     // use VSinquire() to get info for an attribute
@@ -953,7 +948,7 @@ class HCheader(val filename: String) {
                 val isize = VFfieldisize(vdata_id, idx) // native machine size of the field.
                 val nelems = VFfieldorder(vdata_id, idx) // misnamed field "order" ??
                 if (debugVSdetails) println("    VSfield name='$name' fdatatype=$fdatatype offset='$offset' nelems=$nelems esize =$esize isize = $isize")
-                val m = StructureMember(name, fdatatype, offset, intArrayOf(nelems))
+                val m = StructureMember(name, fdatatype, offset, intArrayOf(nelems), isBE = nativeByteOrder) // TODO nativeByteOrder??
                 members.add(m)
                 offset += isize
             }
@@ -1022,27 +1017,25 @@ class HCheader(val filename: String) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-private fun processAttribute(name : String, nelems : Int, datatype : Datatype<*>, bb : ByteBuffer) : Attribute<*> {
-    val shape = intArrayOf(nelems)
+private fun processAttribute(name : String, nelems : Int, datatype : Datatype<*>, ba : ByteArray, isBE: Boolean) : Attribute<*> {
+    // problem, eg see testHdf4Attribute(). datatype float has recsize 716, and nrecords = 1. should have 716/4 = 29
+    // currently
+    //         :_BLKSOM:RedBand = 0.0f ;
+    // should be
+    //       :_BLKSOM:RedBand = 0.0f, 64.0f, 0.0f, 64.0f, 0.0f, 0.0f, 0.0f, 64.0f, 0.0f, 0.0f, 0.0f, 0.0f, 64.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, -64.0f, 0.0f, 0.0f, 0.0f, -64.0f, 0.0f, 0.0f, -64.0f, 0.0f, 0.0f, -64.0f, 0.0f, -64.0f, 0.0f, -64.0f, 0.0f, -64.0f, -64.0f, 0.0f, -64.0f, 0.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -128.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -128.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, -64.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, -64.0f, 0.0f, -64.0f, -64.0f, 0.0f, -64.0f, 0.0f, -64.0f, -64.0f, 0.0f, -64.0f, 0.0f, -64.0f, 0.0f, 0.0f, -64.0f, 0.0f, -64.0f, 0.0f, 0.0f, -64.0f, 0.0f, 0.0f, 0.0f, 0.0f, -64.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 64.0f, 0.0f, 0.0f, 64.0f, 0.0f, 0.0f, 64.0f, 0.0f ;
+    var useNelems = if (datatype == Datatype.CHAR) nelems else (ba.size / datatype.size)
+    if (nelems != useNelems) {
+        println("processAttribute $name: nelems = $nelems calcNelems = $useNelems")
+    }
+    val shape = intArrayOf(useNelems)
 
     if (datatype == Datatype.CHAR) {
-        val svalue = makeStringZ(bb.array(), 0, Hdf4ClibFile.valueCharset)
+        val svalue = makeStringZ(ba, charset = Hdf4ClibFile.valueCharset)
         return Attribute.from(name, svalue)
     }
 
-    val values = when (datatype) {
-        Datatype.BYTE -> ArrayByte(shape, bb)
-        Datatype.UBYTE -> ArrayUByte(shape, bb)
-        Datatype.SHORT -> ArrayShort(shape, bb)
-        Datatype.USHORT -> ArrayUShort(shape, bb)
-        Datatype.INT -> ArrayInt(shape, bb)
-        Datatype.UINT -> ArrayUInt(shape, bb)
-        Datatype.FLOAT -> ArrayFloat(shape, bb)
-        Datatype.DOUBLE -> ArrayDouble(shape, bb)
-        Datatype.LONG -> ArrayLong(shape, bb)
-        Datatype.ULONG -> ArrayULong(shape, bb)
-        else -> throw IllegalStateException("unimplemented type= $datatype")
-    }
+    val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
+    val values = tba.convertToArrayTyped(shape)
     return Attribute.Builder(name, datatype).setValues(values.toList()).build()
 }
 

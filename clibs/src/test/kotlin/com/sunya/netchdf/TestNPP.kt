@@ -1,8 +1,8 @@
 package com.sunya.netchdf
 
 
-import org.junit.jupiter.api.Test
-import com.sunya.netchdf.testdata.testData
+import kotlin.test.*
+import com.sunya.netchdf.testfiles.testData
 
 // Special test for NPP data.
 class TestNPP {
@@ -176,8 +176,8 @@ What we get though are just the last part of the names, not a full path:
     fun problemNPP() {
         val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
         compareCdlWithClib(filename, showCdl = true)
-        readNetchdfData(filename, "/Data_Products/VIIRS-CBH-EDR/VIIRS-CBH-EDR_Aggr")
-        compareDataWithClib(filename, "/Data_Products/VIIRS-CBH-EDR/VIIRS-CBH-EDR_Aggr")
+        readNetchdfData(filename, )
+        compareDataWithClib(filename, )
     }
 
 }

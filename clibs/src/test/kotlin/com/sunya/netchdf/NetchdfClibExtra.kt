@@ -1,15 +1,9 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.util.Stats
-import com.sunya.netchdf.testdata.NetchdfExtraFiles
-import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.netchdf.testdata.testData
-import org.junit.jupiter.api.AfterAll
-import java.util.stream.Stream
+import com.sunya.netchdf.testfiles.NetchdfExtraFiles
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutil.Stats
+import kotlin.test.*
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
 // mostly fails in handling of types. nclib doesnt pass over all the types.
@@ -17,12 +11,10 @@ class NetchdfClibExtra {
 
     companion object {
         @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             return NetchdfExtraFiles.params(false)
         }
 
-        @JvmStatic
-        @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
                 versions.keys.forEach{ println("$it = ${versions[it]!!.size } files") }
@@ -59,36 +51,40 @@ class NetchdfClibExtra {
     }
 
     ///////////////////////////////////////////////////////
-    @ParameterizedTest
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
-        openNetchdfFile(filename).use { ncfile ->
-            if (ncfile == null) {
-                println("Not a netchdf file=$filename ")
-                return
+    @Test
+    fun checkVersion() {
+        files().forEach { filename ->
+            openNetchdfFile(filename).use { ncfile ->
+                if (ncfile == null) {
+                    println("Not a netchdf file=$filename ")
+                    return
+                }
+                println("${ncfile.type()} $filename ")
+                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
+                paths.add(filename)
             }
-            println("${ncfile.type()} $filename ")
-            val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-            paths.add(filename)
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCompareCdlWithClib(filename: String) {
-        compareCdlWithClib(filename, showCdl = true)
+    @Test
+    fun testCompareCdlWithClib() {
+        files().forEach { filename ->
+            compareCdlWithClib(filename, showCdl = true)
+        }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun readNetchdfData(filename: String) {
-        readNetchdfData(filename, null)
+    @Test
+    fun readNetchdfData() {
+        files().forEach { filename ->
+            readNetchdfData(filename, null)
+        }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCompareDataWithClib(filename: String) {
-        compareDataWithClib(filename)
+    @Test
+    fun testCompareDataWithClib() {
+        files().forEach { filename ->
+            compareDataWithClib(filename)
+        }
     }
 
 }

@@ -1,9 +1,9 @@
 package com.sunya.netchdf.netcdf4
 
 import com.sunya.netchdf.netcdfClib.NClibFile
+import com.sunya.netchdf.testfiles.testData
 import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
-import com.sunya.netchdf.testdata.testData
+import kotlin.test.*
 import kotlin.test.assertEquals
 
 // trying to compare output with ncdump - h; probably get rid of

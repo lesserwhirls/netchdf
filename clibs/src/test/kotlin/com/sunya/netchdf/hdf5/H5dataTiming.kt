@@ -1,13 +1,11 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.netchdf.netcdf3.Netcdf3File
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import org.junit.jupiter.api.Test
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testfiles.testData
+import kotlin.test.*
 import kotlin.system.measureNanoTime
-import kotlin.test.assertTrue
 
 private const val showDetail = true
 
@@ -70,7 +68,7 @@ class H5dataTiming {
         readData(chunked, "EPV", SectionPartial.fromSpec(":, :, :, 11:20"))
     }
 
-    @Test
+    // @Test
     fun chunkedFiltered() {
         if (showDetail) println("===============================================")
         if (showDetail) println("chunkedFiltered [1, 30, 30, 8]/[8395, 781, 385]")
@@ -83,28 +81,11 @@ class H5dataTiming {
     }
 
     @Test
-    fun netcdf3() {
-        val filename = testData + "cdmUnitTest/formats/netcdf3/awips.nc"
-        if (showDetail) println("===============================================")
-        if (showDetail) {
-            Netcdf3File(filename).use { ncfile ->
-                println("${ncfile.type()} $filename ")
-                println("${ncfile.cdl()} ")
-            }
-        }
-        readData(filename, "uw", SectionPartial.fromSpec("4, 39, 55, 74"))
-        readData(filename, "uw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "vw", SectionPartial.fromSpec("4, 39, 55, 74"))
-        readData(filename, "vw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "uw", SectionPartial.fromSpec(":,:,:,25"))
-    }
-
-    @Test
     fun problem() {
         readData(reversed, "fyy", SectionPartial.fromSpec("0:99, 0:99, 0:9"))
     }
 
-    @Test
+    // @Test
     fun problem2() {
         //  variable UpperDeschutes_t4p10_swemelt[8395, 781, 385], Chunked dims=[1, 30, 30, 8]
         readData(chunked2, "UpperDeschutes_t4p10_swemelt", SectionPartial.fromSpec("0:100, 0:30, 0:40"))

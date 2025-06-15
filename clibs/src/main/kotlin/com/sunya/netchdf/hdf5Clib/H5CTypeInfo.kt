@@ -1,13 +1,15 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.StructureMember
+import com.sunya.cdm.array.TypedByteArray
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.*
 import java.lang.foreign.MemoryLayout
 import java.lang.foreign.ValueLayout
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
 internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long, name : String) : H5CTypeInfo {
     // H5T_class_t H5Tget_class	(	hid_t 	type_id	)
@@ -39,7 +41,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
     val type_sign = H5Tget_sign(type_id) == 1 // unsigned == 0, signed == 1
 
     // H5T_order_t H5Tget_order	(	hid_t 	type_id	)
-    val type_endian = if (H5Tget_order(type_id) == 0) ByteOrder.LITTLE_ENDIAN else ByteOrder.BIG_ENDIAN
+    val type_isBE = (H5Tget_order(type_id) != 0)
 
     if (datatype5 == Datatype5.Compound) {
         val members = mutableListOf<StructureMember<*>>()
@@ -63,11 +65,11 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
                 basetype = basetype2
             }
             // val name: String, val datatype : Datatype, val offset: Int, val dims : IntArray
-            members.add(StructureMember(mname, basetype.datatype(), moffset.toInt(), dims, basetype.endian)) // assume scalar for the moment
+            members.add(StructureMember(mname, basetype.datatype(), moffset.toInt(), dims, basetype.isBE)) // assume scalar for the moment
         }
 
         val typedef = CompoundTypedef(name, members)
-        val result =  H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, typedef, null)
+        val result =  H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, null)
         return registerTypedef(result, context.group)
     }
 
@@ -86,26 +88,18 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
             // herr_t H5Tget_member_value	(	hid_t 	type_id, unsigned 	membno, void * 	value)
             val value_p = context.arena.allocate(type_size.toLong()) // assume that the elem_size gives you the base type
             checkErr("H5Tget_member_name", H5Tget_member_value(type_id, membno, value_p))
-            val raw = value_p.toArray(ValueLayout.JAVA_BYTE)
-            val bb = ByteBuffer.wrap(raw)
-            bb.order(basetype.endian)
-            val value = when (basetype.datatype()) {
-                Datatype.BYTE -> bb.get(0).toInt()
-                Datatype.UBYTE -> bb.get(0).toUByte().toInt()
-                Datatype.SHORT -> bb.asShortBuffer().get(0).toInt()
-                Datatype.USHORT -> bb.asShortBuffer().get(0).toUShort().toInt()
-                Datatype.UINT, Datatype.INT -> bb.asIntBuffer().get(0)
-                else -> throw RuntimeException("unsupported datatype ${basetype.datatype()}")
-            }
+            val raw = value_p.toArray(ValueLayout.JAVA_BYTE)!!
+            val tba = TypedByteArray(basetype.datatype(), raw, 0, isBE = basetype.isBE)
+            val value = tba.getAsInt(0)
             members.put(value, ename)
         }
         // EnumTypedef(name : String, baseType : Datatype, val values : Map<Int, String>)
         val typedef = EnumTypedef(name, datatype, members)
-        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, typedef)
+        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef)
         return registerTypedef(result, context.group)
     }
 
-    // LOOK not registering Opaque typedef
+    /* LOOK not registering Opaque typedef
     if (datatype5 == Datatype5.Opaque) {
         // char* H5Tget_tag	(	hid_t 	type	)
         val tag_p = H5Tget_tag(type_id)
@@ -113,8 +107,9 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
         // class OpaqueTypedef(name : String, val elemSize : Int)
         val typedef = OpaqueTypedef(name, type_size) // LOOK not making into an opague typedef. TBD
         // context.group.addTypedef(typedef)
-        return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, null)
-    }
+        val result =  H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBT, typedef)
+        return registerTypedef(result, context.group)
+    } */
 
     if (datatype5 == Datatype5.Vlen) {
         // hid_t H5Tget_super	(	hid_t 	type	)
@@ -123,7 +118,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
 
         // class VlenTypedef(name : String, baseType : Datatype)
         val typedef = VlenTypedef(name, basetype.datatype())
-        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, typedef, basetype)
+        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, basetype)
         return registerTypedef(result, context.group)
     }
 
@@ -134,15 +129,16 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
         val dims_p = context.arena.allocateArray(C_LONG as MemoryLayout, MAX_DIMS)
         val ndims = H5Tget_array_dims2(type_id, dims_p)
         val dims = IntArray(ndims) { dims_p.getAtIndex(C_LONG, it.toLong()).toInt() } // where to put this ??
-        return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian, null, basetype, dims)
+        return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, null, basetype, dims)
     }
 
     // regular
-    return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_endian)
+    return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE)
 }
 
-internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val elemSize : Int, val signed : Boolean, val endian : ByteOrder,
-                           val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null) {
+@OptIn(InternalLibraryApi::class)
+internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val elemSize : Int, val signed : Boolean, val isBE : Boolean,
+                                val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null) {
     val datatype5 = Datatype5.of(type_class)
     val isVlenString = H5Tis_variable_str(type_id) > 0
 

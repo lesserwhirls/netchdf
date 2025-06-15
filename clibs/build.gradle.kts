@@ -1,22 +1,25 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    id ("java-test-fixtures")
 }
 
 dependencies {
-    api(project(":core"))
-    // implementation(project(":testdata"))
+    implementation(project(":core"))
+    implementation(project(":testFiles"))
+    implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)
-    testImplementation(testFixtures(project(":core")))
 }
 
 kotlin {
     jvmToolchain(21)
+
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
+    }
 }
 
 tasks {
@@ -42,11 +45,16 @@ tasks {
         systemProperties["junit.jupiter.execution.parallel.enabled"] = "false"
         systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
         systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+
+        // https://kantis.github.io/posts/Faster-Kotest-startup/
+        systemProperty("kotest.framework.discovery.jar.scan.disable", "true")
+        systemProperty("kotest.framework.classpath.scanning.config.disable", "true")
+        systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
     }
     withType<JavaExec>().all {
         jvmArgs("--enable-preview")
     }
-    //withType<KotlinCompile> {
-    //    kotlinOptions.jvmTarget = "21"
-    //}
 }
+
+// Declare an explicit dependency on ':core:allMetadataJar' from ':clibs:compileJava' using Task#dependsOn
+project.tasks["compileJava"].dependsOn(":core:allMetadataJar")
