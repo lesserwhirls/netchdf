@@ -11,30 +11,18 @@ final class constants$236 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$236() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_istore_k",
-        constants$44.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_index",
-        constants$162.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_nindexes",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_shared_mesg_phase_change",
-        constants$41.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_sizes",
-        constants$41.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_sym_k",
-        constants$41.const$4
-    );
+    static final VarHandle const$0 = constants$235.const$5.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("flags")
+    ).withName("");
+    static final VarHandle const$2 = constants$236.const$1.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("types"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("count")
+    ).withName("");
+    static final VarHandle const$4 = constants$236.const$3.varHandle(MemoryLayout.PathElement.groupElement("types"));
+    static final VarHandle const$5 = constants$236.const$3.varHandle(MemoryLayout.PathElement.groupElement("count"));
 }
 
 

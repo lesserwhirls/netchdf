@@ -11,26 +11,34 @@ final class constants$10 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$10() {}
-    static final VarHandle const$0 = constants$9.const$5.varHandle(MemoryLayout.PathElement.groupElement("quot"));
-    static final VarHandle const$1 = constants$9.const$5.varHandle(MemoryLayout.PathElement.groupElement("rem"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "imaxabs",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(MemoryLayout.structLayout(
-        JAVA_LONG.withName("quot"),
-        JAVA_LONG.withName("rem")
-    ).withName(""),
-        JAVA_LONG,
-        JAVA_LONG
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "imaxdiv",
-        constants$10.const$4
-    );
+    static final VarHandle const$0 = constants$9.const$5.varHandle(MemoryLayout.PathElement.groupElement("__data"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__size"),
+        JAVA_INT.withName("__align")
+    ).withName("");
+    static final VarHandle const$2 = constants$10.const$1.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.sequenceLayout(56, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("pthread_attr_t");
+    static final VarHandle const$4 = constants$10.const$3.varHandle(MemoryLayout.PathElement.groupElement("__align"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("__lock"),
+            JAVA_INT.withName("__count"),
+            JAVA_INT.withName("__owner"),
+            JAVA_INT.withName("__nusers"),
+            JAVA_INT.withName("__kind"),
+            JAVA_SHORT.withName("__spins"),
+            JAVA_SHORT.withName("__elision"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("__prev"),
+                RuntimeHelper.POINTER.withName("__next")
+            ).withName("__list")
+        ).withName("__data"),
+        MemoryLayout.sequenceLayout(40, JAVA_BYTE).withName("__size"),
+        JAVA_LONG.withName("__align")
+    ).withName("");
 }
 
 

@@ -12,28 +12,28 @@ final class constants$41 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$41() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_put_vars_uchar",
-        constants$13.const$1
+        "nc_put_vars_short",
+        constants$12.const$2
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_get_vars_uchar",
-        constants$13.const$1
+        "nc_get_vars_short",
+        constants$12.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_put_vars_schar",
-        constants$13.const$1
+        "nc_put_vars_int",
+        constants$12.const$2
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_get_vars_schar",
-        constants$13.const$1
+        "nc_get_vars_int",
+        constants$12.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_put_vars_short",
-        constants$13.const$1
+        "nc_put_vars_long",
+        constants$12.const$2
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "nc_get_vars_short",
-        constants$13.const$1
+        "nc_get_vars_long",
+        constants$12.const$2
     );
 }
 

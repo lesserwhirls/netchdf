@@ -11,27 +11,38 @@ final class constants$203 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$203() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("fileno"),
-        MemoryLayout.sequenceLayout(2, JAVA_LONG).withName("objno"),
-        JAVA_INT.withName("nlink"),
-        JAVA_INT.withName("type"),
-        JAVA_LONG.withName("mtime"),
-        JAVA_LONG.withName("linklen"),
-        MemoryLayout.structLayout(
-            JAVA_LONG.withName("size"),
-            JAVA_LONG.withName("free"),
-            JAVA_INT.withName("nmesgs"),
-            JAVA_INT.withName("nchunks")
-        ).withName("ohdr")
-    ).withName("H5G_stat_t");
-    static final VarHandle const$1 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("nlink"));
-    static final VarHandle const$2 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$3 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$4 = constants$203.const$0.varHandle(MemoryLayout.PathElement.groupElement("linklen"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_idx",
+        constants$40.const$1
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_idx_async",
+        constants$203.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Gflush",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Grefresh",
+        constants$19.const$1
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Gcreate1",
-        constants$19.const$3
+        "H5Gclose",
+        constants$19.const$1
     );
 }
 

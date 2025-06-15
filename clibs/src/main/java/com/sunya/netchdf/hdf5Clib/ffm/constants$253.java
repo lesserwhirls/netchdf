@@ -11,32 +11,28 @@ final class constants$253 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$253() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_prefix",
-        constants$19.const$3
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_printf_gap",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_view",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_append_flush",
-        constants$252.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_DOUBLE
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_chunk_cache",
-        constants$253.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("token_ptr")
+    ).withName("");
+    static final VarHandle const$1 = constants$253.const$0.varHandle(MemoryLayout.PathElement.groupElement("token_ptr"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("obj_id")
+    ).withName("");
+    static final VarHandle const$3 = constants$253.const$2.varHandle(MemoryLayout.PathElement.groupElement("obj_id"));
+    static final VarHandle const$4 = constants$253.const$2.varHandle(MemoryLayout.PathElement.groupElement("obj_id"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("err_stack_id")
+            ).withName("get_err_stack"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("exec_ts"),
+                RuntimeHelper.POINTER.withName("exec_time")
+            ).withName("get_exec_time")
+        ).withName("args")
+    ).withName("H5VL_request_specific_args_t");
 }
 
 

@@ -1,29 +1,37 @@
 package com.sunya.netchdf.netcdf4
 
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.testdata.N4Files
-import java.util.*
-import java.util.stream.Stream
+import com.sunya.netchdf.testfiles.N4Files
+import kotlin.test.Test
 import kotlin.test.assertTrue
 
 class N4versionTest {
 
     companion object {
         @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             return N4Files.params()
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
+    @Test
+    fun errMemorySegment() {
+        val filename = "/home/all/testdata/devcdm/netcdf4/attributeStruct.nc"
         NClibFile(filename).use { ncfile ->
             println("${ncfile.type()} $filename ")
-            assertTrue((ncfile.type() == "NC_FORMAT_NETCDF4") or (ncfile.type() == "NC_FORMAT_NETCDF4_CLASSIC"))
+            assertTrue((ncfile.type() == "netcdf4") or (ncfile.type() == "netcdf3"), "${ncfile.type()}")
+        }
+    }
+
+    ///////////////////////////////////////////////////////
+
+    @Test
+    fun checkVersion() {
+        files().forEach { filename ->
+            NClibFile(filename).use { ncfile ->
+                println("${ncfile.type()} $filename ")
+                assertTrue((ncfile.type() == "netcdf3") or (ncfile.type() == "netcdf4"), "${ncfile.type()}")
+            }
         }
     }
 

@@ -11,30 +11,15 @@ final class constants$198 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$198() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDalloc",
-        constants$170.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDfree",
-        constants$185.const$1
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDget_eoa",
-        constants$185.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDset_eoa",
-        constants$186.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDget_eof",
-        constants$185.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDget_vfd_handle",
-        constants$17.const$4
-    );
+    static final VarHandle const$0 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
+    static final VarHandle const$1 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$2 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("cset"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("address"),
+        JAVA_LONG.withName("val_size")
+    ).withName("");
+    static final VarHandle const$4 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("address"));
+    static final VarHandle const$5 = constants$198.const$3.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
 }
 
 

@@ -11,33 +11,88 @@ final class constants$234 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$234() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_obj_track_times",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pmodify_filter",
-        constants$234.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Premove_filter",
-        constants$45.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_attr_creation_order",
-        constants$45.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_attr_phase_change",
-        constants$50.const$3
-    );
+    static final VarHandle const$0 = constants$233.const$3.varHandle(MemoryLayout.PathElement.groupElement("oid_list"));
+    static final VarHandle const$1 = constants$233.const$3.varHandle(MemoryLayout.PathElement.groupElement("count"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("info")
+            ).withName("get_cont_info"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("fapl_id")
+            ).withName("get_fapl"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("fcpl_id")
+            ).withName("get_fcpl"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("fileno")
+            ).withName("get_fileno"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("flags")
+            ).withName("get_intent"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("type"),
+                MemoryLayout.paddingLayout(4),
+                JAVA_LONG.withName("buf_size"),
+                RuntimeHelper.POINTER.withName("buf"),
+                RuntimeHelper.POINTER.withName("file_name_len")
+            ).withName("get_name"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("types"),
+                MemoryLayout.paddingLayout(4),
+                RuntimeHelper.POINTER.withName("count")
+            ).withName("get_obj_count"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("types"),
+                MemoryLayout.paddingLayout(4),
+                JAVA_LONG.withName("max_objs"),
+                RuntimeHelper.POINTER.withName("oid_list"),
+                RuntimeHelper.POINTER.withName("count")
+            ).withName("get_obj_ids")
+        ).withName("args")
+    ).withName("H5VL_file_get_args_t");
+    static final VarHandle const$3 = constants$234.const$2.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$4 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("info")
+        ).withName("get_cont_info"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("fapl_id")
+        ).withName("get_fapl"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("fcpl_id")
+        ).withName("get_fcpl"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("fileno")
+        ).withName("get_fileno"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("flags")
+        ).withName("get_intent"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("type"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("buf_size"),
+            RuntimeHelper.POINTER.withName("buf"),
+            RuntimeHelper.POINTER.withName("file_name_len")
+        ).withName("get_name"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("types"),
+            MemoryLayout.paddingLayout(4),
+            RuntimeHelper.POINTER.withName("count")
+        ).withName("get_obj_count"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("types"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("max_objs"),
+            RuntimeHelper.POINTER.withName("oid_list"),
+            RuntimeHelper.POINTER.withName("count")
+        ).withName("get_obj_ids")
+    ).withName("");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("info")
+    ).withName("");
 }
 
 

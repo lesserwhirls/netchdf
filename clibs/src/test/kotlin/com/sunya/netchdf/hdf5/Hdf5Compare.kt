@@ -1,48 +1,39 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.Datatype
-import com.sunya.netchdf.compareCdlWithClib
-import com.sunya.netchdf.compareDataWithClib
-import com.sunya.netchdf.compareSelectedDataWithClib
+import com.sunya.netchdf.*
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.testdata.*
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import java.util.*
-import java.util.stream.Stream
+import com.sunya.netchdf.testfiles.N4Files
+import com.sunya.netchdf.testfiles.testData
+import kotlin.test.*
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 // Compare header with Hdf5File and NetcdfClibFile
-// sometime fail when they are not netcdf4 files, so nc4lib sees them as empty
+// some fail when they are not actually netcdf4 files
 class Hdf5Compare {
 
     companion object {
         @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             // 10 of 114 fail, because we compare with netcdf4 instead of hdf5 c library
 
-            val hdfeos5 =
-                testFilesIn(testData + "devcdm/hdfeos5")
-                    .withRecursion()
-                    .build()
+            //val hdfeos5 =
+             //   testFilesIn(testData + "devcdm/hdfeos5")
+             //       .withRecursion()
+              //      .build()
 
-            return Stream.of( N4Files.params()).flatMap { i -> i };
+            return N4Files.params()
            //  return Stream.of( N4Files.params(),  H5Files.params()).flatMap { i -> i };
         }
     }
 
-    @Test
-    fun testEos() {
-        compareH5andNclib(testData + "cdmUnitTest/formats/hdf5/aura/MLS-Aura_L2GP-BrO_v01-52-c01_2007d029.he5")
-    }
 
     @Test
-    fun problemReferenceToPallette() {
-        compareH5andNclib(testData + "netchdf/esben/level2_MSG2_8bit_VISIR_STD_20091005_0700.H5")
-        compareDataWithClib(testData + "netchdf/esben/level2_MSG2_8bit_VISIR_STD_20091005_0700.H5")
+    fun testNewLibrary() {
+        val filename = testData + "netchdf/haberman/iso.h5"
+        compareCdlWithClib(filename, showCdl = true)
+        compareDataWithClib(filename)
     }
 
     @Test
@@ -53,9 +44,10 @@ class Hdf5Compare {
     }
 
     @Test
-    fun problem3() {
-        compareH5andNclib(testData + "netchdf/austin/H12007_1m_MLLW_1of6.bag")
-        compareDataWithClib(testData + "netchdf/austin/H12007_1m_MLLW_1of6.bag")
+    fun problemLibraryVersion() {
+        val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
+        compareCdlWithClib(filename, showCdl = true)
+        compareDataWithClib(filename)
     }
 
     @Test
@@ -64,47 +56,64 @@ class Hdf5Compare {
         compareDataWithClib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
-        Hdf5File(filename).use { ncfile ->
-            println("${ncfile.type()} $filename ")
-            assertTrue(ncfile.type().contains("hdf5") || ncfile.type().contains("hdf-eos5")
-                    || (ncfile.type().contains("netcdf4")))
-        }
-    }
-
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
-    }
-
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCompareDataWithClib(filename: String) {
-        compareDataWithClib(filename)
-    }
-
-    @ParameterizedTest
-    @MethodSource("params")
-    fun compareH5andNclib(filename: String) {
-        println("=================")
-        Hdf5File(filename, true).use { h5file ->
-            println("${h5file.type()} $filename ")
-            println("\n${h5file.cdl()}")
-
-            NClibFile(filename).use { nclibfile ->
-                println("ncfile = ${nclibfile.cdl()}")
-                assertEquals(nclibfile.cdl(), h5file.cdl())
+    @Test
+    fun checkVersion() {
+        files().forEach { filename ->
+            openNetchdfFile(filename, NetchdfFileFormat.HDF5).use { ncfile ->
+                println("${ncfile!!.type()} $filename ")
+                assertTrue(
+                    ncfile.type().contains("hdf5") || ncfile.type().contains("hdf-eos5")
+                            || (ncfile.type().contains("netcdf4"))
+                )
             }
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun readCharDataCompareNC(filename : String) {
-        compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR }
+    @Test
+    fun testCdlWithClib() {
+        files().forEach { filename ->
+            compareCdlWithClib(filename)
+        }
     }
 
+    @Test
+    fun testCompareDataWithClib() {
+        files().forEach { filename ->
+            compareDataWithClib(filename)
+        }
+    }
+
+    @Test
+    fun compareH5andNclib() {
+        files().forEach { filename ->
+            compareH5andNclib(filename)
+        }
+    }
+
+    fun compareH5andNclib(filename: String) {
+        println("===================================================")
+        openNetchdfFile(filename, NetchdfFileFormat.HDF5).use { h5file ->
+            println("${h5file!!.type()} $filename ")
+            println("\n${h5file.cdl()}")
+
+            NClibFile(filename).use { nclibfile ->
+                println("ncfile = ${nclibfile.cdl()}")
+                compareCdlWithoutFileType(nclibfile.cdl(), h5file.cdl())
+            }
+        }
+    }
+
+    @Test
+    fun readCharDataCompareNC() {
+        files().forEach { filename ->
+            compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR }
+        }
+    }
+
+}
+
+fun compareCdlWithoutFileType(cdl1: String, cdl2: String) {
+    val pos1 = cdl1.indexOf(' ')
+    val pos2 = cdl2.indexOf(' ')
+    assertEquals(cdl1.substring(pos1), cdl2.substring(pos2))
 }

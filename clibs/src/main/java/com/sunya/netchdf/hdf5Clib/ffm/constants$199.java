@@ -11,29 +11,26 @@ final class constants$199 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$199() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDread",
-        constants$187.const$5
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5L_iterate1_t.class, "apply", constants$27.const$0);
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDwrite",
-        constants$187.const$5
+        "H5Lget_info1",
+        constants$33.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDflush",
-        constants$188.const$5
+        "H5Lget_info_by_idx1",
+        constants$40.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDtruncate",
-        constants$188.const$5
+        "H5Literate1",
+        constants$77.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDlock",
-        constants$189.const$5
+        "H5Literate_by_name1",
+        constants$78.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDunlock",
-        constants$15.const$2
+        "H5Lvisit1",
+        constants$41.const$0
     );
 }
 

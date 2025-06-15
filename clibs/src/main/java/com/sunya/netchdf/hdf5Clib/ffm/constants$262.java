@@ -11,45 +11,18 @@ final class constants$262 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$262() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_copy_object",
-        constants$45.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_mcdt_search_cb",
-        constants$41.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pregister1",
-        constants$231.const$2
-    );
+    static final VarHandle const$0 = constants$260.const$0.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.write.class, "apply", constants$261.const$3);
+    static final VarHandle const$2 = constants$260.const$0.varHandle(MemoryLayout.PathElement.groupElement("write"));
     static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pinsert1",
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.get.class, "apply", constants$262.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         constants$262.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pget_filter1",
-        constants$262.const$5
     );
 }
 

@@ -11,12 +11,25 @@ final class constants$279 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$279() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hhx");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("hx");
-    static final MemorySegment const$2 = MemorySegment.ofAddress(0L);
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("HDF5 library version: 1.10.10");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lld");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("lli");
+    static final VarHandle const$0 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("open"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_object_class_t.copy.class, "apply", constants$279.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$279.const$1
+    );
+    static final VarHandle const$4 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("copy"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_object_class_t.get.class, "apply", constants$263.const$1);
 }
 
 

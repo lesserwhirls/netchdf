@@ -11,30 +11,18 @@ final class constants$239 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$239() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_cache",
-        constants$97.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_core_write_tracking",
-        constants$41.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_driver_info",
-        constants$45.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_file_cache_size",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_evict_on_close",
-        constants$44.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("filename"),
+        JAVA_LONG.withName("fapl_id")
+    ).withName("");
+    static final VarHandle const$1 = constants$239.const$0.varHandle(MemoryLayout.PathElement.groupElement("filename"));
+    static final VarHandle const$2 = constants$239.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_id"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("obj2"),
+        RuntimeHelper.POINTER.withName("same_file")
+    ).withName("");
+    static final VarHandle const$4 = constants$239.const$3.varHandle(MemoryLayout.PathElement.groupElement("obj2"));
+    static final VarHandle const$5 = constants$239.const$3.varHandle(MemoryLayout.PathElement.groupElement("same_file"));
 }
 
 

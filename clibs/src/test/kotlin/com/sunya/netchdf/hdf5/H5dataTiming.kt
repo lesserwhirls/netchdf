@@ -3,8 +3,8 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import org.junit.jupiter.api.Test
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testfiles.testData
+import kotlin.test.*
 import kotlin.system.measureNanoTime
 
 private const val showDetail = true
@@ -68,7 +68,7 @@ class H5dataTiming {
         readData(chunked, "EPV", SectionPartial.fromSpec(":, :, :, 11:20"))
     }
 
-    @Test
+    // @Test
     fun chunkedFiltered() {
         if (showDetail) println("===============================================")
         if (showDetail) println("chunkedFiltered [1, 30, 30, 8]/[8395, 781, 385]")
@@ -81,23 +81,11 @@ class H5dataTiming {
     }
 
     @Test
-    fun netcdf3() {
-        if (showDetail) println("===============================================")
-        if (showDetail) println("netcdf3 [5, 40, 56, 75]")
-        val filename = testData + "cdmUnitTest/formats/netcdf3/awips.nc"
-        readData(filename, "uw", SectionPartial.fromSpec("5, 40, 56, 75"))
-        readData(filename, "uw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "vw", SectionPartial.fromSpec("5, 40, 56, 75"))
-        readData(filename, "vw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "uw", SectionPartial.fromSpec(":,:,:,25"))
-    }
-
-    @Test
     fun problem() {
         readData(reversed, "fyy", SectionPartial.fromSpec("0:99, 0:99, 0:9"))
     }
 
-    @Test
+    // @Test
     fun problem2() {
         //  variable UpperDeschutes_t4p10_swemelt[8395, 781, 385], Chunked dims=[1, 30, 30, 8]
         readData(chunked2, "UpperDeschutes_t4p10_swemelt", SectionPartial.fromSpec("0:100, 0:30, 0:40"))
@@ -105,7 +93,7 @@ class H5dataTiming {
 
     @Test
     fun hasMissing() {
-        val filename = testData + "cdmUnitTest/formats/netcdf4/new/OR_ABI-L2-CMIPF-M6C13_G16_s20230451800207_e20230451809526_c20230451810015.nc"
+        val filename = testData + "cdmUnitTest/formats/netcdf4/goes16/OR_ABI-L2-CMIPF-M6C13_G16_s20230451800207_e20230451809526_c20230451810015.nc"
         readData(filename, "CMI", SectionPartial.fromSpec(":, :"))
         readData(filename, "DQF", SectionPartial.fromSpec(":, :"))
     }

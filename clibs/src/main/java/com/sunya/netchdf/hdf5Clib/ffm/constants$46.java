@@ -11,30 +11,12 @@ final class constants$46 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$46() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Tget_size",
-        constants$10.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Tget_order",
-        constants$19.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tget_precision",
-        constants$10.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tget_offset",
-        constants$19.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tget_pad",
-        constants$41.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tget_sign",
-        constants$19.const$0
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U16LE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U32BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U32LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U64BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_STD_U64LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_B8BE_g", JAVA_LONG);
 }
 
 

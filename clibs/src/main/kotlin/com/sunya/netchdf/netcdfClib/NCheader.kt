@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.netcdfClib
 
 import com.sunya.cdm.api.*
@@ -9,14 +11,14 @@ import com.sunya.netchdf.NetchdfFileFormat.Companion.netcdfMode
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.io.IOException
 import java.lang.foreign.*
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.util.*
-
+import com.fleeksoft.charset.Charset
+import com.sunya.cdm.util.InternalLibraryApi
+import com.sunya.netchdf.NetchdfFileFormat
 
 class NCheader(val filename: String) {
+    @OptIn(InternalLibraryApi::class)
     val rootGroup = Group.Builder("")
-    val formatType: String
+    val formatType: NetchdfFileFormat
 
     private val ncid: Int
     private val format: Int
@@ -31,7 +33,7 @@ class NCheader(val filename: String) {
             val filenameSeg: MemorySegment = session.allocateUtf8String(filename)
             val fileHandle: MemorySegment = session.allocate(C_INT, 0)
 
-            checkErr("nc_open", nc_open(filenameSeg, 0, fileHandle))
+            checkErr("nc_open", nc_open(filenameSeg, NC_NOWRITE(), fileHandle))
             this.ncid = fileHandle[C_INT, 0]
             if (debug) println("nc_open $filename fileHandle ${this.ncid}")
 
@@ -40,7 +42,7 @@ class NCheader(val filename: String) {
             checkErr("nc_inq_format", nc_inq_format(ncid, format_p))
             this.format = format_p[C_INT, 0]
             if (debugFormat) println(" nc_inq_format = ${netcdfFormat(this.format)}")
-            this.formatType = netcdfFormat(this.format).toString()
+            this.formatType = netcdfFormat(this.format)
 
             // format extended
             val mode_p: MemorySegment = session.allocate(C_INT, 0)
@@ -389,7 +391,8 @@ class NCheader(val filename: String) {
                     // val s1 = strings_p.getUtf8String(i*8) // LOOK wrong
                     val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
                     if (s2 != MemorySegment.NULL) {
-                        val value = s2.getUtf8String(0)
+                        val cString = s2.reinterpret(Long.MAX_VALUE)
+                        val value = cString.getUtf8String(0)
                         val tvalue = transcodeString(value)
                         result.add(tvalue)
                     } else {
@@ -432,7 +435,7 @@ class NCheader(val filename: String) {
     // ?? LOOK
     private fun transcodeString(systemString: String): String {
         val byteArray = systemString.toByteArray(Charset.defaultCharset())
-        return String(byteArray, StandardCharsets.UTF_8)
+        return String(byteArray, Charsets.UTF_8)
     }
 
     internal class Group4(val grpid: Int, val gb: Group.Builder, val parent: Group4?) {
@@ -459,7 +462,7 @@ class NCheader(val filename: String) {
 
     companion object {
         val debug = false
-        val debugFormat = false
+        val debugFormat = true
     }
 
     fun convertType(type: Int): Datatype<*> {

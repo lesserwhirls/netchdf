@@ -9,20 +9,20 @@ import java.lang.foreign.*;
 import static java.lang.foreign.ValueLayout.*;
 /**
  * {@snippet :
- * int (*H5D_chunk_iter_op_t)(unsigned long long* offset,unsigned int filter_mask,unsigned long addr,unsigned long long size,void* op_data);
+ * int (*H5D_chunk_iter_op_t)(unsigned long* offset,unsigned int filter_mask,unsigned long addr,unsigned long size,void* op_data);
  * }
  */
 public interface H5D_chunk_iter_op_t {
 
     int apply(java.lang.foreign.MemorySegment offset, int filter_mask, long addr, long size, java.lang.foreign.MemorySegment op_data);
     static MemorySegment allocate(H5D_chunk_iter_op_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$94.const$5, fi, constants$94.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$89.const$5, fi, constants$89.const$4, scope);
     }
     static H5D_chunk_iter_op_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _offset, int _filter_mask, long _addr, long _size, java.lang.foreign.MemorySegment _op_data) -> {
             try {
-                return (int)constants$95.const$0.invokeExact(symbol, _offset, _filter_mask, _addr, _size, _op_data);
+                return (int)constants$90.const$0.invokeExact(symbol, _offset, _filter_mask, _addr, _size, _op_data);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

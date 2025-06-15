@@ -11,30 +11,42 @@ final class constants$197 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$197() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDregister",
-        constants$42.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5FDunregister",
-        constants$19.const$0
+        "H5Lunpack_elink_val",
+        constants$197.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FDopen",
-        constants$182.const$3
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FDclose",
-        constants$15.const$2
+        "H5Lcreate_external",
+        constants$197.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5FDcmp",
-        constants$112.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FDquery",
-        constants$112.const$0
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_LONG.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            JAVA_LONG.withName("address"),
+            JAVA_LONG.withName("val_size")
+        ).withName("u")
+    ).withName("");
+    static final VarHandle const$5 = constants$197.const$4.varHandle(MemoryLayout.PathElement.groupElement("type"));
 }
 
 

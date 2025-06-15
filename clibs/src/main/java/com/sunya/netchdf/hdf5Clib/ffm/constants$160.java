@@ -12,25 +12,38 @@ final class constants$160 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$160() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eregister_class",
-        constants$123.const$3
+        "H5Epause_stack",
+        constants$19.const$1
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eunregister_class",
-        constants$19.const$0
+        "H5Eresume_stack",
+        constants$19.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Eclose_msg",
-        constants$19.const$0
+        "H5Eclose_stack",
+        constants$19.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_msg",
-        constants$44.const$1
+        "H5Eget_class_name",
+        constants$19.const$4
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ecreate_stack",
-        constants$160.const$4
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Eset_current_stack",
+        constants$19.const$1
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandleVariadic(
+        "H5Epush2",
+        constants$160.const$5
     );
 }
 

@@ -11,31 +11,29 @@ final class constants$118 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$118() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandleVariadic(
-        "snprintf",
-        constants$17.const$4
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "vsnprintf",
-        constants$118.const$1
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "vasprintf",
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "getc_unlocked",
         constants$15.const$4
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandleVariadic(
-        "__asprintf",
-        constants$112.const$0
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "getchar_unlocked",
+        constants$13.const$2
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandleVariadic(
-        "asprintf",
-        constants$112.const$0
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "fgetc_unlocked",
+        constants$15.const$4
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "fputc",
+        constants$22.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "putc",
+        constants$22.const$2
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "putchar",
+        constants$21.const$0
     );
 }
 

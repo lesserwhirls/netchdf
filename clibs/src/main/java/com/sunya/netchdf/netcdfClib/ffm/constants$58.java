@@ -21,7 +21,7 @@ final class constants$58 {
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "nctypelen",
-        constants$20.const$3
+        constants$19.const$5
     );
     static final VarHandle const$3 = JAVA_INT.varHandle();
     static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("ncerr", JAVA_INT);

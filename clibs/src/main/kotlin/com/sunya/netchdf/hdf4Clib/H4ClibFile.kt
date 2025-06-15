@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4Clib
 
 /*
@@ -19,14 +21,14 @@ cd /home/stormy/install/jextract-19/bin
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
+import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.cdm.util.InternalLibraryApi
 
 import com.sunya.netchdf.mfhdfClib.ffm.mfhdf_h.*
 import java.lang.foreign.MemoryLayout
 import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import kotlin.math.min
@@ -38,7 +40,7 @@ class Hdf4ClibFile(val filename: String) : Netchdf {
 
     override fun location() = filename
     override fun cdl() = cdl(this)
-    override fun type() = "hdf4Clib"
+    override fun type() = if (header.isEos()) "hdf-eos2" else "hdf4"
 
     override fun close() {
         header.close()
@@ -130,10 +132,9 @@ fun <T> readSDdata(sdsStartId: Int, sdindex: Int, datatype: Datatype<T>, wantSec
         val sds_id = SDselect(sdsStartId, sdindex)
         try {
             checkErr("SDreaddata", SDreaddata(sds_id, origin_p, stride_p, shape_p, data_p))
-            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-            val values = ByteBuffer.wrap(raw)
-            values.order(ByteOrder.nativeOrder())
-            return shapeData(datatype, values, wantSection.shape.toIntArray())
+            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
+            val tba = TypedByteArray(datatype, raw, 0, isBE = nativeByteOrder)
+            return tba.convertToArrayTyped(wantSection.shape.toIntArray())
 
         } finally {
             SDendaccess(sds_id)
@@ -144,12 +145,13 @@ fun <T> readSDdata(sdsStartId: Int, sdindex: Int, datatype: Datatype<T>, wantSec
 fun <T> readVSdata(fileOpenId: Int, vsInfo: VSInfo, datatype : Datatype<T>, startRecnum: Int, wantRecords: Int): ArrayTyped<T> {
     val startRecord = if (vsInfo.nrecords == 1) 0 else startRecnum // trick because we promote single field structures
     val numRecords = min(vsInfo.nrecords, wantRecords) // trick because we promote single field structures
-    val shape = intArrayOf(numRecords)
+    val nelt = numRecords * vsInfo.recsize
+    val shape = if (datatype.size == 1) intArrayOf(nelt) else intArrayOf(numRecords) // TODO seems wrong
 
     Arena.ofConfined().use { session ->
         val read_access_mode = session.allocateUtf8String("r")
         val fldnames_p = session.allocateUtf8String(vsInfo.fldNames)
-        val data_p = session.allocate(numRecords * vsInfo.recsize.toLong()) // LOOK memory clobber?
+        val data_p = session.allocate(nelt.toLong()) // LOOK memory clobber?
         val vdata_id = VSattach(fileOpenId, vsInfo.vs_ref, read_access_mode)
         try {
             checkErrNeg("VSsetfields", VSsetfields(vdata_id, fldnames_p))
@@ -162,17 +164,15 @@ fun <T> readVSdata(fileOpenId: Int, vsInfo: VSInfo, datatype : Datatype<T>, star
             // As the data is stored contiguously in the vdata, VSfpack should be used to
             // unpack the fields after reading.
 
-            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-            val values = ByteBuffer.wrap(raw)
-           // values.order(ByteOrder.LITTLE_ENDIAN) // clib converts to machine order
-            values.order(ByteOrder.nativeOrder()) // clib converts to machine order
+            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
 
             if (datatype.typedef is CompoundTypedef) {
                 val members = (datatype.typedef as CompoundTypedef).members
-                return ArrayStructureData(shape, values, vsInfo.recsize, members) as ArrayTyped<T>
+                return ArrayStructureData(shape, raw, isBE = nativeByteOrder, vsInfo.recsize, members) as ArrayTyped<T>
             } else {
                 // a single field is made into a regular variable
-                return shapeData(datatype, values, shape)
+                val tba = TypedByteArray(datatype, raw, 0, isBE = nativeByteOrder)
+                return tba.convertToArrayTyped(shape, vsInfo.recsize)
             }
         } finally {
             VSdetach(vdata_id)
@@ -203,33 +203,11 @@ fun <T> readGRdata(grStartId: Int, grIdx: Int, datatype: Datatype<T>, wantSectio
         try {
             // intn GRreadimage(int32 ri_id, int32 start[2], int32 stride[2], int32 edge[2], VOIDP data)
             checkErr("GRreadimage", GRreadimage(grId, origin_p, stride_p, shape_p, data_p))
-            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)
-            val values = ByteBuffer.wrap(raw)
-            values.order(ByteOrder.nativeOrder())
-            return shapeData(datatype, values, wantSection.shape.toIntArray())
-            // flip the data back
-            //val flipper = IndexFn(wantSection.shape.toIntArray())
-            //return shapeData(datatype, flipper.flip(values, datatype.size), flipper.flippedShape())
+            val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
+            val tba = TypedByteArray(datatype, raw, 0, isBE = nativeByteOrder)
+            return tba.convertToArrayTyped(wantSection.shape.toIntArray())
         } finally {
             GRendaccess(grId)
         }
     }
-}
-
-private fun <T> shapeData(datatype: Datatype<T>, values: ByteBuffer, shape: IntArray): ArrayTyped<T> {
-    val result = when (datatype) {
-        Datatype.BYTE -> ArrayByte(shape, values)
-        Datatype.UBYTE, Datatype.CHAR -> ArrayUByte(shape, datatype as Datatype<UByte>, values)
-        Datatype.STRING -> ArrayUByte(shape, values).makeStringsFromBytes()
-        Datatype.DOUBLE -> ArrayDouble(shape, values)
-        Datatype.FLOAT -> ArrayFloat(shape, values)
-        Datatype.INT -> ArrayInt(shape, values)
-        Datatype.UINT -> ArrayUInt(shape, values)
-        Datatype.LONG -> ArrayLong(shape, values)
-        Datatype.ULONG -> ArrayULong(shape, values)
-        Datatype.SHORT -> ArrayShort(shape, values)
-        Datatype.USHORT -> ArrayUShort(shape, values)
-        else -> throw IllegalArgumentException("datatype ${datatype}")
-    }
-    return result as ArrayTyped<T>
 }

@@ -11,29 +11,37 @@ final class constants$175 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$175() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fclear_elink_file_cache",
-        constants$19.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fset_libver_bounds",
-        constants$50.const$3
+        "H5Fis_accessible",
+        constants$175.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fstart_mdc_logging",
-        constants$19.const$0
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fstop_mdc_logging",
-        constants$19.const$0
+        "H5Fcreate",
+        constants$175.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_logging_status",
-        constants$41.const$4
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fformat_convert",
-        constants$19.const$0
+        "H5Fcreate_async",
+        constants$175.const$4
     );
 }
 

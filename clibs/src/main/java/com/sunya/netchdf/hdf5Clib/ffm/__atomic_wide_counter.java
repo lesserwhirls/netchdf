@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class __atomic_wide_counter {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$2.const$0;
+        return constants$4.const$2;
     }
     public static VarHandle __value64$VH() {
-        return constants$2.const$1;
+        return constants$4.const$3;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class __atomic_wide_counter {
      * }
      */
     public static long __value64$get(MemorySegment seg) {
-        return (long)constants$2.const$1.get(seg);
+        return (long)constants$4.const$3.get(seg);
     }
     /**
      * Setter for field:
@@ -39,13 +39,13 @@ public class __atomic_wide_counter {
      * }
      */
     public static void __value64$set(MemorySegment seg, long x) {
-        constants$2.const$1.set(seg, x);
+        constants$4.const$3.set(seg, x);
     }
     public static long __value64$get(MemorySegment seg, long index) {
-        return (long)constants$2.const$1.get(seg.asSlice(index*sizeof()));
+        return (long)constants$4.const$3.get(seg.asSlice(index*sizeof()));
     }
     public static void __value64$set(MemorySegment seg, long index, long x) {
-        constants$2.const$1.set(seg.asSlice(index*sizeof()), x);
+        constants$4.const$3.set(seg.asSlice(index*sizeof()), x);
     }
     /**
      * {@snippet :
@@ -60,10 +60,10 @@ public class __atomic_wide_counter {
         // Suppresses default constructor, ensuring non-instantiability.
         private __value32() {}
         public static MemoryLayout $LAYOUT() {
-            return constants$2.const$2;
+            return constants$4.const$4;
         }
         public static VarHandle __low$VH() {
-            return constants$2.const$3;
+            return constants$4.const$5;
         }
         /**
          * Getter for field:
@@ -72,7 +72,7 @@ public class __atomic_wide_counter {
          * }
          */
         public static int __low$get(MemorySegment seg) {
-            return (int)constants$2.const$3.get(seg);
+            return (int)constants$4.const$5.get(seg);
         }
         /**
          * Setter for field:
@@ -81,16 +81,16 @@ public class __atomic_wide_counter {
          * }
          */
         public static void __low$set(MemorySegment seg, int x) {
-            constants$2.const$3.set(seg, x);
+            constants$4.const$5.set(seg, x);
         }
         public static int __low$get(MemorySegment seg, long index) {
-            return (int)constants$2.const$3.get(seg.asSlice(index*sizeof()));
+            return (int)constants$4.const$5.get(seg.asSlice(index*sizeof()));
         }
         public static void __low$set(MemorySegment seg, long index, int x) {
-            constants$2.const$3.set(seg.asSlice(index*sizeof()), x);
+            constants$4.const$5.set(seg.asSlice(index*sizeof()), x);
         }
         public static VarHandle __high$VH() {
-            return constants$2.const$4;
+            return constants$5.const$0;
         }
         /**
          * Getter for field:
@@ -99,7 +99,7 @@ public class __atomic_wide_counter {
          * }
          */
         public static int __high$get(MemorySegment seg) {
-            return (int)constants$2.const$4.get(seg);
+            return (int)constants$5.const$0.get(seg);
         }
         /**
          * Setter for field:
@@ -108,13 +108,13 @@ public class __atomic_wide_counter {
          * }
          */
         public static void __high$set(MemorySegment seg, int x) {
-            constants$2.const$4.set(seg, x);
+            constants$5.const$0.set(seg, x);
         }
         public static int __high$get(MemorySegment seg, long index) {
-            return (int)constants$2.const$4.get(seg.asSlice(index*sizeof()));
+            return (int)constants$5.const$0.get(seg.asSlice(index*sizeof()));
         }
         public static void __high$set(MemorySegment seg, long index, int x) {
-            constants$2.const$4.set(seg.asSlice(index*sizeof()), x);
+            constants$5.const$0.set(seg.asSlice(index*sizeof()), x);
         }
         public static long sizeof() { return $LAYOUT().byteSize(); }
         public static MemorySegment allocate(SegmentAllocator allocator) { return allocator.allocate($LAYOUT()); }

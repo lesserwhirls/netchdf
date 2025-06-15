@@ -11,30 +11,12 @@ final class constants$103 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$103() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("__count"),
-        MemoryLayout.unionLayout(
-            JAVA_INT.withName("__wch"),
-            MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-        ).withName("__value")
-    ).withName("");
-    static final VarHandle const$1 = constants$103.const$0.varHandle(MemoryLayout.PathElement.groupElement("__count"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        JAVA_INT.withName("__wch"),
-        MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-    ).withName("");
-    static final VarHandle const$3 = constants$103.const$2.varHandle(MemoryLayout.PathElement.groupElement("__wch"));
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("__pos"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("__count"),
-            MemoryLayout.unionLayout(
-                JAVA_INT.withName("__wch"),
-                MemoryLayout.sequenceLayout(4, JAVA_BYTE).withName("__wchb")
-            ).withName("__value")
-        ).withName("__state")
-    ).withName("_G_fpos_t");
-    static final VarHandle const$5 = constants$103.const$4.varHandle(MemoryLayout.PathElement.groupElement("__pos"));
+    static final VarHandle const$0 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
+    static final VarHandle const$1 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
+    static final VarHandle const$2 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
+    static final VarHandle const$3 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_base"));
+    static final VarHandle const$4 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_backup_base"));
+    static final VarHandle const$5 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_IO_save_end"));
 }
 
 

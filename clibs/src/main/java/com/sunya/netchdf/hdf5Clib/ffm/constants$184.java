@@ -11,13 +11,32 @@ final class constants$184 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$184() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.query.class, "apply", constants$112.const$0);
-    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("query"));
-    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5FD_class_t.get_type_map.class, "apply", constants$112.const$0);
-    static final VarHandle const$3 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_type_map"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.alloc.class, "apply", constants$170.const$0);
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("super_ext_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("hdr_size"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("msgs_info")
+        ).withName("sohm")
+    ).withName("H5F_info1_t");
+    static final VarHandle const$1 = constants$184.const$0.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("hdr_size"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("index_size"),
+            JAVA_LONG.withName("heap_size")
+        ).withName("msgs_info")
+    ).withName("");
+    static final VarHandle const$3 = constants$184.const$2.varHandle(MemoryLayout.PathElement.groupElement("hdr_size"));
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_info1",
+        constants$17.const$5
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$170.const$0
+        "H5Fset_latest_format",
+        constants$183.const$3
     );
 }
 

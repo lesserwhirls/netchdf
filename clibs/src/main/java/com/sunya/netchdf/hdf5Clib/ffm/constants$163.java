@@ -11,37 +11,12 @@ final class constants$163 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$163() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eclear2",
-        constants$19.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eauto_is_v2",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eget_msg",
-        constants$163.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eget_num",
-        constants$10.const$2
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("maj_num"),
-        JAVA_LONG.withName("min_num"),
-        RuntimeHelper.POINTER.withName("func_name"),
-        RuntimeHelper.POINTER.withName("file_name"),
-        JAVA_INT.withName("line"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("desc")
-    ).withName("H5E_error1_t");
+    static final VarHandle const$0 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
+    static final VarHandle const$1 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
+    static final VarHandle const$2 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
+    static final VarHandle const$3 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
+    static final VarHandle const$4 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("line"));
+    static final VarHandle const$5 = constants$162.const$5.varHandle(MemoryLayout.PathElement.groupElement("desc"));
 }
 
 

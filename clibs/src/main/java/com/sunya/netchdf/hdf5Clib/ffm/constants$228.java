@@ -11,21 +11,38 @@ final class constants$228 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$228() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_OBJECT_COPY_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_LINK_ACCESS_ID_g", JAVA_LONG);
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pclose",
-        constants$19.const$0
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pclose_class",
-        constants$19.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pcopy",
-        constants$10.const$2
-    );
+    static final VarHandle const$0 = constants$222.const$1.varHandle(MemoryLayout.PathElement.groupElement("type_id"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("size")
+            ).withName("set_extent"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("dset_id")
+            ).withName("flush"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("dset_id")
+            ).withName("refresh")
+        ).withName("args")
+    ).withName("H5VL_dataset_specific_args_t");
+    static final VarHandle const$2 = constants$228.const$1.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("size")
+        ).withName("set_extent"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("dset_id")
+        ).withName("flush"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("dset_id")
+        ).withName("refresh")
+    ).withName("");
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("size")
+    ).withName("");
+    static final VarHandle const$5 = constants$228.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
 }
 
 

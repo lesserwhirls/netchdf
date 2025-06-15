@@ -11,29 +11,29 @@ final class constants$208 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$208() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Gget_objtype_by_idx",
+        constants$58.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Screate",
-        constants$208.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5VLregister_connector_by_name",
+        constants$208.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Screate_simple",
-        constants$208.const$2
+        "H5VLregister_connector_by_value",
+        constants$58.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sdecode",
-        constants$42.const$0
+        "H5VLis_connector_registered_by_name",
+        constants$15.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Sencode",
-        constants$41.const$4
+        "H5VLis_connector_registered_by_value",
+        constants$21.const$0
     );
 }
 

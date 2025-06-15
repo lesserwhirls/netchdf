@@ -11,39 +11,34 @@ final class constants$213 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$213() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sselect_adjust",
-        constants$44.const$4
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sselect_all",
-        constants$19.const$0
+        "H5Ropen_object_async",
+        constants$213.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sselect_copy",
-        constants$40.const$0
+        "H5Ropen_region",
+        constants$212.const$4
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ropen_region_async",
+        constants$213.const$0
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Sselect_elements",
-        constants$213.const$3
+        "H5Ropen_attr",
+        constants$212.const$4
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Sselect_hyperslab",
-        constants$213.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Ropen_attr_async",
+        constants$213.const$0
     );
 }
 

@@ -16,13 +16,13 @@ public interface H5P_prp_delete_func_t {
 
     int apply(long prop_id, java.lang.foreign.MemorySegment name, long size, java.lang.foreign.MemorySegment value);
     static MemorySegment allocate(H5P_prp_delete_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$221.const$5, fi, constants$204.const$5, scope);
+        return RuntimeHelper.upcallStub(constants$313.const$1, fi, constants$206.const$1, scope);
     }
     static H5P_prp_delete_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (long _prop_id, java.lang.foreign.MemorySegment _name, long _size, java.lang.foreign.MemorySegment _value) -> {
             try {
-                return (int)constants$221.const$1.invokeExact(symbol, _prop_id, _name, _size, _value);
+                return (int)constants$312.const$1.invokeExact(symbol, _prop_id, _name, _size, _value);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

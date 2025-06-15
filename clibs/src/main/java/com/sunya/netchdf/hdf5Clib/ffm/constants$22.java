@@ -13,28 +13,29 @@ final class constants$22 {
     private constants$22() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Inmembers",
+        "H5Iiterate",
         constants$22.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Inmembers",
+        constants$22.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "H5Itype_exists",
         constants$21.const$0
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         "H5Iis_valid",
-        constants$19.const$0
+        constants$19.const$1
     );
-    static final StructLayout const$4 = MemoryLayout.structLayout(
-        JAVA_INT.withName("command"),
-        JAVA_INT.withName("need_bkg"),
-        JAVA_BOOLEAN.withName("recalc"),
-        MemoryLayout.paddingLayout(7),
-        RuntimeHelper.POINTER.withName("priv")
-    ).withName("H5T_cdata_t");
-    static final VarHandle const$5 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("command"));
 }
 
 

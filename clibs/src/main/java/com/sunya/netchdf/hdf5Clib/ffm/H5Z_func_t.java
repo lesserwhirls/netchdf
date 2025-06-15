@@ -16,13 +16,13 @@ public interface H5Z_func_t {
 
     long apply(int flags, long cd_nelmts, java.lang.foreign.MemorySegment cd_values, long nbytes, java.lang.foreign.MemorySegment buf_size, java.lang.foreign.MemorySegment buf);
     static MemorySegment allocate(H5Z_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$216.const$4, fi, constants$216.const$3, scope);
+        return RuntimeHelper.upcallStub(constants$395.const$5, fi, constants$395.const$4, scope);
     }
     static H5Z_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (int _flags, long _cd_nelmts, java.lang.foreign.MemorySegment _cd_values, long _nbytes, java.lang.foreign.MemorySegment _buf_size, java.lang.foreign.MemorySegment _buf) -> {
             try {
-                return (long)constants$216.const$5.invokeExact(symbol, _flags, _cd_nelmts, _cd_values, _nbytes, _buf_size, _buf);
+                return (long)constants$396.const$0.invokeExact(symbol, _flags, _cd_nelmts, _cd_values, _nbytes, _buf_size, _buf);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

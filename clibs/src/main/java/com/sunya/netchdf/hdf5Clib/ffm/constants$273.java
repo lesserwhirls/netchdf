@@ -11,24 +11,30 @@ final class constants$273 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$273() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_splitter",
-        constants$44.const$4
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_group_class_t");
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_splitter",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5FD_stdio_init",
-        constants$160.const$4
-    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_group_class_t.create.class, "apply", constants$273.const$1);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_stdio",
-        constants$19.const$0
+        constants$273.const$1
     );
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("/usr/lib/x86_64-linux-gnu/hdf5/serial/plugins");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("${prefix}/share/hdf5_examples");
+    static final VarHandle const$4 = constants$273.const$0.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_group_class_t.open.class, "apply", constants$260.const$5);
 }
 
 

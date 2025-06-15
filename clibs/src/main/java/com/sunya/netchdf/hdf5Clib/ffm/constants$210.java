@@ -12,38 +12,32 @@ final class constants$210 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$210() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Sis_simple",
-        constants$19.const$0
+        "H5VLunregister_connector",
+        constants$19.const$1
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Sset_extent_none",
-        constants$19.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Sset_extent_simple",
-        constants$162.const$2
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
         JAVA_LONG,
         JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Scombine_hyperslab",
-        constants$210.const$3
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5VLquery_optional",
+        constants$210.const$1
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_LONG
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5VLobject_is_native",
+        constants$17.const$5
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Scombine_select",
-        constants$210.const$5
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        MemoryLayout.sequenceLayout(12, JAVA_BYTE).withName("__data")
+    ).withName("");
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        MemoryLayout.unionLayout(
+            MemoryLayout.sequenceLayout(64, JAVA_BYTE).withName("__data"),
+            JAVA_LONG.withName("align")
+        ).withName("u")
+    ).withName("");
 }
 
 

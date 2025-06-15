@@ -1,0 +1,101 @@
+5/23/25
+
+/dev/github/netcdf/netcdf-c:$ git pull origin
+remote: Enumerating objects: 8654, done.
+remote: Counting objects: 100% (4506/4506), done.
+remote: Compressing objects: 100% (63/63), done.
+remote: Total 8654 (delta 4458), reused 4447 (delta 4443), pack-reused 4148 (from 2)
+Receiving objects: 100% (8654/8654), 10.17 MiB | 1.58 MiB/s, done.
+Resolving deltas: 100% (6789/6789), completed with 782 local objects.
+From https://github.com/Unidata/netcdf-c
+   43abd699e..dbe0cbb9f  main                  -> origin/main
+ * [new branch]          revert-2879-hdf-jpeg  -> origin/revert-2879-hdf-jpeg
+ * [new branch]          v4.9.3-prep           -> origin/v4.9.3-prep
+ * [new branch]          v4.9.3-prep.wif       -> origin/v4.9.3-prep.wif
+ * [new branch]          v4.9.3-rc1-prep.wif   -> origin/v4.9.3-rc1-prep.wif
+ * [new branch]          v4.9.3-rc2-prep.wif   -> origin/v4.9.3-rc2-prep.wif
+ * [new branch]          v4.9.3-wellspring.wif -> origin/v4.9.3-wellspring.wif
+ * [new tag]             v4.9.3                -> v4.9.3
+ * [new tag]             v4.9.3-rc1            -> v4.9.3-rc1
+ * [new tag]             v4.9.3-rc2            -> v4.9.3-rc2
+Updating 43abd699e..dbe0cbb9f
+error: The following untracked working tree files would be overwritten by merge:
+	nczarr_test/test_filter_avail.c
+Please mov
+
+> make clean
+> cd nczarr_test/
+> make clean
+
+=================================
+
+netcdf-c/INSTALL.md
+
+The usual way of building netCDF requires the HDF5, zlib, and curl
+libraries. (And, optionally, the szlib library). Versions required are
+at least HDF5 1.8.9, zlib 1.2.5, and curl 7.18.0 or later.
+(Optionally, if building with szlib, get szip 2.0 or later.)
+
+(we seem to have /Home/install/CMake-hdf5-1.10.7)
+(not sure about szip)
+
+Build zlib like this:
+
+~~~
+$ ./configure --prefix=/home/username/local
+$ make check install
+~~~
+
+Then you build HDF5, specifying the location of the zlib library:
+
+~~~
+$ ./configure --with-zlib=/home/username/local --prefix=/home/username/local
+$ make check install
+~~~
+
+After HDF5 is done, build netcdf, specifying the location of the
+HDF5, zlib, and (if built into HDF5) the szip header files and
+libraries in the CPPFLAGS and LDFLAGS environment variables. For example:
+
+~~~
+$ CPPFLAGS=-I/home/username/local/include LDFLAGS=-L/home/username/local/lib ./configure --prefix=/home/username/local
+$ make check install
+~~~
+
+The above examples install the zlib, HDF5, and netCDF-4 libraries in
+/home/username/local/lib, the header file in /home/username/local/include, and the
+utilities in /home/username/local/bin. If you don't provide a <CODE>--prefix</CODE>
+option, installation will be in /usr/local/, in subdirectories lib/,
+include/, and bin/.
+
+~~~
+$ ./configure --prefix=/home/username/local --disable-dap
+$ make check install
+~~~
+
+========================
+========================
+
+~/dev/github/netcdf/netcdf-c:$ autoreconf -if
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:72: installing './compile'
+configure.ac:107: installing './missing'
+dap4_test/Makefile.am: installing './depcomp'
+ncdap_test/Makefile.am:68: warning: variable 'test_manyurls_SOURCES' is defined but no program or
+ncdap_test/Makefile.am:68: library has 'test_manyurls' as canonical name (possible typo)
+
+rebuild.sh
+
+CPPFLAGS=-I/usr/include/hdf5/serial/ LDFLAGS=-L/usr/lib/x86_64-linux-gnu/hdf5/serial/ ./configure --prefix=/home/stormy/install/netcdf4
+make check install
+
+> sh ./rebuild.sh
+
+(worked)

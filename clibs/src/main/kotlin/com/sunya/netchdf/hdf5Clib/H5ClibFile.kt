@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.Datatype5
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.C_DOUBLE
@@ -14,15 +17,29 @@ import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 
 /*
+1. install hdf5 library
+
+https://support.hdfgroup.org/downloads/
+https://support.hdfgroup.org/downloads/hdf5/hdf5_1_14_6.html
+https://support.hdfgroup.org/releases/hdf5/v1_14/v1_14_6/downloads/hdf5-1.14.6-ubuntu-2404_gcc.deb
+
+double click on it, install into /home/install/HDF_GROUP (modify below as needed)
+
+2. make ffm classes
+
 cd /home/stormy/install/jextract-21/bin
 
 ./jextract --source \
     --header-class-name hdf5_h \
     --target-package com.sunya.netchdf.hdf5Clib.ffm \
-    -I /usr/include/hdf5/serial/hdf5.h \
-    -l /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so \
+    -I /home/stormy/install/HDF_Group/HDF5/1.14.6/include/hdf5.h \
+    -l /home/stormy/install/HDF_Group/HDF5/1.14.6/lib/libhdf5.so \
     --output /home/stormy/dev/github/netcdf/netchdf/clibs/src/main/java \
-    /usr/include/hdf5/serial/hdf5.h
+    /home/stormy/install/HDF_Group/HDF5/1.14.6/include/hdf5.h
+
+ You can search for this string in generated ffm file: "HDF5 library version: 1.14.6"
+ See if theres build errors
+ See if theres test errors.
  */
 class Hdf5ClibFile(val filename: String) : Netchdf {
     private val header = H5Cbuilder(filename)
@@ -55,7 +72,11 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
             } else if (vinfo.h5ctype.datatype5 == Datatype5.Vlen) {
                 readVlens(session, vinfo.datasetId, vinfo.h5ctype, fillSection) as ArrayTyped<T>
             } else {
-                readRegularData(session, vinfo.datasetId, vinfo.h5ctype, vinfo.h5ctype.datatype(), fillSection) as ArrayTyped<T>
+                var result = readRegularData(session, vinfo.datasetId, vinfo.h5ctype, vinfo.h5ctype.datatype(), fillSection) as ArrayTyped<T>
+                if (vinfo.h5ctype.datatype() == Datatype.REFERENCE) {
+                    result = ArrayString(fillSection.shape.toIntArray(), header.convertReferencesToDataObjectName(result as ArrayLong)) as ArrayTyped<T>
+                }
+                result
             }
         }
     }
@@ -70,9 +91,10 @@ class Hdf5ClibFile(val filename: String) : Netchdf {
 
         val slist = mutableListOf<String>()
         for (i in 0 until nelems) {
-            val s2: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
-            if (s2 != MemorySegment.NULL) {
-                val value = s2.getUtf8String(0)
+            val address: MemorySegment = strings_p.getAtIndex(ValueLayout.ADDRESS, i)
+            if (address != MemorySegment.NULL) {
+                val cString = address.reinterpret(Long.MAX_VALUE)
+                val value = cString.getUtf8String(0)
                 // val tvalue = transcodeString(value)
                 slist.add(value)
             } else {

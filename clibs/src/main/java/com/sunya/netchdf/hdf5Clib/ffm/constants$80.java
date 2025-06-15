@@ -11,19 +11,35 @@ final class constants$80 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$80() {}
-    static final VarHandle const$0 = constants$79.const$2.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
-    static final StructLayout const$1 = MemoryLayout.structLayout(
-        JAVA_BOOLEAN.withName("corder_valid"),
-        MemoryLayout.paddingLayout(3),
-        JAVA_INT.withName("corder"),
-        JAVA_INT.withName("cset"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("data_size")
-    ).withName("");
-    static final VarHandle const$2 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
-    static final VarHandle const$3 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder"));
-    static final VarHandle const$4 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("cset"));
-    static final VarHandle const$5 = constants$80.const$1.varHandle(MemoryLayout.PathElement.groupElement("data_size"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Aread_async",
+        constants$80.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Arename",
+        constants$36.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Arename_async",
+        constants$75.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Arename_by_name_async",
+        constants$75.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Awrite",
+        constants$79.const$5
+    );
 }
 
 

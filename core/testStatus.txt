@@ -1,0 +1,12 @@
+6/08/2025
+
+dir              failed    passed       time
+all                 11       7458        32 min 13 sec
+
+5/31/2025
+
+dir              failed    passed       time
+hdf4                0       1474        3 min 35 sec
+all                 0       7893        15 min 18 sec
+
+

@@ -11,29 +11,43 @@ final class constants$77 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$77() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Orefresh",
-        constants$19.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Odisable_mdc_flushes",
-        constants$19.const$0
+        "H5Aget_name_by_idx",
+        constants$77.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oenable_mdc_flushes",
-        constants$19.const$0
+        "H5Aget_space",
+        constants$0.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oare_mdc_flushes_disabled",
-        constants$44.const$4
+        "H5Aget_storage_size",
+        constants$0.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info",
-        constants$44.const$4
+        "H5Aget_type",
+        constants$0.const$4
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name",
-        constants$43.const$3
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Aiterate2",
+        constants$77.const$5
     );
 }
 

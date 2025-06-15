@@ -11,30 +11,33 @@ final class constants$249 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$249() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_layout",
-        constants$19.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_count",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_dsetname",
-        constants$206.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_filename",
-        constants$206.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_srcspace",
-        constants$72.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_virtual_vspace",
-        constants$72.const$5
-    );
+    static final VarHandle const$0 = constants$248.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("file")
+        ).withName("get_file"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("buf_size"),
+            RuntimeHelper.POINTER.withName("buf"),
+            RuntimeHelper.POINTER.withName("name_len")
+        ).withName("get_name"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("obj_type")
+        ).withName("get_type"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("fields"),
+            MemoryLayout.paddingLayout(4),
+            RuntimeHelper.POINTER.withName("oinfo")
+        ).withName("get_info")
+    ).withName("");
+    static final VarHandle const$2 = constants$238.const$0.varHandle(MemoryLayout.PathElement.groupElement("file"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("buf_size"),
+        RuntimeHelper.POINTER.withName("buf"),
+        RuntimeHelper.POINTER.withName("name_len")
+    ).withName("");
+    static final VarHandle const$4 = constants$249.const$3.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
+    static final VarHandle const$5 = constants$249.const$3.varHandle(MemoryLayout.PathElement.groupElement("buf"));
 }
 
 

@@ -22,11 +22,11 @@ final class constants$59 {
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "nccreate",
-        constants$57.const$5
+        constants$57.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
         "ncopen",
-        constants$57.const$5
+        constants$57.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "ncsetfill",
@@ -34,7 +34,7 @@ final class constants$59 {
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
         "ncredef",
-        constants$20.const$3
+        constants$19.const$5
     );
 }
 

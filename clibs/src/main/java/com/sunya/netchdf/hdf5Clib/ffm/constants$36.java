@@ -11,12 +11,30 @@ final class constants$36 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$36() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST8_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST8_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT16_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT16_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST16_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST16_g", JAVA_LONG);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Otoken_cmp",
+        constants$27.const$0
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Otoken_to_str",
+        constants$36.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Otoken_from_str",
+        constants$36.const$1
+    );
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5O_TOKEN_UNDEF_g", constants$12.const$4);
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("size"),
+        JAVA_LONG.withName("free"),
+        JAVA_INT.withName("nmesgs"),
+        JAVA_INT.withName("nchunks")
+    ).withName("H5O_stat_t");
 }
 
 

@@ -15,18 +15,18 @@ final class constants$0 {
         MemoryLayout.sequenceLayout(2, JAVA_INT).withName("__val")
     ).withName("");
     static final StructLayout const$1 = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(16, JAVA_LONG).withName("__val")
+        JAVA_LONG.withName("quot"),
+        JAVA_LONG.withName("rem")
     ).withName("");
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("tv_sec"),
-        JAVA_LONG.withName("tv_usec")
-    ).withName("timeval");
-    static final VarHandle const$3 = constants$0.const$2.varHandle(MemoryLayout.PathElement.groupElement("tv_sec"));
-    static final VarHandle const$4 = constants$0.const$2.varHandle(MemoryLayout.PathElement.groupElement("tv_usec"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("tv_sec"),
-        JAVA_LONG.withName("tv_nsec")
-    ).withName("timespec");
+    static final VarHandle const$2 = constants$0.const$1.varHandle(MemoryLayout.PathElement.groupElement("quot"));
+    static final VarHandle const$3 = constants$0.const$1.varHandle(MemoryLayout.PathElement.groupElement("rem"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "imaxabs",
+        constants$0.const$4
+    );
 }
 
 

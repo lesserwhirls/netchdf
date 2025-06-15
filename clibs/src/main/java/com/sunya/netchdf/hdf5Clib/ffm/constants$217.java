@@ -12,20 +12,17 @@ final class constants$217 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$217() {}
     static final StructLayout const$0 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_INT.withName("id"),
-        JAVA_INT.withName("encoder_present"),
-        JAVA_INT.withName("decoder_present"),
         RuntimeHelper.POINTER.withName("name"),
-        RuntimeHelper.POINTER.withName("can_apply"),
-        RuntimeHelper.POINTER.withName("set_local"),
-        RuntimeHelper.POINTER.withName("filter")
-    ).withName("H5Z_class2_t");
-    static final VarHandle const$1 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$3 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("encoder_present"));
-    static final VarHandle const$4 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("decoder_present"));
-    static final VarHandle const$5 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+        JAVA_INT.withName("idx_type"),
+        JAVA_INT.withName("order"),
+        JAVA_LONG.withName("n"),
+        JAVA_LONG.withName("lapl_id")
+    ).withName("H5VL_loc_by_idx");
+    static final VarHandle const$1 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$2 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("idx_type"));
+    static final VarHandle const$3 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("order"));
+    static final VarHandle const$4 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("n"));
+    static final VarHandle const$5 = constants$217.const$0.varHandle(MemoryLayout.PathElement.groupElement("lapl_id"));
 }
 
 

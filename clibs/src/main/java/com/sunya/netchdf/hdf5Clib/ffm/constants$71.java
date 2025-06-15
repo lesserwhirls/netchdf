@@ -11,12 +11,38 @@ final class constants$71 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$71() {}
-    static final VarHandle const$0 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("type"));
-    static final VarHandle const$1 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("rc"));
-    static final VarHandle const$2 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("atime"));
-    static final VarHandle const$3 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("mtime"));
-    static final VarHandle const$4 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("ctime"));
-    static final VarHandle const$5 = constants$70.const$3.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Treclaim",
+        constants$71.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tcommit1",
+        constants$29.const$2
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Topen1",
+        constants$71.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Tarray_create1",
+        constants$71.const$5
+    );
 }
 
 

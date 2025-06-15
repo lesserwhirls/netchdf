@@ -11,34 +11,12 @@ final class constants$83 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$83() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Aget_info",
-        constants$44.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_idx",
-        constants$65.const$0
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Aget_info_by_name",
-        constants$83.const$2
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Aget_name",
-        constants$83.const$4
-    );
+    static final VarHandle const$0 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("rpt_fcn_enabled"));
+    static final VarHandle const$1 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("open_trace_file"));
+    static final VarHandle const$2 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("close_trace_file"));
+    static final VarHandle const$3 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("evictions_enabled"));
+    static final VarHandle const$4 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("set_initial_size"));
+    static final VarHandle const$5 = constants$82.const$4.varHandle(MemoryLayout.PathElement.groupElement("initial_size"));
 }
 
 

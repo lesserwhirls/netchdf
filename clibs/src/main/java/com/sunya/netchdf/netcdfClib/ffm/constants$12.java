@@ -11,38 +11,36 @@ final class constants$12 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$12() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_def_enum",
+        constants$7.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_inq_user_type",
-        constants$12.const$0
+        "nc_insert_enum",
+        constants$7.const$0
     );
     static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
         JAVA_INT,
         RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_put_att",
+        "nc_inq_enum",
         constants$12.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_get_att",
-        constants$7.const$0
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "nc_def_enum",
-        constants$7.const$0
+        "nc_inq_enum_member",
+        constants$12.const$4
     );
 }
 

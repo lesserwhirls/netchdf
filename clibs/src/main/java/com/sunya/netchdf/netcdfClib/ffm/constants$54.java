@@ -13,26 +13,26 @@ final class constants$54 {
     private constants$54() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "nc_reclaim_data_all",
-        constants$53.const$4
+        constants$53.const$5
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "nc_copy_data",
-        constants$11.const$2
+        constants$10.const$5
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "nc_copy_data_all",
-        constants$11.const$2
+        constants$10.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_dump_data",
-        constants$11.const$2
+        "nc_put_att_ubyte",
+        constants$11.const$3
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_put_att_ubyte",
-        constants$12.const$2
+        "nc_get_att_ubyte",
+        constants$7.const$0
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "nc_get_att_ubyte",
+        "nc_put_var1_ubyte",
         constants$7.const$0
     );
 }

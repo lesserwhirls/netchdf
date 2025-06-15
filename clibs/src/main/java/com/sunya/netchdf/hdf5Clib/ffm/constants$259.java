@@ -12,29 +12,13 @@ final class constants$259 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$259() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_link_phase_change",
-        constants$50.const$3
+        constants$119.const$5
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_local_heap_size_hint",
-        constants$40.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_char_encoding",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_char_encoding",
-        constants$45.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_acc_flags",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_cb",
-        constants$41.const$4
-    );
+    static final VarHandle const$1 = constants$258.const$0.varHandle(MemoryLayout.PathElement.groupElement("wrap_object"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.unwrap_object.class, "apply", constants$110.const$3);
+    static final VarHandle const$3 = constants$258.const$0.varHandle(MemoryLayout.PathElement.groupElement("unwrap_object"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_wrap_class_t.free_wrap_ctx.class, "apply", constants$15.const$4);
+    static final VarHandle const$5 = constants$258.const$0.varHandle(MemoryLayout.PathElement.groupElement("free_wrap_ctx"));
 }
 
 

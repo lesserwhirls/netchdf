@@ -1,25 +1,39 @@
 package com.sunya.netchdf.netcdf3
 
 import com.sunya.cdm.api.Datatype
+import com.sunya.cdm.api.SectionPartial
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.compareSelectedDataWithClib
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.N3Files
-import com.sunya.testdata.testData
+import com.sunya.netchdf.testfiles.N3Files
+import com.sunya.netchdf.testfiles.testData
+import kotlin.test.*
 import java.util.*
-import java.util.stream.Stream
 
 // Compare data reading for the same file with Netcdf3File and NetcdfClibFile
 class N3dataCompare {
 
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             return N3Files.params()
         }
+    }
+
+
+    @Test
+    fun netcdf3() {
+        val filename = testData + "cdmUnitTest/formats/netcdf3/awips.nc"
+        if (showDetail) println("===============================================")
+        if (showDetail) {
+            Netcdf3File(filename).use { ncfile ->
+                println("${ncfile.type()} $filename ")
+                println("${ncfile.cdl()} ")
+            }
+        }
+        readData(filename, "uw", SectionPartial.fromSpec("4, 39, 55, 74"))
+        readData(filename, "uw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
+        readData(filename, "vw", SectionPartial.fromSpec("4, 39, 55, 74"))
+        readData(filename, "vw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
+        readData(filename, "uw", SectionPartial.fromSpec(":,:,:,25"))
     }
 
     @Test
@@ -35,7 +49,7 @@ class N3dataCompare {
     // Im going to remove it from the test files (placed in exclude)
     @Test
     fun calcRecordSize() {
-        compareDataWithClib(testData + "netchdf/csiro/sixCellsc.nc", null) // , "cellId")
+        compareDataWithClib(testData + "netchdf/csiro/sixCellsc.nc", "lat") // , "cellId")
     }
 
     @Test
@@ -53,16 +67,18 @@ class N3dataCompare {
         compareDataWithClib(testData + "devcdm/netcdf3/tst_small_classic.nc", null)
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun readN3dataCompareNC(filename : String) {
-        compareDataWithClib(filename, null)
+    @Test
+    fun readN3dataCompareNC() {
+        files().forEach { filename ->
+            compareDataWithClib(filename, null)
+        }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun readCharDataCompareNC(filename : String) {
-        compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR || it.datatype == Datatype.STRING }
+    @Test
+    fun readCharDataCompareNC() {
+        files().forEach { filename ->
+            compareSelectedDataWithClib(filename) { it.datatype == Datatype.CHAR || it.datatype == Datatype.STRING }
+        }
     }
 
 }

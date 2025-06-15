@@ -11,14 +11,30 @@ final class constants$180 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$180() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.sb_decode.class, "apply", constants$15.const$4);
-    static final VarHandle const$1 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("sb_decode"));
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_size"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.fapl_get.class, "apply", constants$113.const$0);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$113.const$0
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fincrement_filesize",
+        constants$58.const$5
     );
-    static final VarHandle const$5 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("fapl_get"));
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fget_file_image",
+        constants$19.const$4
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_config",
+        constants$17.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fset_mdc_config",
+        constants$17.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_hit_rate",
+        constants$17.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_size",
+        constants$93.const$0
+    );
 }
 
 

@@ -11,12 +11,42 @@ final class constants$59 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$59() {}
-    static final VarHandle const$0 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("id"));
-    static final VarHandle const$1 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("comment"));
-    static final VarHandle const$2 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("create_func"));
-    static final VarHandle const$3 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("move_func"));
-    static final VarHandle const$4 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("copy_func"));
-    static final VarHandle const$5 = constants$58.const$4.varHandle(MemoryLayout.PathElement.groupElement("trav_func"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Tlock",
+        constants$19.const$1
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Tcommit2",
+        constants$59.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tcommit_async",
+        constants$59.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Topen2",
+        constants$19.const$4
+    );
 }
 
 

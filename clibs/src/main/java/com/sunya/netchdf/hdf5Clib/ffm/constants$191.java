@@ -11,25 +11,27 @@ final class constants$191 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$191() {}
-    static final VarHandle const$0 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$1 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final VarHandle const$2 = constants$190.const$5.varHandle(MemoryLayout.PathElement.groupElement("next"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("driver_id"),
-        RuntimeHelper.POINTER.withName("cls"),
-        JAVA_LONG.withName("fileno"),
-        JAVA_INT.withName("access_flags"),
-        MemoryLayout.paddingLayout(4),
-        JAVA_LONG.withName("feature_flags"),
-        JAVA_LONG.withName("maxaddr"),
-        JAVA_LONG.withName("base_addr"),
-        JAVA_LONG.withName("threshold"),
-        JAVA_LONG.withName("alignment"),
-        JAVA_BOOLEAN.withName("paged_aggr"),
-        MemoryLayout.paddingLayout(7)
-    ).withName("H5FD_t");
-    static final VarHandle const$4 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("driver_id"));
-    static final VarHandle const$5 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("cls"));
+    static final UnionLayout const$0 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("token"),
+        JAVA_LONG.withName("val_size")
+    ).withName("");
+    static final VarHandle const$1 = constants$191.const$0.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5L_iterate2_t.class, "apply", constants$27.const$0);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5L_elink_traverse_t.class, "apply", constants$191.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$191.const$3
+    );
 }
 
 

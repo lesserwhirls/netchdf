@@ -11,18 +11,18 @@ final class constants$169 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$169() {}
-    static final VarHandle const$0 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("addr"));
-    static final VarHandle const$1 = constants$168.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        JAVA_INT.withName("nbins"),
-        MemoryLayout.paddingLayout(4),
-        MemoryLayout.sequenceLayout(21, RuntimeHelper.POINTER).withName("retries")
-    ).withName("H5F_retry_info_t");
-    static final VarHandle const$3 = constants$169.const$2.varHandle(MemoryLayout.PathElement.groupElement("nbins"));
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5F_flush_cb_t.class, "apply", constants$44.const$4);
+    static final VarHandle const$0 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_exec_time"));
+    static final VarHandle const$1 = constants$167.const$3.varHandle(MemoryLayout.PathElement.groupElement("err_stack_id"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5ES_event_insert_func_t.class, "apply", constants$13.const$4);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5ES_event_complete_func_t.class, "apply", constants$169.const$3);
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fis_hdf5",
-        constants$15.const$2
+        constants$169.const$3
     );
 }
 

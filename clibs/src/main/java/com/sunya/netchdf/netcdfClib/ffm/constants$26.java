@@ -12,28 +12,28 @@ final class constants$26 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$26() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "nc_get_att_text",
-        constants$7.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_put_att_string",
-        constants$11.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_get_att_string",
-        constants$7.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "nc_put_att_uchar",
-        constants$12.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "nc_get_att_uchar",
         constants$7.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "nc_put_att_schar",
-        constants$12.const$2
+        constants$11.const$3
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_get_att_schar",
+        constants$7.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_put_att_short",
+        constants$11.const$3
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_get_att_short",
+        constants$7.const$0
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_put_att_int",
+        constants$11.const$3
     );
 }
 

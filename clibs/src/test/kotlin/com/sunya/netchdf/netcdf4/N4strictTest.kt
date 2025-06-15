@@ -1,9 +1,9 @@
 package com.sunya.netchdf.netcdf4
 
 import com.sunya.netchdf.netcdfClib.NClibFile
+import com.sunya.netchdf.testfiles.testData
 import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
-import com.sunya.testdata.testData
+import kotlin.test.*
 import kotlin.test.assertEquals
 
 // trying to compare output with ncdump - h; probably get rid of
@@ -13,7 +13,7 @@ class N4strictTest {
     @Test
     fun tst_dims() {
         readN4header(testData + "devcdm/netcdf4/tst_dims.nc",
-            """netcdf tst_dims {
+            """netcdf tst_dims.nc {
 dimensions:
 	latitude = 6 ;
 	longitude = 12 ;
@@ -44,7 +44,7 @@ variables:
     @Test
     fun attstr() {
         readN4header(
-            testData + "devcdm/netcdf4/attstr.h5",
+            testData + "devcdm/hdf5/attstr.h5",
 """netcdf attstr {
 
 group: MyGroup {
@@ -106,7 +106,7 @@ group: g2 {
         )
     }
 
-    @Test
+    // @Test file not found
     fun tst_solar_1() {
         readN4header(
             testData + "devcdm/netcdf4/tst_solar_1.nc",

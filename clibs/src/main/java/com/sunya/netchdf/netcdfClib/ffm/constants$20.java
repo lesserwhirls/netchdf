@@ -13,36 +13,30 @@ final class constants$20 {
     private constants$20() {}
     static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_FLOAT
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_set_var_chunk_cache",
-        constants$20.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_get_var_chunk_cache",
-        constants$7.const$3
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_redef",
-        constants$20.const$3
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
         JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "nc__enddef",
-        constants$20.const$5
+        constants$20.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "nc_enddef",
+        constants$19.const$5
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "nc_sync",
+        constants$19.const$5
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "nc_abort",
+        constants$19.const$5
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "nc_close",
+        constants$19.const$5
     );
 }
 

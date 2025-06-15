@@ -11,12 +11,18 @@ final class constants$225 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$225() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_STRING_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ATTRIBUTE_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_ATTRIBUTE_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_OBJECT_COPY_ID_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_LINK_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_LINK_ACCESS_ID_g", JAVA_LONG);
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("exists")
+    ).withName("");
+    static final VarHandle const$1 = constants$225.const$0.varHandle(MemoryLayout.PathElement.groupElement("name"));
+    static final VarHandle const$2 = constants$225.const$0.varHandle(MemoryLayout.PathElement.groupElement("exists"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("old_name"),
+        RuntimeHelper.POINTER.withName("new_name")
+    ).withName("");
+    static final VarHandle const$4 = constants$225.const$3.varHandle(MemoryLayout.PathElement.groupElement("old_name"));
+    static final VarHandle const$5 = constants$225.const$3.varHandle(MemoryLayout.PathElement.groupElement("new_name"));
 }
 
 
