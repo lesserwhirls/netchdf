@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.StructureMember
 import com.sunya.cdm.array.TypedByteArray
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.*
 import java.lang.foreign.MemoryLayout
@@ -133,8 +136,9 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
     return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE)
 }
 
+@OptIn(InternalLibraryApi::class)
 internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val elemSize : Int, val signed : Boolean, val isBE : Boolean,
-                           val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null) {
+                                val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null) {
     val datatype5 = Datatype5.of(type_class)
     val isVlenString = H5Tis_variable_str(type_id) > 0
 

@@ -1,7 +1,11 @@
 package com.sunya.netchdf
 
 import com.sunya.cdm.api.*
-import com.sunya.netchdf.testdata.*
+import com.sunya.netchdf.testfiles.*
+import com.sunya.netchdf.testutil.Stats
+import com.sunya.netchdf.testutil.compareNetchIterate
+import com.sunya.netchdf.testutil.readNetchdfData
+import com.sunya.netchdf.testutil.showNetchdfHeader
 import kotlin.test.*
 
 // Test files opened and read through openNetchdfFile().

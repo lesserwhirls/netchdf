@@ -17,7 +17,7 @@ kotlin {
 tasks.register<Jar>("uberJar") {
     archiveClassifier = "uber"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveBaseName.set("netchdf")
+    archiveBaseName.set("netchdf-uber")
 
     manifest {
         attributes("Main-Class" to "com.sunya.netchdf.cli.ncdump")

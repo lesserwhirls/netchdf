@@ -1,10 +1,13 @@
 package com.sunya.netchdf.hdf4
 
+import com.sunya.cdm.util.InternalLibraryApi
+
 /*
   hdf/src/htags.h
   java/src/hdf/hdflib/HDFConstants.java
  */
-internal enum class TagEnum(val desc: String, val code: Int) {
+@InternalLibraryApi
+enum class TagEnum(val desc: String, val code: Int) {
     NONE("", 0),
     NULL("", 1),
     RLE("Run length encoding", 11),

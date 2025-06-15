@@ -15,7 +15,7 @@ object ncdump {
 
         parser.parse(args)
 
-        openNetchdfFile(filename).use { myfile ->
+        openNetchdfFile(filename, false).use { myfile ->
             if (myfile == null) {
                 println("*** not a netchdf file = $filename")
                 return

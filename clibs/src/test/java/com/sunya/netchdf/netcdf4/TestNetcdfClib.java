@@ -5,8 +5,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h;
-import kotlin.test.*;
-import com.sunya.netchdf.testdata.TestFilesKt;
+import com.sunya.netchdf.testutil.TestFilesKt;
 
 public class TestNetcdfClib {
 

@@ -1,6 +1,9 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
+import com.sunya.cdm.util.InternalLibraryApi
 
 // Message Type 8 "Data Layout" : regular (contiguous), chunked, or compact (stored with the message)
 // The dimensions were specified in version 1 and 2. In version 3 and 4, dimensions are in the Dataspace message.

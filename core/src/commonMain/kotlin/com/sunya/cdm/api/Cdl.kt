@@ -51,7 +51,7 @@ internal fun Dimension.cdl(indent : Indent = Indent(2)) : String {
            else "${indent}$name = $length ;"
 }
 
-internal fun Variable<*>.cdl(indent : Indent = Indent(2)) : String {
+fun Variable<*>.cdl(indent : Indent = Indent(2)) : String {
     val typedef = datatype.typedef
     val typename = typedef?.name ?: datatype.cdlName
     return buildString {

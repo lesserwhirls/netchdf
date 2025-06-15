@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.netcdfClib
 
 import com.sunya.cdm.api.*
@@ -10,9 +12,11 @@ import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.io.IOException
 import java.lang.foreign.*
 import com.fleeksoft.charset.Charset
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.NetchdfFileFormat
 
 class NCheader(val filename: String) {
+    @OptIn(InternalLibraryApi::class)
     val rootGroup = Group.Builder("")
     val formatType: NetchdfFileFormat
 

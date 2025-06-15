@@ -6,7 +6,9 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.transferMissingNelems
+import com.sunya.cdm.util.InternalLibraryApi
 
+@OptIn(InternalLibraryApi::class)
 internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val wantSection : Section) : AbstractIterator<ArraySection<T>>() {
     private val debugChunking = false
 

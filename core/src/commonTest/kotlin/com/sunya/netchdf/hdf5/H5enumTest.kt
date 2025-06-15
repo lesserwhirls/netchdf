@@ -3,16 +3,13 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayStructureData
 import com.sunya.cdm.array.ArrayTyped
-import com.sunya.netchdf.hdf4.H4readTest
-import com.sunya.netchdf.hdf4.H4readTest.Companion
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.netchdf.readNetchdfData
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testutil.readNetchdfData
+import com.sunya.netchdf.testfiles.testData
 
 import kotlin.test.*
 import kotlin.test.assertContains
 import kotlin.test.assertContentEquals
-import kotlin.test.assertIs
 
 class H5enumTest {
 

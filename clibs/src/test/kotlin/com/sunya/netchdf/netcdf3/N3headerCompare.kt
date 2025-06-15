@@ -1,12 +1,9 @@
 package com.sunya.netchdf.netcdf3
 
-import org.junit.jupiter.params.Test
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.netchdf.testdata.N3Files
-import java.util.*
-import java.util.stream.Stream
+import com.sunya.netchdf.openNetchdfFile
+import com.sunya.netchdf.testfiles.N3Files
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -14,31 +11,33 @@ import kotlin.test.assertTrue
 class N3headerCompare {
 
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
+        fun files(): Sequence<String> {
             return N3Files.params()
         }
     }
 
     @Test
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
-        Netcdf3File(filename).use { ncfile ->
-            println("${ncfile.type()} $filename ")
-            assertTrue((ncfile.type().contains("netcdf3")))
+    fun checkVersion() {
+        files().forEach { filename ->
+            openNetchdfFile(filename).use { ncfile ->
+                println("${ncfile!!.type()} $filename ")
+                assertTrue((ncfile.type().contains("netcdf3")))
+            }
         }
     }
 
     @Test
-    @MethodSource("params")
-    fun readN3header(filename : String) {
-        println(filename)
-        Netcdf3File(filename).use { n3file ->
-            NClibFile(filename).use { ncfile ->
-                //println("actual = $root")
-                //println("expect = $expect")
-                assertEquals(ncfile.cdl(), n3file.cdl())
-                // println(rootClib.cdlString())
+    fun readN3header() {
+        files().forEach { filename ->
+
+            println(filename)
+            openNetchdfFile(filename).use { n3file ->
+                NClibFile(filename).use { ncfile ->
+                    //println("actual = $root")
+                    //println("expect = $expect")
+                    assertEquals(ncfile.cdl(), n3file!!.cdl())
+                    // println(rootClib.cdlString())
+                }
             }
         }
     }

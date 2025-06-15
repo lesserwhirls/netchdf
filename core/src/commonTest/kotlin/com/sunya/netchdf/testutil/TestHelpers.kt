@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalCoroutinesApi::class, ExperimentalKotest::class)
 
-package com.sunya.netchdf.testdata
+package com.sunya.netchdf.testutil
 
 import io.kotest.common.ExperimentalKotest
 import io.kotest.property.PropTestConfig

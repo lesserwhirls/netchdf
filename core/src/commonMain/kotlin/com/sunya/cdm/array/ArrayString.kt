@@ -92,7 +92,7 @@ internal fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): 
  *
  * @return Array of Strings of rank - 1.
  */
-internal fun ArrayUByte.makeStringsFromBytes(charset : Charset = Charsets.UTF8): ArrayString {
+fun ArrayUByte.makeStringsFromBytes(charset : Charset = Charsets.UTF8): ArrayString {
     val rank = shape.size
     if (rank < 2) {
         return ArrayString(intArrayOf(), listOf(makeStringFromBytes()))

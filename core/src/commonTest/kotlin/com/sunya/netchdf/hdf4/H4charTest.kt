@@ -3,7 +3,7 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testfiles.testData
 
 import kotlin.test.*
 import kotlin.test.assertIs

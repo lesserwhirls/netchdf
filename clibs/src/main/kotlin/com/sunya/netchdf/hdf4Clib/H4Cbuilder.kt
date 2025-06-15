@@ -1,9 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4Clib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
 import com.sunya.cdm.array.makeStringZ
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.*
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagid
 import com.sunya.netchdf.hdf4.H4builder.Companion.tagidName

@@ -176,7 +176,7 @@ fun absoluteDifference(a: Double, b: Double): Double {
  * @see [
  * Comparing Floating Point Numbers, 2012 Edition](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/)
  */
-internal fun relativeDifference(a: Float, b: Float): Float {
+fun relativeDifference(a: Float, b: Float): Float {
     val absDiff: Float = absoluteDifference(a, b)
     return if (a == b) {
         0f
@@ -186,7 +186,7 @@ internal fun relativeDifference(a: Float, b: Float): Float {
     }
 }
 
-internal fun relativeDifference(a: Double, b: Double): Double {
+fun relativeDifference(a: Double, b: Double): Double {
     val absDiff: Double = absoluteDifference(a, b)
     return if (a == b) { // Shortcut: handles infinities and NaNs.
         0.0
@@ -197,11 +197,11 @@ internal fun relativeDifference(a: Double, b: Double): Double {
 }
 
 /** RelativeDifference is less than maxRelDiff.  */
-internal fun nearlyEquals(a: Float, b: Float, maxRelDiff: Float = defaultMaxRelativeDiffFloat): Boolean {
+fun nearlyEquals(a: Float, b: Float, maxRelDiff: Float = defaultMaxRelativeDiffFloat): Boolean {
     return relativeDifference(a, b) < maxRelDiff
 }
 
 /** RelativeDifference is less than maxRelDiff.  */
-internal fun nearlyEquals(a: Double, b: Double, maxRelDiff: Double = defaultMaxRelativeDiffDouble): Boolean {
+fun nearlyEquals(a: Double, b: Double, maxRelDiff: Double = defaultMaxRelativeDiffDouble): Boolean {
     return relativeDifference(a, b) < maxRelDiff
 }

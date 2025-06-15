@@ -1,7 +1,4 @@
-package com.sunya.netchdf.testdata
-
-import com.sunya.netchdf.NetchdfExtra.Companion.files
-import kotlin.test.Test
+package com.sunya.netchdf.testfiles
 
 
 class SortFiles {
@@ -40,16 +37,6 @@ class SortFiles {
                     paths.forEach {path-> println("$path/$it") }
                 }
             }
-        }
-    }
-
-    @Test
-    fun sortFilenames() {
-        files().forEach { filename ->
-            val path = filename.substringBeforeLast("/")
-            val name = filename.substringAfterLast("/")
-            val paths = filenames.getOrPut(name) { mutableListOf() }
-            paths.add(path)
         }
     }
 }

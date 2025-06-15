@@ -1,15 +1,14 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    // id ("java-test-fixtures")
 }
 
 dependencies {
-    api(project(":core"))
+    implementation(project(":core"))
+    implementation(project(":testFiles"))
     implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
 
-//    implementation(project(":testFixtures"))
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
     testImplementation(libs.kotest.property)
@@ -17,6 +16,10 @@ dependencies {
 
 kotlin {
     jvmToolchain(21)
+
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
+    }
 }
 
 tasks {
@@ -52,3 +55,6 @@ tasks {
         jvmArgs("--enable-preview")
     }
 }
+
+// Declare an explicit dependency on ':core:allMetadataJar' from ':clibs:compileJava' using Task#dependsOn
+project.tasks["compileJava"].dependsOn(":core:allMetadataJar")

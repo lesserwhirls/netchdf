@@ -1,7 +1,10 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Tiling
+import com.sunya.cdm.util.InternalLibraryApi
 
 /**
  * This holds the chunked data storage.

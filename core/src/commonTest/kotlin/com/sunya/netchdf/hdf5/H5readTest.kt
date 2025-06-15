@@ -4,9 +4,9 @@ import com.sunya.cdm.api.Netchdf
 import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
-import com.sunya.netchdf.*
-import com.sunya.netchdf.testdata.H5Files
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testfiles.H5Files
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutil.*
 
 import kotlin.test.*
 

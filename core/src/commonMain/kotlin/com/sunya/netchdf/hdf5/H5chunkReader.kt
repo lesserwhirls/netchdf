@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.Datatype
@@ -8,6 +10,7 @@ import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Chunker
 import com.sunya.cdm.layout.IndexSpace
+import com.sunya.cdm.util.InternalLibraryApi
 
 internal class H5chunkReader(val h5 : H5builder) {
     private val debugChunking = false

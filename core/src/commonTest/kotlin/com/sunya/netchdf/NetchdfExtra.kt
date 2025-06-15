@@ -1,8 +1,10 @@
 package com.sunya.netchdf
 
-import com.sunya.netchdf.testdata.NetchdfExtraFiles
+import com.sunya.netchdf.testfiles.NetchdfExtraFiles
 import kotlin.test.*
-import com.sunya.netchdf.testdata.testData
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutil.Stats
+import com.sunya.netchdf.testutil.readNetchdfData
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
 // mostly fails in handling of types. nclib doesnt pass over all the types.
@@ -22,8 +24,6 @@ class NetchdfExtra {
         fun files(): Sequence<String> {
             return NetchdfExtraFiles.params(false)
         }
-
-
 
         private val versions = mutableMapOf<String, MutableList<String>>()
 
@@ -62,7 +62,7 @@ class NetchdfExtra {
     }
 
     @Test
-    fun readNetchdfData() {
+    fun readNetchdfDataAll() {
         files().forEach { filename ->
             readNetchdfData(filename, null)
         }

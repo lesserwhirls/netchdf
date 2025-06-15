@@ -1,3 +1,5 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.hdf4Clib
 
 /*
@@ -21,6 +23,7 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
 import com.sunya.cdm.layout.MaxChunker
+import com.sunya.cdm.util.InternalLibraryApi
 
 import com.sunya.netchdf.mfhdfClib.ffm.mfhdf_h.*
 import java.lang.foreign.MemoryLayout

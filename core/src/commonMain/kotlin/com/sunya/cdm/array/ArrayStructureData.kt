@@ -131,7 +131,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         }
     }
 
-    internal fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
+    fun putVlenStringsOnHeap(lamda: (StructureMember<*>, Int) -> List<String>) {
         members.filter { it.datatype.isVlenString }.forEach { member ->
             this.forEach { sdata ->
                 val sval = lamda(member, sdata.offset + member.offset)
@@ -140,7 +140,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         }
     }
 
-    internal fun putVlensOnHeap(lamda: (StructureMember<*>, Int) -> ArrayVlen<*>) {
+    fun putVlensOnHeap(lamda: (StructureMember<*>, Int) -> ArrayVlen<*>) {
         members.filter { it.datatype == Datatype.VLEN }.forEach { member ->
             // println("member ${member.name}")
             this.forEachIndexed { idx, sdata ->

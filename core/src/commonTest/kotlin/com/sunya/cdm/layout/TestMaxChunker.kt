@@ -1,8 +1,11 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.Section
 import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.api.toLongArray
+import com.sunya.cdm.util.InternalLibraryApi
 import kotlin.test.*
 import kotlin.test.assertEquals
 

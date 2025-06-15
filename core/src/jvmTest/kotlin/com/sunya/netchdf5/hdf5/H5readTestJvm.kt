@@ -1,9 +1,8 @@
 package com.sunya.netchdf5.hdf5
 
 import com.sunya.netchdf.*
-import com.sunya.netchdf.hdf5.H5readTest
-import com.sunya.netchdf.hdf5.H5readTest.Companion
-import com.sunya.netchdf.testdata.H5Files
+import com.sunya.netchdf.testfiles.H5Files
+import com.sunya.netchdf.testutil.readNetchdfData
 
 import kotlin.test.*
 
