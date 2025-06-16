@@ -11,30 +11,28 @@ final class constants$270 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$270() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_multi",
-        constants$47.const$0
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+    static final VarHandle const$0 = constants$268.const$0.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_file_class_t");
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_split",
-        constants$270.const$1
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_file_class_t.create.class, "apply", constants$270.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$270.const$2
     );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_INT.withName("version"),
-        JAVA_BOOLEAN.withName("authenticate"),
-        MemoryLayout.sequenceLayout(33, JAVA_BYTE).withName("aws_region"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("secret_id"),
-        MemoryLayout.sequenceLayout(129, JAVA_BYTE).withName("secret_key")
-    ).withName("H5FD_ros3_fapl_t");
-    static final VarHandle const$4 = constants$270.const$3.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$5 = constants$270.const$3.varHandle(MemoryLayout.PathElement.groupElement("authenticate"));
+    static final VarHandle const$5 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("create"));
 }
 
 

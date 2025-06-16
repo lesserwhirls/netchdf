@@ -11,36 +11,40 @@ final class constants$229 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$229() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pcopy_prop",
-        constants$85.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pcreate",
-        constants$10.const$2
-    );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pcreate_class",
-        constants$229.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pdecode",
-        constants$42.const$0
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pencode",
-        constants$41.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("dset_id")
+    ).withName("");
+    static final VarHandle const$1 = constants$229.const$0.varHandle(MemoryLayout.PathElement.groupElement("dset_id"));
+    static final VarHandle const$2 = constants$229.const$0.varHandle(MemoryLayout.PathElement.groupElement("dset_id"));
+    static final StructLayout const$3 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("size")
+            ).withName("get_binary_size"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("buf"),
+                JAVA_LONG.withName("buf_size")
+            ).withName("get_binary"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("tcpl_id")
+            ).withName("get_tcpl")
+        ).withName("args")
+    ).withName("H5VL_datatype_get_args_t");
+    static final VarHandle const$4 = constants$229.const$3.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$5 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("size")
+        ).withName("get_binary_size"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("buf"),
+            JAVA_LONG.withName("buf_size")
+        ).withName("get_binary"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("tcpl_id")
+        ).withName("get_tcpl")
+    ).withName("");
 }
 
 

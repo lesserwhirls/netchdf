@@ -11,33 +11,33 @@ final class constants$63 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$63() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Lcopy",
-        constants$62.const$5
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Lcreate_hard",
-        constants$62.const$5
+        "H5Tarray_create2",
+        constants$63.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Lcreate_soft",
-        constants$55.const$5
+        "H5Tget_array_ndims",
+        constants$19.const$1
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Ldelete",
-        constants$53.const$3
+        "H5Tget_array_dims2",
+        constants$17.const$5
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Tset_tag",
+        constants$17.const$5
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Ldelete_by_idx",
-        constants$63.const$4
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Tget_tag",
+        constants$63.const$5
     );
 }
 

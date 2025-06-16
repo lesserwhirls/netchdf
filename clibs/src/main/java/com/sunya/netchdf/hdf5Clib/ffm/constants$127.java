@@ -11,30 +11,12 @@ final class constants$127 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$127() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "clearerr_unlocked",
-        constants$116.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "feof_unlocked",
-        constants$15.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "ferror_unlocked",
-        constants$15.const$2
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "perror",
-        constants$116.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fileno",
-        constants$15.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fileno_unlocked",
-        constants$15.const$2
-    );
+    static final VarHandle const$0 = constants$126.const$3.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
+    static final VarHandle const$1 = constants$126.const$3.varHandle(MemoryLayout.PathElement.groupElement("line"));
+    static final VarHandle const$2 = constants$126.const$3.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
+    static final VarHandle const$3 = constants$126.const$3.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
+    static final VarHandle const$4 = constants$126.const$3.varHandle(MemoryLayout.PathElement.groupElement("desc"));
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_ERR_CLS_g", JAVA_LONG);
 }
 
 

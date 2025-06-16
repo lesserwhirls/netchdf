@@ -1,8 +1,12 @@
+@file:OptIn(InternalLibraryApi::class)
+
 package com.sunya.netchdf.netcdfClib
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
+import com.sunya.cdm.iosp.OpenFileIF.Companion.nativeByteOrder
+import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.netcdfClib.ffm.nc_vlen_t
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.io.IOException
@@ -11,18 +15,24 @@ import java.lang.foreign.Arena
 import java.lang.foreign.ValueLayout
 import java.lang.foreign.ValueLayout.ADDRESS
 import java.lang.foreign.ValueLayout.JAVA_BYTE
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
-import java.util.*
 
-private val debugUserTypes = false
+val debugUserTypes = false
+
+//         val nvars_p = session.allocate(C_INT, 0)
+//        checkErr("nc_inq_nvars", nc_inq_nvars(g4.grpid, nvars_p))
+//        val nvars = nvars_p[C_INT, 0]
+//
+//        val varids_p = session.allocateArray(C_INT, nvars.toLong())
+//        checkErr("nc_inq_varids", nc_inq_varids(g4.grpid, nvars_p, varids_p))
 
 @Throws(IOException::class)
 internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builder, userTypes : MutableMap<Int, UserType>) {
     val numUserTypes_p = session.allocate(C_INT, 0)
     val MAX_USER_TYPES = 1000L // bad API
     val userTypes_p = session.allocateArray(C_INT, MAX_USER_TYPES)
+    //     public static int nc_inq_typeids(int ncid, MemorySegment ntypes, MemorySegment typeids) {
     checkErr("nc_inq_typeids", nc_inq_typeids(grpid, numUserTypes_p, userTypes_p))
+
     val numUserTypes = numUserTypes_p[C_INT, 0]
     if (numUserTypes == 0) {
         return
@@ -74,7 +84,7 @@ internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builde
                 val members : List<StructureMember<*>> = readCompoundFields(session, grpid, userTypeId, nfields.toInt())
                 CompoundTypedef(name, members)
             }
-            else -> throw RuntimeException()
+            else -> throw RuntimeException("Unsupported type class $typeClass")
         }
         if (NCheader.debug) println(" typedef $name $size $baseTypeId $nfields ${typedef.kind} ${typedef.baseType}")
 
@@ -106,7 +116,7 @@ private fun NCheader.readEnumTypedef(session: Arena, grpid: Int, xtype: Int): Ma
 }
 
 @Throws(IOException::class)
-private fun NCheader.readCompoundFields(session: Arena, grpid: Int, typeid: Int, nfields : Int): List<StructureMember<*>>{
+private fun NCheader.readCompoundFields(session: Arena, grpid: Int, typeid: Int, nfields : Int, isBE : Boolean = nativeByteOrder): List<StructureMember<*>>{
     val members = mutableListOf<StructureMember<*>>()
     for (fldidx in 0 until nfields) {
         val name_p: MemorySegment = session.allocate(NC_MAX_NAME().toLong())
@@ -115,16 +125,15 @@ private fun NCheader.readCompoundFields(session: Arena, grpid: Int, typeid: Int,
         val ndims_p = session.allocate(C_INT)
         val dims_p = session.allocateArray(C_INT, NC_MAX_DIMS())
 
-        checkErr("nc_inq_compound_field",
-            nc_inq_compound_field(grpid, typeid, fldidx, name_p, offset_p, ftypeid_p, ndims_p, dims_p))
+        checkErr("nc_inq_compound_field", nc_inq_compound_field(grpid, typeid, fldidx, name_p, offset_p, ftypeid_p, ndims_p, dims_p))
         val name = name_p.getUtf8String(0)
         val offset = offset_p[C_LONG, 0]
         val ftypeid = ftypeid_p[C_INT, 0]
         val ndims = ndims_p[C_INT, 0]
         val dims = IntArray(ndims) { dims_p.getAtIndex(ValueLayout.JAVA_INT, it.toLong())}
 
-        // open class StructureMember(val name: String, val datatype : Datatype, val offset: Int, val nelems : Int) {
-        val fld = StructureMember(name, convertType(ftypeid), offset.toInt(), dims)
+        // class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset: Int, val shape : IntArray, val isBE : Boolean) {
+        val fld = StructureMember(name, convertType(ftypeid), offset.toInt(), dims, isBE = isBE)
         members.add(fld)
         if (debugUserTypes) println(" add StructureMember= $fld")
     }
@@ -165,7 +174,11 @@ internal fun readVlenDataList(nelems : Long, basetype : Datatype<*>, vlen_p : Me
     val attValues = mutableListOf<List<*>>()
     for (elem in 0 until nelems) {
         val count = nc_vlen_t.getLength(vlen_p, elem)
-        val address: MemorySegment = nc_vlen_t.getAddress(vlen_p, elem)
+        val zaddress = nc_vlen_t.getAddress(vlen_p, elem)
+        // val zaddress = vlen_p.get(ADDRESS, elem)  // zero length memory segment
+        // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p
+        val address = zaddress.reinterpret(Long.MAX_VALUE)
+
         val vlenValues = mutableListOf<Any>()
         for (idx in 0 until count) {
             val value = when (basetype) {
@@ -196,17 +209,15 @@ private fun readOpaqueAttValues(session: Arena, grpid: Int, varid: Int, attname:
 
     // apparently have to call nc_get_att(), not readAttributeValues()
     checkErr("nc_get_att", nc_get_att(grpid, varid, attname_p, val_p))
-    val raw = val_p.toArray(ValueLayout.JAVA_BYTE)
-    val bb = ByteBuffer.wrap(raw)
-
-    attb.setValue(bb)
+    val raw = val_p.toArray(ValueLayout.JAVA_BYTE)!!
+    // seems wrong ?? convert to Opaque types
+    attb.setValue(raw)
     return attb
 }
 
 @Throws(IOException::class)
 private fun <T> NCheader.readEnumAttValues(session: Arena, grpid: Int, varid: Int, attname: String, nelems: Long,
-                                       datatype : Datatype<T>, userType: UserType
-): Attribute.Builder<T> {
+                                       datatype : Datatype<T>, userType: UserType): Attribute.Builder<T> {
     val attb = Attribute.Builder(attname, datatype)
 
     val attname_p: MemorySegment = session.allocateUtf8String(attname)
@@ -214,9 +225,12 @@ private fun <T> NCheader.readEnumAttValues(session: Arena, grpid: Int, varid: In
 
     // apparently have to call nc_get_att(), not readAttributeValues()
     checkErr("nc_get_att", nc_get_att(grpid, varid, attname_p, val_p))
-    val raw = val_p.toArray(ValueLayout.JAVA_BYTE)
+    val ba = val_p.toArray(ValueLayout.JAVA_BYTE)!!
+    // TODO im skeptical isBE shouldnt always be nativeByteOrder
+    val tba = TypedByteArray(userType.enumBasePrimitiveType, ba, 0, isBE = true)
+    val result = tba.convertToArrayTyped(intArrayOf(nelems.toInt()))
+    /*
     val bb = ByteBuffer.wrap(raw)
-
     val result = mutableListOf<Any>()
     for (i in 0 until nelems.toInt()) {
         val num = when (userType.enumBasePrimitiveType) {
@@ -226,8 +240,8 @@ private fun <T> NCheader.readEnumAttValues(session: Arena, grpid: Int, varid: In
             else -> throw RuntimeException("convertEnums unknown type = ${userType.enumBasePrimitiveType}")
         }
         result.add(num)
-    }
-    attb.setValues(result)
+    } */
+    attb.setValues(result.toList())
     return attb
 }
 
@@ -243,29 +257,32 @@ internal fun NCheader.readCompoundAttValues(session: Arena,
     val val_p = session.allocate(buffSize)
 
     // apparently have to call nc_get_att(), not readAttributeValues()
+    // read data into val_p
     checkErr("nc_get_att", nc_get_att(grpid, varid, attname_p, val_p))
-    val raw = val_p.toArray(ValueLayout.JAVA_BYTE)
-    val bb = ByteBuffer.wrap(raw)
-    bb.order(ByteOrder.LITTLE_ENDIAN)
+    // convert to byte array
+    val raw = val_p.toArray(ValueLayout.JAVA_BYTE)!!
 
     val members = (userType.typedef as CompoundTypedef).members
-    val sdataArray = ArrayStructureData(intArrayOf(nelems.toInt()), bb, userType.size, members)
-    sdataArray.putStringsOnHeap {  member, offset ->
-        val address = val_p.get(ADDRESS, (offset).toLong())
-        listOf(address.getUtf8String(0)) // LOOK not right
-        // LOOK heres a pointer, see decodeCompoundAttData():
-        //             lval = getNativeAddr(pos, nc4bytes);
-        //            Pointer p = new Pointer(lval);
-        //            String strval = p.getString(0, CDM.UTF8);
+    // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+    val sdataArray = ArrayStructureData(intArrayOf(nelems.toInt()), raw, isBE = nativeByteOrder, userType.size, members)
+    sdataArray.putVlenStringsOnHeap { member, offset ->
+        // this lamda is only called when datatype.isVlenString
+        val address = val_p.get(ADDRESS, offset.toLong())
+        // see https://stackoverflow.com/questions/77042593/indexoutofboundsexception-out-of-bound-access-on-segment-when-accessing-p
+        val cString = address.reinterpret(Long.MAX_VALUE)
+        // copy the string out of user memory onto Java heap
+        val s = cString.getUtf8String(0)
+        if (debugUserTypes) println("OK CompoundAttribute read string offset=$offset value=$s nelems=${member.nelems}")
+        // TODO what about a list of strings? do we have to look at member.nelems?
+        listOf(s)
+        // TODO nc_free_vlen(nc_vlen_t *vl);
+        //      nc_free_string(size_t len, char **data);
+        //      nc_reclaim_data()
+        //   see https://docs.unidata.ucar.edu/netcdf-c/4.9.3/md__2home_2vagrant_2Desktop_2netcdf-c_2docs_2internal.html#intern_vlens
     }
 
     attb.setValues(sdataArray.toList())
     return attb
-}
-
-
-fun getNativeAddr(buf: ByteBuffer, pos: Int): Long {
-    return if (true) buf.getLong(pos) else buf.getInt(pos).toLong()
 }
 
 ////////////////////////////////////////////////////////////////

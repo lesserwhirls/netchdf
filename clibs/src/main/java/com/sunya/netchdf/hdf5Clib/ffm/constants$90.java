@@ -11,12 +11,50 @@ final class constants$90 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$90() {}
-    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("increment"));
-    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("apply_max_increment"));
-    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_increment"));
-    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_incr_mode"));
-    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_multiple"));
-    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("flash_threshold"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$89.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Dcreate2",
+        constants$90.const$1
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Dcreate_async",
+        constants$90.const$3
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Dcreate_anon",
+        constants$90.const$5
+    );
 }
 
 

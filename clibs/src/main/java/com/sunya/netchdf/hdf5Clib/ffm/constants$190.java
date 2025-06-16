@@ -11,18 +11,28 @@ final class constants$190 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$190() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.lock.class, "apply", constants$189.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$189.const$5
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5FDdriver_query",
+        constants$17.const$5
     );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("lock"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.unlock.class, "apply", constants$15.const$2);
-    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("unlock"));
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("addr"),
-        JAVA_LONG.withName("size"),
-        RuntimeHelper.POINTER.withName("next")
-    ).withName("H5FD_free_t");
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        JAVA_BOOLEAN.withName("corder_valid"),
+        MemoryLayout.paddingLayout(3),
+        JAVA_LONG.withName("corder"),
+        JAVA_INT.withName("cset"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+            ).withName("token"),
+            JAVA_LONG.withName("val_size")
+        ).withName("u")
+    ).withName("");
+    static final VarHandle const$2 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$3 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder_valid"));
+    static final VarHandle const$4 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("corder"));
+    static final VarHandle const$5 = constants$190.const$1.varHandle(MemoryLayout.PathElement.groupElement("cset"));
 }
 
 

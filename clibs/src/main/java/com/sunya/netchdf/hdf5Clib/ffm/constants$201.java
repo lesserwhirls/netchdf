@@ -13,28 +13,35 @@ final class constants$201 {
     private constants$201() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
         "H5Gcreate2",
-        constants$86.const$5
+        constants$81.const$4
     );
     static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Gcreate_anon",
+        "H5Gcreate_async",
         constants$201.const$1
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Gopen2",
-        constants$19.const$3
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Gget_create_plist",
-        constants$10.const$2
+        "H5Gcreate_anon",
+        constants$201.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Gget_info",
-        constants$44.const$4
+        "H5Gopen2",
+        constants$19.const$4
     );
 }
 

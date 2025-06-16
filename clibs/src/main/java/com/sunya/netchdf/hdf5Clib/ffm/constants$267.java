@@ -11,31 +11,12 @@ final class constants$267 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$267() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_BOOLEAN
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_core",
-        constants$267.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_core",
-        constants$41.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5FD_family_init",
-        constants$160.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_fapl_family",
-        constants$215.const$5
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_fapl_family",
-        constants$41.const$4
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.specific.class, "apply", constants$262.const$3);
+    static final VarHandle const$1 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.optional.class, "apply", constants$262.const$3);
+    static final VarHandle const$3 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_dataset_class_t.close.class, "apply", constants$17.const$2);
+    static final VarHandle const$5 = constants$264.const$3.varHandle(MemoryLayout.PathElement.groupElement("close"));
 }
 
 

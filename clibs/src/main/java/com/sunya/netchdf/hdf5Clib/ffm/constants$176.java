@@ -11,29 +11,35 @@ final class constants$176 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$176() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Freset_page_buffering_stats",
-        constants$19.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fget_page_buffering_stats",
-        constants$47.const$0
+        "H5Fopen",
+        constants$176.const$0
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Fget_mdc_image_info",
-        constants$41.const$4
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fget_dset_no_attrs_hint",
-        constants$44.const$4
+        "H5Fopen_async",
+        constants$176.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_BOOLEAN
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Freopen",
+        constants$0.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fset_dset_no_attrs_hint",
-        constants$176.const$4
+        "H5Freopen_async",
+        constants$91.const$3
     );
 }
 

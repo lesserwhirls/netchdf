@@ -11,32 +11,36 @@ final class constants$112 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$112() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "rename",
+        "fdopen",
         constants$112.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+        RuntimeHelper.POINTER,
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("read"),
+            RuntimeHelper.POINTER.withName("write"),
+            RuntimeHelper.POINTER.withName("seek"),
+            RuntimeHelper.POINTER.withName("close")
+        ).withName("_IO_cookie_io_functions_t")
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "renameat",
+        "fopencookie",
         constants$112.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "fclose",
-        constants$15.const$2
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER);
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "tmpfile",
-        constants$112.const$5
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "fmemopen",
+        constants$112.const$4
     );
 }
 

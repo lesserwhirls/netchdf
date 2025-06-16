@@ -16,13 +16,13 @@ public interface H5P_prp_compare_func_t {
 
     int apply(java.lang.foreign.MemorySegment value1, java.lang.foreign.MemorySegment value2, long size);
     static MemorySegment allocate(H5P_prp_compare_func_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$222.const$2, fi, constants$222.const$1, scope);
+        return RuntimeHelper.upcallStub(constants$313.const$4, fi, constants$313.const$3, scope);
     }
     static H5P_prp_compare_func_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _value1, java.lang.foreign.MemorySegment _value2, long _size) -> {
             try {
-                return (int)constants$222.const$3.invokeExact(symbol, _value1, _value2, _size);
+                return (int)constants$313.const$5.invokeExact(symbol, _value1, _value2, _size);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

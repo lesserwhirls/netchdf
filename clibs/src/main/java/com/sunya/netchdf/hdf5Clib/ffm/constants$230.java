@@ -11,30 +11,17 @@ final class constants$230 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$230() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pequal",
-        constants$40.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pexist",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget",
-        constants$41.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_class",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_name",
-        constants$45.const$1
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_class_parent",
-        constants$10.const$2
-    );
+    static final VarHandle const$0 = constants$228.const$4.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("buf"),
+        JAVA_LONG.withName("buf_size")
+    ).withName("");
+    static final VarHandle const$2 = constants$230.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$3 = constants$230.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("tcpl_id")
+    ).withName("");
+    static final VarHandle const$5 = constants$230.const$4.varHandle(MemoryLayout.PathElement.groupElement("tcpl_id"));
 }
 
 

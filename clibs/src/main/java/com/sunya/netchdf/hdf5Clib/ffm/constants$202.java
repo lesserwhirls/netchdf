@@ -12,26 +12,29 @@ final class constants$202 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$202() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Gget_info_by_name",
-        constants$43.const$3
+        "H5Gopen_async",
+        constants$28.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Gget_info_by_idx",
-        constants$65.const$0
+        "H5Gget_create_plist",
+        constants$0.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Gflush",
-        constants$19.const$0
+        "H5Gget_info",
+        constants$17.const$5
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Grefresh",
-        constants$19.const$0
+        "H5Gget_info_async",
+        constants$97.const$4
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Gclose",
-        constants$19.const$0
+        "H5Gget_info_by_name",
+        constants$33.const$0
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5G_iterate_t.class, "apply", constants$41.const$4);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Gget_info_by_name_async",
+        constants$194.const$5
+    );
 }
 
 

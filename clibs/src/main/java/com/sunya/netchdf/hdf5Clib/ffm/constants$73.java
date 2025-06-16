@@ -11,40 +11,41 @@ final class constants$73 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$73() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5A_operator2_t.class, "apply", constants$27.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Aclose",
+        constants$19.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Aclose_async",
+        constants$34.const$3
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oopen_by_idx",
-        constants$73.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oexists_by_name",
-        constants$53.const$3
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info2",
+        "H5Acreate2",
         constants$73.const$3
     );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name2",
+        "H5Acreate_async",
         constants$73.const$5
     );
 }

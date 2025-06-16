@@ -12,31 +12,44 @@ final class constants$75 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$75() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Ocopy",
-        constants$62.const$5
+        "H5Adelete_by_name",
+        constants$33.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oset_comment",
-        constants$44.const$4
+        "H5Aexists",
+        constants$17.const$5
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Oset_comment_by_name",
-        constants$43.const$3
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oget_comment",
-        constants$19.const$3
+        "H5Aexists_async",
+        constants$75.const$2
     );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name",
+        constants$33.const$0
+    );
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG,
+        RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oget_comment_by_name",
-        constants$75.const$4
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Aexists_by_name_async",
+        constants$75.const$5
     );
 }
 

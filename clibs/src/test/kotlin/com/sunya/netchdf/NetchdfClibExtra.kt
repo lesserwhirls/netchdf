@@ -1,17 +1,9 @@
 package com.sunya.netchdf
 
-import com.sunya.cdm.api.*
-import com.sunya.cdm.util.Stats
-import com.sunya.testdata.NetchdfExtraFiles
-import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
-import org.junit.jupiter.api.AfterAll
-import java.util.*
-import java.util.stream.Stream
+import com.sunya.netchdf.testfiles.NetchdfExtraFiles
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutil.Stats
+import kotlin.test.*
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
 // mostly fails in handling of types. nclib doesnt pass over all the types.
@@ -19,12 +11,10 @@ class NetchdfClibExtra {
 
     companion object {
         @JvmStatic
-        fun params(): Stream<Arguments> {
-            return NetchdfExtraFiles.params(true)
+        fun files(): Sequence<String> {
+            return NetchdfExtraFiles.params(false)
         }
 
-        @JvmStatic
-        @AfterAll
         fun afterAll() {
             if (versions.size > 0) {
                 versions.keys.forEach{ println("$it = ${versions[it]!!.size } files") }
@@ -43,14 +33,14 @@ class NetchdfClibExtra {
       L,D_top,G_top,T_top,F,P,P,FD,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
      */
     @Test
-    @Disabled
     fun problemNPP() {
-        compareCdlWithClib(testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5")
+        val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
+        compareCdlWithClib(filename)
+        readNetchdfData(filename, null)
+        compareDataWithClib(filename)
     }
 
-    // this one we could probably fix
     @Test
-    @Disabled
     fun unsolved2() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
         // showMyHeader(filename)
@@ -61,37 +51,40 @@ class NetchdfClibExtra {
     }
 
     ///////////////////////////////////////////////////////
-    @ParameterizedTest
-    @MethodSource("params")
-    fun checkVersion(filename: String) {
-        openNetchdfFile(filename).use { ncfile ->
-            if (ncfile == null) {
-                println("Not a netchdf file=$filename ")
-                return
+    @Test
+    fun checkVersion() {
+        files().forEach { filename ->
+            openNetchdfFile(filename).use { ncfile ->
+                if (ncfile == null) {
+                    println("Not a netchdf file=$filename ")
+                    return
+                }
+                println("${ncfile.type()} $filename ")
+                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
+                paths.add(filename)
             }
-            println("${ncfile.type()} $filename ")
-            val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-            paths.add(filename)
         }
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCompareCdlWithClib(filename: String) {
-        compareCdlWithClib(filename)
+    @Test
+    fun testCompareCdlWithClib() {
+        files().forEach { filename ->
+            compareCdlWithClib(filename, showCdl = true)
+        }
     }
 
-    // @ParameterizedTest
-    @MethodSource("params")
-    fun readNetchdfData(filename: String) {
-        readNetchdfData(filename, null)
+    @Test
+    fun readNetchdfData() {
+        files().forEach { filename ->
+            readNetchdfData(filename, null)
+        }
     }
 
-
-    @ParameterizedTest
-    @MethodSource("params")
-    fun testCompareDataWithClib(filename: String) {
-        compareDataWithClib(filename)
+    @Test
+    fun testCompareDataWithClib() {
+        files().forEach { filename ->
+            compareDataWithClib(filename)
+        }
     }
 
 }

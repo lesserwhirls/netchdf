@@ -11,12 +11,12 @@ final class constants$280 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$280() {}
-    static final MemorySegment const$0 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llo");
-    static final MemorySegment const$1 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llu");
-    static final MemorySegment const$2 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llx");
-    static final MemorySegment const$3 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("llX");
-    static final MemorySegment const$4 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("%lu");
-    static final MemorySegment const$5 = RuntimeHelper.CONSTANT_ALLOCATOR.allocateUtf8String("direct_chunk_flag");
+    static final VarHandle const$0 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("get"));
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5VL_object_class_t.specific.class, "apply", constants$263.const$1);
+    static final VarHandle const$2 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5VL_object_class_t.optional.class, "apply", constants$263.const$1);
+    static final VarHandle const$4 = constants$278.const$2.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5VL_request_notify_t.class, "apply", constants$126.const$1);
 }
 
 

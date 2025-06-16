@@ -11,12 +11,24 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final VarHandle const$0 = JAVA_LONG.varHandle();
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64LE_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_STD_I8BE_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$24.const$4.varHandle(MemoryLayout.PathElement.groupElement("shared"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fileno"),
+        MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(16, JAVA_BYTE).withName("__data")
+        ).withName("token"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("rc"),
+        JAVA_LONG.withName("atime"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("ctime"),
+        JAVA_LONG.withName("btime"),
+        JAVA_LONG.withName("num_attrs")
+    ).withName("H5O_info2_t");
+    static final VarHandle const$2 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
+    static final VarHandle const$3 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$4 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("rc"));
+    static final VarHandle const$5 = constants$25.const$1.varHandle(MemoryLayout.PathElement.groupElement("atime"));
 }
 
 

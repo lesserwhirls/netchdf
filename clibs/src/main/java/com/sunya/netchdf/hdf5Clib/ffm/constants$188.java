@@ -11,18 +11,14 @@ final class constants$188 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$188() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.read.class, "apply", constants$187.const$5);
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_copy.class, "apply", constants$110.const$3);
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$187.const$5
+        constants$110.const$3
     );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("read"));
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_class_t.write.class, "apply", constants$187.const$5);
-    static final VarHandle const$4 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("write"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_BOOLEAN
-    );
+    static final VarHandle const$2 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("udata_copy"));
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.udata_free.class, "apply", constants$15.const$4);
+    static final VarHandle const$4 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("udata_free"));
+    static final VarHandle const$5 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("udata"));
 }
 
 

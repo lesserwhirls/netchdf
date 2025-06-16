@@ -17,7 +17,7 @@ final class constants$63 {
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
         "ncvarinq",
-        constants$12.const$0
+        constants$11.const$1
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "ncvarput1",

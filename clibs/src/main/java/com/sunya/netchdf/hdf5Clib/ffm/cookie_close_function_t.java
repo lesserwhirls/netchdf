@@ -14,15 +14,15 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public interface cookie_close_function_t {
 
-    int apply(java.lang.foreign.MemorySegment client_data);
+    int apply(java.lang.foreign.MemorySegment future_object);
     static MemorySegment allocate(cookie_close_function_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$110.const$1, fi, constants$15.const$2, scope);
+        return RuntimeHelper.upcallStub(constants$107.const$4, fi, constants$15.const$4, scope);
     }
     static cookie_close_function_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
-        return (java.lang.foreign.MemorySegment _client_data) -> {
+        return (java.lang.foreign.MemorySegment _future_object) -> {
             try {
-                return (int)constants$17.const$3.invokeExact(symbol, _client_data);
+                return (int)constants$27.const$4.invokeExact(symbol, _future_object);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -16,13 +16,13 @@ public interface H5P_prp_cb1_t {
 
     int apply(java.lang.foreign.MemorySegment name, long size, java.lang.foreign.MemorySegment value);
     static MemorySegment allocate(H5P_prp_cb1_t fi, Arena scope) {
-        return RuntimeHelper.upcallStub(constants$220.const$5, fi, constants$17.const$4, scope);
+        return RuntimeHelper.upcallStub(constants$311.const$5, fi, constants$17.const$2, scope);
     }
     static H5P_prp_cb1_t ofAddress(MemorySegment addr, Arena arena) {
         MemorySegment symbol = addr.reinterpret(arena, null);
         return (java.lang.foreign.MemorySegment _name, long _size, java.lang.foreign.MemorySegment _value) -> {
             try {
-                return (int)constants$18.const$0.invokeExact(symbol, _name, _size, _value);
+                return (int)constants$17.const$4.invokeExact(symbol, _name, _size, _value);
             } catch (Throwable ex$) {
                 throw new AssertionError("should not reach here", ex$);
             }

@@ -11,35 +11,25 @@ final class constants$254 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$254() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_efile_prefix",
-        constants$44.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_prefix",
-        constants$44.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_printf_gap",
-        constants$40.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_virtual_view",
-        constants$45.const$5
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_btree_ratios",
-        constants$61.const$5
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pget_buffer",
-        constants$254.const$5
-    );
+    static final VarHandle const$0 = constants$253.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("err_stack_id")
+        ).withName("get_err_stack"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("exec_ts"),
+            RuntimeHelper.POINTER.withName("exec_time")
+        ).withName("get_exec_time")
+    ).withName("");
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("err_stack_id")
+    ).withName("");
+    static final VarHandle const$3 = constants$254.const$2.varHandle(MemoryLayout.PathElement.groupElement("err_stack_id"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("exec_ts"),
+        RuntimeHelper.POINTER.withName("exec_time")
+    ).withName("");
+    static final VarHandle const$5 = constants$254.const$4.varHandle(MemoryLayout.PathElement.groupElement("exec_ts"));
 }
 
 

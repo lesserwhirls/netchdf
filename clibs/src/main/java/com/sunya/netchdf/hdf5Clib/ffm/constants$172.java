@@ -11,30 +11,44 @@ final class constants$172 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$172() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Fget_vfd_handle",
-        constants$85.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Fmount",
-        constants$42.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Funmount",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Fget_freespace",
-        constants$10.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Fget_filesize",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Fget_eoa",
-        constants$44.const$4
-    );
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("super_size"),
+            JAVA_LONG.withName("super_ext_size")
+        ).withName("super"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("meta_size"),
+            JAVA_LONG.withName("tot_space")
+        ).withName("free"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            MemoryLayout.paddingLayout(4),
+            JAVA_LONG.withName("hdr_size"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("msgs_info")
+        ).withName("sohm")
+    ).withName("H5F_info2_t");
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("super_size"),
+        JAVA_LONG.withName("super_ext_size")
+    ).withName("");
+    static final VarHandle const$2 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$3 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("super_size"));
+    static final VarHandle const$4 = constants$172.const$1.varHandle(MemoryLayout.PathElement.groupElement("super_ext_size"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("meta_size"),
+        JAVA_LONG.withName("tot_space")
+    ).withName("");
 }
 
 

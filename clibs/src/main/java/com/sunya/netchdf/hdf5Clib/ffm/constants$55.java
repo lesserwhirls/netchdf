@@ -11,21 +11,12 @@ final class constants$55 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$55() {}
-    static final VarHandle const$0 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("corder"));
-    static final VarHandle const$1 = constants$54.const$3.varHandle(MemoryLayout.PathElement.groupElement("cset"));
-    static final UnionLayout const$2 = MemoryLayout.unionLayout(
-        JAVA_LONG.withName("address"),
-        JAVA_LONG.withName("val_size")
-    ).withName("");
-    static final VarHandle const$3 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("address"));
-    static final VarHandle const$4 = constants$55.const$2.varHandle(MemoryLayout.PathElement.groupElement("val_size"));
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_LONG
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT16_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT16_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST16_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST16_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST16_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST16_g", JAVA_LONG);
 }
 
 

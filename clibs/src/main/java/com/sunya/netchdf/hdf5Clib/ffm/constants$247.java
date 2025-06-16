@@ -11,32 +11,12 @@ final class constants$247 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$247() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_page_buffer_size",
-        constants$247.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pfill_value_defined",
-        constants$44.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pget_alloc_time",
-        constants$44.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk",
-        constants$20.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pget_chunk_opts",
-        constants$44.const$4
-    );
+    static final VarHandle const$0 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("recursive"));
+    static final VarHandle const$1 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("idx_type"));
+    static final VarHandle const$2 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("order"));
+    static final VarHandle const$3 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("idx_p"));
+    static final VarHandle const$4 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("op"));
+    static final VarHandle const$5 = constants$246.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_data"));
 }
 
 

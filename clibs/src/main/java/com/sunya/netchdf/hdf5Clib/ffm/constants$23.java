@@ -11,15 +11,32 @@ final class constants$23 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$23() {}
-    static final VarHandle const$0 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("need_bkg"));
-    static final VarHandle const$1 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("recalc"));
-    static final VarHandle const$2 = constants$22.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("len"),
-        RuntimeHelper.POINTER.withName("p")
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        JAVA_INT.withName("version"),
+        JAVA_INT.withName("nmesgs"),
+        JAVA_INT.withName("nchunks"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("total"),
+            JAVA_LONG.withName("meta"),
+            JAVA_LONG.withName("mesg"),
+            JAVA_LONG.withName("free")
+        ).withName("space"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("present"),
+            JAVA_LONG.withName("shared")
+        ).withName("mesg")
+    ).withName("H5O_hdr_info_t");
+    static final VarHandle const$1 = constants$23.const$0.varHandle(MemoryLayout.PathElement.groupElement("version"));
+    static final VarHandle const$2 = constants$23.const$0.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
+    static final VarHandle const$3 = constants$23.const$0.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
+    static final VarHandle const$4 = constants$23.const$0.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("total"),
+        JAVA_LONG.withName("meta"),
+        JAVA_LONG.withName("mesg"),
+        JAVA_LONG.withName("free")
     ).withName("");
-    static final VarHandle const$4 = constants$23.const$3.varHandle(MemoryLayout.PathElement.groupElement("len"));
-    static final VarHandle const$5 = constants$23.const$3.varHandle(MemoryLayout.PathElement.groupElement("p"));
 }
 
 

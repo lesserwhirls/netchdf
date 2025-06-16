@@ -11,35 +11,34 @@ final class constants$244 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$244() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_evict_on_close",
-        constants$176.const$4
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_family_offset",
-        constants$40.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_fclose_degree",
-        constants$45.const$5
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image",
-        constants$53.const$3
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_image_callbacks",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_BOOLEAN,
-        JAVA_BOOLEAN
-    );
-    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
-        "H5Pset_file_locking",
-        constants$244.const$5
-    );
+    static final VarHandle const$0 = constants$243.const$5.varHandle(MemoryLayout.PathElement.groupElement("target"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("type"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("buf"),
+        JAVA_LONG.withName("buf_size")
+    ).withName("");
+    static final VarHandle const$2 = constants$244.const$1.varHandle(MemoryLayout.PathElement.groupElement("type"));
+    static final VarHandle const$3 = constants$244.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf"));
+    static final VarHandle const$4 = constants$244.const$1.varHandle(MemoryLayout.PathElement.groupElement("buf_size"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("linfo")
+            ).withName("get_info"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("name_size"),
+                RuntimeHelper.POINTER.withName("name"),
+                RuntimeHelper.POINTER.withName("name_len")
+            ).withName("get_name"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("buf_size"),
+                RuntimeHelper.POINTER.withName("buf")
+            ).withName("get_val")
+        ).withName("args")
+    ).withName("H5VL_link_get_args_t");
 }
 
 

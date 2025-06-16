@@ -11,12 +11,12 @@ final class constants$105 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$105() {}
-    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_read_base"));
-    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_base"));
-    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_ptr"));
-    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_write_end"));
-    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_base"));
-    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_IO_buf_end"));
+    static final VarHandle const$0 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_vtable_offset"));
+    static final VarHandle const$1 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_lock"));
+    static final VarHandle const$2 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_offset"));
+    static final VarHandle const$3 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
+    static final VarHandle const$4 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
+    static final VarHandle const$5 = constants$101.const$5.varHandle(MemoryLayout.PathElement.groupElement("_freeres_list"));
 }
 
 

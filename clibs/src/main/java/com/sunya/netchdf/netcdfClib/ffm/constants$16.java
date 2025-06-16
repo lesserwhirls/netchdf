@@ -11,34 +11,30 @@ final class constants$16 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$16() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "nc_inq_var_deflate",
+        constants$7.const$3
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "nc_def_var_quantize",
-        constants$16.const$0
+        "nc_def_var_szip",
+        constants$15.const$2
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "nc_inq_var_quantize",
+        "nc_inq_var_szip",
         constants$7.const$0
     );
     static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
         JAVA_INT,
         JAVA_INT,
-        JAVA_INT,
-        JAVA_INT,
         JAVA_INT
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "nc_def_var_deflate",
+        "nc_def_var_fletcher32",
         constants$16.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "nc_inq_var_deflate",
-        constants$7.const$3
+        "nc_inq_var_fletcher32",
+        constants$7.const$5
     );
 }
 

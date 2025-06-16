@@ -1,31 +1,23 @@
 package com.sunya.netchdf.netcdf3
 
+import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testfiles.testFilesIn
+import com.sunya.netchdf.openNetchdfFile
 import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.Test
-import java.util.*
-import java.util.stream.Stream
+import kotlin.test.*
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import com.sunya.testdata.testData
-import com.sunya.testdata.testFilesIn
 import java.io.File
 
+// Cannot run program "ncdump": error=2, No such file or directory
 // doesnt work because of differences in the value printout.
 // need to compare the parsed cdl, or maybe the xml?
 @Disabled
 class N3ncdumpTest {
-
+    val ncdumpp = "/home/stormy/install/netcdf4/bin/ncdump"
     companion object {
-        @JvmStatic
-        fun params(): Stream<Arguments> {
-            val stream3 =
-                testFilesIn(testData + "devcdm/netcdf3")
-                    .build()
-            return stream3
+        fun files(): Sequence<String> {
+            return testFilesIn(testData + "devcdm/netcdf3").build()
         }
     }
 
@@ -34,22 +26,21 @@ class N3ncdumpTest {
         compareN3header(testData + "devcdm/netcdf3/testWriteFill.nc")
     }
 
-    @ParameterizedTest
-    @MethodSource("params")
+    // @Test
     fun compareN3header(filename : String) {
         println("=================")
         println(filename)
         val ncdumpOutput = ncdump(filename)
         println("expect = \"$ncdumpOutput\"")
-        Netcdf3File(filename).use { ncfile ->
-            println("actual = \"${ncfile.cdl()}\"")
+        openNetchdfFile(filename).use { ncfile ->
+            println("actual = \"${ncfile!!.cdl()}\"")
             assertEquals(normalize(ncdumpOutput), normalize(ncfile.cdl()))
         }
     }
 
     fun ncdump(filename : String) : String {
         val file = File("temp")
-        ProcessBuilder("ncdump", "-h", filename)
+        ProcessBuilder(ncdumpp, "-h", filename)
             .redirectOutput(ProcessBuilder.Redirect.to(file))
             .start()
             .waitFor()

@@ -11,12 +11,48 @@ final class constants$37 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$37() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST16_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST16_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT32_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT32_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST32_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST32_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$36.const$5.varHandle(MemoryLayout.PathElement.groupElement("size"));
+    static final VarHandle const$1 = constants$36.const$5.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final VarHandle const$2 = constants$36.const$5.varHandle(MemoryLayout.PathElement.groupElement("nmesgs"));
+    static final VarHandle const$3 = constants$36.const$5.varHandle(MemoryLayout.PathElement.groupElement("nchunks"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("fileno"),
+        JAVA_LONG.withName("addr"),
+        JAVA_INT.withName("type"),
+        JAVA_INT.withName("rc"),
+        JAVA_LONG.withName("atime"),
+        JAVA_LONG.withName("mtime"),
+        JAVA_LONG.withName("ctime"),
+        JAVA_LONG.withName("btime"),
+        JAVA_LONG.withName("num_attrs"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("version"),
+            JAVA_INT.withName("nmesgs"),
+            JAVA_INT.withName("nchunks"),
+            JAVA_INT.withName("flags"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("total"),
+                JAVA_LONG.withName("meta"),
+                JAVA_LONG.withName("mesg"),
+                JAVA_LONG.withName("free")
+            ).withName("space"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("present"),
+                JAVA_LONG.withName("shared")
+            ).withName("mesg")
+        ).withName("hdr"),
+        MemoryLayout.structLayout(
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("obj"),
+            MemoryLayout.structLayout(
+                JAVA_LONG.withName("index_size"),
+                JAVA_LONG.withName("heap_size")
+            ).withName("attr")
+        ).withName("meta_size")
+    ).withName("H5O_info1_t");
+    static final VarHandle const$5 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("fileno"));
 }
 
 

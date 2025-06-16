@@ -11,12 +11,12 @@ final class constants$108 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$108() {}
-    static final VarHandle const$0 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_codecvt"));
-    static final VarHandle const$1 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_wide_data"));
-    static final VarHandle const$2 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_freeres_list"));
-    static final VarHandle const$3 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_freeres_buf"));
-    static final VarHandle const$4 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("__pad5"));
-    static final VarHandle const$5 = constants$104.const$2.varHandle(MemoryLayout.PathElement.groupElement("_mode"));
+    static final VarHandle const$0 = constants$107.const$5.varHandle(MemoryLayout.PathElement.groupElement("read"));
+    static final VarHandle const$1 = constants$107.const$5.varHandle(MemoryLayout.PathElement.groupElement("write"));
+    static final VarHandle const$2 = constants$107.const$5.varHandle(MemoryLayout.PathElement.groupElement("seek"));
+    static final VarHandle const$3 = constants$107.const$5.varHandle(MemoryLayout.PathElement.groupElement("close"));
+    static final VarHandle const$4 = RuntimeHelper.POINTER.varHandle();
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("stdin", RuntimeHelper.POINTER);
 }
 
 

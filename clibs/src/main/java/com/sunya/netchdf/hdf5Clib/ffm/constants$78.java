@@ -11,29 +11,40 @@ final class constants$78 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$78() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx",
-        constants$65.const$0
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Ovisit",
-        constants$66.const$2
+        "H5Aiterate_by_name",
+        constants$78.const$0
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Ovisit_by_name",
-        constants$66.const$4
+        "H5Aopen",
+        constants$19.const$4
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Oget_info1",
-        constants$44.const$4
+        "H5Aopen_async",
+        constants$28.const$0
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_name1",
-        constants$43.const$3
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx1",
-        constants$65.const$0
+        "H5Aopen_by_idx",
+        constants$78.const$4
     );
 }
 

@@ -11,12 +11,16 @@ final class constants$227 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$227() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_LST_GROUP_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_LST_GROUP_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATATYPE_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_LST_DATATYPE_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_LST_ATTRIBUTE_ACCESS_ID_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$226.const$5.varHandle(MemoryLayout.PathElement.groupElement("dcpl_id"));
+    static final VarHandle const$1 = constants$221.const$3.varHandle(MemoryLayout.PathElement.groupElement("space_id"));
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("status")
+    ).withName("");
+    static final VarHandle const$3 = constants$227.const$2.varHandle(MemoryLayout.PathElement.groupElement("status"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("storage_size")
+    ).withName("");
+    static final VarHandle const$5 = constants$227.const$4.varHandle(MemoryLayout.PathElement.groupElement("storage_size"));
 }
 
 

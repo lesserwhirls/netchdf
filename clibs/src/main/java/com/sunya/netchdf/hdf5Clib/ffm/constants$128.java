@@ -11,30 +11,12 @@ final class constants$128 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$128() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "pclose",
-        constants$15.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "popen",
-        constants$113.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "ctermid",
-        constants$113.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "flockfile",
-        constants$116.const$4
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "ftrylockfile",
-        constants$15.const$2
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "funlockfile",
-        constants$116.const$4
-    );
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_ARGS_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_ATTR_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_BTREE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_CACHE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_CONTEXT_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_DATASET_g", JAVA_LONG);
 }
 
 

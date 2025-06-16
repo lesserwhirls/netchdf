@@ -11,29 +11,39 @@ final class constants$260 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$260() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_fapl",
-        constants$10.const$2
+    static final StructLayout const$0 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("create"),
+        RuntimeHelper.POINTER.withName("open"),
+        RuntimeHelper.POINTER.withName("read"),
+        RuntimeHelper.POINTER.withName("write"),
+        RuntimeHelper.POINTER.withName("get"),
+        RuntimeHelper.POINTER.withName("specific"),
+        RuntimeHelper.POINTER.withName("optional"),
+        RuntimeHelper.POINTER.withName("close")
+    ).withName("H5VL_attr_class_t");
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pget_elink_prefix",
-        constants$19.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pget_nlinks",
-        constants$44.const$4
-    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_attr_class_t.create.class, "apply", constants$260.const$1);
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_acc_flags",
-        constants$45.const$5
+        constants$260.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_cb",
-        constants$41.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_elink_fapl",
-        constants$40.const$0
+    static final VarHandle const$4 = constants$260.const$0.varHandle(MemoryLayout.PathElement.groupElement("create"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
     );
 }
 

@@ -11,12 +11,28 @@ final class constants$164 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$164() {}
-    static final VarHandle const$0 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
-    static final VarHandle const$1 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
-    static final VarHandle const$2 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
-    static final VarHandle const$3 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
-    static final VarHandle const$4 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("line"));
-    static final VarHandle const$5 = constants$163.const$5.varHandle(MemoryLayout.PathElement.groupElement("desc"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5E_walk1_t.class, "apply", constants$22.const$0);
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5E_auto1_t.class, "apply", constants$15.const$4);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Eclear1",
+        constants$13.const$2
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Eget_auto1",
+        constants$13.const$4
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Epush1",
+        constants$164.const$4
+    );
 }
 
 

@@ -11,25 +11,42 @@ final class constants$193 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$193() {}
-    static final VarHandle const$0 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("alignment"));
-    static final VarHandle const$1 = constants$191.const$3.varHandle(MemoryLayout.PathElement.groupElement("paged_aggr"));
-    static final StructLayout const$2 = MemoryLayout.structLayout(
-        RuntimeHelper.POINTER.withName("image_malloc"),
-        RuntimeHelper.POINTER.withName("image_memcpy"),
-        RuntimeHelper.POINTER.withName("image_realloc"),
-        RuntimeHelper.POINTER.withName("image_free"),
-        RuntimeHelper.POINTER.withName("udata_copy"),
-        RuntimeHelper.POINTER.withName("udata_free"),
-        RuntimeHelper.POINTER.withName("udata")
-    ).withName("");
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        JAVA_LONG,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Ldelete",
+        constants$29.const$2
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_malloc.class, "apply", constants$193.const$3);
+    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_async",
+        constants$193.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Ldelete_by_idx",
+        constants$74.const$5
+    );
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$193.const$3
+        "H5Ldelete_by_idx_async",
+        constants$193.const$4
     );
 }
 

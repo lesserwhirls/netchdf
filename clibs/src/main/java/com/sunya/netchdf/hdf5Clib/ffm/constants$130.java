@@ -11,12 +11,12 @@ final class constants$130 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$130() {}
-    static final VarHandle const$0 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("min_num"));
-    static final VarHandle const$1 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("line"));
-    static final VarHandle const$2 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("func_name"));
-    static final VarHandle const$3 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("file_name"));
-    static final VarHandle const$4 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("desc"));
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_ERR_CLS_g", JAVA_LONG);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_FARRAY_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_FILE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_FSPACE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_FUNC_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_HEAP_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_ID_g", JAVA_LONG);
 }
 
 

@@ -11,12 +11,30 @@ final class constants$35 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$35() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HERR_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_HBOOL_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT8_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT8_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_LEAST8_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_LEAST8_g", JAVA_LONG);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Oflush_async",
+        constants$34.const$3
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Orefresh",
+        constants$19.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Orefresh_async",
+        constants$34.const$3
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Odisable_mdc_flushes",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Oenable_mdc_flushes",
+        constants$19.const$1
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oare_mdc_flushes_disabled",
+        constants$17.const$5
+    );
 }
 
 

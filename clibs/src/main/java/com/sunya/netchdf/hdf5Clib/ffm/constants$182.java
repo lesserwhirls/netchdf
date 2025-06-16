@@ -11,18 +11,29 @@ final class constants$182 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$182() {}
-    static final VarHandle const$0 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_copy"));
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_class_t.dxpl_free.class, "apply", constants$15.const$2);
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("dxpl_free"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_LONG,
-        JAVA_LONG
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Fclear_elink_file_cache",
+        constants$19.const$1
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.open.class, "apply", constants$182.const$3);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Fset_libver_bounds",
+        constants$69.const$1
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Fstart_mdc_logging",
+        constants$19.const$1
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "H5Fstop_mdc_logging",
+        constants$19.const$1
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Fget_mdc_logging_status",
+        constants$36.const$1
+    );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$182.const$3
+        "H5Freset_page_buffering_stats",
+        constants$19.const$1
     );
 }
 

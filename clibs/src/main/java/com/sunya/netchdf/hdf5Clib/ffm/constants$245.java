@@ -11,32 +11,31 @@ final class constants$245 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$245() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_gc_references",
-        constants$45.const$5
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_libver_bounds",
-        constants$50.const$3
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_mdc_config",
-        constants$44.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        JAVA_BOOLEAN,
-        RuntimeHelper.POINTER,
-        JAVA_BOOLEAN
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pset_mdc_log_options",
-        constants$245.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_meta_block_size",
-        constants$40.const$0
-    );
+    static final VarHandle const$0 = constants$244.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$1 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("linfo")
+        ).withName("get_info"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("name_size"),
+            RuntimeHelper.POINTER.withName("name"),
+            RuntimeHelper.POINTER.withName("name_len")
+        ).withName("get_name"),
+        MemoryLayout.structLayout(
+            JAVA_LONG.withName("buf_size"),
+            RuntimeHelper.POINTER.withName("buf")
+        ).withName("get_val")
+    ).withName("");
+    static final StructLayout const$2 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("linfo")
+    ).withName("");
+    static final VarHandle const$3 = constants$245.const$2.varHandle(MemoryLayout.PathElement.groupElement("linfo"));
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        JAVA_LONG.withName("name_size"),
+        RuntimeHelper.POINTER.withName("name"),
+        RuntimeHelper.POINTER.withName("name_len")
+    ).withName("");
+    static final VarHandle const$5 = constants$245.const$4.varHandle(MemoryLayout.PathElement.groupElement("name_size"));
 }
 
 

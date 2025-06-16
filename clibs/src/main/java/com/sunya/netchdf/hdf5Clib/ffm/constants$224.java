@@ -11,12 +11,66 @@ final class constants$224 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$224() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATASET_XFER_ID_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_FILE_MOUNT_ID_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_GROUP_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_GROUP_ACCESS_ID_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATATYPE_CREATE_ID_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5P_CLS_DATATYPE_ACCESS_ID_g", JAVA_LONG);
+    static final VarHandle const$0 = constants$223.const$3.varHandle(MemoryLayout.PathElement.groupElement("n"));
+    static final StructLayout const$1 = MemoryLayout.structLayout(
+        JAVA_INT.withName("op_type"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.unionLayout(
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name")
+            ).withName("del"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("idx_type"),
+                JAVA_INT.withName("order"),
+                JAVA_LONG.withName("n")
+            ).withName("delete_by_idx"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("name"),
+                RuntimeHelper.POINTER.withName("exists")
+            ).withName("exists"),
+            MemoryLayout.structLayout(
+                JAVA_INT.withName("idx_type"),
+                JAVA_INT.withName("order"),
+                RuntimeHelper.POINTER.withName("idx"),
+                RuntimeHelper.POINTER.withName("op"),
+                RuntimeHelper.POINTER.withName("op_data")
+            ).withName("iterate"),
+            MemoryLayout.structLayout(
+                RuntimeHelper.POINTER.withName("old_name"),
+                RuntimeHelper.POINTER.withName("new_name")
+            ).withName("rename")
+        ).withName("args")
+    ).withName("H5VL_attr_specific_args_t");
+    static final VarHandle const$2 = constants$224.const$1.varHandle(MemoryLayout.PathElement.groupElement("op_type"));
+    static final UnionLayout const$3 = MemoryLayout.unionLayout(
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name")
+        ).withName("del"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("idx_type"),
+            JAVA_INT.withName("order"),
+            JAVA_LONG.withName("n")
+        ).withName("delete_by_idx"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("name"),
+            RuntimeHelper.POINTER.withName("exists")
+        ).withName("exists"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("idx_type"),
+            JAVA_INT.withName("order"),
+            RuntimeHelper.POINTER.withName("idx"),
+            RuntimeHelper.POINTER.withName("op"),
+            RuntimeHelper.POINTER.withName("op_data")
+        ).withName("iterate"),
+        MemoryLayout.structLayout(
+            RuntimeHelper.POINTER.withName("old_name"),
+            RuntimeHelper.POINTER.withName("new_name")
+        ).withName("rename")
+    ).withName("");
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("name")
+    ).withName("");
+    static final VarHandle const$5 = constants$224.const$4.varHandle(MemoryLayout.PathElement.groupElement("name"));
 }
 
 

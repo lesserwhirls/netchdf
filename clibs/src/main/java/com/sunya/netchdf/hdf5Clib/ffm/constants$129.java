@@ -11,30 +11,12 @@ final class constants$129 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$129() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "__uflow",
-        constants$15.const$2
-    );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "__overflow",
-        constants$129.const$1
-    );
-    static final StructLayout const$3 = MemoryLayout.structLayout(
-        JAVA_LONG.withName("cls_id"),
-        JAVA_LONG.withName("maj_num"),
-        JAVA_LONG.withName("min_num"),
-        JAVA_INT.withName("line"),
-        MemoryLayout.paddingLayout(4),
-        RuntimeHelper.POINTER.withName("func_name"),
-        RuntimeHelper.POINTER.withName("file_name"),
-        RuntimeHelper.POINTER.withName("desc")
-    ).withName("H5E_error2_t");
-    static final VarHandle const$4 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("cls_id"));
-    static final VarHandle const$5 = constants$129.const$3.varHandle(MemoryLayout.PathElement.groupElement("maj_num"));
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5E_DATASPACE_g", JAVA_LONG);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5E_DATATYPE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5E_EARRAY_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5E_EFL_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5E_ERROR_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5E_EVENTSET_g", JAVA_LONG);
 }
 
 

@@ -12,8 +12,8 @@ final class constants$200 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$200() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5FDdriver_query",
-        constants$44.const$4
+        "H5Lvisit_by_name1",
+        constants$41.const$2
     );
     static final StructLayout const$1 = MemoryLayout.structLayout(
         JAVA_INT.withName("storage_type"),

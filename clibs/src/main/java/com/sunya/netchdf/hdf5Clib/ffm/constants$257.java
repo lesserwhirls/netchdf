@@ -11,30 +11,12 @@ final class constants$257 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$257() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Pset_hyper_vector_size",
-        constants$40.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Pset_preserve",
-        constants$176.const$4
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Pset_type_conv_cb",
-        constants$41.const$4
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Pset_vlen_mem_manager",
-        constants$97.const$2
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Pget_create_intermediate_group",
-        constants$44.const$4
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Pset_create_intermediate_group",
-        constants$45.const$5
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_info_class_t.free.class, "apply", constants$15.const$4);
+    static final VarHandle const$1 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("free"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_info_class_t.to_str.class, "apply", constants$13.const$4);
+    static final VarHandle const$3 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("to_str"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_info_class_t.from_str.class, "apply", constants$13.const$4);
+    static final VarHandle const$5 = constants$256.const$0.varHandle(MemoryLayout.PathElement.groupElement("from_str"));
 }
 
 

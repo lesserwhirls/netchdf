@@ -11,32 +11,12 @@ final class constants$43 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$43() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Tpack",
-        constants$19.const$0
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Tenum_create",
-        constants$10.const$2
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Tenum_insert",
-        constants$41.const$4
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tenum_nameof",
-        constants$43.const$3
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tenum_valueof",
-        constants$41.const$4
-    );
+    static final VarHandle const$0 = JAVA_LONG.varHandle();
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F16BE_g", JAVA_LONG);
+    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F16LE_g", JAVA_LONG);
+    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32BE_g", JAVA_LONG);
+    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F32LE_g", JAVA_LONG);
+    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_IEEE_F64BE_g", JAVA_LONG);
 }
 
 

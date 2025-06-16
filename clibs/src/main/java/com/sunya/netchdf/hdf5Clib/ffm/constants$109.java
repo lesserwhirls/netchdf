@@ -11,22 +11,26 @@ final class constants$109 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$109() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_LONG
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(cookie_read_function_t.class, "apply", constants$109.const$0);
+    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("stdout", RuntimeHelper.POINTER);
+    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("stderr", RuntimeHelper.POINTER);
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$109.const$0
+        "remove",
+        constants$15.const$4
     );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(cookie_write_function_t.class, "apply", constants$109.const$0);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "rename",
+        constants$13.const$4
+    );
     static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
         RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+        JAVA_INT,
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(cookie_seek_function_t.class, "apply", constants$109.const$4);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "renameat",
+        constants$109.const$4
+    );
 }
 
 

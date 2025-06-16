@@ -11,12 +11,22 @@ final class constants$89 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$89() {}
-    static final VarHandle const$0 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_clean_fraction"));
-    static final VarHandle const$1 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_size"));
-    static final VarHandle const$2 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("min_size"));
-    static final VarHandle const$3 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("epoch_length"));
-    static final VarHandle const$4 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("incr_mode"));
-    static final VarHandle const$5 = constants$87.const$4.varHandle(MemoryLayout.PathElement.groupElement("lower_hr_threshold"));
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        constants$88.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5D_scatter_func_t.class, "apply", constants$15.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$15.const$0
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(H5D_gather_func_t.class, "apply", constants$17.const$2);
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5D_chunk_iter_op_t.class, "apply", constants$89.const$4);
 }
 
 

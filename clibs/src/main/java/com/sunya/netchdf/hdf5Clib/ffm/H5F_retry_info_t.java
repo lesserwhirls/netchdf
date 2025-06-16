@@ -18,10 +18,10 @@ import static java.lang.foreign.ValueLayout.*;
 public class H5F_retry_info_t {
 
     public static MemoryLayout $LAYOUT() {
-        return constants$169.const$2;
+        return constants$174.const$3;
     }
     public static VarHandle nbins$VH() {
-        return constants$169.const$3;
+        return constants$174.const$4;
     }
     /**
      * Getter for field:
@@ -30,7 +30,7 @@ public class H5F_retry_info_t {
      * }
      */
     public static int nbins$get(MemorySegment seg) {
-        return (int)constants$169.const$3.get(seg);
+        return (int)constants$174.const$4.get(seg);
     }
     /**
      * Setter for field:
@@ -39,13 +39,13 @@ public class H5F_retry_info_t {
      * }
      */
     public static void nbins$set(MemorySegment seg, int x) {
-        constants$169.const$3.set(seg, x);
+        constants$174.const$4.set(seg, x);
     }
     public static int nbins$get(MemorySegment seg, long index) {
-        return (int)constants$169.const$3.get(seg.asSlice(index*sizeof()));
+        return (int)constants$174.const$4.get(seg.asSlice(index*sizeof()));
     }
     public static void nbins$set(MemorySegment seg, long index, int x) {
-        constants$169.const$3.set(seg.asSlice(index*sizeof()), x);
+        constants$174.const$4.set(seg.asSlice(index*sizeof()), x);
     }
     public static MemorySegment retries$slice(MemorySegment seg) {
         return seg.asSlice(8, 168);

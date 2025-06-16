@@ -11,38 +11,53 @@ final class constants$74 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$74() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
         JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_LONG,
         RuntimeHelper.POINTER,
-        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Oget_info_by_idx2",
+        "H5Acreate_by_name",
         constants$74.const$0
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        JAVA_LONG,
+    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
         JAVA_LONG,
         RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG,
         JAVA_LONG
     );
     static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Olink",
+        "H5Acreate_by_name_async",
         constants$74.const$2
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Oincr_refcount",
-        constants$19.const$0
+        "H5Adelete",
+        constants$17.const$5
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Odecr_refcount",
-        constants$19.const$0
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$6 = RuntimeHelper.downcallHandle(
+        "H5Adelete_by_idx",
+        constants$74.const$5
     );
 }
 

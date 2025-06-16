@@ -11,12 +11,33 @@ final class constants$31 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$31() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_FORTRAN_S1_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_VAX_F32_g", JAVA_LONG);
-    static final MemorySegment const$2 = RuntimeHelper.lookupGlobalVariable("H5T_VAX_F64_g", JAVA_LONG);
-    static final MemorySegment const$3 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_SCHAR_g", JAVA_LONG);
-    static final MemorySegment const$4 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UCHAR_g", JAVA_LONG);
-    static final MemorySegment const$5 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_SHORT_g", JAVA_LONG);
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "H5Oget_native_info",
+        constants$29.const$4
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "H5Oget_native_info_by_name",
+        constants$30.const$0
+    );
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        "H5Oget_native_info_by_idx",
+        constants$30.const$4
+    );
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_LONG,
+        JAVA_LONG,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_LONG
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "H5Olink",
+        constants$31.const$3
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "H5Oincr_refcount",
+        constants$19.const$1
+    );
 }
 
 

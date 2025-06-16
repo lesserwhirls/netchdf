@@ -11,32 +11,29 @@ final class constants$123 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$123() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "ftello",
+        constants$61.const$0
     );
     static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "__getdelim",
-        constants$123.const$0
+        "fgetpos",
+        constants$13.const$4
     );
     static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "getdelim",
-        constants$123.const$0
+        "fsetpos",
+        constants$13.const$4
     );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "clearerr",
+        constants$12.const$5
     );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "getline",
-        constants$123.const$3
+        "feof",
+        constants$15.const$4
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "fputs",
-        constants$112.const$0
+        "ferror",
+        constants$15.const$4
     );
 }
 

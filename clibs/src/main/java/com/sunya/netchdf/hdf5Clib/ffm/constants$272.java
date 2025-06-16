@@ -11,15 +11,12 @@ final class constants$272 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$272() {}
-    static final VarHandle const$0 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("magic"));
-    static final VarHandle const$1 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("version"));
-    static final VarHandle const$2 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("rw_fapl_id"));
-    static final VarHandle const$3 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("wo_fapl_id"));
-    static final VarHandle const$4 = constants$271.const$5.varHandle(MemoryLayout.PathElement.groupElement("ignore_wo_errs"));
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5FD_splitter_init",
-        constants$160.const$4
-    );
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5VL_file_class_t.specific.class, "apply", constants$262.const$3);
+    static final VarHandle const$1 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("specific"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5VL_file_class_t.optional.class, "apply", constants$262.const$3);
+    static final VarHandle const$3 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("optional"));
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5VL_file_class_t.close.class, "apply", constants$17.const$2);
+    static final VarHandle const$5 = constants$270.const$1.varHandle(MemoryLayout.PathElement.groupElement("close"));
 }
 
 

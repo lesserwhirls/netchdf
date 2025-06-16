@@ -11,20 +11,25 @@ final class constants$186 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$186() {}
-    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(H5FD_class_t.get_eoa.class, "apply", constants$185.const$5);
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        constants$185.const$5
-    );
-    static final VarHandle const$2 = constants$178.const$0.varHandle(MemoryLayout.PathElement.groupElement("get_eoa"));
-    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
         JAVA_INT,
-        JAVA_LONG
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(H5FD_class_t.set_eoa.class, "apply", constants$186.const$3);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        constants$186.const$3
+    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_memcpy.class, "apply", constants$186.const$0);
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
+        constants$186.const$0
     );
+    static final VarHandle const$3 = constants$185.const$1.varHandle(MemoryLayout.PathElement.groupElement("image_memcpy"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_LONG,
+        JAVA_INT,
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(H5FD_file_image_callbacks_t.image_realloc.class, "apply", constants$186.const$4);
 }
 
 

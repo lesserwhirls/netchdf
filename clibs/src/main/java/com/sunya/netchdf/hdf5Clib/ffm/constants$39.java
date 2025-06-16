@@ -11,23 +11,20 @@ final class constants$39 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$39() {}
-    static final MemorySegment const$0 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_INT_FAST64_g", JAVA_LONG);
-    static final MemorySegment const$1 = RuntimeHelper.lookupGlobalVariable("H5T_NATIVE_UINT_FAST64_g", JAVA_LONG);
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_LONG,
-        JAVA_INT,
+    static final VarHandle const$0 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("btime"));
+    static final VarHandle const$1 = constants$37.const$4.varHandle(MemoryLayout.PathElement.groupElement("num_attrs"));
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(H5O_iterate1_t.class, "apply", constants$27.const$0);
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_LONG,
+        JAVA_LONG,
         JAVA_LONG
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Tcreate",
-        constants$39.const$2
-    );
     static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Tcopy",
-        constants$10.const$2
+        "H5Oopen_by_addr",
+        constants$39.const$3
     );
     static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "H5Tclose",
-        constants$19.const$0
+        "H5Oget_info1",
+        constants$17.const$5
     );
 }
 

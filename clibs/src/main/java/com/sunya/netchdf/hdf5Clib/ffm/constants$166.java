@@ -11,49 +11,12 @@ final class constants$166 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$166() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "H5Eprint1",
-        constants$15.const$2
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "H5Eset_auto1",
-        constants$112.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "H5Ewalk1",
-        constants$119.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "H5Eget_major",
-        constants$45.const$1
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "H5Eget_minor",
-        constants$45.const$1
-    );
-    static final StructLayout const$5 = MemoryLayout.structLayout(
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("version"),
-            MemoryLayout.paddingLayout(4),
-            JAVA_LONG.withName("super_size"),
-            JAVA_LONG.withName("super_ext_size")
-        ).withName("super"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("version"),
-            MemoryLayout.paddingLayout(4),
-            JAVA_LONG.withName("meta_size"),
-            JAVA_LONG.withName("tot_space")
-        ).withName("free"),
-        MemoryLayout.structLayout(
-            JAVA_INT.withName("version"),
-            MemoryLayout.paddingLayout(4),
-            JAVA_LONG.withName("hdr_size"),
-            MemoryLayout.structLayout(
-                JAVA_LONG.withName("index_size"),
-                JAVA_LONG.withName("heap_size")
-            ).withName("msgs_info")
-        ).withName("sohm")
-    ).withName("H5F_info2_t");
+    static final VarHandle const$0 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("api_name"));
+    static final VarHandle const$1 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("api_args"));
+    static final VarHandle const$2 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_file_name"));
+    static final VarHandle const$3 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_func_name"));
+    static final VarHandle const$4 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("app_line_num"));
+    static final VarHandle const$5 = constants$165.const$5.varHandle(MemoryLayout.PathElement.groupElement("op_ins_count"));
 }
 
 
