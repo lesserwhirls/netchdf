@@ -8,29 +8,28 @@ internal class H5filters(
     val mfp: FilterPipelineMessage?,
     val isBE: Boolean
 ) {
-    var first = true
 
-    fun apply(rawdata: ByteArray, entry: BTree1.DataChunkEntry): ByteArray {
+    fun apply(rawdata: ByteArray, filterMask : Int): ByteArray {
         if (mfp == null) return rawdata
-        // if (first) println("  ** Filtered $varname ${mfp.filters.map { it.name}}")
-        first = false
 
         // LOOK can you hook the streams up rather than writing to bytearray at each step ??
         var data = rawdata
         // apply filters backwards
         for (i in mfp.filters.indices.reversed()) {
             val filter = mfp.filters[i]
-            if (isBitSet(entry.key.filterMask, i)) {
+            if (isBitSet(filterMask, i)) {
                 continue
             }
             data = when (filter.filterType) {
                 FilterType.deflate -> {
-                    // val olway = inflate(data)
+                    // val oldway = inflate(data)
                     decode(data)
                 }
 
                 FilterType.shuffle -> shuffle(data, filter.clientValues[0])
+
                 FilterType.fletcher32 -> checkfletcher32(data)
+
                 /* FilterType.zstandard -> {
                     val result = zstandard(data, expectedLengthBytes)
                     result.order(byteOrder)
@@ -104,10 +103,6 @@ internal class H5filters(
             }
         }
         return result
-    }
-
-    fun isBitSet(num: Int, bitno: Int): Boolean {
-        return ((num ushr bitno) and 1) != 0
     }
 
     companion object {

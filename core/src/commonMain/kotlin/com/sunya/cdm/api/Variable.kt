@@ -13,7 +13,7 @@ data class Variable<T>(
 ) {
     val name = makeValidCdmObjectName(orgName)
     val rank : Int = dimensions.size
-    val shape : LongArray = dimensions.map { it.length }.toLongArray()
+    val shape : LongArray = dimensions.map { it.length }.toLongArray() // why LongArray ??
     val nelems : Long = this.shape.computeSize()
 
     fun fullname() : String {

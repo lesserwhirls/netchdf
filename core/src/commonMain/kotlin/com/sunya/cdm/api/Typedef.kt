@@ -137,6 +137,7 @@ private fun ArrayTyped<*>.convertEnums(map: Map<Int, String>): ArrayString {
             is UByte ->  enumVal.toInt()
             is UShort ->  enumVal.toInt()
             is UInt ->  enumVal.toInt()
+            is ULong ->  enumVal.toInt()
             else -> RuntimeException("unknown enum ${enumVal!!::class}")
         }
         map[num] ?: "Unknown enum number=$enumVal"
@@ -163,6 +164,7 @@ private fun Datatype<*>.strictEnumType() : Datatype<*> {
         Datatype.ENUM1 -> Datatype.UBYTE
         Datatype.ENUM2 -> Datatype.USHORT
         Datatype.ENUM4 -> Datatype.UINT
+        Datatype.ENUM8 -> Datatype.ULONG
         else -> this
     }
 }

@@ -74,6 +74,7 @@ internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Bool
                     1 -> Datatype.ENUM1.withTypedef(typedef)
                     2 -> Datatype.ENUM2.withTypedef(typedef)
                     4 -> Datatype.ENUM4.withTypedef(typedef)
+                    8 -> Datatype.ENUM8.withTypedef(typedef)
                     else -> throw RuntimeException("Bad hdf5 enum type with size= ${this.elemSize}")
                 }
             }

@@ -53,16 +53,16 @@ internal fun H5builder.readDataObject(address: Long, name: String?) : DataObject
     }
 }
 
-internal data class DataObject(
+data class DataObject(
     val address : Long, // aka object id : obviously unique
     var name: String?, // may be null, may not be unique
     val messages : List<MessageHeader>
 ) {
-    var groupMessage: SymbolTableMessage? = null
-    var groupNewMessage: LinkInfoMessage? = null
-    var mds: DataspaceMessage? = null
-    var mdl: DataLayoutMessage? = null
-    var mfp: FilterPipelineMessage? = null
+    internal var groupMessage: SymbolTableMessage? = null
+    internal var groupNewMessage: LinkInfoMessage? = null
+    internal var mds: DataspaceMessage? = null
+    internal var mdl: DataLayoutMessage? = null
+    internal var mfp: FilterPipelineMessage? = null
     val attributes = mutableListOf<AttributeMessage>()
     val mdt: DatatypeMessage? // not present for group message
 

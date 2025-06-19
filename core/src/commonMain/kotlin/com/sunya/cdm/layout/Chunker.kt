@@ -6,12 +6,13 @@ internal enum class Merge { all, none, notFirst }
 
 /**
  * Copies the intersection of a dataChunk and wantSpace to the destination buffer.
+ * The dataChunk, wantSpace values are relative to verShape.
  * Each dataChunk gets its own Chunker, which can only be used once.
  * The wantSpace is a (possibly improper) subset of the variable's IndexSpace.
  * Finds contiguous chunks of data to copy from the dataChunk to the destination.
  * The iteration is monotonic in both src and dest positions.
 
- * @param dataChunk the dataChunk, may have a trailing dimension that is ignored
+ * @param dataChunk the dataChunk, may have a trailing dimension that is ignored.
  * @param wantSpace the requested section of data.
  * @param merge merge strategy for dimensions that can be merged and still keep contiguous transfer
  */
@@ -122,12 +123,6 @@ internal class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, mer
                 dstOffset + elemSize * chunk.destElem.toInt(),
                 srcOffset + elemSize * chunk.srcElem.toInt(),
                 srcOffset + elemSize * (chunk.srcElem.toInt() + chunk.nelems))
-
-            /* System.arraycopy(
-                src, srcOffset + elemSize * chunk.srcElem.toInt(),
-                dst, dstOffset + elemSize * chunk.destElem.toInt(),
-                elemSize * chunk.nelems,
-            ) */
         }
     }
 

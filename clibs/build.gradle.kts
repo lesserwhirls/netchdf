@@ -1,10 +1,11 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
 }
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":testFiles"))
     implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)
     implementation(libs.kotlinx.coroutines.core)
@@ -27,7 +28,7 @@ tasks {
     withType<JavaCompile>() {
         options.compilerArgs.add(ENABLE_PREVIEW)
         // Optionally we can show which preview feature we use.
-        options.compilerArgs.add("-Xlint:-preview")
+        options.compilerArgs.add("-Xlint:-preview -opt-in=kotlin.RequiresOptIn")
         // Explicitly setting compiler option --release
         // is needed when we wouldn't set the
         // sourceCompatiblity and targetCompatibility
@@ -57,4 +58,4 @@ tasks {
 }
 
 // Declare an explicit dependency on ':core:allMetadataJar' from ':clibs:compileJava' using Task#dependsOn
-project.tasks["compileJava"].dependsOn(":core:allMetadataJar")
+// project.tasks["compileJava"].dependsOn(":core:allMetadataJar")

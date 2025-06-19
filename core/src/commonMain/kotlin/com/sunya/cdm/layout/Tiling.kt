@@ -14,7 +14,8 @@ import kotlin.math.min
  * @param varshape the variable's shape
  * @param chunk  actual data storage has this shape. May be larger than the shape, last dim ignored if rank > varshape.
  */
-internal class Tiling(varshape: LongArray, val chunk: LongArray) {
+internal class Tiling(varshape: LongArray, chunkIn: LongArray) {
+    val chunk = chunkIn.copyOf()
     val rank: Int
     val tileShape : LongArray // overall shape of the dataset's tile space
     private val indexShape : LongArray // overall shape of the dataset's index space - may be larger than actual variable shape

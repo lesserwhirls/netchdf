@@ -6,9 +6,11 @@ import com.sunya.cdm.api.toLongArray
 import kotlin.math.max
 import kotlin.math.min
 
-/** A rectangular subsection of indices, going from start to start + shape */
-data class IndexSpace(val start : LongArray, val shape : LongArray) {
-    val rank = start.size
+/** A rectangular subsection of indices, going from start to start + shape, relative to varShape. */
+class IndexSpace(startIn : LongArray, shapeIn : LongArray) {
+    val rank = startIn.size
+    val start = startIn.copyOf()
+    val shape = shapeIn.copyOf()
     val totalElements = shape.computeSize()
     val last by lazy { LongArray(rank) { idx -> start[idx] + shape[idx] - 1 } } // inclusive
     val ranges : List<LongProgression> by lazy { start.mapIndexed {

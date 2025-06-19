@@ -70,6 +70,13 @@ class TestTypedef {
         val enumNames4 = tenum4.convertEnums(enumVals4)
         val expected4 = ArrayString(intArrayOf(3), listOf("name1", "name1", "Unknown enum number=0"))
         assertEquals(expected4, enumNames4)
+
+        val tenum8 = EnumTypedef("low", Datatype.ENUM8, map)
+        assertEquals("  uint64 enum low {1 = name1, 2 = name2, 3 = name3};", tenum8.cdl())
+        val enumVals8 = ArrayULong.fromLongArray(intArrayOf(3), longArrayOf(1,1,0))
+        val enumNames8 = tenum8.convertEnums(enumVals8)
+        val expected8 = ArrayString(intArrayOf(3), listOf("name1", "name1", "Unknown enum number=0"))
+        assertEquals(expected8, enumNames8)
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.sunya.cdm.layout
 
 import com.sunya.cdm.api.TestSection
+import com.sunya.cdm.api.computeSize
 import kotlin.test.*
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -48,5 +49,20 @@ class TestOdometer {
             count++
         }
         assertEquals(dataSection.totalElements.toInt(), count)
+    }
+
+    @Test
+    fun testChunkOdometer() {
+        val varShape = longArrayOf(6, 12)
+        val nvarElems = varShape.computeSize()
+        val chunk = longArrayOf(1, 3)
+        val nchunkElems = chunk.computeSize()
+        val odo = IndexND(IndexSpace(chunk), varShape)
+        var count = 0L
+        while (count < nvarElems) {
+            println("$count == ${ odo.current.contentToString()}}")
+            count += nchunkElems
+            odo.set(count)
+        }
     }
 }

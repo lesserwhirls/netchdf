@@ -58,6 +58,8 @@ class H5builder(
         }
     }
 
+    fun getDataObjectMap() = dataObjectMap
+
     init {
          // search for the superblock
         val state = OpenFileState(0L, false)
@@ -335,12 +337,25 @@ class H5builder(
         val vv: Long
         when (size) {
             1 -> vv = raf.readByte(state).toUByte().toLong()
-            2 -> {
-                vv = raf.readShort(state).toUShort().toLong()
-            }
+            2 -> vv = raf.readShort(state).toUShort().toLong()
             4 -> vv = raf.readInt(state).toUInt().toLong()
             8 -> vv = raf.readLong(state)
             else -> vv = readVariableSizeN(state, size)
+        }
+        return vv
+    }
+
+    fun readVariableSizeDimension(state : OpenFileState, size: Byte): Int {
+        val vv: Int
+        val sizeInt = size.toInt()
+        when (sizeInt) {
+            1 -> vv = raf.readByte(state).toUByte().toInt()
+            2 -> vv = raf.readShort(state).toUShort().toInt()
+            4 -> vv = raf.readInt(state).toUInt().toInt()
+            else -> {
+                val vs = readVariableSizeN(state, sizeInt)
+                vv = vs.toInt()
+            }
         }
         return vv
     }
@@ -371,30 +386,6 @@ class H5builder(
         return size
     }
 
-    /*
-    internal fun convertString(b: ByteArray): String {
-        // null terminates
-        var count = 0
-        while (count < b.size) {
-            if (b[count].toInt() == 0) break
-            count++
-        }
-        return String(b, 0, count, valueCharset) // all strings are considered to be UTF-8 unicode
-    }
-
-    internal fun convertString(b: ByteArray, start: Int, len: Int): String {
-        // null terminates
-        var count = start
-        while (count < start + len) {
-            if (b[count].toInt() == 0) break
-            count++
-        }
-        return String(b, start, count - start, valueCharset) // all strings are considered to be UTF-8
-        // unicode
-    }
-
-     */
-
     companion object {
         // special attribute names in HDF5
         const val HDF5_CLASS = "CLASS"
@@ -424,18 +415,18 @@ class H5builder(
         private const val transformReference = true
 
         ////////////////////////////////////////////////////////////////////////////////
-        /*
-   * Implementation notes
-   * any field called address is actually relative to the base address.
-   * any field called filePos or dataPos is a byte offset within the file.
-   *
-   * it appears theres no sure fire way to tell if the file was written by netcdf4 library
-   * 1) if one of the the NETCF4-XXX atts are set
-   * 2) dimension scales:
-   * 1) all dimensions have a dimension scale
-   * 2) they all have the same length as the dimension
-   * 3) all variables' dimensions have a dimension scale
-   */
+          /*
+           * Implementation notes
+           * any field called address is actually relative to the base address.
+           * any field called filePos or dataPos is a byte offset within the file.
+           *
+           * it appears theres no sure fire way to tell if the file was written by netcdf4 library
+           * 1) if one of the the NETCF4-XXX atts are set
+           * 2) dimension scales:
+           * 1) all dimensions have a dimension scale
+           * 2) they all have the same length as the dimension
+           * 3) all variables' dimensions have a dimension scale
+           */
         private const val KNOWN_FILTERS = 3
     }
 

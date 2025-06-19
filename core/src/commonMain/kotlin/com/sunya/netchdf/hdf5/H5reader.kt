@@ -91,29 +91,6 @@ internal fun <T> H5builder.processDataIntoArray(ba: ByteArray, isBE: Boolean, da
 
     val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
     return tba.convertToArrayTyped(shape)
-
-    /*
-    var result = when (datatype) {
-        Datatype.BYTE -> ArrayByte(shape, bb)
-        Datatype.STRING, Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
-        Datatype.SHORT -> ArrayShort(shape, bb)
-        Datatype.USHORT, Datatype.ENUM2 -> ArrayUShort(shape, datatype as Datatype<UShort>, bb)
-        Datatype.INT -> ArrayInt(shape, bb)
-        Datatype.UINT, Datatype.ENUM4 -> ArrayUInt(shape, datatype as Datatype<UInt>, bb)
-        Datatype.FLOAT -> ArrayFloat(shape, bb)
-        Datatype.DOUBLE -> ArrayDouble(shape, bb)
-        Datatype.REFERENCE, Datatype.LONG -> ArrayLong(shape, bb)
-        Datatype.ULONG -> ArrayULong(shape, bb)
-        Datatype.OPAQUE -> ArrayOpaque(shape, bb, h5type.elemSize)
-        else -> throw IllegalStateException("unimplemented type= $datatype")
-    }
-
-    // TODO
-    // if ((h5type.datatype5 == Datatype5.Reference) and h5type.isRefObject) {
-    // result = ArrayString(shape, this.convertReferencesToDataObjectName(result as ArrayLong))
-    // }
-
-    return result as ArrayTyped<T> */
 }
 
 // Put the variable length members (vlen, string) on the heap

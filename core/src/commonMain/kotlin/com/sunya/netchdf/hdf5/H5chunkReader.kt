@@ -2,18 +2,80 @@
 
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.api.Datatype
-import com.sunya.cdm.api.Section
-import com.sunya.cdm.api.Variable
-import com.sunya.cdm.api.toIntArray
+import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Chunker
+import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.util.InternalLibraryApi
 
 internal class H5chunkReader(val h5 : H5builder) {
     private val debugChunking = false
+
+    internal fun <T> readFixedArray(v2: Variable<T>, wantSection : Section) : ArrayTyped<T> {
+        val vinfo = v2.spObject as DataContainerVariable
+        val h5type = vinfo.h5type
+
+        val elemSize = vinfo.storageDims[vinfo.storageDims.size - 1].toInt() // last one is always the elements size
+        val datatype = vinfo.h5type.datatype()
+
+        val wantSpace = IndexSpace(wantSection)
+        val sizeBytes = wantSpace.totalElements * elemSize
+        if (sizeBytes <= 0 || sizeBytes >= Int.MAX_VALUE) {
+            throw RuntimeException("Illegal nbytes to read = $sizeBytes")
+        }
+        val ba = ByteArray(sizeBytes.toInt())
+
+        val mdl = vinfo.mdl as DataLayoutFixedArray4
+        val index = mdl.fixedArrayIndex
+        //val tiledData = H5TiledData(btreeNew)
+        val filters = H5filters(v2.name, vinfo.mfp, vinfo.h5type.isBE)
+        //if (debugChunking) println(" readChunkedData tiles=${tiledData.tiling}")
+
+        val varShape = v2.shape
+        val chunk = IntArray(mdl.dims.size - 1) { mdl.dims[it] } // remove the element size
+        val nchunkElems = chunk.computeSize()
+        val odo = IndexND(IndexSpace(chunk), varShape)
+
+        var countChunkElems = 0L
+        //var transferBytes = 0
+        val state = OpenFileState(0L, vinfo.h5type.isBE)
+        for (dataChunk: FilteredChunk in index!!.filteredChunks) {
+            // TODO we need to know the dataChunk's IndexSpace, ie its position with varShape.
+            if (debugChunking) println("$countChunkElems == ${ odo.current.contentToString()}}")
+
+            val dataSection = IndexSpace(v2.rank, odo.current, vinfo.storageDims)
+            val chunker = Chunker(dataSection, wantSpace)
+            /* if (dataChunk.isMissing()) {
+                if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
+                chunker.transferMissing(vinfo.fillValue, elemSize, ba)
+            } else { */
+                //if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
+                state.pos = dataChunk.address
+                val chunkData = h5.raf.readByteArray(state, dataChunk.chunkSize)
+                val filteredData = filters.apply(chunkData, dataChunk.filterMask)
+                chunker.transferBA(filteredData, 0, elemSize, ba, 0) //  this iterates overs Chunker's chunks
+                //transferChunks += chunker.transferChunks
+            // }
+            countChunkElems += nchunkElems
+            odo.set(countChunkElems)
+        }
+
+        // bb.order(vinfo.h5type.isBE)
+        val shape = wantSpace.shape.toIntArray()
+        val result =  h5.processDataIntoArray(ba, vinfo.h5type.isBE, datatype, shape, h5type, elemSize) as ArrayTyped<T>
+        return result
+
+        /*
+        return if (h5type.datatype5 == Datatype5.Vlen) {
+            h5.processVlenIntoArray(h5type, shape, ba, wantSpace.totalElements.toInt(), elemSize)
+        } else {
+            h5.processDataIntoArray(ba, vinfo.h5type.isBE, datatype, shape, h5type, elemSize) as ArrayTyped<T>
+        // }
+
+         */
+    }
 
     internal fun <T> readChunkedData(v2: Variable<T>, wantSection : Section) : ArrayTyped<T> {
         val vinfo = v2.spObject as DataContainerVariable
@@ -29,6 +91,7 @@ internal class H5chunkReader(val h5 : H5builder) {
         }
         val ba = ByteArray(sizeBytes.toInt())
 
+        // TODO how do we know its BTree1 and not BTree2 ?
         val btreeNew =  BTree1(h5, vinfo.dataPos, 1, v2.shape, vinfo.storageDims)
         val tiledData = H5TiledData(btreeNew)
         val filters = H5filters(v2.name, vinfo.mfp, vinfo.h5type.isBE)
@@ -46,7 +109,7 @@ internal class H5chunkReader(val h5 : H5builder) {
                 if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
                 state.pos = dataChunk.childAddress
                 val chunkData = h5.raf.readByteArray(state, dataChunk.key.chunkSize)
-                val filteredData = filters.apply(chunkData, dataChunk)
+                val filteredData = filters.apply(chunkData, dataChunk.key.filterMask)
                 chunker.transferBA(filteredData, 0, elemSize, ba, 0)
                 transferChunks += chunker.transferChunks
             }

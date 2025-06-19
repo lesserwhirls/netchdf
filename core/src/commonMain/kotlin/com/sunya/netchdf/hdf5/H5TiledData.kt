@@ -61,10 +61,10 @@ internal class H5TiledData(val btree1 : BTree1) {
         }
         if (foundEntry == null) {
             if (parent.level == 0) {
-                if (debugMissing) println("TiledH5Data findEntryContainingKey missing key ${key.contentToString()}")
+                if (debugMissing) println("H5TiledData findEntryContainingKey missing key ${key.contentToString()}")
                 return null
             }
-            throw RuntimeException("TiledH5Data findEntryContainingKey cant find key ${key.contentToString()}")
+            throw RuntimeException("H5TiledData findEntryContainingKey cant find key ${key.contentToString()}")
         }
         if (parent.level == 0) {
             return if (tiling.compare(key, foundEntry.key.offsets) == 0L) foundEntry else null

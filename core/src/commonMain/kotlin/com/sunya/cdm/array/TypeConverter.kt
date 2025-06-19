@@ -162,7 +162,7 @@ fun convertFromBytes(datatype : Datatype<*>, ba: ByteArray, isBE: Boolean, chars
         Datatype.INT -> convertToInt(ba, 0, isBE)
         Datatype.UINT, Datatype.ENUM4 -> convertToInt(ba, 0, isBE).toUInt()
         Datatype.LONG -> convertToLong(ba, 0, isBE)
-        Datatype.ULONG -> convertToLong(ba, 0, isBE).toULong()
+        Datatype.ULONG, Datatype.ENUM8 -> convertToLong(ba, 0, isBE).toULong()
         Datatype.DOUBLE -> convertToDouble(ba, 0, isBE)
         Datatype.FLOAT -> convertToFloat(ba, 0, isBE)
         Datatype.STRING -> ba.decodeToString(charset)
