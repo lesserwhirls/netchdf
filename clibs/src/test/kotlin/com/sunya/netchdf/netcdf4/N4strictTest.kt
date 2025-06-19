@@ -12,7 +12,8 @@ class N4strictTest {
 
     @Test
     fun tst_dims() {
-        readN4header(testData + "devcdm/netcdf4/tst_dims.nc",
+        readN4header(
+            testData + "devcdm/netcdf4/tst_dims.nc",
             """netcdf tst_dims.nc {
 dimensions:
 	latitude = 6 ;
@@ -27,7 +28,8 @@ variables:
 
     @Test
     fun string_attrs() {
-        readN4header(testData + "devcdm/netcdf4/string_attrs.nc4",
+        readN4header(
+            testData + "devcdm/netcdf4/string_attrs.nc4",
 """netcdf string_attrs {
 variables:
 	byte var ;

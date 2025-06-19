@@ -3,9 +3,7 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
-import com.sunya.cdm.array.convertToInt
-import com.sunya.cdm.array.convertToLong
-import com.sunya.cdm.array.makeStringZ
+import com.sunya.cdm.array.*
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.util.InternalLibraryApi
 
@@ -39,8 +37,9 @@ internal class H5heap(val header: H5builder) {
             Datatype.INT -> emptyArray<Int>()
             Datatype.UINT, Datatype.ENUM4 -> emptyArray<UInt>()
             Datatype.LONG -> emptyArray<Long>()
-            Datatype.ULONG -> emptyArray<ULong>()
-            else -> throw UnsupportedOperationException("getHeapDataAsArray datatype=$datatype")
+            Datatype.ULONG, Datatype.ENUM8 -> emptyArray<ULong>()
+            Datatype.COMPOUND -> emptyArray<ArrayStructureData.StructureData>()
+            else -> throw UnsupportedOperationException("getHeapDataArray heap object not found; datatype=$datatype")
         }
 
         val typedef = datatype.typedef
@@ -57,7 +56,16 @@ internal class H5heap(val header: H5builder) {
             Datatype.INT -> raf.readArrayOfInt(state, heapId.nelems)
             Datatype.UINT, Datatype.ENUM4 -> raf.readArrayOfUInt(state, heapId.nelems)
             Datatype.LONG -> raf.readArrayOfLong(state, heapId.nelems)
-            Datatype.ULONG -> raf.readArrayOfULong(state, heapId.nelems)
+            Datatype.ULONG, Datatype.ENUM8 -> raf.readArrayOfULong(state, heapId.nelems)
+            Datatype.COMPOUND -> {
+                val members = (datatype.typedef as CompoundTypedef).members
+                val recsize = members.map { it.nelems * it.datatype.size }.sum()
+                val ba = raf.readByteArray(state, heapId.nelems * recsize)
+                // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+                val asd = ArrayStructureData(intArrayOf(heapId.nelems), ba, isBE, recsize, members)
+                // TODO not doing variable length fields processCompoundData(sdataArray, isBE) as ArrayTyped<T>
+                Array(heapId.nelems) {  asd.get(it) } // convert to ArrayArrayStructureData.StructureData>
+            }
             else -> throw UnsupportedOperationException("getHeapDataAsArray datatype=$datatype")
         }
         return result

@@ -47,7 +47,7 @@ enum class Datatype5(val num : Int) {
 /**
  * @param elemSize The size of a datatype element in bytes.
  */
-internal open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize: Int, val isBE: Boolean = false) :
+open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize: Int, val isBE: Boolean = false) :
     MessageHeader(MessageType.Datatype) {
     var isShared : Boolean = false
 
@@ -240,6 +240,7 @@ internal class DatatypeEnum(
             1 -> Datatype.ENUM1
             2 -> Datatype.ENUM2
             4 -> Datatype.ENUM4
+            8 -> Datatype.ENUM8
             else -> throw RuntimeException("invalid enum elemsize $elemSize")
         }
     }

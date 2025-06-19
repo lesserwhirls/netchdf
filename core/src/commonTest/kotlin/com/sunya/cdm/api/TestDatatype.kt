@@ -30,6 +30,7 @@ class TestDatatype {
         assertTrue(Datatype.ENUM1.isEnum)
         assertTrue(Datatype.ENUM2.isEnum)
         assertTrue(Datatype.ENUM4.isEnum)
+        assertTrue(Datatype.ENUM8.isEnum)
 
         assertFalse(Datatype.FLOAT.isUnsigned)
         assertFalse(Datatype.BYTE.isUnsigned)
@@ -44,6 +45,7 @@ class TestDatatype {
         assertTrue(Datatype.ENUM1.isUnsigned)
         assertTrue(Datatype.ENUM2.isUnsigned)
         assertTrue(Datatype.ENUM4.isUnsigned)
+        assertTrue(Datatype.ENUM8.isUnsigned)
     }
 
     @Test

@@ -11,7 +11,7 @@ import com.sunya.cdm.array.ArrayStructureData
  * @param typedef used for ENUM, VLEN, OPAQUE, COMPOUND
  * @param isVlen HDF5 needs to track if this is a Vlen or regular String.
  */
-// TODO should this be an Enum?
+// TODO should this be an actual Enum?
 data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef? = null, val isVlen : Boolean? = null) {
 
     companion object {
@@ -30,6 +30,7 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
         val ENUM1 = Datatype<UByte>("ubyte enum", 1)
         val ENUM2 = Datatype<UShort>("ushort enum", 2)
         val ENUM4 = Datatype<UInt>("uint enum", 4)
+        val ENUM8 = Datatype<UInt>("ulong enum", 8)
 
         //// these types have variable length storage; inside StructureData, they have 32 bit index onto a heap
         val STRING = Datatype<String>("string", 4)
@@ -40,7 +41,8 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
         // Experimental for HDF5; maybe should be T = String ??
         val REFERENCE = Datatype<Long>("reference", 4) // string = full path to referenced dataset
 
-        fun values() = listOf(BYTE, UBYTE, SHORT, USHORT, INT, UINT, LONG, ULONG, DOUBLE, FLOAT, ENUM1, ENUM2, ENUM4,
+        fun values() = listOf(BYTE, UBYTE, SHORT, USHORT, INT, UINT, LONG, ULONG, DOUBLE, FLOAT,
+            ENUM1, ENUM2, ENUM4, ENUM8,
             CHAR, STRING, OPAQUE, COMPOUND, VLEN, REFERENCE
         )
     }
@@ -72,7 +74,7 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
         get() = (this == FLOAT) || (this == DOUBLE)
 
     val isEnum: Boolean
-        get() = (this == ENUM1) || (this == ENUM2) || (this == ENUM4)
+        get() = (this == ENUM1) || (this == ENUM2) || (this == ENUM4) || (this == ENUM8)
 
     /**
      * Returns the DataType that is related to `this`, but with the specified signedness.

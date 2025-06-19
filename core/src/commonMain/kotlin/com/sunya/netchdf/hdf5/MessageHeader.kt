@@ -11,7 +11,7 @@ private const val debugContinuation = false
 internal const val debugMessage = false
 
 // type safe enum
-internal enum class MessageType(val uname: String, val num: Int) {
+enum class MessageType(val uname: String, val num: Int) {
     NIL("NIL", 0),
     Dataspace("Dataspace", 1),
     LinkInfo("GroupNew", 2),
@@ -209,7 +209,7 @@ internal fun H5builder.readHeaderMessage(state: OpenFileState, version: Int, has
 
 
 // Header Message: Level 2A1 and 2A2 (part of Data Object)
-internal open class MessageHeader(val mtype: MessageType) : Comparable<MessageHeader> {
+open class MessageHeader(val mtype: MessageType) : Comparable<MessageHeader> {
     override operator fun compareTo(other: MessageHeader): Int =
         compareValuesBy(this, other, { it.mtype.num }, { other.mtype.num })
     open fun show() : String {
@@ -263,7 +263,7 @@ internal fun H5builder.readDataspaceMessage(state: OpenFileState): DataspaceMess
     )
 }
 
-internal enum class DataspaceType(val num: Int) {
+enum class DataspaceType(val num: Int) {
     Scalar(0), Simple(1), Null(2);
 
     companion object {
@@ -278,7 +278,7 @@ internal enum class DataspaceType(val num: Int) {
     }
 }
 
-internal data class DataspaceMessage(val type: DataspaceType, val dims: LongArray, val isUnlimited : Boolean)
+data class DataspaceMessage(val type: DataspaceType, val dims: LongArray, val isUnlimited : Boolean)
     : MessageHeader(MessageType.Dataspace) {
 
     fun rank(): Int = dims.size
@@ -551,13 +551,13 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
         filters.add(Filter(filterType, name, clientValues))
     }
 
-    return FilterPipelineMessage(
-        filters,
-    )
+    return FilterPipelineMessage(filters)
 }
 
 internal enum class FilterType(val id: Int) {
-    none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6), zstandard(32015), unknown(Int.MAX_VALUE);
+    none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6),
+    bzip2(307),
+    zstandard(32015), unknown(Int.MAX_VALUE);
 
     companion object {
         fun fromId(id: Int): FilterType {
@@ -667,7 +667,7 @@ internal fun H5builder.readAttributeMessage(state: OpenFileState): AttributeMess
     )
 }
 
-internal class AttributeMessage(val name: String, var mdt: DatatypeMessage, val mds: DataspaceMessage, val dataPos: Long) :
+class AttributeMessage(val name: String, var mdt: DatatypeMessage, val mds: DataspaceMessage, val dataPos: Long) :
     MessageHeader(MessageType.Attribute) {
 
     override fun show() : String {

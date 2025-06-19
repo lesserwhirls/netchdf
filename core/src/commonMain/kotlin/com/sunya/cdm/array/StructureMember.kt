@@ -33,7 +33,7 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
             Datatype.UBYTE, Datatype.CHAR, Datatype.ENUM1 -> sdata.ba.get(offset).toUByte()
             Datatype.USHORT, Datatype.ENUM2 -> convertToShort(sdata.ba, offset, this.isBE).toUShort()
             Datatype.UINT, Datatype.ENUM4 -> convertToInt(sdata.ba, offset, this.isBE).toUInt()
-            Datatype.ULONG -> convertToLong(sdata.ba, offset, this.isBE).toULong()
+            Datatype.ULONG, Datatype.ENUM8 -> convertToLong(sdata.ba, offset, this.isBE).toULong()
             Datatype.FLOAT -> convertToFloat(sdata.ba, offset, this.isBE)
             Datatype.DOUBLE -> convertToDouble(sdata.ba, offset, this.isBE)
             Datatype.STRING -> {
@@ -94,13 +94,5 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         result = 31 * result + shape.contentHashCode()
         result = 31 * result + nelems
         return result
-    }
-
-    companion object {
-       fun datatypes() = listOf(Datatype.BYTE, Datatype.UBYTE, Datatype.SHORT, Datatype.USHORT, Datatype.INT,
-           Datatype.UINT, Datatype.LONG, Datatype.ULONG, Datatype.DOUBLE, Datatype.FLOAT, Datatype.ENUM1,
-           Datatype.ENUM2, Datatype.ENUM4, Datatype.CHAR, Datatype.STRING,
-           // Datatype.OPAQUE, Datatype.COMPOUND, Datatype.VLEN, Datatype.REFERENCE
-        )
     }
 }

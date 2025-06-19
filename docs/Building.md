@@ -84,3 +84,12 @@ second shape=32190
  9 == 0
 
 ````
+### Example2
+
+````
+cd ~/dev/github/netcdf/netchdf/core/ctest
+sudo cp /home/stormy/dev/github/netcdf/netchdf/core/build/bin/linuxX64/debugShared/libnetchdf.so /usr/local/lib
+gcc main.c   -I/home/stormy/dev/github/netcdf/netchdf/core/build/bin/linuxX64/debugShared   -lnetchdf
+./a.out   -lnetchdf
+````
+

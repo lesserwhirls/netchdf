@@ -13,7 +13,7 @@ import com.sunya.cdm.util.InternalLibraryApi
 /**
  * @param strict true = make it agree with nclib if possible
  */
-internal class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
+class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
     private val raf : OpenFileIF = OkioFile(filename)
     val header : H5builder = H5builder(raf, strict)
 
@@ -45,13 +45,17 @@ internal class Hdf5File(val filename : String, strict : Boolean = false) : Netch
         }
 
         return try {
-            if (vinfo.isChunked) {
-                H5chunkReader(header).readChunkedData(v2, wantSection)
-            } else if (vinfo.isCompact) {
+            if (vinfo.mdl.isCompact) {
                 val alldata = header.readCompactData(v2, v2.shape.toIntArray())
                 alldata.section(wantSection)
-            } else {
+            } else if (vinfo.mdl.isContiguous) {
                 header.readRegularData(vinfo, v2.datatype, wantSection)
+            } else if (vinfo.mdl.isChunked) {
+                H5chunkReader(header).readChunkedData(v2, wantSection)
+            } else if (vinfo.mdl is DataLayoutFixedArray4) {
+                H5chunkReader(header).readFixedArray(v2, wantSection)
+            } else {
+                throw RuntimeException("Unsupported data layer type ${vinfo.mdl}")
             }
         } catch (ex: Exception) {
             println("failed to read ${v2.name}, $ex")
@@ -72,7 +76,7 @@ internal class Hdf5File(val filename : String, strict : Boolean = false) : Netch
             return listOf(single).iterator()
         }
 
-        return if (vinfo.isChunked) {
+        return if (vinfo.mdl.isChunked) {
             H5chunkIterator(header, v2, wantSection)
         } else {
             H5maxIterator(this, v2, wantSection, maxElements ?: 100_000)

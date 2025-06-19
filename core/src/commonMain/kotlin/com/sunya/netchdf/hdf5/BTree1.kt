@@ -24,7 +24,7 @@ internal class BTree1(
     val rootNodeAddress: Long,
     val nodeType : Int,  // 0 = group/symbol table, 1 = raw data chunks
     val varShape: LongArray = longArrayOf(), // not needed for group symbols
-    val storageSize: LongArray = longArrayOf(), // not needed for group  symbols
+    val storageSize: LongArray = longArrayOf(), // not needed for group symbols
 ) {
     private val ndimStorage: Int = storageSize.size
 

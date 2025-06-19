@@ -43,7 +43,7 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
                 convertToLong(ba, offset + 8 * idx, isBE)
             }
 
-            Datatype.ULONG -> {
+            Datatype.ULONG, Datatype.ENUM8 -> {
                 convertToLong(ba, offset + 8 * idx, isBE).toULong()
             }
 
@@ -67,7 +67,7 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
         return when (datatype) {
             Datatype.USHORT, Datatype.ENUM2, Datatype.SHORT -> (valueAny as Short).toInt()
             Datatype.UINT, Datatype.ENUM4, Datatype.INT -> valueAny as Int
-            Datatype.ULONG, Datatype.LONG -> (valueAny as Long).toInt()
+            Datatype.ULONG, Datatype.ENUM8, Datatype.LONG -> (valueAny as Long).toInt()
             else -> throw IllegalStateException("getAsInt unimplemented type= $datatype")
         }
     }
@@ -82,7 +82,7 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
             Datatype.INT -> ArrayInt(shape, IntArray(nelems) { this.get(it) as Int } )
             Datatype.UINT, Datatype.ENUM4 -> ArrayUInt(shape, datatype, UIntArray(nelems) { this.get(it) as UInt })
             Datatype.LONG -> ArrayLong(shape, LongArray(nelems) { this.get(it) as Long })
-            Datatype.ULONG -> ArrayULong(shape, ULongArray(nelems) { this.get(it) as ULong })
+            Datatype.ULONG, Datatype.ENUM8 -> ArrayULong(shape, ULongArray(nelems) { this.get(it) as ULong })
             Datatype.DOUBLE -> ArrayDouble(shape, DoubleArray(nelems) { this.get(it) as Double })
             Datatype.FLOAT -> ArrayFloat(shape, FloatArray(nelems) { this.get(it) as Float })
             Datatype.STRING -> { // TODO kludge ?? maybe should be done in caller ??

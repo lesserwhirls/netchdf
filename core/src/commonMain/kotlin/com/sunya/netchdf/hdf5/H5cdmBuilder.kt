@@ -151,6 +151,9 @@ internal open class DataContainerAttribute(
         override val storageDims = mds.dims
 }
 
+val mdlClassCount = getDataLayoutCounts()
+
+// TODO none of the version4 layouts are implemented
 internal class DataContainerVariable(
     override val name: String,
     override val h5type: H5TypeInfo,
@@ -165,43 +168,42 @@ internal class DataContainerVariable(
     val mdl = v5.mdl
     val mfp = v5.mfp
 
-    val isChunked : Boolean
-    val isCompact : Boolean
     val elementSize : Int // total length in bytes on disk of one element
     val onlyFillValue : Boolean // no data at all
     val fillValue : ByteArray
 
     init {
+        val mdlName = mdl::class.simpleName!!
+        val mdlCount = mdlClassCount.getOrPut(mdlName) { 0 }
+        mdlClassCount[mdlName] = mdlCount + 1
+
         // TODO if compact, do not use fileOffset
         dataPos = when (mdl) {
             is DataLayoutContiguous -> h5.getFileOffset(mdl.dataAddress)
-            is DataLayoutContiguous3 -> h5.getFileOffset(mdl.dataAddress)
             is DataLayoutChunked -> mdl.btreeAddress // offset will be added in BTreeData
             is DataLayoutCompact -> -2L // data is in mdl.compactData
             is DataLayoutCompact3 -> -2L // data is in mdl.compactData
+            is DataLayoutContiguous3 -> h5.getFileOffset(mdl.dataAddress)
+            is DataLayoutVirtual4 -> -1  // dunno
+            is DataLayoutSingleChunk4 -> h5.getFileOffset(mdl.heapAddress)
+            is DataLayoutImplicit4 -> h5.getFileOffset(mdl.address)
+            is DataLayoutFixedArray4 -> h5.getFileOffset(mdl.indexAddress)
+            is DataLayoutExtensibleArray4 -> h5.getFileOffset(mdl.indexAddress)
+            is DataLayoutBtreeVer2 -> h5.getFileOffset(mdl.heapAddress)
             else -> -1 // LOOK compact?
         }
         // deal with unallocated data
         fillValue = getFillValue(h5, v5, h5type)
         onlyFillValue = (dataPos == -1L)
 
-        isCompact = (mdl.layoutClass == LayoutClass.Compact)
-        isChunked = (mdl.layoutClass == LayoutClass.Chunked)
+       // isCompact = (mdl.layoutClass == LayoutClass.Compact)
+       // isChunked = (mdl.layoutClass == LayoutClass.Chunked)
         when (mdl) {
             is DataLayoutCompact -> {
                 this.storageDims = mds.dims // LOOK why not mdl.dims?
                 this.elementSize = mdt.elemSize
             }
-            is DataLayoutCompact3 -> {
-                this.storageDims = mds.dims
-                this.elementSize = mdt.elemSize
-            }
             is DataLayoutContiguous -> {
-                this.storageDims = mds.dims
-                val nelems = this.storageDims.computeSize()
-                this.elementSize = (mdt.elemSize / nelems).toInt()
-            }
-            is DataLayoutContiguous3 -> {
                 this.storageDims = mds.dims
                 val nelems = this.storageDims.computeSize()
                 this.elementSize = (mdt.elemSize / nelems).toInt()
@@ -210,6 +212,41 @@ internal class DataContainerVariable(
                 this.storageDims = mdl.chunkDims.toLongArray()
                 this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size
             }
+            is DataLayoutCompact3 -> {
+                this.storageDims = mds.dims
+                this.elementSize = mdt.elemSize
+            }
+            is DataLayoutContiguous3 -> {
+                this.storageDims = mds.dims
+                val nelems = this.storageDims.computeSize()
+                this.elementSize = (mdt.elemSize / nelems).toInt()
+            }
+            is DataLayoutVirtual4 -> {
+                // TODO
+                this.storageDims = longArrayOf()
+                this.elementSize = 0 // storageDims[storageDims.size - 1].toInt() // last number is element size
+            }
+            is DataLayoutSingleChunk4 -> {
+                this.storageDims = mdl.dims.toLongArray()
+                this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size ??
+            }
+            is DataLayoutImplicit4 -> {
+                this.storageDims = mdl.dims.toLongArray()
+                this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size ??
+            }
+            is DataLayoutFixedArray4 -> {
+                this.storageDims = mdl.dims.toLongArray()
+                this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size ??
+            }
+            is DataLayoutExtensibleArray4 -> {
+                this.storageDims = mdl.dims.toLongArray()
+                this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size ??
+            }
+            is DataLayoutBtreeVer2 -> {
+                this.storageDims = mdl.dims.toLongArray()
+                this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size ??
+            }
+
             else -> throw RuntimeException()
         }
     }

@@ -28,6 +28,6 @@ internal interface Layout : Iterator<Layout.Chunk> {
         fun nelems() : Int
 
         /** The 1D element position in the destination to copy into. (Note: elements, not bytes) */
-        fun destElem() : Long // LOOK why Long? cant read more than 2^32
+        fun destElem() : Long // TODO why Long? cant read more than 2^32
     }
 }
