@@ -3,6 +3,28 @@ package com.sunya.netchdfc
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayInt
 
+/*
+import kotlinx.cinterop.CPointer
+import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.IntVar
+import kotlinx.cinterop.addressOf
+import kotlinx.cinterop.pin
+import kotlin.experimental.ExperimentalNativeApi
+import kotlin.native.CName
+
+@OptIn(ExperimentalNativeApi::class, ExperimentalForeignApi::class)
+@CName("getPinnedIntArrayPointer")
+fun getPinnedIntArrayPointer(array: IntArray): CPointer<IntVar> {
+    return array.pin().addressOf(0)
+}
+
+// for testing
+@OptIn(ExperimentalForeignApi::class)
+fun testCArray(): CPointer<IntVar> {
+    return getPinnedIntArrayPointer(intArrayOf(1,2,3,4,5))
+}
+*/
+
 fun version() : String {
     return "netchdf version 0.4.0"
 }

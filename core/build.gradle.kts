@@ -8,7 +8,7 @@ version = libs.versions.netchdf.get()
 
 kotlin {
     jvm()
-/*
+
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val arch = System.getProperty("os.arch")
@@ -31,8 +31,6 @@ kotlin {
         else -> throw GradleException("Host OS is not supported.")
     }
 
- */
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -42,11 +40,10 @@ kotlin {
                 implementation(libs.fleeksoft)
             }
         }
-        val jvmMain by
-        getting {
-                dependencies {
-                    implementation(libs.slf4j.jvm)
-                }
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.slf4j.jvm)
+            }
         }
         val commonTest by getting {
             dependencies {

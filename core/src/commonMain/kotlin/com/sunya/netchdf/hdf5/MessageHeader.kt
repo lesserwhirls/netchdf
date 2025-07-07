@@ -867,7 +867,7 @@ private fun H5builder.readAttributesFromInfoMessage(
 
     val btreeAddress: Long = attributeOrderBtreeAddress ?: attributeNameBtreeAddress
     if (btreeAddress < 0 || fractalHeapAddress < 0) return emptyList()
-    val btree2 = BTree2(this, "AttributeInfoMessage", btreeAddress)
+    val btree2 = BTree2(this, "AttributeInfoMessage", btreeAddress, 0)
     val fractalHeap = FractalHeap(this, "AttributeInfoMessage", fractalHeapAddress)
 
     val list = mutableListOf<AttributeMessage>()

@@ -2,6 +2,7 @@
 
 package com.sunya.netchdf.hdf5
 
+import com.sunya.cdm.api.computeSize
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.InternalLibraryApi
 
@@ -129,6 +130,10 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
 
         // version 4, layoutClass = 2 is too complex for structdls
         if (layoutClass == 2) {
+            val nextBytes = raf.readByteArray(state.copy(), 40)
+            println("version 4, layoutClass = 2 ${this.raf.location()}")
+            println("  nextBytes after chunkIndexingType ${nextBytes.contentToString()}")
+
             // this structure is too complex for structdls
             val version = raf.readByte(state)
             val layoutClass = raf.readByte(state)
@@ -136,27 +141,66 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
             val rank = raf.readByte(state).toInt()
             val dimSizeLength = raf.readByte(state)
             val dims = IntArray(rank) { this.readVariableSizeDimension(state, dimSizeLength) }  // TODO is dimSizeLength correct ??
+            var chunkSize = dims.computeSize()
+
             val chunkIndexingType = raf.readByte(state).toInt()
             return when (chunkIndexingType) {
                 1 -> { // VII.A single chunk index
-                    val chunkSize = this.readLength(state)
+                    // #define H5O_LAYOUT_CHUNK_DONT_FILTER_PARTIAL_BOUND_CHUNKS 0x01    // no filter
+                    // #define H5O_LAYOUT_CHUNK_SINGLE_INDEX_WITH_FILTER         0x02    // has a filter
+
+                    //    udata->chunk_block.offset = idx_info->storage->idx_addr;
+                    //    if (idx_info->layout->flags & H5O_LAYOUT_CHUNK_SINGLE_INDEX_WITH_FILTER) {
+                    //        udata->chunk_block.length = idx_info->storage->u.single.nbytes;
+                    //        udata->filter_mask        = idx_info->storage->u.single.filter_mask;
+                    //    } /* end if */
+                    //    else {
+                    //        udata->chunk_block.length = idx_info->layout->size;
+                    //        udata->filter_mask        = 0;
+                    //    } /* end else */
+
+                    // "The following information exists only when the chunk is filtered.
+                    // In other words, when H5O_LAYOUT_CHUNK_SINGLE_INDEX_WITH_FILTER (bit 1) is enabled in the field flags."
+                    // TODO not clear
                     val nextBytes = raf.readByteArray(state.copy(), 40)
                     println("SingleChunk ${this.raf.location()}")
-                    println("  chunkSize $chunkSize nextBytes ${nextBytes.contentToString()}")
-                    // https://github.com/HDFGroup/hdf5/issues/5610
-                    // The second field should be "Filter mask" for the chunk, which indicates the filter to skip for the dataset chunk.
-                    // Each filter has an index number in the pipeline; if that filter is skipped, the bit corresponding to its index is set.
-                    val filterMask = raf.readInt(state)
-                    /* repeat ( 32) { idx ->
-                        val isSet = isBitSet(filterMask, idx)
-                        println("   idx = $idx  isSet = $isSet")
-                    } */
+                    println("  nextBytes after chunkIndexingType ${nextBytes.contentToString()}")
+
+                    var filterMask : Int? = null
+                    if (isBitSet(flags.toInt(), 1)) {
+                        // Indexing Type Information (variable size)
+                        chunkSize = this.readLength(state).toInt()
+
+                        // https://github.com/HDFGroup/hdf5/issues/5610
+                        // The second field should be "Filter mask" for the chunk, which indicates the filter to skip for the dataset chunk.
+                        // Each filter has an index number in the pipeline; if that filter is skipped, the bit corresponding to its index is set.
+                        // It would be surprising to have a Filter Mask here, since that usually references a FilterPipeline message, but there is none.
+
+                        //  /home/all/testdata/netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_10/nc_test4__testfilter_reg.nc
+                        //  sizeOfFilteredChunk 1024 nextBytes [0, 0, 0, 0, 3, 27, 0, 0, 0, 0, 0, 0, 21, 28, 0, 4, 0, 0, 0, 3, 2, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+                        //   filtered, flags == 2; /home/all/testdata/netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_10/examples__bzip2.nc
+                        //   sizeOfFilteredChunk 501 nextBytes [0, 0, 0, 0, 3, 27, 0, 0, 0, 0, 0, 0, 21, 28, 0, 4, 0, 0, 0, 3, 2, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+                        // TODO not clear, number and meaning of the fields. Possibly embedding the filter pipeline here, instead of a seperate message ??
+                        //     uint32_t filter_mask; /* Excluded filters for chunk */ seems theres only 32 filters? must be a seperate mechansism for extensions
+                        filterMask = raf.readInt(state) // "This field contains filters for the chunk."
+                        repeat ( 32) { idx ->
+                            val isSet = isBitSet(filterMask, idx)
+                            if (isSet) println("   idx = $idx  isSet = $isSet")
+                        }
+                        println("  sizeOfFilteredChunk $chunkSize filterMask $filterMask")
+                    }
+
+                    // [0, 4, 0, 0, 0, 0, 0, 0,
+                    //  0, 0, 0, 0, 3, 27, 0, 0,
+                    //  0, 0, 0, 0, 21, 28, 0, 4,
+                    //  0, 0, 0, 3, 2, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
                     // Address of the single chunk. size specified in “Size of Lengths” field in the superblock.
                     // The address may be undefined if the chunk or index storage is not allocated yet.
                     val chunkAddress =  this.readLength(state)
-                    println("  filterMask $filterMask chunkAddress $chunkAddress")
-
-                    DataLayoutSingleChunk4(flags, dims, chunkSize, chunkAddress)
+                    DataLayoutSingleChunk4(flags, dims, chunkSize = chunkSize, chunkAddress, filterMask)
                 }
                 2 -> { // VII.B implicit index
                     // Address of the array of dataset chunks.
@@ -180,7 +224,9 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
                     val minElements = raf.readByte(state)
                     val pageBits = raf.readByte(state)
                     val indexAddress =  raf.readLong(state) // probably wrong
-                    DataLayoutExtensibleArray4(flags, dims, maxBits, indexElements, minPointers, minElements, pageBits, indexAddress)
+                    val result = DataLayoutExtensibleArray4(flags, dims, maxBits, indexElements, minPointers, minElements, pageBits, indexAddress)
+                    println(result.show())
+                    result
                 }
                 5 -> { // VII.E version 2 B-tree index
                     val nodeSize = raf.readInt(state)
@@ -192,7 +238,7 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
                 }
                 else -> throw RuntimeException()
             }
-            val address = raf.readLong(state) // TODO read address ??
+            // val address = raf.readLong(state) // TODO read address ??
         }
     }
     throw RuntimeException()
@@ -245,8 +291,9 @@ internal data class DataLayoutContiguous3(val dataAddress: Long, val dataSize: L
 }
 
 // 4
-internal data class DataLayoutSingleChunk4(val flags: Byte, val dims: IntArray, val chunkSize: Long, val heapAddress: Long) : DataLayoutMessage() {
-    override fun show(): String = "${super.show()} flags=$flags dims=$dims chunkSize=$chunkSize heapAddress=$heapAddress"
+internal data class DataLayoutSingleChunk4(val flags: Byte, val dims: IntArray, val chunkSize: Int, val heapAddress: Long, val filterMask: Int?) : DataLayoutMessage() {
+    val isFiltered = isBitSet(flags.toInt(), 1)
+    override fun show(): String = "${super.show()} flags=$flags dims=$dims heapAddress=$heapAddress chunkSize=$chunkSize"
 }
 internal data class DataLayoutImplicit4(val flags: Byte, val dims: IntArray, val address: Long) : DataLayoutMessage() {
     override fun show(): String = "${super.show()} flags=$flags dims=$dims address=$address"
@@ -256,7 +303,7 @@ internal data class DataLayoutFixedArray4(val flags: Byte, val dims: IntArray, v
 }
 internal data class DataLayoutExtensibleArray4(val flags: Byte, val dims: IntArray, val maxBits: Byte, val indexElements: Byte,
         val minPointers: Byte, val minElements: Byte, val pageBits: Byte, val indexAddress: Long) : DataLayoutMessage() {
-    override fun show(): String = "${super.show()} flags=$flags dims=$dims maxBits=$maxBits indexElements=$indexElements " +
+    override fun show(): String = "${super.show()} flags=$flags dims=${dims.contentToString()} maxBits=$maxBits indexElements=$indexElements " +
             "minPointers=$minPointers minElements=$minPointers pageBits=$pageBits indexAddress=$indexAddress"
 }
 internal data class DataLayoutBtreeVer2(val flags: Byte, val dims: IntArray, val nodeSize: Int, val splitPercent: Byte, val mergePercent: Byte, val heapAddress: Long)

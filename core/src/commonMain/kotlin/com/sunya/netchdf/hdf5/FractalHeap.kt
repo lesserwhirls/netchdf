@@ -206,7 +206,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                             when (subtype) {
                                 1, 2 -> {
                                     val btree = if (btreeHugeObjects == null) {
-                                        val local = BTree2(h5, "FractalHeap btreeHugeObjects", btreeAddressHugeObjects)
+                                        val local = BTree2(h5, "FractalHeap btreeHugeObjects", btreeAddressHugeObjects, 0)
                                         require(local.btreeType == subtype)
                                         local.readEntries()
                                     } else btreeHugeObjects
