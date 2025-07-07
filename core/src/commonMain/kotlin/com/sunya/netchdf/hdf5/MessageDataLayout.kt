@@ -54,7 +54,7 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
         return when (layoutClass) {
             0 -> DataLayoutCompact(rawdata.getIntArray("dims"), rawdata.getByteArray("compactData"))
             1 -> DataLayoutContiguous(rawdata.getIntArray("dims"), rawdata.getLong("dataAddress"))
-            2 -> DataLayoutChunked(version, rawdata.getIntArray("dims"), rawdata.getLong("dataAddress"), rawdata.getInt("chunkedElementSize"))
+            2 -> DataLayoutBTreeVer1(version, rawdata.getIntArray("dims"), rawdata.getLong("dataAddress"), rawdata.getInt("chunkedElementSize"))
             else -> throw RuntimeException()
         }
 
@@ -89,7 +89,7 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
         return when (layoutClass) {
             0 -> DataLayoutCompact3(rawdata.getByteArray("compactData"))
             1 -> DataLayoutContiguous3(rawdata.getLong("dataAddress"), rawdata.getLong("dataSize"))
-            2 -> DataLayoutChunked(version, rawdata.getIntArray("dims"), rawdata.getLong("btreeAddress"), rawdata.getInt("chunkedElementSize"))
+            2 -> DataLayoutBTreeVer1(version, rawdata.getIntArray("dims"), rawdata.getLong("btreeAddress"), rawdata.getInt("chunkedElementSize"))
             else -> throw RuntimeException()
         }
     } else if (version == 4) {
@@ -169,7 +169,7 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
 
                     //  Address of the index. probably points to the "Fixed Array Header" structure in the appendix
                     val indexAddress =  raf.readLong(state)
-                    println("*** FixedArray dims= ${dims.contentToString()} pageBits=$pageBits indexAddress = $indexAddress")
+                    println("   *** FixedArray dims= ${dims.contentToString()} pageBits=$pageBits indexAddress = $indexAddress")
                     val fixedArrayIndex = if (indexAddress > 0) FixedArrayIndex(this, indexAddress) else null
                     DataLayoutFixedArray4(flags, dims, pageBits, indexAddress, fixedArrayIndex)
                 }
@@ -187,6 +187,7 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
                     val splitPercent = raf.readByte(state)
                     val mergePercent = raf.readByte(state)
                     val heapAddress =  raf.readLong(state) // probably wrong
+                    println("   *** DataLayoutBtreeVer2 dims= ${dims.contentToString()} heapAddress = $heapAddress")
                     DataLayoutBtreeVer2(flags, dims, nodeSize, splitPercent, mergePercent, heapAddress)
                 }
                 else -> throw RuntimeException()
@@ -197,10 +198,11 @@ internal fun H5builder.readDataLayoutMessage(state : OpenFileState) : DataLayout
     throw RuntimeException()
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////
 internal val dataLayoutNames = listOf(
         DataLayoutCompact::class.simpleName,
         DataLayoutContiguous::class.simpleName,
-        DataLayoutChunked::class.simpleName,
+        DataLayoutBTreeVer1::class.simpleName,
         DataLayoutCompact3::class.simpleName,
         DataLayoutContiguous3::class.simpleName,
         DataLayoutVirtual4::class.simpleName,
@@ -211,34 +213,17 @@ internal val dataLayoutNames = listOf(
         DataLayoutBtreeVer2::class.simpleName,
     )
 
+// debugging
 internal fun getDataLayoutCounts() : MutableMap<String, Int> {
     return dataLayoutNames.map { Pair(it!!, 0) }.toMap().toMutableMap()
 }
 
-/*
-internal enum class LayoutClass(val num : Int) {
-    Compact(0), Contiguous(1), Chunked(2), Virtual(3), Chunked4(4);
-
-    companion object {
-        fun of(num: Int) : LayoutClass {
-            return when (num) {
-                0 -> Compact
-                1 -> Contiguous
-                2 -> Chunked
-                3 -> Virtual
-                4 -> Chunked4 // version 4, layout 2
-                else -> throw RuntimeException("Unknown LayoutClass $num")
-            }
-        }
-    }
-}
- */
+////////////////////////////////////////////////////////////////////////////////////////
 
 internal open class DataLayoutMessage() : MessageHeader(MessageType.Layout) {
     val isCompact = (this is DataLayoutCompact) || (this is DataLayoutCompact3)
     val isContiguous = (this is DataLayoutContiguous) || (this is DataLayoutContiguous3)
-    val isChunked = (this is DataLayoutChunked)
-    override fun show() : String = "${this::class.simpleName} isCompact=$isCompact isChunked=$isChunked"
+    override fun show() : String = "${this::class.simpleName}"
 }
 
 // 1 & 2
@@ -247,7 +232,7 @@ internal data class DataLayoutCompact(val dims : IntArray, val compactData: Byte
 internal data class DataLayoutContiguous(val dims : IntArray, val dataAddress: Long) : DataLayoutMessage() {
     override fun show() : String = "${super.show()} dims=${dims.contentToString()} dataAddress=$dataAddress"
 }
-internal data class DataLayoutChunked(val version : Int, val chunkDims : IntArray, val btreeAddress: Long, val chunkedElementSize : Int)
+internal data class DataLayoutBTreeVer1(val version : Int, val chunkDims : IntArray, val btreeAddress: Long, val chunkedElementSize : Int)
     : DataLayoutMessage() {
     override fun show(): String = "${super.show()} dims=${chunkDims.contentToString()} btreeAddress=$btreeAddress chunkedElementSize=$chunkedElementSize"
 }
@@ -283,6 +268,7 @@ internal data class DataLayoutVirtual4(val heapAddress: Long, val index: Int) : 
     override fun show(): String = "${super.show()} heapAddress=$heapAddress index=$index"
 }
 
+//////////////////////////////////////////////////////////////////////////
 // TODO probably want to defer this until reading?
 internal class FixedArrayIndex(val h5: H5builder, address: Long) {
     val elementType : Int

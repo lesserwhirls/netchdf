@@ -153,7 +153,7 @@ internal open class DataContainerAttribute(
 
 val mdlClassCount = getDataLayoutCounts()
 
-// TODO none of the version4 layouts are implemented
+// TODO ?? none of the version4 layouts are implemented
 internal class DataContainerVariable(
     override val name: String,
     override val h5type: H5TypeInfo,
@@ -180,7 +180,7 @@ internal class DataContainerVariable(
         // TODO if compact, do not use fileOffset
         dataPos = when (mdl) {
             is DataLayoutContiguous -> h5.getFileOffset(mdl.dataAddress)
-            is DataLayoutChunked -> mdl.btreeAddress // offset will be added in BTreeData
+            is DataLayoutBTreeVer1 -> mdl.btreeAddress // offset will be added in BTreeData
             is DataLayoutCompact -> -2L // data is in mdl.compactData
             is DataLayoutCompact3 -> -2L // data is in mdl.compactData
             is DataLayoutContiguous3 -> h5.getFileOffset(mdl.dataAddress)
@@ -208,7 +208,8 @@ internal class DataContainerVariable(
                 val nelems = this.storageDims.computeSize()
                 this.elementSize = (mdt.elemSize / nelems).toInt()
             }
-            is DataLayoutChunked -> {
+            is DataLayoutBTreeVer1 -> {
+                // println("file ${h5.raf.location()} var=${name} btreeVer1") // TODO ??
                 this.storageDims = mdl.chunkDims.toLongArray()
                 this.elementSize = storageDims[storageDims.size - 1].toInt() // last number is element size
             }

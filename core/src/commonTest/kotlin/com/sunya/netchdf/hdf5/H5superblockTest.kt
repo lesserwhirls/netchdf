@@ -358,6 +358,13 @@ class H5superblockTest {
         assertTrue(ok)
     }
 
+    @Test
+    fun testBTreeVer2() {
+        val filename = "/home/all/testdata/netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_10/nc_test4__tst_dims3.nc"
+        val ok = openH5(filename, "var", showCdl = true)
+        assertTrue(ok)
+    }
+
     ////////////////////////////////////////////////////////////////
     @Test
     fun testOpenSuperblockUnmodified() {

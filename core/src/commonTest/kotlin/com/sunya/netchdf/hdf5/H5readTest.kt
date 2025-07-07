@@ -114,6 +114,8 @@ class H5readTest {
         files().forEach { filename ->
             openH5(filename, null)
         }
+        println("mdlClassCount")
+        mdlClassCount.forEach { (key, value) -> println("  ${key} == ${value}") }
     }
 
     @Test

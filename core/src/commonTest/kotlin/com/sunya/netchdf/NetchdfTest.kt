@@ -56,25 +56,39 @@ class NetchdfTest {
         readNetchdfData(filename, "DQF", SectionPartial.fromSpec(":, :"))
     }
 
-    @Test
+    // @Test
     fun testNetchIterate() {
         //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
         //compareNetchIterate(testData + "cdmUnitTest/formats/netcdf4/UpperDeschutes_t4p10_swemelt.nc", "UpperDeschutes_t4p10_swemelt")
     }
 
     @Test
-    fun testProblem() {
-        readNetchdfData(testData + "hdf4/96108_08.hdf", "graphics")
+    fun testFractalHeap() {
+        showNetchdfHeader(testData + "cdmUnitTest/formats/hdf5/SMAP_L4_SM_aup_20140115T030000_V05007_001.h5")
     }
 
     @Test
-    fun testSimple() {
-        //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
+    fun testSimpleXY() {
         readNetchdfData(testData + "devcdm/netcdf3/simple_xy.nc", showData = true)
+    }
+
+    // this is working
+    @Test
+    fun readBtreeVer1() {
+        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
+            "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = false)
+    }
+
+    // this is working
+    @Test
+    fun readBtreeVer1complex() {
+        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
+            "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = true)
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+     // fails on hdf5 /home/all/testdata/devcdm/netcdf4/vlenInt.nc
     @Test
     fun checkVersion() {
         files().forEach { filename ->
