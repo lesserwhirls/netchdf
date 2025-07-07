@@ -12,7 +12,7 @@ import com.sunya.netchdf.hdf5.BTree1.Node
  * TODO ?? Used in readGroupNew( type 5 and 6), readAttributesFromInfoMessage(), FractalHeap, and DHeapId(type 1,2,3,4)
  */
 @OptIn(InternalLibraryApi::class)
-internal class BTree2(private val h5: H5builder, owner: String, address: Long, val ndimStorage: Int? = null) : BTreeIF { // BTree2
+internal class BTree2(private val h5: H5builder, owner: String, address: Long, val ndimStorage: Int) : BTreeIF { // BTree2
     val btreeType: Int
     private val nodeSize: Int // size in bytes of btree nodes
     private val recordSize: Short// size in bytes of btree records
@@ -226,8 +226,8 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
             7 -> Record70(state) // TODO wrong
             8 -> Record8(state)
             9 -> Record9(state)
-            10 -> Record10(state, ndimStorage!!) // TODO wrong, whats ndims?
-            11 -> Record11(state, ndimStorage!!) // TODO wrong, whats ndims?
+            10 -> Record10(state, ndimStorage - 1) // TODO wrong, whats ndims?
+            11 -> Record11(state, ndimStorage - 1) // TODO wrong, whats ndims?
             else -> throw IllegalStateException()
         }
     }

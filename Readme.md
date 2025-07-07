@@ -1,10 +1,12 @@
 # netchdf
-_last updated: 6/12/2025_
+_last updated: 7/7/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
 The intention is to create a maintainable, read-only, pure JVM library allowing full access to 
 netcdf3, netcdf4, hdf4, hdf5, hdf-eos2, and hdf-eos5 data files. 
+
+Evaluating if support for superblock 4 is feasible.
 
 Please contact me if you'd like to help out. Especially needed are test datasets from all the important data archives!!
 

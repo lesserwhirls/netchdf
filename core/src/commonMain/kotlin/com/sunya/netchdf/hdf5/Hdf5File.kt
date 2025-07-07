@@ -50,12 +50,12 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
                 alldata.section(wantSection)
             } else if (vinfo.mdl.isContiguous) {
                 header.readRegularData(vinfo, v2.datatype, wantSection)
-           // } else if (vinfo.mdl is DataLayoutBTreeVer1) {
-           //     H5chunkReader(header).readBtreeVer1(v2, wantSection)
-            } else if (vinfo.mdl is DataLayoutFixedArray4) {
-                H5chunkReader(header).readFixedArray(v2, wantSection)
             } else if (vinfo.mdl is DataLayoutBTreeVer1 || vinfo.mdl is DataLayoutBtreeVer2) {
                 H5chunkReader(header).readBtreeVer12(v2, wantSection)
+           } else if (vinfo.mdl is DataLayoutSingleChunk4) {
+                H5chunkReader(header).readSingleChunk(v2, wantSection)
+            } else if (vinfo.mdl is DataLayoutFixedArray4) {
+                H5chunkReader(header).readFixedArray(v2, wantSection)
             } else {
                 throw RuntimeException("Unsupported data layer type ${vinfo.mdl}")
             }
