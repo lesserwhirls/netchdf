@@ -554,6 +554,7 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
     return FilterPipelineMessage(filters)
 }
 
+// H5Xpublic.h
 internal enum class FilterType(val id: Int) {
     none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6),
     bzip2(307),
@@ -866,12 +867,12 @@ private fun H5builder.readAttributesFromInfoMessage(
 
     val btreeAddress: Long = attributeOrderBtreeAddress ?: attributeNameBtreeAddress
     if (btreeAddress < 0 || fractalHeapAddress < 0) return emptyList()
-    val btree = BTree2(this, "AttributeInfoMessage", btreeAddress)
+    val btree2 = BTree2(this, "AttributeInfoMessage", btreeAddress)
     val fractalHeap = FractalHeap(this, "AttributeInfoMessage", fractalHeapAddress)
 
     val list = mutableListOf<AttributeMessage>()
-    for (e in btree.entryList) {
-        val heapId: ByteArray = when (btree.btreeType) {
+    for (e in btree2.readEntries()) {
+        val heapId: ByteArray = when (btree2.btreeType) {
             8 -> (e.record as BTree2.Record8).heapId
             9 -> (e.record as BTree2.Record9).heapId
             else -> continue

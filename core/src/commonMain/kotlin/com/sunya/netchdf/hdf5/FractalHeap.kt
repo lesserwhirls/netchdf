@@ -85,7 +85,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
     val sizeFilteredRootDirectBlock: Long
     val ioFilterMask : Int
     val doublingTable: DoublingTable
-    val btreeHugeObjects: BTree2? = null
+    val btreeHugeObjects: List<BTree2.Btree2Entry>? = null
 
     init {
         raf = h5.raf
@@ -202,27 +202,26 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                 when (type) {
                     0 -> return doublingTable.computePos(offset.toLong())
                     1 -> {
-                        run {
+                        //run {  // TODO wtf ?? why
                             when (subtype) {
                                 1, 2 -> {
                                     val btree = if (btreeHugeObjects == null) {
                                         val local = BTree2(h5, "FractalHeap btreeHugeObjects", btreeAddressHugeObjects)
                                         require(local.btreeType == subtype)
-                                        local
+                                        local.readEntries()
                                     } else btreeHugeObjects
 
-                                    val record1: BTree2.Record1? = btree.getEntry1(offset)
+                                    val record1: BTree2.Record1? = BTree2.findRecord1byId(btree, offset)
                                     if (record1 == null) {
-                                        btree.getEntry1(offset) // debug
                                         throw RuntimeException("Cant find DHeapId=$offset")
                                     }
                                     return record1.hugeObjectAddress
                                 }
 
-                                3, 4 -> return offset.toLong() // guess
+                                3, 4 -> return offset.toLong() // TODO only a guess
                                 else -> throw RuntimeException("Unknown DHeapId subtype =$subtype")
                             }
-                        }
+                        //}
                     }
                     else -> throw RuntimeException("Unknown DHeapId type =$type")
                 }

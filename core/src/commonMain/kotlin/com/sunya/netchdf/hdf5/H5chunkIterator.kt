@@ -28,8 +28,8 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
         elemSize = vinfo.storageDims[vinfo.storageDims.size - 1].toInt() // last one is always the elements size
         datatype = h5type.datatype()
 
-        val btreeNew = BTree1(h5, vinfo.dataPos, 1, v2.shape, vinfo.storageDims)
-        tiledData = H5TiledData(btreeNew)
+        val btreeNew = BTree1(h5, vinfo.dataPos, 1, vinfo.storageDims.size)
+        tiledData = H5TiledData(btreeNew, v2.shape, vinfo.storageDims)
         filters = H5filters(v2.name, vinfo.mfp, h5type.isBE)
         if (debugChunking) println(" H5chunkIterator tiles=${tiledData.tiling}")
 

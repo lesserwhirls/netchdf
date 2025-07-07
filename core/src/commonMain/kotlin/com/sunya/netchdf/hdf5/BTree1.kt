@@ -23,10 +23,16 @@ internal class BTree1(
     val h5: H5builder,
     val rootNodeAddress: Long,
     val nodeType : Int,  // 0 = group/symbol table, 1 = raw data chunks
-    val varShape: LongArray = longArrayOf(), // not needed for group symbols
-    val storageSize: LongArray = longArrayOf(), // not needed for group symbols
-) {
-    private val ndimStorage: Int = storageSize.size
+    val ndimStorage: Int? = null // TODO allowed to be null ??
+) : BTreeIF {
+
+    override fun rootNodeAddress() = rootNodeAddress
+
+    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF = Node(address, parent as BTree1.Node?)
+
+    override fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray) : DataChunkEntryIF =
+        DataChunkEntry(0, rootNode as Node, -1, DataChunkKey(-1, 0, wantKey), -1L)
+
 
     fun readGroupEntries() : Iterator<GroupEntry> {
         require(nodeType == 0)
@@ -53,8 +59,9 @@ internal class BTree1(
         }
     }
 
+    // here both internal and leaf are the same structure
     // Btree nodes Level 1A1 - Version 1 B-trees
-    inner class Node(val address: Long, val parent: BTree1.Node?) {
+    inner class Node(val address: Long, val parent: BTree1.Node?) : BTreeNodeIF {
         val level: Int
         val nentries: Int
         private val leftAddress: Long
@@ -87,7 +94,7 @@ internal class BTree1(
                 } else {
                     val chunkSize = h5.raf.readInt(state)
                     val filterMask = h5.raf.readInt(state)
-                    val inner = LongArray(ndimStorage) { j -> h5.raf.readLong(state) }
+                    val inner = LongArray(ndimStorage!!) { j -> h5.raf.readLong(state) }
                     val key = DataChunkKey(chunkSize, filterMask, inner)
                     val childPointer = h5.readAddress(state) // 4 or 8 bytes, then add fileOffset
                     dataChunkEntries.add(DataChunkEntry(level, this, idx, key, childPointer))
@@ -97,6 +104,12 @@ internal class BTree1(
             // note there may be unused entries, "All nodes of a particular type of tree have the same maximum degree,
             // but most nodes will point to less than that number of children""
         }
+
+        override fun isLeaf() = (level == 0)
+
+        override fun nentries() = nentries
+
+        override fun dataChunkEntryAt(idx: Int) = dataChunkEntries[idx]
     }
 
     /** @param key the byte offset into the local heap for the first object name in the subtree which that key describes. */
@@ -117,10 +130,17 @@ internal class BTree1(
         }
     }
 
+     // also used in Btree2
     // childAddress = data chunk (level 1) else a child node
-    data class DataChunkEntry(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) {
-        fun isMissing() = (childAddress == -1L)
-        fun show(tiling : Tiling) : String = "chunkSize=${key.chunkSize}, chunkStart=${key.offsets.contentToString()}" +
+    data class DataChunkEntry(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) : DataChunkEntryIF {
+        override fun childAddress() = childAddress
+        override fun offsets() = key.offsets
+        override fun isMissing() = (childAddress == -1L)
+        override fun chunkSize() = key.chunkSize
+        override fun filterMask() = key.filterMask
+
+        override fun show(tiling : Tiling) : String = "chunkSize=${key.chunkSize}, chunkStart=${key.offsets.contentToString()}" +
                 ", tile= ${tiling.tile(key.offsets).contentToString()}  idx=$idx"
     }
+
 }

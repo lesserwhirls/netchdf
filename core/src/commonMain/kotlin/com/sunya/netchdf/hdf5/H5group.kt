@@ -60,7 +60,7 @@ internal fun H5builder.readGroupNew(
 
         // read in btree and all entries
         val btree = BTree2(this, parent.name, btreeAddress)
-        for (e in btree.entryList) {
+        for (e in btree.readEntries()) {
             var heapId: ByteArray = when (btree.btreeType) {
                 5 -> (e.record as BTree2.Record5).heapId
                 6 -> (e.record as BTree2.Record6).heapId
