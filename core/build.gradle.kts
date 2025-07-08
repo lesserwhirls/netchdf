@@ -9,20 +9,6 @@ version = libs.versions.netchdf.get()
 kotlin {
     jvm()
 
-    /*
-    linuxX64("linuxX64") {
-        compilations.getByName("main") {
-            cinterops {
-                val libnetchdf by creating {
-                    // Path to your .def file
-                    defFile("/home/stormy/dev/github/netcdf/netchdf/core/src/nativeInterop/cinterop/netchdf.def")
-                    // Optional: Header paths, compiler options etc.
-                }
-            }
-        }
-    }
-    */
-
     val hostOs = System.getProperty("os.name")
     val arch = System.getProperty("os.arch")
     when {
