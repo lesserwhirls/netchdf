@@ -1,10 +1,11 @@
-package com.sunya.netchdf.hdf5
+package com.sunya.netchdf
 
+import com.sunya.netchdf.hdf5.mdlClassCount
 import com.sunya.netchdf.testfiles.SuperblockFiles
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testutil.readNetchdfData
-
-import kotlin.test.*
+import com.sunya.netchdf.testutils.readNetchdfData
+import com.sunya.netchdf.testutils.testData
+import kotlin.test.Test
+import kotlin.test.assertTrue
 
 // Sanity check read Hdf5File header, for non-netcdf4 files
 class H5superblockTest {

@@ -12,7 +12,6 @@ internal class H5filters(
     fun apply(rawdata: ByteArray, filterMask : Int): ByteArray {
         if (mfp == null) return rawdata
 
-        // LOOK can you hook the streams up rather than writing to bytearray at each step ??
         var data = rawdata
         // apply filters backwards
         for (i in mfp.filters.indices.reversed()) {
