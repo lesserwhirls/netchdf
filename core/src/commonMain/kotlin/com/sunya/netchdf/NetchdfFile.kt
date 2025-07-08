@@ -27,7 +27,7 @@ fun openNetchdfFile(filename : String, strict : Boolean = false) : Netchdf? {
     }
 }
 
-fun openNetchdfFile(filename : String, format : NetchdfFileFormat) : Netchdf? {
+fun openNetchdfFileWithFormat(filename : String, format : NetchdfFileFormat) : Netchdf? {
     val useFilename = filename.trim()
     OkioFile(useFilename).use { raf ->
         return when (format) {

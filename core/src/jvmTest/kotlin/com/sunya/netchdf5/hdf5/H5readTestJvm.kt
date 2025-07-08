@@ -36,7 +36,7 @@ class H5readTestJvm {
     fun openH5(filename: String, varname : String? = null) {
         println("=================")
         println(filename)
-        openNetchdfFile(filename, NetchdfFileFormat.HDF5).use { h5file ->
+        openNetchdfFileWithFormat(filename, NetchdfFileFormat.HDF5).use { h5file ->
             if (h5file == null) {
                 println("Cant open $filename")
             } else {
