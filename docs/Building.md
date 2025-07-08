@@ -21,11 +21,11 @@ Artifacts are at
 ### add library to LD_LIBRARY_PATH (or copy to existing) (or use current directory)
 
 ````
-For example:
+For example, choose one:
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/dev/core/build/bin/linuxX64/releaseShared
 
-cp core/build/bin/linuxX64/releaseShared/libnetchdf.so /usr/local/lib
+sudo cp core/build/bin/linuxX64/releaseShared/libnetchdf.so /usr/local/lib
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 ````

@@ -21,5 +21,5 @@ rootProject.name = "netchdf"
 
 // include("testFiles")
 include("core")
-include("cli")
+// include("cli")
 // include("clibs")

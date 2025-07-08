@@ -9,8 +9,21 @@ version = libs.versions.netchdf.get()
 kotlin {
     jvm()
 
+    /*
+    linuxX64("linuxX64") {
+        compilations.getByName("main") {
+            cinterops {
+                val libnetchdf by creating {
+                    // Path to your .def file
+                    defFile("/home/stormy/dev/github/netcdf/netchdf/core/src/nativeInterop/cinterop/netchdf.def")
+                    // Optional: Header paths, compiler options etc.
+                }
+            }
+        }
+    }
+    */
+
     val hostOs = System.getProperty("os.name")
-    val isMingwX64 = hostOs.startsWith("Windows")
     val arch = System.getProperty("os.arch")
     when {
         hostOs == "Mac OS X" && arch == "aarch64" -> macosArm64("macosArm64")
@@ -25,8 +38,6 @@ kotlin {
                 }
             }
         }
-
-        isMingwX64 -> mingwX64("mingwX64")
 
         else -> throw GradleException("Host OS is not supported.")
     }
