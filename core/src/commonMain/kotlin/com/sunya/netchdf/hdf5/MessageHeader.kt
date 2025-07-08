@@ -558,7 +558,8 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
 internal enum class FilterType(val id: Int) {
     none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6),
     bzip2(307),
-    zstandard(32015), unknown(Int.MAX_VALUE);
+    zstandard(32015),
+    unknown(Int.MAX_VALUE);
 
     companion object {
         fun fromId(id: Int): FilterType {

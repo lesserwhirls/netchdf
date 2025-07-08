@@ -23,3 +23,4 @@ rootProject.name = "netchdf"
 include("core")
 // include("cli")
 include("testclibs")
+include("testfiles")

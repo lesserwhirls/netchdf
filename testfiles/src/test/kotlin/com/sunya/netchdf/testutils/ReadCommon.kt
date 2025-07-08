@@ -1,133 +1,13 @@
-package com.sunya.netchdf
+package com.sunya.netchdf.testutils
 
 import com.sunya.cdm.api.*
-import com.sunya.netchdf.testfiles.*
-import com.sunya.netchdf.testutil.Stats
-import com.sunya.netchdf.testutil.compareNetchIterate
-import com.sunya.netchdf.testutil.readNetchdfData
-import com.sunya.netchdf.testutil.showNetchdfHeader
-import kotlin.test.*
-
-// Test files opened and read through openNetchdfFile().
-class NetchdfTest {
-
-    init {
-        Stats.clear() // problem with concurrent tests
-    }
-
-    companion object {
-
-        fun files(): Sequence<String> {
-            return N3Files.params() + N4Files.params() + H5Files.params() + H4Files.params() +
-                    NetchdfExtraFiles.params(false)
-        }
-
-        fun afterAll() {
-            if (versions.size > 0) {
-                val sversions = versions.entries.sortedBy { it.key }.toList()
-                sversions.forEach{ (key, values) -> println("$key = ${values.size} files") }
-                val total = sversions.map{ it.value.size }.sum()
-                println("total # files = $total")
-            }
-            Stats.show()
-        }
-
-        private val versions = mutableMapOf<String, MutableList<String>>()
-
-        var showDataRead = false
-        var showData = false
-        var showFailedData = false
-        var showCdl = false
-    }
-
-    @Test
-    fun missingChunks() {
-        readNetchdfData(
-            testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc",
-            "/xma/dialoop_back"
-        )
-    }
-
-    @Test
-    fun hasMissing() {
-        val filename =
-            testData + "cdmUnitTest/formats/netcdf4/goes16/OR_ABI-L2-CMIPF-M6C13_G16_s20230451800207_e20230451809526_c20230451810015.nc"
-        readNetchdfData(filename, "CMI", SectionPartial.fromSpec(":, :"))
-        readNetchdfData(filename, "DQF", SectionPartial.fromSpec(":, :"))
-    }
-
-    // @Test
-    fun testNetchIterate() {
-        //  *** double UpperDeschutes_t4p10_swemelt[8395, 781, 385] skip read ArrayData too many bytes= 2524250575
-        //compareNetchIterate(testData + "cdmUnitTest/formats/netcdf4/UpperDeschutes_t4p10_swemelt.nc", "UpperDeschutes_t4p10_swemelt")
-    }
-
-    @Test
-    fun testFractalHeap() {
-        showNetchdfHeader(testData + "cdmUnitTest/formats/hdf5/SMAP_L4_SM_aup_20140115T030000_V05007_001.h5")
-    }
-
-    @Test
-    fun testSimpleXY() {
-        readNetchdfData(testData + "devcdm/netcdf3/simple_xy.nc", showData = true)
-    }
-
-    // this is working
-    @Test
-    fun readBtreeVer1() {
-        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
-            "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = false)
-    }
-
-    // this is working
-    @Test
-    fun readBtreeVer1complex() {
-        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
-            "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = true)
-    }
+import com.sunya.cdm.array.*
+import com.sunya.cdm.util.nearlyEquals
+import com.sunya.netchdf.openNetchdfFile
+import kotlin.collections.iterator
+import kotlin.test.assertTrue
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-     // fails on hdf5 /home/all/testdata/devcdm/netcdf4/vlenInt.nc
-    @Test
-    fun checkVersion() {
-        files().forEach { filename ->
-            openNetchdfFile(filename).use { ncfile ->
-                if (ncfile == null) {
-                    println("Not a netchdf file=$filename ")
-                    return
-                }
-                println("${ncfile.type()} $filename ")
-                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-                paths.add(filename)
-            }
-        }
-    }
-
-    @Test
-    fun testShowNetchdfHeader() {
-        files().forEach { filename ->
-            showNetchdfHeader(filename)
-        }
-    }
-
-    @Test
-    fun testReadNetchdfData() {
-        files().forEach { filename ->
-            readNetchdfData(filename)
-        }
-    }
-
-    // TODO too slow
-    // @Test
-    fun testReadNetchIterate() {
-        files().forEach { filename ->
-            compareNetchIterate(filename)
-        }
-    }
-}
-
-/*
 
 fun showNetchdfHeader(filename: String) {
     println(filename)
@@ -152,10 +32,8 @@ fun readNetchdfData(filename: String, varname: String? = null, section: SectionP
     }
 }
 
- */
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-/* just read data from myfile
+// just read data from myfile
 
 fun readMyData(myfile: Netchdf, varname: String? = null, section: SectionPartial? = null, showCdl : Boolean = false, showData : Boolean = false) {
 
@@ -179,20 +57,19 @@ fun readMyData(myfile: Netchdf, varname: String? = null, section: SectionPartial
 
 const val maxBytes = 10_000_000
 
-fun readOneVar(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?, showData : Boolean = NetchdfTest.showData) {
-    if (myvar.name.contains("mbReflectivity"))
-        println()
+fun readOneVar(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?, showData : Boolean = false) {
+    println("   read ${myvar.name}")
 
     val sectionF = SectionPartial.fill(section, myvar.shape)
     val nbytes = sectionF.totalElements * myvar.datatype.size
     val myvarshape = myvar.shape.toIntArray()
 
     if (nbytes > maxBytes) {
-        if (NetchdfTest.showDataRead) println(" * ${myvar.fullname()} read too big: ${nbytes} > $maxBytes")
+        if (showData) println(" * ${myvar.fullname()} read too big: ${nbytes} > $maxBytes")
     } else {
         val mydata = myfile.readArrayData(myvar, section)
-        if (NetchdfTest.showDataRead) println(" ${myvar.datatype} ${myvar.fullname()}${myvar.shape.contentToString()} = " +
-                    "${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems" )
+        if (showData) println(" ${myvar.datatype} ${myvar.fullname()}${myvar.shape.contentToString()} = " +
+                "${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems" )
         if (myvar.datatype == Datatype.CHAR) {
             testCharShape(myvarshape, mydata.shape)
         } else {
@@ -218,10 +95,9 @@ fun removeLast(org: IntArray): IntArray {
     return IntArray(org.size - 1) { org[it] }
 }
 
-fun readMiddleSection(myfile: Netchdf, myvar: Variable<*>, shape: LongArray) {
+fun readMiddleSection(myfile: Netchdf, myvar: Variable<*>, shape: LongArray, showData : Boolean = false) {
     val orgSection = Section(shape)
     val middleRanges = orgSection.ranges.mapIndexed { idx, range ->
-        if (range == null) throw RuntimeException("Range is null")
         val length = orgSection.shape[idx]
         if (length < 9) range
         else LongProgression.fromClosedRange(range.first + length / 3, range.last - length / 3, range.step)
@@ -229,7 +105,7 @@ fun readMiddleSection(myfile: Netchdf, myvar: Variable<*>, shape: LongArray) {
     val middleSection = Section(middleRanges, myvar.shape)
     val nbytes = middleSection.totalElements * myvar.datatype.size
     if (nbytes > maxBytes) {
-        if (NetchdfTest.showDataRead) println("  * ${myvar.fullname()}[${middleSection}] read too big: ${nbytes} > $maxBytes")
+        if (showData) println("  * ${myvar.fullname()}[${middleSection}] read too big: ${nbytes} > $maxBytes")
         readMiddleSection(myfile, myvar, middleSection.shape)
         return
     }
@@ -240,13 +116,13 @@ fun readMiddleSection(myfile: Netchdf, myvar: Variable<*>, shape: LongArray) {
 
     val mydata = myfile.readArrayData(myvar, SectionPartial(middleSection.ranges))
     val middleShape = middleSection.shape.toIntArray()
-    if (NetchdfTest.showDataRead) println("  ${myvar.fullname()}[$middleSection] = ${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems")
+    if (showData) println("  ${myvar.fullname()}[$middleSection] = ${mydata.shape.contentToString()} ${mydata.shape.computeSize()} elems")
     if (myvar.datatype == Datatype.CHAR) {
         testCharShape(middleShape, mydata.shape)
     } else {
         assertTrue(middleShape.equivalent(mydata.shape), "variable ${myvar.name}")
     }
-    if (NetchdfTest.showData) println(mydata)
+    if (showData) println(mydata)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -258,7 +134,7 @@ fun compareNetchIterate(filename: String, varname : String? = null, compare : Bo
             println("*** not a netchdf file = $filename")
             return
         }
-        println("${myfile.type()} $filename ${"%.2f".format(myfile.size / 1000.0 / 1000.0)} Mbytes")
+        println("${myfile.type()} $filename ${myfile.size / 1000.0 / 1000.0} Mbytes")
         var countChunks = 0
         if (varname != null) {
             val myvar = myfile.rootGroup().allVariables().find { it.fullname() == varname } ?: throw RuntimeException("cant find $varname")
@@ -269,7 +145,7 @@ fun compareNetchIterate(filename: String, varname : String? = null, compare : Bo
             }
         }
         if (countChunks > 0) {
-            println("${myfile.type()} $filename ${"%.2f".format(myfile.size / 1000.0 / 1000.0)} Mbytes chunks = $countChunks")
+            println("${myfile.type()} $filename ${myfile.size / 1000.0 / 1000.0} Mbytes chunks = $countChunks")
         }
     }
 }
@@ -378,18 +254,25 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
     if (array is ArraySingle || array is ArrayEmpty) {
         return // test fillValue the same ??
     }
-    // cant cast unsigned to Numbers
-    val useArray = when (array.datatype) {
-        Datatype.UBYTE -> ArrayByte(array.shape, (array as ArrayUByte).bb)
-        Datatype.USHORT -> ArrayShort(array.shape, (array as ArrayUShort).bb)
-        Datatype.UINT -> ArrayInt(array.shape, (array as ArrayUInt).bb)
-        Datatype.ULONG -> ArrayLong(array.shape, (array as ArrayULong).bb)
-        else -> array
-    }
 
-    if (useArray.datatype.isNumber) {
-        for (value in useArray) {
+    if (array.datatype.isNumber) {
+        for (value in array) {
             val number = (value as Number)
+            val numberd: Double = number.toDouble()
+            if (numberd.isFinite()) {
+                sum.getAndAdd(numberd)
+            }
+        }
+    } else if (array.datatype.isIntegral) {
+        for (value in array) {
+            val useValue = when (value) {
+                is UByte -> value.toByte()
+                is UShort -> value.toShort()
+                is UInt -> value.toInt()
+                is ULong -> value.toLong()
+                else -> value
+            }
+            val number = (useValue as Number)
             val numberd: Double = number.toDouble()
             if (numberd.isFinite()) {
                 sum.getAndAdd(numberd)
@@ -398,4 +281,8 @@ fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
     }
 }
 
-*/
+fun measureNanoTime (block: () -> Unit): Long {
+    return 0
+}
+
+

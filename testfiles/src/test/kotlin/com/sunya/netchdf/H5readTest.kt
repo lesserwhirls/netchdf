@@ -1,12 +1,21 @@
-package com.sunya.netchdf.hdf5
+package com.sunya.netchdf
 
 import com.sunya.cdm.api.Netchdf
 import com.sunya.cdm.api.Variable
 import com.sunya.cdm.api.chunkConcurrent
 import com.sunya.cdm.array.ArrayTyped
+import com.sunya.netchdf.hdf5.Hdf5File
+import com.sunya.netchdf.hdf5.mdlClassCount
 import com.sunya.netchdf.testfiles.H5Files
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testutil.*
+import com.sunya.netchdf.testutils.AtomicDouble
+import com.sunya.netchdf.testutils.Stats
+import com.sunya.netchdf.testutils.compareNetchIterate
+import com.sunya.netchdf.testutils.measureNanoTime
+import com.sunya.netchdf.testutils.readNetchdfData
+import com.sunya.netchdf.testutils.testData
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import kotlin.collections.iterator
 
 import kotlin.test.*
 
@@ -18,8 +27,9 @@ class H5readTest {
     }
 
     companion object {
-        fun files(): Sequence<String> {
-            return H5Files.params()
+        @JvmStatic
+        fun files(): Iterator<String> {
+            return H5Files.files()
         }
 
         fun afterAll() {
@@ -109,20 +119,18 @@ class H5readTest {
 
     ///////////////////////////////////////////////////////////////////////////////////
 
-    @Test
-    fun testOpenH5() {
-        files().forEach { filename ->
-            openH5(filename, null)
-        }
+    @ParameterizedTest
+    @MethodSource("files")
+    fun testReadH5data(filename: String) {
+        openH5(filename, null)
         println("mdlClassCount")
         mdlClassCount.forEach { (key, value) -> println("  ${key} == ${value}") }
     }
 
-    @Test
-    fun testReadNetchdfData() {
-        files().forEach { filename ->
-            readNetchdfData(filename)
-        }
+    @ParameterizedTest
+    @MethodSource("files")
+    fun testReadNetchdfData(filename: String) {
+         readNetchdfData(filename)
     }
 
     //@Test

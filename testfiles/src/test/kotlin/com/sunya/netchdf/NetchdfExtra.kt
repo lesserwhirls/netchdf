@@ -2,9 +2,11 @@ package com.sunya.netchdf
 
 import com.sunya.netchdf.testfiles.NetchdfExtraFiles
 import kotlin.test.*
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testutil.Stats
-import com.sunya.netchdf.testutil.readNetchdfData
+import com.sunya.netchdf.testutils.Stats
+import com.sunya.netchdf.testutils.readNetchdfData
+import com.sunya.netchdf.testutils.testData
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
 // mostly fails in handling of types. nclib doesnt pass over all the types.
@@ -21,8 +23,9 @@ class NetchdfExtra {
     }
 
     companion object {
-        fun files(): Sequence<String> {
-            return NetchdfExtraFiles.params(false)
+        @JvmStatic
+        fun files(): Iterator<String> {
+            return NetchdfExtraFiles.files(false)
         }
 
         private val versions = mutableMapOf<String, MutableList<String>>()
@@ -33,7 +36,6 @@ class NetchdfExtra {
     // npp filers: superblock at file offset; reference data type
     @Test
     fun h5npp() {
-        NetchdfTest.showData = false
         readNetchdfData(topdir + "npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5")
         readNetchdfData(topdir + "npp/GATRO-SATMR_npp_d20020906_t0409572_e0410270_b19646_c20090720223122943227_devl_int.h5")
     }
@@ -44,28 +46,25 @@ class NetchdfExtra {
         readNetchdfData(filename, null)
     }
 
-
     ///////////////////////////////////////////////////////
-    @Test
-    fun checkVersion() {
-        files().forEach { filename ->
-            openNetchdfFile(filename).use { ncfile ->
-                if (ncfile == null) {
-                    println("Not a netchdf file=$filename ")
-                    return
-                }
-                println("${ncfile.type()} $filename ")
-                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-                paths.add(filename)
+    @ParameterizedTest
+    @MethodSource("files")
+    fun checkVersion(filename: String) {
+        openNetchdfFile(filename).use { ncfile ->
+            if (ncfile == null) {
+                println("Not a netchdf file=$filename ")
+                return
             }
+            println("${ncfile.type()} $filename ")
+            val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
+            paths.add(filename)
         }
     }
 
-    @Test
-    fun readNetchdfDataAll() {
-        files().forEach { filename ->
-            readNetchdfData(filename, null)
-        }
+    @ParameterizedTest
+    @MethodSource("files")
+    fun readNetchdfDataAll(filename: String) {
+        readNetchdfData(filename, null)
     }
 
 }
