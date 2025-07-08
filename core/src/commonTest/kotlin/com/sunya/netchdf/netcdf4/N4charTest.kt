@@ -4,7 +4,6 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.ArrayUByte
 import com.sunya.cdm.array.makeStringsFromBytes
 import com.sunya.netchdf.openNetchdfFile
-import com.sunya.netchdf.testutil.*
 import com.sunya.netchdf.testfiles.testData
 
 import kotlin.test.*

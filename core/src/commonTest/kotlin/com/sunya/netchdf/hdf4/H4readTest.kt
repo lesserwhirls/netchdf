@@ -5,6 +5,7 @@ package com.sunya.netchdf.hdf4
 import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.*
 import com.sunya.netchdf.openNetchdfFile
+import com.sunya.netchdf.openNetchdfFileWithFormat
 import com.sunya.netchdf.testfiles.H4Files
 import com.sunya.netchdf.testfiles.testData
 import com.sunya.netchdf.testutil.Stats
@@ -49,7 +50,7 @@ class H4readTest {
     @Test
     fun testUsedProblem() {
         val filename = testData + "hdf4/S2007329.L3m_DAY_CHLO_9"
-        openNetchdfFile(filename, NetchdfFileFormat.HDF4).use { h4file ->
+        openNetchdfFileWithFormat(filename, NetchdfFileFormat.HDF4).use { h4file ->
             if (h4file == null) {
                 println("Cant open $filename")
             } else {
@@ -88,7 +89,7 @@ class H4readTest {
     fun readH4header(filename: String) {
             println("=================")
             println(filename)
-        openNetchdfFile(filename, NetchdfFileFormat.HDF4).use { h4file ->
+        openNetchdfFileWithFormat(filename, NetchdfFileFormat.HDF4).use { h4file ->
             if (h4file == null) {
                 println("Cant open $filename")
             } else {
@@ -117,7 +118,7 @@ class H4readTest {
 
     fun readH4CheckUnused(filename: String) {
         if (!filename.endsWith("hdf4/S2007329.L3m_DAY_CHLO_9")) { // TODO remove this
-            openNetchdfFile(filename, NetchdfFileFormat.HDF4).use { h4file ->
+            openNetchdfFileWithFormat(filename, NetchdfFileFormat.HDF4).use { h4file ->
                 if (h4file == null) {
                     println("Cant open $filename")
                 } else {
