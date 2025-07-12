@@ -14,7 +14,7 @@ import com.sunya.cdm.util.InternalLibraryApi
 
 private const val debugStart = false
 private const val debugSuperblock = false
-internal const val debugTypedefs = true
+internal const val debugTypedefs = false
 internal const val debugFlow = false
 
 /**

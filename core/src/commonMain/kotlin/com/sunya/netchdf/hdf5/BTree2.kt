@@ -4,20 +4,23 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Tiling
 import com.sunya.cdm.util.InternalLibraryApi
-import kotlin.math.ceil
-import kotlin.math.pow
+import com.sunya.netchdf.hdf5.BTree1.Node
 
+/**
+ * Level 1A2
+ * TODO ?? Used in readGroupNew( type 5 and 6), readAttributesFromInfoMessage(), FractalHeap, and DHeapId(type 1,2,3,4)
+ */
 @OptIn(InternalLibraryApi::class)
 internal class BTree2(private val h5: H5builder, owner: String, address: Long, val ndimStorage: Int) : BTreeIF { // BTree2
     val btreeType: Int
     private val nodeSize: Int // size in bytes of btree nodes
-    private val recordSize: Int // size in bytes of btree records
+    private val recordSize: Short// size in bytes of btree records
     private val owner: String
     private val raf: OpenFileIF
     val rootNodeAddress: Long
     val treeDepth : Short
-    val numRecordsRootNode : Int
-    val totalNumberOfRecordsInTree: Int
+    val numRecordsRootNode : Short
+    val totalRecords: Long
 
     init {
         raf = h5.raf
@@ -30,34 +33,50 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
         val version: Byte = raf.readByte(state)
         btreeType = raf.readByte(state).toInt()
         nodeSize = raf.readInt(state) // This is the size in bytes of all B-tree nodes.
-        recordSize = raf.readShort(state).toUShort().toInt() // This field is the size in bytes of the B-tree record.
+        recordSize = raf.readShort(state) // This field is the size in bytes of the B-tree record.
         treeDepth = raf.readShort(state)
 
         val splitPct = raf.readByte(state)
         val mergePct = raf.readByte(state)
         rootNodeAddress = h5.readOffset(state)
-        numRecordsRootNode = raf.readShort(state).toUShort().toInt()
-        totalNumberOfRecordsInTree = h5.readLength(state).toInt() // total in entire btree
+        numRecordsRootNode = raf.readShort(state)
 
+        totalRecords = h5.readLength(state) // total in entire btree
         val checksum: Int = raf.readInt(state)
+
+        /*
+        if (rootNodeAddress > 0) {
+            // eager reading of all nodes TODO can cache in H5TiledData
+            if (treeDepth > 0) {
+                val node = InternalNode(rootNodeAddress, numRecordsRootNode, recordSize, treeDepth.toInt())
+                node.recurse()
+            } else {
+                val leaf = LeafNode(rootNodeAddress, numRecordsRootNode)
+                leaf.addEntries(entryList)
+            }
+        }
+
+         */
     }
 
     override fun rootNodeAddress() = rootNodeAddress
 
+    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF {
+        val nrecords = nodeSize / recordSize // ??
+        return LeafNode(address, nrecords.toShort()) as BTreeNodeIF
+    }
+
     override fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray): DataChunkEntryIF {
-        // val parent = rootNode as Node
-        //val key = BTree1.DataChunkKey(-1, 0, wantKey)
-        return MissingDataChunk() // DataChunkEntry1(0, parent, -1, key, -1L)
+        return BTree1.DataChunkEntry1(0, rootNode as Node, -1, BTree1.DataChunkKey(-1, 0, wantKey), -1L)
     }
 
     // read all the entries in; used for non-data btrees
     fun readEntries() : List<Btree2Entry> {
-        /* TODO
         val entryList = mutableListOf<Btree2Entry>()
 
         if (rootNodeAddress > 0) {
             if (treeDepth > 0) {
-                val node = InternalNode(rootNodeAddress, numRecordsRootNode)
+                val node = InternalNode(rootNodeAddress, numRecordsRootNode, recordSize, treeDepth.toInt())
                 node.recurse(entryList)
             } else {
                 val leaf = LeafNode(rootNodeAddress, numRecordsRootNode)
@@ -66,46 +85,27 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
         }
 
         return entryList
-
-         */
-        return emptyList()
     }
 
-    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF {
-        val state = OpenFileState(h5.getFileOffset(address), false)
-
-        // header
-        val magic = raf.readString(state, 4)
-        if (magic == "BTIN") {
-            return InternalNode(state, address, treeDepth.toInt()) as BTreeNodeIF
-        } else if (magic == "BTLF") {
-            return LeafNode(state, address, 0) as BTreeNodeIF // TODO
-        } else {
-            throw RuntimeException("$magic unknown tag")
-        }
-
-        //val nrecords = nodeSize / recordSize // ??
-        // TODO dont know if its a leaf node or not
-        //return LeafNode(address, nrecords.toShort()) as BTreeNodeIF
-    }
-
-    internal inner class InternalNode(state: OpenFileState, val address: Long, val depth: Int) : BTreeNodeIF {
+    internal inner class InternalNode(address: Long, nrecords: Short, recordSize: Short, val depth: Int) : BTreeNodeIF {
         var entries: Array<Btree2Entry?>
 
         init {
+            val state = OpenFileState(h5.getFileOffset(address), false)
+
+            // header
+            val magic = raf.readString(state, 4)
+            check(magic == "BTIN") { "$magic should equal BTIN" }
             val version: Byte = raf.readByte(state)
             val nodeType = raf.readByte(state).toInt() // same as the B-tree type in the header
             check(nodeType == btreeType)
 
-            // 		for (int i = 0; i < numberOfRecords; i++) {
-            //			records.add(readRecord(type, createSubBuffer(bb, recordSize), datasetInfo));
-            //		}
-            entries = arrayOfNulls(numRecordsRootNode + 1) // did i mention theres actually n+1 children?
-            repeat(numRecordsRootNode) {
-                entries[it] = Btree2Entry()
-                entries[it]!!.record = readRecord(state, btreeType)
+            entries = arrayOfNulls(nrecords + 1) // did i mention theres actually n+1 children?
+            for (i in 0 until nrecords) {
+                entries[i] = Btree2Entry()
+                entries[i]!!.record = readRecord(state, btreeType)
             }
-            entries[numRecordsRootNode] = Btree2Entry()
+            entries[nrecords.toInt()] = Btree2Entry()
 
             // Records: The size of this field is determined by the number of records for this node and the record size (from the header).
             
@@ -114,25 +114,19 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
             // maximum possible number of records able to be stored in the child node and its descendants
             val maxNumRecordsPlusDesc = nodeSize / recordSize // TODO see long calculation description in Fields: Version 2 B-tree Internal Node
 
-            repeat(numRecordsRootNode + 1) {
-                val e = entries[it]
+            for (i in 0 until nrecords + 1) {
+                val e = entries[i]
                 e!!.childAddress = h5.readOffset(state) // Child Node Pointer
-                val sizeOfNumberOfRecords = getSizeOfNumberOfRecords(nodeSize, depth, totalNumberOfRecordsInTree, recordSize, h5.sizeOffsets)
-                val numberOfChildRecords: Int = h5.readVariableSizeUnsigned(state, sizeOfNumberOfRecords).toInt() // readBytesAsUnsignedInt(bb, sizeOfNumberOfRecords)
-                val sizeNumberOfChildRecords = getSizeOfTotalNumberOfChildRecords(nodeSize, depth, recordSize)
-                val totalNumberOfChildRecords = if (depth > 1) {
-                    h5.readVariableSizeUnsigned(state, sizeNumberOfChildRecords)
-                } else {
-                    -1
-                }
-                e.nrecords = totalNumberOfChildRecords
+                e.nrecords = h5.readVariableSizeUnsigned(state, 1) // Number of Records for Child TODO maxNumRecords ??
+                if (depth > 1) {
+                    e.totNrecords = h5.readVariableSizeUnsigned(state, 2)
+                } // readVariableSizeMax(maxNumRecordsPlusDesc); // TODO ??
             }
 
             // skip
             raf.readInt(state)
         }
 
-        /* TODO
         fun recurse(entryList : MutableList<Btree2Entry>) {
             for (entry in entries) {
                 if (depth > 1) {
@@ -149,8 +143,6 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
             }
         }
 
-         */
-
         override fun isLeaf() = false
         override fun nentries() = entries.size
         override fun dataChunkEntryAt(idx: Int): DataChunkEntryIF {
@@ -159,10 +151,15 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
     }
 
     // problem is we need nrecords. Thinking we can derive it from the recordSize?
-    internal inner class LeafNode(state: OpenFileState, val address: Long, val nrecords: Int) : BTreeNodeIF {
+    internal inner class LeafNode(address: Long, nrecords: Short) : BTreeNodeIF {
         val entries = mutableListOf<Btree2Entry>()
 
         init {
+            val state = OpenFileState(h5.getFileOffset(address), false)
+
+            // header
+            val magic = raf.readString(state, 4)
+            check(magic == "BTLF") { "$magic should equal BTLF" }
             val version: Byte = raf.readByte(state)
             val nodeType = raf.readByte(state).toInt()
             check(nodeType == btreeType)
@@ -185,61 +182,6 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
         override fun nentries() = entries.size
         override fun dataChunkEntryAt(idx: Int) = entries[idx]
     }
-
-    // heroic jhdf
-    private fun getSizeOfNumberOfRecords(
-        nodeSize: Int,
-        depth: Int,
-        totalRecords: Int,
-        recordSize: Int,
-        sizeOfOffsets: Int
-    ): Int {
-        val NODE_OVERHEAD_BYTES = 10
-        var size: Int = nodeSize - NODE_OVERHEAD_BYTES
-
-        // If the child is not a leaf
-        if (depth > 1) {
-            // Need to subtract the pointers as well
-            val pointerTripletBytes = bytesNeededToHoldNumber(totalRecords) * 2 + sizeOfOffsets
-            size -= pointerTripletBytes
-
-            return bytesNeededToHoldNumber(size / recordSize)
-        } else {
-            // Its a leaf
-            return bytesNeededToHoldNumber(size / recordSize)
-        }
-    }
-
-    // jhdf
-    private fun bytesNeededToHoldNumber(number: Int): Int {
-        return (Integer.numberOfTrailingZeros(Integer.highestOneBit(number)) + 8) / 8
-    }
-
-    /* private fun getSizeOfTotalNumberOfChildRecords(nodeSize: Int, depth: Int, recordSize: Int): Int {
-        require (nodeSize % recordSize == 0)
-        val recordsInLeafNode = (nodeSize / recordSize).toDouble()
-        val totalRecords = recordsInLeafNode.pow(depth)
-        val totalBits = log2(totalRecords)
-        val totalBitsInt = totalBits.toInt()
-        return (totalBitsInt + 8) / 8
-    } */
-
-    // no BigInteger, max depth 6
-    private fun getSizeOfTotalNumberOfChildRecords(nodeSize: Int, depth: Int, recordSize: Int): Int {
-        require(depth < 7 ) { "no BigInteger, max depth 6 "}
-        val recordsInLeafNode = (nodeSize/ recordSize).toDouble()
-        val totalRecords = recordsInLeafNode.pow(depth)
-        val totalRecordsL = ceil(totalRecords).toLong()
-        val alt = com.sunya.cdm.util.log2(totalRecordsL) + 1
-        val alt1 =  (alt + 8) / 8
-        return alt1
-    }
-
-    // jhdf
-    //private fun getSizeOfTotalNumberOfChildRecordsOrg(nodeSize: Int, depth: Int, recordSize: Int): Int {
-    //    val recordsInLeafNode = nodeSize / recordSize
-    //    return (BigInteger.valueOf(recordsInLeafNode.toLong()).pow(depth).bitLength() + 8) / 8
-    //}
 
     inner class Btree2Entry : DataChunkEntryIF {
         var childAddress: Long = 0
@@ -367,57 +309,23 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
     // Type 10 Record Layout - Non-filtered Dataset Chunks
     inner class Record10(state: OpenFileState, rank : Int) {
         val address = h5.readOffset(state)
-
         // ooops forgot to put in the rank. silly goose
         // This field is the scaled offset of the chunk within the dataset. n is the number of dimensions for the dataset.
-
+        // The first scaled offset stored in the list is for the slowest changing dimension, and the last scaled offset
+        // stored is for the fastest changing dimension. Scaled offset is calculated by dividing the chunk dimension sizes into the chunk offsets.
         val scaledOffset = LongArray(rank) { raf.readLong(state) }
-
-        // Scaled offset is calculated by dividing the chunk dimension sizes into the chunk offsets.
-        // so to get the chunk offset:
-        // jhdf
-        // 		int[] chunkOffset = new int[datasetInfo.getDatasetDimensions().length];
-        //		for (int i = 0; i < chunkOffset.length; i++) {
-        //			chunkOffset[i] = Utils.readBytesAsUnsignedInt(buffer, 8) * datasetInfo.getChunkDimensions()[i];
-        //		}
     }
 
     // Type 11 Record Layout - Filtered Dataset Chunks
     inner class Record11(state: OpenFileState, rank : Int) {
         val address = h5.readOffset(state)
-
-        // LOOK variable size based on what? "Chunk Size (variable size; at most 8 bytes)"
-        // jhdf
-        // 		final int chunkSizeBytes = buffer.limit()
-        //			- 8 // size of offsets
-        //			- 4 // filter mask
-        //			- datasetInfo.getDatasetDimensions().length * 8; // dimension offsets
-        val chunkSizeBytes = recordSize - 8 - 4 - rank * 8
-        val chunkSize: Long = h5.readVariableSizeUnsigned(state, chunkSizeBytes)
-
+        val chunkSize = raf.readLong(state) // LOOK variable size based on what ?
         val filterMask = raf.readInt(state)
-
         // ooops forgot to put in the rank. silly goose
         // This field is the scaled offset of the chunk within the dataset. n is the number of dimensions for the dataset.
+        // The first scaled offset stored in the list is for the slowest changing dimension, and the last scaled offset
+        // stored is for the fastest changing dimension. Scaled offset is calculated by dividing the chunk dimension sizes into the chunk offsets.
         val scaledOffset = LongArray(rank) { raf.readLong(state) }
-
-        // Scaled offset is calculated by dividing the chunk dimension sizes into the chunk offsets.
-        // so to get the chunk offset:
-        // jhdf
-        // 		int[] chunkOffset = new int[datasetInfo.getDatasetDimensions().length];
-        //		for (int i = 0; i < chunkOffset.length; i++) {
-        //			chunkOffset[i] = Utils.readBytesAsUnsignedInt(buffer, 8) * datasetInfo.getChunkDimensions()[i];
-        //		}
-    }
-
-    class MissingDataChunk() : DataChunkEntryIF {
-        override fun childAddress() = -1L
-        override fun offsets() = longArrayOf()
-        override fun isMissing() = true
-        override fun chunkSize() = 0
-        override fun filterMask() = 0
-
-        override fun show(tiling : Tiling) : String = "missing"
     }
 
     companion object {

@@ -15,18 +15,37 @@ class JhdfReadTest {
     }
 
     @Test
+    fun problem() {
+        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/100B_max_dimension_size.hdf5"
+        println(filename)
+        readNetchdfData(filename, null, null, true, false)
+    }
+
+    // HDF5 "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/bitshuffle_datasets.hdf5" {
+    //GROUP "/" {
+    //   DATASET "float32_bs0_comp0" {
+    //      DATATYPE  H5T_IEEE_F32LE
+    //      DATASPACE  SIMPLE { ( 20 ) / ( 20 ) }
+    //   }
+    //   DATASET "float32_bs0_comp2" {
+    //      DATATYPE  H5T_IEEE_F32LE
+    //      DATASPACE  SIMPLE { ( 20 ) / ( 20 ) }
+    //   } ...
+    @Test
     fun testBitShuffle() { // 3
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/bitshuffle_datasets.hdf5"
         println(filename)
-        readNetchdfData(filename, "int16_bs4096_comp2", null, true, false)
+        readNetchdfData(filename, null, null, true, false)
     }
 
-    // failed to read /filtered_btree_v2/int8, java.lang.ClassCastException: class com.sunya.netchdf.hdf5.BTree2$LeafNode cannot be cast to class com.sunya.netchdf.hdf5.BTree1$Node
+    // Also has
+    // Unsupported data layer type DataLayoutExtensibleArray4(flags=0, chunkDimensions=[2, 3, 1], maxBits=32, indexElements=4, minPointers=4, minElements=16, pageBits=10, indexAddress=125179)
     @Test
     fun testBTree2() { // 4
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/chunked_v4_datasets.hdf5 "
         println(filename)
-        readNetchdfData(filename, "/filtered_btree_v2/int8", null, true, false)
+        readNetchdfData(filename, "/filtered_btree_v2/int8", null, true, true)
+        readNetchdfData(filename, "/filtered_extensible_array/int8", null, true, true)
     }
 
     // getHeapDataAsArray datatype=vlen null
@@ -45,7 +64,7 @@ class JhdfReadTest {
         readNetchdfData(filename, null, null, true, false)
     }
 
-    // failed to read /42571/Protocols/Marker/MarkerStr/MarkerStr/Frames, java.lang.NullPointerException: null cannot be cast to non-null type com.sunya.cdm.api.CompoundTypedef
+    // null cannot be cast to non-null type com.sunya.cdm.api.CompoundTypedef
     @Test
     fun testCompoundTypedef() { // 18
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/isssue-523.hdf5"

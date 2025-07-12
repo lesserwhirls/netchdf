@@ -66,7 +66,7 @@ internal class H5TiledData12(val btree : BTreeIF, val varShape: LongArray,  val 
                 val wantTile = tileIterator.next()
                 val wantKey = tiling.index(wantTile) // convert to index "keys"
                 val haveEntry = findEntryContainingKey(rootNode, wantKey)
-                val useEntry = haveEntry ?: /* missing */ btree.makeMissingDataChunkEntry(rootNode, wantKey)
+                val useEntry = haveEntry ?: btree.makeMissingDataChunkEntry(rootNode, wantKey)
                 setNext(useEntry)
             }
         }

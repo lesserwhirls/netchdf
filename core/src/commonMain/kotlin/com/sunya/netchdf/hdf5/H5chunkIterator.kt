@@ -24,7 +24,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
     val state : OpenFileState
 
     private val wantSpace : IndexSpace
-    private val chunkIterator : Iterator<BTree1.DataChunkEntry>
+    private val chunkIterator : Iterator<BTree1.DataChunkEntry1>
 
     init {
         h5type = vinfo.h5type
@@ -49,7 +49,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
         }
     }
 
-    private fun getaPair(dataChunk : BTree1.DataChunkEntry) : ArraySection<T> {
+    private fun getaPair(dataChunk : BTree1.DataChunkEntry1) : ArraySection<T> {
         val dataSpace = IndexSpace(v2.rank, dataChunk.key.offsets, vinfo.storageDims)
 
         // TODO we need to intersect the dataChunk with the wanted section.
