@@ -52,18 +52,41 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
             if (vinfo.mdl.isCompact) {
                 val alldata = header.readCompactData(v2, v2.shape.toIntArray())
                 alldata.section(wantSection)
+
             } else if (vinfo.mdl.isContiguous) {
                 header.readRegularData(vinfo, v2.datatype, wantSection)
+
             } else if (vinfo.mdl is DataLayoutBTreeVer1) {
                 H5chunkReader(header).readBtreeVer12(v2, wantSection)
-            } else if (vinfo.mdl is DataLayoutBtreeVer2) {
-                H5chunkReader(header).readBtreeVer2j(v2, wantSection)
+
             } else if (vinfo.mdl is DataLayoutSingleChunk4) {
-                H5chunkReader(header).readSingleChunk(v2, wantSection)
+                // H5chunkReader(header).readSingleChunk(v2, wantSection)
+                // internal data class DataLayoutSingleChunk4(val flags: Byte, val chunkDimensions: IntArray, val chunkSize: Int, val heapAddress: Long, val filterMask: Int?) : DataLayoutMessage() {
+                val offset = IntArray(v2.rank)
+                val chunk = ChunkImpl(vinfo.mdl.heapAddress, vinfo.mdl.chunkSize, offset, vinfo.mdl.filterMask)
+
+                H5chunkReader(header).readChunkedData(v2, wantSection, listOf(chunk).iterator())
+
             } else if (vinfo.mdl is DataLayoutImplicit4) {
-                H5chunkReader(header).readImplicit4(v2, wantSection)
+                // H5chunkReader(header).readImplicit4(v2, wantSection)
+                val index = ImplicitChunkIndex(header, varShape=v2.shape.toIntArray(), vinfo.mdl)
+                H5chunkReader(header).readChunkedData(v2, wantSection, index.chunkIterator())
+
             } else if (vinfo.mdl is DataLayoutFixedArray4) {
-                H5chunkReader(header).readFixedArray4(v2, wantSection)
+                // H5chunkReader(header).readFixedArray4(v2, wantSection)
+                val index = FixedArrayIndex(header, varShape=v2.shape.toIntArray(), vinfo.mdl) // mdl.fixedArrayIndex
+                H5chunkReader(header).readChunkedData(v2, wantSection, index.chunkIterator())
+
+            } else if (vinfo.mdl is DataLayoutExtensibleArray4) {
+                val index = ExtensibleArrayIndex(header, vinfo.mdl.indexAddress,
+                    v2.shape.toIntArray(), vinfo.mdl.chunkDimensions)
+                H5chunkReader(header).readChunkedData(v2, wantSection, index.chunkIterator())
+
+            } else if (vinfo.mdl is DataLayoutBtreeVer2) {
+                // H5chunkReader(header).readBtreeVer2j(v2, wantSection)
+                val index =  BTree2j(header, v2.name, vinfo.dataPos, vinfo.storageDims)
+                H5chunkReader(header).readChunkedData(v2, wantSection, index.chunkIterator())
+
             } else {
                 throw RuntimeException("Unsupported data layer type ${vinfo.mdl}")
             }

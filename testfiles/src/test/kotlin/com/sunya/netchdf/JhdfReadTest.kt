@@ -44,8 +44,10 @@ class JhdfReadTest {
     fun testBTree2() { // 4
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/chunked_v4_datasets.hdf5 "
         println(filename)
-        readNetchdfData(filename, "/filtered_btree_v2/int8", null, true, true)
-        readNetchdfData(filename, "/filtered_extensible_array/int8", null, true, true)
+        readNetchdfData(filename, "/filtered_btree_v2/int8", null, false, true)
+        readNetchdfData(filename, "/filtered_extensible_array/int8", null, false, true)
+        readNetchdfData(filename, "/filtered_extensible_array/large_int16", null, false, true)
+        readNetchdfData(filename, null, null, true, true)
     }
 
     // getHeapDataAsArray datatype=vlen null
