@@ -210,6 +210,9 @@ internal class FixedArrayIndex(val h5: H5builder, val varShape: IntArray, val md
 
         chunks.add(ChunkImpl(chunkAddress, unfilteredChunkSize, chunkOffset, null))
     }
+
+    fun chunkIterator() : Iterator<ChunkImpl> = chunks.iterator()
+
 }
 
 /////////////////////////////////////////////////
@@ -243,13 +246,9 @@ internal class ImplicitChunkIndex(val h5: H5builder, val varShape: IntArray, val
         }
         return chunks
     }
-}
 
-////////////////////////////////////////////////////
-data class ChunkImpl(val address: Long, val size: Int, val chunkOffset: IntArray, val filterMask: Int?) {
-    override fun toString(): String {
-        return "ChunkImpl(address=$address, size=$size, chunkOffset=${chunkOffset.contentToString()}, filterMask=$filterMask)"
-    }
+    fun chunkIterator() : Iterator<ChunkImpl> = getAllChunks().iterator()
+
 }
 
 fun chunkIndexToChunkOffset(chunkIndex: Int, chunkDimensions: IntArray, datasetDimensions: IntArray): IntArray {
@@ -270,4 +269,11 @@ fun chunkIndexToChunkOffset(chunkIndex: Int, chunkDimensions: IntArray, datasetD
     }
 
     return chunkOffset
+}
+
+////////////////////////////////////////////////////
+data class ChunkImpl(val address: Long, val size: Int, val chunkOffset: IntArray, val filterMask: Int?) {
+    override fun toString(): String {
+        return "ChunkImpl(address=$address, size=$size, chunkOffset=${chunkOffset.contentToString()}, filterMask=$filterMask)"
+    }
 }
