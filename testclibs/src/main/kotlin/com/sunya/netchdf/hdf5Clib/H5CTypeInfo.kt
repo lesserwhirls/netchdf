@@ -189,6 +189,8 @@ internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val ele
             Datatype5.Array -> {
                 return this.base!!.datatype() // ??
             }
+
+            Datatype5.Unknown -> Datatype.UNKNOWN
         }
     }
 }

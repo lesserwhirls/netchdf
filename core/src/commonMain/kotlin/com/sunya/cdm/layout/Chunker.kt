@@ -117,8 +117,10 @@ internal class Chunker(val dataChunk: IndexSpace, val wantSpace: IndexSpace, mer
 
      */
 
+    // the chunker tracks the dst offset
     internal fun transferBA(src: ByteArray, srcOffset: Int, elemSize : Int, dst: ByteArray, dstOffset: Int) {
         for (chunk in this) {
+            // println(" chunker copy $elemSize elements from src ${srcOffset + elemSize * chunk.srcElem.toInt()} to dst ${dstOffset + elemSize * chunk.destElem.toInt()}")
             src.copyInto(dst,
                 dstOffset + elemSize * chunk.destElem.toInt(),
                 srcOffset + elemSize * chunk.srcElem.toInt(),

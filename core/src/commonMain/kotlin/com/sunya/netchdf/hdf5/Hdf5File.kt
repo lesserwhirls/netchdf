@@ -3,12 +3,15 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
+import com.sunya.cdm.api.Datatype.Companion.STRING
 import com.sunya.cdm.array.ArrayEmpty
 import com.sunya.cdm.array.ArraySingle
+import com.sunya.cdm.array.ArrayString
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.iosp.*
 import com.sunya.cdm.util.InternalLibraryApi
+import kotlin.String
 
 /**
  * @param strict true = make it agree with nclib if possible
@@ -40,6 +43,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
 
         val vinfo = v2.spObject as DataContainerVariable
         if (vinfo.onlyFillValue) { // fill value only, no data
+            if (v2.datatype == STRING) return ArrayString(intArrayOf(1), listOf("")) as ArrayTyped<T>
             val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
             return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0))
         }
@@ -54,17 +58,20 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
                 H5chunkReader(header).readBtreeVer12(v2, wantSection)
            } else if (vinfo.mdl is DataLayoutSingleChunk4) {
                 H5chunkReader(header).readSingleChunk(v2, wantSection)
+            } else if (vinfo.mdl is DataLayoutImplicit4) {
+                H5chunkReader(header).readImplicit4(v2, wantSection)
             } else if (vinfo.mdl is DataLayoutFixedArray4) {
-                H5chunkReader(header).readFixedArray(v2, wantSection)
+                H5chunkReader(header).readFixedArray4(v2, wantSection)
             } else {
                 throw RuntimeException("Unsupported data layer type ${vinfo.mdl}")
             }
         } catch (ex: Exception) {
-            println("failed to read ${v2.name}, $ex")
+            println("failed to read ${v2.fullname()}, $ex")
             throw ex
         }
     }
 
+    // Netchdf.chunkConcurrent
     override fun <T> chunkIterator(v2: Variable<T>, section: SectionPartial?, maxElements : Int?) : Iterator<ArraySection<T>> {
         if (v2.nelems == 0L) {
             return listOf<ArraySection<T>>().iterator()

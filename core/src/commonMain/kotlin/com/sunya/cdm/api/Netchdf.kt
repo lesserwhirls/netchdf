@@ -24,8 +24,9 @@ interface Netchdf : AutoCloseable {
 // the section describes the array chunk reletive to the variable's shape.
 data class ArraySection<T>(val array : ArrayTyped<T>, val section : Section)
 
-// Experimental: read concurrent chunks of data, call back with them in ArraySection, order is arbitrary.
-fun <T> Netchdf.chunkConcurrent(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null, nthreads: Int = 20, lamda : (ArraySection<T>) -> Unit) {
+// Experimental: read concurrently chunks of data, call back with lamda, order is arbitrary.
+fun <T> Netchdf.chunkConcurrent(v2: Variable<T>, section: SectionPartial? = null, maxElements : Int? = null, nthreads: Int = 20,
+                                lamda : (ArraySection<T>) -> Unit) {
     val reader = ReadChunkConcurrent()
     val chunkIter = this.chunkIterator( v2, section, maxElements)
     reader.readChunks(nthreads, chunkIter, lamda)

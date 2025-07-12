@@ -134,6 +134,7 @@ internal class StructDslBuilder(val name : String, val raf: OpenFileIF, val stat
             1 -> ba.get(0).toInt()
             2 -> convertToShort(ba, 0, state.isBE).toInt()
             4 -> convertToInt(ba, 0, state.isBE)
+            8 -> convertToInt(ba, 0, state.isBE) // ignore extra bytes
             else -> throw IllegalArgumentException("StructDsl $name illegal eager read length=${from.elemSize}")
         }
     }

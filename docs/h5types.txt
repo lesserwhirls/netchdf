@@ -1,0 +1,40 @@
+## CDM Types
+
+DataType
+
+Typedef annotation of Datatype
+  Compound
+  Enums
+
+## Hdf5 types
+
+Datatype5 - number from 0 .. 10
+
+DatatypeMessage (mdt) has a Datatype5
+  DatatypeCompound has a List<StructureMember5>
+  DatatypeEnum
+
+// convert an mdt to a H5typedef. if no name, its anonomous aka private
+internal class H5typedef(val name: String?, val mdt: DatatypeMessage)
+
+// Convert H5typedef to Typedef
+internal fun H5builder.buildTypedef(typedef5: H5typedef): Typedef?
+
+// translates DatatypeMessage into H5TypeInfo, then into Cdm Datatype
+internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? = null) : H5TypeInfo
+
+internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Boolean, val datatype5 : Datatype5, val elemSize : Int,
+                               val signed : Boolean, val isBE : Boolean, val mdtAddress : Long, val mdtHash : Int,
+                               val base : H5TypeInfo? = null, val typedef : Typedef? = null, val dims : IntArray? = null) {
+
+    fun datatype(): Datatype<*> { }
+
+}
+
+
+1. tricky business is to find the name of an object, found after you have all the messages for a "Data object".
+So you cant just create H5typedef as soon as you see it.
+
+2. Some typedefs are shared. Some are private to an attribute or variable.
+
+3. All typedefs must belong to a group.

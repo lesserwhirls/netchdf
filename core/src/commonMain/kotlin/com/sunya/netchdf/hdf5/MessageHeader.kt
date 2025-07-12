@@ -5,7 +5,6 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.iosp.makeString
 import com.sunya.cdm.util.InternalLibraryApi
-import com.sunya.netchdf.hdf5.FilterType.Companion.fromId
 
 private const val debugContinuation = false
 internal const val debugMessage = false
@@ -534,7 +533,7 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
     val filters = mutableListOf<Filter>()
     for (i in 0 until nfilters) {
         val filterId = raf.readShort(state).toInt()
-        val filterType = fromId(filterId)
+        val filterType = FilterType.fromId(filterId)
         val nameSize = if (version > 1 && filterId < 256) 0 else raf.readShort(state).toUShort().toInt()
         val flags = raf.readShort(state)
         val nValues = raf.readShort(state).toInt()
@@ -582,14 +581,6 @@ internal enum class FilterType(val id: Int) {
     }
 }
 
-internal data class Filter(val filterType: FilterType, val name: String, val clientValues: IntArray)
-
-internal data class FilterPipelineMessage(val filters: List<Filter>) : MessageHeader(MessageType.FilterPipeline) {
-    override fun show() : String {
-        return filters.joinToString { "${it.filterType} ${it.name}, " }
-    }
-}
-
 ///////////////////////////////////////////// 12/0xC "Attribute" : define an Attribute
 // The Attribute message is used to store objects in the HDF5 file which are used as attributes, or “metadata” about
 // the current object. An attribute is a small dataset; it has a name, a datatype, a dataspace, and raw data.
@@ -632,20 +623,25 @@ internal fun H5builder.readAttributeMessage(state: OpenFileState): AttributeMess
     val startMdt = state.pos
     var datatypeSize = rawdata.getShort("datatypeSize").toUShort().toInt()
 
-    var lamda : ((Long) -> DatatypeMessage)? = null
-    var sharedMdtAddress : Long? = null
+    //var lamda : ((Long) -> DatatypeMessage)? = null
+    //var sharedMdtAddress : Long? = null
     val isShared = flags and 1 != 0
 
     // LOOK should we defer reading in shared objects until all objects are read ??
     val mdt = if (isShared) {
-        sharedMdtAddress = state.pos
-        lamda = { address -> this.getSharedDataObject(OpenFileState(address, false), MessageType.Datatype).mdt!! }
+        //sharedMdtAddress = state.pos
+        //lamda = { address -> this.getSharedDataObject(OpenFileState(address, false), MessageType.Datatype).mdt!! }
         this.getSharedDataObject(state.copy(), MessageType.Datatype).mdt
     } else {
         if (version == 1) {
             datatypeSize +=  padding(datatypeSize, 8)
         }
-        this.readDatatypeMessage(state)
+        val mdtprivate = this.readDatatypeMessage(state)
+        // experimental - look for private typedef, dont have group of H5TypeInfo
+        //if (!mdtprivate.isShared) {
+        //    registerTypedef()
+        //}
+        mdtprivate
     }
     state.pos = startMdt + datatypeSize
 

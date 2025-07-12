@@ -211,7 +211,7 @@ internal class DataObjectFacade(val parent : H5GroupBuilder?, val name: String) 
                 }
             }
         } else if (local.mdt != null) {
-            // must be a  typedef
+            // must be a typedef
             isTypedef = true
         } else {
             // see devcdm/core/src/test/data/netcdf4/tst_opaque_data.nc4 = opaque typedef

@@ -5,6 +5,8 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.cdm.util.InternalLibraryApi
 
+// translates DatatypeMessage into H5TypeInfo, then into Cdm Datatype
+
 internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? = null) : H5TypeInfo {
     val datatype5: Datatype5 = mdt.type
     val elemSize: Int = mdt.elemSize
@@ -37,6 +39,7 @@ internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? =
         mdtAddress, mdtHash, base, useTypedef)
 }
 
+// all the info you need to create a CDM Datatype
 internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Boolean, val datatype5 : Datatype5, val elemSize : Int,
                                val signed : Boolean, val isBE : Boolean, val mdtAddress : Long, val mdtHash : Int,
                                val base : H5TypeInfo? = null, val typedef : Typedef? = null, val dims : IntArray? = null) {
@@ -66,7 +69,10 @@ internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Bool
             Datatype5.Opaque -> if (typedef != null) Datatype.OPAQUE.withTypedef(typedef) else Datatype.OPAQUE
 
             Datatype5.Compound -> {
-                Datatype.COMPOUND.withTypedef(typedef!!)
+                if (typedef == null)
+                    Datatype.UNKNOWN // TODO not needed
+                else
+                    Datatype.COMPOUND.withTypedef(typedef)
             }
 
             Datatype5.Enumerated -> {
@@ -86,6 +92,10 @@ internal data class H5TypeInfo(val isVlenString: Boolean, val isRefObject : Bool
 
             Datatype5.Array -> {
                 return this.base!!.datatype() // ??
+            }
+
+            Datatype5.Unknown -> {
+                return Datatype.UNKNOWN // TODO not needed ?
             }
         }
     }

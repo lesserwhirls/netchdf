@@ -41,6 +41,8 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
         // Experimental for HDF5; maybe should be T = String ??
         val REFERENCE = Datatype<Long>("reference", 4) // string = full path to referenced dataset
 
+        val UNKNOWN = Datatype<Int>("unknown", 4) // needed ?
+
         fun values() = listOf(BYTE, UBYTE, SHORT, USHORT, INT, UINT, LONG, ULONG, DOUBLE, FLOAT,
             ENUM1, ENUM2, ENUM4, ENUM8,
             CHAR, STRING, OPAQUE, COMPOUND, VLEN, REFERENCE
