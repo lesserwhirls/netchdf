@@ -2,6 +2,15 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.decode
 
+
+internal data class Filter(val filterType: FilterType, val name: String, val clientValues: IntArray)
+
+internal data class FilterPipelineMessage(val filters: List<Filter>) : MessageHeader(MessageType.FilterPipeline) {
+    override fun show() : String {
+        return filters.joinToString { "${it.filterType} ${it.name}, " }
+    }
+}
+
 /** Apply filters, if any. */
 internal class H5filters(
     val varname : String,
@@ -34,7 +43,7 @@ internal class H5filters(
                     result.order(byteOrder)
                     return result // LOOK end of filters ??
                 } */
-                else -> throw RuntimeException("Unknown filter type=" + filter.filterType)
+                else -> throw RuntimeException("Unknown filter type= ${filter.filterType} name = ${filter.name}")
             }
         }
         return data
@@ -90,19 +99,29 @@ internal class H5filters(
 
     private fun shuffle(data: ByteArray, n: Int): ByteArray {
         if (debug) println(" shuffle bytes in= " + data.size + " n= " + n)
-        require(data.size % n == 0)
+        // require(data.size % n == 0)
         if (n <= 1) return data
         val m = data.size / n
         val count = IntArray(n)
         for (k in 0 until n) count[k] = k * m
         val result = ByteArray(data.size)
+
+        var pos = 0
         for (i in 0 until m) {
             for (j in 0 until n) {
                 result[i * n + j] = data[i + count[j]]
+                pos++
             }
+        }
+
+        // jhdf
+        if (pos < data.size) {
+            // In the overrun section no shuffle is done, just a straight copy
+            data.copyInto(result, destinationOffset = pos, startIndex = pos)
         }
         return result
     }
+
 
     companion object {
         var debugFilter = false

@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 7/7/2025_
+_last updated: 7/9/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -45,6 +45,9 @@ easy for the single implementer to mistake the implementation for the actual sta
 that are actually in the standard by adding work-arounds in the code, instead of documenting problems and creating new
 versions of the standard with clear fixes. For Netcdf/Hdf, the standard is the file formats, along with their semantic 
 descriptions. The API is language and library specific, and is secondary to the standard.
+
+More subtly, its very hard to see the elegance (or otherwise) of your own design, you need independent review of your
+data structures and API by people truly invested in getting them right.
 
 Having multiple implementations is a huge win for the reference library, in that bugs are more quickly found, and 
 ambiguities more quickly identified. 

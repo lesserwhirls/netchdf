@@ -5,6 +5,7 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.InternalLibraryApi
+import kotlin.math.min
 
 //// Message Type 3 : "Datatype"
 // The datatype message defines the datatype for each element of a dataset or a common datatype for sharing between
@@ -18,7 +19,7 @@ import com.sunya.cdm.util.InternalLibraryApi
 @InternalLibraryApi
 enum class Datatype5(val num : Int) {
     Fixed(0), Floating(1), Time(2), String(3), BitField(4), Opaque(5),
-    Compound(6), Reference(7), Enumerated(8), Vlen(9), Array(10);
+    Compound(6), Reference(7), Enumerated(8), Vlen(9), Array(10), Unknown(999);
 
     companion object {
         fun of(num: Int) : Datatype5 {
@@ -44,11 +45,9 @@ enum class Datatype5(val num : Int) {
     }
 }
 
-/**
- * @param elemSize The size of a datatype element in bytes.
- */
 open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize: Int, val isBE: Boolean = false) :
-    MessageHeader(MessageType.Datatype) {
+        MessageHeader(MessageType.Datatype) {
+
     var isShared : Boolean = false
 
     open fun unsigned() = false
@@ -79,11 +78,11 @@ open class DatatypeMessage(val address : Long, val type: Datatype5, val elemSize
     override fun toString(): String {
         return "DatatypeMessage(address=$address, type=$type, elemSize=$elemSize, endian=$isBE, isShared=$isShared)"
     }
-
 }
 
 internal open class DatatypeFixed(address : Long, elemSize: Int, isBT: Boolean, val unsigned: Boolean) :
     DatatypeMessage(address, Datatype5.Fixed, elemSize, isBT) {
+
     override fun unsigned() = unsigned
     override fun show() : String {
         return "$type elemSize=$elemSize"
@@ -309,8 +308,11 @@ internal class DatatypeArray(address : Long, elemSize: Int, val base: DatatypeMe
         result = 31 * result + dims.contentHashCode()
         return result
     }
-
 }
+
+open class DatatypeMessageUnknown(address : Long, elemSize: Int) :
+    DatatypeMessage(address, Datatype5.Unknown, elemSize)
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -382,7 +384,7 @@ internal fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessag
             // compound
             val nmembers: Int = makeUnsignedIntFromBytes(flags1, flags0)
             val members = mutableListOf<StructureMember5>()
-            for (i in 0 until nmembers) {
+            repeat(nmembers) {
                 members.add(this.readStructureMember(state, version, elemSize))
             }
             return DatatypeCompound(address, elemSize, members)
@@ -400,19 +402,19 @@ internal fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessag
 
             // read the enum names
             val enumNames = mutableListOf<String>()
-            for (i in 0 until nmembers) {
+            repeat (nmembers) {
                 if (version < 3) enumNames.add(readStringZ(state, 8)) // padding
                 else enumNames.add(readStringZ(state))  // no padding
             }
 
             // read the enum values; must switch to base byte order (!)
-            val tstate = if (base.isBE != null) state.copy(isBE = base.isBE) else state
+            val oldBE = state.isBE
+            state.isBE = base.isBE
             val enumNums = mutableListOf<Int>()
-            for (i in 0 until nmembers) {
-                enumNums.add(readVariableSizeUnsigned(tstate, base.elemSize).toInt())
+            repeat (nmembers) {
+                enumNums.add(readVariableSizeUnsigned(state, base.elemSize).toInt())
             }
-            // LOOK since we've switched to tstate, the state position isnt updated. but we can ignore since this is the
-            //  last field in the message
+            state.isBE = oldBE
 
             return DatatypeEnum(address, elemSize, base.isBE, enumNames, enumNums)
         }
@@ -445,7 +447,10 @@ internal fun H5builder.readDatatypeMessage(state: OpenFileState): DatatypeMessag
             return DatatypeArray(address, elemSize, base, dim)
         }
 
-        else -> throw RuntimeException("Unimplemented Datatype = $type")
+        else -> {
+            println("Unimplemented Datatype = $type")
+            return DatatypeMessageUnknown(address, elemSize)
+        }
     }
 }
 
@@ -469,10 +474,21 @@ internal fun H5builder.readStructureMember(state: OpenFileState, version: Int, s
             raf.readInt(state),
             raf.readInt(state)
         )
-        val reducedDims = IntArray(rank) { idx -> dims[idx]}
+        /* if (rank > dims.size) {
+            println("H5builder.readStructureMember $rank > ${dims.size}") // TODO
+            val state2 = state.copy()
+            repeat(rank-4) {
+                println("H5builder.readInt ${raf.readInt(state2)}")
+            }
+            val mdt2 = this.readDatatypeMessage(state2)
+            println(mdt2)
+        } */
+        val useRank = min(4, rank)
+        val reducedDims = IntArray(useRank) { idx -> dims[idx]}
         val mdt = this.readDatatypeMessage(state)
         return StructureMember5(name, offset, reducedDims, mdt)
     }
+
     // version > 1
     val mdt = this.readDatatypeMessage(state)
     if (mdt.type == Datatype5.Array) {

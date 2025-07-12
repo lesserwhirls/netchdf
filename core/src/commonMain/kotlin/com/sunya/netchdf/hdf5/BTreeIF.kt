@@ -2,6 +2,7 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.layout.Tiling
 
+// TODO could this be turned into a chunked data reader ?
 interface BTreeIF {
     fun rootNodeAddress() : Long
     fun readNode(address: Long, parent: BTreeNodeIF?) : BTreeNodeIF

@@ -116,6 +116,7 @@ class EnumTypedef(name : String, baseType : Datatype<*>, val valueMap : Map<Int,
 /** Convert Attribute values of type ENUM into equivalent names */
 fun Attribute<*>.convertEnums(): List<String> {
     require(this.datatype.isEnum)
+    // if (this.datatype.typedef == null) return listOf("enum attribute with no typedef")
     val typedef = (this.datatype.typedef as EnumTypedef)
     return values.convertEnums(typedef.valueMap)
 }

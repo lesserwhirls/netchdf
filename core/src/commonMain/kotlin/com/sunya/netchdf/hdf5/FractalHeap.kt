@@ -72,8 +72,10 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
     val btreeAddressHugeObjects: Long
     val freeSpaceTrackerAddress: Long
     val maxHeapSize: Short
-    val startingNumRows: Short
-    val currentNumRows: Short
+
+    val startingRowsInRootIndirectBlock: Short
+    val currentRowsInRootIndirectBlock: Int
+
     val maxDirectBlockSize: Long
     val tableWidth: Short
     val startingBlockSize: Long
@@ -95,32 +97,40 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         val magic: String = raf.readString(state,4)
         if (magic != "FRHP") throw IllegalStateException("$magic should equal FRHP")
         version = raf.readByte(state).toInt()
+
         heapIdLen = raf.readShort(state) // bytes
         ioFilterLen = raf.readShort(state) // bytes
         flags = raf.readByte(state)
+
         maxSizeOfObjects = raf.readInt(state) // greater than this are huge objects
         nextHugeObjectId = h5.readLength(state) // next id to use for a huge object
         btreeAddressHugeObjects = h5.readOffset(state) // v2 btee to track huge objects
         freeSpace = h5.readLength(state) // total free space in managed direct blocks
         freeSpaceTrackerAddress = h5.readOffset(state)
+
         managedSpace = h5.readLength(state) // total amount of managed space in the heap
         allocatedManagedSpace = h5.readLength(state) // total amount of managed space in the heap actually allocated
         offsetDirectBlock = h5.readLength(state) // linear heap offset where next direct block should be allocated
         nManagedObjects = h5.readLength(state) // number of managed objects in the heap
+
         sizeHugeObjects = h5.readLength(state) // total size of huge objects in the heap (in bytes)
         nHugeObjects = h5.readLength(state) // number huge objects in the heap
         sizeTinyObjects = h5.readLength(state) // total size of tiny objects packed in heap Ids (in bytes)
         nTinyObjects = h5.readLength(state) // number of tiny objects packed in heap Ids
+
         tableWidth = raf.readShort(state) // number of columns in the doubling table for managed blocks, must be power of 2
         startingBlockSize = h5.readLength(state) // starting direct block size in bytes, must be power of 2
         maxDirectBlockSize = h5.readLength(state) // maximum direct block size in bytes, must be power of 2
+
         maxHeapSize = raf.readShort(state) // log2 of the maximum size of heap's linear address space, in bytes
-        startingNumRows = raf.readShort(state) // starting number of rows of the root indirect block, 0 = maximum needed
+
+        startingRowsInRootIndirectBlock = raf.readShort(state) // starting number of rows of the root indirect block, 0 = maximum needed
         rootBlockAddress = h5.readOffset(state) // This is the address of the root block for the heap.
         // It can be the undefined address if there is no data in the heap.
         // It either points to a direct block (if the Current # of Rows in the Root
         // Indirect Block value is 0), or an indirect block.
-        currentNumRows = raf.readShort(state) // current number of rows of the root indirect block, 0 = direct block
+        currentRowsInRootIndirectBlock = raf.readShort(state).toInt() // current number of rows of the root indirect block, 0 = direct block
+
         val hasFilters = ioFilterLen > 0
         sizeFilteredRootDirectBlock = if (hasFilters) h5.readLength(state) else -1
         ioFilterMask = if (hasFilters) raf.readInt(state) else -1
@@ -128,13 +138,15 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
 
         val checksum: Int = raf.readInt(state)
         val hsize: Int = 8 + (2 * h5.sizeLengths) + h5.sizeOffsets
+
         doublingTable = DoublingTable(tableWidth.toInt(), startingBlockSize, allocatedManagedSpace, maxDirectBlockSize)
 
         // data
-        rootBlock = IndirectBlock(currentNumRows.toInt(), startingBlockSize)
+        rootBlock = IndirectBlock(currentRowsInRootIndirectBlock.toInt(), startingBlockSize)
         val cstate = state.copy(pos = h5.getFileOffset(rootBlockAddress))
-        if (currentNumRows.toInt() == 0) {
-            val dblock = DataBlock()
+        if (currentRowsInRootIndirectBlock == 0) {
+            // Read direct block
+            val dblock = DirectBlock()
             doublingTable.blockList.add(dblock)
             readDirectBlock(cstate, address, dblock)
             dblock.size = startingBlockSize // - dblock.extraBytes; // removed 10/1/2013
@@ -143,7 +155,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
             readIndirectBlock(rootBlock, cstate, address, hasFilters)
 
             // read in the direct blocks
-            for (dblock: DataBlock in doublingTable.blockList) {
+            for (dblock: DirectBlock in doublingTable.blockList) {
                 if (dblock.address > 0) {
                     val cstate2 = state.copy(pos = h5.getFileOffset(dblock.address))
                     readDirectBlock(cstate2, address, dblock)
@@ -174,8 +186,8 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                     // The length of the object in the heap, determined by taking the minimum value of
                     // Maximum Direct Block Size and Maximum Size of Managed Objects in the Fractal Heap Header.
                     // Again, the minimum number of bytes needed to encode that value is used for the size of this field.
-                    offset = h5.makeIntFromBytes(heapId, 1, n)
-                    size = h5.makeIntFromBytes(heapId, 1 + n, m)
+                    offset = makeIntFromBytes(heapId, 1, n)
+                    size = makeIntFromBytes(heapId, 1 + n, m)
                 }
                 1 -> {
                     // how fun to guess the subtype
@@ -183,7 +195,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                     val hasFilters = (ioFilterLen > 0)
                     subtype = if (hasBtree) if (hasFilters) 2 else 1 else if (hasFilters) 4 else 3
                     when (subtype) {
-                        1, 2 -> offset = h5.makeIntFromBytes(heapId, 1, (heapId.size - 1))
+                        1, 2 -> offset = makeIntFromBytes(heapId, 1, (heapId.size - 1))
                     }
                 }
                 2 -> {
@@ -242,7 +254,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         val managedSpace: Long,
         val maxDirectBlockSize: Long
     ) {
-        val blockList = mutableListOf<DataBlock>()
+        val blockList = mutableListOf<DirectBlock>()
 
         private fun calcNrows(max: Long): Int {
             var n = 0
@@ -259,7 +271,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         private fun assignSizes() {
             var block = 0
             var blockSize = startingBlockSize
-            for (db: DataBlock in blockList) {
+            for (db: DirectBlock in blockList) {
                 db.size = blockSize
                 block++
                 if ((block % tableWidth == 0) && (block / tableWidth > 1)) blockSize *= 2
@@ -268,7 +280,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
 
         fun computePos(offset: Long): Long {
             var block = 0
-            for (db: DataBlock in blockList) {
+            for (db: DirectBlock in blockList) {
                 if (db.address < 0) continue
                 if ((offset >= db.offset) && (offset <= db.offset + db.size)) {
                     val localOffset = offset - db.offset
@@ -284,7 +296,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
             appendLine(" DoublingTable: tableWidth= $tableWidth startingBlockSize = $startingBlockSize managedSpace=$managedSpace maxDirectBlockSize=$maxDirectBlockSize")
             appendLine(" DataBlocks:")
             appendLine("  address            dataPos            offset size")
-            for (dblock: DataBlock in blockList) {
+            for (dblock: DirectBlock in blockList) {
                 appendLine("  ${dblock.address}, ${dblock.dataPos}, ${dblock.offset}, ${dblock.size}")
             }
         }
@@ -293,7 +305,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
     inner class IndirectBlock internal constructor(var nrows: Int, val size: Long) {
         var directRows = 0
         var indirectRows = 0
-        val directBlocks = mutableListOf<DataBlock>()
+        val directBlocks = mutableListOf<DirectBlock>()
         var indirectBlocks = mutableListOf<IndirectBlock>()
 
         init {
@@ -310,7 +322,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
             }
         }
 
-        fun add(dblock: DataBlock) {
+        fun add(dblock: DirectBlock) {
             directBlocks.add(dblock)
         }
 
@@ -319,7 +331,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         }
     }
 
-    class DataBlock {
+    class DirectBlock {
         var address: Long = 0
         var sizeFilteredDirectBlock: Long = 0
         var filterMask = 0
@@ -350,7 +362,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         for (row in 0 until iblock.directRows) {
             if (row > 1) blockSize *= 2
             for (i in 0 until doublingTable.tableWidth) {
-                val directBlock = DataBlock()
+                val directBlock = DirectBlock()
                 iblock.add(directBlock)
                 directBlock.address = h5.readOffset(state) // This field is the address of the child direct block. The size of the
                 // [uncompressed] direct block can be computed by its offset in the
@@ -381,7 +393,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
         }
     }
 
-    fun readDirectBlock(state: OpenFileState, heapAddress: Long, dblock: DataBlock) {
+    fun readDirectBlock(state: OpenFileState, heapAddress: Long, dblock: DirectBlock) {
         if (state.pos < 0) return  // means its empty
         val startPos = state.pos
 

@@ -79,7 +79,7 @@ fun readOneVar(myvar: Variable<*>, myfile: Netchdf, section: SectionPartial?, sh
     }
 
     if (myvar.nelems > 8 && myvar.datatype != Datatype.CHAR) {
-        readMiddleSection(myfile, myvar, myvar.shape)
+        // TODO readMiddleSection(myfile, myvar, myvar.shape) failing on readFixedArray4
     }
 }
 
