@@ -28,11 +28,11 @@ internal class BTree1(
 
     override fun rootNodeAddress() = rootNodeAddress
 
-    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF = Node(address, parent as BTree1.Node?)
+    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF =
+        Node(address, parent as Node?)
 
     override fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray) : DataChunkEntryIF =
-        DataChunkEntry(0, rootNode as Node, -1, DataChunkKey(-1, 0, wantKey), -1L)
-
+        DataChunkEntry1(0, rootNode as Node, -1, DataChunkKey(-1, 0, wantKey), -1L)
 
     fun readGroupEntries() : Iterator<GroupEntry> {
         require(nodeType == 0)
@@ -71,7 +71,7 @@ internal class BTree1(
         val groupEntries = mutableListOf<GroupEntry>()
 
         // type 1
-        val dataChunkEntries = mutableListOf<DataChunkEntry>()
+        val dataChunkEntries = mutableListOf<DataChunkEntry1>()
 
         init {
             val state = OpenFileState(h5.getFileOffset(address), false)
@@ -97,7 +97,7 @@ internal class BTree1(
                     val inner = LongArray(ndimStorage!!) { j -> h5.raf.readLong(state) }
                     val key = DataChunkKey(chunkSize, filterMask, inner)
                     val childPointer = h5.readAddress(state) // 4 or 8 bytes, then add fileOffset
-                    dataChunkEntries.add(DataChunkEntry(level, this, idx, key, childPointer))
+                    dataChunkEntries.add(DataChunkEntry1(level, this, idx, key, childPointer))
                 }
             }
 
@@ -130,9 +130,8 @@ internal class BTree1(
         }
     }
 
-     // also used in Btree2
-    // childAddress = data chunk (level 1) else a child node
-    data class DataChunkEntry(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) : DataChunkEntryIF {
+    //  childAddress = data chunk (level 1) else a child node
+    data class DataChunkEntry1(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) : DataChunkEntryIF {
         override fun childAddress() = childAddress
         override fun offsets() = key.offsets
         override fun isMissing() = (childAddress == -1L)

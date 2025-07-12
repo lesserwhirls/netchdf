@@ -50,8 +50,8 @@ internal class H5TiledData(val btree1 : BTree1, val varShape: LongArray,  val ch
     }
 
     // optimize later
-    private fun findEntryContainingKey(parent : BTree1.Node, key : LongArray) : BTree1.DataChunkEntry? {
-        var foundEntry : BTree1.DataChunkEntry? = null
+    private fun findEntryContainingKey(parent : BTree1.Node, key : LongArray) : BTree1.DataChunkEntry1? {
+        var foundEntry : BTree1.DataChunkEntry1? = null
         for (idx in 0 until parent.nentries) {
             foundEntry = parent.dataChunkEntries[idx]
             if (idx < parent.nentries - 1) {
@@ -77,7 +77,7 @@ internal class H5TiledData(val btree1 : BTree1, val varShape: LongArray,  val ch
 
     fun dataChunks(wantSpace : IndexSpace) = Iterable { DataChunkIterator(wantSpace) }
 
-    private inner class DataChunkIterator(wantSpace : IndexSpace) : AbstractIterator<BTree1.DataChunkEntry>() {
+    private inner class DataChunkIterator(wantSpace : IndexSpace) : AbstractIterator<BTree1.DataChunkEntry1>() {
         val tileIterator : Iterator<LongArray>
 
         init {
@@ -94,7 +94,7 @@ internal class H5TiledData(val btree1 : BTree1, val varShape: LongArray,  val ch
                 val haveEntry = findEntryContainingKey(rootNode, wantKey)
                 val useEntry = haveEntry ?:
                     // missing
-                    BTree1.DataChunkEntry(0, rootNode, -1, BTree1.DataChunkKey(-1, 0, wantKey), -1L)
+                    BTree1.DataChunkEntry1(0, rootNode, -1, BTree1.DataChunkKey(-1, 0, wantKey), -1L)
                 setNext(useEntry)
             }
         }

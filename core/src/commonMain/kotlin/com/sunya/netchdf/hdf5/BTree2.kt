@@ -4,7 +4,6 @@ import com.sunya.cdm.iosp.OpenFileIF
 import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Tiling
 import com.sunya.cdm.util.InternalLibraryApi
-import com.sunya.netchdf.hdf5.BTree1.DataChunkEntry
 import com.sunya.netchdf.hdf5.BTree1.Node
 
 /**
@@ -68,7 +67,7 @@ internal class BTree2(private val h5: H5builder, owner: String, address: Long, v
     }
 
     override fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray): DataChunkEntryIF {
-        return DataChunkEntry(0, rootNode as Node, -1, BTree1.DataChunkKey(-1, 0, wantKey), -1L)
+        return BTree1.DataChunkEntry1(0, rootNode as Node, -1, BTree1.DataChunkKey(-1, 0, wantKey), -1L)
     }
 
     // read all the entries in; used for non-data btrees
