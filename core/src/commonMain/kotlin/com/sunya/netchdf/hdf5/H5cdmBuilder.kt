@@ -82,7 +82,7 @@ internal fun H5builder.buildAttribute(gb : Group.Builder, att5 : AttributeMessag
         println(" made attribute ${att5.name} from typedef ${typedef!!.name}@${att5.mdt.address}")
     }
     // private (non-shared) typedefs
-    if (typedef == null && (att5.mdt.type == Datatype5.Compound || att5.mdt.type == Datatype5.Enumerated)) {
+    if (typedef == null && att5.mdt.type.isTypedef()) {
         val typedef5 = H5typedef("anon", att5.mdt) // name
         typedef = this.buildTypedef(typedef5)
         if (typedef != null) registerTypedef(typedef, gb)
@@ -104,7 +104,18 @@ internal fun H5builder.buildVariable(groupb: Group.Builder, v5 : H5Variable) : V
         isNetcdf4 = true
     }
 
-    val h5type = makeH5TypeInfo(v5.mdt)
+    var typedef = this.findTypedef(v5.mdt.address, v5.mdt.hashCode())
+    if (debugTypedefs and (typedef != null)) {
+        println(" made variable ${v5.name} from typedef ${typedef!!.name}@${v5.mdt.address}")
+    }
+    // private (non-shared) typedefs
+    if (typedef == null && v5.mdt.type.isTypedef()) {
+        val typedef5 = H5typedef("anon", v5.mdt) // name
+        typedef = this.buildTypedef(typedef5)
+        if (typedef != null) registerTypedef(typedef, groupb)
+    }
+
+    val h5type = makeH5TypeInfo(v5.mdt, typedef)
     val datatype = h5type.datatype() // typedefs added here
     val builder = Variable.Builder(v5.name.substringAfter(NETCDF4_NON_COORD), datatype)
 

@@ -41,7 +41,7 @@ enum class Datatype5(val num : Int) {
     }
 
     fun isTypedef() : Boolean {
-        return (num == 5) || (num == 6) || (num == 7) || (num == 8)
+        return (num == 5) || (num == 6) || (num == 8) || (num == 9)
     }
 }
 

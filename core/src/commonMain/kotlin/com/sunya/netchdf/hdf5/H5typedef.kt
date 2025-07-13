@@ -48,56 +48,6 @@ internal class H5typedef(val name: String?, val mdt: DatatypeMessage) {
     }
 }
 
-/* so does it have a feckin name or not ?
-internal fun H5builder.buildAndRegisterTypedef(groupb : Group.Builder, typedef5: H5typedef): H5TypeInfo {
-    val typedef : Typedef? = when (typedef5.kind) {
-        TypedefKind.Compound -> {
-            val mess = typedef5.compoundMessage!!
-            this.buildAndRegisterCompoundTypedef(groupb, typedef5.name!!, mess)
-        }
-        TypedefKind.Enum -> {
-            val mess = typedef5.enumMessage!!
-            EnumTypedef(typedef5.name!!, mess.datatype, mess.valuesMap)
-        }
-        TypedefKind.Opaque -> {
-            val mess = typedef5.opaqueMessage!!
-            OpaqueTypedef(typedef5.name!!, mess.elemSize)
-        }
-        TypedefKind.Vlen -> {
-            val mess = typedef5.vlenMessage!!
-            val h5type = makeH5TypeInfo(mess.base)
-            VlenTypedef(typedef5.name!!, h5type.datatype())
-        }
-        else -> null
-    }
-    val typeinfo = makeH5TypeInfo(typedef5.mdt, typedef)
-    return registerTypedef(typeinfo, groupb)
-}
-
-// allow it to recurse
-private fun H5builder.buildAndRegisterCompoundTypedef(groupb : Group.Builder, name : String, mess: DatatypeCompound) : CompoundTypedef {
-    // first look for embedded typedefs that need to be added
-    mess.members.forEach { member ->
-        val nestedTypedef = when (member.mdt.type) {
-            Datatype5.Compound -> buildAndRegisterCompoundTypedef(groupb, member.name, member.mdt as DatatypeCompound)
-            Datatype5.Enumerated -> buildEnumTypedef(member.name, member.mdt as DatatypeEnum)
-            else -> null
-        }
-        if (nestedTypedef != null) {
-            val ntypeinfo = makeH5TypeInfo(member.mdt, nestedTypedef)
-            registerTypedef(ntypeinfo, groupb)
-        }
-    }
-
-    // now build the typedef for the compound message
-    val members = mess.members.map {
-        val h5type = makeH5TypeInfo(it.mdt)
-        val datatype = h5type.datatype()
-        StructureMember(it.name, datatype, it.offset, it.dims, it.mdt.isBE)
-    }
-    return CompoundTypedef(name, members)
-} */
-
 // Convert H5typedef to Typedef
 internal fun H5builder.buildTypedef(typedef5: H5typedef): Typedef? {
     return when (typedef5.kind) {
@@ -128,6 +78,7 @@ private fun H5builder.buildCompoundTypedef(name : String, mess: DatatypeCompound
         val nestedTypedef = when (member.mdt.type) {
             Datatype5.Compound -> buildCompoundTypedef(member.name, member.mdt as DatatypeCompound)
             Datatype5.Enumerated -> buildEnumTypedef(member.name, member.mdt as DatatypeEnum)
+            Datatype5.Vlen -> buildVlenTypedef(this, member.name, member.mdt as DatatypeVlen)
             else -> null
         }
         val h5type = makeH5TypeInfo(member.mdt, nestedTypedef)
@@ -138,4 +89,11 @@ private fun H5builder.buildCompoundTypedef(name : String, mess: DatatypeCompound
 
 private fun buildEnumTypedef(name : String, mess: DatatypeEnum): EnumTypedef {
     return EnumTypedef(name, mess.datatype, mess.valuesMap)
+}
+
+private fun buildVlenTypedef(h5:H5builder, name : String, mess: DatatypeVlen): VlenTypedef {
+    val base = mess.base
+    val h5info = h5.makeH5TypeInfo(base)
+    // class VlenTypedef(name : String, baseType : Datatype<*>) : Typedef(TypedefKind.Vlen, name, baseType) {
+    return VlenTypedef(name, h5info.datatype())
 }

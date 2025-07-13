@@ -38,8 +38,6 @@ class JhdfReadTest {
         readNetchdfData(filename, null, null, true, false)
     }
 
-    // Also has
-    // Unsupported data layer type DataLayoutExtensibleArray4(flags=0, chunkDimensions=[2, 3, 1], maxBits=32, indexElements=4, minPointers=4, minElements=16, pageBits=10, indexAddress=125179)
     @Test
     fun testBTree2() { // 4
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/chunked_v4_datasets.hdf5 "
@@ -55,7 +53,7 @@ class JhdfReadTest {
     fun testVlenHeapData() { // 6
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
         println(filename)
-        readNetchdfData(filename, null, null, true, false)
+        readNetchdfData(filename, "vlen_chunked_compound", null, true, false)
     }
 
     // see jhdf/src/main/java/io/jhdf/object/datatype/FloatingPoint.java
@@ -66,7 +64,7 @@ class JhdfReadTest {
         readNetchdfData(filename, null, null, true, false)
     }
 
-    // null cannot be cast to non-null type com.sunya.cdm.api.CompoundTypedef
+    // private typedefs
     @Test
     fun testCompoundTypedef() { // 18
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/isssue-523.hdf5"
@@ -74,7 +72,7 @@ class JhdfReadTest {
         readNetchdfData(filename, null, null, true, false)
     }
 
-    // failed to read vlen_int64_data_chunked, java.lang.IllegalArgumentException: datatype vlen null
+    // private typedefs
     @Test
     fun testVlen() { // 63
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/test_vlen_datasets_latest.hdf5"
@@ -116,7 +114,6 @@ class JhdfReadTest {
         println(filename)
         readNetchdfData(filename, null, null, true, false)
     }
-
 
     // "committed" aka "named" datatype
     // HDF5 "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/issue255_example.hdf5" {
