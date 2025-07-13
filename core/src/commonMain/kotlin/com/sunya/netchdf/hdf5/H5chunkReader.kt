@@ -59,8 +59,7 @@ internal class H5chunkReader(val h5 : H5builder) {
         }
     }
 
-    // now just BTree1
-    internal fun <T> readBtreeVer12(v2: Variable<T>, wantSection: Section): ArrayTyped<T> {
+    internal fun <T> readBtreeVer1(v2: Variable<T>, wantSection: Section): ArrayTyped<T> {
         val vinfo = v2.spObject as DataContainerVariable
         val h5type = vinfo.h5type
 
@@ -76,18 +75,16 @@ internal class H5chunkReader(val h5 : H5builder) {
 
         val btree = if (vinfo.mdl is DataLayoutBTreeVer1)
             BTree1(h5, vinfo.dataPos, 1, vinfo.storageDims.size)
-        else if (vinfo.mdl is DataLayoutBtreeVer2)
-            BTree2(h5, v2.name, vinfo.dataPos, vinfo.storageDims.size)
         else
             throw RuntimeException("Unsupprted mdl ${vinfo.mdl}")
 
-        val tiledData = H5TiledData12(btree, v2.shape, vinfo.storageDims)
+        val tiledData = H5TiledData1(btree, v2.shape, vinfo.storageDims)
         val filters = H5filters(v2.name, vinfo.mfp, vinfo.h5type.isBE)
         if (debugChunking) println(" readChunkedData tiles=${tiledData.tiling}")
 
         var transferChunks = 0
         val state = OpenFileState(0L, vinfo.h5type.isBE)
-        for (dataChunk: DataChunkEntryIF in tiledData.dataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
+        for (dataChunk: DataChunkIF in tiledData.dataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
             if (!dataChunk.isMissing()) { // TODO fill value
                 val dataSection = IndexSpace(v2.rank, dataChunk.offsets(), vinfo.storageDims)
                 val chunker = Chunker(dataSection, wantSpace) // each DataChunkEntry has its own Chunker iteration

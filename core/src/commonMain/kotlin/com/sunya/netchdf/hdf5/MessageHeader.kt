@@ -842,7 +842,7 @@ internal fun H5builder.readAttributeInfoMessage(state: OpenFileState): Attribute
     if (debugMessage) rawdata.show()
 
     return AttributeInfoMessage(
-        readAttributesFromInfoMessage(
+        readAttributesFromInfoMessage2(
             rawdata.getLong("fractalHeapAddress"),
             rawdata.getLong("attributeNameBtreeAddress"),
             if (flags and 2 != 0) rawdata.getLong("attributeOrderBtreeAddress") else null,
@@ -856,6 +856,7 @@ internal data class AttributeInfoMessage(val attributes: List<AttributeMessage>)
     }
 }
 
+/*
 private fun H5builder.readAttributesFromInfoMessage(
     fractalHeapAddress: Long,
     attributeNameBtreeAddress: Long,
@@ -887,6 +888,38 @@ private fun H5builder.readAttributesFromInfoMessage(
         }
     }
     return list
+}
+
+ */
+
+private fun H5builder.readAttributesFromInfoMessage2(
+    fractalHeapAddress: Long,
+    attributeNameBtreeAddress: Long,
+    attributeOrderBtreeAddress: Long?
+): List<AttributeMessage> {
+
+    val btreeAddress: Long = attributeOrderBtreeAddress ?: attributeNameBtreeAddress
+    if (btreeAddress < 0 || fractalHeapAddress < 0) return emptyList()
+    val btree2j = BTree2j(this, "AttributeInfoMessage", btreeAddress)
+    val fractalHeapj = FractalHeap(this, "AttributeInfoMessage", fractalHeapAddress)
+
+    val attMessages = mutableListOf<AttributeMessage>()
+    for (record in btree2j.records) {
+        val heapId: ByteArray = when (btree2j.btreeType) {
+            8 -> (record as BTree2j.Record8).heapId
+            9 -> (record as BTree2j.Record9).heapId
+            else -> continue
+        }
+
+        // the heapId points to an Attribute Message in the fractal Heap
+        val fractalHeapId = fractalHeapj.getFractalHeapId(heapId)
+        val state = OpenFileState(fractalHeapId.computePosition(), false)
+        if (state.pos > 0) {
+            val attMessage = this.readAttributeMessage(state)
+            attMessages.add(attMessage)
+            if (debugFlow) println("    read attMessage ${attMessage.show()}") }
+        }
+    return attMessages
 }
 
 ////////////////////////////////////////// 22

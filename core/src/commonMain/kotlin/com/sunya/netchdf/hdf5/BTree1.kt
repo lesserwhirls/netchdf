@@ -6,33 +6,21 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.layout.Tiling
 import com.sunya.cdm.util.InternalLibraryApi
 
-/**
- * This holds the chunked data storage.
- * level 1A1
- * A B-tree, version 1, used for data (node type 1)
- *
- * Version 1 B-trees in HDF5 files are a B-link tree, in which the sibling nodes at a particular level
- * in the tree are stored in a doubly-linked list.
- * The B-link trees implemented here contain one more key than the number of children.
- * In other words, each child pointer out of a B-tree node has a left key and a right key.
- *
- * The pointers in internal nodes point to sub-trees while the pointers in leaf nodes point to symbol nodes and
- * raw data chunks. Aside from that difference, internal nodes and leaf nodes are identical.
- */
+/** B-tree, version 1, used for data (node type 1) */
 internal class BTree1(
     val h5: H5builder,
     val rootNodeAddress: Long,
     val nodeType : Int,  // 0 = group/symbol table, 1 = raw data chunks
     val ndimStorage: Int? = null // TODO allowed to be null ??
-) : BTreeIF {
+) {
 
-    override fun rootNodeAddress() = rootNodeAddress
+    fun rootNodeAddress() = rootNodeAddress
 
-    override fun readNode(address: Long, parent: BTreeNodeIF?): BTreeNodeIF =
+    fun readNode(address: Long, parent: BTree1.Node?): Node =
         Node(address, parent as Node?)
 
-    override fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray) : DataChunkEntryIF =
-        DataChunkEntry1(0, rootNode as Node, -1, DataChunkKey(-1, 0, wantKey), -1L)
+    fun makeMissingDataChunkEntry(rootNode: Node, wantKey: LongArray) : DataChunkIF =
+        DataChunkEntry1(0, rootNode, -1, DataChunkKey(-1, 0, wantKey), -1L)
 
     fun readGroupEntries() : Iterator<GroupEntry> {
         require(nodeType == 0)
@@ -61,7 +49,7 @@ internal class BTree1(
 
     // here both internal and leaf are the same structure
     // Btree nodes Level 1A1 - Version 1 B-trees
-    inner class Node(val address: Long, val parent: BTree1.Node?) : BTreeNodeIF {
+    inner class Node(val address: Long, val parent: Node?) : BTreeNodeIF {
         val level: Int
         val nentries: Int
         private val leftAddress: Long
@@ -131,7 +119,7 @@ internal class BTree1(
     }
 
     //  childAddress = data chunk (level 1) else a child node
-    data class DataChunkEntry1(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) : DataChunkEntryIF {
+    data class DataChunkEntry1(val level : Int, val parent : Node, val idx : Int, val key : DataChunkKey, val childAddress : Long) : DataChunkIF {
         override fun childAddress() = childAddress
         override fun offsets() = key.offsets
         override fun isMissing() = (childAddress == -1L)
@@ -141,5 +129,20 @@ internal class BTree1(
         override fun show(tiling : Tiling) : String = "chunkSize=${key.chunkSize}, chunkStart=${key.offsets.contentToString()}" +
                 ", tile= ${tiling.tile(key.offsets).contentToString()}  idx=$idx"
     }
+}
 
+interface BTreeNodeIF {
+    fun isLeaf(): Boolean
+    fun nentries(): Int
+    fun dataChunkEntryAt(idx: Int) : DataChunkIF // only if isLeaf
+}
+
+interface DataChunkIF {
+    fun childAddress(): Long
+    fun offsets(): LongArray
+    fun isMissing(): Boolean
+    fun chunkSize(): Int
+    fun filterMask(): Int?
+
+    fun show(tiling : Tiling): String
 }
