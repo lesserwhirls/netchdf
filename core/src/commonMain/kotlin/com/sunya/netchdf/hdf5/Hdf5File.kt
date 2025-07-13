@@ -57,7 +57,7 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
                 header.readRegularData(vinfo, v2.datatype, wantSection)
 
             } else if (vinfo.mdl is DataLayoutBTreeVer1) {
-                H5chunkReader(header).readBtreeVer12(v2, wantSection)
+                H5chunkReader(header).readBtreeVer1(v2, wantSection)
 
             } else if (vinfo.mdl is DataLayoutSingleChunk4) {
                 // H5chunkReader(header).readSingleChunk(v2, wantSection)

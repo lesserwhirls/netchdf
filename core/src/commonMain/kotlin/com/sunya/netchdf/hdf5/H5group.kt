@@ -59,12 +59,12 @@ internal fun H5builder.readGroupNew(
         check(btreeAddress >= 0) { "no valid btree for GroupNew with Fractal Heap" }
 
         // read in btree and all entries
-        val btree = BTree2(this, parent.name, btreeAddress, 0)
-        for (e in btree.readEntries()) {
-            var heapId: ByteArray = when (btree.btreeType) {
-                5 -> (e.record as BTree2.Record5).heapId
-                6 -> (e.record as BTree2.Record6).heapId
-                else -> throw RuntimeException("btree2 type ${btree.btreeType} mot supported")
+        val btree2j = BTree2j(this, parent.name, btreeAddress)
+        for (record in btree2j.records) {
+            val heapId: ByteArray = when (btree2j.btreeType) {
+                8 -> (record as BTree2j.Record8).heapId
+                9 -> (record as BTree2j.Record9).heapId
+                else -> continue
             }
 
             // the heapId points to a Link message in the Fractal Heap

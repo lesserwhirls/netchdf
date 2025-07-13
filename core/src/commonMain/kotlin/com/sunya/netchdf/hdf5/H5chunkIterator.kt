@@ -19,12 +19,12 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
     val h5type : H5TypeInfo
     val elemSize : Int
     val datatype : Datatype<*>
-    val tiledData : H5TiledData
+    val tiledData : H5TiledData1
     val filters : H5filters
     val state : OpenFileState
 
     private val wantSpace : IndexSpace
-    private val chunkIterator : Iterator<BTree1.DataChunkEntry1>
+    private val chunkIterator : Iterator<DataChunkIF>
 
     init {
         h5type = vinfo.h5type
@@ -32,7 +32,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
         datatype = h5type.datatype()
 
         val btreeNew = BTree1(h5, vinfo.dataPos, 1, vinfo.storageDims.size)
-        tiledData = H5TiledData(btreeNew, v2.shape, vinfo.storageDims)
+        tiledData = H5TiledData1(btreeNew, v2.shape, vinfo.storageDims)
         filters = H5filters(v2.name, vinfo.mfp, h5type.isBE)
         if (debugChunking) println(" H5chunkIterator tiles=${tiledData.tiling}")
 
@@ -43,14 +43,14 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
 
     override fun computeNext() {
         if (chunkIterator.hasNext()) {
-            setNext(getaPair(chunkIterator.next()))
+            setNext( getaPair(chunkIterator.next()) )
         } else {
             done()
         }
     }
 
-    private fun getaPair(dataChunk : BTree1.DataChunkEntry1) : ArraySection<T> {
-        val dataSpace = IndexSpace(v2.rank, dataChunk.key.offsets, vinfo.storageDims)
+    private fun getaPair(dataChunk : DataChunkIF) : ArraySection<T> {
+        val dataSpace = IndexSpace(v2.rank, dataChunk.offsets(), vinfo.storageDims)
 
         // TODO we need to intersect the dataChunk with the wanted section.
         // optionally, we could make a view of the array, rather than copying the data.
@@ -66,9 +66,9 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
             bbmissing
         } else {
             if (debugChunking) println("  chunkIterator=${dataChunk.show(tiledData.tiling)}")
-            state.pos = dataChunk.childAddress
-            val chunkData = h5.raf.readByteArray(state, dataChunk.key.chunkSize)
-            val filteredData = filters.apply(chunkData, dataChunk.key.filterMask)
+            state.pos = dataChunk.childAddress()
+            val rawdata = h5.raf.readByteArray(state, dataChunk.chunkSize())
+            val filteredData = if (dataChunk.filterMask() == null) rawdata else filters.apply(rawdata, dataChunk.filterMask()!!)
             if (useEntireChunk) {
                 filteredData
             } else {

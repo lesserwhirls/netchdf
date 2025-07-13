@@ -13,8 +13,9 @@ import kotlin.math.ceil
 import kotlin.math.pow
 
 @OptIn(InternalLibraryApi::class)
-// from jhdf
-internal class BTree2j(private val h5: H5builder, owner: String, address: Long, val storageDims: LongArray) { // BTree2
+
+/*  Btree version 2, for data. From jhdf. */
+internal class BTree2j(private val h5: H5builder, owner: String, address: Long, storageDims: LongArray? = null) { // BTree2
     val btreeType: Int
     private val nodeSize: Int // size in bytes of btree nodes
     private val recordSize: Int // size in bytes of btree records
@@ -25,13 +26,21 @@ internal class BTree2j(private val h5: H5builder, owner: String, address: Long, 
     val numberOfRecordsInRoot : Int
     val totalNumberOfRecordsInTree: Long
 
-    val chunkSize = storageDims.computeSize()
-    val chunkDims = LongArray(storageDims.size - 1) { storageDims[it] }
+    val chunkSize: Long
+    val chunkDims: LongArray
 
     /** The records in this b-tree */
     val records = mutableListOf<Any>()
 
     init {
+        if (storageDims != null) {
+            chunkSize = storageDims.computeSize()
+            chunkDims = LongArray(storageDims.size - 1) { storageDims[it] }
+        } else {
+            chunkSize = 0
+            chunkDims = longArrayOf()
+        }
+
         raf = h5.raf
         this.owner = owner
         val state = OpenFileState(h5.getFileOffset(address), false)
@@ -322,11 +331,11 @@ internal class BTree2j(private val h5: H5builder, owner: String, address: Long, 
         }
     }
 
-    fun makeMissingDataChunkEntry(rootNode: BTreeNodeIF, wantKey: LongArray): DataChunkEntryIF {
+    fun makeMissingDataChunkEntry(rootNode: BTree1.Node, wantKey: LongArray): DataChunkIF {
         return MissingDataChunk()
     }
 
-    class MissingDataChunk() : DataChunkEntryIF {
+    class MissingDataChunk() : DataChunkIF {
         override fun childAddress() = -1L
         override fun offsets() = longArrayOf()
         override fun isMissing() = true
@@ -334,5 +343,14 @@ internal class BTree2j(private val h5: H5builder, owner: String, address: Long, 
         override fun filterMask() = 0
 
         override fun show(tiling : Tiling) : String = "missing"
+    }
+
+    companion object {
+        internal fun findRecord1byId(records: List<Any>, hugeObjectID: Int): Record1? {
+            for (record in records) {
+                if (record is Record1 && record.hugeObjectID == hugeObjectID.toLong()) return record
+            }
+            return null
+        }
     }
 }

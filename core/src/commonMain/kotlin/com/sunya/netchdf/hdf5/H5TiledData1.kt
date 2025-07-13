@@ -5,16 +5,16 @@ import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.Tiling
 
 /** wraps BTree1 and BTree2 to handle iterating through tiled data (aka chunked data) */
-internal class H5TiledData12(val btree : BTreeIF, val varShape: LongArray,  val chunkShape: LongArray) {
+internal class H5TiledData1(val btree : BTree1, val varShape: LongArray, val chunkShape: LongArray) {
     private val check = true
     private val debug = false
     private val debugMissing = false
 
     val tiling = Tiling(varShape, chunkShape)
-    val rootNode : BTreeNodeIF
+    val rootNode : BTree1.Node
 
     // keep track of nodes so we only read once
-    private val nodeCache = mutableMapOf<Long, BTreeNodeIF>()
+    private val nodeCache = mutableMapOf<Long, BTree1.Node>()
     private var readHit = 0
     private var readMiss = 0
 
@@ -23,7 +23,7 @@ internal class H5TiledData12(val btree : BTreeIF, val varShape: LongArray,  val 
     }
 
     // node reading goes through here for caching
-    private fun readNode(address : Long, parent : BTreeNodeIF?) : BTreeNodeIF {
+    private fun readNode(address : Long, parent : BTree1.Node?) : BTree1.Node {
         if (nodeCache[address] != null) {
             readHit++
             return nodeCache[address]!!
@@ -51,7 +51,7 @@ internal class H5TiledData12(val btree : BTreeIF, val varShape: LongArray,  val 
 
     fun dataChunks(wantSpace : IndexSpace) = Iterable { DataChunkIterator(wantSpace) }
 
-    private inner class DataChunkIterator(wantSpace : IndexSpace) : AbstractIterator<DataChunkEntryIF>() {
+    private inner class DataChunkIterator(wantSpace : IndexSpace) : AbstractIterator<DataChunkIF>() {
         val tileIterator : Iterator<LongArray>
 
         init {
@@ -73,8 +73,8 @@ internal class H5TiledData12(val btree : BTreeIF, val varShape: LongArray,  val 
     }
 
     // TODO optimize. Might be easier to read in all the Nodes.
-    private fun findEntryContainingKey(parent : BTreeNodeIF, key : LongArray) : DataChunkEntryIF? {
-        var foundEntry : DataChunkEntryIF? = null
+    private fun findEntryContainingKey(parent : BTree1.Node, key : LongArray) : DataChunkIF? {
+        var foundEntry : DataChunkIF? = null
         for (idx in 0 until parent.nentries()) {
             foundEntry = parent.dataChunkEntryAt(idx)
             if (idx < parent.nentries() - 1) {

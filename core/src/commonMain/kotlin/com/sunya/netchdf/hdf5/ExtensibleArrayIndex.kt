@@ -7,8 +7,6 @@ import com.sunya.cdm.iosp.OpenFileState
 import com.sunya.cdm.util.InternalLibraryApi
 import java.util.*
 
-private const val UNDEFINED_ADDRESS = -1L
-
 class ExtensibleArrayIndex(val h5: H5builder, address: Long, datasetDimensions: IntArray, chunkDimensions: IntArray) {
     val raf = h5.raf
 

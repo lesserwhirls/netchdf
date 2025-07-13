@@ -72,6 +72,14 @@ class JhdfReadTest {
         readNetchdfData(filename, null, null, true, false)
     }
 
+
+    @Test
+    fun testFractalHeap() { // 28
+        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/test_attribute_latest.hdf5"
+        println(filename)
+        readNetchdfData(filename, null, null, true, false)
+    }
+
     // private typedefs
     @Test
     fun testVlen() { // 63
@@ -248,7 +256,6 @@ class JhdfReadTest {
         println(filename)
         readNetchdfData(filename, null, null, true, false)
     }
-
 
 }
 
