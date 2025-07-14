@@ -20,7 +20,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
     val elemSize : Int
     val datatype : Datatype<*>
     val tiledData : H5TiledData1
-    val filters : H5filters
+    val filters : FilterPipeline
     val state : OpenFileState
 
     private val wantSpace : IndexSpace
@@ -33,7 +33,7 @@ internal class H5chunkIterator<T>(val h5 : H5builder, val v2: Variable<T>, val w
 
         val btreeNew = BTree1(h5, vinfo.dataPos, 1, vinfo.storageDims.size)
         tiledData = H5TiledData1(btreeNew, v2.shape, vinfo.storageDims)
-        filters = H5filters(v2.name, vinfo.mfp, h5type.isBE)
+        filters = FilterPipeline(v2.name, vinfo.mfp, h5type.isBE)
         if (debugChunking) println(" H5chunkIterator tiles=${tiledData.tiling}")
 
         state = OpenFileState(0L, h5type.isBE)

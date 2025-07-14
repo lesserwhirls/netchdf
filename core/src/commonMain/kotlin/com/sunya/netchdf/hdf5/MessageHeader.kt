@@ -530,7 +530,7 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
     if (version == 1) {
         state.pos += 6
     }
-    val filters = mutableListOf<Filter>()
+    val filters = mutableListOf<FilterMessage>()
     for (i in 0 until nfilters) {
         val filterId = raf.readShort(state).toInt()
         val filterType = FilterType.fromId(filterId)
@@ -547,39 +547,23 @@ internal fun H5builder.readFilterPipelineMessage(state: OpenFileState): FilterPi
         if (version == 1 && nValues and 1 != 0) { // check if odd
             state.pos += 4
         }
-        filters.add(Filter(filterType, name, clientValues))
+        val f = FilterMessage(filterId, filterType, name, clientValues)
+        filters.add(f)
     }
 
     return FilterPipelineMessage(filters)
 }
 
-// H5Xpublic.h
-internal enum class FilterType(val id: Int) {
-    none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6),
-    bzip2(307),
-    zstandard(32015),
-    unknown(Int.MAX_VALUE);
+internal class FilterMessage(val filterId: Int, val filterType: FilterType, val name: String, val clientValues: IntArray)
 
-    companion object {
-        fun fromId(id: Int): FilterType {
-            for (type in FilterType.entries) {
-                if (type.id == id) {
-                    return type
-                }
-            }
-            return unknown
-        }
-
-        fun nameFromId(id: Int): String {
-            for (type in entries) {
-                if (type.id == id) {
-                    return type.name
-                }
-            }
-            return "UnknownFilter$id"
-        }
+internal data class FilterPipelineMessage(val filters: List<FilterMessage>) : MessageHeader(MessageType.FilterPipeline) {
+    override fun show() : String {
+        return filters.joinToString { "${it.filterType} ${it.name}, " }
     }
 }
+
+// H5Xpublic.h
+
 
 ///////////////////////////////////////////// 12/0xC "Attribute" : define an Attribute
 // The Attribute message is used to store objects in the HDF5 file which are used as attributes, or “metadata” about

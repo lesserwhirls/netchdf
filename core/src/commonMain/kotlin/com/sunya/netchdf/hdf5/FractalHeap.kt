@@ -143,8 +143,8 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                     // The length of the object in the heap, determined by taking the minimum value of
                     // Maximum Direct Block Size and Maximum Size of Managed Objects in the Fractal Heap Header.
                     // Again, the minimum number of bytes needed to encode that value is used for the size of this field.
-                    offset = makeIntFromBytes(heapId, 1, n)
-                    size = makeIntFromBytes(heapId, 1 + n, m)
+                    offset = makeIntFromLEBytes(heapId, 1, n)
+                    size = makeIntFromLEBytes(heapId, 1 + n, m)
                 }
                 1 -> {
                     // how fun to guess the subtype
@@ -152,7 +152,7 @@ internal class FractalHeap(private val h5: H5builder, forWho: String, address: L
                     val hasFilters = (ioFilterLen > 0)
                     subtype = if (hasBtree) if (hasFilters) 2 else 1 else if (hasFilters) 4 else 3
                     when (subtype) {
-                        1, 2 -> offset = makeIntFromBytes(heapId, 1, (heapId.size - 1))
+                        1, 2 -> offset = makeIntFromLEBytes(heapId, 1, (heapId.size - 1))
                     }
                 }
                 2 -> {
