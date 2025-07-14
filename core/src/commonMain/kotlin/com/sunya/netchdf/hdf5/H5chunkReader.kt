@@ -29,7 +29,7 @@ internal class H5chunkReader(val h5 : H5builder) {
         // just reading into memory the entire index for now
         // val index =  BTree2j(h5, v2.name, vinfo.dataPos, vinfo.storageDims)
 
-        val filters = H5filters(v2.name, vinfo.mfp, vinfo.h5type.isBE)
+        val filters = FilterPipeline(v2.name, vinfo.mfp, vinfo.h5type.isBE)
         val state = OpenFileState(0L, vinfo.h5type.isBE)
 
         // just run through all the chunks, we wont read any that we dont want
@@ -79,7 +79,7 @@ internal class H5chunkReader(val h5 : H5builder) {
             throw RuntimeException("Unsupprted mdl ${vinfo.mdl}")
 
         val tiledData = H5TiledData1(btree, v2.shape, vinfo.storageDims)
-        val filters = H5filters(v2.name, vinfo.mfp, vinfo.h5type.isBE)
+        val filters = FilterPipeline(v2.name, vinfo.mfp, vinfo.h5type.isBE)
         if (debugChunking) println(" readChunkedData tiles=${tiledData.tiling}")
 
         var transferChunks = 0

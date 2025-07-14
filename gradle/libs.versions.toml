@@ -7,6 +7,8 @@ kotlinx-cli = "0.3.6"
 kotlinx-coroutines = "1.10.2"
 
 fleeksoft-version = "0.0.4"
+lzf-version = "1.1.2"
+lz4-version = "1.8.0"
 okio-version = "3.12.0"
 oshai-version = "7.0.0"
 
@@ -25,6 +27,9 @@ slf4j = "1.7.36"
 
 okio = { module = "com.squareup.okio:okio", version.ref = "okio-version" }
 fleeksoft = { module = "com.fleeksoft.charset:charset", version.ref = "fleeksoft-version" }
+
+lzf = { module = "com.ning:compress-lzf", version.ref = "lzf-version" }
+lz4 = { module = "org.lz4:lz4-java", version.ref = "lz4-version" }
 
 # Kotlinx libraries
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }

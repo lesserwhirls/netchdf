@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 7/9/2025_
+_last updated: 7/13/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
