@@ -2,7 +2,7 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.iosp.decode
 
-// should work even when filterType unknowm as long as its registered
+// should work even when filterType is unknown, as long as filter is registered with correct id.
 enum class FilterType(val id: Int) {
     none(0), deflate(1), shuffle(2), fletcher32(3), szip(4), nbit(5), scaleoffset(6),
     bzip2(307),

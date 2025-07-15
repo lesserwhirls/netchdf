@@ -3,17 +3,17 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(libs.oshai.logging)
+    api(project(":core"))
+    implementation(project(":cli"))
+    implementation(libs.jhdf)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.okio)
     implementation(libs.fleeksoft)
+    implementation(libs.oshai.logging)
+    implementation(libs.logback.classic)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.bundles.jvmtest)
-
-    testImplementation(libs.oshai.logging)
-    testImplementation(libs.kotlinx.coroutines.core)
 }
 
 kotlin {
@@ -59,4 +59,4 @@ tasks {
 }
 
 // Declare an explicit dependency on ':core:allMetadataJar' from ':testclibs:compileJava' using Task#dependsOn
-project.tasks["compileJava"].dependsOn(":core:allMetadataJar")
+// project.tasks["compileJava"].dependsOn(":core:allMetadataJar")
