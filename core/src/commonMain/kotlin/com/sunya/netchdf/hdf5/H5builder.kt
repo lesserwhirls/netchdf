@@ -12,8 +12,8 @@ import com.fleeksoft.charset.Charsets
 import com.sunya.cdm.array.makeString
 import com.sunya.cdm.util.InternalLibraryApi
 
-private const val debugStart = true
-private const val debugSuperblock = true
+private const val debugStart = false
+private const val debugSuperblock = false
 internal const val debugTypedefs = false
 internal const val debugFlow = false
 

@@ -16,7 +16,6 @@ import kotlin.math.min
 // the dataspace message is used for that purpose. Datatype messages that are part of a committed datatype (formerly
 // named datatype) message describe a common datatype that can be shared by multiple datasets in the file.
 
-@InternalLibraryApi
 enum class Datatype5(val num : Int) {
     Fixed(0), Floating(1), Time(2), String(3), BitField(4), Opaque(5),
     Compound(6), Reference(7), Enumerated(8), Vlen(9), Array(10), Unknown(999);
