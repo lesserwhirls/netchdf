@@ -1,12 +1,12 @@
 # netchdf
-_last updated: 7/13/2025_
+_last updated: 7/16/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
-The intention is to create a maintainable, read-only, pure JVM library allowing full access to 
+The intention is to create a maintainable, read-only, thread-safe, pure JVM library allowing full access to 
 netcdf3, netcdf4, hdf4, hdf5, hdf-eos2, and hdf-eos5 data files. 
 
-Evaluating if support for superblock 4 is feasible.
+The library is close to feature complete. We are currently extensively testing and comparing to the reference libraries.
 
 Please contact me if you'd like to help out. Especially needed are test datasets from all the important data archives!!
 
@@ -28,25 +28,25 @@ Also see:
 
 ### Why this library? 
 
-There is so much important scientific data stored in the NetCDF and HDF file formats, that those formats will 
-never go away. It is important that there be maintainable, independent libraries to read these files forever.
+The scientific data stored in NetCDF and HDF file formats must remain forever readable. 
 
 The Netcdf-Java library prototyped a "Common Data Model" (CDM) to provide a single API to access various file formats. 
 The netcdf* and hdf* file formats are similar enough to make a common API a practical and useful goal. 
-By focusing on read-only access to just these formats, the API and the code are kept simple.
+By focusing on read-only access to just these formats, the API and the code are kept simple. In short, a library that 
+focuses on simplicity and clarity is a safeguard for the irreplaceable investment in these scientific datasets.
 
-In short, a library that focuses on simplicity and clarity is a safeguard for the irreplaceable investment in these
-scientific datasets.
+A second motivation is to allow multithreaded access to these files. The lack of thread safety in the HDF5-C library
+is a major failing that needs to be fixed.
 
 ### Why do we need another library besides the standard reference libraries?
 
 It's necessary to have independent implementations of any standard. If you don't have multiple implementations, it's
 easy for the single implementer to mistake the implementation for the actual standard. It's easy to hide problems 
-that are actually in the standard by adding work-arounds in the code, instead of documenting problems and creating new
+that are actually in the standard by adding work arounds in the code, instead of documenting problems and creating new
 versions of the standard with clear fixes. For Netcdf/Hdf, the standard is the file formats, along with their semantic 
 descriptions. The API is language and library specific, and is secondary to the standard.
 
-More subtly, its very hard to see the elegance (or otherwise) of your own design, you need independent review of your
+More subtly, it's very hard to see the elegance (or otherwise) of your own design; you need independent review of your
 data structures and API by people truly invested in getting them right.
 
 Having multiple implementations is a huge win for the reference library, in that bugs are more quickly found, and 
@@ -59,7 +59,7 @@ and keep bug free, with implications for memory safety and security. The librari
 toolchains. Shifts in funding could wipe out much of the institutional knowledge needed to maintain them.
 
 The HDF file formats are overly complicated, which impacts code complexity and clarity. The data structures do not
-always map to a user understandable data model. Semantics are left to data-writers to document (or not). 
+always map to a user-understandable data model. Semantics are left to data-writers to document (or not). 
 While this problem isn't specific to HDF file users, it is exacerbated by a "group of messages" design approach. 
 
 The HDF4 C library is a curious hodgepodge of disjointed APIs. The HDF5 API is better and the Netcdf4 API much better.
@@ -73,7 +73,7 @@ library for data access is less clear. For now, we will provide a "best-effort" 
 contents of the file.
 
 Currently, the Netcdf-4 and HDF5 libraries are not thread safe, not even for read-only applications. 
-This is a serious limitation for high performance, scalable applications, and it is disappointing that it hasnt been fixed.
+This is a serious limitation for high performance, scalable applications, and it is disappointing that it hasn't been fixed.
 See [Toward Multi-Threaded Concurrency in HDF5](https://www.hdfgroup.org/wp-content/uploads/2022/05/Toward-MT-HDF5.pdf),
 and [RFC:Multi-Thread HDF5](https://support.hdfgroup.org/releases/hdf5/documentation/rfc/RFC_multi_thread.pdf) for more information.
 
@@ -96,6 +96,31 @@ other parts of the code faster.
 We will investigate using Kotlin coroutines to speed up performance bottlenecks.
 
 
+### Goals and scope
+
+Our goal is to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files.
+
+The library will be thread-safe for reading multiple files concurrently. We are also exploring concurrent reading within
+the same file.
+
+We are focussing on earth science data, and don't plan to support other uses except as a byproduct.
+
+The core module will remain pure Kotlin with very minimal library dependencies and no write capabilities. In particular, 
+there will be no dependency on the reference C libraries (except for testing). 
+
+There will be no dependencies on native libraries in the core module, but other modules or
+projects that use the core are free to use dependencies as needed, for example to use HDF5 filters that link to native libraries.
+
+
+### Non-goals
+
+It's not a goal to duplicate netcdf-java functionality.
+
+It's not a goal to duplicate Netcdf-C library functionality.
+
+It's not a goal to provide remote access to files.
+
+
 ### What version of the JVM, Kotlin, and Gradle?
 
 We will always use the latest LTS (long term support) Java version, and will not be explicitly supporting older versions.
@@ -106,34 +131,8 @@ We also use the latest stable version of Kotlin that is compatible with the Java
 Gradle is our build system. We will use the latest stable version of Gradle compatible with our Java and Kotlin versions.
 Currently that is Gradle 8.14.
 
-For now, you must download and build the library yourself. Eventually we will publish it to Maven Central. 
+For now, you must download and build the library yourself. Eventually we will publish it to Maven Central.
 The IntelliJ IDE is highly recommended for all JVM development.
-
-
-### Goals and scope
-
-Our goal is to give read access to all the content in NetCDF, HDF5, HDF4, and HDF-EOS files.
-
-The library will be thread-safe for reading multiple files concurrently.
-
-We are focussing on earth science data, and don't plan to support other uses except as a byproduct.
-
-The core module will remain pure Kotlin with very minimal dependencies and no write capabilities. In particular, 
-there will be no dependency on the reference C libraries (except for testing). 
-
-There will be no dependencies on native libraries in the core module, but other modules or
-projects that use the core are free to use dependencies as needed. We will likely add runtime discovery to facilitate this, 
-for example, to use HDF5 filters that link to native libraries.
-
-
-### Non-goals
-
-Its not a goal to duplicate netcdf-java functionality.
-
-Its not a goal to duplicate Netcdf-C library functionality.
-
-Its not a goal to provide remote access to files.
-
 
 
 ### Testing
@@ -157,7 +156,7 @@ Currently we have this test coverage from core/test:
 
 The core library has ~6500 LOC.
 
-More and deeper test coverage is provided in the clibs module, which compares netchdf metadata and data against
+More and deeper test coverage is provided in the testclibs module, which compares netchdf metadata and data against
 the Netcdf, HDF5, and HDF4 C libraries. The clibs module is not part of the released netchdf library and is 
 only supported for test purposes.
 
