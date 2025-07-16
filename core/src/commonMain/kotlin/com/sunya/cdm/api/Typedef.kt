@@ -5,6 +5,7 @@ import com.sunya.cdm.array.ArrayTyped
 import com.sunya.cdm.array.StructureMember
 import com.sunya.cdm.util.Indent
 import com.sunya.cdm.util.makeValidCdmObjectName
+import kotlin.collections.get
 
 enum class TypedefKind {Compound, Enum, Opaque, Vlen, Unknown}
 
@@ -89,13 +90,41 @@ class EnumTypedef(name : String, baseType : Datatype<*>, val valueMap : Map<Int,
     }
 
     /** Convert enums into equivalent array of String */
-    fun convertEnums(enums : Any): ArrayString {
-        return when (enums) {
-            is ArrayTyped<*> -> enums.convertEnums(valueMap)
-            is Attribute<*> -> ArrayString(intArrayOf(enums.values.size), enums.values.convertEnums(valueMap))
-            is List<*> -> ArrayString(intArrayOf(enums.size), enums.convertEnums(valueMap))
-            else -> this.convertEnums(valueMap)
+    fun convertEnum(enum : Int): String {
+        return valueMap[enum] ?: "Unknown enum number=$enum"
+    }
+
+    /** Convert Iterator of ENUM into equivalent List of String */
+    fun convertEnumsFromList(enums: List<*>): List<String> {
+        val stringValues = enums.map { enumVal ->
+            val num = when (enumVal) {
+                is UByte ->  enumVal.toInt()
+                is UShort ->  enumVal.toInt()
+                is UInt ->  enumVal.toInt()
+                is ULong ->  enumVal.toInt()
+                else -> RuntimeException("unknown enum ${enumVal!!::class}")
+            }
+            valueMap[num] ?: "Unknown enum number=$enumVal"
         }
+        return stringValues
+    }
+
+    /** Convert array of ENUM into equivalent names */
+    fun convertEnumArray(enumArray: ArrayTyped<*>): ArrayString {
+        val size = enumArray.shape.computeSize()
+        val enumIter = enumArray.iterator()
+        val stringValues = List(size) {
+            val enumVal = enumIter.next()
+            val num = when (enumVal) {
+                is UByte ->  enumVal.toInt()
+                is UShort ->  enumVal.toInt()
+                is UInt ->  enumVal.toInt()
+                is ULong ->  enumVal.toInt()
+                else -> RuntimeException("unknown enum ${enumVal!!::class}")
+            }
+            valueMap[num] ?: "Unknown enum number=$enumVal"
+        }
+        return ArrayString(enumArray.shape, stringValues)
     }
 
     override fun equals(other: Any?): Boolean {
@@ -118,46 +147,14 @@ fun Attribute<*>.convertEnums(): List<String> {
     require(this.datatype.isEnum)
     // if (this.datatype.typedef == null) return listOf("enum attribute with no typedef")
     val typedef = (this.datatype.typedef as EnumTypedef)
-    return values.convertEnums(typedef.valueMap)
+    return typedef.convertEnumsFromList(values)
 }
 
 /** Convert array of ENUM into equivalent names */
 fun ArrayTyped<*>.convertEnums(): ArrayString {
     require(this.datatype.isEnum)
     val typedef = (this.datatype.typedef as EnumTypedef)
-    return this.convertEnums(typedef.valueMap)
-}
-
-/** Convert array of ENUM into equivalent names */
-private fun ArrayTyped<*>.convertEnums(map: Map<Int, String>): ArrayString {
-    val size = this.shape.computeSize()
-    val enumIter = this.iterator()
-    val stringValues = List(size) {
-        val enumVal = enumIter.next()
-        val num = when (enumVal) {
-            is UByte ->  enumVal.toInt()
-            is UShort ->  enumVal.toInt()
-            is UInt ->  enumVal.toInt()
-            is ULong ->  enumVal.toInt()
-            else -> RuntimeException("unknown enum ${enumVal!!::class}")
-        }
-        map[num] ?: "Unknown enum number=$enumVal"
-    }
-    return ArrayString(this.shape, stringValues)
-}
-
-/** Convert Iterator of ENUM into equivalent List of String */
-private fun List<*>.convertEnums(map: Map<Int, String>): List<String> {
-    val stringValues = this.map { enumVal ->
-        val num = when (enumVal) {
-            is UByte ->  enumVal.toInt()
-            is UShort ->  enumVal.toInt()
-            is UInt ->  enumVal.toInt()
-            else -> RuntimeException("unknown enum ${enumVal!!::class}")
-        }
-        map[num] ?: "Unknown enum number=$enumVal"
-    }
-    return stringValues
+    return typedef.convertEnumArray(this)
 }
 
 private fun Datatype<*>.strictEnumType() : Datatype<*> {

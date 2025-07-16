@@ -60,7 +60,7 @@ class BitShuffleFilter : H5filterIF {
             unshuffle(decompressedBuffer, decompressedBytes, decompressed, dstOffset, clientValues[2])
 
             srcOffset += compressedBlockLength
-            dstOffset += decompressedBlockSize
+            dstOffset += decompressedBytes
         }
 
         if (dstOffset < totalDecompressedSize) { // copy remaining into destination

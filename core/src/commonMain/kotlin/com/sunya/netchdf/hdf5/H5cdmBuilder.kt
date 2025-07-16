@@ -30,14 +30,13 @@ internal fun H5builder.buildGroup(group5 : H5Group) : Group.Builder {
 
     makeDimensions(groupb, group5)
 
-    // types are added to groups at the end, right now just build them
+    // shared typedefs
     group5.typedefs.forEach {
         val tdef = this.buildTypedef(it)
         if (tdef != null) {
             val typeinfo = makeH5TypeInfo(it.mdt, tdef)
             registerTypedef(typeinfo, groupb)
         }
-        // buildAndRegisterTypedef(groupb, it )
     }
 
     group5.attributes().forEach {
@@ -85,7 +84,7 @@ internal fun H5builder.buildAttribute(gb : Group.Builder, att5 : AttributeMessag
     if (typedef == null && att5.mdt.type.isTypedef()) {
         val typedef5 = H5typedef("anon", att5.mdt) // name
         typedef = this.buildTypedef(typedef5)
-        if (typedef != null) registerTypedef(typedef, gb)
+        if (typedef != null) registerPrivateTypedef(typedef, gb)
     }
     val h5type = makeH5TypeInfo(att5.mdt, typedef)
     val dc = DataContainerAttribute(att5.name, h5type, att5.dataPos, att5.mdt, att5.mds)
@@ -112,7 +111,7 @@ internal fun H5builder.buildVariable(groupb: Group.Builder, v5 : H5Variable) : V
     if (typedef == null && v5.mdt.type.isTypedef()) {
         val typedef5 = H5typedef("anon", v5.mdt) // name
         typedef = this.buildTypedef(typedef5)
-        if (typedef != null) registerTypedef(typedef, groupb)
+        if (typedef != null) registerPrivateTypedef(typedef, groupb)
     }
 
     val h5type = makeH5TypeInfo(v5.mdt, typedef)

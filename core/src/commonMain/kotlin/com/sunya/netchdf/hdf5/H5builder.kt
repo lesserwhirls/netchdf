@@ -482,7 +482,7 @@ class H5builder(
     internal fun registerTypedef(typeInfo : H5TypeInfo, gb : Group.Builder) : H5TypeInfo {
         val existing = findTypedef(typeInfo.mdtAddress, typeInfo.mdtHash)
         if (existing == null) {
-            addTypedef(typeInfo)
+            addTypedef(typeInfo, gb)
             val groups = typedefGroups.getOrPut(typeInfo.typedef!!) { mutableListOf() }
             groups.add(gb)
         } else {
@@ -492,7 +492,7 @@ class H5builder(
         return typeInfo
     }
 
-    private fun addTypedef(typeInfo : H5TypeInfo) : Boolean {
+    private fun addTypedef(typeInfo : H5TypeInfo, gb : Group.Builder) : Boolean {
         val typedef = typeInfo.typedef!!
         if (hashToTypedef[typeInfo.mdtHash] != null) {
             if (debugTypedefs) println("already have typedef ${typedef.name}@${typeInfo.mdtAddress} hash=${typeInfo.mdtHash}")
@@ -503,13 +503,26 @@ class H5builder(
 
         // use object identity instead of a shared object. seems like a bug in netcdf4 to me.
         hashToTypedef[typeInfo.mdtHash] = typedef
+
+        // register private typedefs
+        registerPrivateTypedef(typedef, gb)
         return true
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    internal fun registerTypedef(typedef: Typedef, gb: Group.Builder) {
+    internal fun registerPrivateTypedef(typedef: Typedef, gb: Group.Builder) {
         val groups = typedefGroups.getOrPut(typedef) { mutableListOf() }
         if (!groups.contains(gb)) groups.add(gb)
+
+        // look for nested typedefs
+        if (typedef.kind == TypedefKind.Compound) {
+            val ctdef = typedef as CompoundTypedef
+            ctdef.members.forEach { member ->
+                if (member.datatype.typedef != null) {
+                    registerPrivateTypedef(member.datatype.typedef, gb)
+                }
+            }
+        }
     }
 }
