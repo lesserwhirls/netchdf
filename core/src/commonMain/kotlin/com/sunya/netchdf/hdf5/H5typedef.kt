@@ -46,6 +46,11 @@ internal class H5typedef(val name: String?, val mdt: DatatypeMessage) {
         }
         if (debugTypedefs) println("H5Typedef mdtAddress=$mdtAddress mdtHash=$mdtHash kind=$kind")
     }
+
+    override fun toString(): String {
+        return "$name $kind"
+    }
+
 }
 
 // Convert H5typedef to Typedef

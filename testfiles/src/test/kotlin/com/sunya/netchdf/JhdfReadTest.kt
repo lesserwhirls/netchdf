@@ -14,11 +14,48 @@ class JhdfReadTest {
         }
     }
 
+    // hdf5 compound_datasets_earliest.hdf5 {
+    //  types:
+    //    compound 2d_chunked_compound {
+    //      float real ;
+    //      float img ;
+    //    }; // 2d_chunked_compound
+    //    compound array_vlen_chunked_compound {
+    //      string name(2) ;
+    //    }; // array_vlen_chunked_compound
+    //    compound chunked_compound {
+    //      string firstName ;
+    //      string surname ;
+    //      gender gender ;
+    //      ubyte age ;
+    //      float fav_number ;
+    //      float vector(3) ;
+    //    }; // chunked_compound
+    //    compound nested_chunked_compound {
+    //      firstNumber firstNumber ;
+    //      secondNumber secondNumber ;
+    //    }; // nested_chunked_compound
+    //    compound vlen_chunked_compound {
+    //      one one ;
+    //      two two ;
+    //    }; // vlen_chunked_compound
+    //  variables:
+    //    2d_chunked_compound 2d_chunked_compound(3, 3) ;
+    //    2d_chunked_compound 2d_contiguous_compound(3, 3) ;
+    //    array_vlen_chunked_compound array_vlen_chunked_compound(1) ;
+    //    array_vlen_chunked_compound array_vlen_contiguous_compound(1) ;
+    //    chunked_compound chunked_compound(4) ;
+    //    chunked_compound contiguous_compound(4) ;
+    //    nested_chunked_compound nested_chunked_compound(3) ;
+    //    nested_chunked_compound nested_contiguous_compound(3) ;
+    //    vlen_chunked_compound vlen_chunked_compound(3) ;
+    //    vlen_chunked_compound vlen_contiguous_compound(3) ;
+    //}
     @Test
     fun problem() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/100B_max_dimension_size.hdf5"
+        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
         println(filename)
-        readNetchdfData(filename, null, null, true, false)
+        readNetchdfData(filename, "chunked_compound", null, true, true)
     }
 
     // HDF5 "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/bitshuffle_datasets.hdf5" {

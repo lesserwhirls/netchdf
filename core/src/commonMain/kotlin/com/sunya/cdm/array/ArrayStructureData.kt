@@ -30,7 +30,6 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
         // return result
     }
 
-    // TODO not a bad idea to start at 1, so that 0 == not set
     internal fun getFromHeap(offset: Int): Any? {
         // val index = convertToInt(ba, offset, isBE) // youve clobbered the byte buffer. is that ok ??
         return heap[offset]
@@ -91,9 +90,21 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
                     if (idx > 0) append(", ")
                     val value = m.value(this@StructureData)
                     when (value) { // TODO clean up formatting
-                        is String -> append("\"$value\"")
-                        is ArrayTyped<*> -> append("[${value.showValues()}]")
-                        else -> append(value.toString())
+                        is String -> {
+                            append("\"$value\"")
+                        }
+                        is ArrayString -> {
+                            if (value.values.size == 1)
+                                append(value.values[0])
+                            else
+                                append("[${value.showValues()}]")
+                        }
+                        is ArrayTyped<*> -> {
+                            append("[${value.showValues()}]")
+                        }
+                        else -> {
+                            append(value.toString())
+                        }
                     }
                 }
             }
