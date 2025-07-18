@@ -1,5 +1,5 @@
 # netchdf
-_last updated: 7/16/2025_
+_last updated: 7/18/2025_
 
 This is a rewrite in Kotlin of parts of the devcdm and netcdf-java libraries. 
 
@@ -9,6 +9,32 @@ netcdf3, netcdf4, hdf4, hdf5, hdf-eos2, and hdf-eos5 data files.
 The library is close to feature complete. We are currently extensively testing and comparing to the reference libraries.
 
 Please contact me if you'd like to help out. Especially needed are test datasets from all the important data archives!!
+
+<!-- TOC -->
+* [netchdf](#netchdf)
+    * [Building](#building)
+      * [What version of the JVM, Kotlin, and Gradle?](#what-version-of-the-jvm-kotlin-and-gradle)
+    * [Why this library?](#why-this-library-)
+    * [Why do we need another library besides the standard reference libraries?](#why-do-we-need-another-library-besides-the-standard-reference-libraries)
+    * [What's wrong with the standard reference libraries?](#whats-wrong-with-the-standard-reference-libraries)
+    * [Why Kotlin?](#why-kotlin)
+    * [What about performance?](#what-about-performance)
+    * [Goals and scope](#goals-and-scope)
+    * [Non-goals](#non-goals)
+    * [Testing](#testing)
+      * [Code Coverage](#code-coverage)
+      * [Testing against the reference libraries](#testing-against-the-reference-libraries)
+    * [Data Model notes](#data-model-notes)
+      * [Type Safety and Generics](#type-safety-and-generics)
+      * [Cdl Names](#cdl-names)
+      * [Datatype](#datatype)
+      * [Typedef](#typedef)
+      * [Dimension](#dimension)
+      * [Compare with HDF5 data model](#compare-with-hdf5-data-model)
+      * [Compare with HDF4 data model](#compare-with-hdf4-data-model)
+      * [Compare with HDF-EOS data model](#compare-with-hdf-eos-data-model)
+  * [Elevator blurb](#elevator-blurb)
+<!-- TOC -->
 
 ### Building
 
@@ -25,6 +51,20 @@ cd netchdf
 Also see:
   * [Building and Running native library](docs/Building.md)
   * [Building and Running ncdump](cli/Readme.md)
+
+#### What version of the JVM, Kotlin, and Gradle?
+
+We use the latest LTS (long term support) Java version, and will not be explicitly supporting older versions.
+Currently that is Java 21.
+
+We also use the latest stable version of Kotlin that is compatible with the Java version. Currently that is Kotlin 2.1.
+
+Gradle is our build system. We will use the latest stable version of Gradle compatible with our Java and Kotlin versions.
+Currently that is Gradle 8.14.
+
+For now, you must download and build the library yourself. Eventually we will publish it to Maven Central.
+The IntelliJ IDE is highly recommended for all JVM development.
+
 
 ### Why this library? 
 
@@ -121,31 +161,38 @@ It's not a goal to duplicate Netcdf-C library functionality.
 It's not a goal to provide remote access to files.
 
 
-### What version of the JVM, Kotlin, and Gradle?
-
-We will always use the latest LTS (long term support) Java version, and will not be explicitly supporting older versions.
-Currently that is Java 21.
-
-We also use the latest stable version of Kotlin that is compatible with the Java version. Currently that is Kotlin 2.1.
-
-Gradle is our build system. We will use the latest stable version of Gradle compatible with our Java and Kotlin versions.
-Currently that is Gradle 8.14.
-
-For now, you must download and build the library yourself. Eventually we will publish it to Maven Central.
-The IntelliJ IDE is highly recommended for all JVM development.
-
-
 ### Testing
 
-We use the Java [Foreign Function & Memory API](https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html)
-for testing against the Netcdf, HDF5, and HDF4 C libraries. 
-With these tools we can be confident that our library gives the same results as the reference libraries.
+Currently most of the test files do not live in the github repo because they are too big. 
+Eventually we will make them available in a separate download.
 
-Currently using 
-* HDF5 library version: 1.14.6.
-* netcdf-c library version 4.10.0-development of May 23 2025
+There are four levels of testing:
 
-Currently we have this test coverage from core/test:
+1. Unit testing that doesn't require reading files.
+2. Testing with files in core/commonTest/data. These are fast and are run in a Github Action.
+3. Testing with files in TestFiles.testData in module testfiles. These are medium fast (< 11 min wallclock).
+4. Testing with files in TestFiles.testData in module testclibs. These are slow.
+
+Currently we have 1500+ test files in the core and testdata modules:
+
+````
+hdf-eos2    = 440 files
+hdf-eos5    = 18 files
+hdf4        = 32 files
+hdf5        = 175 files
+netcdf3     = 664 files
+netcdf3.2   = 81 files
+netcdf3.5   = 1 files
+netcdf4     = 119 files
+
+total # files = 1530
+````
+
+We will continue to add representative samples of recent files for improved testing and code coverage.
+
+####  Code Coverage
+
+Currently we have this test coverage from the core and testfiles modules:
 
 ````
  cdm      88% (1560/1764) LOC
@@ -154,28 +201,38 @@ Currently we have this test coverage from core/test:
  netcdf3  77% (230/297) LOC
  ````
 
-The core library has ~6500 LOC.
+7/18/2025
+````
+ cdm.api        94% (532/567) LOC
+ cdm.array      95% (662/698) LOC
+ cdm.iosp       68% (146/213) LOC
+ cdm.layout     89% (277/310) LOC
+ cdm.util       76% (106/139) LOC
+ hdf4           82% (1638/2008) LOC
+ hdf5           80% (2740/3417) LOC
+ netcdf3        80% (213/266) LOC
+ 
+ all            83% (6314/7618) LOC
+ ````
+
+The core library has ~7600 LOC.
+
+#### Testing against the reference libraries
 
 More and deeper test coverage is provided in the testclibs module, which compares netchdf metadata and data against
-the Netcdf, HDF5, and HDF4 C libraries. The clibs module is not part of the released netchdf library and is 
+the Netcdf, HDF5, and HDF4 C libraries. Note that the clibs module is not part of the released netchdf library and is 
 only supported for test purposes.
 
-Currently we have 1470 test files in the core test suite:
+We use the Java [Foreign Function & Memory API](https://docs.oracle.com/en/java/javase/21/core/foreign-function-and-memory-api.html)
+for testing against the Netcdf, HDF5, and HDF4 C libraries.
+With these tools we can be confident that our library gives the same results as the reference libraries.
 
-````
-hdf-eos2  = 267 files
-hdf-eos5  = 18 files
-hdf4      = 205 files
-hdf5      = 113 files
-netcdf3   = 664 files
-netcdf3.2 = 81 files
-netcdf3.5 = 1 files
-netcdf4   = 121 files
+Currently using
+* HDF5 library version: 1.14.6.
+* netcdf-c library version 4.10.0-development of May 23 2025
+* HDF-4 library version: ???
 
-total # files = 1470
-````
-We need to get representative samples of recent files for improved testing and code coverage.
-
+In order to run, you must install the C libraries on your computer and ad them to the LD_LIBRARY_PATH.
 
 ### Data Model notes
 

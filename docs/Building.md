@@ -10,7 +10,7 @@
 
 Artifacts are at
 
-* `core/build/libs/netchdf-0.4.0.jar`
+* `core/build/libs/netchdf-XXX.jar`
 
 ## linuxX64
 

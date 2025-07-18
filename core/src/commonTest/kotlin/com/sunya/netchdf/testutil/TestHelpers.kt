@@ -6,6 +6,7 @@ import io.kotest.common.ExperimentalKotest
 import io.kotest.property.PropTestConfig
 import io.kotest.property.ShrinkingMode
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 /**
  * Kotest requires its properties to be executed as a suspending function. To make this all work,
@@ -16,7 +17,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun runTest(f: suspend () -> Unit) {
     // another benefit of having this wrapper code: we don't have to have the OptIn thing
     // at the top of every unit test file
-    kotlinx.coroutines.test.runTest { f() }
+    runTest { f() }
 }
 
 /**

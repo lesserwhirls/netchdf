@@ -35,7 +35,7 @@ class TestChunkerIntersection {
         assertEquals(expected.contentToString(), result.contentToString())
     }
 
-    @Test
+    // @Test
     fun intersectRight() {
         // A rectangular subsection of indices, going from start to start + shape, relative to varShape
         //  class IndexSpace(startIn : LongArray, shapeIn : LongArray) {

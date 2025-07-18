@@ -10,6 +10,8 @@ import com.sunya.cdm.layout.TransferChunk
 @OptIn(ExperimentalUnsignedTypes::class)
 class ArrayULong(shape : IntArray, datatype : Datatype<*>, val values: ULongArray) : ArrayTyped<ULong>(datatype, shape) {
 
+    constructor(shape : IntArray, values: ULongArray) : this(shape, Datatype.ULONG, values)
+
     override fun iterator(): Iterator<ULong> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<ULong>() {
         private var idx = 0

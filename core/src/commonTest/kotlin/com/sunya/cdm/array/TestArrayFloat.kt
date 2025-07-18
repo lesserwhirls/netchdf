@@ -10,7 +10,6 @@ import io.kotest.property.arbitrary.int
 import io.kotest.property.checkAll
 import kotlin.test.*
 import kotlin.math.max
-import kotlin.test.*
 
 class TestArrayFloat {
 
