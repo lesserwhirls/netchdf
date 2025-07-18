@@ -19,7 +19,7 @@ class ArrayUShort(shape : IntArray, datatype : Datatype<*>, val values: UShortAr
     }
 
     override fun section(section: Section): ArrayUShort {
-        return ArrayUShort(section.shape.toIntArray(), sectionOf(section))
+        return ArrayUShort(section.shape.toIntArray(), this.datatype, sectionOf(section))
     }
 
     private fun sectionOf(section: Section): UShortArray {

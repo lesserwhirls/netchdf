@@ -6,7 +6,7 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.array.StructureMember
 import com.sunya.cdm.util.InternalLibraryApi
 
-// convert a DataObject with an mdt to a H5typedef. if no name, its anonomous aka private
+// convert a DatatypeMessage to an H5typedef. if no name, its anonomous, aka private
 internal class H5typedef(val name: String?, val mdt: DatatypeMessage) {
     var enumMessage : DatatypeEnum? = null
     var vlenMessage : DatatypeVlen? = null

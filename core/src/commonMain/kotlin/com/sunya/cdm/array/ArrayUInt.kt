@@ -19,7 +19,7 @@ class ArrayUInt(shape : IntArray, datatype : Datatype<*>, val values: UIntArray)
     }
 
     override fun section(section: Section): ArrayUInt {
-        return ArrayUInt(section.shape.toIntArray(), sectionOf(section))
+        return ArrayUInt(section.shape.toIntArray(), this.datatype, sectionOf(section))
     }
 
     private fun sectionOf(section: Section): UIntArray {

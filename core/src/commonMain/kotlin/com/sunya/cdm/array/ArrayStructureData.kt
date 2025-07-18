@@ -95,7 +95,7 @@ class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean
                         }
                         is ArrayString -> {
                             if (value.values.size == 1)
-                                append(value.values[0])
+                                append("\"${value.values[0]}\"")
                             else
                                 append("[${value.showValues()}]")
                         }

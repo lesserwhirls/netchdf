@@ -82,15 +82,15 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
             Datatype.INT -> ArrayInt(shape, IntArray(nelems) { this.get(it) as Int } )
             Datatype.UINT, Datatype.ENUM4 -> ArrayUInt(shape, datatype, UIntArray(nelems) { this.get(it) as UInt })
             Datatype.LONG -> ArrayLong(shape, LongArray(nelems) { this.get(it) as Long })
-            Datatype.ULONG, Datatype.ENUM8 -> ArrayULong(shape, ULongArray(nelems) { this.get(it) as ULong })
+            Datatype.ULONG, Datatype.ENUM8 -> ArrayULong(shape, datatype, ULongArray(nelems) { this.get(it) as ULong })
             Datatype.DOUBLE -> ArrayDouble(shape, DoubleArray(nelems) { this.get(it) as Double })
             Datatype.FLOAT -> ArrayFloat(shape, FloatArray(nelems) { this.get(it) as Float })
-            Datatype.STRING -> { // TODO kludge ?? maybe should be done in caller ??
+            Datatype.STRING -> { // TODO not dealing with vlen string; cant read out of ArrayStructureData heap
                 val useShape = if (elemSize == null) shape else (shape.toList() + listOf(elemSize)).toIntArray()
                 ArrayUByte.fromByteArray(useShape, ba).makeStringsFromBytes()
             }
             Datatype.REFERENCE -> ArrayLong(shape, LongArray(nelems) { this.get(it) as Long }) // TODO
-            else -> throw IllegalArgumentException("datatype ${datatype}")
+            else -> throw IllegalArgumentException("convertToArrayTyped cant handle datatype ${datatype}")
         }
         return result as ArrayTyped<T>
     }

@@ -203,10 +203,12 @@ For example, a Variable of datatype Float will return an ArrayFloat, which is Ar
   ArrayUByte. Call _data.makeStringsFromBytes()_ to turn this into Strings with the array rank reduced by one.
   * Netcdf-3 does not have STRING or UBYTE types. In practice, CHAR is used for either. 
   * Netcdf-4/HDF5 library encodes CHAR values as HDF5 string type with elemSize = 1, so we use that convention to detect 
-    legacy CHAR variables in HDF5 files. NC_CHAR should not be used in Netcdf-4, use NC_UBYTE or NC_STRING.
+    legacy CHAR variables in HDF5 files. (NC_CHAR should not be used in Netcdf-4, use NC_UBYTE or NC_STRING.)
+  * Netcdf-4/HDF5 String variables may be fixed or variable length. For fixed Strings, we set the size of Datatype.STRING to 
+    the fixed size. For both fixed and variable length Strings, the string withh be truncated at the first zero byte, if any.
   * HDF4 does not have a STRING type, but does have signed and unsigned CHAR, and signed and unsigned BYTE. 
     We map both signed and unsigned to Datatype.CHAR and handle it as above (Attributes are Strings, Variables are UBytes).
-* _Datatype.STRING_ is always variable length, regardless of whether the data in the file is variable or fixed length.
+* _Datatype.STRING_ always appears to be variable length to the user, regardless of whether the data in the file is variable or fixed length.
 
 #### Typedef
 Unlike Netcdf-Java, we follow Netcdf-4 "user defined types" and add typedefs for Compound, Enum, Opaque, and Vlen.
@@ -226,6 +228,8 @@ local to the variable they are referenced by.
 * Opaque: hdf5 makes arrays of Opaque all the same size, which gives up some of its usefulness. If there's a need,
   we will allow Opaque(*) indicating that the sizes can vary.
 * Attributes can be of type REFERENCE, with value the full path name of the referenced dataset.
+* Vlen Strings are stored on the heap. Fixed length Strings are kept in byte arrays. 
+  This is more or less invisible to the User.
 
 #### Compare with HDF4 data model
 * All data access is unified under the netchdf API.

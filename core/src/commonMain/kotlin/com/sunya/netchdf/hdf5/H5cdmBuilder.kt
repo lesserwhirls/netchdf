@@ -52,11 +52,16 @@ internal fun H5builder.buildGroup(group5 : H5Group) : Group.Builder {
     }
 
     group5.variables.filter{ it.isVariable }.forEach {
-        val vb = buildVariable( groupb, it )
-        groupb.addVariable(vb)
-        val address = it.dataObject.address
-        // println("**H5builder vb.name=${vb.name} address=${it.dataObject.address}") // maybe there a byte order problem ??
-        if (address > 0) datasetMap[address] = Pair(groupb, vb)
+        try {
+            val vb = buildVariable( groupb, it )
+            groupb.addVariable(vb)
+            val address = it.dataObject.address
+            // println("**H5builder vb.name=${vb.name} address=${it.dataObject.address}") // maybe there a byte order problem ??
+            if (address > 0) datasetMap[address] = Pair(groupb, vb)
+        } catch (e: RuntimeException) {
+            e.printStackTrace()
+            // fall through
+        }
     }
 
     group5.nestedGroups.forEach { groupb.addGroup( buildGroup( it )) }

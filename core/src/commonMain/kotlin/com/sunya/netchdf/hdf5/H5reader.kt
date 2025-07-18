@@ -38,9 +38,12 @@ internal fun <T> H5builder.readCompactData(v2 : Variable<T>, shape : IntArray): 
         is DataLayoutCompact3 -> vinfo.mdl.compactData
         else -> throw RuntimeException("CompactData must be DataLayoutCompact or DataLayoutCompact3")
     }
-    // bb.order(vinfo.h5type.isBE)
 
-    return this.processDataIntoArray(ba, vinfo.h5type.isBE, vinfo.h5type.datatype(), shape, vinfo.h5type, vinfo.elementSize) as ArrayTyped<T>
+    return if (vinfo.h5type.datatype5 == Datatype5.Vlen) {
+        this.processVlenIntoArray(vinfo.h5type, shape, ba, shape.computeSize(), vinfo.elementSize)
+    } else {
+        this.processDataIntoArray(ba, vinfo.h5type.isBE, vinfo.h5type.datatype(), shape, vinfo.h5type, vinfo.elementSize) as ArrayTyped<T>
+    }
 }
 
 // handles reading data with a Layout. LOOK: Fill Value ??

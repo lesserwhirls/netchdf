@@ -8,7 +8,7 @@ import com.sunya.cdm.layout.IndexSpace
 import com.sunya.cdm.layout.TransferChunk
 
 @OptIn(ExperimentalUnsignedTypes::class)
-class ArrayULong(shape : IntArray, val values: ULongArray) : ArrayTyped<ULong>(Datatype.ULONG, shape) {
+class ArrayULong(shape : IntArray, datatype : Datatype<*>, val values: ULongArray) : ArrayTyped<ULong>(datatype, shape) {
 
     override fun iterator(): Iterator<ULong> = BufferIterator()
     private inner class BufferIterator : AbstractIterator<ULong>() {
@@ -17,7 +17,7 @@ class ArrayULong(shape : IntArray, val values: ULongArray) : ArrayTyped<ULong>(D
     }
 
     override fun section(section: Section): ArrayULong {
-        return ArrayULong(section.shape.toIntArray(), sectionOf(section))
+        return ArrayULong(section.shape.toIntArray(), this.datatype, sectionOf(section))
     }
 
     private fun sectionOf(section: Section): ULongArray {
@@ -40,6 +40,6 @@ class ArrayULong(shape : IntArray, val values: ULongArray) : ArrayTyped<ULong>(D
 
     companion object {
         fun fromLongArray(shape : IntArray, values : LongArray): ArrayULong =
-            ArrayULong(shape, ULongArray(values.size) { values[it].toULong() } )
+            ArrayULong(shape, Datatype.ULONG, ULongArray(values.size) { values[it].toULong() } )
     }
 }
