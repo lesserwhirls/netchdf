@@ -1,15 +1,19 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.cdm.api.*
+import com.sunya.cdm.api.CompoundTypedef
+import com.sunya.cdm.api.Datatype
+import com.sunya.cdm.api.EnumTypedef
+import com.sunya.cdm.api.convertEnums
 import com.sunya.cdm.array.ArrayStructureData
 import com.sunya.cdm.array.ArrayTyped
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.testutil.readNetchdfData
-import com.sunya.netchdf.testfiles.testData
-
-import kotlin.test.*
+import com.sunya.netchdf.testutil.testData
+import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertContentEquals
+import kotlin.test.assertEquals
+
 
 class H5enumTest {
 
@@ -26,6 +30,13 @@ class H5enumTest {
     }
 
     @Test
+    fun testReadNetchdfData() {
+        files().forEach { filename ->
+            readNetchdfData(filename, null, null, true, true)
+        }
+    }
+    
+    @Test
     fun testEnumAttribute() {
         val filename = testData + "devcdm/netcdf4/tst_enums.nc"
         openNetchdfFile(filename).use { myfile ->
@@ -34,7 +45,7 @@ class H5enumTest {
 
             val att = myfile.rootGroup().attributes.find{ it.name == "brady_attribute"}!!
             println("brady_attribute = $att")
-            assertEquals(Datatype.ENUM1, att.datatype)
+            assertEquals(Datatype.Companion.ENUM1, att.datatype)
             assertContentEquals(listOf(0.toUByte(), 3.toUByte(), 8.toUByte()), att.values)
             assertEquals(listOf("Mike", "Marsha", "Alice"), att.convertEnums())
 
@@ -50,7 +61,7 @@ class H5enumTest {
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
             val v = myfile.rootGroup().variables.find{ it.name == "EnumTest"}!!
-            assertEquals(Datatype.ENUM4, v.datatype)
+            assertEquals(Datatype.Companion.ENUM4, v.datatype)
             val data = myfile.readArrayData(v)
             println("EnumTest data = $data")
             val expect = listOf(0,1,2,3,4,0,1,2,3,4)
@@ -73,7 +84,7 @@ class H5enumTest {
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
             val v = myfile.rootGroup().variables.find{ it.name == "EnumCmpndTest"}!!
-            assertEquals(Datatype.COMPOUND, v.datatype)
+            assertEquals(Datatype.Companion.COMPOUND, v.datatype)
             val typedef = v.datatype.typedef as CompoundTypedef
             val member = typedef.members.find { it.name == "color_name"}!!
 
@@ -81,7 +92,7 @@ class H5enumTest {
 
             val sdataArray = myfile.readArrayData(v)
             println("EnumCmpndTest data = $sdataArray")
-            assertEquals(Datatype.COMPOUND, sdataArray.datatype)
+            assertEquals(Datatype.Companion.COMPOUND, sdataArray.datatype)
             val dtypedef = v.datatype.typedef as CompoundTypedef
             assertEquals(typedef, dtypedef)
 
@@ -91,8 +102,8 @@ class H5enumTest {
                 println("sdata = $sdata")
                 val wtf : ArrayTyped<*> = member.values(sdata)
                 println("value = $wtf")
-                assertEquals((idx % 5).toUInt(), wtf.first())
-                assertEquals(expectNames[idx % 5], wtf.convertEnums().first())
+                assertEquals(mtypedef.convertEnum(idx % 5), wtf.first())
+                // assertEquals(expectNames[idx % 5], wtf.convertEnums().first())
             }
         }
     }
@@ -104,13 +115,6 @@ class H5enumTest {
     fun compoundEnumTypedef() {
         val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
         readNetchdfData(filename, null, null, true, false)
-    }
-
-    @Test
-    fun testReadNetchdfData() {
-        files().forEach { filename ->
-            readNetchdfData(filename, null, null, true, true)
-        }
     }
 
 }

@@ -1,4 +1,4 @@
-package com.sunya.netchdf5.hdf5
+package com.sunya.netchdf.hdf5
 
 import com.sunya.netchdf.testutil.runTest
 import io.kotest.property.Arb

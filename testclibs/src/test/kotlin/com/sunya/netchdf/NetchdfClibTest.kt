@@ -226,13 +226,14 @@ isThreadsafe = 0 = false
             openNetchdfFile(filename).use { ncfile ->
                 if (ncfile == null) {
                     println("Not a netchdf file=$filename ")
-                    return
+                } else {
+                    // println("${ncfile.type()} $filename ")
+                    val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
+                    paths.add(filename)
                 }
-                println("${ncfile.type()} $filename ")
-                val paths = versions.getOrPut(ncfile.type()) { mutableListOf() }
-                paths.add(filename)
             }
         }
+        afterAll()
     }
 
     @Test

@@ -86,7 +86,7 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
         val value = value(sdata)
         if (value is ArrayTyped<*>) return value
 
-        if (value is String) return ArrayString(intArrayOf(1), listOf(value as String))
+        if (value is String) return ArrayString(intArrayOf(1), listOf(value))
 
         return when (datatype) {
             Datatype.BYTE -> ArrayByte(intArrayOf(1), ByteArray(1) { value as Byte })

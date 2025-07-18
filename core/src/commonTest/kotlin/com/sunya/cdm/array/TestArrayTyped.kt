@@ -3,16 +3,13 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
-import com.sunya.netchdf.testutil.propTestFastConfig
 import com.sunya.netchdf.testutil.propTestSlowConfig
 import com.sunya.netchdf.testutil.runTest
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.int
-import io.kotest.property.arbitrary.string
 import io.kotest.property.checkAll
 import kotlin.test.*
 import kotlin.math.max
-import kotlin.test.*
 
 class TestArrayTyped {
 

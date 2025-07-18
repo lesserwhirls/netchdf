@@ -61,7 +61,7 @@ fun ByteArray.makeStringFromBytes(): String {
  * If there is a null (zero) value in the array, the String will end there.
  * The null is not returned as part of the String.
  */
-internal fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
+fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     var count = 0
     for (c in this) {
         if (c.toInt() == 0) {
@@ -73,7 +73,7 @@ internal fun ArrayByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): S
     return this.values.decodeToString(charset, 0, count)
 }
 
-internal fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
+fun ArrayUByte.makeStringFromBytes(charset : Charset = Charsets.UTF8): String {
     var count = 0
     for (c in this) {
         if (c.toInt() == 0) {
