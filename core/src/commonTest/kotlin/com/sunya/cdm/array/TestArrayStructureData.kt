@@ -3,22 +3,15 @@ package com.sunya.cdm.array
 import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
-import com.sunya.netchdf.testutil.propTestSlowConfig
-import com.sunya.netchdf.testutil.runTest
-import io.kotest.property.Arb
-import io.kotest.property.arbitrary.int
-import io.kotest.property.checkAll
 import kotlin.test.*
-import kotlin.math.max
-import kotlin.test.*
+
 
 class TestArrayStructureData {
 
-    /* TODO kmm
     @Test
     fun TestStructureMember() {
         // open class StructureMember<T>(val orgName: String, val datatype : Datatype<T>, val offset: Int, val dims : IntArray, val endian : ByteOrder? = null) {
-        val test = StructureMember("org name", Datatype.LONG, 42, intArrayOf())
+        val test = StructureMember("org name", Datatype.LONG, 42, intArrayOf(), true)
         assertEquals("org_name", test.name)
         assertEquals(Datatype.LONG, test.datatype)
         assertEquals(42, test.offset)
@@ -29,20 +22,19 @@ class TestArrayStructureData {
         )
 
         assertEquals(test, test)
-        val test2 = StructureMember("org name", Datatype.LONG, 42, intArrayOf(1))
+        val test2 = StructureMember("org name", Datatype.LONG, 42, intArrayOf(1), true)
         assertNotEquals(test, test2)
         assertNotEquals(test.hashCode(), test2.hashCode())
     }
 
     @Test
     fun TestReadStringZ() {
-        val bb = ByteBuffer.allocate(60)
-        repeat(60) { bb.put((48 + it).toByte()) }
+        val bb = ByteArray(60) { (48 + it).toByte() }
         assertEquals("0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijk", makeStringZ(bb, 0, 60))
         assertEquals(30, makeStringZ(bb, 10, 30).length)
         assertEquals(":;<=>?@ABCDEFGHIJKLMNOPQRSTUVW", makeStringZ(bb, 10, 30))
 
-        bb.put(20, 0.toByte())
+        bb[20] = 0.toByte()
         assertEquals(20, makeStringZ(bb, 0, 30).length)
         assertEquals("0123456789:;<=>?@ABC", makeStringZ(bb, 0, 30))
     }
@@ -51,22 +43,23 @@ class TestArrayStructureData {
         val members = mutableListOf<StructureMember<*>>()
         var offset = 0
         var count = 1
-        for (datatype in StructureMember.datatypes()) {
-            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1))
+        for (datatype in testWithDatatypes()) {
+            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1), true)
             members.add(member)
             offset += datatype.size
             count++
         }
-        for (datatype in StructureMember.datatypes()) {
-            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(2))
+        for (datatype in testWithDatatypes()) {
+            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(2), true)
             members.add(member)
             offset += datatype.size * 2
             count++
         }
         val recsize = offset
-        val bb = ByteBuffer.allocate(recsize * recnums)
-        repeat(recnums) { bb.put(recsize * it, it.toByte()) } // recnum is first byte value
-        return ArrayStructureData(intArrayOf(recnums), bb, recsize, members)
+        val bb = ByteArray(recsize * recnums)
+        repeat(recnums) { bb[recsize * it] = it.toByte() } // recnum is first byte value
+        // class ArrayStructureData(shape : IntArray, val ba : ByteArray, val isBE: Boolean, val recsize : Int, val members : List<StructureMember<*>>)
+        return ArrayStructureData(intArrayOf(recnums), bb, true, recsize, members)
     }
 
     @Test
@@ -97,19 +90,19 @@ class TestArrayStructureData {
         val members = mutableListOf<StructureMember<*>>()
         var offset = 0
         var count = 1
-        for (datatype in StructureMember.datatypes()) {
-            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1))
+        for (datatype in testWithDatatypes()) {
+            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1), true)
             members.add(member)
             offset += datatype.size
             count++
         }
 
-        val svMember = StructureMember("svMember", Datatype.STRING.withVlen(true), offset, intArrayOf(1))
+        val svMember = StructureMember("svMember", Datatype.STRING.withVlen(true), offset, intArrayOf(1), true)
         members.add(svMember)
         val recsize = offset + Datatype.STRING.size
 
         val recnums = 3
-        val arraySD = ArrayStructureData(intArrayOf(recnums), ByteBuffer.allocate(recsize * recnums), recsize, members)
+        val arraySD = ArrayStructureData(intArrayOf(recnums), ByteArray(recsize * recnums), true, recsize, members)
         var recno = 0
         for (sdata in arraySD) {
             sdata.putOnHeap(svMember, "hoottenanny-$recno") // not  list
@@ -129,8 +122,8 @@ class TestArrayStructureData {
         val members = mutableListOf<StructureMember<*>>()
         var offset = 0
         var count = 1
-        for (datatype in StructureMember.datatypes()) {
-            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1))
+        for (datatype in testWithDatatypes()) {
+            val member = StructureMember("m${datatype.cdlName}-$count", datatype, offset, intArrayOf(1), true)
             members.add(member)
             offset += datatype.size
             count++
@@ -138,12 +131,12 @@ class TestArrayStructureData {
 
         // really an array of two vlens. but no way to sdata.putOnHeap, other than idx = 0
         // note each vlen can be any number
-        val svMember = StructureMember("svMember", Datatype.STRING.withVlen(true), offset, intArrayOf(2))
+        val svMember = StructureMember("svMember", Datatype.STRING.withVlen(true), offset, intArrayOf(2), true)
         members.add(svMember)
         val recsize = offset + Datatype.STRING.size * 2
 
         val recnums = 3
-        val arraySD = ArrayStructureData(intArrayOf(recnums), ByteBuffer.allocate(recsize * recnums), recsize, members)
+        val arraySD = ArrayStructureData(intArrayOf(recnums), ByteArray(recsize * recnums), true, recsize, members)
         var recno = 0
         for (sdata in arraySD) {
             sdata.putOnHeap(svMember, listOf("hoot-$recno", "holler-$recno"))
@@ -153,7 +146,7 @@ class TestArrayStructureData {
         recno = 0
         for (sdata in arraySD) {
             val wtf: Any = svMember.value(sdata)
-            assertEquals(listOf("hoot-$recno", "holler-$recno"), wtf)
+            assertEquals(ArrayString(intArrayOf(2), listOf("hoot-$recno", "holler-$recno")), wtf)
             recno++
         }
     }
@@ -181,43 +174,42 @@ class TestArrayStructureData {
         }
     }
 
-
     fun makeArrayStructureDataWithObjects(recnums: Int, addVStrings: Boolean, addVlens: Boolean): ArrayStructureData {
         val members = mutableListOf<StructureMember<*>>()
         var offset = 0
 
-        members.add(StructureMember("recnum", Datatype.BYTE, offset, intArrayOf(1)))
+        members.add(StructureMember("recnum", Datatype.BYTE, offset, intArrayOf(1), true))
         offset++
 
         if (addVStrings) {
             var stringDatatype = Datatype.STRING.withVlen(true)
-            members.add(StructureMember("stringDatatype1", stringDatatype, offset, intArrayOf(1)))
+            members.add(StructureMember("stringDatatype1", stringDatatype, offset, intArrayOf(1), true))
             offset += stringDatatype.size
 
-            members.add(StructureMember("stringDatatype2", stringDatatype, offset, intArrayOf(2)))
+            members.add(StructureMember("stringDatatype2", stringDatatype, offset, intArrayOf(2), true))
             offset += stringDatatype.size * 2
         }
 
         if (addVlens) {
             val vlenDatatype = Datatype.VLEN.withTypedef(VlenTypedef("vlenInt", Datatype.INT))
-            members.add(StructureMember("vlenDatatype1", vlenDatatype, offset, intArrayOf(1)))
+            members.add(StructureMember("vlenDatatype1", vlenDatatype, offset, intArrayOf(1), true))
             offset += vlenDatatype.size
 
-            members.add(StructureMember("vlenDatatype2", vlenDatatype, offset, intArrayOf(2)))
+            members.add(StructureMember("vlenDatatype2", vlenDatatype, offset, intArrayOf(2), true))
             offset += vlenDatatype.size * 2
         }
 
         val recsize = offset
-        val bb = ByteBuffer.allocate(recsize * recnums)
-        repeat(recnums) { bb.put(recsize * it, it.toByte()) } // recnum is first byte value
-        return ArrayStructureData(intArrayOf(recnums), bb, recsize, members)
+        val bb = ByteArray(recsize * recnums)
+        repeat(recnums) { bb[recsize * it] = it.toByte() } // recnum is first byte value
+        return ArrayStructureData(intArrayOf(recnums), bb, true, recsize, members)
     }
 
     @Test
     fun putStringsOnHeap() {
         val arraySD3 = makeArrayStructureDataWithObjects(3, true, false)
 
-        arraySD3.putStringsOnHeap { member, offset ->
+        arraySD3.putVlenStringsOnHeap { member, offset ->
             val result = mutableListOf<String>()
             repeat(member.nelems) {
                 val sval = "sm-$offset"
@@ -231,8 +223,7 @@ class TestArrayStructureData {
         var recno = 0
         for (sdata in arraySD3) {
             val wtf: Any = sMember.value(sdata)
-            val sval = "sm-${1+recno*arraySD3.recsize}"
-            assertEquals(listOf(sval), wtf)
+            assertEquals("sm-${1+recno*arraySD3.recsize}", wtf)
             recno++
         }
 
@@ -241,7 +232,7 @@ class TestArrayStructureData {
         for (sdata in arraySD3) {
             val wtf: Any = sMember2.value(sdata)
             val sval = "sm-${5+recno2*arraySD3.recsize}"
-            assertEquals(listOf(sval, sval), wtf)
+            assertEquals(ArrayString(intArrayOf(2), listOf(sval, sval)), wtf)
             recno2++
         }
     }
@@ -289,5 +280,26 @@ class TestArrayStructureData {
         }
     }
 
-     */
+    @Test
+    fun testStructureDataIterator() {
+        val arraySD = makeArrayStructureData(11)
+
+        for (member in arraySD.members) {
+            print("${member.name} (${member.nelems}) = ")
+            val memberIterator = member.values(arraySD)
+            var count = 0
+            for (value in memberIterator) {
+                print("$value, ")
+                count++
+            }
+            println(" ($count)")
+           //  assertEquals(11 * member.nelems, count)
+        }
+    }
 }
+
+fun testWithDatatypes() = listOf(Datatype.BYTE, Datatype.UBYTE, Datatype.SHORT, Datatype.USHORT, Datatype.INT,
+    Datatype.UINT, Datatype.LONG, Datatype.ULONG, Datatype.DOUBLE, Datatype.FLOAT, Datatype.ENUM1,
+    Datatype.ENUM2, Datatype.ENUM4, Datatype.CHAR, Datatype.STRING,
+    // Datatype.OPAQUE, Datatype.COMPOUND, Datatype.VLEN, Datatype.REFERENCE
+)

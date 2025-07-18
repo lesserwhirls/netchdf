@@ -9,9 +9,8 @@ import com.sunya.cdm.array.ArrayStructureData
  * @param cdlName name in CDL
  * @param size Size in bytes of one element of this data type.
  * @param typedef used for ENUM, VLEN, OPAQUE, COMPOUND
- * @param isVlen HDF5 needs to track if this is a Vlen or regular String.
+ * @param isVlen HDF5 needs to track if this is a Vlen or fixed length String.
  */
-// TODO should this be an actual Enum?
 data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef? = null, val isVlen : Boolean? = null) {
 
     companion object {
@@ -99,6 +98,8 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
 
     fun withVlen(isVlen: Boolean): Datatype<T> = this.copy(isVlen = isVlen)
 
+    fun withSize(size: Int): Datatype<T> = this.copy(size = size)
+
     // like enum, equals just compares the type, ignoring the "with" properties. TODO WHY?
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -107,14 +108,14 @@ data class Datatype<T>(val cdlName: String, val size: Int, val typedef : Typedef
         other as Datatype<*>
 
         if (cdlName != other.cdlName) return false
-        if (size != other.size) return false
+        //if (size != other.size) return false
 
         return true
     }
 
     override fun hashCode(): Int {
         var result = cdlName.hashCode()
-        result = 31 * result + size
+        //result = 31 * result + size
         return result
     }
 

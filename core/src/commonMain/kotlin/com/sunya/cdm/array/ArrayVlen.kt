@@ -4,6 +4,7 @@ import com.sunya.cdm.api.*
 import com.sunya.cdm.layout.IndexND
 import com.sunya.cdm.layout.IndexSpace
 
+// maybe should just return primitive array if only one ??
 class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType : Datatype<T>)
     : ArrayTyped<Array<T>>(Datatype.VLEN as Datatype<Array<T>>, shape) {
 
@@ -78,7 +79,7 @@ class ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType :
                 Datatype.INT -> ArrayVlen(shape, arrays.map { it as Array<Int> }, baseType as Datatype<Int>)
                 Datatype.UINT, Datatype.ENUM4 -> ArrayVlen(shape, arrays.map { it as Array<UInt> }, baseType as Datatype<UInt>)
                 Datatype.LONG -> ArrayVlen(shape, arrays.map { it as Array<Long> }, baseType as Datatype<Long>)
-                Datatype.ULONG, Datatype.ENUM2 -> ArrayVlen(shape, arrays.map { it as Array<ULong> }, baseType as Datatype<ULong>)
+                Datatype.ULONG, Datatype.ENUM8 -> ArrayVlen(shape, arrays.map { it as Array<ULong> }, baseType as Datatype<ULong>)
                 Datatype.FLOAT -> ArrayVlen(shape, arrays.map { it as Array<Float> }, baseType as Datatype<Float>)
                 Datatype.DOUBLE -> ArrayVlen(shape, arrays.map { it as Array<Double> }, baseType as Datatype<Double>)
                 Datatype.STRING -> ArrayVlen(shape, arrays.map { it as Array<String> }, baseType as Datatype<String>)

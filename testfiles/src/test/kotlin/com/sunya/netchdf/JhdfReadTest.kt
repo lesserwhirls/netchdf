@@ -55,7 +55,7 @@ class JhdfReadTest {
     fun problem() {
         val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
         println(filename)
-        readNetchdfData(filename, "chunked_compound", null, true, true)
+        readNetchdfData(filename, "vlen_chunked_compound", null, true, true)
     }
 
     // HDF5 "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/bitshuffle_datasets.hdf5" {

@@ -20,7 +20,7 @@ class ArrayUByte(shape: IntArray, datatype: Datatype<*>, val values: UByteArray)
     }
 
     override fun section(section: Section): ArrayUByte {
-        return ArrayUByte(section.shape.toIntArray(), sectionOf(section))
+        return ArrayUByte(section.shape.toIntArray(), this.datatype, sectionOf(section))
     }
 
     private fun sectionOf(section: Section): UByteArray {

@@ -736,8 +736,6 @@ internal fun <T> readRegularData(session : Arena, datasetId : Long, h5ctype : H5
     checkErr("H5Dread", H5Dread(datasetId, h5ctype.type_id, memSpaceId, fileSpaceId, H5P_DEFAULT_LONG, data_p))
 
     val raw = data_p.toArray(ValueLayout.JAVA_BYTE)!!
-    //val bb = ByteBuffer.wrap(raw)
-    //bb.order(h5ctype.endian)
 
     val dims = want.shape.toIntArray()
     if (datatype == Datatype.COMPOUND) {
@@ -805,34 +803,7 @@ internal fun <T> processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype5 : 
     }
 
     val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
-    val result = tba.convertToArrayTyped(shape)
-
-    /*
-    var result = when (datatype) {
-        Datatype.BYTE -> ArrayByte(shape, bb)
-        Datatype.STRING, Datatype.CHAR, Datatype.UBYTE -> ArrayUByte(shape, datatype as Datatype<UByte>, bb)
-        Datatype.ENUM1 -> ArrayUByte(shape, datatype as Datatype<UByte>,  bb)
-        Datatype.SHORT -> ArrayShort(shape, bb)
-        Datatype.USHORT, Datatype.ENUM2 -> ArrayUShort(shape, datatype as Datatype<UShort>, bb)
-        Datatype.INT -> ArrayInt(shape, bb)
-        Datatype.UINT, Datatype.ENUM4 -> ArrayUInt(shape, datatype as Datatype<UInt>, bb)
-        Datatype.FLOAT -> ArrayFloat(shape, bb)
-        Datatype.DOUBLE -> ArrayDouble(shape, bb)
-        Datatype.LONG -> ArrayLong(shape, bb)
-        Datatype.ULONG -> ArrayULong(shape, bb)
-        Datatype.OPAQUE -> ArrayOpaque(shape, bb, elemSize)
-        Datatype.REFERENCE -> {
-            bb.order(ByteOrder.LITTLE_ENDIAN) // TODO just guessing. maybe ByteOrder.NATURAL ?
-            ArrayLong(shape, bb)
-        }
-        else -> {
-            // return ArraySingle(shape, Datatype.INT, 0) as ArrayTyped<T>
-            throw IllegalStateException("unimplemented type= $datatype")
-        }
-    }
-
-     */
-    return result
+    return tba.convertToArrayTyped(shape)
 }
 
 // Put the variable length members (vlen, string) on the heap

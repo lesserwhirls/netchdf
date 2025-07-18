@@ -1,38 +1,20 @@
 package com.sunya.netchdf.jhdf
 
 
-import com.sunya.cdm.array.ArrayByte
-import com.sunya.cdm.array.ArrayDouble
-import com.sunya.cdm.array.ArrayFloat
-import com.sunya.cdm.array.ArrayInt
-import com.sunya.cdm.array.ArrayLong
-import com.sunya.cdm.array.ArrayShort
-import com.sunya.cdm.array.ArrayString
-import com.sunya.cdm.array.ArrayStructureData
-import com.sunya.cdm.array.ArrayTyped
-import com.sunya.cdm.array.ArrayUByte
-import com.sunya.cdm.util.Indent
-import com.sunya.netchdf.hdf5.BitShuffleFilter
-import com.sunya.netchdf.hdf5.Datatype5
-import com.sunya.netchdf.hdf5.FilterRegistrar
-import com.sunya.netchdf.hdf5.Lz4Filter
-import com.sunya.netchdf.hdf5.LzfFilter
+import com.sunya.cdm.api.Datatype
+import com.sunya.cdm.api.EnumTypedef
+import com.sunya.cdm.array.*
+import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.testfiles.JhdfFiles
 import com.sunya.netchdf.testutils.readNetchdfData
-import io.jhdf.CommittedDatatype
 import io.jhdf.HdfFile
-import io.jhdf.api.Attribute
-import io.jhdf.api.Dataset
-import io.jhdf.api.Group
-import io.jhdf.`object`.datatype.DataType
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.nio.file.Paths
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.use
 
 class JhdfCompare {
     companion object {
@@ -58,37 +40,40 @@ class JhdfCompare {
 
     @Test
     fun compareOneWithJhdf() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
-        compareDataWithJhdf(filename, varname="chunked_compound", showData = true)
+        // this ones pretty bad
+        // val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/isssue-523.hdf5"
+        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/test_scalar_empty_datasets_latest.hdf5"
+        compareDataWithJhdf(filename, varname="empty_uint_64", showData = true, showCdl = true)
+        // compareDataWithJhdf(filename, showData = false, showCdl = true)
     }
 
-    fun compareDataWithJhdf(filename: String, varname: String? = null, showData: Boolean = false) {
+    fun compareDataWithJhdf(filename: String, varname: String? = null, showData: Boolean = false, showCdl: Boolean = false) {
         println(filename)
+        println(varname)
 
         openNetchdfFile(filename).use { myfile ->
             if (myfile == null) {
                 println("*** not a netchdf file = $filename")
                 return
             }
+            if (showCdl) println(myfile.cdl())
 
             val path = Paths.get(filename)
             HdfFile(path).use { hdf ->
                 myfile.rootGroup().allVariables().forEach { myvar ->
-                    if (varname == null || varname == myvar.name)
+                    if (varname == null || varname == myvar.fullname())
                         try {
                             val mydata = myfile.readArrayData(myvar)
-                            println("  mydata = ${myvar.datatype} ${myvar.name}${myvar.shape.contentToString()}")
+                            println("  mydata = ${myvar.datatype} ${myvar.fullname()}${myvar.shape.contentToString()}")
                             if (showData) println("[${mydata.showValues()}]")
 
                             val jhdfDataset = hdf.getDatasetByPath(myvar.fullname())
                             val jhdfData = jhdfDataset.getDataFlat();
-                            println("  yrdata = ${jhdfDataset.dataType.show()} ${jhdfDataset.name}${jhdfDataset.dimensions.contentToString()}")
+                            println("  yrdata = ${jhdfDataset.dataType.show()} ${myvar.fullname()}${jhdfDataset.dimensions.contentToString()}")
                             if (showData) println("[${showJhdfData(jhdfData)}]")
 
-                            if (mydata is ArrayStructureData)
-                                compareStructureData(jhdfData as Map<*, *>, mydata)
-                            else
-                                compareArrayData(jhdfData, mydata)
+                            // if (jhdfData.javaClass.isArray() && )
+                            compareData(jhdfData, mydata)
                             println()
                         } catch (e: Throwable) {
                             println("*** Exception ${e.message} for $myvar")
@@ -99,66 +84,169 @@ class JhdfCompare {
         }
     }
 
-    fun compareArrayData(data: Any, mydata: ArrayTyped<*>) {
-        when (data) {
-            is BooleanArray -> {
-                // why does jhdf convert H5T_STD_B8LE to BooleanArray ??
-                when (mydata) {
-                    is ArrayUByte ->  {
-                        mydata.forEachIndexed { index, ubyte -> assertTrue( (ubyte != 0.toUByte()) == data[index]) }
-                    }
-                    else -> println("*** ${data.javaClass.simpleName} not compared to BooleanArray")
-                }
-            }
-            is ByteArray ->  assertTrue(data.contentEquals ((mydata as ArrayByte).values))
-            is ShortArray -> assertTrue(data.contentEquals ((mydata as ArrayShort).values))
-            is IntArray -> assertTrue(data.contentEquals ((mydata as ArrayInt).values))
-            is LongArray -> assertTrue(data.contentEquals ((mydata as ArrayLong).values))
-            is FloatArray -> assertTrue(data.contentEquals ((mydata as ArrayFloat).values))
-            is DoubleArray -> assertTrue(data.contentEquals ((mydata as ArrayDouble).values))
-            is Array<*> -> {
-                when (mydata) {
-                    is ArrayString ->  {
-                        mydata.forEachIndexed { index, ss -> assertTrue( ss == data[index]) }
-                    }
-                    else -> println("*** ${data.javaClass.simpleName} not compared to Array<*>")
-                }
-            }
-            else -> println("*** ${data.javaClass.simpleName} not compared")
-        }
+    fun compareData(datahdf: Any, mydata: ArrayTyped<*>) {
+        if (mydata is ArrayStructureData)
+            compareStructureData(datahdf as Map<*, *>, mydata)
+        else
+            compareArrayData(datahdf, mydata)
     }
-
 
     fun compareStructureData(dataMap: Map<*, *>, mydata: ArrayStructureData) {
         val members = mydata.members
-        dataMap.forEach { key, arrayjhdf ->
-            val membername = key as String
-            val member = members.find { it.name == membername }!!
-
-            when (arrayjhdf) {
-                is BooleanArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is ByteArray ->  arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is ShortArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is IntArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is LongArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is FloatArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is DoubleArray -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf, member.value(mydata.get(idx)))}
-                is Array<*> -> arrayjhdf.forEachIndexed { idx, datahdf -> compareData( datahdf!!, member.value(mydata.get(idx)))}
-                else -> println("*** ${arrayjhdf!!.javaClass.simpleName} not compared")
+        members.forEach { member ->
+            val memberdata = member.values(mydata)
+            val arrayjhdf = dataMap[member.name]!!
+            val jhdfIter = convertToIterator(arrayjhdf)
+            while (memberdata.hasNext() && jhdfIter.hasNext()) {
+                val mydata = memberdata.next()
+                val mydataConvert = convertToJhdfType(mydata as Any, member.datatype)
+                val yrdata = jhdfIter.next()
+                if (mydataConvert != yrdata)
+                    print("")
+                //assertTrue(mydataConvert.contentEquals(yrdata), message = "$member")
             }
         }
     }
 
-    fun compareData(datahdf: Any, mydata: Any) {
+    fun convertToJhdfType(mydata : Any, datatype: Datatype<*>) : Any {
+        // UByteArray (primitive) vs Array<UByte> (Array with UByte objects) vs List<UByte>
+        // Only place we use Array<UByte> is in ArrayVlen<T>(shape : IntArray, val values : List<Array<T>>, val baseType : Datatype<T>)
+        // theres no superclass for the primitive arrays. can use javaClass.isArray() and javaClass.getComponentType()
+
+        val useType = if (datatype == Datatype.VLEN)
+                datatype.typedef!!.baseType
+            else
+                datatype
+
+        if (mydata is Array<*>) {
+            if (useType == Datatype.UBYTE) {
+                val mydatau = mydata as Array<UByte>
+                return IntArray(mydata.size) { mydatau[it].toInt() }
+            }
+        }
+
+        return when (mydata) {
+            is UByte -> mydata.toInt()
+            is UByteArray -> IntArray(mydata.size) { mydata[it].toInt() }
+            else -> mydata
+        }
+    }
+
+    fun convertToIterator(arrayjhdf: Any) : Iterator<Any> {
+        // nested arrays
+        if (arrayjhdf.javaClass.isArray()) {
+            if (arrayjhdf.javaClass.getComponentType().isArray) {
+                println(" array ${arrayjhdf.javaClass.name} of ${arrayjhdf.javaClass.getComponentType()}")
+                return NestedArrayIterator(arrayjhdf as Array<*>)
+            }
+        }
+
+        val result = mutableListOf<Any>()
+        when (arrayjhdf) {
+            is BooleanArray -> arrayjhdf.forEach { result.add(it) }
+            is ByteArray ->  arrayjhdf.forEach { result.add(it) }
+            is ShortArray -> arrayjhdf.forEach { result.add(it) }
+            is IntArray -> arrayjhdf.forEach { result.add(it) }
+            is LongArray -> arrayjhdf.forEach { result.add(it) }
+            is FloatArray -> arrayjhdf.forEach { result.add(it) }
+            is DoubleArray -> arrayjhdf.forEach { result.add(it) }
+            is Array<*> -> arrayjhdf.forEach { result.add(it!!) }
+            else -> {} // throw RuntimeException("*** ${arrayjhdf.javaClass.simpleName} not compared")
+        }
+        return result.iterator()
+    }
+
+    fun compareArrayData(yrdata: Any, mydata: ArrayTyped<*>) {
+        val mydataConverted = convertArrayToJhdfType(mydata, yrdata)
+        when (yrdata) {
+            is BooleanArray -> {
+                // why does jhdf convert H5T_STD_B8LE to BooleanArray ??
+                when (mydataConverted) {
+                    is ArrayUByte ->  {
+                        mydataConverted.forEachIndexed { index, ubyte -> assertTrue( (ubyte != 0.toUByte()) == yrdata[index]) }
+                    }
+                    else -> println("*** ${yrdata.javaClass.simpleName} not compared to BooleanArray")
+                }
+            }
+            is ByteArray ->  assertTrue(yrdata.contentEquals ((mydataConverted as ArrayByte).values))
+            is ShortArray -> assertTrue(yrdata.contentEquals ((mydataConverted as ArrayShort).values))
+            is IntArray -> assertTrue(yrdata.contentEquals ((mydataConverted as ArrayInt).values))
+            is LongArray -> assertTrue(yrdata.contentEquals ((mydataConverted as ArrayLong).values))
+            is FloatArray -> assertTrue(yrdata.contentEquals ((mydataConverted as ArrayFloat).values))
+            is DoubleArray -> assertTrue(yrdata.contentEquals ((mydataConverted as ArrayDouble).values))
+            is Array<*> -> {
+                when (mydataConverted) {
+                    is ArrayString ->  {
+                        mydataConverted.forEachIndexed { index, ss -> assertTrue( ss == yrdata[index]) }
+                    }
+                    is ArrayOpaque ->  {
+                        repeat(yrdata.size) {
+                            val yr : ByteArray = yrdata[it] as ByteArray
+                            val mine : ByteArray = mydataConverted.values[it]
+                            assertTrue(yr.contentEquals(mine))
+                        }
+                    }
+                    else -> throw RuntimeException("*** ${yrdata.javaClass.name} not compared to ${mydata.datatype}")
+                }
+            }
+            else -> throw RuntimeException("*** ${yrdata.javaClass.simpleName} not compared")
+        }
+    }
+
+    fun convertArrayToJhdfType(mydata : ArrayTyped<*>, yrdata: Any) : ArrayTyped<*> {
+        return when (yrdata) {
+            is IntArray -> {
+                when (mydata) {
+                    is ArrayUByte -> ArrayInt(mydata.shape, IntArray(mydata.nelems) { mydata.values[it].toInt() })
+                    is ArrayUShort -> ArrayInt(mydata.shape, IntArray(mydata.nelems) { mydata.values[it].toInt() })
+                    is ArrayUInt -> ArrayInt(mydata.shape, IntArray(mydata.nelems) { mydata.values[it].toInt() })
+                    is ArrayULong -> ArrayLong(mydata.shape, LongArray(mydata.nelems) { mydata.values[it].toLong() })
+                    else -> mydata
+                }
+            }
+            is Array<*> -> {
+                when (mydata) {
+                    is ArrayUByte -> {
+                        val typedef = mydata.datatype.typedef as EnumTypedef
+                        ArrayString(mydata.shape, mydata.values.map { typedef.convertEnum(it.toInt()) })
+                    }
+                    is ArrayUShort -> {
+                        val typedef = mydata.datatype.typedef as EnumTypedef
+                        ArrayString(mydata.shape, mydata.values.map { typedef.convertEnum(it.toInt()) })
+                    }
+                    is ArrayUInt -> {
+                        val typedef = mydata.datatype.typedef as EnumTypedef
+                        ArrayString(mydata.shape, mydata.values.map { typedef.convertEnum(it.toInt()) })
+                    }
+                    is ArrayULong -> {
+                        val typedef = mydata.datatype.typedef as EnumTypedef
+                        ArrayString(mydata.shape, mydata.values.map { typedef.convertEnum(it.toInt()) })
+                    }
+                    else -> mydata
+                }
+            }
+            else -> mydata
+        }
+    }
+
+    fun compareAnyData(datahdf: Any, mydata: Any) {
         when (datahdf) {
-            is Boolean ->  assertEquals(datahdf, (mydata != 0.toUByte()) )
-            is Byte ->  assertEquals(datahdf, mydata as Byte )
-            is Short ->  assertEquals(datahdf, mydata as Short )
-            is Int ->  assertEquals(datahdf, mydata as Int )
-            is Long ->  assertEquals(datahdf, mydata as Long )
-            is Float ->  assertEquals(datahdf, mydata as Float )
-            is Double ->  assertEquals(datahdf, mydata as Double )
-            is String ->  {
+            is Boolean -> assertEquals(datahdf, (mydata != 0.toUByte()))
+            is Byte -> assertEquals(datahdf, mydata as Byte)
+            is Short -> assertEquals(datahdf, mydata as Short)
+            is Int -> {
+                when (mydata) {
+                    is UByte -> assertEquals(datahdf, mydata.toInt())
+                    is Byte -> assertEquals(datahdf, mydata.toInt())
+                    is Int -> assertEquals(datahdf, mydata)
+                    else -> throw RuntimeException("*** ${datahdf.javaClass.simpleName} not compared")
+                }
+            }
+
+            is Long -> assertEquals(datahdf, mydata as Long)
+            is Float -> assertEquals(datahdf, mydata as Float)
+            is Double -> assertEquals(datahdf, mydata as Double)
+            is String -> {
                 if (mydata is String)
                     assertEquals(datahdf, mydata)
                 else if (mydata is ArrayString)
@@ -166,145 +254,18 @@ class JhdfCompare {
                 else
                     println("*** ${datahdf.javaClass.simpleName} not compared as String")
             }
+
             is Array<*> -> {
                 val mydata2 = mydata as ArrayString
                 datahdf.forEachIndexed { idx, datahdf2 ->
                     val mydata2v = mydata2.values.get(idx)
-                    compareData( datahdf2!!,  mydata2v)
+                    compareAnyData(datahdf2!!, mydata2v)
                 }
             }
-            else -> println("*** ${datahdf.javaClass.simpleName} not compared")
-        }
-    }
 
-    @Test
-    fun showJhdfData() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
-        showJhdfData(filename, datasetName="chunked_compound")
-    }
-
-    fun showJhdfData(filename: String, datasetName:String?) {
-        println(filename)
-        val path = Paths.get(filename)
-        HdfFile(path).use { hdf ->
-            hdf.showData("/", datasetName)
-        }
-    }
-
-    fun Group.showData(parent : String, datasetName: String? = null) {
-        println(" group: ${this.name} {")
-
-        this.children.forEach { name, child ->
-            if (child is Group) {
-                child.showData(parent + "/" + name)
-            } else if (child is Dataset) {
-                if (datasetName == null || datasetName == child.name) {
-                     child.showData(parent + "/" + name)
-                }
-            }
-        }
-    }
-
-    fun Dataset.showData(path: String) {
-        print("   dataset: ${this.dataType.show()} ${this.name}${this.dimensions.contentToString()} Dataset.getJavaType() = ${this.getJavaType().simpleName};")
-
-        val lookup = hdfFile.getDatasetByPath(path)
-        assertEquals(this, lookup)
-
-        // data will be a java array of the dimensions of the HDF5 dataset
-        val data = this.getDataFlat();
-        println(" data javaClass = ${data.javaClass.simpleName}")
-
-        if (data is Map<*,*>)
-            println(showJhdfCompoundData(data))
-        else
-            println("     data = ${showJhdfData(data)}")
-    }
-
-    fun showJhdfCompoundData(dataMap: Map<*, *>)  = buildString {
-        dataMap.forEach { key, arrayjhdf ->
-            append(key as String)
-            append(": ")
-            when (arrayjhdf) {
-                is BooleanArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData(datahdf)}") }
-                is ByteArray ->  arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is ShortArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is IntArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is LongArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is FloatArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is DoubleArray -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf)}")  }
-                is Array<*> -> arrayjhdf.forEachIndexed { idx, datahdf -> append(" ${showJhdfData( datahdf!!)}")  }
-                else -> append("*** ${arrayjhdf!!.javaClass.simpleName} not compared")
-            }
-            appendLine()
-        }
-    }
-
-    fun showJhdfData(data: Any): String {
-        return when ( data) {
-            is BooleanArray -> data.contentToString()
-            is ByteArray -> data.contentToString()
-            is ShortArray -> data.contentToString()
-            is IntArray -> data.contentToString()
-            is LongArray -> data.contentToString()
-            is FloatArray -> data.contentToString()
-            is DoubleArray -> data.contentToString()
-            is Array<*> -> data.contentToString()
-            else -> data.toString()
-        }
-    }
-
-    @Test
-    fun showJhdfCdl() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/bitfield_datasets.hdf5"
-        println(filename)
-        showJhdfCdl(filename, null)
-    }
-
-    fun showJhdfCdl(filename: String, dataset:String?) {
-        val path = Paths.get(filename)
-        val indent = Indent(2)
-        HdfFile(path).use { hdf ->
-            hdf.show(indent)
-        }
-    }
-
-    fun Group.show(indent: Indent) {
-        println("$indent group: ${this.name} {")
-
-        this.children.forEach { name, child ->
-            if (child is Group) {
-                child.show(indent.incr())
-            } else if (child is Dataset) {
-                child.show(indent.incr())
-            } else if (child is CommittedDatatype) {
-                val dataType = child.getDataType()
-                dataType.show(indent.incr(), child.name)
-            }
+            else -> compareArrayData(datahdf, mydata as ArrayTyped<*>)
         }
 
-        // if (this.children.size > 0) println()
-        this.attributes.forEach { (key, value) -> value.show(indent.incr())}
-        println("$indent }")
-    }
-
-    fun Dataset.show(indent: Indent) {
-        println("$indent variable: ${this.dataType.show()} ${this.name}${this.dimensions.contentToString()}")
-        this.attributes.forEach { (key, value) -> value.show(indent.incr())}
-    }
-
-    fun Attribute.show(indent: Indent) {
-        println("$indent attribute: ${this.name} = ${this.data} (${this.dataType.show()})")
-     }
-
-    fun DataType.show(indent: Indent, name: String) {
-        val h5Datatype = Datatype5.of(this.dataClass)
-        println("$indent type ${name} ${h5Datatype}")
-    }
-
-    fun DataType.show(): String {
-        val h5Datatype = Datatype5.of(this.dataClass)
-        return h5Datatype.toString()
     }
 
     /////////////////////////////////////
@@ -315,4 +276,47 @@ class JhdfCompare {
         readNetchdfData(filename, null, null, true, false)
     }
 
+}
+
+// double iterator (iterator of iterator)
+class NestedArrayIterator<T>(val array: Array<*>) : AbstractIterator<T>() {
+    var arrayIterator : Iterator<*>
+    var nestedIterator : Iterator<T>
+
+    init {
+        arrayIterator = array.iterator()
+        val currElem = arrayIterator.next()
+        if (currElem is FloatArray)
+            nestedIterator = currElem.iterator() as Iterator<T>
+        else if (currElem is DoubleArray)
+            nestedIterator = currElem.iterator() as Iterator<T>
+        else if (currElem is IntArray)
+            nestedIterator = currElem.iterator() as Iterator<T>
+        else if (currElem is Array<*>)
+            nestedIterator = currElem.iterator() as Iterator<T>
+        else
+            throw RuntimeException("*** ${currElem?.javaClass?.simpleName ?: "dunno"} not compared to Array<*>")
+    }
+
+    override fun computeNext() {
+        if (nestedIterator.hasNext()) {
+            setNext(nestedIterator.next())
+
+        } else if (arrayIterator.hasNext()) {
+            val currElem = arrayIterator.next()
+            if (currElem is FloatArray)
+                nestedIterator = currElem.iterator() as Iterator<T>
+            else if (currElem is DoubleArray)
+                nestedIterator = currElem.iterator() as Iterator<T>
+            else if (currElem is IntArray)
+                nestedIterator = currElem.iterator() as Iterator<T>
+            else if (currElem is Array<*>)
+                nestedIterator = currElem.iterator() as Iterator<T>
+            else
+                throw RuntimeException("*** ${currElem?.javaClass?.simpleName ?: "dunno"} not compared to Array<*>")
+
+        } else {
+            done()
+        }
+    }
 }

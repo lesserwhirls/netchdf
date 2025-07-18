@@ -120,12 +120,9 @@ class FractalHeapJ(val h5: H5builder, forWho: String, val fractalHeapAddress: Lo
                 }
             }
         }
-
-        //bb.rewind()
-        //ChecksumUtils.validateChecksum(bb)
-
         logger.debug{"Read fractal heap at address $fractalHeapAddress, loaded ${directBlocks.size} direct blocks"}
     }
+
 /* // TODO
     fun getFractalHeapId(heapId: ByteArray): ByteArray {
         /* if (buffer.remaining() != idLength) {
