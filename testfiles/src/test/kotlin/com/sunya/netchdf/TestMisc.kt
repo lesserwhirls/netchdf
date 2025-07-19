@@ -1,6 +1,6 @@
-package com.sunya.netchdf.testutils
+package com.sunya.netchdf
 
-import kotlin.test.*
+import kotlin.test.Test
 
 class TestMisc {
 

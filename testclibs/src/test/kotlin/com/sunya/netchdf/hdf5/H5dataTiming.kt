@@ -3,7 +3,7 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 import kotlin.system.measureNanoTime
 

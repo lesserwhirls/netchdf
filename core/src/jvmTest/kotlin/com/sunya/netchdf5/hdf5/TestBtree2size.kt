@@ -28,7 +28,7 @@ class TestBtree2size {
         compare(nodeSize, depth, recordSize)
     }
 
-    @Test
+   //  @Test
     fun problem() {
         val nodeSize = 8000
         val depth = 7

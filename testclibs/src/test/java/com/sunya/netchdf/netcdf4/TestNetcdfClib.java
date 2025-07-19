@@ -5,14 +5,15 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h;
-import com.sunya.netchdf.testfiles.TestFilesKt;
 import org.junit.jupiter.api.Test;
+
+import static com.sunya.netchdf.testutils.TestFilesKt.testData;
 
 public class TestNetcdfClib {
 
   @Test
   public void cantOpenProblem() throws IOException {
-    open(TestFilesKt.testData + "devcdm/netcdf3/simple_xy.nc");
+    open(testData + "devcdm/netcdf3/simple_xy.nc");
   }
 
   private void open(String filename) {

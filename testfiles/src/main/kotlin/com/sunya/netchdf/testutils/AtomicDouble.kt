@@ -1,6 +1,6 @@
 package com.sunya.netchdf.testutils
 
-import kotlin.concurrent.atomics.AtomicReference // TODO kmm not quite ready? Not sure I have semantics right.
+import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
 @OptIn(ExperimentalAtomicApi::class)

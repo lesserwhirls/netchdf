@@ -5,7 +5,7 @@ package com.sunya.netchdf
 import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf4.Hdf4File
 import com.sunya.netchdf.hdf5Clib.compareDataWithHdf5Clib
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 import kotlin.test.assertTrue
 

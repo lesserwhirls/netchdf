@@ -3,7 +3,6 @@ package com.sunya.netchdf.testfiles
 import com.sunya.netchdf.testutils.testData
 import com.sunya.netchdf.testutils.testFilesIn
 
-
 class N4Files {
 
     companion object {

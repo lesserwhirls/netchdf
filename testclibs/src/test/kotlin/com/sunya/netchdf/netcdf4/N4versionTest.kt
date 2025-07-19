@@ -9,8 +9,8 @@ class N4versionTest {
 
     companion object {
         @JvmStatic
-        fun files(): Sequence<String> {
-            return N4Files.params()
+        fun files(): Iterator<String> {
+            return N4Files.files()
         }
     }
 

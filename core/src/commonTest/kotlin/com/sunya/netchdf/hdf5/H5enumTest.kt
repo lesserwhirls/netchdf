@@ -18,14 +18,14 @@ import kotlin.test.assertEquals
 class H5enumTest {
 
     companion object {
-        fun files(): Sequence<String> {
+        fun files(): Iterator<String> {
             return sequenceOf (
-                testData + "devcdm/hdf5/cenum.h5",
-                testData + "devcdm/hdf5/enum.h5",
-                testData + "devcdm/hdf5/enumcmpnd.h5",
-                testData + "devcdm/netcdf4/test_enum_type.nc",
-                testData + "devcdm/netcdf4/tst_enums.nc",
-            )
+                testData + "hdf5/cenum.h5",
+                testData + "hdf5/enum.h5",
+                testData + "hdf5/enumcmpnd.h5",
+                testData + "netcdf4/test_enum_type.nc",
+                testData + "netcdf4/tst_enums.nc",
+            ).iterator()
         }
     }
 
@@ -38,7 +38,7 @@ class H5enumTest {
     
     @Test
     fun testEnumAttribute() {
-        val filename = testData + "devcdm/netcdf4/tst_enums.nc"
+        val filename = testData + "netcdf4/tst_enums.nc"
         openNetchdfFile(filename).use { myfile ->
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
@@ -56,7 +56,7 @@ class H5enumTest {
 
     @Test
     fun testEnumVariable() {
-        val filename = testData + "devcdm/hdf5/enum.h5"
+        val filename = testData + "hdf5/enum.h5"
         openNetchdfFile(filename).use { myfile ->
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
@@ -79,7 +79,7 @@ class H5enumTest {
 
     @Test
     fun testEnumMember() {
-        val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
+        val filename = testData + "hdf5/enumcmpnd.h5"
         openNetchdfFile(filename).use { myfile ->
             println("--- ${myfile!!.type()} $filename ")
             println(myfile.cdl())
@@ -113,7 +113,7 @@ class H5enumTest {
     // or look for it when building H5group
     @Test
     fun compoundEnumTypedef() {
-        val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
+        val filename = testData + "hdf5/enumcmpnd.h5"
         readNetchdfData(filename, null, null, true, false)
     }
 
