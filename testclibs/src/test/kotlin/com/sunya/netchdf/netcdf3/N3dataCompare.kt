@@ -1,21 +1,18 @@
 package com.sunya.netchdf.netcdf3
 
 import com.sunya.cdm.api.Datatype
-import com.sunya.cdm.api.SectionPartial
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.compareSelectedDataWithClib
-import com.sunya.netchdf.hdf5.showDetail
 import com.sunya.netchdf.testfiles.N3Files
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
-import java.util.*
 
 // Compare data reading for the same file with Netcdf3File and NetcdfClibFile
 class N3dataCompare {
 
     companion object {
-        fun files(): Sequence<String> {
-            return N3Files.params()
+        fun files(): Iterator<String> {
+            return N3Files.files()
         }
     }
 

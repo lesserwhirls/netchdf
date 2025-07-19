@@ -1,7 +1,7 @@
 package com.sunya.netchdf.netcdf4
 
 import com.sunya.netchdf.netcdfClib.NClibFile
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 import org.junit.jupiter.api.Disabled
 import kotlin.test.*
 import kotlin.test.assertEquals

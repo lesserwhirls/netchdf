@@ -4,7 +4,7 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.netchdf.*
 import com.sunya.netchdf.netcdfClib.NClibFile
 import com.sunya.netchdf.testfiles.N4Files
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -15,7 +15,7 @@ class Hdf5Compare {
 
     companion object {
         @JvmStatic
-        fun files(): Sequence<String> {
+        fun files(): Iterator<String> {
             // 10 of 114 fail, because we compare with netcdf4 instead of hdf5 c library
 
             //val hdfeos5 =
@@ -23,7 +23,7 @@ class Hdf5Compare {
              //       .withRecursion()
               //      .build()
 
-            return N4Files.params()
+            return N4Files.files()
            //  return Stream.of( N4Files.params(),  H5Files.params()).flatMap { i -> i };
         }
     }

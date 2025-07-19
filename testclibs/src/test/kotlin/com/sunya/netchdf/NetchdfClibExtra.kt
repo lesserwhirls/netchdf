@@ -1,8 +1,8 @@
 package com.sunya.netchdf
 
 import com.sunya.netchdf.testfiles.NetchdfExtraFiles
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testutil.Stats
+import com.sunya.netchdf.testutils.testData
+import com.sunya.netchdf.testutils.Stats
 import kotlin.test.*
 
 // Compare header using cdl(!strict) with Netchdf and NetcdfClibFile
@@ -11,8 +11,8 @@ class NetchdfClibExtra {
 
     companion object {
         @JvmStatic
-        fun files(): Sequence<String> {
-            return NetchdfExtraFiles.params(false)
+        fun files(): Iterator<String> {
+            return NetchdfExtraFiles.files(false)
         }
 
         fun afterAll() {

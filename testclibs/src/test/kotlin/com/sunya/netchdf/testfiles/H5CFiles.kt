@@ -1,9 +1,13 @@
 package com.sunya.netchdf.testfiles
 
+import com.sunya.netchdf.testutils.testData
+import com.sunya.netchdf.testutils.testFilesIn
+
 class H5CFiles {
 
     companion object {
-        fun params(): Sequence<String> {
+        fun files(): Iterator<String> {
+
             val starting = sequenceOf(
                 testData + "cdmUnitTest/formats/hdf5/grid_1_3d_xyz_aug.h5",
                 testData + "cdmUnitTest/formats/hdf5/StringsWFilter.h5",
@@ -28,7 +32,7 @@ class H5CFiles {
                     .withRecursion()
                     .build()
 
-            return devcdm + cdmUnitTest
+            return (devcdm + cdmUnitTest).iterator()
         }
     }
 }

@@ -7,7 +7,9 @@ import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
 import com.sunya.netchdf.hdf5Clib.Hdf5ClibFile
 import com.sunya.netchdf.netcdfClib.NClibFile
 import com.sunya.netchdf.testfiles.*
-import com.sunya.netchdf.testutil.*
+import com.sunya.netchdf.testutils.AtomicDouble
+import com.sunya.netchdf.testutils.Stats
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 import kotlin.system.measureNanoTime
 import kotlin.test.assertEquals
@@ -17,9 +19,13 @@ import kotlin.test.assertTrue
 class NetchdfClibTest {
 
     companion object {
-        fun files(): Sequence<String> {
-            // return NppFiles.params()
-            return N3Files.params() + N4Files.params() + H5Files.params() + H4Files.params() + NetchdfExtraFiles.params(true)
+        fun files(): Iterator<String> {
+            return sequenceOf(N3Files.files().asSequence(),
+                    N4Files.files().asSequence(),
+                    H5Files.files().asSequence(),
+                    H4Files.files().asSequence(),
+                    NetchdfExtraFiles.files(true).asSequence())
+                .flatten().iterator()
         }
 
         fun beforeAll() {
@@ -771,8 +777,8 @@ fun compareOneVarIterate(myvar: Variable<*>, myfile: Netchdf, cvar : Variable<*>
 }
 
 ///////////////////////////////////////////////////////////
-/*
-fun sumValues(array : ArrayTyped<*>) {
+
+/* fun sumValues(array : ArrayTyped<*>) {
     if (array is ArraySingle || array is ArrayEmpty) {
         return // test fillValue the same ??
     }
@@ -795,6 +801,37 @@ fun sumValues(array : ArrayTyped<*>) {
         }
     }
 } */
+
+fun sumValues(array : ArrayTyped<*>, sum : AtomicDouble) {
+    if (array is ArraySingle || array is ArrayEmpty) {
+        return // test fillValue the same ??
+    }
+
+    if (array.datatype.isNumber) {
+        for (value in array) {
+            val number = (value as Number)
+            val numberd: Double = number.toDouble()
+            if (numberd.isFinite()) {
+                sum.getAndAdd(numberd)
+            }
+        }
+    } else if (array.datatype.isIntegral) {
+        for (value in array) {
+            val useValue = when (value) {
+                is UByte -> value.toByte()
+                is UShort -> value.toShort()
+                is UInt -> value.toInt()
+                is ULong -> value.toLong()
+                else -> value
+            }
+            val number = (useValue as Number)
+            val numberd: Double = number.toDouble()
+            if (numberd.isFinite()) {
+                sum.getAndAdd(numberd)
+            }
+        }
+    }
+}
 
 fun countArrayDiffs(array1 : ArrayTyped<*>, array2 : ArrayTyped<*>, showDiff : Int = 0) : Int {
     val iter1 = array1.iterator()

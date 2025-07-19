@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":testfiles"))
     implementation(libs.okio)
     implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)

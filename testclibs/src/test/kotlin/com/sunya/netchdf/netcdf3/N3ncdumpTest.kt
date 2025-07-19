@@ -1,8 +1,8 @@
 package com.sunya.netchdf.netcdf3
 
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testfiles.testFilesIn
+import com.sunya.netchdf.testutils.testData
 import com.sunya.netchdf.openNetchdfFile
+import com.sunya.netchdf.testutils.testFilesIn
 import org.junit.jupiter.api.Disabled
 import kotlin.test.*
 import kotlin.test.assertEquals

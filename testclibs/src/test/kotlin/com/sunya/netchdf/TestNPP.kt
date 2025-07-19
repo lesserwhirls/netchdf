@@ -2,7 +2,7 @@ package com.sunya.netchdf
 
 
 import kotlin.test.*
-import com.sunya.netchdf.testfiles.testData
+import com.sunya.netchdf.testutils.testData
 
 // Special test for NPP data.
 class TestNPP {

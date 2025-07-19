@@ -11,8 +11,8 @@ import kotlin.test.assertTrue
 class N3headerCompare {
 
     companion object {
-        fun files(): Sequence<String> {
-            return N3Files.params()
+        fun files(): Iterator<String> {
+            return N3Files.files()
         }
     }
 

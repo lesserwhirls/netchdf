@@ -6,17 +6,16 @@ import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.*
 import com.sunya.netchdf.hdf4Clib.Hdf4ClibFile
-import com.sunya.netchdf.hdf5.Hdf5Compare.Companion.files
 import com.sunya.netchdf.testfiles.H4Files
-import com.sunya.netchdf.testfiles.testData
-import com.sunya.netchdf.testutil.Stats
+import com.sunya.netchdf.testutils.Stats
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 
 class H4Ccompare {
 
     companion object {
-        fun params(): Sequence<String> {
-            return H4Files.params()
+        fun files(): Iterator<String> {
+            return H4Files.files()
         }
 
         fun afterAll() {

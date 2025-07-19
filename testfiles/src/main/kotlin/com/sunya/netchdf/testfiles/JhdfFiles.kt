@@ -9,6 +9,7 @@ class JhdfFiles {
                 testFilesIn("/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5")
                     .addNameFilter { name -> !name.contains("float_special") }
                     .addNameFilter { name -> !name.endsWith("isssue-523.hdf5") }
+                    .addNameFilter { name -> !name.endsWith("test_missing_filter.hdf5bad") }
                     .build()
             return jhdf.iterator()
         }
