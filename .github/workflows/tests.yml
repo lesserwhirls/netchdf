@@ -22,7 +22,7 @@ jobs:
       - name: Build netchdf using ${{ matrix.java-vendor }} JDK ${{ matrix.java-version }}
         run: ./gradlew classes testClasses
       - name: Test netchdf using ${{ matrix.java-vendor }} JDK ${{ matrix.java-version }}
-        run: ./gradlew :core:test --tests "com.sunya.cdm.*"
+        run: ./gradlew :core:allTests
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
