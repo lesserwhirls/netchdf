@@ -7,7 +7,9 @@ import com.sunya.cdm.array.*
 import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.openNetchdfFile
 import com.sunya.netchdf.testfiles.JhdfFiles
+import com.sunya.netchdf.testfiles.jhdfTestDir
 import com.sunya.netchdf.testutils.readNetchdfData
+import com.sunya.netchdf.testutils.testData
 import io.jhdf.HdfFile
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
@@ -41,10 +43,15 @@ class JhdfCompare {
     @Test
     fun compareOneWithJhdf() {
         // this ones pretty bad
-        // val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/isssue-523.hdf5"
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/test_scalar_empty_datasets_latest.hdf5"
+        // val filename = jhdfTestDir + "isssue-523.hdf5"
+        val filename = jhdfTestDir + "test_scalar_empty_datasets_latest.hdf5"
         compareDataWithJhdf(filename, varname="empty_uint_64", showData = true, showCdl = true)
         // compareDataWithJhdf(filename, showData = false, showCdl = true)
+    }
+
+    // @Test horror show
+    fun superblocks() {
+        compareDataWithJhdf(testData + "netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_8/nc_test4__tst_xplatform2_3.nc", null, true, true)
     }
 
     fun compareDataWithJhdf(filename: String, varname: String? = null, showData: Boolean = false, showCdl: Boolean = false) {

@@ -137,7 +137,7 @@ class H4Ccompare {
 
     @Test
     fun problemReadData() {
-        val filename = "/home/all/testdata/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
+        val filename = testData + "/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
         readNetchdfData(filename, null, null, true)
     }
 

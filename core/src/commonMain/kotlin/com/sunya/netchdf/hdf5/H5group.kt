@@ -281,9 +281,13 @@ internal class H5GroupBuilder(
             if (nested.isVariable) {
                 variables.add(H5Variable(header, nested.dataObject!!))
             }
-            // might be both a variable and a typedef
+
+            // gather the H5typedef found in DataObjects
             if (nested.isTypedef) {
-                val typedef = H5typedef(nested.dataObject!!)
+                val mdt = nested.dataObject!!.mdt!!
+                val typename = if (mdt.isShared) nested.dataObject!!.name else null
+                val typedef = H5typedef(typename, mdt)
+
                 typedefs.add(typedef)
             }
         }
@@ -319,7 +323,7 @@ internal class H5Group(
     val dataObject: DataObject,
     val nestedGroups : List<H5Group>,
     val variables : List<H5Variable>,
-    val typedefs : List<H5typedef>,
+    val sharedTypedefs : List<H5typedef>,
 ) {
     val dimMap = mutableMapOf<String, Dimension>()
     val dimList = mutableListOf<Dimension>() // need to track dimension order

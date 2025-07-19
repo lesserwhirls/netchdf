@@ -9,7 +9,7 @@ gcc -o testClib testClib.c -lnetcdf
 #include <netcdf.h>
 
 /* This is the name of the data file we will read. */
-#define FILE_NAME "/home/all/testdata/netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni"
+#define FILE_NAME testData + "/netchdf/castel/20110421-153623-snippet-VI_MB7125_01.sni"
 
 /* We are reading 2D data, a 6 x 12 grid. */
 #define NX 6

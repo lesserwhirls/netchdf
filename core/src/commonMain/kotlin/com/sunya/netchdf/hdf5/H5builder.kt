@@ -46,10 +46,7 @@ class H5builder(
     internal val dataObjectMap = mutableMapOf<Long, DataObject>() // key = DataObject address
     val structMetadata = mutableListOf<String>()
     val datasetMap = mutableMapOf<Long, Pair<Group.Builder, Variable.Builder<*>>>()
-
-    val typedefGroups = mutableMapOf<Typedef, MutableList<Group.Builder>>()
-    val addressToTypedef = mutableMapOf<Long, Typedef>() // key = mdt address
-    val hashToTypedef = mutableMapOf<Int, Typedef>() // key = mdt hash
+    val typedefManager: TypedefManager
 
     val cdmRoot : Group
     fun formatType() : String {
@@ -102,17 +99,20 @@ class H5builder(
         // build tree of H5groups
         val h5rootGroup = rootGroupBuilder.build()
 
+        typedefManager = TypedefManager(this)
+
         // convert into CDM
         val rootBuilder = this.buildCdm(h5rootGroup)
 
-        // add Types To Groups
-        typedefGroups.forEach { (typedef, groupList) ->
+        // add Typedefs To Groups, pushing up to common parent
+        typedefManager.typedefGroups.forEach { (typedef, groupList) ->
             var topgroup = groupList[0]
             for (idx in 1 until groupList.size) {
                 topgroup = topgroup.commonParent(groupList[idx])
             }
             topgroup.addTypedef(typedef)
         }
+
         convertReferences(rootBuilder) // TODO
 
         // hdf-eos5
@@ -472,57 +472,4 @@ class H5builder(
         return Attribute(att.name, Datatype.STRING, svalues)
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    // shared typedefs.
-
-    fun findTypedef(mdtAddress : Long, mdtHash : Int) : Typedef? {
-        return addressToTypedef[mdtAddress] ?: hashToTypedef[mdtHash]
-    }
-
-    internal fun registerTypedef(typeInfo : H5TypeInfo, gb : Group.Builder) : H5TypeInfo {
-        val existing = findTypedef(typeInfo.mdtAddress, typeInfo.mdtHash)
-        if (existing == null) {
-            addTypedef(typeInfo, gb)
-            val groups = typedefGroups.getOrPut(typeInfo.typedef!!) { mutableListOf() }
-            groups.add(gb)
-        } else {
-            val groups = typedefGroups.getOrPut(existing) { mutableListOf() }
-            groups.add(gb)
-        }
-        return typeInfo
-    }
-
-    private fun addTypedef(typeInfo : H5TypeInfo, gb : Group.Builder) : Boolean {
-        val typedef = typeInfo.typedef!!
-        if (hashToTypedef[typeInfo.mdtHash] != null) {
-            if (debugTypedefs) println("already have typedef ${typedef.name}@${typeInfo.mdtAddress} hash=${typeInfo.mdtHash}")
-            return false
-        }
-        addressToTypedef[typeInfo.mdtAddress] = typedef
-        if (debugTypedefs) println("add typdef ${typedef.name}@${typeInfo.mdtAddress} hash=${typeInfo.mdtHash}")
-
-        // use object identity instead of a shared object. seems like a bug in netcdf4 to me.
-        hashToTypedef[typeInfo.mdtHash] = typedef
-
-        // register private typedefs
-        registerPrivateTypedef(typedef, gb)
-        return true
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////
-
-    internal fun registerPrivateTypedef(typedef: Typedef, gb: Group.Builder) {
-        val groups = typedefGroups.getOrPut(typedef) { mutableListOf() }
-        if (!groups.contains(gb)) groups.add(gb)
-
-        // look for nested typedefs
-        if (typedef.kind == TypedefKind.Compound) {
-            val ctdef = typedef as CompoundTypedef
-            ctdef.members.forEach { member ->
-                if (member.datatype.typedef != null) {
-                    registerPrivateTypedef(member.datatype.typedef, gb)
-                }
-            }
-        }
-    }
 }

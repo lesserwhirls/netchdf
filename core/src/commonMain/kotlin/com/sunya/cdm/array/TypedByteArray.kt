@@ -65,9 +65,14 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
     fun getAsInt(idx: Int): Int {
         val valueAny = this.get(idx)
         return when (datatype) {
-            Datatype.USHORT, Datatype.ENUM2, Datatype.SHORT -> (valueAny as Short).toInt()
-            Datatype.UINT, Datatype.ENUM4, Datatype.INT -> valueAny as Int
-            Datatype.ULONG, Datatype.ENUM8, Datatype.LONG -> (valueAny as Long).toInt()
+            Datatype.UBYTE, Datatype.ENUM1 -> (valueAny as UByte).toInt()
+            Datatype.BYTE -> (valueAny as Byte).toInt()
+            Datatype.USHORT, Datatype.ENUM2 -> (valueAny as UShort).toInt()
+            Datatype.SHORT -> (valueAny as Short).toInt()
+            Datatype.UINT, Datatype.ENUM4 -> (valueAny as UInt).toInt()
+            Datatype.INT -> valueAny as Int
+            Datatype.ULONG, Datatype.ENUM8 -> (valueAny as ULong).toInt()
+            Datatype.LONG -> (valueAny as Long).toInt()
             else -> throw IllegalStateException("getAsInt unimplemented type= $datatype")
         }
     }

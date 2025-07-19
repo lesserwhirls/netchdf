@@ -14,7 +14,6 @@ class JhdfFiles {
                     .addNameFilter { name -> !name.endsWith("lz4_datasets.hdf5") }
                     .addNameFilter { name -> !name.endsWith("test_compressed_chunked_datasets_earliest.hdf5") }
                     .addNameFilter { name -> !name.endsWith("test_compressed_chunked_datasets_latest.hdf5") }
-                    .addNameFilter { name -> !name.endsWith("test_missing_filter.hdf5bad") }
                     .build()
             return jhdf.iterator()
         }

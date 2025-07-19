@@ -26,6 +26,7 @@ const val MAX_DIMS = 255L
 const val H5P_DEFAULT_LONG = 0L
 
 const val debugGroup = false
+const val debugVersion = false
 
 // Really a builder of the root Group.
 class H5Cbuilder(val filename: String) {
@@ -85,14 +86,14 @@ class H5Cbuilder(val filename: String) {
         val minnum = minnum_p[C_INT, 0]
         val relnum = relnum_p[C_INT, 0]
 
-        println("majnum = $majnum, minnum = $minnum, relnum = $relnum")
+        if (debugVersion) println("majnum = $majnum, minnum = $minnum, relnum = $relnum")
 
         checkErr("H5check_version", H5check_version(majnum, minnum, relnum))
 
          // the question is: this the same as we built with ffi ??
         val ffiVersion_p = H5_VERS_INFO()
         val ffiVersion = ffiVersion_p.getUtf8String(0)
-        println("ffiVersion = $ffiVersion")
+        if (debugVersion) println("ffiVersion = $ffiVersion")
         val expected = "$majnum.$minnum.$relnum"
         // netcdf library currently built with 1.10.10. not 1.12.1;
         // So netcdf Clib and HdfC5 clib cant exist independently, whichever gets loaded first wins.
@@ -111,7 +112,7 @@ class H5Cbuilder(val filename: String) {
         checkErr("H5is_library_threadsafe", H5is_library_threadsafe(ts_p))
         val ts = ts_p[C_INT, 0]
 
-        println("isThreadsafe = $ts = ${if (ts == 0) "false" else "true"}")
+        if (debugVersion) println("isThreadsafe = $ts = ${if (ts == 0) "false" else "true"}")
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -309,7 +310,7 @@ class H5Cbuilder(val filename: String) {
             } else if (otype == H5O_TYPE_NAMED_DATATYPE()) {
                 if (debugGroup) println("  Datatype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
                 val type_id = H5Topen2(context.group5id,  linkname_p, H5P_DEFAULT_LONG)
-                readH5CTypeInfo(context, type_id, linkname)
+                readH5CTypeInfo(context, type_id, linkname, true)
             } else {
                 if (debugGroup) println("  NONE otype == $otype name $linkname loc_id=$loc_id in group ${context.group.fullname()} group_id=$group_id")
             }
@@ -474,53 +475,58 @@ class H5Cbuilder(val filename: String) {
         val dims = LongArray(ndims) { dims_p.getAtIndex(C_LONG, it.toLong()) }
 
         val type_id = H5Dget_type(datasetId)
-        val h5ctype = readH5CTypeInfo(context, type_id, obj_name)
+        val h5ctype = readH5CTypeInfo(context, type_id, obj_name, false)
 
-        // create the Variable
-        val vb = Variable.Builder(obj_name, h5ctype.datatype())
+        try {
+            // create the Variable
+            val vb = Variable.Builder(obj_name, h5ctype.datatype())
 
-        var isDimensionScale = false
-        var isVariable = true
-        val atts = readAttributes(datasetId, obj_name, numAtts, context)
-        atts.forEach { att ->
-            if (att.name == HDF5_CLASS && (att.values[0] as String) == HDF5_DIMENSION_SCALE) {
-                isDimensionScale = true
-            } else if (att.name == HDF5_DIMENSION_NAME && (att.values[0] as String).startsWith(Netcdf4.NETCDF4_NOT_VARIABLE)) {
-                isVariable = false
+            var isDimensionScale = false
+            var isVariable = true
+            val atts = readAttributes(datasetId, obj_name, numAtts, context)
+            atts.forEach { att ->
+                if (att.name == HDF5_CLASS && (att.values[0] as String) == HDF5_DIMENSION_SCALE) {
+                    isDimensionScale = true
+                } else if (att.name == HDF5_DIMENSION_NAME && (att.values[0] as String).startsWith(Netcdf4.NETCDF4_NOT_VARIABLE)) {
+                    isVariable = false
+                }
             }
-        }
-        val fatts = if (!isDimensionScale) {
-            vb.setDimensionsAnonymous(dims)
-            atts
-        } else {
-            val dim = Dimension(obj_name, dims[0], true)
-            context.group.addDimension(dim)
-            vb.addDimension(dim)
-            if (hideInternalAttributes) atts.filter{ !HDF5_IGNORE_ATTS.contains(it.name) } else atts
-        }
+            val fatts = if (!isDimensionScale) {
+                vb.setDimensionsAnonymous(dims)
+                atts
+            } else {
+                val dim = Dimension(obj_name, dims[0], true)
+                context.group.addDimension(dim)
+                vb.addDimension(dim)
+                if (hideInternalAttributes) atts.filter { !HDF5_IGNORE_ATTS.contains(it.name) } else atts
+            }
 
-        vb.attributes.addAll(fatts)
-        vb.spObject = Vinfo5C(datasetId, h5ctype)
-        if (isVariable) context.group.addVariable(vb)
+            vb.attributes.addAll(fatts)
+            vb.spObject = Vinfo5C(datasetId, h5ctype)
+            if (isVariable) context.group.addVariable(vb)
 
-        // datasetId is transient
-        var address = H5Dget_offset(datasetId)
-        /* println("**H5Cbuilder obj_name=$obj_name datasetId=$datasetId address=$address") // maybe there a byte order problem ??
+            // datasetId is transient
+            var address = H5Dget_offset(datasetId)
+            /* println("**H5Cbuilder obj_name=$obj_name datasetId=$datasetId address=$address") // maybe there a byte order problem ??
         if (address < 0) {
             val reversed = datasetId.reverseByteOrder() // doesnt work
             address = H5Dget_offset(reversed)
             println("   try again with byte order reversed: datasetId=$reversed address=$address") // maybe there a byte order problem ??
         } */
-        if (address > 0) datasetMap[address] = Pair(context.group, vb)
+            if (address > 0) datasetMap[address] = Pair(context.group, vb)
 
-        if (obj_name.startsWith("StructMetadata")) {
-            val data = readRegularData(context.arena, datasetId, h5ctype, h5ctype.datatype(), Section(dims))
-            require (data is ArrayString)
-            structMetadata.add(data.values.get(0))
+            if (obj_name.startsWith("StructMetadata")) {
+                val data = readRegularData(context.arena, datasetId, h5ctype, h5ctype.datatype(), Section(dims))
+                require(data is ArrayString)
+                structMetadata.add(data.values.get(0))
+            }
+            if (debugGraph && vb.datatype == Datatype.COMPOUND) println("${context.indent}${vb.name} ${vb.datatype}")
+
+            if (debug) println("${indent}'$obj_name' h5ctype=$h5ctype npoints=$dataspace_npoints dims=${dims.contentToString()}")
+        } catch (e : Exception) {
+            e.printStackTrace()
+            println("skipping variable $obj_name")
         }
-        if (debugGraph && vb.datatype == Datatype.COMPOUND) println("${context.indent}${vb.name} ${vb.datatype}")
-
-        if (debug) println("${indent}'$obj_name' h5ctype=$h5ctype npoints=$dataspace_npoints dims=${dims.contentToString()}")
     }
 
     @Throws(IOException::class)
@@ -567,7 +573,7 @@ class H5Cbuilder(val filename: String) {
 
             // hid_t H5Dget_type	(	hid_t 	attr_id	)
             val type_id = H5Aget_type(attr_id)
-            val h5ctype = readH5CTypeInfo(context, type_id, aname)
+            val h5ctype = readH5CTypeInfo(context, type_id, aname, false)
 
             //if (aname == "PALETTE")
             //    println("heh")
@@ -699,6 +705,13 @@ class H5Cbuilder(val filename: String) {
         val debugGraph = false
         val useSoftLinks = false
         val hideInternalAttributes = true
+
+        private var nextAnon = 1
+        fun getNextAnonTypeName(): String {
+            val next = "_AnonymousType${nextAnon}"
+            nextAnon++
+            return next
+        }
     }
 }
 

@@ -20,7 +20,7 @@ internal fun Group.cdl(isRoot : Boolean, indent : Indent = Indent(2)) : String {
     return buildString{
         if (typedefs.isNotEmpty()) {
             append("${indent}types:\n")
-            typedefs.sortedBy { it.name }.forEach { append("${it.cdl(indent.incr())}\n") }
+            typedefs.sortedBy { it.name }.forEach { append("${it.cdl(indent.incr())}\n\n") }
         }
         if (dimensions.isNotEmpty()) {
             append("${indent}dimensions:\n")

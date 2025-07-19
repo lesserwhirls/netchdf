@@ -85,14 +85,14 @@ class NetchdfTest {
     // this is working
     @Test
     fun readBtreeVer1() {
-        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
+        readNetchdfData(testData + "/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
             "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = false)
     }
 
     // this is working
     @Test
     fun readBtreeVer1complex() {
-        readNetchdfData("/home/all/testdata/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
+        readNetchdfData(testData + "/cdmUnitTest/formats/hdf5/OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727-2.he5",
             "/HDFEOS/SWATHS/OMI_Column_Amount_O3/Data_Fields/fc", showCdl = false, showData = true)
     }
 

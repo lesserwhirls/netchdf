@@ -30,12 +30,12 @@ internal fun H5builder.buildGroup(group5 : H5Group) : Group.Builder {
 
     makeDimensions(groupb, group5)
 
-    // shared typedefs
-    group5.typedefs.forEach {
-        val tdef = this.buildTypedef(it)
+    // shared typedefs are always registered
+    group5.sharedTypedefs.forEach {
+        val tdef = this.buildTypedef(it, groupb)
         if (tdef != null) {
             val typeinfo = makeH5TypeInfo(it.mdt, tdef)
-            registerTypedef(typeinfo, groupb)
+            typedefManager.registerTypedef(typeinfo, groupb)
         }
     }
 
@@ -81,15 +81,15 @@ internal fun H5builder.buildGroup(group5 : H5Group) : Group.Builder {
 }
 
 internal fun H5builder.buildAttribute(gb : Group.Builder, att5 : AttributeMessage) : Attribute<*> {
-    var typedef = this.findTypedef(att5.mdt.address, att5.mdt.hashCode())
+    var typedef = typedefManager.findTypedef(att5.mdt.address, att5.mdt.hashCode())
     if (debugTypedefs and (typedef != null)) {
         println(" made attribute ${att5.name} from typedef ${typedef!!.name}@${att5.mdt.address}")
     }
     // private (non-shared) typedefs
     if (typedef == null && att5.mdt.type.isTypedef()) {
-        val typedef5 = H5typedef("anon", att5.mdt) // name
-        typedef = this.buildTypedef(typedef5)
-        if (typedef != null) registerPrivateTypedef(typedef, gb)
+        val typedef5 = H5typedef(null, att5.mdt) // name
+        typedef = this.buildTypedef(typedef5, gb)
+        if (typedef != null) typedefManager.registerPrivateTypedef(typedef, gb)
     }
     val h5type = makeH5TypeInfo(att5.mdt, typedef)
     val dc = DataContainerAttribute(att5.name, h5type, att5.dataPos, att5.mdt, att5.mds)
@@ -108,15 +108,15 @@ internal fun H5builder.buildVariable(groupb: Group.Builder, v5 : H5Variable) : V
         isNetcdf4 = true
     }
 
-    var typedef = this.findTypedef(v5.mdt.address, v5.mdt.hashCode())
+    var typedef = typedefManager.findTypedef(v5.mdt.address, v5.mdt.hashCode())
     if (debugTypedefs and (typedef != null)) {
         println(" made variable ${v5.name} from typedef ${typedef!!.name}@${v5.mdt.address}")
     }
     // private (non-shared) typedefs
     if (typedef == null && v5.mdt.type.isTypedef()) {
-        val typedef5 = H5typedef("anon", v5.mdt) // name
-        typedef = this.buildTypedef(typedef5)
-        if (typedef != null) registerPrivateTypedef(typedef, groupb)
+        val typedef5 = H5typedef(null, v5.mdt) // name
+        typedef = this.buildTypedef(typedef5, groupb)
+        if (typedef != null) typedefManager.registerPrivateTypedef(typedef, groupb)
     }
 
     val h5type = makeH5TypeInfo(v5.mdt, typedef)

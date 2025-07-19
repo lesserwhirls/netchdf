@@ -9,7 +9,7 @@ import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
 import kotlin.test.assertTrue
 
-val problemDir = "/home/all/testdata/exclude/"
+val problemDir = testData + "/exclude/"
 
 class KnownProblemFiles {
 
@@ -17,14 +17,14 @@ class KnownProblemFiles {
     // but its not, we dont care, but using Nclib fails to detect missing data for Variable Granule.
     @Test
     fun testConfuseHdf5WithNetcdf4() {
-        val filename = "/home/all/testdata/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
+        val filename = testData + "/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
         // compareCdlWithClib(filename, true)
         compareDataWithClib(filename, "Granule")
     }
 
     @Test
     fun testConfusedHdf5() {
-        val filename = "/home/all/testdata/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
+        val filename = testData + "/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
         // compareCdlWithClib(filename, true)
         compareDataWithHdf5Clib(filename, "Granule", null)
     }

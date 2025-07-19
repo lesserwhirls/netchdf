@@ -298,6 +298,7 @@ class TestGroup {
 
         assertEquals("""  types:
     int enum low {1 = name1, 2 = name2, 3 = name3};
+
   dimensions:
     mid = 1 ;
   variables:

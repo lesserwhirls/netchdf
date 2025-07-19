@@ -4,7 +4,9 @@ package com.sunya.netchdf.jhdf
 import com.sunya.cdm.util.Indent
 import com.sunya.netchdf.hdf5.*
 import com.sunya.netchdf.testfiles.JhdfFiles
+import com.sunya.netchdf.testfiles.jhdfTestDir
 import com.sunya.netchdf.testutils.readNetchdfData
+import com.sunya.netchdf.testutils.testData
 import io.jhdf.CommittedDatatype
 import io.jhdf.HdfFile
 import io.jhdf.api.Attribute
@@ -33,18 +35,24 @@ class JhdfShow {
 
     @Test
     fun showJhdfData() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
+        val filename = jhdfTestDir + "compound_datasets_earliest.hdf5"
         showJhdfData(filename, datasetName="chunked_compound")
     }
 
     @Test
     fun showJhdfCdl() {
-        val filename = "/home/stormy/dev/github/netcdf/jhdf/jhdf/src/test/resources/hdf5/compound_datasets_earliest.hdf5"
+        val filename = jhdfTestDir + "compound_datasets_earliest.hdf5"
         println(filename)
-        showJhdfCdl(filename, null)
+        showJhdfCdl(filename)
     }
 
-    fun showJhdfCdl(filename: String, dataset:String?) {
+    @Test
+    fun superblocks() {
+        showJhdfCdl(testData + "netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_8/nc_test4__tst_xplatform2_3.nc")
+        showJhdfData(testData + "netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_8/nc_test4__tst_xplatform2_3.nc", null)
+    }
+
+    fun showJhdfCdl(filename: String) {
         val path = Paths.get(filename)
         val indent = Indent(2)
         HdfFile(path).use { hdf ->
@@ -92,7 +100,6 @@ class JhdfShow {
         println(filename)
         readNetchdfData(filename, null, null, true, false)
     }
-
 }
 
 fun showJhdfData(filename: String, datasetName:String?) {

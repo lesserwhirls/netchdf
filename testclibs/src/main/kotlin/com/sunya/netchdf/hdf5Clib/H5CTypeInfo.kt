@@ -7,11 +7,12 @@ import com.sunya.cdm.array.StructureMember
 import com.sunya.cdm.array.TypedByteArray
 import com.sunya.cdm.util.InternalLibraryApi
 import com.sunya.netchdf.hdf5.*
+import com.sunya.netchdf.hdf5Clib.H5Cbuilder.Companion.getNextAnonTypeName
 import com.sunya.netchdf.hdf5Clib.ffm.hdf5_h.*
 import java.lang.foreign.MemoryLayout
 import java.lang.foreign.ValueLayout
 
-internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long, name : String) : H5CTypeInfo {
+internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long, name : String, isNamedDatatype: Boolean) : H5CTypeInfo {
     // H5T_class_t H5Tget_class	(	hid_t 	type_id	)
     val tclass = H5Tget_class(type_id)
     val datatype5 = Datatype5.of(tclass)
@@ -46,7 +47,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
     if (datatype5 == Datatype5.Compound) {
         val members = mutableListOf<StructureMember<*>>()
         val nmembers = H5Tget_nmembers(type_id)
-        repeat(nmembers) {membno ->
+        repeat(nmembers) { membno ->
             // char* H5Tget_member_name	(	hid_t 	type_id, unsigned 	membno)
             val mname_p = H5Tget_member_name(type_id, membno) // LOOK is this a memory leak?
             val mname = mname_p.getUtf8String(0)
@@ -56,26 +57,27 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
 
             // hid_t H5Tget_member_type	(	hid_t 	type_id, unsigned 	membno)
             val mtype_id = H5Tget_member_type(type_id, membno)
-            var basetype = readH5CTypeInfo(context, mtype_id, mname)
+            var basetype = readH5CTypeInfo(context, mtype_id, mname, false)
             var dims = intArrayOf()
             if (basetype.datatype5 == Datatype5.Array) {
                 dims = basetype.dims!!
                 val base_type_id = H5Tget_super(mtype_id) // in case its an array??
-                val basetype2 = readH5CTypeInfo(context, base_type_id, mname)
+                val basetype2 = readH5CTypeInfo(context, base_type_id, mname, false)
                 basetype = basetype2
             }
             // val name: String, val datatype : Datatype, val offset: Int, val dims : IntArray
             members.add(StructureMember(mname, basetype.datatype(), moffset.toInt(), dims, basetype.isBE)) // assume scalar for the moment
         }
 
-        val typedef = CompoundTypedef(name, members)
-        val result =  H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, null)
+        val typename = if (isNamedDatatype) name else getNextAnonTypeName()
+        val typedef = CompoundTypedef(typename, members)
+        val result =  H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, null, isNamedDatatype = isNamedDatatype)
         return registerTypedef(result, context.group)
     }
 
     if (datatype5 == Datatype5.Enumerated) {
         val base_type_id = H5Tget_super(type_id)
-        val basetype = readH5CTypeInfo(context, base_type_id, name)
+        val basetype = readH5CTypeInfo(context, base_type_id, name, false)
         val datatype = basetype.datatype().withSignedness(false) // for implicity, always unsigned
 
         val nmembers = H5Tget_nmembers(type_id)
@@ -95,7 +97,7 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
         }
         // EnumTypedef(name : String, baseType : Datatype, val values : Map<Int, String>)
         val typedef = EnumTypedef(name, datatype, members)
-        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef)
+        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, isNamedDatatype = isNamedDatatype)
         return registerTypedef(result, context.group)
     }
 
@@ -111,34 +113,37 @@ internal fun H5Cbuilder.readH5CTypeInfo (context : GroupContext, type_id : Long,
         return registerTypedef(result, context.group)
     } */
 
+    // Look not reqistering Vlen typedef
     if (datatype5 == Datatype5.Vlen) {
         // hid_t H5Tget_super	(	hid_t 	type	)
         val base_type_id = H5Tget_super(type_id)
-        val basetype = readH5CTypeInfo(context, base_type_id, name)
+        val basetype = readH5CTypeInfo(context, base_type_id, name, false)
 
-        // class VlenTypedef(name : String, baseType : Datatype)
-        val typedef = VlenTypedef(name, basetype.datatype())
-        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, basetype)
-        return registerTypedef(result, context.group)
+        val datatype2 = basetype.datatype()
+        val altname = "${datatype2.cdlName}(*)" // dont use the typedef name or member name
+        val typedef = VlenTypedef(altname, basetype.datatype())
+
+        val result = H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, typedef, basetype, isNamedDatatype = isNamedDatatype)
+        return result // registerTypedef(result, context.group)
     }
 
     if (datatype5 == Datatype5.Array) {
         val base_type_id = H5Tget_super(type_id)
-        val basetype = readH5CTypeInfo(context, base_type_id, name)
+        val basetype = readH5CTypeInfo(context, base_type_id, name, false)
 
         val dims_p = context.arena.allocateArray(C_LONG as MemoryLayout, MAX_DIMS)
         val ndims = H5Tget_array_dims2(type_id, dims_p)
         val dims = IntArray(ndims) { dims_p.getAtIndex(C_LONG, it.toLong()).toInt() } // where to put this ??
-        return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, null, basetype, dims)
+        return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, null, basetype, dims, isNamedDatatype = isNamedDatatype)
     }
 
     // regular
-    return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE)
+    return H5CTypeInfo(type_id, tclass, type_size, type_sign, type_isBE, isNamedDatatype = isNamedDatatype)
 }
 
 @OptIn(InternalLibraryApi::class)
 internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val elemSize : Int, val signed : Boolean, val isBE : Boolean,
-                                val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null) {
+                                val typedef : Typedef?  = null, val base : H5CTypeInfo? = null, val dims : IntArray? = null, val isNamedDatatype: Boolean) {
     val datatype5 = Datatype5.of(type_class)
     val isVlenString = H5Tis_variable_str(type_id) > 0
 
@@ -162,12 +167,12 @@ internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val ele
                 }
 
             Datatype5.Time -> Datatype.LONG.withSignedness(true) // LOOK use bitPrecision i suppose?
-            Datatype5.String -> if (isVlenString || elemSize > 1) {
-                Datatype.STRING.withVlen(isVlenString)
-            } else {
+            Datatype5.String -> {
+                if (isVlenString) Datatype.STRING.withVlen(isVlenString)
+                else if (elemSize > 1) Datatype.STRING.withSize(elemSize)
                 // should only happen for Netcdf-4 files, encoding CHAR as fixed length elemSize = 1.
                 // but now theres confusion with HDF5 strings of length 1.
-                Datatype.CHAR
+                else Datatype.CHAR
             }
             Datatype5.Reference -> Datatype.REFERENCE // "object" gets converted to dataset path, "region" ignored
             Datatype5.Opaque -> if (typedef != null) Datatype.OPAQUE.withTypedef(typedef) else Datatype.OPAQUE
@@ -184,6 +189,10 @@ internal data class H5CTypeInfo(val type_id: Long, val type_class : Int, val ele
             Datatype5.Vlen -> {
                 if (isVlenString or this.base!!.isVlenString or (this.base.datatype5 == Datatype5.Reference)) Datatype.STRING
                 else Datatype.VLEN.withTypedef(typedef)
+                /* if (isVlenString) Datatype.STRING
+                    else if (this.base != null && (this.base.isVlenString || this.base.datatype5 == Datatype5.Reference)) Datatype.STRING
+                    else if (typedef != null) Datatype.VLEN.withTypedef(typedef)
+                    else Datatype.VLEN */
             }
 
             Datatype5.Array -> {

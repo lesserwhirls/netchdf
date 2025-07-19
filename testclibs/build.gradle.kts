@@ -5,6 +5,9 @@ plugins {
 dependencies {
     implementation(project(":core"))
     implementation(project(":testfiles"))
+    // implementation(project(":cli"))
+    //implementation(files("/home/stormy/dev/github/netcdf/netchdf/cli/build/libs/cli.jar"))
+
     implementation(libs.okio)
     implementation(libs.fleeksoft)
     implementation(libs.oshai.logging)
@@ -44,8 +47,8 @@ tasks {
         // Configuration parameters to execute top-level classes in parallel but methods in same thread
         // https://junit.org/junit5/docs/current/user-guide/#writing-tests-parallel-execution
         systemProperties["junit.jupiter.execution.parallel.enabled"] = "false"
-        systemProperties["junit.jupiter.execution.parallel.mode.default"] = "concurrent"
-        systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "concurrent"
+        systemProperties["junit.jupiter.execution.parallel.mode.default"] = "same_thread"
+        systemProperties["junit.jupiter.execution.parallel.mode.classes.default"] = "same_thread"
 
         // https://kantis.github.io/posts/Faster-Kotest-startup/
         systemProperty("kotest.framework.discovery.jar.scan.disable", "true")
