@@ -462,7 +462,7 @@ class NCheader(val filename: String) {
 
     companion object {
         val debug = false
-        val debugFormat = true
+        val debugFormat = false
     }
 
     fun convertType(type: Int): Datatype<*> {

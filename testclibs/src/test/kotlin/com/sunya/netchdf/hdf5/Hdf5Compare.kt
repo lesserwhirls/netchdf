@@ -28,7 +28,6 @@ class Hdf5Compare {
         }
     }
 
-
     @Test
     fun testNewLibrary() {
         val filename = testData + "netchdf/haberman/iso.h5"
@@ -55,6 +54,15 @@ class Hdf5Compare {
         compareH5andNclib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
         compareDataWithClib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
     }
+
+    @Test
+    fun problem() {
+        val filename = testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc"
+        compareCdlWithClib(filename)
+        compareDataWithClib(filename)
+    }
+
+    ////////////////////////////////////////////////////////////////////
 
     @Test
     fun checkVersion() {

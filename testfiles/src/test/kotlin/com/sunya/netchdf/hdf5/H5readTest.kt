@@ -152,21 +152,16 @@ class H5readTest {
 fun openH5(filename: String, varname : String? = null, showCdl : Boolean = false): Boolean {
     if (showCdl) println("=================")
     println(filename)
-    try {
-        Hdf5File(filename).use { h5file ->
-            if (showCdl) println(h5file.cdl())
-            // h5file.rootGroup().allVariables().forEach { println("  ${it.fullname()}") }
+    Hdf5File(filename).use { h5file ->
+        if (showCdl) println(h5file.cdl())
+        // h5file.rootGroup().allVariables().forEach { println("  ${it.fullname()}") }
 
-            if (varname != null) {
-                val h5var = h5file.rootGroup().allVariables().find { it.fullname() == varname }
-                    ?: throw RuntimeException("cant find $varname")
-                val h5data = h5file.readArrayData(h5var)
-                println(" $varname = $h5data")
-            }
+        if (varname != null) {
+            val h5var = h5file.rootGroup().allVariables().find { it.fullname() == varname }
+                ?: throw RuntimeException("cant find $varname")
+            val h5data = h5file.readArrayData(h5var)
+            println(" $varname = $h5data")
         }
-    } catch (t : Throwable) {
-        t.printStackTrace()
-        return false
     }
     return true
 }

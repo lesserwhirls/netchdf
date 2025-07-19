@@ -1,20 +1,24 @@
-package com.sunya.netchdf.testfiles
+package com.sunya.netchdf
 
-import com.sunya.netchdf.openNetchdfFile
+import com.sunya.netchdf.testfiles.H4Files
+import com.sunya.netchdf.testfiles.H5Files
+import com.sunya.netchdf.testfiles.JhdfFiles
+import com.sunya.netchdf.testfiles.N3Files
+import com.sunya.netchdf.testfiles.N4Files
+import com.sunya.netchdf.testfiles.NetchdfExtraFiles
 import kotlin.test.Test
-import kotlin.use
 
 class CountVersions {
 
     companion object {
         fun files(): Iterator<String> {
             return sequenceOf(
-                N3Files.files().asSequence(),
-                N4Files.files().asSequence(),
-                H5Files.files().asSequence(),
-                H4Files.files().asSequence(),
-                NetchdfExtraFiles.files(false).asSequence(),
-                JhdfFiles.files().asSequence(),
+                N3Files.Companion.files().asSequence(),
+                N4Files.Companion.files().asSequence(),
+                H5Files.Companion.files().asSequence(),
+                H4Files.Companion.files().asSequence(),
+                NetchdfExtraFiles.Companion.files(false).asSequence(),
+                JhdfFiles.Companion.files().asSequence(),
             )
                 .flatten()
                 .iterator()

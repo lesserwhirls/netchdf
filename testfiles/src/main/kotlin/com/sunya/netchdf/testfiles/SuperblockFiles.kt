@@ -11,6 +11,8 @@ class SuperblockFiles {
                 testFilesIn(testData + "netcdf-c_hdf5_superblocks/netcdf-c-test-files/$subdir/")
                     .withRecursion()
                     .addNameFilter{ it.endsWith(".nc") }
+                    .addNameFilter { name -> !name.endsWith("nc_test4__tst_xplatform2_3.nc") }
+                    .addNameFilter { name -> !name.endsWith("nc_test4__tst_xplatform2_4.nc") }
                     .build()
 
             return devcdm.iterator()

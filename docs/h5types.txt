@@ -38,3 +38,17 @@ So you cant just create H5typedef as soon as you see it.
 2. Some typedefs are shared. Some are private to an attribute or variable.
 
 3. All typedefs must belong to a group.
+
+===============================================
+
+H5Group gathers H5typedef from DataObjects
+
+CdmBuilder
+- buildGroup converts  H5typedef into Typedef and registers it in typedefGroups
+- buildAttribute makes sure each Attribute has a typedef if needed
+- buildVariable makes sure each variable has a typedef if needed
+
+enums and compounds must add the typedef to the group and register it
+vlen and opaque do not (?)
+
+not sure if we need

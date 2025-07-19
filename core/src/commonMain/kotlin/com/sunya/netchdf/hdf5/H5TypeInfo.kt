@@ -33,7 +33,7 @@ internal fun H5builder.makeH5TypeInfo(mdt: DatatypeMessage, typedef : Typedef? =
         base = makeH5TypeInfo(arrayMdt.base)
     }
 
-    val useTypedef = typedef ?: findTypedef(mdtAddress, mdtHash)
+    val useTypedef = typedef ?: typedefManager.findTypedef(mdtAddress, mdtHash)
 
     return H5TypeInfo(isVlenString, isRefObject, datatype5, elemSize, !unsigned, mdt.isBE,
         mdtAddress, mdtHash, base, useTypedef)

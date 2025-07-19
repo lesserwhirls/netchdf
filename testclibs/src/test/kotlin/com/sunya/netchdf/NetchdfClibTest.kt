@@ -84,7 +84,7 @@ class NetchdfClibTest {
 
     @Test
     fun problem2() {
-        val filename = testData + "devcdm/netcdf4/IntTimSciSamp.nc"
+        val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
         // compareN4withH5cdl(filename)
         compareCdlWithClib(filename)
         compareDataWithClib(filename)
@@ -176,13 +176,13 @@ class NetchdfClibTest {
 
     @Test
     fun testCompareOpaqueData() {
-        val filename = "/home/all/testdata/devcdm/hdf5/opaque.h5"
+        val filename = testData + "/devcdm/hdf5/opaque.h5"
         compareDataWithClib(filename, "Opaque")
     }
 
     @Test
     fun testCharFillValue() {
-        val filename = "/home/all/testdata/netchdf/martaan/SEVIR_OPER_R___MSGCPP__L2__20120119T121500_20120119T123000_0001.nc"
+        val filename = testData + "/netchdf/martaan/SEVIR_OPER_R___MSGCPP__L2__20120119T121500_20120119T123000_0001.nc"
         readNetchdfData(filename)
     }
 
@@ -198,28 +198,28 @@ isThreadsafe = 0 = false
 
     @Test
     fun testHdf4Attribute() {
-        val filename = "/home/all/testdata/hdf4/eos/misr/MISR_AM1_GRP_TERR_GM_P040_AN"
+        val filename = testData + "/hdf4/eos/misr/MISR_AM1_GRP_TERR_GM_P040_AN"
         compareCdlWithClib(filename)
         compareDataWithClib(filename, )
     }
 
     @Test
     fun testFillValue() {
-        val filename = "/home/all/testdata/hdf4/nsidc/LAADS/MOD/MOD07_L2.A2007001.0000.005.2007003012910.hdf"
+        val filename = testData + "/hdf4/nsidc/LAADS/MOD/MOD07_L2.A2007001.0000.005.2007003012910.hdf"
         // compareCdlWithClib(filename, true)
         compareDataWithClib(filename, "/mod07/Data_Fields/Processing_Flag")
     }
 
     @Test
     fun testFailDataCompare3() {
-        val filename = "/home/all/testdata/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
+        val filename = testData + "/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
         compareCdlWithClib(filename, true)
         compareDataWithClib(filename, "/GeometricParameters/Data_Fields/SolarAzimuth")
     }
 
     @Test
     fun testFailDataCompare4() {
-        val filename = "/home/all/testdata/devcdm/netcdf4/tst_opaque_data.nc4"
+        val filename = testData + "/devcdm/netcdf4/tst_opaque_data.nc4"
         compareCdlWithClib(filename, true)
         compareDataWithClib(filename)
     }

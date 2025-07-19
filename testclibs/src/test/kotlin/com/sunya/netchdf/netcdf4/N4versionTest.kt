@@ -2,6 +2,7 @@ package com.sunya.netchdf.netcdf4
 
 import com.sunya.netchdf.netcdfClib.NClibFile
 import com.sunya.netchdf.testfiles.N4Files
+import com.sunya.netchdf.testutils.testData
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
@@ -16,7 +17,7 @@ class N4versionTest {
 
     @Test
     fun errMemorySegment() {
-        val filename = "/home/all/testdata/devcdm/netcdf4/attributeStruct.nc"
+        val filename = testData + "devcdm/netcdf4/attributeStruct.nc"
         NClibFile(filename).use { ncfile ->
             println("${ncfile.type()} $filename ")
             assertTrue((ncfile.type() == "netcdf4") or (ncfile.type() == "netcdf3"), "${ncfile.type()}")
