@@ -1,5 +1,6 @@
 package com.sunya.cdm.iosp
 
+import com.sunya.netchdf.testutil.testData
 import okio.*
 import okio.Path.Companion.toPath
 import kotlin.test.Test
@@ -21,7 +22,7 @@ class TestOkio {
 
     @Test
     fun testZipFile() {
-        val filename = "/home/stormy/Downloads/p256.zip"
+        val filename = testData + "p256.zip"
         val path = filename.toPath()
         val fileSystem = FileSystem.SYSTEM
         val zipFile = fileSystem.openZip(path)
