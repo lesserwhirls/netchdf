@@ -71,9 +71,12 @@ internal fun NCheader.readUserTypes(session: Arena, grpid: Int, gb: Group.Builde
             NC_ENUM() -> {
                 val values: Map<Int, String> = readEnumTypedef(session, grpid, userTypeId)
                 val baseType = when (baseTypeId) {
-                    NC_CHAR(), NC_UBYTE(), NC_BYTE() -> Datatype.ENUM1
-                    NC_USHORT(), NC_SHORT() -> Datatype.ENUM2
-                    NC_UINT(), NC_INT() -> Datatype.ENUM4
+                    NC_CHAR(), NC_UBYTE(), NC_BYTE() -> Datatype.UBYTE
+                    NC_BYTE() -> Datatype.BYTE
+                    NC_USHORT() -> Datatype.USHORT
+                    NC_SHORT() -> Datatype.SHORT
+                    NC_UINT() -> Datatype.UINT
+                    NC_INT() -> Datatype.INT
                     else -> throw RuntimeException("enum illegal baseType = $baseTypeId")
                 }
                 EnumTypedef(name, baseType, values)

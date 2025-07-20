@@ -18,14 +18,14 @@ class KnownProblemFiles {
     @Test
     fun testConfuseHdf5WithNetcdf4() {
         val filename = testData + "/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
-        // compareCdlWithClib(filename, true)
+        // CompareNetchdf(filename, true)
         compareDataWithClib(filename, "Granule")
     }
 
     @Test
     fun testConfusedHdf5() {
         val filename = testData + "/netchdf/knox/SATMS_justdims_npp_d20120619_t1121416_e1122133_b03335_c20120619200237705890_noaa_ops.h5"
-        // compareCdlWithClib(filename, true)
+        // CompareNetchdf(filename, true)
         compareDataWithHdf5Clib(filename, "Granule", null)
     }
     /* tst_grps
@@ -71,7 +71,7 @@ group: the_out_crowd {
 } */
     @Test
     fun tst_grps() {
-        compareCdlWithClib(testData + "devcdm/netcdf4/tst_grps.nc4")
+        CompareNetchdf(testData + "devcdm/netcdf4/tst_grps.nc4")
     }
 
     @Test
@@ -84,7 +84,7 @@ group: the_out_crowd {
     //      float field3 ;
     //    }; // compound_att_float
     fun compoundAttributeTest() {
-        compareCdlWithClib(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
+        CompareNetchdf(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
     }
 
     // We use HDFEOS_INFORMATION to modify the structure, Nclib does not.
@@ -280,13 +280,13 @@ group: the_out_crowd {
 
     @Test
     fun problemTruncated() {
-        compareCdlWithClib(problemDir + "OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727.he5")
+        CompareNetchdf(problemDir + "OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727.he5")
     }
 
     @Test
     fun problem() {
         val filename = problemDir + "RAD_NL25_PCP_NA_200804110600.h5"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename)
     }
 
@@ -294,18 +294,9 @@ group: the_out_crowd {
     @Test
     fun problem2() {
         val filename = testData + "netchdf/gilmore/data.nc"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename)
     }
-
-    // yikes, wtf? dont they know what arrays are? consider these damaged
-    @Test
-    fun testIASI() {
-        val filename = testData + "cdmUnitTest/formats/hdf5/IASI/IASI_xxx_1C_M02_20070704193256Z_20070704211159Z_N_O_20070704211805Z.h5"
-        compareCdlWithClib(filename)
-        compareDataWithClib(filename)
-    }
-
 
     // not picking up missing value ??
     //  *** FAIL comparing data for variable = ubyte Granule [Granule]

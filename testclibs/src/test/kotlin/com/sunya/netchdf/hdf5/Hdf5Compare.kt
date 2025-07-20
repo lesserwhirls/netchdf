@@ -31,21 +31,21 @@ class Hdf5Compare {
     @Test
     fun testNewLibrary() {
         val filename = testData + "netchdf/haberman/iso.h5"
-        compareCdlWithClib(filename, showCdl = true)
+        CompareNetchdf(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 
     @Test
     fun problemChars() {
         val filename = testData + "cdmUnitTest/formats/netcdf4/files/c0_4.nc4"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename)
     }
 
     @Test
     fun problemLibraryVersion() {
         val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
-        compareCdlWithClib(filename, showCdl = true)
+        CompareNetchdf(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 
@@ -58,7 +58,7 @@ class Hdf5Compare {
     @Test
     fun problem() {
         val filename = testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename)
     }
 
@@ -80,7 +80,7 @@ class Hdf5Compare {
     @Test
     fun testCdlWithClib() {
         files().forEach { filename ->
-            compareCdlWithClib(filename)
+            CompareNetchdf(filename)
         }
     }
 

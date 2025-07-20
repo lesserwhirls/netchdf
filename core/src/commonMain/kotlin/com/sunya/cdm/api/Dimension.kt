@@ -11,4 +11,27 @@ data class Dimension(val orgName : String, val length : Long, val isShared : Boo
     constructor(name : String, len : Int) : this(name, len.toLong(), true)
     constructor(len : Int) : this("", len.toLong(), false)
     constructor(len : Long) : this("", len, false)
+
+    // orgName may be different
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Dimension
+
+        if (length != other.length) return false
+        if (isShared != other.isShared) return false
+        if (name != other.name) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = length.hashCode()
+        result = 31 * result + isShared.hashCode()
+        result = 31 * result + name.hashCode()
+        return result
+    }
+
+
 }

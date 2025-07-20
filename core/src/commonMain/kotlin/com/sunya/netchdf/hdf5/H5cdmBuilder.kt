@@ -86,7 +86,7 @@ internal fun H5builder.buildAttribute(gb : Group.Builder, att5 : AttributeMessag
         println(" made attribute ${att5.name} from typedef ${typedef!!.name}@${att5.mdt.address}")
     }
     // private (non-shared) typedefs
-    if (typedef == null && att5.mdt.type.isTypedef()) {
+    if (typedef == null && att5.mdt.type.needsTypedef()) {
         val typedef5 = H5typedef(null, att5.mdt) // name
         typedef = this.buildTypedef(typedef5, gb)
         if (typedef != null) typedefManager.registerPrivateTypedef(typedef, gb)
@@ -94,12 +94,18 @@ internal fun H5builder.buildAttribute(gb : Group.Builder, att5 : AttributeMessag
     val h5type = makeH5TypeInfo(att5.mdt, typedef)
     val dc = DataContainerAttribute(att5.name, h5type, att5.dataPos, att5.mdt, att5.mds)
     val useType = h5type.datatype()
-    val values = this.readRegularData(dc, useType, null)
+    val data = this.readRegularData(dc, useType, null)
     return if (useType == Datatype.CHAR) {
-        val svalues = if (values is ArrayString) values else (values as ArrayUByte).makeStringsFromBytes()
+        val svalues = if (data is ArrayString) data else (data as ArrayUByte).makeStringsFromBytes()
         Attribute.Builder(att5.name, Datatype.STRING).setValues(svalues.toList()).build()
-    } else {
-        Attribute.Builder(att5.name, useType).setValues(values.toList()).build()
+    } else if (data is ArrayVlen<*>) {
+        // attributes want lists, not arrays
+        val attValues = data.values.map { it -> it.toList() }
+        Attribute.Builder(att5.name, useType).setValues(attValues).build()
+
+    } else  {
+        // TODO data.toList() ??
+        Attribute.Builder(att5.name, useType).setValues(data.toList()).build()
     }
 }
 
@@ -113,7 +119,7 @@ internal fun H5builder.buildVariable(groupb: Group.Builder, v5 : H5Variable) : V
         println(" made variable ${v5.name} from typedef ${typedef!!.name}@${v5.mdt.address}")
     }
     // private (non-shared) typedefs
-    if (typedef == null && v5.mdt.type.isTypedef()) {
+    if (typedef == null && v5.mdt.type.needsTypedef()) {
         val typedef5 = H5typedef(null, v5.mdt) // name
         typedef = this.buildTypedef(typedef5, groupb)
         if (typedef != null) typedefManager.registerPrivateTypedef(typedef, groupb)

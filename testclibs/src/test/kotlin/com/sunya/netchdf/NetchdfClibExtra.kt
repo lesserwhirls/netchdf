@@ -35,7 +35,7 @@ class NetchdfClibExtra {
     @Test
     fun problemNPP() {
         val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         readNetchdfData(filename, null)
         compareDataWithClib(filename)
     }
@@ -46,9 +46,18 @@ class NetchdfClibExtra {
         // showMyHeader(filename)
         showNcHeader(filename)
         // showMyData(filename)
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         //readDataCompareNC(filename)
     }
+
+    @Test
+    fun problem() {
+        val filename = testData + "netchdf/bird/watlev_NOAA.F.C_IKE_VIMS_3D_WITHWAVE.nc"
+        CompareNetchdf(filename)
+        readNetchdfData(filename, null)
+        compareDataWithClib(filename)
+    }
+
 
     ///////////////////////////////////////////////////////
     @Test
@@ -69,7 +78,7 @@ class NetchdfClibExtra {
     @Test
     fun testCompareCdlWithClib() {
         files().forEach { filename ->
-            compareCdlWithClib(filename, showCdl = true)
+            CompareNetchdf(filename, showCdl = true)
         }
     }
 
