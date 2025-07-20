@@ -39,8 +39,8 @@ enum class Datatype5(val num : Int) {
         }
     }
 
-    fun isTypedef() : Boolean {
-        return (num == 5) || (num == 6) || (num == 8) || (num == 9)
+    fun needsTypedef() : Boolean {
+        return (num == 6) || (num == 8) || (num == 9)
     }
 }
 
@@ -226,6 +226,7 @@ internal class DatatypeEnum(
 ) : DatatypeMessage(address, Datatype5.Enumerated, elemSize, isBT) {
     val valuesMap : Map<Int, String>
     val datatype : Datatype<*>
+    val basetype : Datatype<*>
 
     init {
         require(names.size == nums.size)
@@ -238,6 +239,14 @@ internal class DatatypeEnum(
             2 -> Datatype.ENUM2
             4 -> Datatype.ENUM4
             8 -> Datatype.ENUM8
+            else -> throw RuntimeException("invalid enum elemsize $elemSize")
+        }
+
+        basetype = when (elemSize) {
+            1 -> Datatype.UBYTE
+            2 -> Datatype.USHORT
+            4 -> Datatype.UINT
+            8 -> Datatype.ULONG
             else -> throw RuntimeException("invalid enum elemsize $elemSize")
         }
     }

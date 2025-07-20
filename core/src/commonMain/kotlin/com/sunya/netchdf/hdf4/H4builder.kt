@@ -938,8 +938,8 @@ class H4builder(val raf: OpenFileIF, val valueCharset: Charset) {
         vinfo.setVariable(vb)
 
         // assume dimensions are not shared
-        vb.dimensions.add(Dimension("ydim", dimTag!!.ydim.toLong(), false))
-        vb.dimensions.add(Dimension("xdim", dimTag!!.xdim.toLong(), false))
+        vb.dimensions.add(Dimension("", dimTag!!.ydim.toLong(), false))
+        vb.dimensions.add(Dimension("", dimTag!!.xdim.toLong(), false))
 
         if (ip8Tag != null) {
             val lutv_name = "${name}_lookup"

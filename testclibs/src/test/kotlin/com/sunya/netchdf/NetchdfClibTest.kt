@@ -54,16 +54,16 @@ class NetchdfClibTest {
     @Test
     fun testOneCdl() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
     }
 
     @Test
     fun testEnums() {
-        compareCdlWithClib(testData + "devcdm/netcdf4/test_enum_type.nc")
-        compareCdlWithClib(testData + "devcdm/netcdf4/tst_enums.nc")
-        compareCdlWithClib(testData + "devcdm/hdf5/enumcmpnd.h5")
-        compareCdlWithClib(testData + "devcdm/hdf5/enum.h5")
-        compareCdlWithClib(testData + "devcdm/hdf5/cenum.h5")
+        CompareNetchdf(testData + "devcdm/netcdf4/test_enum_type.nc")
+        CompareNetchdf(testData + "devcdm/netcdf4/tst_enums.nc")
+        CompareNetchdf(testData + "devcdm/hdf5/enumcmpnd.h5")
+        CompareNetchdf(testData + "devcdm/hdf5/enum.h5")
+        CompareNetchdf(testData + "devcdm/hdf5/cenum.h5")
 
         compareDataWithClib(testData + "devcdm/netcdf4/test_enum_type.nc")
         compareDataWithClib(testData + "devcdm/netcdf4/tst_enums.nc")
@@ -78,7 +78,7 @@ class NetchdfClibTest {
     fun problemHdf4() {
         val filename = testData + "hdf4/nsidc/LAADS/MOD/MOD10A1.A2008001.h23v15.005.2008003161138.hdf"
         // compareN4withH5cdl(filename)
-        // compareCdlWithClib(filename, true)
+        // CompareNetchdf(filename, true)
         compareDataWithClib(filename, "/MOD_Grid_Snow_500m/Data_Fields/Snow_Cover_Daily_Tile")
     }
 
@@ -86,7 +86,7 @@ class NetchdfClibTest {
     fun problem2() {
         val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
         // compareN4withH5cdl(filename)
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename)
     }
 
@@ -131,7 +131,7 @@ class NetchdfClibTest {
         println(filename)
         // val filename = testData + "cdmUnitTest/formats/hdf5/superblockIsOffsetNPP.h5"
         //val filename = testData + "cdmUnitTest/formats/hdf5/wrf/wrf_input_par.h5"
-        // compareCdlWithClib(filename)
+        // CompareNetchdf(filename)
 
         val sectionp = SectionPartial.fromSpec("6:13")
 
@@ -199,28 +199,28 @@ isThreadsafe = 0 = false
     @Test
     fun testHdf4Attribute() {
         val filename = testData + "/hdf4/eos/misr/MISR_AM1_GRP_TERR_GM_P040_AN"
-        compareCdlWithClib(filename)
+        CompareNetchdf(filename)
         compareDataWithClib(filename, )
     }
 
     @Test
     fun testFillValue() {
         val filename = testData + "/hdf4/nsidc/LAADS/MOD/MOD07_L2.A2007001.0000.005.2007003012910.hdf"
-        // compareCdlWithClib(filename, true)
+        // CompareNetchdf(filename, true)
         compareDataWithClib(filename, "/mod07/Data_Fields/Processing_Flag")
     }
 
     @Test
     fun testFailDataCompare3() {
         val filename = testData + "/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
-        compareCdlWithClib(filename, true)
+        CompareNetchdf(filename, true)
         compareDataWithClib(filename, "/GeometricParameters/Data_Fields/SolarAzimuth")
     }
 
     @Test
     fun testFailDataCompare4() {
         val filename = testData + "/devcdm/netcdf4/tst_opaque_data.nc4"
-        compareCdlWithClib(filename, true)
+        CompareNetchdf(filename, true)
         compareDataWithClib(filename)
     }
 
@@ -249,11 +249,35 @@ isThreadsafe = 0 = false
         }
     }
 
+    @Test
+    fun testVlenAttribute() {
+        val filename = "/home/all/testdata/devcdm/netcdf4/tst_solar_2.nc4"
+        CompareNetchdf(filename, true, true)
+    }
+
+    // TODO a message with only mdt but says isShared = false
+    @Test
+    fun problemCompare() {
+        val filename = "/home/all/testdata/devcdm/hdf4/MAC07S0.A2008230.1250.002.2008233222357.hdf"
+        CompareNetchdf(filename, true, true)
+    }
+
+    @Test
+    fun compareNetchdf() {
+        files().forEach { filename ->
+            try {
+                CompareNetchdf(filename, false, false)
+            } catch (e: Throwable) {
+                CompareNetchdf(filename, true, true)
+                e.printStackTrace()
+            }
+        }
+    }
 
     @Test
     fun testCdlWithClib() {
         files().forEach { filename ->
-            compareCdlWithClib(filename)
+            CompareNetchdf(filename)
         }
     }
 
@@ -316,53 +340,6 @@ fun readNetchdfData(filename: String, varname: String? = null, section: SectionP
 fun readNcData(filename: String, varname: String? = null, section: SectionPartial? = null, showCdl : Boolean = false) {
     NClibFile(filename).use { ncfile ->
         readMyData(ncfile, varname, section, showCdl)
-    }
-}
-
-fun compareCdlWithClib(filename: String, showCdl: Boolean = false) {
-    println("=================")
-    openNetchdfFile(filename, false).use { netchdf ->
-        if (netchdf == null) {
-            println("*** not a netchdf file = $filename")
-            return
-        }
-        println("${netchdf.type()} $filename ")
-        if (showCdl) println("\nnetchdf = ${netchdf.cdl()}")
-
-        if (netchdf.type().contains("hdf4") || netchdf.type().contains("hdf-eos2")) {
-            Hdf4ClibFile(filename).use { ncfile ->
-                if (showCdl) println("\nHdf4ClibFile = ${ncfile.cdl()}")
-                assertEquals(ncfile.cdl(), netchdf.cdl())
-            }
-        } else if (netchdf.type().contains("netcdf")) {
-            NClibFile(filename).use { ncfile ->
-                if (showCdl) println("\nNClibFile = ${ncfile.cdl()}")
-                assertEquals(ncfile.cdl(), netchdf.cdl())
-            }
-        }  else if (netchdf.type().contains("hdf5") || netchdf.type().contains("hdf-eos5")) {
-            Hdf5ClibFile(filename).use { ncfile ->
-                if (showCdl) println("\nHdf5ClibFile = ${ncfile.cdl()}")
-                assertEquals(ncfile.cdl(), netchdf.cdl())
-            }
-        } else {
-            println("*** no c library to compare for $filename")
-        }
-    }
-}
-
-fun compareN4withH5cdl(filename: String) {
-    println("=================")
-    Hdf5ClibFile(filename).use { h5file ->
-        if (h5file == null) {
-            println("*** not an hdf5 file = $filename")
-            return
-        }
-        println("${h5file.type()} $filename ")
-        println("\nh5file = ${h5file.cdl()}")
-
-        NClibFile(filename).use { ncfile ->
-            assertEquals(h5file.cdl(), ncfile.cdl())
-        }
     }
 }
 

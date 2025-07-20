@@ -174,7 +174,7 @@ private fun H5builder.buildEnumTypedef(name : String, mess: DatatypeEnum, gb: Gr
     val typedef =  typedefManager.findTypedef(mess.address, mess.hashCode())
     if (typedef is EnumTypedef) return typedef
 
-    val enumTypedef = EnumTypedef(name, mess.datatype, mess.valuesMap)
+    val enumTypedef = EnumTypedef(name, mess.basetype, mess.valuesMap)
     typedefManager.registerTypedef(makeH5TypeInfo(mess, enumTypedef), gb)
     return enumTypedef
 }
@@ -185,7 +185,7 @@ private fun H5builder.buildVlenTypedef(name : String, mess: DatatypeVlen, gb: Gr
 
     val h5info = this.makeH5TypeInfo(mess.base)
     val datatype = h5info.datatype()
-    val altname = "${datatype.cdlName}(*)" // dont use the typedef name or member name
+    val altname = if (mess.isShared) name else "${datatype.cdlName}(*)" // dont use the typedef name or member name
     return VlenTypedef(altname, h5info.datatype())
 }
 
