@@ -35,7 +35,7 @@ class NetchdfClibExtra {
     @Test
     fun problemNPP() {
         val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         readNetchdfData(filename, null)
         compareDataWithClib(filename)
     }
@@ -46,18 +46,17 @@ class NetchdfClibExtra {
         // showMyHeader(filename)
         showNcHeader(filename)
         // showMyData(filename)
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         //readDataCompareNC(filename)
     }
 
     @Test
     fun problem() {
-        val filename = testData + "netchdf/bird/watlev_NOAA.F.C_IKE_VIMS_3D_WITHWAVE.nc"
-        CompareNetchdf(filename)
+        val filename = testData + "netchdf/martaan/RADNL_TEST_R___25PCPRR_L3__20090305T120000_20090305T120500_0001.nc"
+        CompareCdmWithClib(filename)
         readNetchdfData(filename, null)
         compareDataWithClib(filename)
     }
-
 
     ///////////////////////////////////////////////////////
     @Test
@@ -76,16 +75,9 @@ class NetchdfClibExtra {
     }
 
     @Test
-    fun testCompareCdlWithClib() {
+    fun compareNetchdfCdm() {
         files().forEach { filename ->
-            CompareNetchdf(filename, showCdl = true)
-        }
-    }
-
-    @Test
-    fun readNetchdfData() {
-        files().forEach { filename ->
-            readNetchdfData(filename, null)
+            CompareCdmWithClib(filename, showCdl = false)
         }
     }
 
@@ -93,6 +85,15 @@ class NetchdfClibExtra {
     fun testCompareDataWithClib() {
         files().forEach { filename ->
             compareDataWithClib(filename)
+        }
+    }
+
+    @Test
+    fun testFilesAfter() {
+        var skip = true
+        files().forEach { filename ->
+            if (filename.equals(testData + "netchdf/martaan/RADNL_TEST_R___25PCPRR_L3__20090305T120000_20090305T120500_0001.nc")) skip = false
+            if (!skip) compareDataWithClib(filename)
         }
     }
 

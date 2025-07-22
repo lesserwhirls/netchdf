@@ -225,14 +225,6 @@ class H4Ccompare {
         }
     }
 
-    // @Test
-    fun readH4dataAll() {
-        files().forEach { filename ->
-            readNetchdfData(filename, null, null, true)
-            println()
-        }
-    }
-
     @Test
     fun compareDataAll() {
         files().forEach { filename ->

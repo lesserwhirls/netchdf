@@ -4,6 +4,7 @@ package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.*
 import com.sunya.cdm.api.Datatype.Companion.STRING
+import com.sunya.cdm.api.Datatype.Companion.CHAR
 import com.sunya.cdm.array.ArrayEmpty
 import com.sunya.cdm.array.ArraySingle
 import com.sunya.cdm.array.ArrayString
@@ -43,7 +44,11 @@ class Hdf5File(val filename : String, strict : Boolean = false) : Netchdf {
 
         val vinfo = v2.spObject as DataContainerVariable
         if (vinfo.onlyFillValue) { // fill value only, no data
-            if (v2.datatype == STRING) return ArrayString(intArrayOf(1), listOf("")) as ArrayTyped<T>
+            if (v2.datatype == STRING) return ArrayString(v2.shape.toIntArray(), List(v2.nelems.toInt()) {""} ) as ArrayTyped<T>
+            if (v2.datatype == CHAR) {
+                val shapeMinus1 = if (v2.rank == 0) intArrayOf(1) else IntArray(v2.rank - 1) { v2.shape[it].toInt()  }
+                return ArrayString(shapeMinus1, List(shapeMinus1.computeSize()) {""} ) as ArrayTyped<T>
+            }
             val tba = TypedByteArray(v2.datatype, vinfo.fillValue, 0, isBE = vinfo.h5type.isBE)
             return ArraySingle(wantSection.shape.toIntArray(), v2.datatype, tba.get(0))
         }

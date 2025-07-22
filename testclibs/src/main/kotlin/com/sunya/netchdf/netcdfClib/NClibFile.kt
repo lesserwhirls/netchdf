@@ -2,7 +2,6 @@
 
 package com.sunya.netchdf.netcdfClib
 
-import com.fleeksoft.charset.Platform
 import com.sunya.cdm.api.*
 import com.sunya.cdm.array.*
 import com.sunya.cdm.layout.MaxChunker
@@ -13,7 +12,6 @@ import com.sunya.netchdf.netcdfClib.ffm.nc_vlen_t
 import com.sunya.netchdf.netcdfClib.ffm.netcdf_h.*
 import java.lang.foreign.*
 import java.lang.foreign.ValueLayout.*
-import java.nio.ByteBuffer
 
 /*
 1. Run /home/stormy/dev/github/netcdf/netcdf-c/rebuild.sh:
@@ -138,7 +136,7 @@ class NClibFile(val filename: String) : Netchdf {
             }
 
             val shape = wantSection.shape.toIntArray()
-            when (datatype) {
+            return when (datatype) {
                 Datatype.VLEN -> {
                     val basetype = header.convertType(userType!!.baseTypeid)
                     // an array of vlen structs. each vlen has an address and a size
@@ -155,7 +153,7 @@ class NClibFile(val filename: String) : Netchdf {
                         //println("   data=${adata.contentToString()}")
                         listOfVlen.add( adata)
                     }
-                    return ArrayVlen.fromArray(shape, listOfVlen, basetype) as ArrayTyped<T>
+                    ArrayVlen.fromArray(shape, listOfVlen, basetype) as ArrayTyped<T>
                     // TODO nc_free_vlen(nc_vlen_t *vl);
                     //      nc_free_string(size_t len, char **data);
                     //      nc_reclaim_data()
@@ -210,7 +208,7 @@ class NClibFile(val filename: String) : Netchdf {
                         }
                         ArrayVlen.fromArray(member.shape, listOfVlen, member.datatype.typedef!!.baseType)
                     }
-                    return sdataArray as ArrayTyped<T>
+                    sdataArray as ArrayTyped<T>
                 }
 
                 Datatype.ENUM1, Datatype.ENUM2, Datatype.ENUM4 -> {
@@ -223,15 +221,7 @@ class NClibFile(val filename: String) : Netchdf {
                     val ba = val_p.toArray(ValueLayout.JAVA_BYTE)!!
                     // TODO im skeptical isBE shouldnt always be nativeByteOrder
                     val tba = TypedByteArray(v2.datatype, ba, 0, isBE = true)
-                    return tba.convertToArrayTyped(shape)
-                    /*
-                    val values = ByteBuffer.wrap(raw)
-                    when (datatype) {
-                        Datatype.ENUM1 -> return ArrayUByte(shape, datatype as Datatype<UByte>, values) as ArrayTyped<T>
-                        Datatype.ENUM2 -> return ArrayUShort(shape, datatype as Datatype<UShort>, values) as ArrayTyped<T>
-                        Datatype.ENUM4 -> return ArrayUInt(shape, datatype as Datatype<UInt>, values) as ArrayTyped<T>
-                        else -> throw RuntimeException()
-                    } */
+                    tba.convertToArrayTyped(shape)
                 }
 
                 Datatype.BYTE -> {
@@ -239,7 +229,7 @@ class NClibFile(val filename: String) : Netchdf {
                     checkErr("nc_get_vars_schar",
                         nc_get_vars_schar(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val raw = val_p.toArray(ValueLayout.JAVA_BYTE)!!
-                    return ArrayByte(shape, raw) as ArrayTyped<T>
+                    ArrayByte(shape, raw) as ArrayTyped<T>
                 }
 
                 Datatype.UBYTE -> {
@@ -247,15 +237,28 @@ class NClibFile(val filename: String) : Netchdf {
                     checkErr("nc_get_vars_uchar",
                         nc_get_vars_uchar(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val raw = val_p.toArray(ValueLayout.JAVA_BYTE)!!
-                    return ArrayUByte.fromByteArray(shape, raw) as ArrayTyped<T>
+                    ArrayUByte.fromByteArray(shape, raw) as ArrayTyped<T>
                 }
 
                 Datatype.CHAR -> {
                     val val_p = session.allocate(nelems)
-                    checkErr("nc_get_vars_text",
-                        nc_get_vars_text(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
+                    checkErr(
+                        "nc_get_vars_text",
+                        nc_get_vars_text(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p)
+                    )
                     val raw = val_p.toArray(ValueLayout.JAVA_BYTE)
-                    return ArrayUByte.fromByteArray(shape, Datatype.CHAR, raw) as ArrayTyped<T>
+                    val ubytea = ArrayUByte.fromByteArray(shape, Datatype.CHAR, raw)
+
+                    //   * Netcdf-3 does not have STRING or UBYTE types, and in practice, CHAR is used for either. Variables of type CHAR
+                    //    return data as ArrayUByte.
+                    //  * Netcdf-4 encodes CHAR values as HDF5 string type with elemSize = 1, so we use that convention to detect
+                    //    legacy CHAR variables in HDF5 format.
+                    //    Variables of type CHAR return data as STRING, since users can use UBYTE if thats what they intend.
+                    if (this.header.formatType.isNetdf3format) {
+                        ubytea as ArrayTyped<T>
+                    } else {
+                        ubytea.makeStringsFromBytes() as ArrayTyped<T>// netcdf4
+                    }
                 }
 
                 Datatype.DOUBLE -> {
@@ -263,14 +266,14 @@ class NClibFile(val filename: String) : Netchdf {
                     val val_p = session.allocateArray(C_DOUBLE, nelems)
                     checkErr("nc_get_vars_double", nc_get_vars_double(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_DOUBLE)!!
-                    return ArrayDouble(shape, values) as ArrayTyped<T>
+                    ArrayDouble(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.FLOAT -> {
                     val val_p = session.allocateArray(C_FLOAT, nelems)
                     checkErr("nc_get_vars_float", nc_get_vars_float(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_FLOAT)!!
-                    return ArrayFloat(shape, values) as ArrayTyped<T>
+                    ArrayFloat(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.INT -> {
@@ -278,7 +281,7 @@ class NClibFile(val filename: String) : Netchdf {
                     val val_p = session.allocateArray(C_INT, nelems)
                     checkErr("nc_get_vars_int", nc_get_vars_int(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_INT)!!
-                    return ArrayInt(shape, values) as ArrayTyped<T>
+                    ArrayInt(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.UINT -> {
@@ -286,7 +289,7 @@ class NClibFile(val filename: String) : Netchdf {
                     val val_p = session.allocateArray(C_INT, nelems)
                     checkErr("nc_get_vars_uint", nc_get_vars_uint(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_INT)!!
-                    return ArrayUInt.fromIntArray(shape, values) as ArrayTyped<T>
+                    ArrayUInt.fromIntArray(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.LONG -> {
@@ -295,7 +298,7 @@ class NClibFile(val filename: String) : Netchdf {
                     checkErr("nc_get_vars_long", nc_get_vars_long(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_LONG)!!
 
-                    return ArrayLong(shape, values) as ArrayTyped<T>
+                    ArrayLong(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.ULONG -> {
@@ -303,20 +306,14 @@ class NClibFile(val filename: String) : Netchdf {
                     val val_p = session.allocateArray(C_LONG  as MemoryLayout, nelems)
                     checkErr("nc_get_vars_ulonglong", nc_get_vars_ulonglong(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_LONG)!!
-                    /*
-                    val values = ByteBuffer.allocate(8 * nelems.toInt())
-                    val lvalues = values.asLongBuffer()
-                    for (i in 0 until nelems) {
-                        lvalues.put(i.toInt(), val_p.getAtIndex(C_LONG, i))
-                    } */
-                    return ArrayULong.fromLongArray(shape, values) as ArrayTyped<T>
+                    ArrayULong.fromLongArray(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.SHORT -> {
                     val val_p = session.allocateArray(C_SHORT, nelems)
                     checkErr("nc_get_vars_short", nc_get_vars_short(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_SHORT)!!
-                    return ArrayShort(shape, values) as ArrayTyped<T>
+                    ArrayShort(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.USHORT -> {
@@ -324,7 +321,7 @@ class NClibFile(val filename: String) : Netchdf {
                     checkErr("nc_get_vars_ushort",
                         nc_get_vars_ushort(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val values = val_p.toArray(C_SHORT)!!
-                    return ArrayUShort.fromShortArray(shape, values) as ArrayTyped<T>
+                    ArrayUShort.fromShortArray(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.STRING -> {
@@ -336,14 +333,14 @@ class NClibFile(val filename: String) : Netchdf {
                         val cString = address.reinterpret(Long.MAX_VALUE)
                         values.add(cString.getUtf8String(0))
                     }
-                    return ArrayString(shape, values) as ArrayTyped<T>
+                    ArrayString(shape, values) as ArrayTyped<T>
                 }
 
                 Datatype.OPAQUE -> {
                     val val_p = session.allocate(nelems * userType!!.size)
                     checkErr("opaque nc_get_var", nc_get_vars(vinfo.g4.grpid, vinfo.varid, origin_p, shape_p, stride_p, val_p))
                     val ba = val_p.toArray(ValueLayout.JAVA_BYTE)!!
-                    return ArrayOpaque.fromByteArray(shape, ba, userType.size) as ArrayTyped<T>
+                    ArrayOpaque.fromByteArray(shape, ba, userType.size) as ArrayTyped<T>
                 }
 
                 else -> throw IllegalArgumentException("unsupported datatype ${datatype}")

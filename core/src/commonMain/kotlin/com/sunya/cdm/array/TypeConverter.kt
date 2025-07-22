@@ -135,7 +135,7 @@ fun makeString(ba: ByteArray) = ba.decodeToString(charset = Charsets.UTF8)
 
 // needed when setting fillValue from Attribute value
 fun convertToBytes(datatype : Datatype<*>, value: Any?, isBE: Boolean, charset : Charset = Charsets.UTF8): ByteArray {
-    if ( value == null) return ByteArray(datatype.size)
+    if (value == null) return ByteArray(datatype.size)
     return when (value) {
         is Byte -> byteArrayOf(value)
         // is Char -> byteArrayOf(value.toByte()) // avoid CHAR altogether

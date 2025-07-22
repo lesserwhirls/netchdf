@@ -93,7 +93,7 @@ internal fun <T> H5builder.processDataIntoArray(ba: ByteArray, isBE: Boolean, da
     }
 
     val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
-    return tba.convertToArrayTyped(shape)
+    return tba.convertToArrayTyped(shape, charToString = true)
 }
 
 // Put the variable length members (vlen, string) on the heap

@@ -378,17 +378,6 @@ internal class TagRasterImage(icode: Int, refno: Int, offset : Long, length : In
         val shape = intArrayOf(tagID.ydim, tagID.xdim, tagID.nelems)
         val tba = TypedByteArray(datatype, raw, 0, isBE = true)
         raster = tba.convertToArrayTyped(shape)
-
-        /*
-        raster = when (datatype) {
-            Datatype.BYTE -> ArrayByte(shape, bb)
-            Datatype.UBYTE -> ArrayUByte(shape, bb)
-            Datatype.SHORT -> ArrayShort(shape, bb)
-            Datatype.USHORT -> ArrayUShort(shape, bb)
-            Datatype.INT -> ArrayInt(shape, bb)
-            Datatype.UINT -> ArrayUInt(shape, bb)
-            else -> throw RuntimeException("not supporting $datatype for TagRasterImage")
-        } */
     }
 }
 

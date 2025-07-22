@@ -71,7 +71,7 @@ group: the_out_crowd {
 } */
     @Test
     fun tst_grps() {
-        CompareNetchdf(testData + "devcdm/netcdf4/tst_grps.nc4")
+        CompareCdmWithClib(testData + "devcdm/netcdf4/tst_grps.nc4")
     }
 
     @Test
@@ -84,7 +84,7 @@ group: the_out_crowd {
     //      float field3 ;
     //    }; // compound_att_float
     fun compoundAttributeTest() {
-        CompareNetchdf(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
+        CompareCdmWithClib(testData + "cdmUnitTest/formats/netcdf4/compound-attribute-test.nc")
     }
 
     // We use HDFEOS_INFORMATION to modify the structure, Nclib does not.
@@ -229,11 +229,11 @@ group: the_out_crowd {
     //> but was: <class ArrayUByte shape=[4953] data=60,63,120,109,108,32,118,101,114,115,105,111,110,61,34,49,46,48,34,32,63,62,60,115,109,88,77,76,58, ...
     // the HDF5 mdt= DatatypeMessage(address=1992, type=String, elemSize=1, endian=false, isShared=false)
     //          mds= DataspaceMessage(type=Simple, dims=[4953], isUnlimited=true)
-    // looks like netchdf is changing that to char[4953], claiming string[1] is a mistake i guess.
+    // HDF5 CHAR should return STRING
     @Test
     fun testString1() {
         // compareH5andNclib(testData + "netchdf/austin/H12007_1m_MLLW_1of6.bag")
-        compareDataWithClib(testData + "netchdf/austin/H12007_1m_MLLW_1of6.bag", "/BAG_root/metadata")
+        compareDataWithClib(testData + "netchdf/austin/H12007_1m_MLLW_1of6.bag", "/BAG_root/metadata", showCdl = true)
     }
 
 
@@ -280,13 +280,13 @@ group: the_out_crowd {
 
     @Test
     fun problemTruncated() {
-        CompareNetchdf(problemDir + "OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727.he5")
+        CompareCdmWithClib(problemDir + "OMI-Aura_L2-OMTO3_2009m0829t1219-o27250_v003-2009m0829t175727.he5")
     }
 
     @Test
     fun problem() {
         val filename = problemDir + "RAD_NL25_PCP_NA_200804110600.h5"
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         compareDataWithClib(filename)
     }
 
@@ -294,7 +294,7 @@ group: the_out_crowd {
     @Test
     fun problem2() {
         val filename = testData + "netchdf/gilmore/data.nc"
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         compareDataWithClib(filename)
     }
 

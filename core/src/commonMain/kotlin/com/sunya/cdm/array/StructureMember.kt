@@ -24,7 +24,7 @@ class StructureMember<T>(orgName: String, val datatype : Datatype<T>, val offset
 
         if (nelems > 1 && !datatype.isVlenString && (datatype != Datatype.VLEN)) {
             val tba = TypedByteArray(this.datatype, sdata.ba, offset, this.isBE)
-            return tba.convertToArrayTyped(shape)
+            return tba.convertToArrayTyped(shape) // TODO charToString = ??
         }
 
         val enumTypedef = if (!datatype.isEnum || this.datatype.typedef == null) null

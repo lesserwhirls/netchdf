@@ -85,21 +85,19 @@ internal class H5chunkReader(val h5 : H5builder) {
         var transferChunks = 0
         val state = OpenFileState(0L, vinfo.h5type.isBE)
         for (dataChunk: DataChunkIF in tiledData.dataChunks(wantSpace)) { // : Iterable<BTree1New.DataChunkEntry>
-            if (!dataChunk.isMissing()) { // TODO fill value
-                val dataSection = IndexSpace(v2.rank, dataChunk.offsets(), vinfo.storageDims)
-                val chunker = Chunker(dataSection, wantSpace) // each DataChunkEntry has its own Chunker iteration
-                if (dataChunk.isMissing()) {
-                    if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
-                    chunker.transferMissing(vinfo.fillValue, elemSize, ba)
-                } else {
-                    if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
-                    state.pos = dataChunk.childAddress()
-                    val chunkData = h5.raf.readByteArray(state, dataChunk.chunkSize())
-                    val filteredData = if (dataChunk.filterMask() == null) chunkData
-                    else filters.apply(chunkData, dataChunk.filterMask()!!)
-                    chunker.transferBA(filteredData, 0, elemSize, ba, 0)
-                    transferChunks += chunker.transferChunks
-                }
+            val dataSection = IndexSpace(v2.rank, dataChunk.offsets(), vinfo.storageDims)
+            val chunker = Chunker(dataSection, wantSpace) // each DataChunkEntry has its own Chunker iteration
+            if (dataChunk.isMissing()) {
+                if (debugChunking) println("   missing ${dataChunk.show(tiledData.tiling)}")
+                chunker.transferMissing(vinfo.fillValue, elemSize, ba)
+            } else {
+                if (debugChunking) println("   chunk=${dataChunk.show(tiledData.tiling)}")
+                state.pos = dataChunk.childAddress()
+                val chunkData = h5.raf.readByteArray(state, dataChunk.chunkSize())
+                val filteredData = if (dataChunk.filterMask() == null) chunkData
+                else filters.apply(chunkData, dataChunk.filterMask()!!)
+                chunker.transferBA(filteredData, 0, elemSize, ba, 0)
+                transferChunks += chunker.transferChunks
             }
         }
 

@@ -806,7 +806,7 @@ internal fun <T> processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype5 : 
 
     // convert to array of Strings by reducing rank by 1, tricky shape shifting for non-scalars
     if (datatype5 == Datatype5.String) {
-        val extshape = IntArray(shape.size + 1) { if (it == shape.size) elemSize else shape[it] }
+        val extshape = if (elemSize == 1) shape else IntArray(shape.size + 1) { if (it == shape.size) elemSize else shape[it] }
         val result = ArrayUByte.fromByteArray(extshape, ba)
         return result.makeStringsFromBytes() as ArrayTyped<T>
     }
@@ -816,7 +816,7 @@ internal fun <T> processDataIntoArray(ba: ByteArray, isBE: Boolean, datatype5 : 
     }
 
     val tba = TypedByteArray(datatype, ba, 0, isBE = isBE)
-    return tba.convertToArrayTyped(shape)
+    return tba.convertToArrayTyped(shape, charToString = true)
 }
 
 // Put the variable length members (vlen, string) on the heap

@@ -1,6 +1,6 @@
 package com.sunya.netchdf.hdf5
 
-import com.sunya.netchdf.CompareNetchdf
+import com.sunya.netchdf.CompareCdmWithClib
 import com.sunya.netchdf.compareDataWithClib
 import com.sunya.netchdf.testfiles.JhdfFiles
 import kotlin.test.Test
@@ -21,27 +21,27 @@ class JhdfReadTest {
 
     @Test
     fun problem() {
-        CompareNetchdf("../core/src/commonTest/data/jhdf/compound_datasets_earliest.hdf5", showCdl = true, showCompare = true)
+        CompareCdmWithClib("../core/src/commonTest/data/jhdf/compound_datasets_earliest.hdf5", showCdl = true, showCompare = true)
         // CompareNetchdf("../core/src/commonTest/data/jhdf/compound_datasets_earliest.hdf5", showCdl= true)
     }
 
     @Test
     fun problem2() {
-        CompareNetchdf("../core/src/commonTest/data/jhdf/compound_datasets_latest.hdf5", showCdl= true, showCompare = true)
+        CompareCdmWithClib("../core/src/commonTest/data/jhdf/compound_datasets_latest.hdf5", showCdl= true, showCompare = true)
     }
 
     @Test
     fun failure() {
-        CompareNetchdf("../core/src/commonTest/data/jhdf/globalheaps_test.hdf5", showCdl= true, showCompare = true)
+        CompareCdmWithClib("../core/src/commonTest/data/jhdf/globalheaps_test.hdf5", showCdl= true, showCompare = true)
     }
 
     @Test
     fun compareNetchdf() {
         files().forEach { filename ->
             try {
-                CompareNetchdf(filename, false, false)
+                CompareCdmWithClib(filename, false, false)
             } catch (e: Throwable) {
-                CompareNetchdf(filename, true, true)
+                CompareCdmWithClib(filename, true, true)
                 e.printStackTrace()
             }
         }
