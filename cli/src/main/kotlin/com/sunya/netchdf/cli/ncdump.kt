@@ -1,8 +1,9 @@
 package com.sunya.netchdf.cli
 
-import com.sunya.netchdf.openNetchdfFile
-import kotlinx.cli.*
+// import com.sunya.netchdf.openNetchdfFile
+// import kotlinx.cli.*
 
+/*
 object ncdump {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -25,3 +26,5 @@ object ncdump {
         }
     }
 }
+
+ */

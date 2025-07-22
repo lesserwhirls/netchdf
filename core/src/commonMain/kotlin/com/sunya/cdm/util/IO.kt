@@ -30,15 +30,3 @@ internal fun IOcopyB(input: InputStream, out: OutputStream, bufferSize: Int): Lo
     out.flush()
     return totalBytesRead
 }
-
-/*
-fun Long.reverseByteOrder(): Long {
-    return ByteBuffer.allocate(Long.SIZE_BYTES)
-        .order(ByteOrder.LITTLE_ENDIAN)
-        .putLong(this)
-        .rewind()
-        .order(ByteOrder.BIG_ENDIAN)
-        .long
-}
-
- */

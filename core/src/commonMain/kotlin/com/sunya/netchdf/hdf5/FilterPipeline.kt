@@ -40,16 +40,6 @@ internal class FilterPipeline(
     val isBE: Boolean
 ) {
 
-    init {
-        if (mfp != null) {
-            mfp.filters.forEach { filter ->
-                if (filter.filterType == FilterType.lz4) {
-                    println("GOT LZ4!")
-                }
-            }
-        }
-    }
-
     fun apply(encodedData: ByteArray, filterMask: Int): ByteArray {
         if (mfp == null) return encodedData
         var data = encodedData

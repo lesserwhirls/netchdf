@@ -3,16 +3,16 @@
 }
 
 dependencies {
-    api(project(":core"))
+    implementation(project(":core"))
 
     implementation(libs.lzf)
     implementation(libs.lz4)
-    implementation(libs.kotlinx.cli)
+    // implementation(libs.kotlinx.cli)
     implementation(libs.oshai.logging)
     implementation(libs.logback.classic)
 
     testImplementation(kotlin("test"))
-    testImplementation(libs.junit.jupiter.params)
+    // testImplementation(libs.junit.jupiter.params)
 }
 
 kotlin {

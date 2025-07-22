@@ -4,7 +4,7 @@ import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toPath
 
-const val testData = "src/commonTest/data/"
+const val testData = "../core/src/commonTest/data/"
 
 fun testFilesIn(dirPath: String): TestFiles.SequenceBuilder {
     return TestFiles.SequenceBuilder(dirPath)
