@@ -175,7 +175,7 @@ What we get though are just the last part of the names, not a full path:
     @Test
     fun problemNPP() {
         val filename = testData + "netchdf/npp/VCBHO_npp_d20030125_t084955_e085121_b00015_c20071213022754_den_OPS_SEG.h5"
-        CompareNetchdf(filename, showCdl = true)
+        CompareCdmWithClib(filename, showCdl = true)
         readNetchdfData(filename, )
         compareDataWithClib(filename, )
     }

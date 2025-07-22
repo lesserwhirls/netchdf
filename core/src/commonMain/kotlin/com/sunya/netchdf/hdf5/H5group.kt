@@ -285,9 +285,10 @@ internal class H5GroupBuilder(
             // gather the H5typedef found in DataObjects
             if (nested.isTypedef) {
                 val mdt = nested.dataObject!!.mdt!!
+                // if its a typedef but not a variable, promote to shared
+                if (!nested.isVariable) mdt.isShared = true
                 val typename = if (mdt.isShared) nested.dataObject!!.name else null
                 val typedef = H5typedef(typename, mdt)
-
                 typedefs.add(typedef)
             }
         }

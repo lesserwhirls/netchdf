@@ -256,16 +256,21 @@ For example, a Variable of datatype Float will return an ArrayFloat, which is Ar
 #### Datatype
 * _Datatype.ENUM_ returns an array of the corresponding UBYTE/USHORT/UINT. Call _data.convertEnums()_ to turn this into
   an ArrayString of corresponding enum names.
-* _Datatype.CHAR_: All Attributes of type CHAR are assumed to be Strings. All Variables of type CHAR return data as
-  ArrayUByte. Call _data.makeStringsFromBytes()_ to turn this into Strings with the array rank reduced by one.
-  * Netcdf-3 does not have STRING or UBYTE types. In practice, CHAR is used for either. 
-  * Netcdf-4/HDF5 library encodes CHAR values as HDF5 string type with elemSize = 1, so we use that convention to detect 
-    legacy CHAR variables in HDF5 files. (NC_CHAR should not be used in Netcdf-4, use NC_UBYTE or NC_STRING.)
+* CHAR vs STRING: 
+  * Attributes of type CHAR are always assumed to be Strings. 
+  * Netcdf-3 does not have STRING or UBYTE types, and in practice, CHAR is used for either. Variables of type CHAR 
+    return data as ArrayUByte. 
+  * Netcdf-4 encodes CHAR values as HDF5 string type with elemSize = 1, so we use that convention to detect 
+    legacy CHAR variables in HDF5 format. (NC_CHAR should not be used in new Netcdf-4 files, use NC_UBYTE or NC_STRING.) 
+    Variables of type CHAR return data as STRING, since users can use UBYTE if thats what they intend.
   * Netcdf-4/HDF5 String variables may be fixed or variable length. For fixed Strings, we set the size of Datatype.STRING to 
-    the fixed size. For both fixed and variable length Strings, the string withh be truncated at the first zero byte, if any.
+    the fixed size. For both fixed and variable length Strings, the string will be truncated at the first zero byte, if any.
   * HDF4 does not have a STRING type, but does have signed and unsigned CHAR, and signed and unsigned BYTE. 
-    We map both signed and unsigned to Datatype.CHAR and handle it as above (Attributes are Strings, Variables are UBytes).
+    Both signed and unsigned CHAR are mapped to Datatype.CHAR, whose data is returned as Strings for Attributes, 
+    and ArrayUByte for Variables.
+  * Call _data.makeStringsFromBytes() to turn ArrayUByte into ArrayString with the array reduced by one.
 * _Datatype.STRING_ always appears to be variable length to the user, regardless of whether the data in the file is variable or fixed length.
+* _Datatype.STRING_ is always encoded as UTF8. TODO add option to change encoding, probably when opening the file.
 
 #### Typedef
 Unlike Netcdf-Java, we follow Netcdf-4 "user defined types" and add typedefs for Compound, Enum, Opaque, and Vlen.

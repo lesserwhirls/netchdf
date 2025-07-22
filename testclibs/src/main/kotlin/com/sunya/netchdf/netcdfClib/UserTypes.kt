@@ -18,7 +18,7 @@ import java.lang.foreign.ValueLayout.JAVA_BYTE
 
 val debugUserTypes = false
 
-//         val nvars_p = session.allocate(C_INT, 0)
+//        val nvars_p = session.allocate(C_INT, 0)
 //        checkErr("nc_inq_nvars", nc_inq_nvars(g4.grpid, nvars_p))
 //        val nvars = nvars_p[C_INT, 0]
 //
@@ -232,18 +232,7 @@ private fun <T> NCheader.readEnumAttValues(session: Arena, grpid: Int, varid: In
     // TODO im skeptical isBE shouldnt always be nativeByteOrder
     val tba = TypedByteArray(userType.enumBasePrimitiveType, ba, 0, isBE = true)
     val result = tba.convertToArrayTyped(intArrayOf(nelems.toInt()))
-    /*
-    val bb = ByteBuffer.wrap(raw)
-    val result = mutableListOf<Any>()
-    for (i in 0 until nelems.toInt()) {
-        val num = when (userType.enumBasePrimitiveType) {
-            Datatype.UBYTE -> bb.get(i).toUByte()
-            Datatype.USHORT -> bb.getShort(i).toUShort()
-            Datatype.UINT -> bb.getInt(i).toUInt()
-            else -> throw RuntimeException("convertEnums unknown type = ${userType.enumBasePrimitiveType}")
-        }
-        result.add(num)
-    } */
+
     attb.setValues(result.toList())
     return attb
 }

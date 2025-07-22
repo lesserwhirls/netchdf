@@ -16,26 +16,6 @@ class N3dataCompare {
         }
     }
 
-/*
-    @Test
-    fun netcdf3() {
-        val filename = testData + "cdmUnitTest/formats/netcdf3/awips.nc"
-        if (showDetail) println("===============================================")
-        if (showDetail) {
-            Netcdf3File(filename).use { ncfile ->
-                println("${ncfile.type()} $filename ")
-                println("${ncfile.cdl()} ")
-            }
-        }
-        readData(filename, "uw", SectionPartial.fromSpec("4, 39, 55, 74"))
-        readData(filename, "uw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "vw", SectionPartial.fromSpec("4, 39, 55, 74"))
-        readData(filename, "vw", SectionPartial.fromSpec("0:4,13:26,18:37,25:49"))
-        readData(filename, "uw", SectionPartial.fromSpec(":,:,:,25"))
-    }
-
- */
-
     @Test
     fun cdf5() {
         val filename = testData + "recent/cdf5/jays_DOMAIN000.nc"

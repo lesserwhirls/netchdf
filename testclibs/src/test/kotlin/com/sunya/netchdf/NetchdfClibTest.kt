@@ -54,16 +54,16 @@ class NetchdfClibTest {
     @Test
     fun testOneCdl() {
         val filename = testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4"
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
     }
 
     @Test
     fun testEnums() {
-        CompareNetchdf(testData + "devcdm/netcdf4/test_enum_type.nc")
-        CompareNetchdf(testData + "devcdm/netcdf4/tst_enums.nc")
-        CompareNetchdf(testData + "devcdm/hdf5/enumcmpnd.h5")
-        CompareNetchdf(testData + "devcdm/hdf5/enum.h5")
-        CompareNetchdf(testData + "devcdm/hdf5/cenum.h5")
+        CompareCdmWithClib(testData + "devcdm/netcdf4/test_enum_type.nc")
+        CompareCdmWithClib(testData + "devcdm/netcdf4/tst_enums.nc")
+        CompareCdmWithClib(testData + "devcdm/hdf5/enumcmpnd.h5")
+        CompareCdmWithClib(testData + "devcdm/hdf5/enum.h5")
+        CompareCdmWithClib(testData + "devcdm/hdf5/cenum.h5")
 
         compareDataWithClib(testData + "devcdm/netcdf4/test_enum_type.nc")
         compareDataWithClib(testData + "devcdm/netcdf4/tst_enums.nc")
@@ -86,7 +86,7 @@ class NetchdfClibTest {
     fun problem2() {
         val filename = testData + "devcdm/hdf5/enumcmpnd.h5"
         // compareN4withH5cdl(filename)
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         compareDataWithClib(filename)
     }
 
@@ -199,7 +199,7 @@ isThreadsafe = 0 = false
     @Test
     fun testHdf4Attribute() {
         val filename = testData + "/hdf4/eos/misr/MISR_AM1_GRP_TERR_GM_P040_AN"
-        CompareNetchdf(filename)
+        CompareCdmWithClib(filename)
         compareDataWithClib(filename, )
     }
 
@@ -213,14 +213,14 @@ isThreadsafe = 0 = false
     @Test
     fun testFailDataCompare3() {
         val filename = testData + "/devcdm/hdfeos2/MISR_AM1_GP_GMP_P040_O003734_05.eos"
-        CompareNetchdf(filename, true)
+        CompareCdmWithClib(filename, true)
         compareDataWithClib(filename, "/GeometricParameters/Data_Fields/SolarAzimuth")
     }
 
     @Test
     fun testFailDataCompare4() {
         val filename = testData + "/devcdm/netcdf4/tst_opaque_data.nc4"
-        CompareNetchdf(filename, true)
+        CompareCdmWithClib(filename, true)
         compareDataWithClib(filename)
     }
 
@@ -252,23 +252,28 @@ isThreadsafe = 0 = false
     @Test
     fun testVlenAttribute() {
         val filename = "/home/all/testdata/devcdm/netcdf4/tst_solar_2.nc4"
-        CompareNetchdf(filename, true, true)
+        CompareCdmWithClib(filename, true, true)
     }
 
-    // TODO a message with only mdt but says isShared = false
     @Test
     fun problemCompare() {
         val filename = "/home/all/testdata/devcdm/hdf4/MAC07S0.A2008230.1250.002.2008233222357.hdf"
-        CompareNetchdf(filename, true, true)
+        CompareCdmWithClib(filename, true, true)
+    }
+
+    @Test
+    fun problem() {
+        val filename = "/home/all/testdata/netchdf/austin/H12007_1m_MLLW_1of6.bag"
+        CompareCdmWithClib(filename, true, true)
     }
 
     @Test
     fun compareNetchdf() {
         files().forEach { filename ->
             try {
-                CompareNetchdf(filename, false, false)
+                CompareCdmWithClib(filename, false, false)
             } catch (e: Throwable) {
-                CompareNetchdf(filename, true, true)
+                CompareCdmWithClib(filename, true, true)
                 e.printStackTrace()
             }
         }
@@ -277,7 +282,7 @@ isThreadsafe = 0 = false
     @Test
     fun testCdlWithClib() {
         files().forEach { filename ->
-            CompareNetchdf(filename)
+            CompareCdmWithClib(filename)
         }
     }
 
@@ -292,6 +297,15 @@ isThreadsafe = 0 = false
     fun testCompareDataWithClib() {
         files().forEach { filename ->
             compareDataWithClib(filename)
+        }
+    }
+
+    // @Test
+    fun testFilesAfter() {
+        var skip = true
+        NetchdfClibExtra.Companion.files().forEach { filename ->
+            if (filename.equals(testData + "netchdf/martaan/RADNL_TEST_R___25PCPRR_L3__20090305T120000_20090305T120500_0001.nc")) skip = false
+            if (!skip) compareDataWithClib(filename)
         }
     }
 
@@ -343,7 +357,7 @@ fun readNcData(filename: String, varname: String? = null, section: SectionPartia
     }
 }
 
-fun compareDataWithClib(filename: String, varname: String? = null, section: SectionPartial? = null) {
+fun compareDataWithClib(filename: String, varname: String? = null, section: SectionPartial? = null, showCdl: Boolean = false) {
     println("=============================================================")
     openNetchdfFile(filename).use { netchdf ->
         if (netchdf == null) {
@@ -351,7 +365,7 @@ fun compareDataWithClib(filename: String, varname: String? = null, section: Sect
             return
         }
         println("${netchdf.type()} $filename ${"%.2f".format(netchdf.size / 1000.0 / 1000.0)} Mbytes")
-        if (NetchdfClibTest.showCdl) println("\n${netchdf.cdl()}")
+        if (showCdl) println("\n${netchdf.cdl()}")
 
         if (netchdf.type().contains("hdf4")  || netchdf.type().contains("hdf-eos2")) {
             Hdf4ClibFile(filename).use { ncfile ->

@@ -3,6 +3,7 @@ package com.sunya.netchdf.hdf5
 import com.sunya.cdm.api.Datatype
 import com.sunya.netchdf.*
 import com.sunya.netchdf.netcdfClib.NClibFile
+import com.sunya.netchdf.testfiles.H5Files
 import com.sunya.netchdf.testfiles.N4Files
 import com.sunya.netchdf.testutils.testData
 import kotlin.test.*
@@ -18,47 +19,35 @@ class Hdf5Compare {
         fun files(): Iterator<String> {
             // 10 of 114 fail, because we compare with netcdf4 instead of hdf5 c library
 
-            //val hdfeos5 =
-             //   testFilesIn(testData + "devcdm/hdfeos5")
-             //       .withRecursion()
-              //      .build()
-
-            return N4Files.files()
-           //  return Stream.of( N4Files.params(),  H5Files.params()).flatMap { i -> i };
+            return H5Files.files()
         }
     }
 
     @Test
     fun testNewLibrary() {
         val filename = testData + "netchdf/haberman/iso.h5"
-        CompareNetchdf(filename, showCdl = true)
+        CompareCdmWithClib(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 
     @Test
     fun problemChars() {
         val filename = testData + "cdmUnitTest/formats/netcdf4/files/c0_4.nc4"
-        CompareNetchdf(filename)
-        compareDataWithClib(filename)
+        CompareCdmWithClib(filename)
+        compareDataWithClib(filename, showCdl = true, varname = "c213")
     }
 
     @Test
     fun problemLibraryVersion() {
         val filename = testData + "devcdm/netcdf4/tst_solar_cmp.nc"
-        CompareNetchdf(filename, showCdl = true)
+        CompareCdmWithClib(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 
     @Test
-    fun ok() {
-        compareH5andNclib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
-        compareDataWithClib(testData + "netchdf/tomas/S3A_OL_CCDB_CHAR_AllFiles.20101019121929_1.nc4")
-    }
-
-    @Test
     fun problem() {
-        val filename = testData + "cdmUnitTest/formats/netcdf4/files/xma022032.nc"
-        CompareNetchdf(filename)
+        val filename = testData + "devcdm/netcdf4/IntTimSciSamp.nc"
+        CompareCdmWithClib(filename, showCdl = true)
         compareDataWithClib(filename)
     }
 
@@ -78,9 +67,9 @@ class Hdf5Compare {
     }
 
     @Test
-    fun testCdlWithClib() {
+    fun compareNetchdf() {
         files().forEach { filename ->
-            CompareNetchdf(filename)
+            CompareCdmWithClib(filename)
         }
     }
 
@@ -88,26 +77,6 @@ class Hdf5Compare {
     fun testCompareDataWithClib() {
         files().forEach { filename ->
             compareDataWithClib(filename)
-        }
-    }
-
-    @Test
-    fun compareH5andNclib() {
-        files().forEach { filename ->
-            compareH5andNclib(filename)
-        }
-    }
-
-    fun compareH5andNclib(filename: String) {
-        println("===================================================")
-        openNetchdfFileWithFormat(filename, NetchdfFileFormat.HDF5).use { h5file ->
-            println("${h5file!!.type()} $filename ")
-            println("\n${h5file.cdl()}")
-
-            NClibFile(filename).use { nclibfile ->
-                println("ncfile = ${nclibfile.cdl()}")
-                compareCdlWithoutFileType(nclibfile.cdl(), h5file.cdl())
-            }
         }
     }
 

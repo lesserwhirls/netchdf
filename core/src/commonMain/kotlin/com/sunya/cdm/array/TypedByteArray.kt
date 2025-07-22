@@ -77,11 +77,15 @@ class TypedByteArray<T>(val datatype: Datatype<T>, val ba: ByteArray, val offset
         }
     }
 
-    fun convertToArrayTyped(shape: IntArray, elemSize : Int? = null): ArrayTyped<T> {
+    fun convertToArrayTyped(shape: IntArray, elemSize : Int? = null, charToString : Boolean = false): ArrayTyped<T> {
         val nelems = shape.computeSize()
         val result = when (datatype) {
             Datatype.BYTE -> ArrayByte(shape, ByteArray(nelems) { this.get(it) as Byte } )
-            Datatype.CHAR, Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype, UByteArray(nelems) { this.get(it) as UByte })
+            Datatype.UBYTE, Datatype.ENUM1 -> ArrayUByte(shape, datatype, UByteArray(nelems) { this.get(it) as UByte })
+            Datatype.CHAR -> {
+                val ubytes = ArrayUByte(shape, datatype, UByteArray(nelems) { this.get(it) as UByte })
+                if (charToString) ubytes.makeStringsFromBytes() else ubytes
+            }
             Datatype.SHORT -> ArrayShort(shape, ShortArray(nelems) { this.get(it) as Short })
             Datatype.USHORT, Datatype.ENUM2  -> ArrayUShort(shape, datatype, UShortArray(nelems) { this.get(it) as UShort })
             Datatype.INT -> ArrayInt(shape, IntArray(nelems) { this.get(it) as Int } )
