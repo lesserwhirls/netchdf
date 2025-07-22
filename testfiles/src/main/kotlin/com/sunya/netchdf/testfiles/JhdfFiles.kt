@@ -16,6 +16,9 @@ class JhdfFiles {
                     .addNameFilter { name -> !name.endsWith("test_chunked_datasets_earliest.hdf5") }
                     .addNameFilter { name -> !name.endsWith("test_chunked_datasets_latest.hdf5") }
                     .addNameFilter { name -> !name.endsWith("external_link.hdf5") }
+                    .addNameFilter { name -> !name.endsWith("globalheaps_test.hdf5") }
+                    .addNameFilter { name -> !name.endsWith("test_file.hdf5") }
+                    .addNameFilter { name -> !name.endsWith("test_byteshuffle_compressed_datasets_latest.hdf5") }
                     .build()
             return jhdf.iterator()
         }

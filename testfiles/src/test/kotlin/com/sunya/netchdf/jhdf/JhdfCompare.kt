@@ -1,6 +1,5 @@
 package com.sunya.netchdf.jhdf
 
-
 import com.sunya.cdm.api.Datatype
 import com.sunya.cdm.api.EnumTypedef
 import com.sunya.cdm.array.*
@@ -12,8 +11,6 @@ import com.sunya.netchdf.testutils.readNetchdfData
 import com.sunya.netchdf.testutils.testData
 import io.jhdf.HdfFile
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.MethodSource
 import java.nio.file.Paths
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -33,14 +30,6 @@ class JhdfCompare {
     }
 
     @Test
-    fun compareDataWithJhdf() {
-        files().forEach { filename ->
-            println("=============================")
-            compareDataWithJhdf(filename)
-        }
-    }
-
-    @Test
     fun compareOneWithJhdf() {
         // this ones pretty bad
         // val filename = jhdfTestDir + "isssue-523.hdf5"
@@ -52,6 +41,23 @@ class JhdfCompare {
     // @Test horror show
     fun superblocks() {
         compareDataWithJhdf(testData + "netcdf-c_hdf5_superblocks/netcdf-c-test-files/v1_8/nc_test4__tst_xplatform2_3.nc", null, true, true)
+    }
+
+    /////////////////////////////////////
+    @Test
+    fun readAllData() {
+        files().forEach { filename ->
+            println(filename)
+            readNetchdfData(filename, null, null, false, false)
+        }
+    }
+
+    @Test
+    fun compareDataWithJhdf() {
+        files().forEach { filename ->
+            println("=============================")
+            compareDataWithJhdf(filename)
+        }
     }
 
     fun compareDataWithJhdf(filename: String, varname: String? = null, showData: Boolean = false, showCdl: Boolean = false) {
@@ -274,15 +280,6 @@ class JhdfCompare {
         }
 
     }
-
-    /////////////////////////////////////
-    @ParameterizedTest
-    @MethodSource("files")
-    fun testReadN3data(filename: String) {
-        println(filename)
-        readNetchdfData(filename, null, null, true, false)
-    }
-
 }
 
 // double iterator (iterator of iterator)

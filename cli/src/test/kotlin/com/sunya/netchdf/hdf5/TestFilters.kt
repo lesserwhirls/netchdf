@@ -1,8 +1,8 @@
 package com.sunya.netchdf.hdf5
 
 import com.sunya.cdm.api.computeSize
-import kotlin.test.Test
 import com.sunya.netchdf.openNetchdfFile
+import kotlin.test.Test
 
 class TestFilters {
     init {

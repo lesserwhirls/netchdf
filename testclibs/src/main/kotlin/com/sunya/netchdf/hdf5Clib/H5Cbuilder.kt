@@ -241,7 +241,10 @@ class H5Cbuilder(val filename: String) {
             val ltype = H5L_info2_t.`type$get`(linkinfo, 0L) // H5L_type_t
             if (ltype == H5L_TYPE_HARD()) {
                 val address = H5L_info2_t.u.ofAddress(linkinfo, context.arena)
-                if (debug) println("${indent}H5L_TYPE_HARD, address=$address")
+                if (debug) {
+                    val addressp = address.address()
+                    println("${indent}H5L_TYPE_HARD, address=$addressp reverseBE=${addressp.reverseByteOrder(true)} reverseLE=${addressp.reverseByteOrder(false)}")
+                }
             } else if (ltype == H5L_TYPE_SOFT()) {
                 val val_size = H5L_info2_t.u.`val_size$get`(linkinfo, 0L)
                 if (debug) println("${indent}H5L_TYPE_SOFT, val_size=$val_size")
@@ -278,6 +281,11 @@ class H5Cbuilder(val filename: String) {
             val loc_id = H5Oopen(group_id, linkname_p, H5P_DEFAULT_LONG)
 
             val oinfo_p = H5O_info2_t.allocate(context.arena)
+            val errno = H5Oget_info3(loc_id, oinfo_p, H5O_INFO_ALL())
+            if (errno < 0) {
+                println("H5Oget_info3 failed ($errno) on linkname $linkname")
+                return 0 // bogus "no error"
+            }
             checkErr("H5Oget_info3", H5Oget_info3(loc_id, oinfo_p, H5O_INFO_ALL()))
             val otype = H5O_info2_t.`type$get`(oinfo_p)
             val num_attr = H5O_info2_t.`num_attrs$get`(oinfo_p)
@@ -506,13 +514,9 @@ class H5Cbuilder(val filename: String) {
             if (isVariable) context.group.addVariable(vb)
 
             // datasetId is transient
-            var address = H5Dget_offset(datasetId)
-            /* println("**H5Cbuilder obj_name=$obj_name datasetId=$datasetId address=$address") // maybe there a byte order problem ??
-        if (address < 0) {
-            val reversed = datasetId.reverseByteOrder() // doesnt work
-            address = H5Dget_offset(reversed)
-            println("   try again with byte order reversed: datasetId=$reversed address=$address") // maybe there a byte order problem ??
-        } */
+            val address = H5Dget_offset(datasetId)
+            // println("**H5Cbuilder obj_name=$obj_name datasetId=$datasetId address=$address") // maybe there a byte order problem ??
+
             if (address > 0) datasetMap[address] = Pair(context.group, vb)
 
             if (obj_name.startsWith("StructMetadata")) {

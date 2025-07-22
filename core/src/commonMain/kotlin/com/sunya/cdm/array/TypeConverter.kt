@@ -169,3 +169,17 @@ fun convertFromBytes(datatype : Datatype<*>, ba: ByteArray, isBE: Boolean, chars
         else -> throw IllegalArgumentException("datatype ${datatype}")
     }
 }
+
+
+fun Long.reverseByteOrder(wantBE: Boolean): Long {
+    val b1 = (this and 0xff).toByte()
+    val b2 = ((this ushr 8) and 0xff).toByte()
+    val b3 = ((this ushr 16) and 0xff).toByte()
+    val b4 = ((this ushr 24) and 0xff).toByte()
+    val b5 = ((this ushr 32) and 0xff).toByte()
+    val b6 = ((this ushr 40) and 0xff).toByte()
+    val b7 = ((this ushr 48) and 0xff).toByte()
+    val b8 = ((this ushr 56) and 0xff).toByte()
+
+    return convertToLong(byteArrayOf(b8, b7, b6, b5, b4, b3, b2, b1), 0, wantBE)
+}

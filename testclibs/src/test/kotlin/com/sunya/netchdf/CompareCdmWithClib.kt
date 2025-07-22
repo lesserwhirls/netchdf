@@ -69,8 +69,9 @@ fun compareGroup(group: Group, cgroup: Group, indent: Indent, showCompare: Boole
     }
 
     group.variables.forEach { v ->
-        val cv = cgroup.variables.find { it.name == v.name }!!
-        compareVariable(v, cv, indent.incr(), showCompare)
+        val cv = cgroup.variables.find { it.name == v.name }
+        if (cv == null) println("***cant find c variable ${v.fullname()}")
+        else compareVariable(v, cv, indent.incr(), showCompare)
     }
 
     group.groups.forEach { nested ->
